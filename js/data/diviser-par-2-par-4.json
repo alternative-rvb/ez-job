@@ -1,0 +1,134 @@
+{
+  "config": {
+    "title": "Diviser par 2, par 4",
+    "description": "Apprends à diviser facilement un nombre par 2 et par 4",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": "Facile",
+    "questionCount": 10,
+    "category": "CM2",
+    "tag": ["Mathématiques", "Division"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Que faut-il faire pour diviser un nombre par 2 ?",
+      "choices": [
+        "Prendre la moitié du nombre",
+        "Multiplier le nombre par 2",
+        "Ajouter 2 au nombre",
+        "Soustraire 2 au nombre"
+      ],
+      "correctAnswer": "Prendre la moitié du nombre",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Combien vaut 256 ÷ 2 ?",
+      "choices": [
+        "128",
+        "254",
+        "512",
+        "64"
+      ],
+      "correctAnswer": "128",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Combien vaut 72 ÷ 2 ?",
+      "choices": [
+        "36",
+        "74",
+        "144",
+        "18"
+      ],
+      "correctAnswer": "36",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Combien vaut 36 ÷ 2 ?",
+      "choices": [
+        "18",
+        "34",
+        "72",
+        "9"
+      ],
+      "correctAnswer": "18",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Pour diviser un nombre par 4, que faut-il faire ?",
+      "choices": [
+        "Prendre la moitié du nombre, puis prendre la moitié du résultat",
+        "Multiplier le nombre par 4",
+        "Diviser le nombre par 2 une seule fois",
+        "Soustraire 4 au nombre"
+      ],
+      "correctAnswer": "Prendre la moitié du nombre, puis prendre la moitié du résultat",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Combien vaut 72 ÷ 4 ?",
+      "choices": [
+        "18",
+        "36",
+        "9",
+        "68"
+      ],
+      "correctAnswer": "18",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Combien vaut 100 ÷ 2 ?",
+      "choices": [
+        "50",
+        "98",
+        "200",
+        "25"
+      ],
+      "correctAnswer": "50",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Pour calculer 100 ÷ 4, je commence par diviser 100 par 2. Combien cela fait-il ?",
+      "choices": [
+        "50",
+        "25",
+        "100",
+        "200"
+      ],
+      "correctAnswer": "50",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Ensuite, je divise 50 par 2 pour terminer le calcul de 100 ÷ 4. Quel est le résultat final ?",
+      "choices": [
+        "25",
+        "50",
+        "12",
+        "100"
+      ],
+      "correctAnswer": "25",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Combien vaut 80 ÷ 4 ?",
+      "choices": [
+        "20",
+        "40",
+        "10",
+        "76"
+      ],
+      "correctAnswer": "20",
+      "imageUrl": null
+    }
+  ]
+}
