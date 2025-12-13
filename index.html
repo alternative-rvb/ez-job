@@ -1,481 +1,498 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="EZ JOB - De 0 à 100% Pro. Plateforme d'entraînement et de coaching en développement web. Pour étudiants, professionnels en reconversion et curieux du développement. Apprenez à votre rythme avec nos quiz interactifs." />
-    <meta name="keywords" content="formation, coaching, entraînement, développement web, programmation, JavaScript, HTML, CSS, apprentissage, école, étudiant, reconversion, développeur" />
-    <meta name="author" content="Alternative RVB" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="French" />
-    <meta property="og:title" content="EZ JOB - De 0 à 100% Pro" />
-    <meta property="og:description" content="Plateforme d'entraînement et de coaching en développement web pour tous. De 0 vers 100% pro!" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://job-ez.vercel.app" />
-    <meta property="og:image" content="https://job-ez.vercel.app/images/alternative-rvb-logo.svg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="EZ JOB - De 0 à 100% Pro" />
-    <meta name="twitter:description" content="Formation et coaching en développement web. Pour étudiants, reconvertis et professionnels." />
-    <link rel="canonical" href="https://job-ez.vercel.app" />
-    <link rel="icon" href="https://api.dicebear.com/5.x/identicon/svg?seed=job-ez" type="image/x-icon">
-    <link rel="alternate" hreflang="fr" href="https://job-ez.vercel.app" />
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#2563eb" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="EZ JOB" />
-    <title>EZ JOB - De 0 à 100% Pro | Entraînement Développement Web</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="/styles/main.css">
-    <!-- Sitemap -->
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    <!-- Custom Tailwind Config -->
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: {
-                50: '#f0f9ff',
-                500: '#3b82f6',
-                600: '#2563eb',
-                700: '#1d4ed8',
-                800: '#1e40af',
-                900: '#1e3a8a'
-              }
-            },
-            animation: {
-              'shake': 'shake 0.5s ease-in-out',
-              'bounce-subtle': 'bounce 1s infinite'
-            },
-            keyframes: {
-              shake: {
-                '0%, 100%': { transform: 'translateX(0)' },
-                '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-2px)' },
-                '20%, 40%, 60%, 80%': { transform: 'translateX(2px)' }
-              }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="EZ JOB - De 0 à 100% Pro. Plateforme d'entraînement et de coaching en développement web. Pour étudiants, professionnels en reconversion et curieux du développement. Apprenez à votre rythme avec nos quiz interactifs." />
+  <meta name="keywords"
+    content="formation, coaching, entraînement, développement web, programmation, JavaScript, HTML, CSS, apprentissage, école, étudiant, reconversion, développeur" />
+  <meta name="author" content="Alternative RVB" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="French" />
+  <meta property="og:title" content="EZ JOB - De 0 à 100% Pro" />
+  <meta property="og:description"
+    content="Plateforme d'entraînement et de coaching en développement web pour tous. De 0 vers 100% pro!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://job-ez.vercel.app" />
+  <meta property="og:image" content="https://job-ez.vercel.app/images/alternative-rvb-logo.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EZ JOB - De 0 à 100% Pro" />
+  <meta name="twitter:description"
+    content="Formation et coaching en développement web. Pour étudiants, reconvertis et professionnels." />
+  <link rel="canonical" href="https://job-ez.vercel.app" />
+  <link rel="icon" href="https://api.dicebear.com/5.x/identicon/svg?seed=job-ez" type="image/x-icon">
+  <link rel="alternate" hreflang="fr" href="https://job-ez.vercel.app" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="EZ JOB" />
+  <title>EZ JOB - De 0 à 100% Pro | Entraînement Développement Web</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          },
+          animation: {
+            'shake': 'shake 0.5s ease-in-out',
+            'bounce-subtle': 'bounce 1s infinite'
+          },
+          keyframes: {
+            shake: {
+              '0%, 100%': { transform: 'translateX(0)' },
+              '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-2px)' },
+              '20%, 40%, 60%, 80%': { transform: 'translateX(2px)' }
             }
           }
         }
       }
-    </script>
-  </head>
+    }
+  </script>
+</head>
 
-  <body class="dark bg-gray-900 text-white min-h-screen">
-    <!-- Bubbles Background -->
-    <div class="bubbles">
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-    </div>
+<body class="dark bg-gray-900 text-white min-h-screen">
+  <!-- Bubbles Background -->
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
 
-    <!-- Header avec navigation -->
-    <header class="bg-gray-800 shadow-lg">
-      <nav class="container mx-auto px-4 py-3">
-        <div class="flex items-center justify-between">
-          <!-- Logo -->
-          <div class="flex items-center space-x-2">
-            <a href="/" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-              <img src="images/alternative-rvb-logo.svg" alt="Alternative RVB logo" class="w-8 h-8" />
-              <span class="text-xl font-bold text-primary-400">EZ JOB</span>
+  <!-- Header avec navigation -->
+  <header class="bg-gray-800 shadow-lg">
+    <nav class="container mx-auto px-4 py-3">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <a href="/" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+            <img src="images/alternative-rvb-logo.svg" alt="Alternative RVB logo" class="w-8 h-8" />
+            <span class="text-xl font-bold text-primary-400">EZ JOB</span>
+          </a>
+        </div>
+
+        <!-- Navigation Desktop -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="/" class="hover:text-primary-400 transition-colors">Home</a>
+          <a href="https://alternative-rvb.com" class="hover:text-primary-400 transition-colors">Alternative RVB</a>
+          <div class="flex items-center space-x-3">
+            <a href="https://github.com/alternative-rvb" class="hover:text-primary-400 transition-colors"
+              aria-label="GitHub">
+              <i class="bi bi-github text-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/nicolas-malet/" class="hover:text-primary-400 transition-colors"
+              aria-label="LinkedIn">
+              <i class="bi bi-linkedin text-lg"></i>
             </a>
           </div>
-          
-          <!-- Navigation Desktop -->
-          <div class="hidden md:flex items-center space-x-6">
-            <a href="/" class="hover:text-primary-400 transition-colors">Home</a>
-            <a href="https://alternative-rvb.com" class="hover:text-primary-400 transition-colors">Alternative RVB</a>
-            <div class="flex items-center space-x-3">
-              <a href="https://github.com/alternative-rvb" class="hover:text-primary-400 transition-colors" aria-label="GitHub">
-                <i class="bi bi-github text-lg"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/nicolas-malet/" class="hover:text-primary-400 transition-colors" aria-label="LinkedIn">
-                <i class="bi bi-linkedin text-lg"></i>
-              </a>
-            </div>
-          </div>
-          
-          <!-- Menu Mobile -->
-          <div class="md:hidden">
-            <button id="mobile-menu-toggle" class="text-white hover:text-primary-400">
-              <i class="bi bi-list text-2xl"></i>
-            </button>
-          </div>
-        </div>
-        
-        <!-- Menu Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-          <a href="/" class="block py-2 hover:text-primary-400 transition-colors">Home</a>
-          <a href="https://alternative-rvb.com" class="block py-2 hover:text-primary-400 transition-colors">Alternative RVB</a>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Contenu principal -->
-    <main class="container mx-auto px-4 py-8 min-h-screen">
-      <!-- Page de saisie du nom du joueur -->
-      <div id="player-name-screen" class="max-w-md mx-auto flex items-center justify-center min-h-[70vh]">
-        <div class="bg-gray-800 rounded-2xl p-8 shadow-2xl w-full">
-          <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-white">
-              EZ JOB
-            </h1>
-            <p class="text-gray-400 text-lg">Quel est votre nom ?</p>
-          </div>
-          
-          <form id="player-name-form" class="space-y-4">
-            <div>
-              <input 
-                type="text" 
-                id="player-name-input" 
-                placeholder="Entrez votre nom..." 
-                class="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border-2 border-gray-600 focus:border-primary-500 focus:outline-none transition-colors"
-                maxlength="30"
-                autocomplete="off"
-              />
-            </div>
-            <button 
-              type="submit" 
-              class="w-full px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:opacity-90 transition-opacity font-bold text-lg"
-            >
-              <i class="bi bi-arrow-right mr-2"></i>Commencer
-            </button>
-          </form>
-        </div>
-      </div>
-      
-      <!-- Page de sélection des quiz -->
-      <div id="quiz-selection" class="hidden py-8">
-        <div class="text-center mb-8">
-          <a href="/" class="inline-block hover:opacity-80 transition-opacity">
-            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-white">
-              EZ JOB - De 0 à 100% Pro
-            </h1>
-          </a>
-          <p class="text-gray-400 text-lg">Entraînement et coaching en développement web pour tous</p>
-          
-          <div class="mt-4 flex justify-center gap-4 flex-wrap">
-            <button id="btn-change-player" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm">
-              <i class="bi bi-person mr-1"></i><span id="player-name-display"></span>
-            </button>
-            <button id="btn-show-history" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors text-sm">
-              <i class="bi bi-clock-history mr-1"></i>Historique
-            </button>
-            <button id="btn-show-trophies" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm">
-              <i class="bi bi-trophy-fill mr-1"></i>Mes Trophées
-            </button>
-          </div>
         </div>
 
-        <!-- Options de jeu -->
-        <div class="bg-gray-800 rounded-xl p-4 mb-8 shadow-lg">
-          <h2 class="text-2xl font-bold mb-4 text-center">Options de Jeu</h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Sélection du temps par question -->
-            <div class="space-y-3">
-              <label class="block text-lg font-medium text-white">
-                <i class="bi bi-clock mr-2 text-primary-400"></i>
-                Temps par question
-              </label>
-              <div class="grid grid-cols-2 gap-3">
-                <button type="button" data-time="5" class="time-option px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center">
-                  5 secondes
-                </button>
-                <button type="button" data-time="10" class="time-option px-4 py-3 bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center selected">
-                  10 secondes
-                </button>
-                <button type="button" data-time="15" class="time-option px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center">
-                  15 secondes
-                </button>
-                <button type="button" data-time="20" class="time-option px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center">
-                  20 secondes
-                </button>
-              </div>
-            </div>
-
-            <!-- Mode spoiler -->
-            <div class="space-y-3">
-              <label class="block text-lg font-medium text-white">
-                <i class="bi bi-eye-slash mr-2 text-primary-400"></i>
-                Mode de Jeu
-              </label>
-              <div class="space-y-3">
-                <button type="button" id="normal-mode" class="game-mode w-full px-4 py-3 bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-left flex items-center selected">
-                  <!-- <i class="bi bi-lightbulb mr-3 text-xl"></i> -->
-                  <!-- Icon étoile -->
-                   <i class="bi bi-star-fill mr-3 text-xl text-yellow-400"></i>
-                  <div>
-                    <div class="font-semibold">Mode Normal</div>
-                    <div class="text-sm opacity-80">Réponses visibles, choix interactif</div>
-                  </div>
-                </button>
-                <button type="button" id="free-mode" class="game-mode w-full px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-left flex items-center">
-                  <!-- <i class="bi bi-lightbulb mr-3 text-xl"></i> -->
-                   <!-- Icon représentant du vent -->
-                    <i class="bi bi-wind text-xl text-blue-400 mr-3"></i>
-                    
-                  <div>
-                    <div class="font-semibold">Mode Libre</div>
-                    <div class="text-sm opacity-80">Réponses cachées, révélation automatique</div>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Filtres par catégorie -->
-        <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-8">
-          <!-- Les boutons de filtres seront générés dynamiquement -->
-        </div>
-
-        <div id="quiz-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          <!-- Les quiz seront générés dynamiquement -->
-        </div>
-      </div>
-
-      <!-- Interface de quiz (cachée au démarrage) -->
-      <div id="quiz-container" class="hidden py-8">
-        <div id="quiz-header" class="text-center mb-4">
-          <button id="back-to-selection" class="mb-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-            <i class="bi bi-arrow-left mr-2"></i>Retour à la sélection
+        <!-- Menu Mobile -->
+        <div class="md:hidden">
+          <button id="mobile-menu-toggle" class="text-white hover:text-primary-400">
+            <i class="bi bi-list text-2xl"></i>
           </button>
-          <h2 id="quiz-title" class="text-2xl font-bold mb-2"></h2>
-          <div class="flex justify-center items-center space-x-4 text-sm text-gray-400">
-            <div class="flex flex-col items-center space-y-1">
-              <span id="question-counter">Question 1/10</span>
-              <div class="w-32 h-2 bg-gray-700 rounded-full overflow-hidden">
-                <div id="progress-bar" class="h-full bg-gradient-to-r from-primary-500 to-primary-400 rounded-full transition-all duration-500 ease-out" style="width: 10%"></div>
-              </div>
-            </div>
-            <span id="score-display">Score: 0</span>
-            <div class="flex items-center">
-              <i class="bi bi-clock mr-1"></i>
-              <span id="timer-display">10</span>s
-            </div>
-          </div>
-        </div>
-        
-        <div id="quiz-content" class="bg-gray-800 rounded-xl p-4 shadow-lg">
-          <!-- Le contenu du quiz sera généré dynamiquement -->
         </div>
       </div>
 
-      <!-- Écran des résultats (cachée au démarrage) -->
-      <div id="results-container" class="hidden py-8">
-        <!-- Le contenu des résultats sera généré dynamiquement -->
+      <!-- Menu Mobile Dropdown -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+        <a href="/" class="block py-2 hover:text-primary-400 transition-colors">Home</a>
+        <a href="https://alternative-rvb.com" class="block py-2 hover:text-primary-400 transition-colors">Alternative
+          RVB</a>
       </div>
+    </nav>
+  </header>
 
-      <!-- Page d'historique des résultats -->
-      <div id="history-screen" class="hidden py-8">
+  <!-- Contenu principal -->
+  <main class="container mx-auto px-4 py-8 min-h-screen">
+    <!-- Page de saisie du nom du joueur -->
+    <div id="player-name-screen" class="max-w-md mx-auto flex items-center justify-center min-h-[70vh]">
+      <div class="bg-gray-800 rounded-2xl p-8 shadow-2xl w-full">
         <div class="text-center mb-8">
-          <button id="btn-back-from-history" class="mb-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-            <i class="bi bi-arrow-left mr-2"></i>Retour
-          </button>
-          <h1 class="text-4xl font-bold mb-2 text-white">Historique des Résultats</h1>
-          <div id="history-stats" class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <!-- Les statistiques seront générées dynamiquement -->
-          </div>
-        </div>
-
-        <div id="history-list" class="space-y-4">
-          <!-- La liste des résultats sera générée dynamiquement -->
-        </div>
-      </div>
-
-      <!-- Page d'historique des trophées -->
-      <div id="trophies-screen" class="hidden py-8">
-        <div class="text-center mb-8">
-          <button id="btn-back-from-trophies" class="mb-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-            <i class="bi bi-arrow-left mr-2"></i>Retour
-          </button>
-          <h1 class="text-4xl font-bold mb-2 text-white flex items-center justify-center gap-2">
-            <i class="bi bi-trophy text-yellow-400 text-4xl"></i>Mes Trophées
+          <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-white">
+            EZ JOB
           </h1>
+          <p class="text-gray-400 text-lg">Quel est votre nom ?</p>
         </div>
 
-        <!-- Statistiques -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-gray-400 text-sm">Points Totaux</p>
-                <p class="text-3xl font-bold text-blue-400" id="total-points">0</p>
-              </div>
-              <i class="bi bi-star-fill text-yellow-400 text-4xl opacity-20"></i>
-            </div>
+        <form id="player-name-form" class="space-y-4">
+          <div>
+            <input type="text" id="player-name-input" placeholder="Entrez votre nom..."
+              class="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border-2 border-gray-600 focus:border-primary-500 focus:outline-none transition-colors"
+              maxlength="30" autocomplete="off" />
           </div>
+          <button type="submit"
+            class="w-full px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:opacity-90 transition-opacity font-bold text-lg">
+            <i class="bi bi-arrow-right mr-2"></i>Commencer
+          </button>
+        </form>
+      </div>
+    </div>
 
-          <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-gray-400 text-sm">Trophées Débloqués</p>
-                <p class="text-3xl font-bold text-green-400" id="unlocked-count">0</p>
-              </div>
-              <i class="bi bi-trophy-fill text-green-400 text-4xl opacity-20"></i>
-            </div>
-          </div>
+    <!-- Page de sélection des quiz -->
+    <div id="quiz-selection" class="hidden py-8">
+      <div class="text-center mb-8">
+        <a href="/" class="inline-block hover:opacity-80 transition-opacity">
+          <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-white">
+            <span class="text-8xl">EZ JOB</span><br><span>De 0 à 100% Pro</span>
+          </h1>
+        </a>
+        <p class="text-gray-400 text-lg">Entraînement et coaching en développement web pour tous</p>
 
-          <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-gray-400 text-sm">Codes Disponibles</p>
-                <p class="text-3xl font-bold text-purple-400" id="codes-available">0</p>
-              </div>
-              <i class="bi bi-key-fill text-purple-400 text-4xl opacity-20"></i>
-            </div>
-          </div>
+        <div class="mt-4 flex justify-center gap-4 flex-wrap">
+          <button id="btn-change-player"
+            class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm">
+            <i class="bi bi-person mr-1"></i><span id="player-name-display"></span>
+          </button>
+          <button id="btn-show-history"
+            class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors text-sm">
+            <i class="bi bi-clock-history mr-1"></i>Historique
+          </button>
+          <button id="btn-show-trophies"
+            class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm">
+            <i class="bi bi-trophy-fill mr-1"></i>Mes Trophées
+          </button>
         </div>
+      </div>
 
-        <!-- Section Acheter Code Secret -->
-        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 mb-8">
-          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-            <i class="bi bi-lock-fill text-purple-400"></i>
-            Débloquer un Trophée
-          </h2>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Acheter Code -->
-            <div>
-              <h3 class="text-lg font-semibold mb-3">Acheter un Code Secret</h3>
-              <p class="text-gray-400 text-sm mb-4">Coûte 5 points | Gagne un trophée aléatoire</p>
-              
-              <button id="buy-code-btn" class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-lg font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
-                <i class="bi bi-bag-check"></i>
-                <span id="buy-code-text">Acheter Code (5 points)</span>
+      <!-- Options de jeu -->
+      <div class="bg-gray-800 rounded-xl p-4 mb-8 shadow-lg">
+        <h2 class="text-2xl font-bold mb-4 text-center">Options de Jeu</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Sélection du temps par question -->
+          <div class="space-y-3">
+            <label class="block text-lg font-medium text-white">
+              <i class="bi bi-clock mr-2 text-primary-400"></i>
+              Temps par question
+            </label>
+            <div class="grid grid-cols-2 gap-3">
+              <button type="button" data-time="5"
+                class="time-option px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center">
+                5 secondes
               </button>
-
-              <!-- Code généré (caché par défaut) -->
-              <div id="generated-code-container" class="hidden mt-4 p-4 bg-gradient-to-r from-purple-900/50 to-purple-800/50 border border-purple-500 rounded-lg">
-                <p class="text-sm text-gray-300 mb-2">Votre code secret:</p>
-                <div class="flex items-center gap-2">
-                  <code id="generated-code" class="flex-1 text-2xl font-mono font-bold text-center text-purple-300 p-3 bg-black/30 rounded border border-purple-600"></code>
-                  <button id="copy-code-btn" class="px-4 py-3 bg-purple-600 hover:bg-purple-700 rounded transition-colors" title="Copier">
-                    <i class="bi bi-clipboard"></i>
-                  </button>
-                </div>
-                <p class="text-xs text-gray-400 mt-2">⚠️ Conservez bien ce code pour débloquer votre trophée</p>
-              </div>
+              <button type="button" data-time="10"
+                class="time-option px-4 py-3 bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center selected">
+                10 secondes
+              </button>
+              <button type="button" data-time="15"
+                class="time-option px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center">
+                15 secondes
+              </button>
+              <button type="button" data-time="20"
+                class="time-option px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center">
+                20 secondes
+              </button>
             </div>
+          </div>
 
-            <!-- Utiliser Code -->
+          <!-- Mode spoiler -->
+          <div class="space-y-3">
+            <label class="block text-lg font-medium text-white">
+              <i class="bi bi-eye-slash mr-2 text-primary-400"></i>
+              Mode de Jeu
+            </label>
+            <div class="space-y-3">
+              <button type="button" id="normal-mode"
+                class="game-mode w-full px-4 py-3 bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-left flex items-center selected">
+                <!-- <i class="bi bi-lightbulb mr-3 text-xl"></i> -->
+                <!-- Icon étoile -->
+                <i class="bi bi-star-fill mr-3 text-xl text-yellow-400"></i>
+                <div>
+                  <div class="font-semibold">Mode Normal</div>
+                  <div class="text-sm opacity-80">Réponses visibles, choix interactif</div>
+                </div>
+              </button>
+              <button type="button" id="free-mode"
+                class="game-mode w-full px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-left flex items-center">
+                <!-- <i class="bi bi-lightbulb mr-3 text-xl"></i> -->
+                <!-- Icon représentant du vent -->
+                <i class="bi bi-wind text-xl text-blue-400 mr-3"></i>
+
+                <div>
+                  <div class="font-semibold">Mode Libre</div>
+                  <div class="text-sm opacity-80">Réponses cachées, révélation automatique</div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filtres par catégorie -->
+      <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-8">
+        <!-- Les boutons de filtres seront générés dynamiquement -->
+      </div>
+
+      <div id="quiz-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <!-- Les quiz seront générés dynamiquement -->
+      </div>
+    </div>
+
+    <!-- Interface de quiz (cachée au démarrage) -->
+    <div id="quiz-container" class="hidden py-8">
+      <div id="quiz-header" class="text-center mb-4">
+        <button id="back-to-selection"
+          class="mb-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+          <i class="bi bi-arrow-left mr-2"></i>Retour à la sélection
+        </button>
+        <h2 id="quiz-title" class="text-2xl font-bold mb-2"></h2>
+        <div class="flex justify-center items-center space-x-4 text-sm text-gray-400">
+          <div class="flex flex-col items-center space-y-1">
+            <span id="question-counter">Question 1/10</span>
+            <div class="w-32 h-2 bg-gray-700 rounded-full overflow-hidden">
+              <div id="progress-bar"
+                class="h-full bg-gradient-to-r from-primary-500 to-primary-400 rounded-full transition-all duration-500 ease-out"
+                style="width: 10%"></div>
+            </div>
+          </div>
+          <span id="score-display">Score: 0</span>
+          <div class="flex items-center">
+            <i class="bi bi-clock mr-1"></i>
+            <span id="timer-display">10</span>s
+          </div>
+        </div>
+      </div>
+
+      <div id="quiz-content" class="bg-gray-800 rounded-xl p-4 shadow-lg">
+        <!-- Le contenu du quiz sera généré dynamiquement -->
+      </div>
+    </div>
+
+    <!-- Écran des résultats (cachée au démarrage) -->
+    <div id="results-container" class="hidden py-8">
+      <!-- Le contenu des résultats sera généré dynamiquement -->
+    </div>
+
+    <!-- Page d'historique des résultats -->
+    <div id="history-screen" class="hidden py-8">
+      <div class="text-center mb-8">
+        <button id="btn-back-from-history"
+          class="mb-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+          <i class="bi bi-arrow-left mr-2"></i>Retour
+        </button>
+        <h1 class="text-4xl font-bold mb-2 text-white">Historique des Résultats</h1>
+        <div id="history-stats" class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <!-- Les statistiques seront générées dynamiquement -->
+        </div>
+      </div>
+
+      <div id="history-list" class="space-y-4">
+        <!-- La liste des résultats sera générée dynamiquement -->
+      </div>
+    </div>
+
+    <!-- Page d'historique des trophées -->
+    <div id="trophies-screen" class="hidden py-8">
+      <div class="text-center mb-8">
+        <button id="btn-back-from-trophies"
+          class="mb-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+          <i class="bi bi-arrow-left mr-2"></i>Retour
+        </button>
+        <h1 class="text-4xl font-bold mb-2 text-white flex items-center justify-center gap-2">
+          <i class="bi bi-trophy text-yellow-400 text-4xl"></i>Mes Trophées
+        </h1>
+      </div>
+
+      <!-- Statistiques -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div class="flex items-center justify-between">
             <div>
-              <h3 class="text-lg font-semibold mb-3">Utiliser un Code Secret</h3>
-              <p class="text-gray-400 text-sm mb-4">Saisissez votre code pour débloquer un trophée</p>
-              
-              <div class="flex gap-2">
-                <input 
-                  type="text" 
-                  id="secret-code-input" 
-                  placeholder="Entrez votre code..." 
-                  maxlength="8"
-                  class="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white uppercase focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
-                />
-                <button id="use-code-btn" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg font-semibold transition-all duration-200">
-                  <i class="bi bi-unlock"></i>
+              <p class="text-gray-400 text-sm">Points Totaux</p>
+              <p class="text-3xl font-bold text-blue-400" id="total-points">0</p>
+            </div>
+            <i class="bi bi-star-fill text-yellow-400 text-4xl opacity-20"></i>
+          </div>
+        </div>
+
+        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-400 text-sm">Trophées Débloqués</p>
+              <p class="text-3xl font-bold text-green-400" id="unlocked-count">0</p>
+            </div>
+            <i class="bi bi-trophy-fill text-green-400 text-4xl opacity-20"></i>
+          </div>
+        </div>
+
+        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-400 text-sm">Codes Disponibles</p>
+              <p class="text-3xl font-bold text-purple-400" id="codes-available">0</p>
+            </div>
+            <i class="bi bi-key-fill text-purple-400 text-4xl opacity-20"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Acheter Code Secret -->
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 mb-8">
+        <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+          <i class="bi bi-lock-fill text-purple-400"></i>
+          Débloquer un Trophée
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Acheter Code -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Acheter un Code Secret</h3>
+            <p class="text-gray-400 text-sm mb-4">Coûte 5 points | Gagne un trophée aléatoire</p>
+
+            <button id="buy-code-btn"
+              class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-lg font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+              <i class="bi bi-bag-check"></i>
+              <span id="buy-code-text">Acheter Code (5 points)</span>
+            </button>
+
+            <!-- Code généré (caché par défaut) -->
+            <div id="generated-code-container"
+              class="hidden mt-4 p-4 bg-gradient-to-r from-purple-900/50 to-purple-800/50 border border-purple-500 rounded-lg">
+              <p class="text-sm text-gray-300 mb-2">Votre code secret:</p>
+              <div class="flex items-center gap-2">
+                <code id="generated-code"
+                  class="flex-1 text-2xl font-mono font-bold text-center text-purple-300 p-3 bg-black/30 rounded border border-purple-600"></code>
+                <button id="copy-code-btn" class="px-4 py-3 bg-purple-600 hover:bg-purple-700 rounded transition-colors"
+                  title="Copier">
+                  <i class="bi bi-clipboard"></i>
                 </button>
               </div>
-
-              <!-- Message d'erreur/succès -->
-              <div id="code-message" class="hidden mt-3 p-3 rounded-lg text-sm"></div>
+              <p class="text-xs text-gray-400 mt-2">⚠️ Conservez bien ce code pour débloquer votre trophée</p>
             </div>
           </div>
-        </div>
 
-        <!-- Collection de Trophées -->
-        <div>
-          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-            <i class="bi bi-collection-fill text-yellow-400"></i>
-            Collection de Trophées
-          </h2>
+          <!-- Utiliser Code -->
+          <div>
+            <h3 class="text-lg font-semibold mb-3">Utiliser un Code Secret</h3>
+            <p class="text-gray-400 text-sm mb-4">Saisissez votre code pour débloquer un trophée</p>
 
-          <div id="trophies-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Cartes de trophées générées dynamiquement -->
+            <div class="flex gap-2">
+              <input type="text" id="secret-code-input" placeholder="Entrez votre code..." maxlength="8"
+                class="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white uppercase focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20" />
+              <button id="use-code-btn"
+                class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg font-semibold transition-all duration-200">
+                <i class="bi bi-unlock"></i>
+              </button>
+            </div>
+
+            <!-- Message d'erreur/succès -->
+            <div id="code-message" class="hidden mt-3 p-3 rounded-lg text-sm"></div>
           </div>
         </div>
       </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 py-6 mt-12">
-      <div class="container mx-auto px-4 text-center">
-        <p class="text-gray-400">
-          <a href="https://alternative-rvb.com/" class="hover:text-primary-400 transition-colors">© 2025 Alternative RVB</a>
-        </p>
+      <!-- Collection de Trophées -->
+      <div>
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+          <i class="bi bi-collection-fill text-yellow-400"></i>
+          Collection de Trophées
+        </h2>
+
+        <div id="trophies-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Cartes de trophées générées dynamiquement -->
+        </div>
       </div>
-    </footer>
+    </div>
+  </main>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.11.0/tsparticles.confetti.bundle.min.js"></script>
-    <script src="js/app.js" type="module"></script>
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-6 mt-12">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-400">
+        <a href="https://alternative-rvb.com/" class="hover:text-primary-400 transition-colors">© 2025 Alternative
+          RVB</a>
+      </p>
+    </div>
+  </footer>
 
-    <!-- Service Worker Registration -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-              console.log('[PWA] Service Worker enregistré:', registration.scope);
-            })
-            .catch((error) => {
-              console.error('[PWA] Erreur enregistrement Service Worker:', error);
-            });
-        });
-      }
-    </script>
-  </body>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.11.0/tsparticles.confetti.bundle.min.js"></script>
+  <script src="js/app.js" type="module"></script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('[PWA] Service Worker enregistré:', registration.scope);
+          })
+          .catch((error) => {
+            console.error('[PWA] Erreur enregistrement Service Worker:', error);
+          });
+      });
+    }
+  </script>
+</body>
+
 </html>
