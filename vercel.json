@@ -1,5 +1,5 @@
 {
-  "buildCommand": "echo 'Build completed - index.json is pre-generated'",
+  "buildCommand": "npm run build",
   "outputDirectory": ".",
   "headers": [
     {
