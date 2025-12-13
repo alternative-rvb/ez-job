@@ -128,6 +128,7 @@ export class QuestionManager {
         document.querySelectorAll('.answer-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 if (!quizState.isAnswered) {
+                    btn.blur();
                     this.selectAnswer(parseInt(btn.dataset.answerIndex));
                 }
             });
