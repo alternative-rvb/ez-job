@@ -39,27 +39,49 @@ export class RewardsManager {
     }
 
     /**
-     * Calcule les points gagnés en fonction du score
+     * Calcule les points gagnés en fonction du score et du temps limite choisi
      * @param {number} scorePercentage - Pourcentage de réussite (0-100)
+     * @param {number} timeLimit - Temps limite par question en secondes (5, 10, 15, 20)
      * @returns {number} Nombre de points gagnés
      */
-    calculatePoints(scorePercentage) {
-        if (scorePercentage === 100) {
-            return 2;
-        } else if (scorePercentage >= 80) {
-            return 1;
+    calculatePoints(scorePercentage, timeLimit = 10) {
+        // Moins de 80% = 0 point
+        if (scorePercentage < 80) {
+            return 0;
         }
-        return 0;
+
+        // Déterminer les points de base selon le temps limite
+        let basePoints = 0;
+
+        switch (timeLimit) {
+            case 5:  // 5s - le plus difficile
+                basePoints = scorePercentage === 100 ? 5 : 4;
+                break;
+            case 10: // 10s - difficile (par défaut)
+                basePoints = scorePercentage === 100 ? 4 : 3;
+                break;
+            case 15: // 15s - moyen
+                basePoints = scorePercentage === 100 ? 3 : 2;
+                break;
+            case 20: // 20s - facile
+                basePoints = scorePercentage === 100 ? 2 : 1;
+                break;
+            default: // Par défaut = 10s
+                basePoints = scorePercentage === 100 ? 4 : 3;
+        }
+
+        return basePoints;
     }
 
     /**
      * Ajoute des points après un quiz
      * @param {number} scorePercentage - Pourcentage de réussite
      * @param {string} quizName - Nom du quiz
+     * @param {number} timeLimit - Temps limite par question utilisé
      * @returns {object} Objet avec pointsEarned et totalPoints
      */
-    addPoints(scorePercentage, quizName) {
-        const points = this.calculatePoints(scorePercentage);
+    addPoints(scorePercentage, quizName, timeLimit = 10) {
+        const points = this.calculatePoints(scorePercentage, timeLimit);
         const rewards = this.getRewards();
 
         if (points > 0) {
@@ -68,6 +90,7 @@ export class RewardsManager {
                 points: points,
                 quizName: quizName,
                 scorePercentage: scorePercentage,
+                timeLimit: timeLimit,
                 date: new Date().toISOString()
             });
             this.saveRewards(rewards);

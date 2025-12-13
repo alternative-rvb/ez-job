@@ -32,8 +32,8 @@ export class ResultsManager {
         
         console.log(`📊 Score: ${score}/${totalScorable} = ${percentage}%`);
 
-        // Calculer et ajouter les points de récompense
-        const rewardsResult = rewardsManager.addPoints(percentage, quizState.currentQuiz?.title);
+        // Calculer et ajouter les points de récompense (en tenant compte du temps limite choisi)
+        const rewardsResult = rewardsManager.addPoints(percentage, quizState.currentQuiz?.title, CONFIG.timeLimit);
 
         // Sauvegarder le résultat avec les points gagnés
         playerManager.saveResult({
@@ -110,7 +110,7 @@ export class ResultsManager {
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-white mb-2">Récompense Gagnée !</h3>
                             <p class="text-purple-200 mb-3">
-                                ${rewardsResult.pointsEarned === 2 ? '🎉 Parfait ! +2 points' : rewardsResult.pointsEarned === 1 ? '✨ Bravo ! +1 point' : '📝 Score enregistré'}
+                                ${this.getRewardMessage(rewardsResult.pointsEarned, CONFIG.timeLimit)}
                             </p>
                             <div class="flex flex-wrap gap-4">
                                 <div class="text-center">
@@ -232,7 +232,31 @@ export class ResultsManager {
             }
         }, 100);
     }
-    
+
+    /**
+     * Génère le message de récompense en fonction des points et du temps
+     * @param {number} points - Nombre de points gagnés
+     * @param {number} timeLimit - Temps limite utilisé
+     * @returns {string} Message formaté
+     */
+    getRewardMessage(points, timeLimit) {
+        if (points === 0) {
+            return '📝 Score enregistré';
+        }
+
+        const difficultyLabel = {
+            5: 'Mode Expert (5s)',
+            10: 'Mode Difficile (10s)',
+            15: 'Mode Normal (15s)',
+            20: 'Mode Facile (20s)'
+        }[timeLimit] || 'Mode Normal';
+
+        const emojis = ['🎉', '✨', '🌟', '💫', '🏆'];
+        const emoji = emojis[Math.min(points - 1, emojis.length - 1)] || '✨';
+
+        return `${emoji} ${difficultyLabel} : +${points} point${points > 1 ? 's' : ''} !`;
+    }
+
     renderDetails(questions) {
         return questions.map((q, index) => {
             const userAnswer = quizState.userAnswers[index];
