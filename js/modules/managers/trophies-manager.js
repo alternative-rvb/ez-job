@@ -65,6 +65,8 @@ export class TrophiesManager {
     renderTrophies() {
         const container = document.getElementById('trophies-container');
         const unlocked = rewardsManager.getUnlockedTrophies();
+        const rewards = rewardsManager.getRewards();
+        const canUnlock = rewards.totalPoints >= 5;
         
         container.innerHTML = this.trophiesData.trophies.map(trophy => {
             const isUnlocked = unlocked.includes(trophy.id);
@@ -73,7 +75,7 @@ export class TrophiesManager {
             
             return `
                 <div class="trophy-card bg-gray-800 rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : 'trophy-locked'}">
-                    <div class="h-48 bg-gray-700 flex items-center justify-center relative overflow-hidden">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center relative overflow-hidden group">
                         ${isUnlocked ? `
                             <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-cover">
                             <div class="absolute top-2 right-2">
@@ -82,26 +84,83 @@ export class TrophiesManager {
                                 </span>
                             </div>
                         ` : `
-                            <div class="text-center">
-                                <i class="bi bi-lock-fill text-6xl opacity-30"></i>
-                                <p class="text-gray-400 text-sm mt-2">À débloquer</p>
+                            <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-cover blur-lg opacity-40">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="bi bi-lock-fill text-6xl opacity-60"></i>
+                                    <p class="text-gray-300 text-sm mt-2">À débloquer</p>
+                                </div>
                             </div>
                         `}
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-1">${trophy.name}</h3>
-                        <p class="text-gray-400 text-sm">${trophy.description}</p>
+                        <p class="text-gray-400 text-sm mb-3">${trophy.description}</p>
+                        
                         ${isUnlocked ? `
-                            <div class="mt-3 pt-3 border-t border-gray-700">
-                                <a href="${trophy.image}" download class="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1">
-                                    <i class="bi bi-download"></i> Télécharger
-                                </a>
+                            <div class="flex flex-col gap-2">
+                                <div class="pt-2 border-t border-gray-700">
+                                    <a href="${trophy.image}" download class="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1 w-full justify-center py-2 rounded bg-blue-900/30 hover:bg-blue-900/50 transition">
+                                        <i class="bi bi-download"></i> Télécharger
+                                    </a>
+                                </div>
                             </div>
-                        ` : ''}
+                        ` : `
+                            <div class="space-y-2">
+                                <div class="bg-gray-700/50 rounded p-2">
+                                    <p class="text-xs text-gray-400 mb-1">Code secret :</p>
+                                    <p class="font-mono text-sm font-bold text-yellow-400">${trophy.secretCode}</p>
+                                </div>
+                                ${canUnlock ? `
+                                    <button class="unlock-trophy-btn w-full py-2 px-3 rounded bg-green-900/50 hover:bg-green-900 text-green-300 text-sm font-semibold transition"
+                                            data-trophy-id="${trophy.id}" data-trophy-code="${trophy.secretCode}">
+                                        <i class="bi bi-unlock mr-1"></i> Débloquer (5 pts)
+                                    </button>
+                                ` : `
+                                    <p class="text-xs text-gray-400 text-center py-2">Gagnez ${5 - rewards.totalPoints} points pour débloquer</p>
+                                `}
+                            </div>
+                        `}
                     </div>
                 </div>
             `;
         }).join('');
+
+        // Ajouter les écouteurs pour les boutons de déverrouillage
+        container.querySelectorAll('.unlock-trophy-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const trophyId = e.currentTarget.dataset.trophyId;
+                const secretCode = e.currentTarget.dataset.trophyCode;
+                this.unlockTrophyDirect(trophyId, secretCode);
+            });
+        });
+    }
+
+    unlockTrophyDirect(trophyId, secretCode) {
+        const rewards = rewardsManager.getRewards();
+        
+        if (rewards.totalPoints < 5) {
+            this.showMessage('❌ Vous n\'avez pas assez de points!', 'error');
+            return;
+        }
+
+        // Générer un code secret et l'associer au trophée
+        const generatedCode = rewardsManager.generateSecretCode();
+        rewards.secretCodes[generatedCode] = {
+            trophy_id: trophyId,
+            used: false,
+            dateCreated: new Date().toISOString(),
+            dateUsed: null
+        };
+        rewards.totalPoints -= 5;
+        rewards.unlockedTrophies.push(trophyId);
+        rewardsManager.saveRewards(rewards);
+
+        this.showMessage('✅ Trophée débloqué avec succès!', 'success');
+        setTimeout(() => {
+            this.renderTrophies();
+            this.updateStats();
+        }, 500);
     }
 
     setupEventListeners() {
