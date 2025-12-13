@@ -1,0 +1,237 @@
+{
+  "config": {
+    "title": "Le petit Nicolas - Les carnets (Chapitre 9)",
+    "description": "Teste ta compréhension de cette histoire du Petit Nicolas",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": "Moyen",
+    "questionCount": 20,
+    "category": "CM2",
+    "tag": [
+      "Littérature",
+      "Jeunesse"
+    ]
+  },
+  "questions": [
+    {
+      "question": "Pourquoi personne n'a rigolé cet après-midi à l'école ?",
+      "choices": [
+        "Parce que le directeur est venu distribuer les carnets",
+        "Parce que la maîtresse était en colère",
+        "Parce qu'il y avait un contrôle",
+        "Parce qu'ils étaient punis"
+      ],
+      "correctAnswer": "Parce que le directeur est venu distribuer les carnets",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Quelle est l'humeur du directeur quand il arrive avec les carnets ?",
+      "choices": [
+        "Il avait l'air content",
+        "Il n'avait pas l'air content",
+        "Il était joyeux",
+        "Il était indifférent"
+      ],
+      "correctAnswer": "Il n'avait pas l'air content",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Que dit le directeur à propos de la classe ?",
+      "choices": [
+        "Qu'elle est exemplaire",
+        "Qu'il n'avait jamais vu une classe aussi dissipée",
+        "Qu'elle est très sage",
+        "Qu'elle est la meilleure de l'école"
+      ],
+      "correctAnswer": "Qu'il n'avait jamais vu une classe aussi dissipée",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Qui s'est mis à pleurer quand le directeur est arrivé ?",
+      "choices": [
+        "Nicolas",
+        "Agnan",
+        "Clotaire",
+        "Rufus"
+      ],
+      "correctAnswer": "Clotaire",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Quel est le rang de Clotaire dans la classe ?",
+      "choices": [
+        "Le premier de la classe",
+        "Le deuxième de la classe",
+        "Au milieu de la classe",
+        "Le dernier de la classe"
+      ],
+      "correctAnswer": "Le dernier de la classe",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Que fait la maîtresse tous les mois dans le carnet de Clotaire ?",
+      "choices": [
+        "Elle écrit des compliments",
+        "Elle écrit des tas de choses (négatives)",
+        "Elle ne marque rien",
+        "Elle dessine des étoiles"
+      ],
+      "correctAnswer": "Elle écrit des tas de choses (négatives)",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "De quoi les parents de Clotaire le privent-ils quand il a de mauvaises notes ?",
+      "choices": [
+        "De jeux vidéo et de sorties",
+        "De dessert et de télévision",
+        "De vacances et de cadeaux",
+        "D'argent de poche et de sport"
+      ],
+      "correctAnswer": "De dessert et de télévision",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Qu'imagine Nicolas que son papa va lui dire ?",
+      "choices": [
+        "Qu'il est fier de lui",
+        "Qu'il était toujours le premier de sa classe et ramenait des tas de tableaux d'honneur",
+        "Qu'il comprend ses difficultés",
+        "Qu'il veut l'aider à réviser"
+      ],
+      "correctAnswer": "Qu'il était toujours le premier de sa classe et ramenait des tas de tableaux d'honneur",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Selon ce que Nicolas imagine, que dit son papa qu'il deviendra ?",
+      "choices": [
+        "Qu'il deviendra riche et célèbre",
+        "Qu'il n'arrivera à rien, qu'il sera pauvre et que les gens se moqueront de lui",
+        "Qu'il sera professeur comme lui",
+        "Qu'il aura un bon métier"
+      ],
+      "correctAnswer": "Qu'il n'arrivera à rien, qu'il sera pauvre et que les gens se moqueront de lui",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Dans son imagination, que projette de faire Nicolas s'il est malheureux ?",
+      "choices": [
+        "Il va étudier plus dur",
+        "Il va quitter la maison et partir très loin",
+        "Il va demander pardon",
+        "Il va changer d'école"
+      ],
+      "correctAnswer": "Il va quitter la maison et partir très loin",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Après combien de temps Nicolas pense-t-il revenir avec beaucoup d'argent ?",
+      "choices": [
+        "Quelques mois",
+        "Un an",
+        "Des tas d'années",
+        "Jamais"
+      ],
+      "correctAnswer": "Des tas d'années",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Que fera Nicolas avec l'argent quand il reviendra, selon son imagination ?",
+      "choices": [
+        "Il achètera une maison",
+        "Il partira en vacances",
+        "Il emmènera ses parents au cinéma",
+        "Il s'achètera des jouets"
+      ],
+      "correctAnswer": "Il emmènera ses parents au cinéma",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Quand Nicolas arrive à la maison, de quoi ses parents se disputent-ils ?",
+      "choices": [
+        "De l'école de Nicolas",
+        "Du coût de la vie et du prix du gigot",
+        "Des vacances",
+        "Du travail de papa"
+      ],
+      "correctAnswer": "Du coût de la vie et du prix du gigot",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Comment papa réagit-il quand Nicolas lui donne le carnet ?",
+      "choices": [
+        "Il se met très en colère",
+        "Il ouvre le carnet, le signe et le rend à Nicolas",
+        "Il refuse de le signer",
+        "Il appelle la maîtresse"
+      ],
+      "correctAnswer": "Il ouvre le carnet, le signe et le rend à Nicolas",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Que dit papa après avoir signé le carnet ?",
+      "choices": [
+        "Qu'il est déçu de Nicolas",
+        "Que Nicolas doit mieux travailler",
+        "Que l'enfant n'a rien à voir là-dedans et qu'on lui explique pourquoi le gigot coûte ce prix",
+        "Qu'il est fier de Nicolas"
+      ],
+      "correctAnswer": "Que l'enfant n'a rien à voir là-dedans et qu'on lui explique pourquoi le gigot coûte ce prix",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Où va Nicolas après que papa ait signé le carnet ?",
+      "choices": [
+        "Il va jouer dehors",
+        "Il monte dans sa chambre",
+        "Il va chez un copain",
+        "Il reste avec ses parents"
+      ],
+      "correctAnswer": "Il monte dans sa chambre",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Que fait Nicolas dans sa chambre ?",
+      "choices": [
+        "Il fait ses devoirs",
+        "Il joue avec ses jouets",
+        "Il se couche sur le lit et se met à pleurer",
+        "Il lit un livre"
+      ],
+      "correctAnswer": "Il se couche sur le lit et se met à pleurer",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Pourquoi Nicolas pleure-t-il à la fin de l'histoire ?",
+      "choices": [
+        "Parce qu'il a été puni",
+        "Parce qu'il a de mauvaises notes",
+        "Parce qu'il pense que si ses parents l'aimaient, ils s'occuperaient un peu de lui",
+        "Parce qu'il n'a pas le droit de regarder la télévision"
+      ],
+      "correctAnswer": "Parce qu'il pense que si ses parents l'aimaient, ils s'occuperaient un peu de lui",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Quelle est l'ironie principale de cette histoire ?",
+      "choices": [
+        "Nicolas a de bonnes notes mais est quand même puni",
+        "Nicolas s'attend à une punition sévère, mais ses parents sont trop occupés à se disputer pour faire attention à ses notes",
+        "Nicolas est content mais ses parents sont tristes",
+        "Les parents félicitent Nicolas alors qu'il a de mauvaises notes"
+      ],
+      "correctAnswer": "Nicolas s'attend à une punition sévère, mais ses parents sont trop occupés à se disputer pour faire attention à ses notes",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    },
+    {
+      "question": "Quel sentiment ressent Nicolas à la fin de l'histoire ?",
+      "choices": [
+        "La joie d'avoir évité une punition",
+        "Le soulagement d'être pardonné",
+        "La tristesse de ne pas être remarqué par ses parents",
+        "La fierté de ses bonnes notes"
+      ],
+      "correctAnswer": "La tristesse de ne pas être remarqué par ses parents",
+      "imageUrl": "/images/le-petit-nicolas/le_petit_nicolas-chapitre_5.jpg"
+    }
+  ]
+}

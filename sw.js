@@ -1,9 +1,16 @@
 /**
  * Service Worker pour Job-EZ
  * Permet le fonctionnement offline et améliore les performances
+ *
+ * Stratégies de cache :
+ * - Cache First : Assets statiques (HTML, CSS, JS, images)
+ * - Network First : Quiz JSON individuels
+ * - Stale-While-Revalidate : Index des quiz (index.json)
+ *
+ * @version 1.0.2
  */
 
-const CACHE_VERSION = 'v1.0.0';
+const CACHE_VERSION = 'v1.0.2';
 const CACHE_NAME = `job-ez-${CACHE_VERSION}`;
 
 // Assets critiques à mettre en cache lors de l'installation
@@ -111,7 +118,10 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Stratégie de cache selon le type de ressource
-  if (shouldCacheRequest(url)) {
+  if (url.pathname === '/js/data/index.json') {
+    // Stratégie Stale-While-Revalidate pour l'index des quiz
+    event.respondWith(staleWhileRevalidate(request));
+  } else if (shouldCacheRequest(url)) {
     event.respondWith(cacheFirst(request));
   } else {
     event.respondWith(networkFirst(request));
@@ -194,6 +204,30 @@ async function networkFirst(request) {
 
     throw error;
   }
+}
+
+/**
+ * Stratégie Stale-While-Revalidate
+ * Retourne le cache immédiatement et met à jour en arrière-plan
+ */
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(CACHE_NAME);
+  const cached = await cache.match(request);
+
+  // Mettre à jour le cache en arrière-plan
+  const fetchPromise = fetch(request).then((response) => {
+    if (response && response.status === 200) {
+      cache.put(request, response.clone());
+      console.log('[Service Worker] Cache mis à jour (stale-while-revalidate):', request.url);
+    }
+    return response;
+  }).catch((error) => {
+    console.log('[Service Worker] Erreur de mise à jour du cache:', error);
+    return cached; // Retourner le cache si la mise à jour échoue
+  });
+
+  // Retourner le cache immédiatement si disponible, sinon attendre le réseau
+  return cached || fetchPromise;
 }
 
 /**
