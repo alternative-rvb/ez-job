@@ -2,50 +2,50 @@
   "trophies": [
     {
       "id": "trophy_001",
-      "name": "Bob l'Éponge",
-      "description": "Débloque le trophée de Bob l'Éponge",
-      "image": "/images/trophies/bob-leponge.svg",
-      "rarity": "commun",
+      "name": "Wendy",
+      "description": "La grande sœur rebelle et passionnée",
+      "image": "/images/trophies/Les sisters/wendy.webp",
+      "rarity": "épique",
       "order": 1
     },
     {
       "id": "trophy_002",
-      "name": "Patrick l'Étoile de Mer",
-      "description": "Débloque le trophée de Patrick",
-      "image": "/images/trophies/patrick.svg",
-      "rarity": "commun",
+      "name": "Marine",
+      "description": "La petite sœur malicieuse et pleine d'énergie",
+      "image": "/images/trophies/Les sisters/marine.webp",
+      "rarity": "épique",
       "order": 2
     },
     {
       "id": "trophy_003",
-      "name": "Calamur Tentacules",
-      "description": "Débloque le trophée de Calamur",
-      "image": "/images/trophies/calamur.svg",
-      "rarity": "commun",
+      "name": "Maxence",
+      "description": "Le meilleur ami cool et décontracté",
+      "image": "/images/trophies/Les sisters/maxence.webp",
+      "rarity": "rare",
       "order": 3
     },
     {
       "id": "trophy_004",
-      "name": "Capitaine Crochet",
-      "description": "Débloque le trophée du Capitaine Crochet",
-      "image": "/images/trophies/capitaine-crochet.svg",
+      "name": "William",
+      "description": "Le père architecte toujours occupé",
+      "image": "/images/trophies/Les sisters/william.webp",
       "rarity": "rare",
       "order": 4
     },
     {
       "id": "trophy_005",
-      "name": "Plancton le Génie",
-      "description": "Débloque le trophée de Plancton",
-      "image": "/images/trophies/plancton.svg",
+      "name": "Sandrine",
+      "description": "La mère styliste attentive",
+      "image": "/images/trophies/Les sisters/sandrine.webp",
       "rarity": "rare",
       "order": 5
     },
     {
       "id": "trophy_006",
-      "name": "Maître Krabe",
-      "description": "Débloque le trophée du Maître Krabe",
-      "image": "/images/trophies/maitre-krabe.svg",
-      "rarity": "épique",
+      "name": "Guitariste Passionnée",
+      "description": "Wendy et sa guitare inséparable",
+      "image": "/images/trophies/Les sisters/personnage-sisters-01.webp",
+      "rarity": "commun",
       "order": 6
     }
   ]

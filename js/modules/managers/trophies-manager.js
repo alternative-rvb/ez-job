@@ -14,7 +14,7 @@ export class TrophiesManager {
     async show() {
         // Charger les données des trophées
         try {
-            const response = await fetch('./js/data/trophies.json');
+            const response = await fetch(`./js/data/trophies.json?v=${Date.now()}`);
             this.trophiesData = await response.json();
         } catch (error) {
             console.error('Erreur lors du chargement des trophées:', error);
