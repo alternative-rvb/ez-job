@@ -28,10 +28,10 @@ class QuizApp {
 
     async init() {
         console.log('Quiz App loaded');
-        
+
         // Initialiser les couleurs des catégories
         await initializeCategoryColors();
-        
+
         // Initialiser le gestionnaire DOM
         if (!domManager.init()) {
             console.error('Impossible d\'initialiser l\'application');
