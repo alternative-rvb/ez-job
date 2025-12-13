@@ -47,19 +47,9 @@ export class TrophiesManager {
         const rewards = rewardsManager.getRewards();
         const totalPoints = rewards.totalPoints || 0;
         const unlockedCount = rewards.unlockedTrophies.length;
-        const codesAvailable = Math.floor(totalPoints / 5);
 
         document.getElementById('total-points').textContent = totalPoints;
         document.getElementById('unlocked-count').textContent = unlockedCount;
-        document.getElementById('codes-available').textContent = codesAvailable;
-
-        // Mettre à jour l'état du bouton
-        const buyBtn = document.getElementById('buy-code-btn');
-        const buyText = document.getElementById('buy-code-text');
-        buyBtn.disabled = totalPoints < 5;
-        if (totalPoints < 5) {
-            buyText.textContent = `Acheter Code (${totalPoints}/5 points)`;
-        }
     }
 
     renderTrophies() {
@@ -74,7 +64,7 @@ export class TrophiesManager {
             const badgeClass = `badge-${trophy.rarity}`;
             
             return `
-                <div class="trophy-card bg-gray-800 rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : 'trophy-locked'}">
+                <div class="trophy-card bg-gray-800 rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''}">
                     <div class="h-48 bg-gray-700 flex items-center justify-center relative overflow-hidden group">
                         ${isUnlocked ? `
                             <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-cover">
@@ -108,14 +98,11 @@ export class TrophiesManager {
                         ` : `
                             <div class="space-y-2">
                                 <div class="bg-gray-700/50 rounded p-2">
-                                    <p class="text-xs text-gray-400 mb-1">Code secret :</p>
+                                    <p class="text-xs text-gray-400 mb-1">� Code secret :</p>
                                     <p class="font-mono text-sm font-bold text-yellow-400">${trophy.secretCode}</p>
                                 </div>
                                 ${canUnlock ? `
-                                    <button class="unlock-trophy-btn w-full py-2 px-3 rounded bg-green-900/50 hover:bg-green-900 text-green-300 text-sm font-semibold transition"
-                                            data-trophy-id="${trophy.id}" data-trophy-code="${trophy.secretCode}">
-                                        <i class="bi bi-unlock mr-1"></i> Débloquer (5 pts)
-                                    </button>
+                                    <p class="text-xs text-gray-300 text-center py-2">👆 Copie ce code et entre-le dans le formulaire ci-dessous (coûte 5 points)</p>
                                 ` : `
                                     <p class="text-xs text-gray-400 text-center py-2">Gagnez ${5 - rewards.totalPoints} points pour débloquer</p>
                                 `}
@@ -125,51 +112,9 @@ export class TrophiesManager {
                 </div>
             `;
         }).join('');
-
-        // Ajouter les écouteurs pour les boutons de déverrouillage
-        container.querySelectorAll('.unlock-trophy-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const trophyId = e.currentTarget.dataset.trophyId;
-                const secretCode = e.currentTarget.dataset.trophyCode;
-                this.unlockTrophyDirect(trophyId, secretCode);
-            });
-        });
-    }
-
-    unlockTrophyDirect(trophyId, secretCode) {
-        const rewards = rewardsManager.getRewards();
-        
-        if (rewards.totalPoints < 5) {
-            this.showMessage('❌ Vous n\'avez pas assez de points!', 'error');
-            return;
-        }
-
-        // Générer un code secret et l'associer au trophée
-        const generatedCode = rewardsManager.generateSecretCode();
-        rewards.secretCodes[generatedCode] = {
-            trophy_id: trophyId,
-            used: false,
-            dateCreated: new Date().toISOString(),
-            dateUsed: null
-        };
-        rewards.totalPoints -= 5;
-        rewards.unlockedTrophies.push(trophyId);
-        rewardsManager.saveRewards(rewards);
-
-        this.showMessage('✅ Trophée débloqué avec succès!', 'success');
-        setTimeout(() => {
-            this.renderTrophies();
-            this.updateStats();
-        }, 500);
     }
 
     setupEventListeners() {
-        // Acheter un code secret
-        document.getElementById('buy-code-btn').addEventListener('click', () => this.handleBuyCode());
-
-        // Copier le code
-        document.getElementById('copy-code-btn').addEventListener('click', () => this.handleCopyCode());
-
         // Utiliser un code secret
         document.getElementById('use-code-btn').addEventListener('click', () => this.handleUseCode());
 
@@ -181,69 +126,70 @@ export class TrophiesManager {
         });
     }
 
-    handleBuyCode() {
-        const rewards = rewardsManager.getRewards();
-        if (rewards.totalPoints < 5) {
-            this.showMessage('❌ Vous n\'avez pas assez de points! (Il vous en faut 5)', 'error');
-            return;
-        }
-
-        // Choisir un trophée aléatoire non encore débloqué
-        const unlocked = rewardsManager.getUnlockedTrophies();
-        const available = this.trophiesData.trophies.filter(t => !unlocked.includes(t.id));
-        
-        if (available.length === 0) {
-            this.showMessage('❌ Tous les trophées sont déjà débloqués!', 'error');
-            return;
-        }
-
-        const randomTrophy = available[Math.floor(Math.random() * available.length)];
-        const result = rewardsManager.buySecretCode(randomTrophy.id);
-
-        if (result) {
-            // Afficher le code généré
-            document.getElementById('generated-code').textContent = result.secretCode;
-            document.getElementById('generated-code-container').classList.remove('hidden');
-            
-            this.showMessage(`✅ Code généré! Vous aviez ${result.remainingPoints + 5} points, maintenant ${result.remainingPoints} points restants.`, 'success');
-            this.updateStats();
-        }
-    }
-
-    handleCopyCode() {
-        const code = document.getElementById('generated-code').textContent;
-        navigator.clipboard.writeText(code).then(() => {
-            const btn = document.getElementById('copy-code-btn');
-            const original = btn.innerHTML;
-            btn.innerHTML = '<i class="bi bi-check"></i>';
-            setTimeout(() => {
-                btn.innerHTML = original;
-            }, 2000);
-        });
-    }
-
     handleUseCode() {
         const input = document.getElementById('secret-code-input');
-        const code = input.value.toUpperCase();
+        const code = input.value.toUpperCase().trim();
 
         if (!code) {
             this.showMessage('Veuillez entrer un code', 'error');
             return;
         }
 
-        const result = rewardsManager.useSecretCode(code);
+        // Vérifier si c'est un code secret de trophée visible
+        let trophyMatch = null;
+        
+        if (this.trophiesData && this.trophiesData.trophies) {
+            for (const trophy of this.trophiesData.trophies) {
+                if (trophy.secretCode && trophy.secretCode.toUpperCase() === code) {
+                    trophyMatch = trophy;
+                    break;
+                }
+            }
+        }
 
-        if (result) {
-            this.showMessage('✅ Trophée débloqué avec succès!', 'success');
+        if (trophyMatch) {
+            // C'est un code de trophée visible
+            const rewards = rewardsManager.getRewards();
+            
+            // Vérifier si le trophée est déjà débloqué
+            if (rewards.unlockedTrophies.includes(trophyMatch.id)) {
+                this.showMessage('❌ Ce trophée est déjà débloqué!', 'error');
+                return;
+            }
+
+            // Vérifier si l'utilisateur a assez de points
+            if (rewards.totalPoints < 5) {
+                this.showMessage(`❌ Vous n'avez pas assez de points! (Il vous en faut 5, vous en avez ${rewards.totalPoints})`, 'error');
+                return;
+            }
+
+            // Déduire 5 points et débloquer le trophée
+            rewards.totalPoints -= 5;
+            rewards.unlockedTrophies.push(trophyMatch.id);
+            rewardsManager.saveRewards(rewards);
+
+            this.showMessage(`✅ Trophée "${trophyMatch.name}" débloqué! (-5 points)`, 'success');
             input.value = '';
             setTimeout(() => {
                 this.renderTrophies();
                 this.updateStats();
             }, 500);
-        } else if (rewardsManager.getRewards().secretCodes[code]?.used) {
-            this.showMessage('❌ Ce code a déjà été utilisé', 'error');
         } else {
-            this.showMessage('❌ Code invalide ou inexistant', 'error');
+            // Sinon, vérifier les codes générés (système existant)
+            const result = rewardsManager.useSecretCode(code);
+
+            if (result) {
+                this.showMessage('✅ Trophée débloqué avec succès!', 'success');
+                input.value = '';
+                setTimeout(() => {
+                    this.renderTrophies();
+                    this.updateStats();
+                }, 500);
+            } else if (rewardsManager.getRewards().secretCodes[code]?.used) {
+                this.showMessage('❌ Ce code a déjà été utilisé', 'error');
+            } else {
+                this.showMessage('❌ Code invalide ou inexistant', 'error');
+            }
         }
     }
 

@@ -154,16 +154,17 @@ export class QuizSelector {
 
         // Générer les boutons de filtres dynamiquement
         let filterButtonsHTML = `
-            <button type="button" data-category="all" class="category-filter px-4 py-2 bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium selected">
+            <button type="button" data-category="all" class="btn-base btn-primary category-filter selected">
                 Toutes
             </button>
         `;
 
-        // Ajouter les catégories disponibles
+        // Ajouter les catégories disponibles avec les couleurs appropriées
         if (this.availableCategories && this.availableCategories.length > 0) {
             this.availableCategories.forEach(category => {
+                const colors = getCategoryColors(category);
                 filterButtonsHTML += `
-                    <button type="button" data-category="${category}" class="category-filter px-4 py-2 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium">
+                    <button type="button" data-category="${category}" class="btn-category category-filter ${colors.badge}">
                         ${category}
                     </button>
                 `;
@@ -179,16 +180,15 @@ export class QuizSelector {
     setupFilters() {
         document.querySelectorAll('.category-filter').forEach(button => {
             button.addEventListener('click', () => {
+                const isAllBtn = button.dataset.category === 'all';
+                
                 // Retirer la classe selected de tous les boutons
                 document.querySelectorAll('.category-filter').forEach(btn => {
                     btn.classList.remove('selected');
-                    btn.classList.remove('bg-primary-600');
-                    btn.classList.add('bg-gray-700');
                 });
+                
                 // Ajouter la classe selected au bouton cliqué
                 button.classList.add('selected');
-                button.classList.remove('bg-gray-700');
-                button.classList.add('bg-primary-600');
 
                 // Mettre à jour le filtre
                 this.currentFilter = button.dataset.category;
@@ -233,7 +233,7 @@ export class QuizSelector {
                     <i class="bi bi-exclamation-triangle"></i>
                 </div>
                 <p class="text-gray-300 text-xl text-center font-medium mb-4">${message}</p>
-                <button onclick="location.reload()" class="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium">
+                <button onclick="location.reload()" class="btn-base btn-primary">
                     Réessayer
                 </button>
             </div>

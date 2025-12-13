@@ -132,19 +132,19 @@ export class ResultsManager {
                         </div>
                     </div>
                     ${rewardsResult.canBuySecretCode ? `
-                        <button id="btnShowTrophies" class="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-lg font-semibold transition-all text-sm">
-                            <i class="bi bi-key-fill mr-2"></i>Aller débloquer un trophée
+                        <button id="btnShowTrophies" class="btn-base btn-primary">
+                            <i class="bi bi-key-fill"></i>Aller débloquer un trophée
                         </button>
                     ` : ''}
                 </div>
 
                 <!-- Actions -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                    <button id="btnRetry" class="w-full px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:opacity-90 transition-opacity font-bold text-lg">
-                        <i class="bi bi-arrow-clockwise mr-2"></i> Rejouer
+                    <button id="btnRetry" class="btn-base btn-primary w-full">
+                        <i class="bi bi-arrow-clockwise"></i> Rejouer
                     </button>
-                    <button id="btnHome" class="w-full px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-600 text-white rounded-lg hover:opacity-90 transition-opacity font-bold text-lg">
-                        <i class="bi bi-house mr-2"></i> Retour à l'accueil
+                    <button id="btnHome" class="btn-base btn-secondary w-full">
+                        <i class="bi bi-house"></i> Retour à l'accueil
                     </button>
                 </div>
 

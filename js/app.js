@@ -173,9 +173,13 @@ class QuizApp {
                 // Retirer la classe selected de tous les boutons
                 document.querySelectorAll('.game-mode').forEach(btn => {
                     btn.classList.remove('selected');
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-secondary');
                 });
                 // Ajouter la classe selected au bouton cliqué
                 button.classList.add('selected');
+                button.classList.remove('btn-secondary');
+                button.classList.add('btn-primary');
 
                 // Mettre à jour la configuration
                 const isFreeMode = button.id === 'free-mode';

@@ -209,17 +209,14 @@
         <p class="text-gray-400 text-lg">Entraînement et coaching en développement web pour tous</p>
 
         <div class="mt-4 flex justify-center gap-4 flex-wrap">
-          <button id="btn-change-player"
-            class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm">
-            <i class="bi bi-person mr-1"></i><span id="player-name-display"></span>
+          <button id="btn-change-player" class="btn-base btn-secondary">
+            <i class="bi bi-person"></i><span id="player-name-display"></span>
           </button>
-          <button id="btn-show-history"
-            class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors text-sm">
-            <i class="bi bi-clock-history mr-1"></i>Historique
+          <button id="btn-show-history" class="btn-base btn-primary">
+            <i class="bi bi-clock-history"></i>Historique
           </button>
-          <button id="btn-show-trophies"
-            class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm">
-            <i class="bi bi-trophy-fill mr-1"></i>Mes Trophées
+          <button id="btn-show-trophies" class="btn-base btn-primary">
+            <i class="bi bi-trophy-fill"></i>Mes Trophées
           </button>
         </div>
       </div>
@@ -236,20 +233,16 @@
               Temps par question
             </label>
             <div class="grid grid-cols-2 gap-3">
-              <button type="button" data-time="5"
-                class="time-option px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center">
+              <button type="button" data-time="5" class="btn-base btn-secondary time-option">
                 5 secondes
               </button>
-              <button type="button" data-time="10"
-                class="time-option px-4 py-3 bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center selected">
+              <button type="button" data-time="10" class="btn-base btn-primary time-option selected">
                 10 secondes
               </button>
-              <button type="button" data-time="15"
-                class="time-option px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center">
+              <button type="button" data-time="15" class="btn-base btn-secondary time-option">
                 15 secondes
               </button>
-              <button type="button" data-time="20"
-                class="time-option px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-center">
+              <button type="button" data-time="20" class="btn-base btn-secondary time-option">
                 20 secondes
               </button>
             </div>
@@ -262,21 +255,19 @@
               Mode de Jeu
             </label>
             <div class="space-y-3">
-              <button type="button" id="normal-mode"
-                class="game-mode w-full px-4 py-3 bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-left flex items-center selected">
+              <button type="button" id="normal-mode" class="game-mode w-full px-4 py-3 btn-base btn-primary text-left selected">
                 <!-- <i class="bi bi-lightbulb mr-3 text-xl"></i> -->
                 <!-- Icon étoile -->
-                <i class="bi bi-star-fill mr-3 text-xl text-yellow-400"></i>
+                <i class="bi bi-star-fill text-xl text-yellow-400"></i>
                 <div>
                   <div class="font-semibold">Mode Normal</div>
                   <div class="text-sm opacity-80">Réponses visibles, choix interactif</div>
                 </div>
               </button>
-              <button type="button" id="free-mode"
-                class="game-mode w-full px-4 py-3 bg-gray-700 hover:bg-primary-600 text-white rounded-lg transition-all duration-200 font-medium text-left flex items-center">
+              <button type="button" id="free-mode" class="game-mode w-full px-4 py-3 btn-base btn-secondary text-left">
                 <!-- <i class="bi bi-lightbulb mr-3 text-xl"></i> -->
                 <!-- Icon représentant du vent -->
-                <i class="bi bi-wind text-xl text-blue-400 mr-3"></i>
+                <i class="bi bi-wind text-xl text-blue-400"></i>
 
                 <div>
                   <div class="font-semibold">Mode Libre</div>
@@ -301,9 +292,8 @@
     <!-- Interface de quiz (cachée au démarrage) -->
     <div id="quiz-container" class="hidden py-8">
       <div id="quiz-header" class="text-center mb-4">
-        <button id="back-to-selection"
-          class="mb-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-          <i class="bi bi-arrow-left mr-2"></i>Retour à la sélection
+        <button id="back-to-selection" class="mb-4 btn-base btn-secondary">
+          <i class="bi bi-arrow-left"></i>Retour à la sélection
         </button>
         <h2 id="quiz-title" class="text-2xl font-bold mb-2"></h2>
         <div class="flex justify-center items-center space-x-4 text-sm text-gray-400">
@@ -336,9 +326,8 @@
     <!-- Page d'historique des résultats -->
     <div id="history-screen" class="hidden py-8">
       <div class="text-center mb-8">
-        <button id="btn-back-from-history"
-          class="mb-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-          <i class="bi bi-arrow-left mr-2"></i>Retour
+        <button id="btn-back-from-history" class="mb-4 btn-base btn-secondary">
+          <i class="bi bi-arrow-left"></i>Retour
         </button>
         <h1 class="text-4xl font-bold mb-2 text-white">Historique des Résultats</h1>
         <div id="history-stats" class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -354,9 +343,8 @@
     <!-- Page d'historique des trophées -->
     <div id="trophies-screen" class="hidden py-8">
       <div class="text-center mb-8">
-        <button id="btn-back-from-trophies"
-          class="mb-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-          <i class="bi bi-arrow-left mr-2"></i>Retour
+        <button id="btn-back-from-trophies" class="mb-4 btn-base btn-secondary">
+          <i class="bi bi-arrow-left"></i>Retour
         </button>
         <h1 class="text-4xl font-bold mb-2 text-white flex items-center justify-center gap-2">
           <i class="bi bi-trophy text-yellow-400 text-4xl"></i>Mes Trophées
@@ -384,16 +372,6 @@
             <i class="bi bi-trophy-fill text-green-400 text-4xl opacity-20"></i>
           </div>
         </div>
-
-        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-gray-400 text-sm">Codes Disponibles</p>
-              <p class="text-3xl font-bold text-purple-400" id="codes-available">0</p>
-            </div>
-            <i class="bi bi-key-fill text-purple-400 text-4xl opacity-20"></i>
-          </div>
-        </div>
       </div>
 
       <!-- Section Acheter Code Secret -->
@@ -404,43 +382,15 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Acheter Code -->
-          <div>
-            <h3 class="text-lg font-semibold mb-3">Acheter un Code Secret</h3>
-            <p class="text-gray-400 text-sm mb-4">Coûte 5 points | Gagne un trophée aléatoire</p>
-
-            <button id="buy-code-btn"
-              class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 rounded-lg font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
-              <i class="bi bi-bag-check"></i>
-              <span id="buy-code-text">Acheter Code (5 points)</span>
-            </button>
-
-            <!-- Code généré (caché par défaut) -->
-            <div id="generated-code-container"
-              class="hidden mt-4 p-4 bg-gradient-to-r from-purple-900/50 to-purple-800/50 border border-purple-500 rounded-lg">
-              <p class="text-sm text-gray-300 mb-2">Votre code secret:</p>
-              <div class="flex items-center gap-2">
-                <code id="generated-code"
-                  class="flex-1 text-2xl font-mono font-bold text-center text-purple-300 p-3 bg-black/30 rounded border border-purple-600"></code>
-                <button id="copy-code-btn" class="px-4 py-3 bg-purple-600 hover:bg-purple-700 rounded transition-colors"
-                  title="Copier">
-                  <i class="bi bi-clipboard"></i>
-                </button>
-              </div>
-              <p class="text-xs text-gray-400 mt-2">⚠️ Conservez bien ce code pour débloquer votre trophée</p>
-            </div>
-          </div>
-
           <!-- Utiliser Code -->
           <div>
-            <h3 class="text-lg font-semibold mb-3">Utiliser un Code Secret</h3>
-            <p class="text-gray-400 text-sm mb-4">Saisissez votre code pour débloquer un trophée</p>
+            <h3 class="text-lg font-semibold mb-3">Débloquer un Trophée</h3>
+            <p class="text-gray-400 text-sm mb-4">Copie le code secret d'un trophée et entre-le ci-dessous (coûte 5 points)</p>
 
             <div class="flex gap-2">
-              <input type="text" id="secret-code-input" placeholder="Entrez votre code..." maxlength="8"
+              <input type="text" id="secret-code-input" placeholder="Entrez le code secret..." maxlength="20"
                 class="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white uppercase focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20" />
-              <button id="use-code-btn"
-                class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg font-semibold transition-all duration-200">
+              <button id="use-code-btn" class="btn-base btn-primary">
                 <i class="bi bi-unlock"></i>
               </button>
             </div>

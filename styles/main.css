@@ -313,19 +313,26 @@
 
 /* ===== Système de Trophées ===== */
 
+#trophies-screen {
+  position: relative;
+  z-index: 1;
+}
+
+#history-screen {
+  position: relative;
+  z-index: 1;
+}
+
 .trophy-card {
   transition: all var(--animation-duration-fast) var(--animation-ease);
   cursor: pointer;
+  position: relative;
+  z-index: 10;
 }
 
 .trophy-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 25px -5px rgba(var(--color-primary), 0.3);
-}
-
-.trophy-card.trophy-locked {
-  opacity: 0.5;
-  filter: grayscale(100%);
 }
 
 .trophy-card.trophy-unlocked {
@@ -362,4 +369,74 @@
 .badge-epique {
   background: rgb(var(--color-accent));
   color: white;
+}
+/* ===== Unified Button Styles ===== */
+
+.btn-base {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Primary button style */
+.btn-primary {
+  background-color: rgb(37, 99, 235);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: rgb(29, 78, 216);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary.selected {
+  background-color: rgb(29, 78, 216);
+  box-shadow: 0 0 0 3px rgb(17, 24, 39), 0 0 0 5px rgb(59, 130, 246);
+}
+
+/* Secondary button style */
+.btn-secondary {
+  background-color: rgb(55, 65, 81);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(37, 99, 235);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary.selected {
+  background-color: rgb(29, 78, 216);
+  box-shadow: 0 0 0 3px rgb(17, 24, 39), 0 0 0 5px rgb(59, 130, 246);
+}
+
+/* Category filter button with dynamic colors */
+.btn-category {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-category.selected {
+  box-shadow: 0 0 0 2px rgb(17, 24, 39), 0 0 0 3px currentColor;
 }
