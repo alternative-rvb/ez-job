@@ -331,45 +331,107 @@
 }
 
 .trophy-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(var(--color-primary), 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 40px -5px rgba(var(--color-primary), 0.35), 0 10px 15px -3px rgba(var(--color-primary), 0.2);
 }
 
 .trophy-card.trophy-unlocked {
-  animation: pulse-glow 2s var(--animation-ease) infinite;
+  animation: pulse-glow 2.5s var(--animation-ease) infinite;
+  position: relative;
+}
+
+.trophy-card.trophy-unlocked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Pokemon Style Cards */
+.trophy-card-pokemon {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+.trophy-card-pokemon:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 50px -5px rgba(59, 130, 246, 0.4), 0 15px 25px -3px rgba(59, 130, 246, 0.25);
+}
+
+.trophy-card-pokemon.trophy-unlocked {
+  animation: card-shine 3s ease-in-out infinite;
+}
+
+.trophy-card-pokemon.trophy-unlocked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes card-shine {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 0px rgba(59, 130, 246, 0));
+  }
+  50% {
+    filter: brightness(1.05) drop-shadow(0 5px 15px rgba(59, 130, 246, 0.3));
+  }
 }
 
 /* Niveaux de Rareté */
 
 .rarity-commun {
-  border-color: rgb(var(--color-success));
-  background: rgba(var(--color-success), 0.1);
+  border-color: rgb(107, 114, 128);
+  background: rgba(107, 114, 128, 0.15);
 }
 
 .rarity-rare {
-  border-color: rgb(var(--color-primary));
-  background: rgba(var(--color-primary), 0.1);
+  border-color: rgb(59, 130, 246);
+  background: rgba(59, 130, 246, 0.15);
 }
 
 .rarity-epique {
-  border-color: rgb(var(--color-accent));
-  background: rgba(var(--color-accent), 0.1);
+  border-color: rgb(245, 158, 11);
+  background: rgba(245, 158, 11, 0.15);
 }
 
 .badge-commun {
-  background: rgb(var(--color-success));
+  background: rgb(107, 114, 128);
   color: white;
 }
 
 .badge-rare {
-  background: rgb(var(--color-primary));
+  background: rgb(59, 130, 246);
   color: white;
 }
 
 .badge-epique {
-  background: rgb(var(--color-accent));
-  color: white;
+  background: rgb(245, 158, 11);
+  color: rgb(17, 24, 39);
+  font-weight: 600;
 }
+
+/* Trophy Download Button */
+[download] {
+  outline: none;
+}
+
+[download]:hover {
+  transform: scale(1.15) rotate(5deg);
+}
+
+[download]:active {
+  transform: scale(0.95);
+}
+
 /* ===== Unified Button Styles ===== */
 
 .btn-base {

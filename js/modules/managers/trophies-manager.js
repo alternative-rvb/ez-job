@@ -58,54 +58,59 @@ export class TrophiesManager {
         const rewards = rewardsManager.getRewards();
         const canUnlock = rewards.totalPoints >= 5;
         
+        // Mapping des rarités pour affichage
+        const rarityLabels = {
+            'commun': 'Commun',
+            'rare': 'Rare',
+            'épique': 'Épique'
+        };
+        
         container.innerHTML = this.trophiesData.trophies.map(trophy => {
             const isUnlocked = unlocked.includes(trophy.id);
             const rarityClass = `rarity-${trophy.rarity}`;
             const badgeClass = `badge-${trophy.rarity}`;
+            const rarityLabel = rarityLabels[trophy.rarity] || trophy.rarity.toUpperCase();
             
             return `
-                <div class="trophy-card bg-gray-800 rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''}">
-                    <div class="h-48 bg-gray-700 flex items-center justify-center relative overflow-hidden group">
+                <div class="trophy-card-pokemon bg-gray-800 rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''}">
+                    <!-- Image Section (Large portrait image) -->
+                    <div class="relative w-full h-96 bg-gray-700 flex items-center justify-center overflow-hidden">
                         ${isUnlocked ? `
                             <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-cover">
-                            <div class="absolute top-2 right-2">
-                                <span class="inline-block px-3 py-1 ${badgeClass} rounded-full text-xs font-bold">
-                                    <i class="bi bi-check-circle mr-1"></i>${trophy.rarity.toUpperCase()}
+                            <div class="absolute top-3 right-3">
+                                <span class="inline-block px-3 py-1 ${badgeClass} rounded-full text-xs font-bold shadow-lg">
+                                    <i class="bi bi-star-fill mr-1"></i>${rarityLabel}
                                 </span>
                             </div>
                         ` : `
-                            <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-cover blur-lg opacity-40">
-                            <div class="absolute inset-0 flex items-center justify-center">
+                            <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-cover blur-xl opacity-30">
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
                                 <div class="text-center">
-                                    <i class="bi bi-lock-fill text-6xl opacity-60"></i>
-                                    <p class="text-gray-300 text-sm mt-2">À débloquer</p>
+                                    <i class="bi bi-lock-fill text-7xl opacity-60 mb-2"></i>
+                                    <p class="text-gray-300 text-sm font-semibold">À débloquer</p>
                                 </div>
                             </div>
                         `}
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-1">${trophy.name}</h3>
-                        <p class="text-gray-400 text-sm mb-3">${trophy.description}</p>
+                    
+                    <!-- Card Info Section -->
+                    <div class="p-4 space-y-3 bg-gradient-to-t from-gray-900 to-gray-800">
+                        <div>
+                            <h3 class="font-bold text-base leading-tight">${trophy.name}</h3>
+                            <p class="text-gray-400 text-xs">${trophy.description}</p>
+                        </div>
                         
                         ${isUnlocked ? `
-                            <div class="flex flex-col gap-2">
-                                <div class="pt-2 border-t border-gray-700">
-                                    <a href="${trophy.image}" download class="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1 w-full justify-center py-2 rounded bg-blue-900/30 hover:bg-blue-900/50 transition">
-                                        <i class="bi bi-download"></i> Télécharger
-                                    </a>
-                                </div>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-700">
+                                <span class="text-xs text-gray-400 font-semibold uppercase tracking-wide">Collectée ✓</span>
+                                <a href="${trophy.image}" download class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-500/30 hover:bg-blue-500/50 text-blue-400 hover:text-blue-300 transition transform hover:scale-110" title="Télécharger">
+                                    <i class="bi bi-download text-sm"></i>
+                                </a>
                             </div>
                         ` : `
-                            <div class="space-y-2">
-                                <div class="bg-gray-700/50 rounded p-2">
-                                    <p class="text-xs text-gray-400 mb-1">� Code secret :</p>
-                                    <p class="font-mono text-sm font-bold text-yellow-400">${trophy.secretCode}</p>
-                                </div>
-                                ${canUnlock ? `
-                                    <p class="text-xs text-gray-300 text-center py-2">👆 Copie ce code et entre-le dans le formulaire ci-dessous (coûte 5 points)</p>
-                                ` : `
-                                    <p class="text-xs text-gray-400 text-center py-2">Gagnez ${5 - rewards.totalPoints} points pour débloquer</p>
-                                `}
+                            <div class="bg-gray-700/70 rounded-lg p-2 border border-yellow-500/40">
+                                <p class="text-xs text-gray-300 mb-1 font-semibold">Code secret :</p>
+                                <p class="font-mono text-xs font-bold text-yellow-300 tracking-widest">${trophy.secretCode}</p>
                             </div>
                         `}
                     </div>
