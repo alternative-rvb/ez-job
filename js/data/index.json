@@ -6,6 +6,7 @@
     "entretien-dev-web-1",
     "entretien-dev-web-2",
     "javascript",
+    "jules-ferry-ecole",
     "la-terre",
     "le-petit-nicolas-chapitre-5",
     "le-petit-nicolas-les-carnets",
@@ -22,7 +23,7 @@
     "Divertissement",
     "Développement"
   ],
-  "count": 15,
-  "lastUpdated": "2025-12-13T15:21:54.874485",
+  "count": 16,
+  "lastUpdated": "2025-12-13T15:57:11.919894",
   "generated_by": "api.py"
 }

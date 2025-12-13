@@ -1,0 +1,134 @@
+{
+  "config": {
+    "title": "L'école de Jules Ferry",
+    "description": "Découvre comment l'école a évolué avec les lois de Jules Ferry",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": "Moyen",
+    "questionCount": 10,
+    "category": "CM2",
+    "tag": ["Histoire", "France"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Pourquoi les écoles normales ont-elles été créées ?",
+      "choices": [
+        "Pour former les futurs instituteurs",
+        "Pour enseigner les mathématiques",
+        "Pour apprendre la musique",
+        "Pour former les médecins"
+      ],
+      "correctAnswer": "Pour former les futurs instituteurs",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Que devaient apprendre les élèves dans les écoles normales ?",
+      "choices": [
+        "À lire, écrire et transmettre l'amour de la patrie",
+        "Seulement à lire",
+        "Seulement à écrire",
+        "À cuisiner"
+      ],
+      "correctAnswer": "À lire, écrire et transmettre l'amour de la patrie",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Quel âge avaient les élèves évalués avec le Certificat d'études ?",
+      "choices": [
+        "Entre 11 et 13 ans",
+        "Entre 6 et 8 ans",
+        "Entre 15 et 17 ans",
+        "Entre 18 et 20 ans"
+      ],
+      "correctAnswer": "Entre 11 et 13 ans",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Que devaient faire les élèves pour obtenir le Certificat d'études ?",
+      "choices": [
+        "Réussir une dictée, faire des opérations et réciter des leçons",
+        "Seulement faire du sport",
+        "Seulement chanter",
+        "Apprendre à danser"
+      ],
+      "correctAnswer": "Réussir une dictée, faire des opérations et réciter des leçons",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Avant les lois Ferry, comment les enfants aidaient-ils leurs parents ?",
+      "choices": [
+        "En travaillant avec eux",
+        "En allant à l'école toute la journée",
+        "En jouant dehors",
+        "En lisant des livres"
+      ],
+      "correctAnswer": "En travaillant avec eux",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Entre quelles années l'école est-elle devenue obligatoire ?",
+      "choices": [
+        "Entre 1881 et 1882",
+        "Entre 1900 et 1901",
+        "Entre 1950 et 1951",
+        "Entre 1800 et 1801"
+      ],
+      "correctAnswer": "Entre 1881 et 1882",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Pour quels enfants l'école était-elle obligatoire après les lois Ferry ?",
+      "choices": [
+        "Pour les enfants entre 6 et 13 ans",
+        "Pour les enfants de 3 ans",
+        "Pour les enfants de 15 ans",
+        "Seulement pour les garçons"
+      ],
+      "correctAnswer": "Pour les enfants entre 6 et 13 ans",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Quelle règle importante a changé avec l'école de Jules Ferry ?",
+      "choices": [
+        "Les familles les plus pauvres accèdent également à l'école",
+        "Seuls les riches peuvent aller à l'école",
+        "L'école devient payante",
+        "Les filles ne vont plus à l'école"
+      ],
+      "correctAnswer": "Les familles les plus pauvres accèdent également à l'école",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Qu'est-ce qui a changé concernant la religion à l'école publique ?",
+      "choices": [
+        "L'école devient laïque, il n'y a plus d'instruction religieuse",
+        "L'école enseigne plusieurs religions",
+        "Tout le monde doit prier",
+        "Rien n'a changé"
+      ],
+      "correctAnswer": "L'école devient laïque, il n'y a plus d'instruction religieuse",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Quelle différence y avait-il entre l'enseignement des filles et des garçons ?",
+      "choices": [
+        "Les filles apprenaient la broderie et la cuisine, les garçons la géométrie et le sport",
+        "Il n'y avait aucune différence",
+        "Les filles n'allaient pas à l'école",
+        "Les garçons apprenaient la couture"
+      ],
+      "correctAnswer": "Les filles apprenaient la broderie et la cuisine, les garçons la géométrie et le sport",
+      "imageUrl": null
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import { CONFIG } from '../core/config.js';
 import { loadAvailableQuizzes } from '../core/utils.js';
 import { domManager } from '../ui/dom.js';
 import { getCategoryColors, initializeCategoryColors } from '../core/category-colors.js';
+import { playerManager } from '../core/player.js';
 
 export class QuizSelector {
     constructor(onQuizSelect) {
@@ -74,10 +75,13 @@ export class QuizSelector {
         const quizCards = filteredQuizzes.map(quiz => {
             // Image avec fallback placehold.co
             const imageUrl = quiz.imageUrl || `https://placehold.co/400x200?text=${encodeURIComponent(quiz.title)}`;
-            
+
             // Couleurs basées sur la catégorie
             const categoryColor = getCategoryColors(quiz.category);
-            
+
+            // Récupérer le meilleur résultat pour ce quiz
+            const bestResult = this.getBestResult(quiz.id);
+
             return `
                 <div class="group cursor-pointer quiz-card overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 bg-gray-800" 
                      data-quiz-id="${quiz.id}">
@@ -85,6 +89,14 @@ export class QuizSelector {
                     <div class="relative h-32 overflow-hidden bg-gray-700">
                         <img src="${imageUrl}" alt="${quiz.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                        ${bestResult ? `
+                            <div class="absolute top-2 right-2 bg-gray-900/90 backdrop-blur-sm px-2 py-1 rounded shadow-md border border-gray-600/50">
+                                <div class="flex items-center gap-1">
+                                    <i class="bi bi-star-fill text-gray-400 text-xs"></i>
+                                    <span class="text-gray-200 font-semibold text-xs">${bestResult.percentage}%</span>
+                                </div>
+                            </div>
+                        ` : ''}
                     </div>
                     
                     <!-- Contenu -->
@@ -142,6 +154,23 @@ export class QuizSelector {
                     this.onQuizSelect(selectedQuiz);
                 }
             });
+        });
+    }
+
+    /**
+     * Récupère le meilleur résultat pour un quiz donné
+     * @param {string} quizId - ID du quiz
+     * @returns {object|null} Le meilleur résultat ou null
+     */
+    getBestResult(quizId) {
+        const results = playerManager.getResultsByQuiz(quizId);
+        if (!results || results.length === 0) {
+            return null;
+        }
+
+        // Trouver le résultat avec le meilleur pourcentage
+        return results.reduce((best, current) => {
+            return current.percentage > best.percentage ? current : best;
         });
     }
 
