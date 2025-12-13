@@ -5,7 +5,7 @@
     "imageUrl": "",
     "spoilerMode": true,
     "difficulty": "Facile",
-    "questionCount": 11,
+    "questionCount": 10,
     "category": "Divertissement",
     "tag": [
       "Divertissement",
@@ -99,7 +99,7 @@
         "Jardiner"
       ],
       "correctAnswer": "Jouer de la clarinette",
-      "imageUrl": "/images/characters/spongebob/Best_Day_Ever.webp"
+      "imageUrl": "/images/characters/spongebob/Best_Day_Ever_154.webp"
     },
     {
       "question": "Qu'aime particulièrement Monsieur Krabs ?",
@@ -121,7 +121,7 @@
         "Pineapple Café"
       ],
       "correctAnswer": "Le crab croustillant",
-      "imageUrl": "/images/characters/spongebob/SpongeChovy.webp"
+      "imageUrl": "/images/characters/spongebob/SpongeChovy_065.webp"
     }
   ]
 }

@@ -1,12 +1,39 @@
+# IDE
 .vscode/
+.idea/
+*.sublime-*
+*.swp
+
+# Dependencies
 node_modules/
+
+# Archives & Notes
 .archives/
 Notes
+
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
+
+# Build & Deploy
 .vercel/
+dist/
+build/
+
+# Logs
 *.log
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Generated files
+.version

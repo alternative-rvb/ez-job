@@ -256,8 +256,13 @@
     {
       "id": 21,
       "question": "Expliquez le principe de l'injection de dépendance",
-      "choices": null,
-      "correctAnswer": null,
+      "choices": [
+        "Injecter du code malveillant",
+        "Pattern où les dépendances d'une classe sont fournies de l'extérieur plutôt que créées en interne",
+        "Créer des objets dans la classe",
+        "Utiliser des variables globales"
+      ],
+      "correctAnswer": "Pattern où les dépendances d'une classe sont fournies de l'extérieur plutôt que créées en interne",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
@@ -275,8 +280,13 @@
     {
       "id": 23,
       "question": "Décrivez votre approche pour déboguer une requête SQL lente",
-      "choices": null,
-      "correctAnswer": null,
+      "choices": [
+        "Redémarrer la base de données",
+        "Utiliser EXPLAIN, analyser les index, profiler, optimiser les JOIN, limiter les résultats",
+        "Augmenter la RAM du serveur",
+        "Changer de SGBD"
+      ],
+      "correctAnswer": "Utiliser EXPLAIN, analyser les index, profiler, optimiser les JOIN, limiter les résultats",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
     },
     {
@@ -294,8 +304,13 @@
     {
       "id": 25,
       "question": "Comment sécuriser une API REST ?",
-      "choices": null,
-      "correctAnswer": null,
+      "choices": [
+        "Pas besoin de sécurité",
+        "Authentification (JWT/OAuth), HTTPS, validation des entrées, rate limiting, CORS configuré",
+        "Utiliser HTTP simple",
+        "Cacher l'URL"
+      ],
+      "correctAnswer": "Authentification (JWT/OAuth), HTTPS, validation des entrées, rate limiting, CORS configuré",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
@@ -325,8 +340,13 @@
     {
       "id": 28,
       "question": "Comment optimiser les performances d'une application web ?",
-      "choices": null,
-      "correctAnswer": null,
+      "choices": [
+        "Ajouter plus de serveurs uniquement",
+        "Cache (Redis/Memcached), CDN, lazy loading, minification, compression Gzip, requêtes optimisées",
+        "Utiliser plus de JavaScript",
+        "Réduire la qualité des images"
+      ],
+      "correctAnswer": "Cache (Redis/Memcached), CDN, lazy loading, minification, compression Gzip, requêtes optimisées",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
@@ -356,8 +376,13 @@
     {
       "id": 31,
       "question": "Décrivez votre approche pour maintenir une application legacy",
-      "choices": null,
-      "correctAnswer": null,
+      "choices": [
+        "Tout réécrire immédiatement",
+        "Tests de régression, refactoring progressif, documentation, isolation des modules, migration incrémentale",
+        "Ne rien toucher",
+        "Abandonner le projet"
+      ],
+      "correctAnswer": "Tests de régression, refactoring progressif, documentation, isolation des modules, migration incrémentale",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
@@ -387,8 +412,13 @@
     {
       "id": 34,
       "question": "Comment gérer la priorité entre plusieurs tâches urgentes ?",
-      "choices": null,
-      "correctAnswer": null,
+      "choices": [
+        "Faire tout en même temps",
+        "Évaluer impact business, estimer effort, communiquer avec stakeholders, prioriser selon matrice urgence/importance",
+        "Choisir au hasard",
+        "Déléguer sans réfléchir"
+      ],
+      "correctAnswer": "Évaluer impact business, estimer effort, communiquer avec stakeholders, prioriser selon matrice urgence/importance",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
@@ -406,8 +436,13 @@
     {
       "id": 36,
       "question": "Expliquez votre démarche face à une erreur 500 en production",
-      "choices": null,
-      "correctAnswer": null,
+      "choices": [
+        "Paniquer et tout redémarrer",
+        "Consulter logs serveur, identifier la stack trace, reproduire en staging, corriger, déployer, monitorer",
+        "Ignorer l'erreur",
+        "Blâmer l'utilisateur"
+      ],
+      "correctAnswer": "Consulter logs serveur, identifier la stack trace, reproduire en staging, corriger, déployer, monitorer",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
@@ -437,8 +472,13 @@
     {
       "id": 39,
       "question": "Décrivez les principaux Design Patterns que vous utilisez",
-      "choices": null,
-      "correctAnswer": null,
+      "choices": [
+        "Aucun, c'est inutile",
+        "Singleton, Factory, Observer, Repository, Strategy, Dependency Injection, Adapter",
+        "Seulement MVC",
+        "Copier-coller du code"
+      ],
+      "correctAnswer": "Singleton, Factory, Observer, Repository, Strategy, Dependency Injection, Adapter",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {

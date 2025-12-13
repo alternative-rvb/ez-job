@@ -21,6 +21,13 @@ npm run build
 npm run generate-index
 # or directly:
 python3 api.py generate-index
+
+# Validate quiz files
+npm run validate              # Validate all quizzes in js/data/
+node scripts/validate-quiz.js path/to/quiz.json  # Validate specific file
+
+# Version management
+npm run bump-version          # Increment patch version (1.0.0 -> 1.0.1)
 ```
 
 ### Testing the Application
@@ -36,24 +43,45 @@ python3 api.py generate-index
 The application follows a clean modular architecture with separation of concerns:
 
 ```plaintext
-js/
-├── app.js                    # Main entry point, bootstraps QuizApp
-├── modules/
-│   ├── core/                 # Core functionality
-│   │   ├── config.js        # Global configuration (singleton AppConfig class)
-│   │   ├── state.js         # Centralized state management (QuizState class)
-│   │   ├── player.js        # Player data & localStorage persistence
-│   │   └── utils.js         # Shared utilities (confetti, JSON loading, array shuffle)
-│   ├── ui/
-│   │   └── dom.js           # DOM manipulation (DOMManager class)
-│   └── managers/            # Business logic managers
-│       ├── quiz-selector.js  # Quiz selection and filtering
-│       ├── question-manager.js # Question display and timer logic
-│       ├── results-manager.js  # Results display and navigation
-│       └── history-manager.js  # Player history tracking
-└── data/                    # Quiz JSON files
-    ├── index.json           # Auto-generated quiz index
-    └── *.json               # Individual quiz files
+job-ez/
+├── index.html                # Main HTML (411 lines, simplifié)
+├── sw.js                     # Service Worker PWA (offline support)
+├── styles/
+│   └── main.css             # CSS externalisé (animations, trophées, modales)
+├── scripts/
+│   └── validate-quiz.js     # Script de validation des quiz
+├── js/
+│   ├── app.js                    # Main entry point, bootstraps QuizApp
+│   ├── modules/
+│   │   ├── core/                 # Core functionality
+│   │   │   ├── config.js        # Global configuration (singleton AppConfig class)
+│   │   │   ├── state.js         # Centralized state management (QuizState class)
+│   │   │   ├── player.js        # Player data & localStorage persistence
+│   │   │   ├── version.js       # Version management & cache-busting
+│   │   │   ├── category-colors.js # Category color mappings
+│   │   │   └── utils.js         # Shared utilities (confetti, JSON loading, array shuffle)
+│   │   ├── ui/
+│   │   │   └── dom.js           # DOM manipulation (DOMManager class)
+│   │   └── managers/            # Business logic managers
+│   │       ├── quiz-selector.js  # Quiz selection and filtering
+│   │       ├── question-manager.js # Question display and timer logic
+│   │       ├── results-manager.js  # Results display and navigation
+│   │       ├── history-manager.js  # Player history tracking
+│   │       ├── trophies-manager.js # Trophy display and management
+│   │       └── rewards-manager.js  # Trophy rewards system
+│   └── data/                    # Quiz JSON files
+│       ├── index.json           # Auto-generated quiz index
+│       ├── trophies.json        # Trophy definitions
+│       └── *.json               # Individual quiz files
+├── images/
+│   ├── characters/              # Centralized character images
+│   │   ├── spongebob/          # SpongeBob characters (quiz + trophies)
+│   │   └── les-sisters/        # Les Sisters characters (quiz + trophies)
+│   └── quiz/                    # Quiz-specific images
+│       ├── white-tiger/
+│       └── le-petit-nicolas/
+└── .doc/                        # Internal documentation (optional)
+    └── quiz-format-specification.md
 ```
 
 ### Key Design Patterns
@@ -200,19 +228,23 @@ Quiz-specific setting (`config.spoilerMode` in quiz JSON):
 ### Frontend Stack
 
 - **Vanilla JavaScript ES6+** (modules, classes, async/await)
-- **Tailwind CSS v3** (via CDN, dark mode enabled)
+- **Tailwind CSS v3** (via CDN, dark mode enabled) + Custom CSS externalisé
 - **Bootstrap Icons** (via CDN)
 - **tsparticles-confetti** (loaded dynamically in utils.js)
+- **Service Worker** (PWA support, offline functionality)
 
 ### Browser APIs Used
 
 - **localStorage**: Player name and results persistence
+- **Service Worker API**: Offline support, caching strategy
 - **Vibration API**: Haptic feedback on mobile (wrong answers)
 - **ES6 Modules**: Native import/export (requires HTTP server)
 
-### Python Tools
+### Build Tools & Scripts
 
 - **api.py**: Quiz index generator using Python 3 stdlib (json, os, sys, datetime)
+- **validate-quiz.js**: Node.js script for quiz JSON validation
+- **sw.js**: Service Worker for PWA (Cache First + Network First strategies)
 
 ## Code Conventions
 
@@ -275,29 +307,42 @@ Available commands in `.claude/commands/`:
 
 - **/architecture**: Generates a complete annotated project tree structure with detailed comments
 
-### Internal Documentation Convention
+### Documentation Guidelines
 
-All technical notes, recommendations, and documentation should be created in the `.doc/` directory:
+**IMPORTANT**: Always ask before creating documentation files. Prefer updating CLAUDE.md over creating separate documentation.
 
-- `.doc/architecture-*.md` - Auto-generated project architecture files
-- `.doc/prompt-engineering/` - Prompt engineering documentation and resources
-- `.doc/*.md` - Other notes and recommendations organized by theme
+If documentation is explicitly requested:
+
+- `.doc/quiz-format-specification.md` - Quiz JSON format specification (comprehensive)
+- `.doc/architecture-*.md` - Auto-generated project architecture files (via /architecture command)
+- `.doc/*.md` - Other technical notes (only if explicitly requested)
 
 ## Deployment Notes
 
 ### Vercel
 
-The project is configured for Vercel deployment via [vercel.json](vercel.json).
+The project is configured for Vercel deployment via [vercel.json](vercel.json) as a **static site** (no server needed).
 
 **IMPORTANT**: The quiz index (`js/data/index.json`) must be **pre-generated and committed** to the repository. Vercel does NOT regenerate the index during build.
 
-**Recommended workflow**:
+**Deployment workflow**:
 
 1. Add/modify a quiz in `js/data/`
 2. Run `npm run generate-index` locally
-3. Commit both the quiz file and `js/data/index.json`
-4. Push to Vercel
+3. *Optional*: Run `npm run validate` to check all quiz files
+4. Commit both the quiz file and `js/data/index.json`
+5. Push to Vercel (automatic deployment)
 
-### Local Serving
+### PWA & Service Worker
 
-Always use a local HTTP server due to ES6 module CORS restrictions. Python's `http.server` is recommended for simplicity.
+- Service Worker (`sw.js`) is registered automatically on page load
+- Provides offline functionality with Cache First strategy for assets
+- Version is synchronized with `package.json` version
+- Use `npm run bump-version` to increment version and force cache refresh
+
+### Local Server
+
+Always use a local HTTP server due to ES6 module CORS restrictions:
+
+- `npm run dev` (recommended - includes index generation)
+- `python3 -m http.server 8000` (manual serving)

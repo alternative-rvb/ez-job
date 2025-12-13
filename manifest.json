@@ -1,7 +1,7 @@
 {
-  "name": "EZ JOB - De Zéro à 100% Pro",
+  "name": "EZ JOB - De 0 à 100% Pro",
   "short_name": "EZ JOB",
-  "description": "Formation et coaching en développement web pour tous. De zéro vers 100% pro avec des quiz interactifs.",
+  "description": "Formation et coaching en développement web pour tous. De 0 vers 100% pro avec des quiz interactifs.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
