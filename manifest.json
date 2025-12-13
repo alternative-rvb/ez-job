@@ -9,21 +9,21 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://api.dicebear.com/5.x/identicon/svg?seed=job-ez",
-      "sizes": "192x192",
+      "src": "/images/logo.svg",
+      "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "https://api.dicebear.com/5.x/identicon/svg?seed=job-ez",
-      "sizes": "512x512",
+      "src": "/images/logo.svg",
+      "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ],
   "screenshots": [
     {
-      "src": "https://api.dicebear.com/5.x/identicon/svg?seed=job-ez",
+      "src": "/images/logo.svg",
       "sizes": "540x720",
       "type": "image/svg+xml",
       "form_factor": "narrow"
@@ -38,8 +38,8 @@
       "url": "/?action=start-quiz",
       "icons": [
         {
-          "src": "https://api.dicebear.com/5.x/identicon/svg?seed=job-ez",
-          "sizes": "192x192"
+          "src": "/images/logo.svg",
+          "sizes": "any"
         }
       ]
     }
