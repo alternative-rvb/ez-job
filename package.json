@@ -5,7 +5,8 @@
   "scripts": {
     "build": "python3 api.py generate-index && echo 'Build completed'",
     "dev": "python3 api.py generate-index && python3 -m http.server 8000",
-    "generate-index": "python3 api.py generate-index"
+    "generate-index": "python3 api.py generate-index",
+    "bump-version": "npm version patch --no-git-tag-version && node -e \"const fs=require('fs');const v=require('./package.json').version;fs.writeFileSync('.version',v);\""
   },
   "keywords": ["quiz", "education", "javascript"],
   "author": "alternative-rvb",

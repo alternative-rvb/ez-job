@@ -4,6 +4,7 @@
 
 import { rewardsManager } from './rewards-manager.js';
 import { domManager } from '../ui/dom.js';
+import { addCacheBuster } from '../core/version.js';
 
 export class TrophiesManager {
     constructor(onBack) {
@@ -14,7 +15,7 @@ export class TrophiesManager {
     async show() {
         // Charger les données des trophées
         try {
-            const response = await fetch(`./js/data/trophies.json?v=${Date.now()}`);
+            const response = await fetch(addCacheBuster('./js/data/trophies.json'));
             this.trophiesData = await response.json();
         } catch (error) {
             console.error('Erreur lors du chargement des trophées:', error);
