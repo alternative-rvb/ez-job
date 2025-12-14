@@ -126,11 +126,19 @@ export class QuestionManager {
         
         // Ajouter les écouteurs d'événements
         document.querySelectorAll('.answer-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
                 if (!quizState.isAnswered) {
+                    e.preventDefault();
                     btn.blur();
                     this.selectAnswer(parseInt(btn.dataset.answerIndex));
                 }
+            });
+            // Empêcher le focus visuel de rester après le clic
+            btn.addEventListener('mouseup', () => {
+                btn.blur();
+            });
+            btn.addEventListener('touchend', () => {
+                btn.blur();
             });
         });
         
