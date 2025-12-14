@@ -17,7 +17,12 @@ export class QuestionManager {
             this.onQuizComplete();
             return;
         }
-        
+
+        // Retirer le focus de tout élément actif avant de changer de question
+        if (document.activeElement && document.activeElement !== document.body) {
+            document.activeElement.blur();
+        }
+
         const question = quizState.getCurrentQuestion();
         
         quizState.startTimer();
