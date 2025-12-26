@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 450">
+  
+  <!-- Titre -->
+  <text x="375" y="50" font-family="Roboto, Arial, sans-serif" font-size="28" font-weight="500" text-anchor="middle" fill="#212121">
+    Tableau des unités de temps
+  </text>
+  
+  <!-- En-têtes du tableau avec espacement -->
+  <!-- jour -->
+  <rect x="30" y="90" width="130" height="55" fill="#5E35B1" rx="8" ry="8"/>
+  <text x="95" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">jour</text>
+  
+  <!-- h -->
+  <rect x="175" y="90" width="130" height="55" fill="#1976D2" rx="8" ry="8"/>
+  <text x="240" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">h</text>
+  
+  <!-- min -->
+  <rect x="320" y="90" width="130" height="55" fill="#00897B" rx="8" ry="8"/>
+  <text x="385" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">min</text>
+  
+  <!-- s (unité de référence) -->
+  <rect x="465" y="90" width="130" height="55" fill="#D32F2F" rx="8" ry="8"/>
+  <text x="530" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">s</text>
+  
+  <!-- Lignes du tableau avec espacement -->
+  <!-- Ligne 1 -->
+  <g id="ligne1">
+    <rect x="30" y="160" width="130" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="175" y="160" width="130" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="320" y="160" width="130" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="465" y="160" width="130" height="65" fill="#FFEBEE" rx="8" ry="8"/>
+  </g>
+  
+  <!-- Ligne 2 -->
+  <g id="ligne2">
+    <rect x="30" y="240" width="130" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="175" y="240" width="130" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="320" y="240" width="130" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="465" y="240" width="130" height="65" fill="#FFEBEE" rx="8" ry="8"/>
+  </g>
+  
+  <!-- Ligne 3 -->
+  <g id="ligne3">
+    <rect x="30" y="320" width="130" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="175" y="320" width="130" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="320" y="320" width="130" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="465" y="320" width="130" height="65" fill="#FFEBEE" rx="8" ry="8"/>
+  </g>
+  
+  <!-- Légende avec conversions -->
+  <text x="312" y="405" font-family="Roboto, Arial, sans-serif" font-size="13" text-anchor="middle" fill="#757575">
+    1 jour = 24 h  |  1 h = 60 min  |  1 min = 60 s
+  </text>
+  
+  <text x="312" y="430" font-family="Roboto, Arial, sans-serif" font-size="12" text-anchor="middle" fill="#9E9E9E">
+    ⚠️ Le temps ne suit pas le système décimal
+  </text>
+</svg>

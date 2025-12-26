@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 450">
+  
+  <!-- Titre -->
+  <text x="425" y="50" font-family="Roboto, Arial, sans-serif" font-size="28" font-weight="500" text-anchor="middle" fill="#212121">
+    Tableau des unités de capacité
+  </text>
+  
+  <!-- En-têtes du tableau avec espacement -->
+  <!-- hl -->
+  <rect x="30" y="90" width="100" height="55" fill="#F57C00" rx="8" ry="8"/>
+  <text x="80" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">hl</text>
+  
+  <!-- dal -->
+  <rect x="145" y="90" width="100" height="55" fill="#F57C00" rx="8" ry="8"/>
+  <text x="195" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">dal</text>
+  
+  <!-- L (unité de référence) -->
+  <rect x="260" y="90" width="100" height="55" fill="#D32F2F" rx="8" ry="8"/>
+  <text x="310" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">L</text>
+  
+  <!-- dl -->
+  <rect x="375" y="90" width="100" height="55" fill="#7B1FA2" rx="8" ry="8"/>
+  <text x="425" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">dl</text>
+  
+  <!-- cl -->
+  <rect x="490" y="90" width="100" height="55" fill="#7B1FA2" rx="8" ry="8"/>
+  <text x="540" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">cl</text>
+  
+  <!-- ml -->
+  <rect x="605" y="90" width="100" height="55" fill="#7B1FA2" rx="8" ry="8"/>
+  <text x="655" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">ml</text>
+  
+  <!-- Lignes du tableau avec espacement -->
+  <!-- Ligne 1 -->
+  <g id="ligne1">
+    <rect x="30" y="160" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="145" y="160" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="260" y="160" width="100" height="65" fill="#FFEBEE" rx="8" ry="8"/>
+    <rect x="375" y="160" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="490" y="160" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="605" y="160" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+  </g>
+  
+  <!-- Ligne 2 -->
+  <g id="ligne2">
+    <rect x="30" y="240" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="145" y="240" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="260" y="240" width="100" height="65" fill="#FFEBEE" rx="8" ry="8"/>
+    <rect x="375" y="240" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="490" y="240" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="605" y="240" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+  </g>
+  
+  <!-- Ligne 3 -->
+  <g id="ligne3">
+    <rect x="30" y="320" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="145" y="320" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="260" y="320" width="100" height="65" fill="#FFEBEE" rx="8" ry="8"/>
+    <rect x="375" y="320" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="490" y="320" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="605" y="320" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+  </g>
+  
+  <!-- Légende -->
+  <text x="360" y="415" font-family="Roboto, Arial, sans-serif" font-size="14" text-anchor="middle" fill="#757575">
+    Multiples (×10) en orange | Unité de référence (L) en rouge | Sous-multiples (÷10) en violet
+  </text>
+</svg>

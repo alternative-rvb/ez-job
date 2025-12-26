@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2050 350">
+  
+  <!-- Titre -->
+  <text x="1025" y="40" font-family="Roboto, Arial, sans-serif" font-size="28" font-weight="500" text-anchor="middle" fill="#212121">
+    Tableau de la monnaie
+  </text>
+  
+  <!-- En-têtes du tableau avec espacement - Tous sur une ligne -->
+  <!-- 1 000 000 000 000 € (Billion/Trillion) -->
+  <rect x="30" y="70" width="120" height="85" fill="#0D47A1" rx="8" ry="8"/>
+  <text x="90" y="100" font-family="Roboto, Arial, sans-serif" font-size="11" font-weight="500" text-anchor="middle" fill="white">1 000 000 000 000 €</text>
+  <text x="90" y="127" font-family="Roboto, Arial, sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#BBDEFB">billion (FR)</text>
+  <text x="90" y="142" font-family="Roboto, Arial, sans-serif" font-size="9" text-anchor="middle" fill="#BBDEFB">trillion (EN)</text>
+  
+  <!-- 100 000 000 000 € -->
+  <rect x="165" y="70" width="120" height="85" fill="#1565C0" rx="8" ry="8"/>
+  <text x="225" y="100" font-family="Roboto, Arial, sans-serif" font-size="11" font-weight="500" text-anchor="middle" fill="white">100 000 000 000 €</text>
+  
+  <!-- 10 000 000 000 € -->
+  <rect x="300" y="70" width="120" height="85" fill="#1976D2" rx="8" ry="8"/>
+  <text x="360" y="100" font-family="Roboto, Arial, sans-serif" font-size="11" font-weight="500" text-anchor="middle" fill="white">10 000 000 000 €</text>
+  
+  <!-- 1 000 000 000 € (Milliard/Billion) -->
+  <rect x="435" y="70" width="120" height="85" fill="#1E88E5" rx="8" ry="8"/>
+  <text x="495" y="100" font-family="Roboto, Arial, sans-serif" font-size="11" font-weight="500" text-anchor="middle" fill="white">1 000 000 000 €</text>
+  <text x="495" y="127" font-family="Roboto, Arial, sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#BBDEFB">milliard (FR)</text>
+  <text x="495" y="142" font-family="Roboto, Arial, sans-serif" font-size="9" text-anchor="middle" fill="#BBDEFB">billion (EN)</text>
+  
+  <!-- 100 000 000 € -->
+  <rect x="570" y="70" width="120" height="85" fill="#42A5F5" rx="8" ry="8"/>
+  <text x="630" y="100" font-family="Roboto, Arial, sans-serif" font-size="11" font-weight="500" text-anchor="middle" fill="white">100 000 000 €</text>
+  
+  <!-- 10 000 000 € -->
+  <rect x="705" y="70" width="120" height="85" fill="#64B5F6" rx="8" ry="8"/>
+  <text x="765" y="100" font-family="Roboto, Arial, sans-serif" font-size="11" font-weight="500" text-anchor="middle" fill="white">10 000 000 €</text>
+  
+  <!-- 1 000 000 € (Million) -->
+  <rect x="840" y="70" width="120" height="85" fill="#81C784" rx="8" ry="8"/>
+  <text x="900" y="100" font-family="Roboto, Arial, sans-serif" font-size="12" font-weight="500" text-anchor="middle" fill="white">1 000 000 €</text>
+  <text x="900" y="127" font-family="Roboto, Arial, sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#1B5E20">million (FR)</text>
+  <text x="900" y="142" font-family="Roboto, Arial, sans-serif" font-size="9" text-anchor="middle" fill="#1B5E20">million (EN)</text>
+  
+  <!-- 100 000 € -->
+  <rect x="975" y="70" width="120" height="85" fill="#66BB6A" rx="8" ry="8"/>
+  <text x="1035" y="106" font-family="Roboto, Arial, sans-serif" font-size="14" font-weight="500" text-anchor="middle" fill="white">100 000 €</text>
+  
+  <!-- 10 000 € -->
+  <rect x="1110" y="70" width="120" height="85" fill="#AED581" rx="8" ry="8"/>
+  <text x="1170" y="106" font-family="Roboto, Arial, sans-serif" font-size="14" font-weight="500" text-anchor="middle" fill="white">10 000 €</text>
+  
+  <!-- 1 000 € (Mille/Thousand) -->
+  <rect x="1245" y="70" width="120" height="85" fill="#FFB74D" rx="8" ry="8"/>
+  <text x="1305" y="100" font-family="Roboto, Arial, sans-serif" font-size="14" font-weight="500" text-anchor="middle" fill="white">1 000 €</text>
+  <text x="1305" y="127" font-family="Roboto, Arial, sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#E65100">mille (FR)</text>
+  <text x="1305" y="142" font-family="Roboto, Arial, sans-serif" font-size="9" text-anchor="middle" fill="#E65100">thousand (EN)</text>
+  
+  <!-- 100 € -->
+  <rect x="1380" y="70" width="100" height="85" fill="#FFA726" rx="8" ry="8"/>
+  <text x="1430" y="106" font-family="Roboto, Arial, sans-serif" font-size="14" font-weight="500" text-anchor="middle" fill="white">100 €</text>
+  
+  <!-- 10 € -->
+  <rect x="1495" y="70" width="90" height="85" fill="#FF9800" rx="8" ry="8"/>
+  <text x="1540" y="106" font-family="Roboto, Arial, sans-serif" font-size="14" font-weight="500" text-anchor="middle" fill="white">10 €</text>
+  
+  <!-- 1 € (Unité) -->
+  <rect x="1600" y="70" width="90" height="85" fill="#FFB300" rx="8" ry="8"/>
+  <text x="1645" y="106" font-family="Roboto, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="white">1 €</text>
+  
+  <!-- 10 c -->
+  <rect x="1705" y="70" width="90" height="85" fill="#F57C00" rx="8" ry="8"/>
+  <text x="1750" y="106" font-family="Roboto, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="white">10 c</text>
+  
+  <!-- 1 c -->
+  <rect x="1810" y="70" width="90" height="85" fill="#E65100" rx="8" ry="8"/>
+  <text x="1855" y="106" font-family="Roboto, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="white">1 c</text>
+  
+  <!-- Lignes du tableau avec espacement -->
+  <!-- Ligne 1 -->
+  <g id="ligne1">
+    <rect x="30" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="165" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="300" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="435" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="570" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="705" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="840" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="975" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1110" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1245" y="170" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1380" y="170" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1495" y="170" width="90" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1600" y="170" width="90" height="65" fill="#FFF9C4" rx="8" ry="8"/>
+    <rect x="1705" y="170" width="90" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1810" y="170" width="90" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+  </g>
+  
+  <!-- Ligne 2 -->
+  <g id="ligne2">
+    <rect x="30" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="165" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="300" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="435" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="570" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="705" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="840" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="975" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1110" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1245" y="250" width="120" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1380" y="250" width="100" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1495" y="250" width="90" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1600" y="250" width="90" height="65" fill="#FFF9C4" rx="8" ry="8"/>
+    <rect x="1705" y="250" width="90" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+    <rect x="1810" y="250" width="90" height="65" fill="#FFFFFF" rx="8" ry="8"/>
+  </g>
+  
+  <!-- Légende -->
+  <text x="1025" y="335" font-family="Roboto, Arial, sans-serif" font-size="13" text-anchor="middle" fill="#757575">
+    Chaque colonne vaut 10 fois la suivante  |  1 € = 100 c  |  FR = Français / EN = Anglais
+  </text>
+</svg>

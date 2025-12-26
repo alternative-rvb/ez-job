@@ -3,7 +3,7 @@
     "title": "Les Unités de Mesure",
     "description": "Maîtrise les conversions de longueur, masse et volume",
     "imageUrl": "",
-    "spoilerMode": true,
+    "spoilerMode": false,
     "difficulty": "Facile",
     "questionCount": 10,
     "category": "CM2",
@@ -22,7 +22,7 @@
         "10 000 cm"
       ],
       "correctAnswer": "100 cm",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_longueur.svg"
     },
     {
       "question": "Combien de millimètres dans 1 centimètre ?",
@@ -33,7 +33,7 @@
         "1 000 mm"
       ],
       "correctAnswer": "10 mm",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_longueur.svg"
     },
     {
       "question": "Quelle est la bonne conversion : 5 m = ? cm",
@@ -44,7 +44,7 @@
         "5 000 cm"
       ],
       "correctAnswer": "500 cm",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_longueur.svg"
     },
     {
       "question": "Combien de grammes dans 1 kilogramme ?",
@@ -55,7 +55,7 @@
         "10 000 g"
       ],
       "correctAnswer": "1 000 g",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_masses.svg"
     },
     {
       "question": "Quelle est la bonne conversion : 2 kg = ? g",
@@ -66,7 +66,7 @@
         "200 000 g"
       ],
       "correctAnswer": "2 000 g",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_masses.svg"
     },
     {
       "question": "Combien de litres dans 1 décalitre ?",
@@ -77,7 +77,7 @@
         "1 000 litres"
       ],
       "correctAnswer": "10 litres",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_litres.svg"
     },
     {
       "question": "Quelle est la bonne conversion : 3 L = ? mL",
@@ -88,7 +88,7 @@
         "30 000 mL"
       ],
       "correctAnswer": "3 000 mL",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_litres.svg"
     },
     {
       "question": "Quel est le plus petit : 500 m ou 0,5 km ?",
@@ -99,7 +99,7 @@
         "Impossible de comparer"
       ],
       "correctAnswer": "Ils sont égaux",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_longueur.svg"
     },
     {
       "question": "Combien de centilitres dans 1 litre ?",
@@ -110,7 +110,7 @@
         "10 000 cL"
       ],
       "correctAnswer": "100 cL",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_litres.svg"
     },
     {
       "question": "Quelle est la bonne conversion : 250 mm = ? cm",
@@ -121,7 +121,7 @@
         "25 000 cm"
       ],
       "correctAnswer": "25 cm",
-      "imageUrl": null
+      "imageUrl": "/images/quiz/untites-mesure/tableau_unites_longueur.svg"
     }
   ]
 }
