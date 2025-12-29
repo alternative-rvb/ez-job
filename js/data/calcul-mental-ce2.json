@@ -1,0 +1,254 @@
+{
+  "config": {
+    "title": "Calcul Mental CE2",
+    "description": "Entraîne-toi au calcul mental avec des additions, soustractions et multiplications adaptées au niveau CE2",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": "Facile",
+    "questionCount": 20,
+    "category": "CM2",
+    "tag": ["Mathématiques", "Calcul"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien font 15 + 8 ?",
+      "choices": [
+        "23",
+        "22",
+        "24",
+        "21"
+      ],
+      "correctAnswer": "23",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Combien font 32 - 14 ?",
+      "choices": [
+        "18",
+        "16",
+        "19",
+        "17"
+      ],
+      "correctAnswer": "18",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Combien font 5 × 6 ?",
+      "choices": [
+        "30",
+        "25",
+        "35",
+        "28"
+      ],
+      "correctAnswer": "30",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Combien font 20 + 17 ?",
+      "choices": [
+        "37",
+        "36",
+        "38",
+        "35"
+      ],
+      "correctAnswer": "37",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Combien font 45 - 19 ?",
+      "choices": [
+        "26",
+        "27",
+        "25",
+        "24"
+      ],
+      "correctAnswer": "26",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Combien font 7 × 4 ?",
+      "choices": [
+        "28",
+        "24",
+        "32",
+        "21"
+      ],
+      "correctAnswer": "28",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Combien font 50 + 35 ?",
+      "choices": [
+        "85",
+        "80",
+        "90",
+        "75"
+      ],
+      "correctAnswer": "85",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Combien font 63 - 28 ?",
+      "choices": [
+        "35",
+        "36",
+        "34",
+        "33"
+      ],
+      "correctAnswer": "35",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Combien font 9 × 3 ?",
+      "choices": [
+        "27",
+        "24",
+        "30",
+        "21"
+      ],
+      "correctAnswer": "27",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Combien font 12 + 19 ?",
+      "choices": [
+        "31",
+        "30",
+        "32",
+        "29"
+      ],
+      "correctAnswer": "31",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Combien font 56 - 23 ?",
+      "choices": [
+        "33",
+        "32",
+        "34",
+        "31"
+      ],
+      "correctAnswer": "33",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Combien font 8 × 5 ?",
+      "choices": [
+        "40",
+        "35",
+        "45",
+        "38"
+      ],
+      "correctAnswer": "40",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Combien font 25 + 38 ?",
+      "choices": [
+        "63",
+        "62",
+        "64",
+        "61"
+      ],
+      "correctAnswer": "63",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Combien font 72 - 36 ?",
+      "choices": [
+        "36",
+        "35",
+        "37",
+        "34"
+      ],
+      "correctAnswer": "36",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Combien font 6 × 7 ?",
+      "choices": [
+        "42",
+        "36",
+        "48",
+        "40"
+      ],
+      "correctAnswer": "42",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Combien font 40 + 29 ?",
+      "choices": [
+        "69",
+        "68",
+        "70",
+        "67"
+      ],
+      "correctAnswer": "69",
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Combien font 81 - 47 ?",
+      "choices": [
+        "34",
+        "35",
+        "33",
+        "36"
+      ],
+      "correctAnswer": "34",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Combien font 9 × 8 ?",
+      "choices": [
+        "72",
+        "64",
+        "81",
+        "70"
+      ],
+      "correctAnswer": "72",
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Combien font 18 + 26 ?",
+      "choices": [
+        "44",
+        "43",
+        "45",
+        "42"
+      ],
+      "correctAnswer": "44",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Combien font 95 - 58 ?",
+      "choices": [
+        "37",
+        "38",
+        "36",
+        "39"
+      ],
+      "correctAnswer": "37",
+      "imageUrl": null
+    }
+  ]
+}
