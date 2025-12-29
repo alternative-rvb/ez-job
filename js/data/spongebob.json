@@ -2,7 +2,7 @@
   "config": {
     "title": "Bob l'Éponge",
     "description": "Tout sur votre éponge préférée de Bikini Bottom",
-    "imageUrl": "/images/quiz/spongebob/spongebob.jpg",
+    "imageUrl": "/images/quiz/spongebob/spongebob.webp",
     "spoilerMode": true,
     "difficulty": "Facile",
     "questionCount": 10,
@@ -77,7 +77,7 @@
         "Squidville"
       ],
       "correctAnswer": "Bikini Bottom",
-      "imageUrl": "/images/quiz/spongebob/bikini-bottom.jpg"
+      "imageUrl": "/images/quiz/spongebob/bikini-bottom.webp"
     },
     {
       "question": "Quelle est la nourriture préférée de Bob l'éponge ?",

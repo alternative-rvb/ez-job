@@ -2,7 +2,7 @@
   "config": {
     "title": "Le pétrole et l'énergie",
     "description": "Teste tes connaissances sur le pétrole, cette énergie fossile qui fait rouler nos voitures",
-    "imageUrl": "/images/quiz/le-petrole-et-l-energie/energie-petrole.jpg",
+    "imageUrl": "/images/quiz/le-petrole-et-l-energie/energie-petrole.webp",
     "spoilerMode": false,
     "difficulty": "Facile",
     "questionCount": 15,

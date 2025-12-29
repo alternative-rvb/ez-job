@@ -23,7 +23,7 @@
         "Hippopotame"
       ],
       "correctAnswer": "Éléphant",
-      "imageUrl": "/images/quiz/animaux/elephant.jpg"
+      "imageUrl": "/images/quiz/animaux/elephant.webp"
     },
     {
       "id": 2,
@@ -35,7 +35,7 @@
         "Autruche"
       ],
       "correctAnswer": "Faucon pèlerin",
-      "imageUrl": "/images/quiz/animaux/faucon-pelerin.jpg"
+      "imageUrl": "/images/quiz/animaux/faucon-pelerin.webp"
     },
     {
       "id": 3,
@@ -47,7 +47,7 @@
         "Loup"
       ],
       "correctAnswer": "Tigre",
-      "imageUrl": "/images/quiz/animaux/tigre.jpg"
+      "imageUrl": "/images/quiz/animaux/tigre.webp"
     },
     {
       "id": 4,
@@ -59,7 +59,7 @@
         "Requin-tigre"
       ],
       "correctAnswer": "Requin-baleine",
-      "imageUrl": "/images/quiz/animaux/requin-baleine.jpg"
+      "imageUrl": "/images/quiz/animaux/requin-baleine.webp"
     },
     {
       "id": 5,
@@ -71,7 +71,7 @@
         "Baleine bleue"
       ],
       "correctAnswer": "Baleine bleue",
-      "imageUrl": "/images/quiz/animaux/baleine-bleue.jpg"
+      "imageUrl": "/images/quiz/animaux/baleine-bleue.webp"
     },
     {
       "id": 6,
@@ -83,7 +83,7 @@
         "Cobra royal"
       ],
       "correctAnswer": "Cobra royal",
-      "imageUrl": "/images/quiz/animaux/cobra-royal.jpg"
+      "imageUrl": "/images/quiz/animaux/cobra-royal.webp"
     },
     {
       "id": 7,
@@ -95,7 +95,7 @@
         "Antilope"
       ],
       "correctAnswer": "Guépard",
-      "imageUrl": "/images/quiz/animaux/guepard-1.jpg"
+      "imageUrl": "/images/quiz/animaux/guepard-1.webp"
     },
     {
       "id": 8,
@@ -107,7 +107,7 @@
         "Géant weta"
       ],
       "correctAnswer": "Géant weta",
-      "imageUrl": "/images/quiz/animaux/geant-weta.jpg"
+      "imageUrl": "/images/quiz/animaux/geant-weta.webp"
     },
     {
       "id": 9,
@@ -119,7 +119,7 @@
         "Aigle harpie"
       ],
       "correctAnswer": "Aigle harpie",
-      "imageUrl": "/images/quiz/animaux/aigle-harpie.jpg"
+      "imageUrl": "/images/quiz/animaux/aigle-harpie.webp"
     },
     {
       "id": 10,
@@ -131,7 +131,7 @@
         "Chauve-souris abeille"
       ],
       "correctAnswer": "Chauve-souris abeille",
-      "imageUrl": "/images/quiz/animaux/chauve-souris-abeille.jpeg"
+      "imageUrl": "/images/quiz/animaux/chauve-souris-abeille.webp"
     },
     {
       "id": 11,
@@ -143,7 +143,7 @@
         "Le lévrier"
       ],
       "correctAnswer": "Guépard",
-      "imageUrl": "/images/quiz/animaux/guepard-2.jpg"
+      "imageUrl": "/images/quiz/animaux/guepard-2.webp"
     },
     {
       "id": 12,
@@ -155,7 +155,7 @@
         "Hibou"
       ],
       "correctAnswer": "Albatros",
-      "imageUrl": "/images/quiz/animaux/albatros.jpg"
+      "imageUrl": "/images/quiz/animaux/albatros.webp"
     },
     {
       "id": 13,
@@ -167,7 +167,7 @@
         "Crocodile marin"
       ],
       "correctAnswer": "Crocodile marin",
-      "imageUrl": "/images/quiz/animaux/crocodile-marin.jpg"
+      "imageUrl": "/images/quiz/animaux/crocodile-marin.webp"
     },
     {
       "id": 14,
@@ -179,7 +179,7 @@
         "Autruche"
       ],
       "correctAnswer": "Autruche",
-      "imageUrl": "/images/quiz/animaux/autruche.jpg"
+      "imageUrl": "/images/quiz/animaux/autruche.webp"
     },
     {
       "id": 15,
@@ -191,7 +191,7 @@
         "Poisson-pierre"
       ],
       "correctAnswer": "Méduse",
-      "imageUrl": "/images/quiz/animaux/meduse.jpg"
+      "imageUrl": "/images/quiz/animaux/meduse.webp"
     },
     {
       "id": 16,
@@ -203,7 +203,7 @@
         "Tigre"
       ],
       "correctAnswer": "Tigre",
-      "imageUrl": "/images/quiz/animaux/tigre.jpg"
+      "imageUrl": "/images/quiz/animaux/tigre.webp"
     },
     {
       "id": 17,
@@ -215,7 +215,7 @@
         "Cheval"
       ],
       "correctAnswer": "Éléphant",
-      "imageUrl": "/images/quiz/animaux/elephant-2.jpg"
+      "imageUrl": "/images/quiz/animaux/elephant-2.webp"
     },
     {
       "id": 18,
@@ -227,7 +227,7 @@
         "Gorille"
       ],
       "correctAnswer": "Chimpanzé",
-      "imageUrl": "/images/quiz/animaux/chimpanze.png"
+      "imageUrl": "/images/quiz/animaux/chimpanze.webp"
     },
     {
       "id": 19,
@@ -239,7 +239,7 @@
         "Dauphin"
       ],
       "correctAnswer": "Marlin bleu",
-      "imageUrl": "/images/quiz/animaux/marlin-bleu.jpg"
+      "imageUrl": "/images/quiz/animaux/marlin-bleu.webp"
     },
     {
       "id": 20,
@@ -251,7 +251,7 @@
         "Abeille"
       ],
       "correctAnswer": "Souris",
-      "imageUrl": "/images/quiz/animaux/souris.jpg"
+      "imageUrl": "/images/quiz/animaux/souris.webp"
     }
   ]
 }
