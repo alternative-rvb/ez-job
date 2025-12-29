@@ -2,7 +2,7 @@
   "config": {
     "title": "Tigre Blanc",
     "description": "Explorez les mystères du tigre blanc, une créature rare et majestueuse",
-    "imageUrl": "",
+    "imageUrl": "/images/quiz/white-tiger/white-tiger-1.webp",
     "spoilerMode": true,
     "difficulty": "Moyen",
     "questionCount": 20,

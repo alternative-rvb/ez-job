@@ -1,0 +1,182 @@
+{
+  "config": {
+    "title": "Le pétrole et l'énergie",
+    "description": "Teste tes connaissances sur le pétrole, cette énergie fossile qui fait rouler nos voitures",
+    "imageUrl": "/images/quiz/le-petrole-et-l-energie/energie-petrole.jpg",
+    "spoilerMode": false,
+    "difficulty": "Facile",
+    "questionCount": 15,
+    "category": "CM2",
+    "tag": [
+      "Sciences",
+      "Énergie"
+    ]
+  },
+  "questions": [
+    {
+      "question": "Qu'est-ce que le pétrole ?",
+      "choices": [
+        "Un liquide noir et épais",
+        "Un gaz transparent",
+        "Une roche solide",
+        "De l'eau salée"
+      ],
+      "correctAnswer": "Un liquide noir et épais",
+      "imageUrl": null
+    },
+    {
+      "question": "Où trouve-t-on le pétrole ?",
+      "choices": [
+        "Sous la terre ou sous la mer",
+        "Dans les nuages",
+        "Dans les arbres",
+        "À la surface de l'eau"
+      ],
+      "correctAnswer": "Sous la terre ou sous la mer",
+      "imageUrl": null
+    },
+    {
+      "question": "Le pétrole est une énergie :",
+      "choices": [
+        "Fossile",
+        "Solaire",
+        "Éolienne",
+        "Hydraulique"
+      ],
+      "correctAnswer": "Fossile",
+      "imageUrl": null
+    },
+    {
+      "question": "Comment s'est formé le pétrole ?",
+      "choices": [
+        "À partir de restes de plantes et d'animaux très anciens",
+        "Par la pluie qui tombe",
+        "Grâce au soleil",
+        "Par des volcans"
+      ],
+      "correctAnswer": "À partir de restes de plantes et d'animaux très anciens",
+      "imageUrl": null
+    },
+    {
+      "question": "Il y a combien de temps que le pétrole s'est formé ?",
+      "choices": [
+        "Il y a des millions d'années",
+        "Il y a 100 ans",
+        "Il y a 1000 ans",
+        "Il y a 10 ans"
+      ],
+      "correctAnswer": "Il y a des millions d'années",
+      "imageUrl": null
+    },
+    {
+      "question": "Le pétrole est une énergie non renouvelable. Cela veut dire :",
+      "choices": [
+        "Quand il n'y en aura plus, on ne pourra pas en refaire rapidement",
+        "On peut en fabriquer facilement",
+        "Il se renouvelle chaque année",
+        "Il pousse comme les plantes"
+      ],
+      "correctAnswer": "Quand il n'y en aura plus, on ne pourra pas en refaire rapidement",
+      "imageUrl": null
+    },
+    {
+      "question": "Parmi ces pays, lequel produit du pétrole ?",
+      "choices": [
+        "Arabie Saoudite",
+        "Suisse",
+        "Belgique",
+        "Autriche"
+      ],
+      "correctAnswer": "Arabie Saoudite",
+      "imageUrl": null
+    },
+    {
+      "question": "Comment récupère-t-on le pétrole ?",
+      "choices": [
+        "On fait un forage (on creuse un trou profond)",
+        "On le ramasse à la surface",
+        "On le fabrique en usine",
+        "On le récolte dans les champs"
+      ],
+      "correctAnswer": "On fait un forage (on creuse un trou profond)",
+      "imageUrl": null
+    },
+    {
+      "question": "À quelle profondeur peut-on creuser pour trouver du pétrole ?",
+      "choices": [
+        "De 800m à 8000m de profondeur",
+        "De 1m à 10m de profondeur",
+        "Seulement 50m de profondeur",
+        "À 20 000m de profondeur"
+      ],
+      "correctAnswer": "De 800m à 8000m de profondeur",
+      "imageUrl": null
+    },
+    {
+      "question": "Comment transporte-t-on le pétrole ?",
+      "choices": [
+        "Par des bateaux (pétroliers) ou des tuyaux (oléoducs)",
+        "Par des camions seulement",
+        "Par des avions",
+        "À pied"
+      ],
+      "correctAnswer": "Par des bateaux (pétroliers) ou des tuyaux (oléoducs)",
+      "imageUrl": null
+    },
+    {
+      "question": "Comment s'appelle le bateau qui transporte le pétrole ?",
+      "choices": [
+        "Un pétrolier",
+        "Un cargo",
+        "Un paquebot",
+        "Une péniche"
+      ],
+      "correctAnswer": "Un pétrolier",
+      "imageUrl": null
+    },
+    {
+      "question": "Où transforme-t-on le pétrole en essence ?",
+      "choices": [
+        "Dans une raffinerie",
+        "Dans une boulangerie",
+        "Dans une usine de vêtements",
+        "Dans une station-service"
+      ],
+      "correctAnswer": "Dans une raffinerie",
+      "imageUrl": null
+    },
+    {
+      "question": "Qu'est-ce qu'on fabrique avec le pétrole ?",
+      "choices": [
+        "De l'essence, du gazole, du kérosène",
+        "Du pain et des gâteaux",
+        "Des fruits et légumes",
+        "De l'eau potable"
+      ],
+      "correctAnswer": "De l'essence, du gazole, du kérosène",
+      "imageUrl": null
+    },
+    {
+      "question": "Pourquoi les voitures ont-elles besoin de pétrole (essence) ?",
+      "choices": [
+        "Le carburant leur donne l'énergie pour avancer",
+        "Pour être plus jolies",
+        "Pour faire du bruit",
+        "Pour sentir bon"
+      ],
+      "correctAnswer": "Le carburant leur donne l'énergie pour avancer",
+      "imageUrl": null
+    },
+    {
+      "question": "Le carburant est pour la voiture comme :",
+      "choices": [
+        "La nourriture est pour l'humain",
+        "L'eau est pour le poisson",
+        "Le vent est pour le cerf-volant",
+        "La terre est pour la plante"
+      ],
+      "correctAnswer": "La nourriture est pour l'humain",
+      "imageUrl": null
+    }
+  ]
+}

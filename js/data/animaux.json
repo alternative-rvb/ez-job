@@ -2,7 +2,7 @@
   "config": {
     "title": "Animaux",
     "description": "Découvrez le règne animal",
-    "imageUrl": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&h=300&fit=crop",
+    "imageUrl": "",
     "spoilerMode": true,
     "difficulty": "Moyen",
     "questionCount": 20,
@@ -23,7 +23,7 @@
         "Hippopotame"
       ],
       "correctAnswer": "Éléphant",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/Paignton_%2C_Paignton_Zoo%2C_Elephants_-_geograph.org.uk_-_1484811.jpg"
+      "imageUrl": "/images/quiz/animaux/elephant.jpg"
     },
     {
       "id": 2,
@@ -35,7 +35,7 @@
         "Autruche"
       ],
       "correctAnswer": "Faucon pèlerin",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Faucon_pelerin_7_mai.jpg"
+      "imageUrl": "/images/quiz/animaux/faucon-pelerin.jpg"
     },
     {
       "id": 3,
@@ -47,7 +47,7 @@
         "Loup"
       ],
       "correctAnswer": "Tigre",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Siberischer_tiger_de_edit02.jpg"
+      "imageUrl": "/images/quiz/animaux/tigre.jpg"
     },
     {
       "id": 4,
@@ -59,7 +59,7 @@
         "Requin-tigre"
       ],
       "correctAnswer": "Requin-baleine",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Whale_Shark_and_Freediver.jpg/1920px-Whale_Shark_and_Freediver.jpg"
+      "imageUrl": "/images/quiz/animaux/requin-baleine.jpg"
     },
     {
       "id": 5,
@@ -71,7 +71,7 @@
         "Baleine bleue"
       ],
       "correctAnswer": "Baleine bleue",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg/1920px-Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg"
+      "imageUrl": "/images/quiz/animaux/baleine-bleue.jpg"
     },
     {
       "id": 6,
@@ -83,7 +83,7 @@
         "Cobra royal"
       ],
       "correctAnswer": "Cobra royal",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg"
+      "imageUrl": "/images/quiz/animaux/cobra-royal.jpg"
     },
     {
       "id": 7,
@@ -95,7 +95,7 @@
         "Antilope"
       ],
       "correctAnswer": "Guépard",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/TheCheethcat.jpg/800px-TheCheethcat.jpg"
+      "imageUrl": "/images/quiz/animaux/guepard-1.jpg"
     },
     {
       "id": 8,
@@ -107,7 +107,7 @@
         "Géant weta"
       ],
       "correctAnswer": "Géant weta",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Deinacrida_rugosa_NZ.jpg/1920px-Deinacrida_rugosa_NZ.jpg"
+      "imageUrl": "/images/quiz/animaux/geant-weta.jpg"
     },
     {
       "id": 9,
@@ -119,7 +119,7 @@
         "Aigle harpie"
       ],
       "correctAnswer": "Aigle harpie",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Harpia_harpyja_-Belize-8a.jpg"
+      "imageUrl": "/images/quiz/animaux/aigle-harpie.jpg"
     },
     {
       "id": 10,
@@ -131,7 +131,7 @@
         "Chauve-souris abeille"
       ],
       "correctAnswer": "Chauve-souris abeille",
-      "imageUrl": "https://images.squarespace-cdn.com/content/v1/54822a56e4b0b30bd821480c/4a40c361-4392-4ccf-801f-5f8e1b5f78e7/bumblebee+bat+dans+pet+care+world+smallest+mammal.jpeg"
+      "imageUrl": "/images/quiz/animaux/chauve-souris-abeille.jpeg"
     },
     {
       "id": 11,
@@ -143,7 +143,7 @@
         "Le lévrier"
       ],
       "correctAnswer": "Guépard",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Gepardjagt1_%28Acinonyx_jubatus%29.jpg/2560px-Gepardjagt1_%28Acinonyx_jubatus%29.jpg"
+      "imageUrl": "/images/quiz/animaux/guepard-2.jpg"
     },
     {
       "id": 12,
@@ -155,7 +155,7 @@
         "Hibou"
       ],
       "correctAnswer": "Albatros",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Black-browed_Albatross%2C_Beagle_Channel.jpg/1920px-Black-browed_Albatross%2C_Beagle_Channel.jpg"
+      "imageUrl": "/images/quiz/animaux/albatros.jpg"
     },
     {
       "id": 13,
@@ -167,7 +167,7 @@
         "Crocodile marin"
       ],
       "correctAnswer": "Crocodile marin",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/SaltwaterCrocodile%28%27Maximo%27%29.jpg/1920px-SaltwaterCrocodile%28%27Maximo%27%29.jpg"
+      "imageUrl": "/images/quiz/animaux/crocodile-marin.jpg"
     },
     {
       "id": 14,
@@ -179,7 +179,7 @@
         "Autruche"
       ],
       "correctAnswer": "Autruche",
-      "imageUrl": "https://www.pieuvre.ca/wp-content/uploads/2021/09/Autruche_gilles_martin.jpg"
+      "imageUrl": "/images/quiz/animaux/autruche.jpg"
     },
     {
       "id": 15,
@@ -191,7 +191,7 @@
         "Poisson-pierre"
       ],
       "correctAnswer": "Méduse",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Qualle_Kompa%C3%9Fqualle_2006-01-02_2.jpg/1280px-Qualle_Kompa%C3%9Fqualle_2006-01-02_2.jpg"
+      "imageUrl": "/images/quiz/animaux/meduse.jpg"
     },
     {
       "id": 16,
@@ -203,7 +203,7 @@
         "Tigre"
       ],
       "correctAnswer": "Tigre",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Siberischer_tiger_de_edit02.jpg"
+      "imageUrl": "/images/quiz/animaux/tigre.jpg"
     },
     {
       "id": 17,
@@ -215,7 +215,7 @@
         "Cheval"
       ],
       "correctAnswer": "Éléphant",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Elephant_With_Trunk_In_Others_Mouth.jpg/1920px-Elephant_With_Trunk_In_Others_Mouth.jpg"
+      "imageUrl": "/images/quiz/animaux/elephant-2.jpg"
     },
     {
       "id": 18,
@@ -227,7 +227,7 @@
         "Gorille"
       ],
       "correctAnswer": "Chimpanzé",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Composite_image_of_male_chimpanzee_%28left%29_and_male_bonobo_%28right%29_%28CC_BY_version%29.png/2560px-Composite_image_of_male_chimpanzee_%28left%29_and_male_bonobo_%28right%29_%28CC_BY_version%29.png"
+      "imageUrl": "/images/quiz/animaux/chimpanze.png"
     },
     {
       "id": 19,
@@ -239,7 +239,7 @@
         "Dauphin"
       ],
       "correctAnswer": "Marlin bleu",
-      "imageUrl": "https://www.wwf.fr/sites/default/files/styles/page_cover_large_16_9/public/2017-06/BIOS-977573.jpg?h=56d0ca2e&itok=UscBE5Qu"
+      "imageUrl": "/images/quiz/animaux/marlin-bleu.jpg"
     },
     {
       "id": 20,
@@ -251,7 +251,7 @@
         "Abeille"
       ],
       "correctAnswer": "Souris",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Mus_musculus_%2840924693714%29_%28cropped%29.jpg/1920px-Mus_musculus_%2840924693714%29_%28cropped%29.jpg"
+      "imageUrl": "/images/quiz/animaux/souris.jpg"
     }
   ]
 }

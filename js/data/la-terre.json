@@ -2,7 +2,7 @@
   "config": {
     "title": "La Terre",
     "description": "Découvre les secrets de notre planète bleue",
-    "imageUrl": "",
+    "imageUrl": "/images/quiz/la-terre/la-terre.jpg",
     "spoilerMode": true,
     "difficulty": "Facile",
     "questionCount": 10,
