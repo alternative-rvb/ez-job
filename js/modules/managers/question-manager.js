@@ -296,12 +296,15 @@ export class QuestionManager {
     }
 
     handleNormalMode(answerIndex, question, answerButtons) {
+        // Retirer immédiatement le focus de tous les boutons
+        answerButtons.forEach(btn => btn.blur());
+
         // Animation de sélection
         if (answerIndex >= 0) {
             const selectedButton = answerButtons[answerIndex];
             selectedButton?.classList.add('scale-95', 'ring-2', 'ring-primary-400');
         }
-        
+
         // Délai pour l'animation de sélection
         setTimeout(() => {
             // Marquer les réponses avec animations améliorées
@@ -309,10 +312,11 @@ export class QuestionManager {
                 const isCorrect = question.choices && question.correctAnswer ? question.choices[index] === question.correctAnswer : false;
                 const isSelected = index === answerIndex;
                 const letterSpan = btn.querySelector('span');
-                
+
                 btn.disabled = true;
+                btn.blur(); // Retirer à nouveau le focus après avoir désactivé
                 btn.classList.remove('hover:bg-gray-600', 'hover:border-primary-500');
-                
+
                 if (isCorrect) {
                     btn.classList.add('bg-green-600', 'border-green-400', 'shadow-lg');
                     letterSpan?.classList.add('bg-green-400');
@@ -327,16 +331,16 @@ export class QuestionManager {
                     btn.classList.add('opacity-40', 'blur-sm');
                 }
             });
-            
+
             // Vérifier la réponse (déjà fait dans selectAnswer)
             // La logique de vérification a été déplacée vers selectAnswer pour éviter les doublons
-            
+
             // Passer à la question suivante après un délai
             setTimeout(() => {
                 quizState.nextQuestion();
                 this.showQuestion();
             }, 2500);
-            
+
         }, 300);
     }
 
