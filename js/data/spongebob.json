@@ -2,7 +2,7 @@
   "config": {
     "title": "Bob l'Éponge",
     "description": "Tout sur votre éponge préférée de Bikini Bottom",
-    "imageUrl": "",
+    "imageUrl": "/images/quiz/spongebob/spongebob.jpg",
     "spoilerMode": true,
     "difficulty": "Facile",
     "questionCount": 10,
@@ -22,7 +22,7 @@
         "Bob Éponge Carré"
       ],
       "correctAnswer": "Bob Éponge Carré",
-      "imageUrl": "/images/characters/spongebob/SpongeBob_stock_art.webp"
+      "imageUrl": "/images/quiz/spongebob/SpongeBob_stock_art.webp"
     },
     {
       "question": "Quel est le nom du meilleur ami de Bob l'éponge ?",
@@ -33,7 +33,7 @@
         "Perle"
       ],
       "correctAnswer": "Patrick",
-      "imageUrl": "/images/characters/spongebob/Patrick_stock_art.webp"
+      "imageUrl": "/images/quiz/spongebob/Patrick_stock_art.webp"
     },
     {
       "question": "Quel est le métier de Bob l'éponge ?",
@@ -44,7 +44,7 @@
         "Caissier"
       ],
       "correctAnswer": "Cuisinier",
-      "imageUrl": "/images/characters/spongebob/SpongeBob_stock_art.webp"
+      "imageUrl": "/images/quiz/spongebob/SpongeBob_stock_art.webp"
     },
     {
       "question": "Qui est le voisin grincheux de Bob l'éponge ?",
@@ -55,7 +55,7 @@
         "Plankton"
       ],
       "correctAnswer": "Carlo",
-      "imageUrl": "/images/characters/spongebob/Squidward_stock_art.webp"
+      "imageUrl": "/images/quiz/spongebob/Squidward_stock_art.webp"
     },
     {
       "question": "Quel est l'animal de compagnie de Bob l'éponge ?",
@@ -66,7 +66,7 @@
         "Un chien"
       ],
       "correctAnswer": "Un escargot",
-      "imageUrl": "/images/characters/spongebob/Gary_looking_up_stock_art.webp"
+      "imageUrl": "/images/quiz/spongebob/Gary_looking_up_stock_art.webp"
     },
     {
       "question": "Dans quelle ville se déroule la série Bob l'éponge ?",
@@ -77,7 +77,7 @@
         "Squidville"
       ],
       "correctAnswer": "Bikini Bottom",
-      "imageUrl": "/images/characters/spongebob/bikini-bottom.jpg"
+      "imageUrl": "/images/quiz/spongebob/bikini-bottom.jpg"
     },
     {
       "question": "Quelle est la nourriture préférée de Bob l'éponge ?",
@@ -88,7 +88,7 @@
         "Sushis"
       ],
       "correctAnswer": "Pâté de crabe",
-      "imageUrl": "/images/characters/spongebob/Krabby_Patty_stock_art.webp"
+      "imageUrl": "/images/quiz/spongebob/Krabby_Patty_stock_art.webp"
     },
     {
       "question": "Quel est le hobby de Carlo Tentacule ?",
@@ -99,7 +99,7 @@
         "Jardiner"
       ],
       "correctAnswer": "Jouer de la clarinette",
-      "imageUrl": "/images/characters/spongebob/Best_Day_Ever_154.webp"
+      "imageUrl": "/images/quiz/spongebob/Best_Day_Ever_154.webp"
     },
     {
       "question": "Qu'aime particulièrement Monsieur Krabs ?",
@@ -110,7 +110,7 @@
         "Les voitures"
       ],
       "correctAnswer": "Le pognon",
-      "imageUrl": "/images/characters/spongebob/Krabs_with_money.webp"
+      "imageUrl": "/images/quiz/spongebob/Krabs_with_money.webp"
     },
     {
       "question": "Quel est le nom du restaurant où travaille Bob l'éponge ?",
@@ -121,7 +121,7 @@
         "Pineapple Café"
       ],
       "correctAnswer": "Le crab croustillant",
-      "imageUrl": "/images/characters/spongebob/SpongeChovy_065.webp"
+      "imageUrl": "/images/quiz/spongebob/SpongeChovy_065.webp"
     }
   ]
 }
