@@ -42,10 +42,11 @@ export class QuestionManager {
             
             imageSection = `
                 <div class="mb-4 text-center relative overflow-hidden">
-                    <img src="${question.imageUrl}" 
-                         alt="Question ${quizState.currentQuestionIndex + 1}" 
-                         class="max-w-full h-32 aspect-video object-cover rounded-lg mx-auto ${blurClass}" 
-                         id="question-image">
+                    <img src="${question.imageUrl}"
+                         alt="Question ${quizState.currentQuestionIndex + 1}"
+                         class="max-w-full h-32 aspect-video object-cover rounded-lg mx-auto ${blurClass}"
+                         id="question-image"
+                         loading="lazy">
                     ${spoilerOverlay}
                 </div>
             `;
@@ -401,9 +402,10 @@ export class QuestionManager {
         if (quizState.currentQuiz?.spoilerMode && question?.imageUrl) {
             imageSection = `
                 <div class="mb-4">
-                    <img src="${question.imageUrl}" 
-                         alt="Image révélée" 
-                         class="w-full max-w-sm aspect-video object-cover rounded-lg mx-auto">
+                    <img src="${question.imageUrl}"
+                         alt="Image révélée"
+                         class="w-full max-w-sm aspect-video object-cover rounded-lg mx-auto"
+                         loading="lazy">
                 </div>
             `;
         }

@@ -31,6 +31,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="EZ JOB" />
   <title>EZ JOB - De 0 à 100% Pro | Entraînement Développement Web</title>
+
+  <!-- Preconnect pour optimiser le chargement des CDN -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://placehold.co">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Bootstrap Icons -->
@@ -278,6 +284,27 @@
         </div>
       </div>
 
+      <!-- Barre de recherche -->
+      <div class="mb-6 max-w-2xl mx-auto">
+        <div class="relative">
+          <input
+            type="text"
+            id="quiz-search-input"
+            placeholder="Rechercher un quiz par titre, description ou tag..."
+            class="w-full px-4 py-3 pl-12 bg-gray-800 text-white rounded-lg border-2 border-gray-700 focus:border-primary-500 focus:outline-none transition-colors"
+            autocomplete="off"
+          />
+          <i class="bi bi-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+          <button
+            id="clear-search-btn"
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors hidden"
+            aria-label="Effacer la recherche"
+          >
+            <i class="bi bi-x-circle-fill text-xl"></i>
+          </button>
+        </div>
+      </div>
+
       <!-- Filtres par catégorie -->
       <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-8">
         <!-- Les boutons de filtres seront générés dynamiquement -->
@@ -427,6 +454,33 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.11.0/tsparticles.confetti.bundle.min.js"></script>
   <script src="js/app.js" type="module"></script>
+
+  <!-- Mobile Menu Toggle -->
+  <script>
+    // Gestion du menu burger mobile
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+
+          // Changer l'icône du burger
+          const icon = mobileMenuToggle.querySelector('i');
+          if (icon) {
+            if (mobileMenu.classList.contains('hidden')) {
+              icon.classList.remove('bi-x');
+              icon.classList.add('bi-list');
+            } else {
+              icon.classList.remove('bi-list');
+              icon.classList.add('bi-x');
+            }
+          }
+        });
+      }
+    });
+  </script>
 
   <!-- Service Worker Registration -->
   <script>

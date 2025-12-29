@@ -42,7 +42,8 @@ export class QuizSelector {
             
             this.allQuizzes = sortedQuizzes;
             this.currentFilter = 'all';
-            
+            this.searchQuery = '';
+
             // Récupérer les catégories disponibles depuis CONFIG
             this.availableCategories = CONFIG.availableCategories || [];
             console.log('📦 Catégories pour les filtres:', this.availableCategories);
@@ -67,10 +68,24 @@ export class QuizSelector {
         // Remettre les classes originales de la grille - 4 colonnes responsive
         const quizListContainer = document.getElementById('quiz-list');
         quizListContainer.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
-        
-        const filteredQuizzes = this.currentFilter === 'all' 
-            ? this.allQuizzes 
+
+        // Appliquer les filtres (catégorie + recherche)
+        let filteredQuizzes = this.currentFilter === 'all'
+            ? this.allQuizzes
             : this.allQuizzes.filter(quiz => quiz.category === this.currentFilter);
+
+        // Appliquer la recherche textuelle
+        if (this.searchQuery.trim()) {
+            const query = this.searchQuery.toLowerCase();
+            filteredQuizzes = filteredQuizzes.filter(quiz => {
+                const matchesTitle = quiz.title.toLowerCase().includes(query);
+                const matchesDescription = quiz.description.toLowerCase().includes(query);
+                const matchesTags = quiz.tag && quiz.tag.some(tag => tag.toLowerCase().includes(query));
+                const matchesCategory = quiz.category.toLowerCase().includes(query);
+
+                return matchesTitle || matchesDescription || matchesTags || matchesCategory;
+            });
+        }
             
         const quizCards = filteredQuizzes.map(quiz => {
             // Image avec fallback placehold.co
@@ -83,11 +98,11 @@ export class QuizSelector {
             const bestResult = this.getBestResult(quiz.id);
 
             return `
-                <div class="group cursor-pointer quiz-card overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 bg-gray-800" 
+                <div class="group cursor-pointer quiz-card overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 bg-gray-800"
                      data-quiz-id="${quiz.id}">
                     <!-- Image -->
                     <div class="relative h-32 overflow-hidden bg-gray-700">
-                        <img src="${imageUrl}" alt="${quiz.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="${imageUrl}" alt="${quiz.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                         ${bestResult ? `
                             <div class="absolute top-2 right-2 bg-gray-900/90 backdrop-blur-sm px-2 py-1 rounded shadow-md border border-gray-600/50">
@@ -142,9 +157,22 @@ export class QuizSelector {
                 </div>
             `;
         }).join('');
-        
+
+        // Afficher un message si aucun résultat
+        if (filteredQuizzes.length === 0) {
+            const noResultsHTML = `
+                <div class="col-span-full flex flex-col items-center justify-center py-12">
+                    <i class="bi bi-search text-6xl text-gray-600 mb-4"></i>
+                    <p class="text-xl text-gray-400 mb-2">Aucun quiz trouvé</p>
+                    <p class="text-sm text-gray-500">Essayez avec d'autres mots-clés</p>
+                </div>
+            `;
+            domManager.setContent('quizList', noResultsHTML);
+            return;
+        }
+
         domManager.setContent('quizList', quizCards);
-        
+
         // Ajouter les écouteurs d'événements
         document.querySelectorAll('.quiz-card').forEach(card => {
             card.addEventListener('click', () => {
@@ -230,6 +258,47 @@ export class QuizSelector {
         domManager.showQuizSelection();
         await this.render();
         this.setupFilters();
+        this.setupSearch();
+    }
+
+    setupSearch() {
+        const searchInput = document.getElementById('quiz-search-input');
+        const clearBtn = document.getElementById('clear-search-btn');
+
+        if (!searchInput || !clearBtn) {
+            console.warn('⚠️ Éléments de recherche non trouvés');
+            return;
+        }
+
+        // Recherche en temps réel avec debounce
+        let debounceTimer;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(debounceTimer);
+
+            const query = e.target.value.trim();
+
+            // Afficher/masquer le bouton clear
+            if (query) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            // Debounce de 300ms pour éviter trop de rendus
+            debounceTimer = setTimeout(() => {
+                this.searchQuery = query;
+                this.renderQuizCards();
+            }, 300);
+        });
+
+        // Bouton pour effacer la recherche
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchInput.focus();
+            clearBtn.classList.add('hidden');
+            this.searchQuery = '';
+            this.renderQuizCards();
+        });
     }
 
     showLoader() {
