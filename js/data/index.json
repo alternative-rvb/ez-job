@@ -1,7 +1,7 @@
 {
   "quizzes": [
     "animaux",
-    "calcul-mental-ce2",
+    "calcul-mental",
     "connecteurs-logiques",
     "diviser-par-2-par-4",
     "entretien-dev-web-1",
@@ -26,6 +26,6 @@
     "Développement"
   ],
   "count": 18,
-  "lastUpdated": "2025-12-30T00:26:07.572841",
+  "lastUpdated": "2025-12-30T14:21:24.799327",
   "generated_by": "api.py"
 }
