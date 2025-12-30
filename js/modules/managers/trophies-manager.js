@@ -95,13 +95,12 @@ export class TrophiesManager {
 
                     <!-- Dégradé transparent vers noir en bas -->
                     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
-                        <div class="space-y-1">
-                            ${trophy.series ? `<p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
-                            <h3 class="font-bold text-base leading-tight">${trophy.name}</h3>
-                            <p class="text-gray-300 text-xs line-clamp-2">${trophy.description}</p>
-                        </div>
-
                         ${isUnlocked ? `
+                            <div class="space-y-1">
+                                ${trophy.series ? `<p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
+                                <h3 class="font-bold text-base leading-tight">${trophy.name}</h3>
+                                <p class="text-gray-300 text-xs line-clamp-2">${trophy.description}</p>
+                            </div>
                             <div class="flex items-center justify-between pt-2 border-t border-gray-700/50">
                                 <span class="text-xs text-gray-400 font-semibold uppercase tracking-wide">✓ Débloqué</span>
                                 <a href="${trophy.image}" download class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-500/30 hover:bg-blue-500/50 text-blue-400 hover:text-blue-300 transition transform hover:scale-110" title="Télécharger">
@@ -109,8 +108,14 @@ export class TrophiesManager {
                                 </a>
                             </div>
                         ` : `
-                            <div class="bg-gray-700/70 backdrop-blur-sm rounded p-2 border border-yellow-500/40">
-                                <p class="text-xs text-yellow-300 font-mono font-bold text-center tracking-wider">${trophy.secretCode}</p>
+                            <div class="space-y-2">
+                                <div class="text-center">
+                                    <h3 class="font-bold text-base leading-tight text-gray-500">Trophée Mystère</h3>
+                                    <p class="text-gray-500 text-xs mt-1">Débloquez pour découvrir</p>
+                                </div>
+                                <div class="bg-gray-700/70 backdrop-blur-sm rounded p-2 border border-yellow-500/40">
+                                    <p class="text-xs text-yellow-300 font-mono font-bold text-center tracking-wider">${trophy.secretCode}</p>
+                                </div>
                             </div>
                         `}
                     </div>
