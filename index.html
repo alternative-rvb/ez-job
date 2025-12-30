@@ -284,30 +284,35 @@
         </div>
       </div>
 
-      <!-- Barre de recherche -->
-      <div class="mb-6 max-w-2xl mx-auto">
-        <div class="relative">
-          <input
-            type="text"
-            id="quiz-search-input"
-            placeholder="Rechercher un quiz par titre, description ou tag..."
-            class="w-full px-4 py-3 pl-12 bg-gray-800 text-white rounded-lg border-2 border-gray-700 focus:border-primary-500 focus:outline-none transition-colors"
-            autocomplete="off"
-          />
-          <i class="bi bi-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
-          <button
-            id="clear-search-btn"
-            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors hidden"
-            aria-label="Effacer la recherche"
-          >
-            <i class="bi bi-x-circle-fill text-xl"></i>
-          </button>
-        </div>
-      </div>
+      <!-- Recherche et Filtres -->
+      <div class="bg-gray-800 rounded-xl p-4 mb-8 shadow-lg">
+        <h2 class="text-2xl font-bold mb-4 text-center">Recherche et Filtres</h2>
 
-      <!-- Filtres par catégorie -->
-      <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-8">
-        <!-- Les boutons de filtres seront générés dynamiquement -->
+        <!-- Barre de recherche -->
+        <div class="mb-6 max-w-2xl mx-auto">
+          <div class="relative">
+            <input
+              type="text"
+              id="quiz-search-input"
+              placeholder="Rechercher un quiz par titre, description ou tag..."
+              class="w-full px-4 py-3 pl-12 bg-gray-700 text-white rounded-lg border-2 border-gray-600 focus:border-primary-500 focus:outline-none transition-colors"
+              autocomplete="off"
+            />
+            <i class="bi bi-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+            <button
+              id="clear-search-btn"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors hidden"
+              aria-label="Effacer la recherche"
+            >
+              <i class="bi bi-x-circle-fill text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filtres par catégorie -->
+        <div id="category-filters" class="flex flex-wrap justify-center gap-2">
+          <!-- Les boutons de filtres seront générés dynamiquement -->
+        </div>
       </div>
 
       <div id="quiz-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
