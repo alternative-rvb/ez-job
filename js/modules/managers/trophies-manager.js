@@ -74,14 +74,7 @@ export class TrophiesManager {
             
             return `
                 <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative" style="aspect-ratio: 9/16; background-image: url('${trophy.image}'); background-size: cover; background-position: center;">
-                    ${isUnlocked ? `
-                        <!-- Badge rareté en haut à droite -->
-                        <div class="absolute top-2 right-2 z-10">
-                            <span class="inline-block px-2 py-1 ${badgeClass} rounded-full text-xs font-bold shadow-lg">
-                                <i class="bi bi-star-fill mr-1"></i>${rarityLabel}
-                            </span>
-                        </div>
-                    ` : `
+                    ${isUnlocked ? '' : `
                         <!-- Overlay de verrouillage -->
                         <div class="absolute inset-0 backdrop-blur-xl bg-black/60">
                             <div class="absolute inset-0 flex items-center justify-center">
@@ -102,7 +95,9 @@ export class TrophiesManager {
                                 <p class="text-gray-300 text-xs line-clamp-2">${trophy.description}</p>
                             </div>
                             <div class="flex items-center justify-between pt-2 border-t border-gray-700/50">
-                                <span class="text-xs text-gray-400 font-semibold uppercase tracking-wide">✓ Débloqué</span>
+                                <span class="inline-block px-2 py-1 ${badgeClass} rounded-full text-xs font-bold">
+                                    <i class="bi bi-star-fill mr-1"></i>${rarityLabel}
+                                </span>
                                 <a href="${trophy.image}" download class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-500/30 hover:bg-blue-500/50 text-blue-400 hover:text-blue-300 transition transform hover:scale-110" title="Télécharger">
                                     <i class="bi bi-download text-sm"></i>
                                 </a>
