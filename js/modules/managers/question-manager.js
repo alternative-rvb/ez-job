@@ -134,7 +134,6 @@ export class QuestionManager {
         document.querySelectorAll('.answer-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 if (!quizState.isAnswered) {
-                    e.preventDefault();
                     e.stopPropagation();
                     // Retirer immédiatement le focus
                     setTimeout(() => btn.blur(), 0);
@@ -142,12 +141,10 @@ export class QuestionManager {
                 }
             });
             // Empêcher le focus visuel de rester après le clic
-            btn.addEventListener('mouseup', (e) => {
-                e.preventDefault();
+            btn.addEventListener('mouseup', () => {
                 setTimeout(() => btn.blur(), 0);
             });
-            btn.addEventListener('touchend', (e) => {
-                e.preventDefault();
+            btn.addEventListener('touchend', () => {
                 setTimeout(() => btn.blur(), 0);
             });
             // Retirer le focus si le bouton le reçoit
