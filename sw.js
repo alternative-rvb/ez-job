@@ -10,7 +10,7 @@
  * @version 1.0.2
  */
 
-const CACHE_VERSION = 'v1.0.9';
+const CACHE_VERSION = 'v1.0.10';
 const CACHE_NAME = `job-ez-${CACHE_VERSION}`;
 
 // Assets critiques à mettre en cache lors de l'installation
