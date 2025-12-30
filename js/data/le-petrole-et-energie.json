@@ -5,7 +5,7 @@
     "imageUrl": "/images/quiz/le-petrole-et-l-energie/energie-petrole.webp",
     "spoilerMode": false,
     "difficulty": "Facile",
-    "questionCount": 15,
+    "questionCount": 20,
     "category": "CM2",
     "tag": [
       "Sciences",
@@ -176,6 +176,65 @@
         "La terre est pour la plante"
       ],
       "correctAnswer": "La nourriture est pour l'humain",
+      "imageUrl": null
+    },
+    {
+      "question": "Que se passe-t-il quand l'essence brûle dans le moteur ?",
+      "choices": [
+        "Elle produit de l'énergie qui fait tourner le moteur et aide la voiture à avancer",
+        "Elle fait du bruit seulement",
+        "Elle refroidit le moteur",
+        "Elle nettoie le moteur"
+      ],
+      "correctAnswer": "Elle produit de l'énergie qui fait tourner le moteur et aide la voiture à avancer",
+      "imageUrl": null
+    },
+    {
+      "question": "Comment raffine-t-on le pétrole dans une raffinerie ?",
+      "choices": [
+        "En le chauffant à différentes températures",
+        "En le laissant au soleil",
+        "En le mélangeant avec de l'eau",
+        "En le congelant"
+      ],
+      "correctAnswer": "En le chauffant à différentes températures",
+      "imageUrl": null
+    },
+    {
+      "question": "Parmi ces produits, lequel N'EST PAS obtenu à partir du pétrole ?",
+      "choices": [
+        "Le caoutchouc naturel",
+        "Le plastique",
+        "L'essence",
+        "Le kérosène",
+        "Le gazole",
+        "L'huile",
+        "Le fioul",
+        "Le bitume (goudron)"
+      ],
+      "correctAnswer": "Le caoutchouc naturel",
+      "imageUrl": null
+    },
+    {
+      "question": "Comment l'essence se transforme-t-elle en mouvement dans la voiture ?",
+      "choices": [
+        "L'essence arrive dans le moteur, brûle, pousse les pistons et la voiture avance",
+        "L'essence pousse directement les roues",
+        "L'essence se transforme en électricité",
+        "L'essence refroidit le moteur qui avance"
+      ],
+      "correctAnswer": "L'essence arrive dans le moteur, brûle, pousse les pistons et la voiture avance",
+      "imageUrl": null
+    },
+    {
+      "question": "Pourquoi dit-on que le pétrole pollue ?",
+      "choices": [
+        "Quand il brûle, il produit des gaz qui salissent l'air et réchauffent la planète",
+        "Il rend les voitures plus sales",
+        "Il fait du bruit",
+        "Il coûte trop cher"
+      ],
+      "correctAnswer": "Quand il brûle, il produit des gaz qui salissent l'air et réchauffent la planète",
       "imageUrl": null
     }
   ]
