@@ -53,6 +53,177 @@
       "rarity": "commun",
       "order": 6,
       "secretCode": "GUITAR25"
+    },
+    {
+      "id": "trophy_007",
+      "name": "Loid Forger",
+      "description": "L'espion d'élite alias Twilight en mission secrète",
+      "image": "/images/trophies/characters/spy-x-family/Loid_Forger_Anime_3.webp",
+      "rarity": "légendaire",
+      "order": 7,
+      "secretCode": "TWILIGHT25"
+    },
+    {
+      "id": "trophy_008",
+      "name": "Yor Forger",
+      "description": "L'assassin redoutable alias Thorn Princess",
+      "image": "/images/trophies/characters/spy-x-family/Yor_Forger_Anime_3.webp",
+      "rarity": "légendaire",
+      "order": 8,
+      "secretCode": "THORN2025"
+    },
+    {
+      "id": "trophy_009",
+      "name": "Anya Forger",
+      "description": "La télépathe adorable qui lit dans les pensées",
+      "image": "/images/trophies/characters/spy-x-family/Anya_Forger_Anime.webp",
+      "rarity": "légendaire",
+      "order": 9,
+      "secretCode": "WAKU2025"
+    },
+    {
+      "id": "trophy_010",
+      "name": "Bond Forger",
+      "description": "Le chien précognition aux pouvoirs mystérieux",
+      "image": "/images/trophies/characters/spy-x-family/Bond_Forger_Anime.webp",
+      "rarity": "épique",
+      "order": 10,
+      "secretCode": "BOND2025"
+    },
+    {
+      "id": "trophy_011",
+      "name": "Damian Desmond",
+      "description": "Le rival tsundere d'Anya à l'école Eden",
+      "image": "/images/trophies/characters/spy-x-family/Damian_Desmond_Anime.webp",
+      "rarity": "épique",
+      "order": 11,
+      "secretCode": "DAMIAN25"
+    },
+    {
+      "id": "trophy_012",
+      "name": "Becky Blackbell",
+      "description": "La meilleure amie riche et loyale d'Anya",
+      "image": "/images/trophies/characters/spy-x-family/Becky_Blackbell_Anime.webp",
+      "rarity": "épique",
+      "order": 12,
+      "secretCode": "BECKY2025"
+    },
+    {
+      "id": "trophy_013",
+      "name": "Franky Franklin",
+      "description": "L'informateur et ami fidèle de Loid",
+      "image": "/images/trophies/characters/spy-x-family/Franky_Franklin_Anime.webp",
+      "rarity": "rare",
+      "order": 13,
+      "secretCode": "FRANKY25"
+    },
+    {
+      "id": "trophy_014",
+      "name": "Yuri Briar",
+      "description": "Le frère protecteur de Yor et membre de la police secrète",
+      "image": "/images/trophies/characters/spy-x-family/Yuri_Briar_Anime_2.webp",
+      "rarity": "rare",
+      "order": 14,
+      "secretCode": "YURI2025"
+    },
+    {
+      "id": "trophy_015",
+      "name": "Sylvia Sherwood",
+      "description": "La responsable de Loid alias Handler",
+      "image": "/images/trophies/characters/spy-x-family/Sylvia_Sherwood_Anime.webp",
+      "rarity": "rare",
+      "order": 15,
+      "secretCode": "HANDLER25"
+    },
+    {
+      "id": "trophy_016",
+      "name": "Henry Henderson",
+      "description": "Le professeur élégant obsédé par l'élégance",
+      "image": "/images/trophies/characters/spy-x-family/Henry_Henderson_Anime.webp",
+      "rarity": "rare",
+      "order": 16,
+      "secretCode": "ELEGANT25"
+    },
+    {
+      "id": "trophy_017",
+      "name": "Donovan Desmond",
+      "description": "Le père mystérieux de Damian et cible de la mission",
+      "image": "/images/trophies/characters/spy-x-family/Donovan_Desmond_Anime.webp",
+      "rarity": "épique",
+      "order": 17,
+      "secretCode": "DONOVAN25"
+    },
+    {
+      "id": "trophy_018",
+      "name": "Melinda Desmond",
+      "description": "La mère énigmatique de Damian",
+      "image": "/images/trophies/characters/spy-x-family/Melinda_Desmond_Anime.webp",
+      "rarity": "rare",
+      "order": 18,
+      "secretCode": "MELINDA25"
+    },
+    {
+      "id": "trophy_019",
+      "name": "Emile Elman",
+      "description": "L'ami fidèle et admirateur de Damian",
+      "image": "/images/trophies/characters/spy-x-family/Emile_Elman_Anime.webp",
+      "rarity": "commun",
+      "order": 19,
+      "secretCode": "EMILE2025"
+    },
+    {
+      "id": "trophy_020",
+      "name": "Ewen Egeburg",
+      "description": "L'autre ami loyal de Damian",
+      "image": "/images/trophies/characters/spy-x-family/Ewen_Egeburg_Anime.webp",
+      "rarity": "commun",
+      "order": 20,
+      "secretCode": "EWEN2025"
+    },
+    {
+      "id": "trophy_021",
+      "name": "Camilla",
+      "description": "La collègue jalouse de Yor à l'hôtel de ville",
+      "image": "/images/trophies/characters/spy-x-family/Camilla_Anime.webp",
+      "rarity": "commun",
+      "order": 21,
+      "secretCode": "CAMILLA25"
+    },
+    {
+      "id": "trophy_022",
+      "name": "Dominic",
+      "description": "Le collègue sympathique de Yor",
+      "image": "/images/trophies/characters/spy-x-family/Dominic_Anime.webp",
+      "rarity": "commun",
+      "order": 22,
+      "secretCode": "DOMINIC25"
+    },
+    {
+      "id": "trophy_023",
+      "name": "Martha Marriott",
+      "description": "La matronne de l'école Eden",
+      "image": "/images/trophies/characters/spy-x-family/Martha_Marriott_Anime_Infobox.webp",
+      "rarity": "commun",
+      "order": 23,
+      "secretCode": "MARTHA25"
+    },
+    {
+      "id": "trophy_024",
+      "name": "Matthew McMahon",
+      "description": "Le directeur de l'école Eden",
+      "image": "/images/trophies/characters/spy-x-family/Matthew_McMahon_Anime_Infobox.webp",
+      "rarity": "commun",
+      "order": 24,
+      "secretCode": "MATTHEW25"
+    },
+    {
+      "id": "trophy_025",
+      "name": "Le Commerçant",
+      "description": "Le marchand mystérieux d'informations",
+      "image": "/images/trophies/characters/spy-x-family/Shopkeeper_Anime_Infobox.webp",
+      "rarity": "commun",
+      "order": 25,
+      "secretCode": "SHOP2025"
     }
   ]
 }
