@@ -3,6 +3,7 @@
     {
       "id": "trophy_001",
       "name": "Wendy",
+      "series": "Les Sisters",
       "description": "La grande sœur rebelle et passionnée",
       "image": "/images/trophies/characters/les-sisters/wendy.webp",
       "rarity": "épique",
@@ -12,6 +13,7 @@
     {
       "id": "trophy_002",
       "name": "Marine",
+      "series": "Les Sisters",
       "description": "La petite sœur malicieuse et pleine d'énergie",
       "image": "/images/trophies/characters/les-sisters/marine.webp",
       "rarity": "épique",
@@ -21,6 +23,7 @@
     {
       "id": "trophy_003",
       "name": "Maxence",
+      "series": "Les Sisters",
       "description": "Le meilleur ami cool et décontracté",
       "image": "/images/trophies/characters/les-sisters/maxence.webp",
       "rarity": "rare",
@@ -30,6 +33,7 @@
     {
       "id": "trophy_004",
       "name": "William",
+      "series": "Les Sisters",
       "description": "Le père architecte toujours occupé",
       "image": "/images/trophies/characters/les-sisters/william.webp",
       "rarity": "rare",
@@ -39,6 +43,7 @@
     {
       "id": "trophy_005",
       "name": "Sandrine",
+      "series": "Les Sisters",
       "description": "La mère styliste attentive",
       "image": "/images/trophies/characters/les-sisters/sandrine.webp",
       "rarity": "rare",
@@ -48,6 +53,7 @@
     {
       "id": "trophy_006",
       "name": "Guitariste Passionnée",
+      "series": "Les Sisters",
       "description": "Wendy et sa guitare inséparable",
       "image": "/images/trophies/characters/les-sisters/personnage-sisters-01.webp",
       "rarity": "commun",
@@ -57,6 +63,7 @@
     {
       "id": "trophy_007",
       "name": "Loid Forger",
+      "series": "Spy × Family",
       "description": "L'espion d'élite alias Twilight en mission secrète",
       "image": "/images/trophies/characters/spy-x-family/Loid_Forger_Anime_3.webp",
       "rarity": "légendaire",
@@ -66,6 +73,7 @@
     {
       "id": "trophy_008",
       "name": "Yor Forger",
+      "series": "Spy × Family",
       "description": "L'assassin redoutable alias Thorn Princess",
       "image": "/images/trophies/characters/spy-x-family/Yor_Forger_Anime_3.webp",
       "rarity": "légendaire",
@@ -75,6 +83,7 @@
     {
       "id": "trophy_009",
       "name": "Anya Forger",
+      "series": "Spy × Family",
       "description": "La télépathe adorable qui lit dans les pensées",
       "image": "/images/trophies/characters/spy-x-family/Anya_Forger_Anime.webp",
       "rarity": "légendaire",
@@ -84,6 +93,7 @@
     {
       "id": "trophy_010",
       "name": "Bond Forger",
+      "series": "Spy × Family",
       "description": "Le chien précognition aux pouvoirs mystérieux",
       "image": "/images/trophies/characters/spy-x-family/Bond_Forger_Anime.webp",
       "rarity": "épique",
@@ -93,6 +103,7 @@
     {
       "id": "trophy_011",
       "name": "Damian Desmond",
+      "series": "Spy × Family",
       "description": "Le rival tsundere d'Anya à l'école Eden",
       "image": "/images/trophies/characters/spy-x-family/Damian_Desmond_Anime.webp",
       "rarity": "épique",
@@ -102,6 +113,7 @@
     {
       "id": "trophy_012",
       "name": "Becky Blackbell",
+      "series": "Spy × Family",
       "description": "La meilleure amie riche et loyale d'Anya",
       "image": "/images/trophies/characters/spy-x-family/Becky_Blackbell_Anime.webp",
       "rarity": "épique",
@@ -111,6 +123,7 @@
     {
       "id": "trophy_013",
       "name": "Franky Franklin",
+      "series": "Spy × Family",
       "description": "L'informateur et ami fidèle de Loid",
       "image": "/images/trophies/characters/spy-x-family/Franky_Franklin_Anime.webp",
       "rarity": "rare",
@@ -120,6 +133,7 @@
     {
       "id": "trophy_014",
       "name": "Yuri Briar",
+      "series": "Spy × Family",
       "description": "Le frère protecteur de Yor et membre de la police secrète",
       "image": "/images/trophies/characters/spy-x-family/Yuri_Briar_Anime_2.webp",
       "rarity": "rare",
@@ -129,6 +143,7 @@
     {
       "id": "trophy_015",
       "name": "Sylvia Sherwood",
+      "series": "Spy × Family",
       "description": "La responsable de Loid alias Handler",
       "image": "/images/trophies/characters/spy-x-family/Sylvia_Sherwood_Anime.webp",
       "rarity": "rare",
@@ -138,6 +153,7 @@
     {
       "id": "trophy_016",
       "name": "Henry Henderson",
+      "series": "Spy × Family",
       "description": "Le professeur élégant obsédé par l'élégance",
       "image": "/images/trophies/characters/spy-x-family/Henry_Henderson_Anime.webp",
       "rarity": "rare",
@@ -147,6 +163,7 @@
     {
       "id": "trophy_017",
       "name": "Donovan Desmond",
+      "series": "Spy × Family",
       "description": "Le père mystérieux de Damian et cible de la mission",
       "image": "/images/trophies/characters/spy-x-family/Donovan_Desmond_Anime.webp",
       "rarity": "épique",
@@ -156,6 +173,7 @@
     {
       "id": "trophy_018",
       "name": "Melinda Desmond",
+      "series": "Spy × Family",
       "description": "La mère énigmatique de Damian",
       "image": "/images/trophies/characters/spy-x-family/Melinda_Desmond_Anime.webp",
       "rarity": "rare",
@@ -165,6 +183,7 @@
     {
       "id": "trophy_019",
       "name": "Emile Elman",
+      "series": "Spy × Family",
       "description": "L'ami fidèle et admirateur de Damian",
       "image": "/images/trophies/characters/spy-x-family/Emile_Elman_Anime.webp",
       "rarity": "commun",
@@ -174,6 +193,7 @@
     {
       "id": "trophy_020",
       "name": "Ewen Egeburg",
+      "series": "Spy × Family",
       "description": "L'autre ami loyal de Damian",
       "image": "/images/trophies/characters/spy-x-family/Ewen_Egeburg_Anime.webp",
       "rarity": "commun",
@@ -183,6 +203,7 @@
     {
       "id": "trophy_021",
       "name": "Camilla",
+      "series": "Spy × Family",
       "description": "La collègue jalouse de Yor à l'hôtel de ville",
       "image": "/images/trophies/characters/spy-x-family/Camilla_Anime.webp",
       "rarity": "commun",
@@ -192,6 +213,7 @@
     {
       "id": "trophy_022",
       "name": "Dominic",
+      "series": "Spy × Family",
       "description": "Le collègue sympathique de Yor",
       "image": "/images/trophies/characters/spy-x-family/Dominic_Anime.webp",
       "rarity": "commun",
@@ -201,6 +223,7 @@
     {
       "id": "trophy_023",
       "name": "Martha Marriott",
+      "series": "Spy × Family",
       "description": "La matronne de l'école Eden",
       "image": "/images/trophies/characters/spy-x-family/Martha_Marriott_Anime_Infobox.webp",
       "rarity": "commun",
@@ -210,6 +233,7 @@
     {
       "id": "trophy_024",
       "name": "Matthew McMahon",
+      "series": "Spy × Family",
       "description": "Le directeur de l'école Eden",
       "image": "/images/trophies/characters/spy-x-family/Matthew_McMahon_Anime_Infobox.webp",
       "rarity": "commun",
@@ -219,6 +243,7 @@
     {
       "id": "trophy_025",
       "name": "Le Commerçant",
+      "series": "Spy × Family",
       "description": "Le marchand mystérieux d'informations",
       "image": "/images/trophies/characters/spy-x-family/Shopkeeper_Anime_Infobox.webp",
       "rarity": "commun",

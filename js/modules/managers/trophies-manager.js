@@ -57,7 +57,7 @@ export class TrophiesManager {
         const unlocked = rewardsManager.getUnlockedTrophies();
         const rewards = rewardsManager.getRewards();
         const canUnlock = rewards.totalPoints >= 5;
-        
+
         // Mapping des rarités pour affichage
         const rarityLabels = {
             'commun': 'Commun',
@@ -65,7 +65,7 @@ export class TrophiesManager {
             'épique': 'Épique',
             'légendaire': 'Légendaire'
         };
-        
+
         container.innerHTML = this.trophiesData.trophies.map(trophy => {
             const isUnlocked = unlocked.includes(trophy.id);
             const rarityClass = `rarity-${trophy.rarity}`;
@@ -73,51 +73,176 @@ export class TrophiesManager {
             const rarityLabel = rarityLabels[trophy.rarity] || trophy.rarity.toUpperCase();
             
             return `
-                <div class="trophy-card-pokemon bg-gray-800 rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''}">
-                    <!-- Image Section (Large portrait image) -->
-                    <div class="relative w-full h-96 bg-gray-700 flex items-center justify-center overflow-hidden">
-                        ${isUnlocked ? `
-                            <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-contain">
-                            <div class="absolute top-3 right-3">
-                                <span class="inline-block px-3 py-1 ${badgeClass} rounded-full text-xs font-bold shadow-lg">
-                                    <i class="bi bi-star-fill mr-1"></i>${rarityLabel}
-                                </span>
-                            </div>
-                        ` : `
-                            <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-contain blur-xl opacity-30">
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+                <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative" style="aspect-ratio: 9/16; background-image: url('${trophy.image}'); background-size: cover; background-position: center;">
+                    ${isUnlocked ? `
+                        <!-- Badge rareté en haut à droite -->
+                        <div class="absolute top-2 right-2 z-10">
+                            <span class="inline-block px-2 py-1 ${badgeClass} rounded-full text-xs font-bold shadow-lg">
+                                <i class="bi bi-star-fill mr-1"></i>${rarityLabel}
+                            </span>
+                        </div>
+                    ` : `
+                        <!-- Overlay de verrouillage -->
+                        <div class="absolute inset-0 backdrop-blur-xl bg-black/60">
+                            <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="text-center">
-                                    <i class="bi bi-lock-fill text-7xl opacity-60 mb-2"></i>
+                                    <i class="bi bi-lock-fill text-5xl opacity-60 mb-2"></i>
                                     <p class="text-gray-300 text-sm font-semibold">À débloquer</p>
                                 </div>
                             </div>
-                        `}
-                    </div>
-                    
-                    <!-- Card Info Section -->
-                    <div class="p-4 space-y-3 bg-gradient-to-t from-gray-900 to-gray-800">
-                        <div>
-                            <h3 class="font-bold text-base leading-tight">${trophy.name}</h3>
-                            <p class="text-gray-400 text-xs">${trophy.description}</p>
                         </div>
-                        
+                    `}
+
+                    <!-- Dégradé transparent vers noir en bas -->
+                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
+                        <div class="space-y-1">
+                            ${trophy.series ? `<p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
+                            <h3 class="font-bold text-base leading-tight">${trophy.name}</h3>
+                            <p class="text-gray-300 text-xs line-clamp-2">${trophy.description}</p>
+                        </div>
+
                         ${isUnlocked ? `
-                            <div class="flex items-center justify-between pt-2 border-t border-gray-700">
-                                <span class="text-xs text-gray-400 font-semibold uppercase tracking-wide">Collectée ✓</span>
-                                <a href="${trophy.image}" download class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-500/30 hover:bg-blue-500/50 text-blue-400 hover:text-blue-300 transition transform hover:scale-110" title="Télécharger">
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-700/50">
+                                <span class="text-xs text-gray-400 font-semibold uppercase tracking-wide">✓ Débloqué</span>
+                                <a href="${trophy.image}" download class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-500/30 hover:bg-blue-500/50 text-blue-400 hover:text-blue-300 transition transform hover:scale-110" title="Télécharger">
                                     <i class="bi bi-download text-sm"></i>
                                 </a>
                             </div>
                         ` : `
-                            <div class="bg-gray-700/70 rounded-lg p-2 border border-yellow-500/40">
-                                <p class="text-xs text-gray-300 mb-1 font-semibold">Code secret :</p>
-                                <p class="font-mono text-xs font-bold text-yellow-300 tracking-widest">${trophy.secretCode}</p>
+                            <div class="bg-gray-700/70 backdrop-blur-sm rounded p-2 border border-yellow-500/40">
+                                <p class="text-xs text-yellow-300 font-mono font-bold text-center tracking-wider">${trophy.secretCode}</p>
                             </div>
                         `}
                     </div>
                 </div>
             `;
         }).join('');
+
+        // Ajouter l'effet 3D sur les cartes débloquées
+        this.add3DEffect();
+    }
+
+    add3DEffect() {
+        const cards = document.querySelectorAll('.trophy-card-pokemon.trophy-unlocked');
+
+        cards.forEach(card => {
+            // Initialiser les variables CSS par défaut
+            card.style.setProperty('--shine-x', '50%');
+            card.style.setProperty('--shine-y', '50%');
+            card.style.setProperty('--shine-angle', '115deg');
+
+            // Gestion souris
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('hover-active');
+            });
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                // Position du reflet (en pourcentage)
+                const percentX = (x / rect.width) * 100;
+                const percentY = (y / rect.height) * 100;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+
+                // Mettre à jour la position du reflet - décalé par rapport au pointeur
+                card.style.setProperty('--shine-x', `${percentX}%`);
+                card.style.setProperty('--shine-y', `${percentY}%`);
+
+                // Calculer l'angle pour le gradient arc-en-ciel
+                const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
+                card.style.setProperty('--shine-angle', `${angle}deg`);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('hover-active');
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                card.style.setProperty('--shine-x', '50%');
+                card.style.setProperty('--shine-y', '50%');
+                card.style.setProperty('--shine-angle', '115deg');
+            });
+
+            // Gestion tactile (mobile) - Phase progressive
+            card.addEventListener('touchstart', (e) => {
+                // Phase 1 : Affichage estompé de l'effet dès le toucher
+                card.classList.add('touch-start');
+
+                // Obtenir la position initiale du toucher
+                if (e.touches[0]) {
+                    const touch = e.touches[0];
+                    const rect = card.getBoundingClientRect();
+                    const x = touch.clientX - rect.left;
+                    const y = touch.clientY - rect.top;
+
+                    const percentX = (x / rect.width) * 100;
+                    const percentY = (y / rect.height) * 100;
+
+                    // Positionner le reflet à l'endroit du toucher initial
+                    card.style.setProperty('--shine-x', `${percentX}%`);
+                    card.style.setProperty('--shine-y', `${percentY}%`);
+                }
+            });
+
+            card.addEventListener('touchmove', (e) => {
+                if (!e.touches[0]) return;
+
+                // Phase 2 : Activation complète de l'effet lors du mouvement
+                if (card.classList.contains('touch-start')) {
+                    card.classList.remove('touch-start');
+                    card.classList.add('touch-active');
+                }
+
+                const touch = e.touches[0];
+                const rect = card.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                // Position du reflet (en pourcentage)
+                const percentX = (x / rect.width) * 100;
+                const percentY = (y / rect.height) * 100;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+
+                // Mettre à jour la position du reflet
+                card.style.setProperty('--shine-x', `${percentX}%`);
+                card.style.setProperty('--shine-y', `${percentY}%`);
+
+                // Calculer l'angle pour le gradient arc-en-ciel
+                const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
+                card.style.setProperty('--shine-angle', `${angle}deg`);
+            });
+
+            card.addEventListener('touchend', () => {
+                // Phase 3 : Reset complet
+                card.classList.remove('touch-start', 'touch-active');
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                card.style.setProperty('--shine-x', '50%');
+                card.style.setProperty('--shine-y', '50%');
+                card.style.setProperty('--shine-angle', '115deg');
+            });
+
+            card.addEventListener('touchcancel', () => {
+                card.classList.remove('touch-start', 'touch-active');
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                card.style.setProperty('--shine-x', '50%');
+                card.style.setProperty('--shine-y', '50%');
+                card.style.setProperty('--shine-angle', '115deg');
+            });
+        });
     }
 
     setupEventListeners() {
