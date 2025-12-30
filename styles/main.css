@@ -396,19 +396,34 @@
 
 /* Niveaux de Rareté */
 
-.rarity-commun {
+/* Cartes masquées - toujours grises/neutres */
+.trophy-card-pokemon:not(.trophy-unlocked) {
+  border-color: rgb(75, 85, 99) !important;
+  background: rgba(75, 85, 99, 0.15) !important;
+}
+
+/* Commun - Gris */
+.rarity-commun.trophy-unlocked {
   border-color: rgb(107, 114, 128);
   background: rgba(107, 114, 128, 0.15);
 }
 
-.rarity-rare {
+/* Rare - Bleu */
+.rarity-rare.trophy-unlocked {
   border-color: rgb(59, 130, 246);
   background: rgba(59, 130, 246, 0.15);
 }
 
-.rarity-epique {
-  border-color: rgb(245, 158, 11);
-  background: rgba(245, 158, 11, 0.15);
+/* Épique - Violet */
+.rarity-épique.trophy-unlocked {
+  border-color: rgb(147, 51, 234);
+  background: rgba(147, 51, 234, 0.15);
+}
+
+/* Légendaire - Orange */
+.rarity-légendaire.trophy-unlocked {
+  border-color: rgb(249, 115, 22);
+  background: rgba(249, 115, 22, 0.15);
 }
 
 .badge-commun {
@@ -421,9 +436,15 @@
   color: white;
 }
 
-.badge-epique {
-  background: rgb(245, 158, 11);
-  color: rgb(17, 24, 39);
+.badge-épique {
+  background: rgb(147, 51, 234);
+  color: white;
+  font-weight: 600;
+}
+
+.badge-légendaire {
+  background: rgb(249, 115, 22);
+  color: white;
   font-weight: 600;
 }
 

@@ -62,7 +62,8 @@ export class TrophiesManager {
         const rarityLabels = {
             'commun': 'Commun',
             'rare': 'Rare',
-            'épique': 'Épique'
+            'épique': 'Épique',
+            'légendaire': 'Légendaire'
         };
         
         container.innerHTML = this.trophiesData.trophies.map(trophy => {
@@ -76,14 +77,14 @@ export class TrophiesManager {
                     <!-- Image Section (Large portrait image) -->
                     <div class="relative w-full h-96 bg-gray-700 flex items-center justify-center overflow-hidden">
                         ${isUnlocked ? `
-                            <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-cover">
+                            <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-contain">
                             <div class="absolute top-3 right-3">
                                 <span class="inline-block px-3 py-1 ${badgeClass} rounded-full text-xs font-bold shadow-lg">
                                     <i class="bi bi-star-fill mr-1"></i>${rarityLabel}
                                 </span>
                             </div>
                         ` : `
-                            <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-cover blur-xl opacity-30">
+                            <img src="${trophy.image}" alt="${trophy.name}" class="w-full h-full object-contain blur-xl opacity-30">
                             <div class="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
                                 <div class="text-center">
                                     <i class="bi bi-lock-fill text-7xl opacity-60 mb-2"></i>

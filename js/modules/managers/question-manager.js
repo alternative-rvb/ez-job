@@ -135,16 +135,26 @@ export class QuestionManager {
             btn.addEventListener('click', (e) => {
                 if (!quizState.isAnswered) {
                     e.preventDefault();
-                    btn.blur();
+                    e.stopPropagation();
+                    // Retirer immédiatement le focus
+                    setTimeout(() => btn.blur(), 0);
                     this.selectAnswer(parseInt(btn.dataset.answerIndex));
                 }
             });
             // Empêcher le focus visuel de rester après le clic
-            btn.addEventListener('mouseup', () => {
-                btn.blur();
+            btn.addEventListener('mouseup', (e) => {
+                e.preventDefault();
+                setTimeout(() => btn.blur(), 0);
             });
-            btn.addEventListener('touchend', () => {
-                btn.blur();
+            btn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                setTimeout(() => btn.blur(), 0);
+            });
+            // Retirer le focus si le bouton le reçoit
+            btn.addEventListener('focus', (e) => {
+                if (quizState.isAnswered) {
+                    e.target.blur();
+                }
             });
         });
         
@@ -298,7 +308,15 @@ export class QuestionManager {
 
     handleNormalMode(answerIndex, question, answerButtons) {
         // Retirer immédiatement le focus de tous les boutons
-        answerButtons.forEach(btn => btn.blur());
+        answerButtons.forEach(btn => {
+            btn.blur();
+            btn.style.outline = 'none';
+        });
+
+        // Forcer la suppression du focus après un micro-délai
+        setTimeout(() => {
+            answerButtons.forEach(btn => btn.blur());
+        }, 0);
 
         // Animation de sélection
         if (answerIndex >= 0) {
@@ -316,6 +334,7 @@ export class QuestionManager {
 
                 btn.disabled = true;
                 btn.blur(); // Retirer à nouveau le focus après avoir désactivé
+                btn.style.outline = 'none';
                 btn.classList.remove('hover:bg-gray-600', 'hover:border-primary-500');
 
                 if (isCorrect) {
@@ -338,6 +357,8 @@ export class QuestionManager {
 
             // Passer à la question suivante après un délai
             setTimeout(() => {
+                // Retirer le focus une dernière fois avant de changer de question
+                answerButtons.forEach(btn => btn.blur());
                 quizState.nextQuestion();
                 this.showQuestion();
             }, 2500);
