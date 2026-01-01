@@ -500,17 +500,15 @@ export class TrophiesManager {
                 img.style.webkitTouchCallout = 'none';
             }
 
-            // Appliquer aussi sur la carte entière pour les trophées verrouillés
-            if (!card.classList.contains('trophy-unlocked')) {
-                card.addEventListener('contextmenu', (e) => {
-                    e.preventDefault();
-                    return false;
-                });
+            // Appliquer aussi sur toutes les cartes (verrouillées et débloquées)
+            card.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                return false;
+            });
 
-                card.style.userSelect = 'none';
-                card.style.webkitUserSelect = 'none';
-                card.style.webkitTouchCallout = 'none';
-            }
+            card.style.userSelect = 'none';
+            card.style.webkitUserSelect = 'none';
+            card.style.webkitTouchCallout = 'none';
         });
     }
 
