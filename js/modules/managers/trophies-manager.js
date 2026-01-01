@@ -74,7 +74,7 @@ export class TrophiesManager {
             
             return `
                 <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative bg-gray-900" style="aspect-ratio: 9/16;">
-                    <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain p-4" />
+                    <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" />
                     ${isUnlocked ? '' : `
                         <!-- Overlay de verrouillage -->
                         <div class="absolute inset-0 backdrop-blur-xl bg-black/60">
@@ -302,7 +302,7 @@ export class TrophiesManager {
                 </button>
 
                 <!-- Image -->
-                <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain p-4" />
+                <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" />
 
                 <!-- Dégradé transparent vers noir en bas -->
                 <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
