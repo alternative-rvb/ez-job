@@ -127,6 +127,9 @@ export class TrophiesManager {
 
         // Ajouter l'effet 3D sur les cartes débloquées
         this.add3DEffect();
+
+        // Empêcher le clic long sur les images des trophées verrouillés
+        this.preventLongPress();
     }
 
     add3DEffect() {
@@ -465,6 +468,49 @@ export class TrophiesManager {
             card.style.setProperty('--shine-x', '50%');
             card.style.setProperty('--shine-y', '50%');
             card.style.setProperty('--shine-angle', '115deg');
+        });
+    }
+
+    preventLongPress() {
+        // Sélectionner toutes les cartes de trophées (verrouillées et débloquées)
+        const allCards = document.querySelectorAll('.trophy-card-pokemon');
+
+        allCards.forEach(card => {
+            const img = card.querySelector('img');
+            if (img) {
+                // Empêcher le menu contextuel (clic droit / clic long)
+                img.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+
+                // Empêcher la sélection de l'image
+                img.style.userSelect = 'none';
+                img.style.webkitUserSelect = 'none';
+                img.style.mozUserSelect = 'none';
+                img.style.msUserSelect = 'none';
+
+                // Empêcher le drag and drop de l'image
+                img.addEventListener('dragstart', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+
+                // Empêcher le touch callout sur iOS (menu qui apparaît au clic long)
+                img.style.webkitTouchCallout = 'none';
+            }
+
+            // Appliquer aussi sur la carte entière pour les trophées verrouillés
+            if (!card.classList.contains('trophy-unlocked')) {
+                card.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+
+                card.style.userSelect = 'none';
+                card.style.webkitUserSelect = 'none';
+                card.style.webkitTouchCallout = 'none';
+            }
         });
     }
 
