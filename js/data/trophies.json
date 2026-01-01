@@ -5,8 +5,8 @@
       "name": "Wendy",
       "series": "Les Sisters",
       "description": "La grande sœur rebelle et passionnée",
-      "image": "/images/trophies/characters/les-sisters/wendy.webp",
-      "rarity": "épique",
+      "image": "/images/trophies/characters/les-sisters/personnage-sisters-wendy.webp",
+      "rarity": "légendaire",
       "order": 1,
       "secretCode": "WENDY2025"
     },
@@ -15,50 +15,10 @@
       "name": "Marine",
       "series": "Les Sisters",
       "description": "La petite sœur malicieuse et pleine d'énergie",
-      "image": "/images/trophies/characters/les-sisters/marine.webp",
-      "rarity": "épique",
+      "image": "/images/trophies/characters/les-sisters/personnage-sisters-marine.webp",
+      "rarity": "légendaire",
       "order": 2,
       "secretCode": "MARINE2025"
-    },
-    {
-      "id": "trophy_003",
-      "name": "Maxence",
-      "series": "Les Sisters",
-      "description": "Le meilleur ami cool et décontracté",
-      "image": "/images/trophies/characters/les-sisters/maxence.webp",
-      "rarity": "rare",
-      "order": 3,
-      "secretCode": "MAXENCE25"
-    },
-    {
-      "id": "trophy_004",
-      "name": "William",
-      "series": "Les Sisters",
-      "description": "Le père architecte toujours occupé",
-      "image": "/images/trophies/characters/les-sisters/william.webp",
-      "rarity": "rare",
-      "order": 4,
-      "secretCode": "WILLIAM25"
-    },
-    {
-      "id": "trophy_005",
-      "name": "Sandrine",
-      "series": "Les Sisters",
-      "description": "La mère styliste attentive",
-      "image": "/images/trophies/characters/les-sisters/sandrine.webp",
-      "rarity": "rare",
-      "order": 5,
-      "secretCode": "SANDRINE25"
-    },
-    {
-      "id": "trophy_006",
-      "name": "Guitariste Passionnée",
-      "series": "Les Sisters",
-      "description": "Wendy et sa guitare inséparable",
-      "image": "/images/trophies/characters/les-sisters/personnage-sisters-01.webp",
-      "rarity": "commun",
-      "order": 6,
-      "secretCode": "GUITAR25"
     },
     {
       "id": "trophy_007",
@@ -249,6 +209,106 @@
       "rarity": "commun",
       "order": 25,
       "secretCode": "SHOP2025"
+    },
+    {
+      "id": "trophy_026",
+      "name": "Bob l'Éponge",
+      "series": "Bob l'Éponge",
+      "description": "L'éponge optimiste qui vit dans un ananas sous la mer",
+      "image": "/images/trophies/characters/spongebob/SpongeBob_stock_art.webp",
+      "rarity": "légendaire",
+      "order": 26,
+      "secretCode": "SPONGEBOB25"
+    },
+    {
+      "id": "trophy_027",
+      "name": "Patrick Étoile",
+      "series": "Bob l'Éponge",
+      "description": "Le meilleur ami naïf et attachant de Bob",
+      "image": "/images/trophies/characters/spongebob/Patrick_stock_art.webp",
+      "rarity": "légendaire",
+      "order": 27,
+      "secretCode": "PATRICK25"
+    },
+    {
+      "id": "trophy_028",
+      "name": "Carlo Tentacule",
+      "series": "Bob l'Éponge",
+      "description": "Le voisin grincheux et artiste incompris",
+      "image": "/images/trophies/characters/spongebob/Squidward_stock_art.webp",
+      "rarity": "épique",
+      "order": 28,
+      "secretCode": "SQUIDWARD25"
+    },
+    {
+      "id": "trophy_029",
+      "name": "Sandy Écureuil",
+      "series": "Bob l'Éponge",
+      "description": "L'écureuil scientifique du Texas pleine de ressources",
+      "image": "/images/trophies/characters/spongebob/Sandy_stock_art.webp",
+      "rarity": "épique",
+      "order": 29,
+      "secretCode": "SANDY2025"
+    },
+    {
+      "id": "trophy_030",
+      "name": "M. Krabs",
+      "series": "Bob l'Éponge",
+      "description": "Le patron avare du Crabe Croustillant",
+      "image": "/images/trophies/characters/spongebob/Krabs_artwork.webp",
+      "rarity": "épique",
+      "order": 30,
+      "secretCode": "KRABS2025"
+    },
+    {
+      "id": "trophy_031",
+      "name": "Plankton",
+      "series": "Bob l'Éponge",
+      "description": "Le petit ennemi qui convoite la formule secrète",
+      "image": "/images/trophies/characters/spongebob/Plankton_stock_art.webp",
+      "rarity": "rare",
+      "order": 31,
+      "secretCode": "PLANKTON25"
+    },
+    {
+      "id": "trophy_032",
+      "name": "Gary",
+      "series": "Bob l'Éponge",
+      "description": "L'escargot de compagnie intelligent de Bob",
+      "image": "/images/trophies/characters/spongebob/Gary_looking_up_stock_art.webp",
+      "rarity": "rare",
+      "order": 32,
+      "secretCode": "GARY2025"
+    },
+    {
+      "id": "trophy_033",
+      "name": "Mme Puff",
+      "series": "Bob l'Éponge",
+      "description": "La professeure de conduite perpétuellement stressée",
+      "image": "/images/trophies/characters/spongebob/Mrs_Puff_stock_art.webp",
+      "rarity": "rare",
+      "order": 33,
+      "secretCode": "MRSPUFF25"
+    },
+    {
+      "id": "trophy_034",
+      "name": "Karen",
+      "series": "Bob l'Éponge",
+      "description": "L'ordinateur sarcastique et femme de Plankton",
+      "image": "/images/trophies/characters/spongebob/Karen-blue-form-stock-art.webp",
+      "rarity": "rare",
+      "order": 34,
+      "secretCode": "KAREN2025"
+    },
+    {
+      "id": "trophy_035",
+      "name": "Perle Krabs",
+      "series": "Bob l'Éponge",
+      "description": "La fille adolescente baleine de M. Krabs",
+      "image": "/images/trophies/characters/spongebob/SpongeBob_SquarePants_-_Pearl_Krabs_promo_art.webp",
+      "rarity": "commun",
+      "order": 35,
+      "secretCode": "PEARL2025"
     }
   ]
 }

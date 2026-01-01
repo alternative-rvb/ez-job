@@ -1,0 +1,179 @@
+{
+  "config": {
+    "title": "Les genres littéraires",
+    "description": "Teste tes connaissances sur les différents types de textes en littérature",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": "Facile",
+    "questionCount": 15,
+    "category": "CM2",
+    "tag": ["Français", "Littérature"]
+  },
+  "questions": [
+    {
+      "question": "Quel genre littéraire raconte une histoire réelle ou inventée ?",
+      "choices": [
+        "Le texte narratif",
+        "Le texte documentaire",
+        "Le texte poétique",
+        "Le texte descriptif"
+      ],
+      "correctAnswer": "Le texte narratif",
+      "imageUrl": null
+    },
+    {
+      "question": "Quel genre littéraire donne des informations vraies sur un sujet ?",
+      "choices": [
+        "Le texte documentaire",
+        "Le texte narratif",
+        "Le texte théâtral",
+        "Le texte poétique"
+      ],
+      "correctAnswer": "Le texte documentaire",
+      "imageUrl": null
+    },
+    {
+      "question": "Un conte appartient à quel genre littéraire ?",
+      "choices": [
+        "Le texte narratif",
+        "Le texte poétique",
+        "Le texte documentaire",
+        "Le texte descriptif"
+      ],
+      "correctAnswer": "Le texte narratif",
+      "imageUrl": null
+    },
+    {
+      "question": "Quel genre littéraire utilise des rimes et des jeux de sons ?",
+      "choices": [
+        "Le texte poétique",
+        "Le texte narratif",
+        "Le texte documentaire",
+        "Le texte théâtral"
+      ],
+      "correctAnswer": "Le texte poétique",
+      "imageUrl": null
+    },
+    {
+      "question": "Une pièce de théâtre appartient à quel genre littéraire ?",
+      "choices": [
+        "Le texte théâtral",
+        "Le texte narratif",
+        "Le texte poétique",
+        "Le texte descriptif"
+      ],
+      "correctAnswer": "Le texte théâtral",
+      "imageUrl": null
+    },
+    {
+      "question": "Quel genre littéraire décrit un lieu, une personne ou un paysage ?",
+      "choices": [
+        "Le texte descriptif",
+        "Le texte narratif",
+        "Le texte documentaire",
+        "Le texte théâtral"
+      ],
+      "correctAnswer": "Le texte descriptif",
+      "imageUrl": null
+    },
+    {
+      "question": "Un article d'encyclopédie est un exemple de quel genre ?",
+      "choices": [
+        "Le texte documentaire",
+        "Le texte narratif",
+        "Le texte poétique",
+        "Le texte descriptif"
+      ],
+      "correctAnswer": "Le texte documentaire",
+      "imageUrl": null
+    },
+    {
+      "question": "Quel genre littéraire est écrit pour être joué sur scène ?",
+      "choices": [
+        "Le texte théâtral",
+        "Le texte narratif",
+        "Le texte poétique",
+        "Le texte documentaire"
+      ],
+      "correctAnswer": "Le texte théâtral",
+      "imageUrl": null
+    },
+    {
+      "question": "Une chanson peut appartenir à quel genre littéraire ?",
+      "choices": [
+        "Le texte poétique",
+        "Le texte documentaire",
+        "Le texte descriptif",
+        "Le texte narratif"
+      ],
+      "correctAnswer": "Le texte poétique",
+      "imageUrl": null
+    },
+    {
+      "question": "Quel genre littéraire contient des personnages, des lieux et de l'action ?",
+      "choices": [
+        "Le texte narratif",
+        "Le texte documentaire",
+        "Le texte descriptif",
+        "Le texte poétique"
+      ],
+      "correctAnswer": "Le texte narratif",
+      "imageUrl": null
+    },
+    {
+      "question": "Qu'est-ce qui caractérise le texte théâtral ?",
+      "choices": [
+        "Des dialogues entre personnages",
+        "Des rimes et des métaphores",
+        "Des informations vraies",
+        "Une description détaillée"
+      ],
+      "correctAnswer": "Des dialogues entre personnages",
+      "imageUrl": null
+    },
+    {
+      "question": "Un roman est un exemple de quel genre littéraire ?",
+      "choices": [
+        "Le texte narratif",
+        "Le texte documentaire",
+        "Le texte poétique",
+        "Le texte descriptif"
+      ],
+      "correctAnswer": "Le texte narratif",
+      "imageUrl": null
+    },
+    {
+      "question": "Quel genre littéraire utilise des métaphores et parle de sentiments ?",
+      "choices": [
+        "Le texte poétique",
+        "Le texte documentaire",
+        "Le texte narratif",
+        "Le texte théâtral"
+      ],
+      "correctAnswer": "Le texte poétique",
+      "imageUrl": null
+    },
+    {
+      "question": "Quel est le but principal du texte documentaire ?",
+      "choices": [
+        "Expliquer et faire comprendre",
+        "Raconter une histoire",
+        "Décrire un paysage",
+        "Jouer des personnages"
+      ],
+      "correctAnswer": "Expliquer et faire comprendre",
+      "imageUrl": null
+    },
+    {
+      "question": "Le portrait d'un personnage est un exemple de quel genre ?",
+      "choices": [
+        "Le texte descriptif",
+        "Le texte narratif",
+        "Le texte poétique",
+        "Le texte théâtral"
+      ],
+      "correctAnswer": "Le texte descriptif",
+      "imageUrl": null
+    }
+  ]
+}
