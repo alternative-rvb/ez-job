@@ -148,7 +148,21 @@
         <div class="hidden md:flex items-center space-x-6">
           <a href="/" class="hover:text-primary-400 transition-colors">Home</a>
           <a href="https://alternative-rvb.com" class="hover:text-primary-400 transition-colors">Alternative RVB</a>
-          <div class="flex items-center space-x-3">
+          
+          <!-- Boutons utilisateur (affichés après chargement) -->
+          <div id="nav-user-buttons" class="flex items-center gap-3">
+            <button id="nav-player-btn" class="btn-base btn-secondary whitespace-nowrap hidden">
+              <i class="bi bi-person"></i><span id="nav-player-name"></span>
+            </button>
+            <button id="nav-history-btn" class="btn-base btn-primary whitespace-nowrap hidden">
+              <i class="bi bi-clock-history"></i>Historique
+            </button>
+            <button id="nav-trophies-btn" class="btn-base btn-primary whitespace-nowrap hidden">
+              <i class="bi bi-trophy-fill"></i>Trophées
+            </button>
+          </div>
+
+          <div class="flex items-center space-x-3 border-l border-gray-700 pl-6">
             <a href="https://github.com/alternative-rvb" class="hover:text-primary-400 transition-colors"
               aria-label="GitHub">
               <i class="bi bi-github text-lg"></i>
@@ -171,8 +185,18 @@
       <!-- Menu Mobile Dropdown -->
       <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
         <a href="/" class="block py-2 hover:text-primary-400 transition-colors">Home</a>
-        <a href="https://alternative-rvb.com" class="block py-2 hover:text-primary-400 transition-colors">Alternative
-          RVB</a>
+        <a href="https://alternative-rvb.com" class="block py-2 hover:text-primary-400 transition-colors">Alternative RVB</a>
+        <div id="mobile-user-buttons" class="border-t border-gray-700 mt-4 pt-4 space-y-2">
+          <button id="mobile-player-btn" class="w-full btn-base btn-secondary whitespace-nowrap hidden justify-start">
+            <i class="bi bi-person"></i><span id="mobile-player-name"></span>
+          </button>
+          <button id="mobile-history-btn" class="w-full btn-base btn-primary whitespace-nowrap hidden justify-start">
+            <i class="bi bi-clock-history"></i>Historique
+          </button>
+          <button id="mobile-trophies-btn" class="w-full btn-base btn-primary whitespace-nowrap hidden justify-start">
+            <i class="bi bi-trophy-fill"></i>Trophées
+          </button>
+        </div>
       </div>
     </nav>
   </header>

@@ -116,7 +116,9 @@ class QuizApp {
     }
 
     setupHistoryButtons() {
-        // Bouton historique
+        // ===== Boutons de la section Hero =====
+        
+        // Bouton historique (hero)
         const btnHistory = document.getElementById('btn-show-history');
         if (btnHistory) {
             btnHistory.addEventListener('click', () => {
@@ -124,7 +126,7 @@ class QuizApp {
             });
         }
 
-        // Bouton trophées
+        // Bouton trophées (hero)
         const btnTrophies = document.getElementById('btn-show-trophies');
         if (btnTrophies) {
             btnTrophies.addEventListener('click', () => {
@@ -132,7 +134,7 @@ class QuizApp {
             });
         }
 
-        // Bouton changer de joueur
+        // Bouton changer de joueur (hero)
         const btnChangePlayer = document.getElementById('btn-change-player');
         if (btnChangePlayer) {
             btnChangePlayer.addEventListener('click', () => {
@@ -141,11 +143,68 @@ class QuizApp {
             });
         }
 
-        // Lien du dernier quiz
-        const latestQuizLink = document.getElementById('latest-quiz-link');
-        if (latestQuizLink) {
-            latestQuizLink.addEventListener('click', () => {
-                this.startLatestQuiz();
+        // ===== Boutons du Header Navigation Desktop =====
+        
+        // Bouton joueur (nav)
+        const navPlayerBtn = document.getElementById('nav-player-btn');
+        if (navPlayerBtn) {
+            navPlayerBtn.textContent = `${playerManager.playerName}`;
+            navPlayerBtn.innerHTML = `<i class="bi bi-person"></i><span>${playerManager.playerName}</span>`;
+            navPlayerBtn.classList.remove('hidden');
+            navPlayerBtn.addEventListener('click', () => {
+                playerManager.reset();
+                location.reload();
+            });
+        }
+
+        // Bouton historique (nav)
+        const navHistoryBtn = document.getElementById('nav-history-btn');
+        if (navHistoryBtn) {
+            navHistoryBtn.classList.remove('hidden');
+            navHistoryBtn.addEventListener('click', () => {
+                this.historyManager.show();
+            });
+        }
+
+        // Bouton trophées (nav)
+        const navTrophiesBtn = document.getElementById('nav-trophies-btn');
+        if (navTrophiesBtn) {
+            navTrophiesBtn.classList.remove('hidden');
+            navTrophiesBtn.addEventListener('click', () => {
+                this.trophiesManager.show();
+            });
+        }
+
+        // ===== Boutons du Menu Mobile =====
+        
+        // Bouton joueur (mobile)
+        const mobilePlayerBtn = document.getElementById('mobile-player-btn');
+        if (mobilePlayerBtn) {
+            mobilePlayerBtn.innerHTML = `<i class="bi bi-person"></i><span>${playerManager.playerName}</span>`;
+            mobilePlayerBtn.classList.remove('hidden');
+            mobilePlayerBtn.addEventListener('click', () => {
+                playerManager.reset();
+                location.reload();
+            });
+        }
+
+        // Bouton historique (mobile)
+        const mobileHistoryBtn = document.getElementById('mobile-history-btn');
+        if (mobileHistoryBtn) {
+            mobileHistoryBtn.classList.remove('hidden');
+            mobileHistoryBtn.addEventListener('click', () => {
+                this.historyManager.show();
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        }
+
+        // Bouton trophées (mobile)
+        const mobileTrophiesBtn = document.getElementById('mobile-trophies-btn');
+        if (mobileTrophiesBtn) {
+            mobileTrophiesBtn.classList.remove('hidden');
+            mobileTrophiesBtn.addEventListener('click', () => {
+                this.trophiesManager.show();
+                document.getElementById('mobile-menu').classList.add('hidden');
             });
         }
     }
