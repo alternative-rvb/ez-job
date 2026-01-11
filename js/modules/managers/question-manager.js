@@ -625,7 +625,7 @@ export class QuestionManager {
 
         switch(type) {
             case 'success':
-                icon = '🎉';
+                icon = '<i class="bi bi-check-circle-fill text-green-400"></i>';
                 title = 'Bonne réponse !';
                 subtitle = message;
                 // Afficher la réponse correcte avec le même style
@@ -692,12 +692,12 @@ export class QuestionManager {
                 }
                 break;
             case 'neutral':
-                icon = '📝';
+                icon = '<i class="bi bi-journal-text text-blue-400"></i>';
                 title = 'Réponse enregistrée';
                 subtitle = message;
                 break;
             case 'timeout':
-                icon = '⏰';
+                icon = '<i class="bi bi-clock-fill text-red-400"></i>';
                 title = 'Temps écoulé !';
                 if (userTextAnswer !== null && question && (question.answer || question.acceptedAnswers)) {
                     // Question à saisie de texte - timeout

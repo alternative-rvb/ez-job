@@ -587,6 +587,7 @@
   border: none;
   cursor: pointer;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 /* Primary button style */
@@ -642,4 +643,26 @@
 
 .btn-category.selected {
   box-shadow: 0 0 0 2px rgb(17, 24, 39), 0 0 0 3px currentColor;
+}
+
+/* ===== Hero Section Styles ===== */
+
+#latest-quiz-hero-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#latest-quiz-hero-card:hover {
+  transform: translateY(-4px);
+}
+
+#hero-start-quiz-btn {
+  transition: all 0.3s ease-in-out;
+}
+
+#hero-start-quiz-btn:hover {
+  transform: translateY(-2px);
+}
+
+#hero-start-quiz-btn:active {
+  transform: translateY(0);
 }

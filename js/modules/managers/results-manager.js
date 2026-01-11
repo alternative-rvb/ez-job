@@ -56,19 +56,19 @@ export class ResultsManager {
         let message = '';
         let messageClass = '';
         if (percentage === 100) {
-            message = '🎉 Parfait ! Vous maîtrisez ce quiz !';
+            message = '<i class="bi bi-trophy-fill text-yellow-400"></i> Parfait ! Vous maîtrisez ce quiz !';
             messageClass = 'text-green-400';
         } else if (percentage >= 80) {
-            message = '😊 Très bien ! Continuez comme ça !';
+            message = '<i class="bi bi-emoji-smile-fill text-green-400"></i> Très bien ! Continuez comme ça !';
             messageClass = 'text-green-400';
         } else if (percentage >= 60) {
-            message = '👍 Bien ! Quelques lacunes à combler.';
+            message = '<i class="bi bi-hand-thumbs-up-fill text-yellow-400"></i> Bien ! Quelques lacunes à combler.';
             messageClass = 'text-yellow-400';
         } else if (percentage >= 40) {
-            message = '📚 À améliorer. Révisez un peu !';
+            message = '<i class="bi bi-book-fill text-orange-400"></i> À améliorer. Révisez un peu !';
             messageClass = 'text-orange-400';
         } else {
-            message = '💪 Pas grave ! Rejouez pour progresser !';
+            message = '<i class="bi bi-hand-thumbs-up-fill text-red-400"></i> Pas grave ! Rejouez pour progresser !';
             messageClass = 'text-red-400';
         }
         
@@ -244,7 +244,7 @@ export class ResultsManager {
      */
     getRewardMessage(points, timeLimit) {
         if (points === 0) {
-            return '📝 Score enregistré';
+            return '<i class="bi bi-journal-text text-blue-400"></i> Score enregistré';
         }
 
         const difficultyLabel = {
@@ -254,8 +254,8 @@ export class ResultsManager {
             20: 'Mode Facile (20s)'
         }[timeLimit] || 'Mode Normal';
 
-        const emojis = ['🎉', '✨', '🌟', '💫', '🏆'];
-        const emoji = emojis[Math.min(points - 1, emojis.length - 1)] || '✨';
+        const emojis = ['<i class="bi bi-trophy-fill text-yellow-400"></i>', '<i class="bi bi-star-fill text-yellow-400"></i>', '<i class="bi bi-star-fill text-blue-400"></i>', '<i class="bi bi-star-fill text-purple-400"></i>', '<i class="bi bi-trophy-fill text-green-400"></i>'];
+        const emoji = emojis[Math.min(points - 1, emojis.length - 1)] || '<i class="bi bi-star-fill text-yellow-400"></i>';
 
         return `${emoji} ${difficultyLabel} : +${points} point${points > 1 ? 's' : ''} !`;
     }
@@ -273,7 +273,7 @@ export class ResultsManager {
                 userAnswerText = userAnswer;
             }
             
-            const statusIcon = isCorrect ? '✅' : '❌';
+            const statusIcon = isCorrect ? '<i class="bi bi-check-circle-fill text-green-400"></i>' : '<i class="bi bi-x-circle-fill text-red-400"></i>';
             const statusColor = isCorrect ? 'text-green-400' : 'text-red-400';
             
             return `

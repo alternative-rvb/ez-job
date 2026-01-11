@@ -539,13 +539,13 @@ export class TrophiesManager {
             
             // Vérifier si le trophée est déjà débloqué
             if (rewards.unlockedTrophies.includes(trophyMatch.id)) {
-                this.showMessage('❌ Ce trophée est déjà débloqué!', 'error');
+                this.showMessage('<i class="bi bi-x-circle-fill text-red-400"></i> Ce trophée est déjà débloqué!', 'error');
                 return;
             }
 
             // Vérifier si l'utilisateur a assez de points
             if (rewards.totalPoints < 5) {
-                this.showMessage(`❌ Vous n'avez pas assez de points! (Il vous en faut 5, vous en avez ${rewards.totalPoints})`, 'error');
+                this.showMessage(`<i class="bi bi-x-circle-fill text-red-400"></i> Vous n'avez pas assez de points! (Il vous en faut 5, vous en avez ${rewards.totalPoints})`, 'error');
                 return;
             }
 
@@ -554,7 +554,7 @@ export class TrophiesManager {
             rewards.unlockedTrophies.push(trophyMatch.id);
             rewardsManager.saveRewards(rewards);
 
-            this.showMessage(`✅ Trophée "${trophyMatch.name}" débloqué! (-5 points)`, 'success');
+            this.showMessage(`<i class="bi bi-check-circle-fill text-green-400"></i> Trophée "${trophyMatch.name}" débloqué! (-5 points)`, 'success');
             input.value = '';
             setTimeout(() => {
                 this.renderTrophies();
@@ -565,16 +565,16 @@ export class TrophiesManager {
             const result = rewardsManager.useSecretCode(code);
 
             if (result) {
-                this.showMessage('✅ Trophée débloqué avec succès!', 'success');
+                this.showMessage('<i class="bi bi-check-circle-fill text-green-400"></i> Trophée débloqué avec succès!', 'success');
                 input.value = '';
                 setTimeout(() => {
                     this.renderTrophies();
                     this.updateStats();
                 }, 500);
             } else if (rewardsManager.getRewards().secretCodes[code]?.used) {
-                this.showMessage('❌ Ce code a déjà été utilisé', 'error');
+                this.showMessage('<i class="bi bi-x-circle-fill text-red-400"></i> Ce code a déjà été utilisé', 'error');
             } else {
-                this.showMessage('❌ Code invalide ou inexistant', 'error');
+                this.showMessage('<i class="bi bi-x-circle-fill text-red-400"></i> Code invalide ou inexistant', 'error');
             }
         }
     }

@@ -13,8 +13,8 @@ import { QuestionManager } from './modules/managers/question-manager.js';
 import { ResultsManager } from './modules/managers/results-manager.js';
 import { HistoryManager } from './modules/managers/history-manager.js';
 import { TrophiesManager } from './modules/managers/trophies-manager.js';
-import { shuffleArray, loadQuizData } from './modules/core/utils.js';
-import { initializeCategoryColors } from './modules/core/category-colors.js';
+import { shuffleArray, loadQuizData, getDifficultyIcons } from './modules/core/utils.js';
+import { initializeCategoryColors, getCategoryColors } from './modules/core/category-colors.js';
 
 class QuizApp {
     constructor() {
@@ -105,6 +105,9 @@ class QuizApp {
         const { loadAvailableQuizzes } = await import('./modules/core/utils.js');
         this.availableQuizzes = await loadAvailableQuizzes();
 
+        // Mettre à jour la carte Hero avec le dernier quiz
+        this.updateHeroCard();
+
         // Afficher la sélection des quiz
         await this.quizSelector.show();
 
@@ -135,6 +138,14 @@ class QuizApp {
             btnChangePlayer.addEventListener('click', () => {
                 playerManager.reset();
                 location.reload();
+            });
+        }
+
+        // Lien du dernier quiz
+        const latestQuizLink = document.getElementById('latest-quiz-link');
+        if (latestQuizLink) {
+            latestQuizLink.addEventListener('click', () => {
+                this.startLatestQuiz();
             });
         }
     }
@@ -206,6 +217,68 @@ class QuizApp {
         });
     }
 
+    updateHeroCard() {
+        // Afficher la carte Hero avec le dernier quiz
+        if (this.availableQuizzes.length === 0) {
+            console.warn('Aucun quiz disponible pour la carte Hero');
+            return;
+        }
+
+        const latestQuiz = this.availableQuizzes[0];
+        const categoryColor = getCategoryColors(latestQuiz.category);
+
+        // Mettre à jour les éléments de la carte Hero
+        const heroQuizTitle = document.getElementById('hero-quiz-title');
+        const heroQuizDescription = document.getElementById('hero-quiz-description');
+        const heroQuizQuestions = document.getElementById('hero-quiz-questions');
+        const heroQuizTime = document.getElementById('hero-quiz-time');
+        const heroQuizCategory = document.getElementById('hero-quiz-category');
+        const heroQuizDifficultyIcons = document.getElementById('hero-quiz-difficulty-icons');
+        const heroQuizDate = document.getElementById('hero-quiz-date');
+        const heroQuizColorDot = document.getElementById('hero-quiz-color-dot');
+        const heroStartBtn = document.getElementById('hero-start-quiz-btn');
+
+        if (heroQuizTitle) heroQuizTitle.textContent = latestQuiz.title;
+        if (heroQuizDescription) heroQuizDescription.textContent = latestQuiz.description || 'Testez vos connaissances avec ce quiz.';
+        if (heroQuizQuestions) heroQuizQuestions.textContent = `${latestQuiz.questionCount} question${latestQuiz.questionCount > 1 ? 's' : ''}`;
+
+        // Calculer le temps estimé
+        const estimatedTime = Math.ceil(latestQuiz.questionCount * CONFIG.timeLimit / 60);
+        if (heroQuizTime) heroQuizTime.textContent = `~${estimatedTime} min`;
+
+        if (heroQuizCategory) heroQuizCategory.textContent = latestQuiz.category;
+        
+        // Afficher les icônes de difficulté
+        if (heroQuizDifficultyIcons) {
+            heroQuizDifficultyIcons.innerHTML = getDifficultyIcons(latestQuiz.difficulty);
+        }
+
+        // Mettre à jour la couleur du point
+        if (heroQuizColorDot) {
+            // Extraire la couleur du badge pour le point
+            const colorClass = categoryColor.badge.match(/bg-\w+-500\/20 text-(\w+-300)/);
+            if (colorClass) {
+                heroQuizColorDot.className = `w-2 h-2 rounded-full bg-${colorClass[1].replace('-300', '-400')}`;
+            } else {
+                heroQuizColorDot.className = 'w-2 h-2 rounded-full bg-primary-400';
+            }
+        }
+
+        // Ajouter l'écouteur au bouton
+        if (heroStartBtn) {
+            heroStartBtn.addEventListener('click', () => {
+                this.startLatestQuiz();
+            });
+        }
+
+        // Mettre à jour la date
+        if (heroQuizDate) {
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+            heroQuizDate.textContent = dateStr;
+        }
+    }
+
     async startQuiz(selectedQuiz) {
         try {
             // Afficher le message de chargement
@@ -238,6 +311,25 @@ class QuizApp {
 
     showResults() {
         this.resultsManager.show();
+    }
+
+    async startLatestQuiz() {
+        try {
+            // Trouver le dernier quiz dans la liste
+            if (this.availableQuizzes.length === 0) {
+                console.error('❌ Aucun quiz disponible');
+                return;
+            }
+            
+            // Récupérer le dernier quiz (premier de la liste, supposé être triée par date)
+            const latestQuiz = this.availableQuizzes[0];
+            console.log('🚀 Starting latest quiz:', latestQuiz.id);
+            
+            // Démarrer le quiz
+            this.startQuiz(latestQuiz);
+        } catch (error) {
+            console.error('❌ Erreur lors du chargement du dernier quiz:', error);
+        }
     }
 
     restartQuiz() {

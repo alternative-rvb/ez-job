@@ -8,10 +8,11 @@
  * @returns {string} - Chaîne d'icônes de flammes
  */
 export function getDifficultyIcons(difficulty) {
+    // Version mise à jour avec icônes Bootstrap
     if (typeof difficulty !== 'number' || difficulty < 1 || difficulty > 5) {
-        return '🔥'; // Par défaut une flamme
+        return '<i class="bi bi-fire text-orange-400"></i>'; // Par défaut une flamme
     }
-    return '🔥'.repeat(difficulty);
+    return '<i class="bi bi-fire text-orange-400"></i>'.repeat(difficulty);
 }
 
 /**
@@ -190,6 +191,13 @@ export async function loadAvailableQuizzes() {
             console.warn(`Quiz ${quizId} non disponible:`, error);
         }
     }
+
+    // Trier les quiz par date créée (les plus récents en premier)
+    availableQuizzes.sort((a, b) => {
+        const dateA = new Date(a.createdAt || '1970-01-01');
+        const dateB = new Date(b.createdAt || '1970-01-01');
+        return dateB - dateA; // Décroissant (plus récents en premier)
+    });
 
     console.log(`✅ ${availableQuizzes.length} quiz chargés avec succès`);
     return availableQuizzes;

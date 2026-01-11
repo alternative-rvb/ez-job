@@ -93,8 +93,8 @@ export class HistoryManager {
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-white mb-1">${result.quizTitle}</h3>
                             <div class="flex gap-2 text-xs">
-                                <span class="px-2 py-1 bg-gray-700 rounded text-gray-300">${getDifficultyIcons(result.difficulty)}</span>
-                                <span class="px-2 py-1 bg-gray-700 rounded text-gray-300">${result.category}</span>
+                                <span class="px-2 py-1 bg-gray-700 rounded text-gray-300 whitespace-nowrap">${getDifficultyIcons(result.difficulty)}</span>
+                                <span class="px-2 py-1 bg-gray-700 rounded text-gray-300 whitespace-nowrap">${result.category}</span>
                             </div>
                         </div>
                         <div class="text-right">
@@ -109,10 +109,10 @@ export class HistoryManager {
                         </div>
                         <div class="flex gap-3 items-center">
                             ${result.pointsEarned !== undefined ? `
-                                <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-xs font-semibold">
+                                <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-xs font-semibold whitespace-nowrap">
                                     <i class="bi bi-star-fill mr-1"></i>+${result.pointsEarned} pt${result.pointsEarned > 1 ? 's' : ''}
                                 </span>
-                                <span class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-xs font-semibold">
+                                <span class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-xs font-semibold whitespace-nowrap">
                                     <i class="bi bi-wallet2 mr-1"></i>Restants: ${result.totalPoints} pts
                                 </span>
                             ` : ''}

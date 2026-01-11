@@ -142,17 +142,17 @@ export class QuizSelector {
                         
                         <!-- Badges -->
                         <div class="flex flex-wrap gap-1 mb-2">
-                            <span class="text-xs px-1 py-0.5 ${categoryColor.badge} rounded font-medium">
+                            <span class="text-xs px-1 py-0.5 ${categoryColor.badge} rounded font-medium whitespace-nowrap">
                                 <i class="bi bi-folder mr-0.5"></i>${quiz.category}
                             </span>
-                            <span class="text-xs px-1 py-0.5 bg-gray-700 text-gray-200 rounded font-medium">
+                            <span class="text-xs px-1 py-0.5 bg-gray-700 text-gray-200 rounded font-medium whitespace-nowrap">
                                 ${getDifficultyIcons(quiz.difficulty)}
                             </span>
                         </div>
                         
                         <!-- Tags (au maximum 1 affiché) -->
                         ${quiz.tag && quiz.tag.length > 0 ? `
-                            <span class="text-xs px-1 py-0.5 bg-gray-700 text-gray-200 rounded font-medium">
+                            <span class="text-xs px-1 py-0.5 bg-gray-700 text-gray-200 rounded font-medium whitespace-nowrap">
                                 <i class="bi bi-tag mr-0.5"></i>${quiz.tag[0]}
                             </span>
                         ` : ''}
