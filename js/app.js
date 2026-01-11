@@ -100,6 +100,7 @@ class QuizApp {
         // Configurer les écouteurs d'événements globaux
         this.setupEventListeners();
         this.setupGameOptions();
+        this.initializeGameOptions();
 
         // Charger la liste des quiz disponibles
         const { loadAvailableQuizzes } = await import('./modules/core/utils.js');
@@ -228,9 +229,10 @@ class QuizApp {
                 // Ajouter la classe selected au bouton cliqué
                 button.classList.add('selected');
 
-                // Mettre à jour la configuration
+                // Mettre à jour la configuration et sauvegarder le choix du joueur
                 const timeLimit = parseInt(button.dataset.time);
                 CONFIG.timeLimit = timeLimit;
+                playerManager.setDefaultTimeLimit(timeLimit);
 
                 // Mettre à jour l'affichage du temps estimé sur les cartes
                 this.updateQuizCardsTime();
@@ -258,6 +260,26 @@ class QuizApp {
                 // Ajouter/retirer la classe free-mode sur le body
                 document.body.classList.toggle('free-mode', isFreeMode);
             });
+        });
+    }
+
+    initializeGameOptions() {
+        // Initialiser les boutons avec les valeurs sauvegardées du joueur
+        const defaultTimeLimit = playerManager.defaultTimeLimit || 10;
+        
+        // Sélectionner le bouton de temps correspondant
+        document.querySelectorAll('.time-option').forEach(button => {
+            const btnTime = parseInt(button.dataset.time);
+            if (btnTime === defaultTimeLimit) {
+                button.classList.add('selected');
+                button.classList.remove('btn-secondary');
+                button.classList.add('btn-primary');
+                CONFIG.timeLimit = defaultTimeLimit;
+            } else {
+                button.classList.remove('selected');
+                button.classList.add('btn-secondary');
+                button.classList.remove('btn-primary');
+            }
         });
     }
 

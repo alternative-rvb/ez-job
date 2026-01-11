@@ -6,6 +6,7 @@ class PlayerManager {
     constructor() {
         this.playerName = this.loadPlayerName();
         this.results = this.loadResults();
+        this.defaultTimeLimit = this.loadDefaultTimeLimit();
     }
 
     // Charger le nom du joueur depuis le localStorage
@@ -24,6 +25,21 @@ class PlayerManager {
         localStorage.setItem('playerName', cleanName);
         console.log(`👤 Joueur: ${cleanName}`);
         return true;
+    }
+
+    // Charger le temps par défaut choisi par le joueur
+    loadDefaultTimeLimit() {
+        const stored = localStorage.getItem('defaultTimeLimit');
+        return stored ? parseInt(stored) : 10; // Défaut: 10 secondes
+    }
+
+    // Sauvegarder le temps par défaut choisi
+    setDefaultTimeLimit(timeLimit) {
+        if ([5, 10, 15, 20].includes(timeLimit)) {
+            this.defaultTimeLimit = timeLimit;
+            localStorage.setItem('defaultTimeLimit', timeLimit.toString());
+            console.log(`⏱️ Temps par défaut: ${timeLimit}s`);
+        }
     }
 
     // Charger tous les résultats depuis le localStorage

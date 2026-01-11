@@ -215,13 +215,20 @@ export class QuizSelector {
             existingModal.remove();
         }
 
-        const timeButtonsHTML = this.timeOptions.map(time => `
-            <button class="time-option-btn py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+        // Récupérer le temps par défaut du joueur
+        const defaultTime = playerManager.defaultTimeLimit || 10;
+
+        const timeButtonsHTML = this.timeOptions.map(time => {
+            const isDefault = time === defaultTime;
+            const defaultClass = isDefault ? 'bg-gradient-to-r from-blue-500 to-blue-400 text-white border border-blue-300' : '';
+            return `
+            <button class="time-option-btn py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 ${defaultClass}"
                     data-time="${time}">
                 <span class="text-2xl font-bold">${time}</span>
                 <span class="block text-xs text-gray-300 mt-1">secondes</span>
             </button>
-        `).join('');
+        `;
+        }).join('');
 
         const modalHTML = `
             <div id="${modalId}" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
