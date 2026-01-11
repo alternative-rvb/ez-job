@@ -1,0 +1,254 @@
+{
+  "config": {
+    "title": "School Days & Clothes",
+    "description": "Apprends les jours de la semaine, les matières et les vêtements en anglais",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": "Facile",
+    "questionCount": 20,
+    "category": "CM2",
+    "tag": ["Anglais", "Débutant", "Vocabulaire"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quel est le premier jour de la semaine en anglais ?",
+      "choices": [
+        "Monday",
+        "Sunday",
+        "Tuesday",
+        "Saturday"
+      ],
+      "correctAnswer": "Monday",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Comment dit-on 'mardi' en anglais ?",
+      "choices": [
+        "Tuesday",
+        "Thursday",
+        "Wednesday",
+        "Friday"
+      ],
+      "correctAnswer": "Tuesday",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Comment dit-on 'mercredi' en anglais ?",
+      "choices": [
+        "Wednesday",
+        "Tuesday",
+        "Thursday",
+        "Weekend"
+      ],
+      "correctAnswer": "Wednesday",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Comment dit-on 'vendredi' en anglais ?",
+      "choices": [
+        "Friday",
+        "Thursday",
+        "Saturday",
+        "Tuesday"
+      ],
+      "correctAnswer": "Friday",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "On Monday morning, I have... (Le lundi matin, j'ai...)",
+      "choices": [
+        "Maths",
+        "Weekend",
+        "Lunch",
+        "Sleep"
+      ],
+      "correctAnswer": "Maths",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "On Tuesday afternoon, I have... (Le mardi après-midi, j'ai...)",
+      "choices": [
+        "English",
+        "Breakfast",
+        "Homework",
+        "Bed"
+      ],
+      "correctAnswer": "English",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Comment dit-on 'le matin' en anglais ?",
+      "choices": [
+        "In the morning",
+        "In the afternoon",
+        "At night",
+        "At lunch"
+      ],
+      "correctAnswer": "In the morning",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Comment dit-on 'l'après-midi' en anglais ?",
+      "choices": [
+        "In the afternoon",
+        "In the morning",
+        "At evening",
+        "At night"
+      ],
+      "correctAnswer": "In the afternoon",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Comment dit-on 'chemise' en anglais ?",
+      "choices": [
+        "Shirt",
+        "Shoes",
+        "Skirt",
+        "Shorts"
+      ],
+      "correctAnswer": "Shirt",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Comment dit-on 'pantalon' en anglais ?",
+      "choices": [
+        "Trousers",
+        "Shirt",
+        "Dress",
+        "Coat"
+      ],
+      "correctAnswer": "Trousers",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Comment dit-on 'jupe' en anglais ?",
+      "choices": [
+        "Skirt",
+        "Shirt",
+        "Shoes",
+        "Socks"
+      ],
+      "correctAnswer": "Skirt",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Comment dit-on 'chaussures' en anglais ?",
+      "choices": [
+        "Shoes",
+        "Shirt",
+        "Shorts",
+        "Socks"
+      ],
+      "correctAnswer": "Shoes",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Comment dit-on 'rouge' en anglais ?",
+      "choices": [
+        "Red",
+        "Blue",
+        "Green",
+        "Yellow"
+      ],
+      "correctAnswer": "Red",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Comment dit-on 'bleu' en anglais ?",
+      "choices": [
+        "Blue",
+        "Black",
+        "Brown",
+        "Red"
+      ],
+      "correctAnswer": "Blue",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Comment dit-on 'vert' en anglais ?",
+      "choices": [
+        "Green",
+        "Grey",
+        "Brown",
+        "Yellow"
+      ],
+      "correctAnswer": "Green",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "I wear a... shirt (Je porte une chemise...)",
+      "choices": [
+        "White",
+        "Monday",
+        "Morning",
+        "Happy"
+      ],
+      "correctAnswer": "White",
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "My shoes are... (Mes chaussures sont...)",
+      "choices": [
+        "Black",
+        "Tuesday",
+        "Big",
+        "School"
+      ],
+      "correctAnswer": "Black",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "On Friday, I have... (Le vendredi, j'ai...)",
+      "choices": [
+        "Physical Education",
+        "Holiday",
+        "Shoes",
+        "Red"
+      ],
+      "correctAnswer": "Physical Education",
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Comment dit-on 'jaune' en anglais ?",
+      "choices": [
+        "Yellow",
+        "Green",
+        "Orange",
+        "Pink"
+      ],
+      "correctAnswer": "Yellow",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "On Wednesday, I have Music... (Le mercredi, j'ai musique...)",
+      "choices": [
+        "In the morning",
+        "On the table",
+        "With red",
+        "At Monday"
+      ],
+      "correctAnswer": "In the morning",
+      "imageUrl": null
+    }
+  ]
+}
