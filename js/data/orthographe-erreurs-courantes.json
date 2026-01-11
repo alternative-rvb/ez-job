@@ -4,7 +4,7 @@
     "description": "Maîtrise l'orthographe des mots sur lesquels les élèves font souvent des erreurs",
     "imageUrl": "",
     "spoilerMode": true,
-    "difficulty": "Moyen",
+    "difficulty": 3,
     "questionCount": 12,
     "category": "CM2",
     "createdAt": "2024-09-25",

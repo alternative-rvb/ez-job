@@ -3,6 +3,18 @@
  */
 
 /**
+ * Génère les icônes de difficulté (flammes) en fonction du niveau
+ * @param {number} difficulty - Niveau de difficulté (1-5)
+ * @returns {string} - Chaîne d'icônes de flammes
+ */
+export function getDifficultyIcons(difficulty) {
+    if (typeof difficulty !== 'number' || difficulty < 1 || difficulty > 5) {
+        return '🔥'; // Par défaut une flamme
+    }
+    return '🔥'.repeat(difficulty);
+}
+
+/**
  * Mélange un tableau (algorithme Fisher-Yates)
  * @param {Array} array - Tableau à mélanger
  * @returns {Array} - Tableau mélangé

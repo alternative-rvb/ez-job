@@ -4,7 +4,7 @@
     "description": "Testez vos connaissances de base en JavaScript",
     "imageUrl": "",
     "spoilerMode": true,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 20,
     "category": "Développement",
     "createdAt": "2024-02-15",

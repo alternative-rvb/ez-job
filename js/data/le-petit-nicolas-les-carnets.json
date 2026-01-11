@@ -4,7 +4,7 @@
     "description": "Teste ta compréhension de cette histoire du Petit Nicolas",
     "imageUrl": "",
     "spoilerMode": false,
-    "difficulty": "Moyen",
+    "difficulty": 3,
     "questionCount": 20,
     "category": "CM2",
     "createdAt": "2024-10-12",

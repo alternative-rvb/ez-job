@@ -4,7 +4,7 @@
     "description": "Apprends à diviser facilement un nombre par 2 et par 4",
     "imageUrl": "",
     "spoilerMode": false,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 10,
     "category": "CM2",
     "createdAt": "2024-07-20",

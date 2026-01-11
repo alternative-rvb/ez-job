@@ -4,7 +4,7 @@
     "description": "Apprends à reconnaître les multiples de 3 et 9",
     "imageUrl": "",
     "spoilerMode": true,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 12,
     "category": "CM2",
     "createdAt": "2024-08-05",

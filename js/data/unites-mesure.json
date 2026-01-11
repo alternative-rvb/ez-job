@@ -4,7 +4,7 @@
     "description": "Maîtrise les conversions de longueur, masse et volume",
     "imageUrl": "",
     "spoilerMode": false,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 10,
     "category": "CM2",
     "createdAt": "2024-09-10",

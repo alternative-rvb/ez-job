@@ -4,7 +4,7 @@
     "description": "Tout sur votre éponge préférée de Bikini Bottom",
     "imageUrl": "/images/quiz/spongebob/spongebob.webp",
     "spoilerMode": true,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 10,
     "category": "Divertissement",
     "createdAt": "2024-10-20",

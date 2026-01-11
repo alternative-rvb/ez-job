@@ -4,7 +4,7 @@
     "description": "Quiz mêlant choix multiples et saisie de réponses pour tester ton vocabulaire anglais",
     "imageUrl": "",
     "spoilerMode": false,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 10,
     "category": "CM2",
     "createdAt": "2026-01-11",

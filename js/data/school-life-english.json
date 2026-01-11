@@ -4,7 +4,7 @@
     "description": "Apprends les jours de la semaine, les matières et les vêtements en anglais",
     "imageUrl": "",
     "spoilerMode": false,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 20,
     "category": "CM2",
     "createdAt": "2026-01-10",

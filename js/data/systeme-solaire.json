@@ -4,7 +4,7 @@
     "description": "Explore les mystères de notre système solaire et des planètes",
     "imageUrl": "/images/quiz/systeme-solaire/systeme-solaire.webp",
     "spoilerMode": true,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 12,
     "category": "CM2",
     "createdAt": "2024-07-25",

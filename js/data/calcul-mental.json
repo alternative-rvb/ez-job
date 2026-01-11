@@ -4,7 +4,7 @@
     "description": "Entraîne-toi au calcul mental avec des additions, soustractions et multiplications adaptées au niveau CE2",
     "imageUrl": "",
     "spoilerMode": false,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 20,
     "category": "CM2",
     "createdAt": "2024-06-15",

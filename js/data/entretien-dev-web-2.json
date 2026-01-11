@@ -4,7 +4,7 @@
     "description": "Questions techniques avancées pour évaluer les compétences techniques des développeurs web (PHP, JavaScript, SQL, Docker, Git)",
     "imageUrl": "",
     "spoilerMode": true,
-    "difficulty": "Difficile",
+    "difficulty": 5,
     "questionCount": 40,
     "category": "Coaching",
     "createdAt": "2024-04-10",

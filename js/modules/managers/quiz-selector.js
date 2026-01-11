@@ -3,7 +3,7 @@
  */
 
 import { CONFIG } from '../core/config.js';
-import { loadAvailableQuizzes } from '../core/utils.js';
+import { loadAvailableQuizzes, getDifficultyIcons } from '../core/utils.js';
 import { domManager } from '../ui/dom.js';
 import { getCategoryColors, initializeCategoryColors } from '../core/category-colors.js';
 import { playerManager } from '../core/player.js';
@@ -146,7 +146,7 @@ export class QuizSelector {
                                 <i class="bi bi-folder mr-0.5"></i>${quiz.category}
                             </span>
                             <span class="text-xs px-1 py-0.5 bg-gray-700 text-gray-200 rounded font-medium">
-                                <i class="bi bi-lightning-charge mr-0.5"></i>${quiz.difficulty}
+                                ${getDifficultyIcons(quiz.difficulty)}
                             </span>
                         </div>
                         

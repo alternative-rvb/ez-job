@@ -4,7 +4,7 @@
     "description": "Teste tes connaissances sur les différents types de textes en littérature",
     "imageUrl": "",
     "spoilerMode": false,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 15,
     "category": "CM2",
     "createdAt": "2024-08-20",

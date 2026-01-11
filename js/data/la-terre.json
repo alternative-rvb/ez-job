@@ -4,7 +4,7 @@
     "description": "Découvre les secrets de notre planète bleue",
     "imageUrl": "/images/quiz/la-terre/la-terre.webp",
     "spoilerMode": true,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 10,
     "category": "CM2",
     "createdAt": "2024-07-10",

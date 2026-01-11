@@ -4,7 +4,7 @@
     "description": "Teste tes connaissances sur les mots qui servent à lier les idées",
     "imageUrl": "",
     "spoilerMode": true,
-    "difficulty": "Facile",
+    "difficulty": 1,
     "questionCount": 10,
     "category": "CM2",
     "createdAt": "2024-06-25",

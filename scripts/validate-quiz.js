@@ -19,8 +19,8 @@ const colors = {
   bold: '\x1b[1m'
 };
 
-// Niveaux de difficulté valides
-const VALID_DIFFICULTIES = ['Facile', 'Moyen', 'Difficile'];
+// Niveaux de difficulté valides (1-5)
+const VALID_DIFFICULTIES = [1, 2, 3, 4, 5];
 
 // Catégories valides
 const VALID_CATEGORIES = [

@@ -4,7 +4,7 @@
     "description": "Découvrez le règne animal",
     "imageUrl": "",
     "spoilerMode": true,
-    "difficulty": "Moyen",
+    "difficulty": 3,
     "questionCount": 20,
     "category": "Divertissement",
     "createdAt": "2024-09-05",

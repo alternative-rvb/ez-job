@@ -4,7 +4,7 @@
     "description": "Explorez les mystères du tigre blanc, une créature rare et majestueuse",
     "imageUrl": "/images/quiz/white-tiger/white-tiger-1.webp",
     "spoilerMode": true,
-    "difficulty": "Moyen",
+    "difficulty": 3,
     "questionCount": 20,
     "category": "Divertissement",
     "createdAt": "2024-11-15",

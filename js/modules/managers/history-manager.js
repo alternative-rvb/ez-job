@@ -4,6 +4,7 @@
 
 import { playerManager } from '../core/player.js';
 import { domManager } from '../ui/dom.js';
+import { getDifficultyIcons } from '../core/utils.js';
 
 export class HistoryManager {
     constructor(onBack) {
@@ -92,7 +93,7 @@ export class HistoryManager {
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-white mb-1">${result.quizTitle}</h3>
                             <div class="flex gap-2 text-xs">
-                                <span class="px-2 py-1 bg-gray-700 rounded text-gray-300">${result.difficulty}</span>
+                                <span class="px-2 py-1 bg-gray-700 rounded text-gray-300">${getDifficultyIcons(result.difficulty)}</span>
                                 <span class="px-2 py-1 bg-gray-700 rounded text-gray-300">${result.category}</span>
                             </div>
                         </div>

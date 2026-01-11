@@ -4,7 +4,7 @@
     "description": "Découvre comment l'école a évolué avec les lois de Jules Ferry",
     "imageUrl": "/images/quiz/jules-ferry-ecole/jules-ferry-ecole.webp",
     "spoilerMode": false,
-    "difficulty": "Moyen",
+    "difficulty": 3,
     "questionCount": 10,
     "category": "CM2",
     "createdAt": "2024-08-10",
