@@ -87,7 +87,7 @@ class QuizApp {
         }
 
         // Initialiser les modules
-        this.quizSelector = new QuizSelector((quiz) => this.startQuiz(quiz));
+        this.quizSelector = new QuizSelector((quiz, selectedTime) => this.startQuiz(quiz, selectedTime));
         this.questionManager = new QuestionManager(() => this.showResults());
         this.resultsManager = new ResultsManager(
             () => this.restartQuiz(),
@@ -326,7 +326,8 @@ class QuizApp {
         // Ajouter l'écouteur au bouton
         if (heroStartBtn) {
             heroStartBtn.addEventListener('click', () => {
-                this.startLatestQuiz();
+                // Afficher le modal de sélection du temps pour le dernier quiz
+                this.quizSelector.showTimeSelector(this.availableQuizzes[0]);
             });
         }
 
@@ -338,8 +339,16 @@ class QuizApp {
         }
     }
 
-    async startQuiz(selectedQuiz) {
+    async startQuiz(selectedQuiz, selectedTime = null) {
         try {
+            // Si un temps est sélectionné, le stocker dans l'état
+            if (selectedTime) {
+                quizState.setTimeLimit(selectedTime);
+            } else {
+                // Sinon, utiliser le temps par défaut de la config
+                quizState.setTimeLimit(CONFIG.timeLimit);
+            }
+
             // Afficher le message de chargement
             domManager.showQuizInterface();
             domManager.updateQuizTitle(selectedQuiz.title);
@@ -394,7 +403,8 @@ class QuizApp {
     restartQuiz() {
         console.log('🔄 App.restartQuiz() called');
         if (quizState.currentQuiz) {
-            this.startQuiz(quizState.currentQuiz);
+            // Redémarrer avec le même temps que le dernier essai
+            this.startQuiz(quizState.currentQuiz, quizState.currentTimeLimit);
         }
     }
 

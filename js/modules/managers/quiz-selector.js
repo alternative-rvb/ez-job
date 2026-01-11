@@ -11,6 +11,8 @@ import { playerManager } from '../core/player.js';
 export class QuizSelector {
     constructor(onQuizSelect) {
         this.onQuizSelect = onQuizSelect;
+        this.timeOptions = [5, 10, 15, 20]; // Options de temps en secondes
+        this.selectedQuiz = null;
     }
 
     async render() {
@@ -192,9 +194,98 @@ export class QuizSelector {
             card.addEventListener('click', () => {
                 const quizId = card.dataset.quizId;
                 const selectedQuiz = this.allQuizzes.find(q => q.id === quizId);
-                if (selectedQuiz && this.onQuizSelect) {
-                    this.onQuizSelect(selectedQuiz);
+                if (selectedQuiz) {
+                    this.showTimeSelector(selectedQuiz);
                 }
+            });
+        });
+    }
+
+    /**
+     * Affiche le modal de sélection du temps
+     * @param {object} quiz - Le quiz sélectionné
+     */
+    showTimeSelector(quiz) {
+        this.selectedQuiz = quiz;
+
+        // Créer le modal
+        const modalId = 'time-selector-modal';
+        let existingModal = document.getElementById(modalId);
+        if (existingModal) {
+            existingModal.remove();
+        }
+
+        const timeButtonsHTML = this.timeOptions.map(time => `
+            <button class="time-option-btn py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+                    data-time="${time}">
+                <span class="text-2xl font-bold">${time}</span>
+                <span class="block text-xs text-gray-300 mt-1">secondes</span>
+            </button>
+        `).join('');
+
+        const modalHTML = `
+            <div id="${modalId}" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
+                <div class="bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full mx-4 border border-gray-700 overflow-hidden">
+                    <!-- En-tête -->
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-6">
+                        <h2 class="text-2xl font-bold text-white mb-1">Sélectionner le temps</h2>
+                        <p class="text-blue-100 text-sm">${quiz.title}</p>
+                    </div>
+
+                    <!-- Contenu -->
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-6 text-center">
+                            Combien de secondes par question ?
+                        </p>
+
+                        <!-- Grille de boutons -->
+                        <div class="grid grid-cols-2 gap-3 mb-6">
+                            ${timeButtonsHTML}
+                        </div>
+
+                        <!-- Bouton Annuler -->
+                        <button class="close-time-modal w-full py-2 px-4 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm font-medium">
+                            Annuler
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Ajouter le modal au DOM
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+        // Ajouter les écouteurs d'événements
+        const modal = document.getElementById(modalId);
+
+        // Bouton Annuler
+        modal.querySelector('.close-time-modal').addEventListener('click', () => {
+            modal.remove();
+        });
+
+        // Fermer en cliquant en dehors du modal
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.remove();
+            }
+        });
+
+        // Boutons de temps
+        modal.querySelectorAll('.time-option-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const selectedTime = parseInt(btn.dataset.time);
+                // Ajouter la classe selected pour le feedback visuel
+                modal.querySelectorAll('.time-option-btn').forEach(b => b.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-blue-400', 'text-white', 'border', 'border-blue-300'));
+                btn.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-blue-400', 'text-white', 'border', 'border-blue-300');
+
+                // Petit délai pour voir l'effet de sélection
+                setTimeout(() => {
+                    if (this.onQuizSelect) {
+                        // Passer à la fois le quiz et le temps sélectionné
+                        this.onQuizSelect(this.selectedQuiz, selectedTime);
+                    }
+                    modal.remove();
+                }, 200);
             });
         });
     }

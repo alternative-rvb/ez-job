@@ -36,7 +36,7 @@ export class ResultsManager {
         console.log(`📊 Score: ${score}/${totalScorable} = ${percentage}%`);
 
         // Calculer et ajouter les points de récompense (en tenant compte du temps limite choisi)
-        const rewardsResult = rewardsManager.addPoints(percentage, quizState.currentQuiz?.title, CONFIG.timeLimit);
+        const rewardsResult = rewardsManager.addPoints(percentage, quizState.currentQuiz?.title, quizState.currentTimeLimit);
 
         // Sauvegarder le résultat avec les points gagnés
         playerManager.saveResult({

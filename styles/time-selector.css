@@ -1,0 +1,55 @@
+/* ===== Sélecteur de Temps Modal ===== */
+
+#time-selector-modal {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#time-selector-modal .bg-gray-800 {
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.time-option-btn {
+  background-color: rgb(55, 65, 81);
+  color: rgb(209, 213, 219);
+  border: 2px solid rgb(75, 85, 99);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.time-option-btn:hover {
+  background-color: rgb(75, 85, 99);
+  border-color: rgb(107, 114, 128);
+  color: rgb(243, 244, 246);
+  transform: scale(1.05);
+}
+
+.time-option-btn:active {
+  transform: scale(0.98);
+}
+
+.time-option-btn.selected,
+.time-option-btn.bg-gradient-to-r {
+  background: linear-gradient(135deg, rgb(59, 130, 246), rgb(96, 165, 250)) !important;
+  color: rgb(255, 255, 255) !important;
+  border-color: rgb(147, 197, 253) !important;
+}

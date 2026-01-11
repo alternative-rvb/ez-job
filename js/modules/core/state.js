@@ -10,6 +10,7 @@ class QuizState {
         this.questions = [];
         this.currentQuestionIndex = 0;
         this.score = 0;
+        this.currentTimeLimit = CONFIG.timeLimit; // Temps par question
         this.timeRemaining = CONFIG.timeLimit;
         this.timerInterval = null;
         this.isAnswered = false;
@@ -24,7 +25,7 @@ class QuizState {
         this.questions = [];
         this.currentQuestionIndex = 0;
         this.score = 0;
-        this.timeRemaining = CONFIG.timeLimit;
+        this.timeRemaining = this.currentTimeLimit;
         this.isAnswered = false;
         this.userAnswers = [];
         this.userAnswersCorrect = [];
@@ -44,6 +45,15 @@ class QuizState {
         this.questions = questions;
     }
 
+    /**
+     * Définit le temps limite par question
+     * @param {number} seconds - Nombre de secondes
+     */
+    setTimeLimit(seconds) {
+        this.currentTimeLimit = seconds;
+        this.timeRemaining = seconds;
+    }
+
     nextQuestion() {
         this.currentQuestionIndex++;
     }
@@ -53,7 +63,7 @@ class QuizState {
     }
 
     startTimer() {
-        this.timeRemaining = CONFIG.timeLimit;
+        this.timeRemaining = this.currentTimeLimit;
         this.isAnswered = false;
     }
 
