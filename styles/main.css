@@ -302,21 +302,44 @@
   transition: all 0.2s var(--animation-ease);
 }
 
-.answer-btn:active {
-  background-color: rgb(var(--color-gray-600)) !important;
-  transform: scale(0.95);
+/* ===== DÉSACTIVATION COMPLÈTE DES ÉTATS FOCUS/ACTIVE (MOBILE FIX) ===== */
+
+/* Désactiver tous les états de focus et active */
+.answer-btn,
+.answer-submit-btn {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  touch-action: manipulation !important;
 }
 
-.answer-btn:focus {
-  outline: none;
-  box-shadow: none;
+.answer-btn:focus,
+.answer-btn:active,
+.answer-btn:focus-visible,
+.answer-btn:focus-within,
+.answer-submit-btn:focus,
+.answer-submit-btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Retirer IMMÉDIATEMENT l'apparence active après le clic */
+.answer-btn:not(.correct):not(.incorrect):active {
+  background-color: rgb(55 65 81) !important; /* Retour à bg-gray-700 */
+  transform: none !important;
   border-color: transparent !important;
 }
 
-.answer-btn:focus-visible {
-  outline: none;
-  box-shadow: none;
-  border-color: transparent !important;
+/* Désactiver TOUS les états après désactivation du bouton */
+.answer-btn:disabled,
+.answer-btn[disabled] {
+  background-color: rgb(55 65 81) !important;
+  border: 2px solid transparent !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* ===== Système de Trophées ===== */

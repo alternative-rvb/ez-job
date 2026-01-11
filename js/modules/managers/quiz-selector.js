@@ -27,17 +27,20 @@ export class QuizSelector {
             
             // Appliquer le filtre de catégories si défini dans CONFIG
             if (CONFIG.categoryFilter && Array.isArray(CONFIG.categoryFilter)) {
-                availableQuizzes = availableQuizzes.filter(quiz => 
+                availableQuizzes = availableQuizzes.filter(quiz =>
                     CONFIG.categoryFilter.includes(quiz.category)
                 );
             }
-            
-            // Trier par catégorie dans l'ordre souhaité
-            const categoryOrder = { 'Divertissement': 1, 'Apprentissage': 2, 'Coaching': 3 };
+
+            // Trier par date de création (du plus récent au plus ancien)
             const sortedQuizzes = availableQuizzes.sort((a, b) => {
-                const orderA = categoryOrder[a.category] || 999;
-                const orderB = categoryOrder[b.category] || 999;
-                return orderA - orderB;
+                // Si pas de createdAt, mettre à la fin
+                if (!a.createdAt && !b.createdAt) return 0;
+                if (!a.createdAt) return 1;
+                if (!b.createdAt) return -1;
+
+                // Trier par date décroissante (plus récent en premier)
+                return new Date(b.createdAt) - new Date(a.createdAt);
             });
             
             this.allQuizzes = sortedQuizzes;
@@ -97,6 +100,9 @@ export class QuizSelector {
             // Récupérer le meilleur résultat pour ce quiz
             const bestResult = this.getBestResult(quiz.id);
 
+            // Vérifier si le quiz est nouveau
+            const isNew = this.isNewQuiz(quiz.createdAt);
+
             return `
                 <div class="group cursor-pointer quiz-card overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 bg-gray-800"
                      data-quiz-id="${quiz.id}">
@@ -104,6 +110,14 @@ export class QuizSelector {
                     <div class="relative h-32 overflow-hidden bg-gray-700">
                         <img src="${imageUrl}" alt="${quiz.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                        ${isNew ? `
+                            <div class="absolute top-2 left-2 bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 rounded shadow-md">
+                                <div class="flex items-center gap-1">
+                                    <i class="bi bi-star-fill text-white text-xs"></i>
+                                    <span class="text-white font-bold text-xs tracking-wide">NEW</span>
+                                </div>
+                            </div>
+                        ` : ''}
                         ${bestResult ? `
                             <div class="absolute top-2 right-2 bg-gray-900/90 backdrop-blur-sm px-2 py-1 rounded shadow-md border border-gray-600/50">
                                 <div class="flex items-center gap-1">
@@ -200,6 +214,21 @@ export class QuizSelector {
         return results.reduce((best, current) => {
             return current.percentage > best.percentage ? current : best;
         });
+    }
+
+    /**
+     * Vérifie si un quiz est récent (créé dans les 30 derniers jours)
+     * @param {string} createdAt - Date de création au format ISO (YYYY-MM-DD)
+     * @returns {boolean} true si le quiz est récent
+     */
+    isNewQuiz(createdAt) {
+        if (!createdAt) return false;
+
+        const quizDate = new Date(createdAt);
+        const today = new Date();
+        const daysDiff = Math.floor((today - quizDate) / (1000 * 60 * 60 * 24));
+
+        return daysDiff <= 30;
     }
 
     renderFilterButtons() {

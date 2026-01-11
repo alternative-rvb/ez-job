@@ -159,6 +159,7 @@ Chaque quiz est un fichier JSON avec deux sections principales : `config` (méta
     "difficulty": "Facile",
     "questionCount": 20,
     "category": "Développement",
+    "createdAt": "2024-06-15",
     "tag": ["Programmation", "Web"]
   },
   "questions": [
@@ -184,17 +185,42 @@ Chaque quiz est un fichier JSON avec deux sections principales : `config` (méta
 | `difficulty` | string | ✅ | Niveau de difficulté affiché | `"Facile"`, `"Moyen"`, `"Difficile"` |
 | `questionCount` | number | ✅ | Nombre total de questions | `10`, `20` (doit correspondre au nombre réel) |
 | `category` | string | ✅ | Catégorie principale du quiz | `"Développement"`, `"CM2"`, `"Coaching"`, `"Divertissement"` |
+| `createdAt` | string | ❌ | Date de création du quiz (format ISO 8601: YYYY-MM-DD) | `"2024-06-15"`, `"2026-01-11"` |
 | `tag` | array | ❌ | Tags secondaires pour filtrage | `["Programmation", "Web"]`, `["Nature", "Animaux"]` |
 
+**Note sur `createdAt`**:
+
+- Les quiz sont triés par date de création (du plus récent au plus ancien) dans la sélection
+- Les quiz créés dans les 30 derniers jours affichent un badge "NEW" vert sur leur carte
+- Format obligatoire: `YYYY-MM-DD` (ex: `2024-06-15`)
+- Ce champ est optionnel mais recommandé pour tous les nouveaux quiz
+
 #### Champs de question (`questions`)
+
+**Deux types de questions sont supportés** :
+
+1. **Questions à choix multiples** : utiliser `choices` + `correctAnswer`
+2. **Questions à saisie libre** : utiliser `acceptedAnswers` (RECOMMANDÉ) OU `answer` (champ de texte avec validation en temps réel)
+
+**⚠️ Important** : Une question doit avoir SOIT `choices`+`correctAnswer`, SOIT `answer`/`acceptedAnswers`, mais PAS les deux !
 
 | Champ | Type | Obligatoire | Description | Exemples |
 |-------|------|-------------|-------------|----------|
 | `id` | number | ❌ | Identifiant unique de la question | `1`, `2`, `3` (optionnel, certains quiz n'en ont pas) |
 | `question` | string | ✅ | Texte de la question | `"Qu'est-ce que JavaScript ?"` |
-| `choices` | array[4] | ✅ | Tableau de 4 choix de réponses | `["Option 1", "Option 2", "Option 3", "Option 4"]` |
-| `correctAnswer` | string | ✅ | La réponse correcte (DOIT être identique à un des `choices`) | `"Option 1"` |
+| `choices` | array[4] | ⚠️ | Tableau de 4 choix de réponses (QCM uniquement) | `["Option 1", "Option 2", "Option 3", "Option 4"]` |
+| `correctAnswer` | string | ⚠️ | La réponse correcte pour QCM (DOIT être identique à un des `choices`) | `"Option 1"` |
+| `answer` | string | ⚠️ | Une seule réponse acceptée (déprécié, utiliser `acceptedAnswers`) | `"Monday"` |
+| `acceptedAnswers` | array | ⚠️ | Plusieurs réponses acceptées pour saisie libre (RECOMMANDÉ) | `["Monday", "monday"]`, `["Trousers", "Pants"]` |
 | `imageUrl` | string/null | ❌ | URL de l'image associée à la question | `"/images/quiz/tigre-blanc/white-tiger.jpg"`, `null` |
+
+**Notes sur les types de questions** :
+- **QCM** : Nécessite `choices` (array de 4 éléments) ET `correctAnswer` (string)
+- **Saisie libre** : Nécessite `acceptedAnswers` (array, RECOMMANDÉ) OU `answer` (string, rétrocompatible)
+- La validation est **insensible à la casse** et ignore les espaces de début/fin (trim)
+- **Validation en temps réel** : Le champ devient vert dès que la réponse est correcte
+- **Auto-soumission** : La réponse est validée automatiquement 1 seconde après la saisie correcte
+- Utiliser `acceptedAnswers` pour permettre plusieurs orthographes : `["Trousers", "Pants", "trousers", "pants"]`
 
 #### Catégories disponibles
 
@@ -353,6 +379,61 @@ Basées sur l'analyse de l'existant :
 }
 ```
 
+**Quiz mixte (choix multiples + saisie libre)** :
+
+```json
+{
+  "config": {
+    "title": "Vocabulaire Anglais - Test Mixte",
+    "description": "Quiz mêlant choix multiples et saisie de réponses",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": "Facile",
+    "questionCount": 4,
+    "category": "CM2",
+    "tag": ["Anglais", "Vocabulaire"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Comment dit-on 'lundi' en anglais ? (Entrez votre réponse)",
+      "answer": "Monday",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Quel est le premier jour de la semaine ?",
+      "choices": [
+        "Monday",
+        "Sunday",
+        "Tuesday",
+        "Saturday"
+      ],
+      "correctAnswer": "Monday",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Tapez la traduction de 'rouge' en anglais",
+      "answer": "Red",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Comment dit-on 'bleu' en anglais ?",
+      "choices": [
+        "Blue",
+        "Black",
+        "Brown",
+        "Red"
+      ],
+      "correctAnswer": "Blue",
+      "imageUrl": null
+    }
+  ]
+}
+```
+
 #### Checklist de création d'un quiz
 
 1. **Choisir le nom du fichier** : `[slug-kebab-case].json` dans `js/data/`
@@ -364,8 +445,9 @@ Basées sur l'analyse de l'existant :
    - `questionCount` exact
 3. **Créer les questions** :
    - Minimum 10 questions, recommandé 20
-   - Exactement 4 choix de réponses par question
-   - `correctAnswer` DOIT être une copie exacte d'un des `choices`
+   - **Pour QCM** : Exactement 4 choix de réponses + `correctAnswer` DOIT être une copie exacte d'un des `choices`
+   - **Pour saisie libre** : Un seul champ `answer` (validation insensible à la casse)
+   - Possibilité de **mixer les deux types** dans un même quiz
    - Images optionnelles (locales ou externes)
 4. **Valider le quiz** : `npm run validate`
 5. **Régénérer l'index** : `npm run generate-index`
@@ -375,11 +457,13 @@ Basées sur l'analyse de l'existant :
 #### Règles importantes
 
 - **JAMAIS** de faute de frappe entre `correctAnswer` et `choices` (sensible à la casse)
+- **JAMAIS** mélanger `choices`+`correctAnswer` avec `answer` dans la même question
 - Toujours mettre `questionCount` égal au nombre réel de questions
 - Les `id` de questions sont optionnels (certains quiz en ont, d'autres non)
 - Les images `null` sont valides (quiz sans images)
 - Le champ `tag` est optionnel mais recommandé pour un meilleur filtrage
 - Le champ `imageUrl` de config est rarement utilisé (laisser vide)
+- La validation de `answer` est **insensible à la casse** : `"Monday"` = `"monday"` = `"MONDAY"`
 
 ## Important Implementation Details
 

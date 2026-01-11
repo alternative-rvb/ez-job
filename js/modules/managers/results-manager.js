@@ -24,7 +24,10 @@ export class ResultsManager {
         console.log('Quiz state:', quizState);
         
         // Calculer le nombre de questions qui comptent pour le score
-        const scorableQuestions = quizState.questions.filter(q => q.choices && q.choices.length > 0);
+        // Inclut les QCM et les questions à saisie de texte
+        const scorableQuestions = quizState.questions.filter(q =>
+            (q.choices && q.choices.length > 0) || q.answer || q.acceptedAnswers
+        );
         const totalScorable = scorableQuestions.length;
         
         const score = quizState.score || 0;

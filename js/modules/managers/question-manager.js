@@ -59,7 +59,7 @@ export class QuestionManager {
                 const letter = String.fromCharCode(65 + index);
                 const isHidden = CONFIG.freeMode ? 'hidden' : '';
                 return `
-                    <button class="answer-btn ${isHidden} px-4 py-2 md:p-5 text-left bg-gray-700 hover:bg-gray-600 active:bg-gray-600 rounded-lg md:rounded-xl transition-all duration-200 border-2 border-transparent hover:border-primary-500 active:scale-95 touch-manipulation" 
+                    <button class="answer-btn ${isHidden} px-4 py-2 md:p-5 text-left bg-gray-700 rounded-lg md:rounded-xl border-2 border-transparent touch-manipulation"
                             data-answer-index="${index}">
                         <div class="flex items-center space-x-3">
                             <span class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-primary-500 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">${letter}</span>
@@ -68,11 +68,39 @@ export class QuestionManager {
                     </button>
                 `;
             }).join('');
+        } else if (question.answer || question.acceptedAnswers) {
+            // Mode saisie de texte - champ input
+            const isHidden = CONFIG.freeMode ? 'hidden' : '';
+            optionsHTML = `
+                <div class="md:col-span-2">
+                    <div class="bg-gray-700 rounded-lg p-6 space-y-4">
+                        <label for="text-answer-input" class="block text-lg font-medium text-gray-200 mb-2">
+                            Votre réponse :
+                        </label>
+                        <input
+                            type="text"
+                            id="text-answer-input"
+                            class="w-full px-4 py-3 text-lg bg-gray-800 text-white border-2 border-gray-600 rounded-lg focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all"
+                            placeholder="Entrez votre réponse..."
+                            autocomplete="off"
+                        />
+                        <button
+                            id="submit-text-answer"
+                            class="answer-submit-btn ${isHidden} w-full px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-bold rounded-lg transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <div class="flex items-center justify-center space-x-2">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Valider ma réponse</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            `;
         } else {
-            // Mode réponse libre - affichage simple
+            // Pas de choix ni de réponse - question informative
             optionsHTML = `
                 <div class="text-center py-8">
-                    <p class="text-lg md:text-xl text-blue-400 font-medium">Réponse libre</p>
+                    <p class="text-lg md:text-xl text-blue-400 font-medium">Question informative</p>
                     <p class="text-sm text-gray-400 mt-2">Cette question ne compte pas dans le score</p>
                 </div>
             `;
@@ -131,32 +159,123 @@ export class QuestionManager {
         );
         
         // Ajouter les écouteurs d'événements
+        const currentQuestion = quizState.getCurrentQuestion();
+
+        // Gestion des boutons de choix multiples
         document.querySelectorAll('.answer-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 if (!quizState.isAnswered) {
-                    e.stopPropagation();
-                    // Retirer immédiatement le focus
-                    setTimeout(() => btn.blur(), 0);
+                    // Désactiver TOUS les boutons immédiatement
+                    document.querySelectorAll('.answer-btn').forEach(b => {
+                        b.disabled = true;
+                        b.style.border = '2px solid transparent';
+                        b.style.backgroundColor = '';
+                    });
                     this.selectAnswer(parseInt(btn.dataset.answerIndex));
                 }
             });
-            // Empêcher le focus visuel de rester après le clic
-            btn.addEventListener('mouseup', () => {
-                setTimeout(() => btn.blur(), 0);
-            });
-            btn.addEventListener('touchend', () => {
-                setTimeout(() => btn.blur(), 0);
-            });
-            // Retirer le focus si le bouton le reçoit
-            btn.addEventListener('focus', (e) => {
-                if (quizState.isAnswered) {
-                    e.target.blur();
-                }
-            });
         });
-        
-        // Pour les questions libres, aucun événement spécial - elles utilisent le timer normal
-        
+
+        // Gestion du champ de saisie de texte
+        if (currentQuestion.answer || currentQuestion.acceptedAnswers) {
+            const textInput = document.getElementById('text-answer-input');
+            const submitBtn = document.getElementById('submit-text-answer');
+
+            if (textInput && submitBtn) {
+                // Préparer les réponses acceptées
+                const acceptedAnswers = currentQuestion.acceptedAnswers
+                    ? currentQuestion.acceptedAnswers.map(a => a.toLowerCase().trim())
+                    : [currentQuestion.answer.toLowerCase().trim()];
+
+                // Validation en temps réel pendant la frappe
+                let autoSubmitTimeout = null;
+                textInput.addEventListener('input', () => {
+                    const userAnswer = textInput.value.trim().toLowerCase();
+
+                    if (userAnswer.length === 0) {
+                        // Champ vide : bordure grise neutre
+                        textInput.classList.remove('border-green-500', 'border-red-500');
+                        textInput.classList.add('border-gray-600');
+                        submitBtn.innerHTML = `
+                            <div class="flex items-center justify-center space-x-2">
+                                <i class="bi bi-check-circle"></i>
+                                <span>Valider ma réponse</span>
+                            </div>
+                        `;
+                        submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                        submitBtn.classList.add('bg-gradient-to-r', 'from-primary-500', 'to-primary-600');
+                        clearTimeout(autoSubmitTimeout);
+                    } else if (acceptedAnswers.includes(userAnswer) && !quizState.isAnswered) {
+                        // Réponse correcte : bordure verte
+                        textInput.classList.remove('border-gray-600', 'border-red-500');
+                        textInput.classList.add('border-green-500');
+
+                        // Afficher un indicateur visuel
+                        submitBtn.innerHTML = `
+                            <div class="flex items-center justify-center space-x-2">
+                                <i class="bi bi-check-circle-fill text-green-400"></i>
+                                <span>Bonne réponse !</span>
+                            </div>
+                        `;
+                        submitBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                        submitBtn.classList.remove('from-primary-500', 'to-primary-600', 'bg-gradient-to-r');
+
+                        // Auto-soumettre après 1 seconde
+                        clearTimeout(autoSubmitTimeout);
+                        autoSubmitTimeout = setTimeout(() => {
+                            if (!quizState.isAnswered) {
+                                this.selectTextAnswer(textInput.value.trim());
+                            }
+                        }, 1000);
+                    } else {
+                        // En cours de frappe, réponse incorrecte : bordure rouge
+                        textInput.classList.remove('border-gray-600', 'border-green-500');
+                        textInput.classList.add('border-red-500');
+                        submitBtn.innerHTML = `
+                            <div class="flex items-center justify-center space-x-2">
+                                <i class="bi bi-x-circle"></i>
+                                <span>Continue...</span>
+                            </div>
+                        `;
+                        submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                        submitBtn.classList.add('bg-gradient-to-r', 'from-primary-500', 'to-primary-600');
+
+                        // Annuler l'auto-soumission
+                        clearTimeout(autoSubmitTimeout);
+                    }
+                });
+
+                // Validation manuelle à la soumission
+                const submitTextAnswer = () => {
+                    if (!quizState.isAnswered) {
+                        clearTimeout(autoSubmitTimeout);
+                        const userAnswer = textInput.value.trim();
+                        this.selectTextAnswer(userAnswer);
+                    }
+                };
+
+                submitBtn.addEventListener('click', submitTextAnswer);
+
+                // Validation avec la touche Entrée
+                textInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !quizState.isAnswered) {
+                        e.preventDefault();
+                        submitTextAnswer();
+                    }
+                });
+            }
+        }
+
+        // Pour les questions informatives sans choix ni réponse
+
+        // Retirer le focus de tous les éléments au démarrage de la question
+        setTimeout(() => {
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+            document.querySelectorAll('.answer-btn').forEach(btn => btn.blur());
+        }, 0);
+
         this.startTimer();
     }
 
@@ -194,30 +313,108 @@ export class QuestionManager {
             
             if (quizState.timeRemaining <= 0) {
                 clearInterval(quizState.timerInterval);
-                
+
                 if (!quizState.isAnswered) {
                     const question = quizState.getCurrentQuestion();
-                    
+
                     // L'image sera révélée dans le modal de feedback
                     if (quizState.currentQuiz?.spoilerMode && question?.imageUrl) {
                         // Pas besoin d'action supplémentaire ici
                     }
-                    
-                    if (question && (!question.choices || question.choices.length === 0)) {
-                        // Pour les questions libres, passer simplement à la suivante
-                        this.handleFreeResponseMode();
+
+                    if (question && (question.answer || question.acceptedAnswers)) {
+                        // Pour les questions à saisie de texte
+                        this.selectTextAnswer('');
+                    } else if (question && question.choices && question.choices.length > 0) {
+                        // Pour les questions à choix multiples
+                        this.selectAnswer(-1);
                     } else {
-                        this.selectAnswer(-1); // Temps écoulé pour les choix multiples
+                        // Pour les questions informatives
+                        this.handleFreeResponseMode();
                     }
                 }
             }
         }, 1000);
     }
 
+    selectTextAnswer(userAnswer) {
+        if (!quizState.isAnswered && quizState.questions && quizState.questions.length > 0) {
+            const question = quizState.getCurrentQuestion();
+
+            // Vérification de sécurité - pour les questions à saisie de texte
+            if (!question || (!question.answer && !question.acceptedAnswers)) {
+                console.error('Question data is invalid for text input:', question);
+                return;
+            }
+
+            quizState.setAnswered(true);
+            quizState.recordAnswer(userAnswer); // Enregistrer la réponse de l'utilisateur
+            quizState.endQuestionTimer();
+
+            // Normaliser les réponses pour la comparaison (insensible à la casse et aux espaces)
+            const normalizedUserAnswer = userAnswer.toLowerCase().trim();
+
+            // Préparer les réponses acceptées
+            const acceptedAnswers = question.acceptedAnswers
+                ? question.acceptedAnswers.map(a => a.toLowerCase().trim())
+                : [question.answer.toLowerCase().trim()];
+
+            const isCorrect = acceptedAnswers.includes(normalizedUserAnswer);
+
+            // Désactiver le champ et le bouton
+            const textInput = document.getElementById('text-answer-input');
+            const submitBtn = document.getElementById('submit-text-answer');
+
+            if (textInput) {
+                textInput.disabled = true;
+                textInput.classList.add('opacity-50');
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-50');
+            }
+
+            // Gestion du feedback
+            if (isCorrect) {
+                quizState.addScore();
+                quizState.recordAnswerCorrectness(true);
+                if (textInput) {
+                    textInput.classList.remove('border-gray-600');
+                    textInput.classList.add('border-green-500', 'bg-green-900/20');
+                }
+                this.showFeedbackMessage('Bonne réponse !', 'success', question, null, userAnswer);
+            } else {
+                quizState.recordAnswerCorrectness(false);
+                if (textInput) {
+                    textInput.classList.remove('border-gray-600');
+                    textInput.classList.add('border-red-500', 'bg-red-900/20');
+                }
+                // Utiliser 'timeout' si la réponse est vide (temps écoulé), sinon 'error'
+                const feedbackType = (!userAnswer || userAnswer === '') ? 'timeout' : 'error';
+                const feedbackMessage = (!userAnswer || userAnswer === '') ? 'Temps écoulé ! ⏰' : 'Mauvaise réponse 😔';
+                this.showFeedbackMessage(feedbackMessage, feedbackType, question, null, userAnswer);
+            }
+
+            domManager.updateQuizStats(
+                quizState.currentQuestionIndex,
+                quizState.questions.length,
+                quizState.score,
+                quizState.timeRemaining
+            );
+
+            // Passer à la question suivante après un délai
+            setTimeout(() => {
+                quizState.nextQuestion();
+                this.showQuestion();
+            }, 2500);
+        }
+    }
+
     selectAnswer(answerIndex) {
         if (!quizState.isAnswered && quizState.questions && quizState.questions.length > 0) {
             const question = quizState.getCurrentQuestion();
-            
+
             // Vérification de sécurité - pour les questions à choix multiples
             if (!question || !question.choices || question.choices.length === 0 || !question.correctAnswer) {
                 console.error('Question data is invalid for multiple choice:', question);
@@ -354,8 +551,6 @@ export class QuestionManager {
 
             // Passer à la question suivante après un délai
             setTimeout(() => {
-                // Retirer le focus une dernière fois avant de changer de question
-                answerButtons.forEach(btn => btn.blur());
                 quizState.nextQuestion();
                 this.showQuestion();
             }, 2500);
@@ -393,7 +588,7 @@ export class QuestionManager {
         }, 2000);
     }
 
-    showFeedbackMessage(message, type, question = null, answerIndex = null) {
+    showFeedbackMessage(message, type, question = null, answerIndex = null, userTextAnswer = null) {
         const feedbackColors = {
             success: 'from-green-400 to-emerald-500',
             error: 'from-red-400 to-pink-500',
@@ -434,7 +629,18 @@ export class QuestionManager {
                 title = 'Bonne réponse !';
                 subtitle = message;
                 // Afficher la réponse correcte avec le même style
-                if (question && answerIndex !== null) {
+                if (userTextAnswer !== null) {
+                    // Question à saisie de texte
+                    responseSection = `
+                        <div class="mt-4 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
+                            <p class="text-sm text-gray-300 mb-2">Votre réponse:</p>
+                            <p class="text-lg font-semibold text-green-400">
+                                ${userTextAnswer}
+                            </p>
+                        </div>
+                    `;
+                } else if (question && answerIndex !== null) {
+                    // Question à choix multiples
                     responseSection = `
                         <div class="mt-4 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
                             <p class="text-sm text-gray-300 mb-2">Votre réponse:</p>
@@ -450,7 +656,31 @@ export class QuestionManager {
                 title = 'Mauvaise réponse';
                 subtitle = message;
                 // Afficher la bonne réponse si showResponse est activé et la question est disponible
-                if (CONFIG.showResponse && question && answerIndex !== null) {
+                if (userTextAnswer !== null && question && (question.answer || question.acceptedAnswers)) {
+                    // Question à saisie de texte
+                    if (CONFIG.showResponse) {
+                        const correctAnswer = question.acceptedAnswers
+                            ? question.acceptedAnswers[0]
+                            : question.answer;
+                        // Gérer userTextAnswer qui peut être null, undefined ou une chaîne vide
+                        const displayAnswer = (userTextAnswer && userTextAnswer.trim()) ? userTextAnswer : '(aucune réponse)';
+                        responseSection = `
+                            <div class="mt-4 p-3 bg-gray-700 border-2 border-red-500/50 rounded-lg mb-2">
+                                <p class="text-sm text-gray-300 mb-2">Votre réponse:</p>
+                                <p class="text-lg font-semibold text-red-400">
+                                    ${displayAnswer}
+                                </p>
+                            </div>
+                            <div class="mt-2 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
+                                <p class="text-sm text-gray-300 mb-2">La bonne réponse était:</p>
+                                <p class="text-lg font-semibold text-green-400">
+                                    ${correctAnswer}
+                                </p>
+                            </div>
+                        `;
+                    }
+                } else if (CONFIG.showResponse && question && answerIndex !== null) {
+                    // Question à choix multiples
                     responseSection = `
                         <div class="mt-4 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
                             <p class="text-sm text-gray-300 mb-2">La bonne réponse était:</p>
@@ -469,8 +699,24 @@ export class QuestionManager {
             case 'timeout':
                 icon = '⏰';
                 title = 'Temps écoulé !';
-                if (question && answerIndex !== null) {
-                    // Mode normal : afficher avec lettrage
+                if (userTextAnswer !== null && question && (question.answer || question.acceptedAnswers)) {
+                    // Question à saisie de texte - timeout
+                    subtitle = 'Vous n\'avez pas eu le temps de répondre';
+                    if (CONFIG.showResponse) {
+                        const correctAnswer = question.acceptedAnswers
+                            ? question.acceptedAnswers[0]
+                            : question.answer;
+                        responseSection = `
+                            <div class="mt-4 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
+                                <p class="text-sm text-gray-300 mb-2">La bonne réponse était:</p>
+                                <p class="text-lg font-semibold text-green-400">
+                                    ${correctAnswer}
+                                </p>
+                            </div>
+                        `;
+                    }
+                } else if (question && answerIndex !== null) {
+                    // Question à choix multiples - timeout
                     subtitle = 'Vous n\'avez pas eu le temps de répondre';
                     if (CONFIG.showResponse) {
                         responseSection = `

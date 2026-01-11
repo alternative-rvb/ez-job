@@ -1,0 +1,105 @@
+{
+  "config": {
+    "title": "Vocabulaire Anglais - Test Mixte",
+    "description": "Quiz mêlant choix multiples et saisie de réponses pour tester ton vocabulaire anglais",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": "Facile",
+    "questionCount": 10,
+    "category": "CM2",
+    "createdAt": "2026-01-11",
+    "tag": ["Anglais", "Vocabulaire", "Test"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Comment dit-on 'lundi' en anglais ? (Entrez votre réponse)",
+      "acceptedAnswers": ["Monday", "monday"],
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Quel est le premier jour de la semaine en anglais ?",
+      "choices": [
+        "Monday",
+        "Sunday",
+        "Tuesday",
+        "Saturday"
+      ],
+      "correctAnswer": "Monday",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Comment dit-on 'rouge' en anglais ? (Tapez la réponse)",
+      "acceptedAnswers": ["Red", "red"],
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Comment dit-on 'chemise' en anglais ?",
+      "choices": [
+        "Shirt",
+        "Shoes",
+        "Skirt",
+        "Shorts"
+      ],
+      "correctAnswer": "Shirt",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Tapez la traduction de 'chaussures' en anglais",
+      "acceptedAnswers": ["Shoes", "shoes"],
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Comment dit-on 'bleu' en anglais ?",
+      "choices": [
+        "Blue",
+        "Black",
+        "Brown",
+        "Red"
+      ],
+      "correctAnswer": "Blue",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Écrivez 'mercredi' en anglais",
+      "acceptedAnswers": ["Wednesday", "wednesday"],
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Comment dit-on 'vert' en anglais ?",
+      "choices": [
+        "Green",
+        "Grey",
+        "Brown",
+        "Yellow"
+      ],
+      "correctAnswer": "Green",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Quelle est la traduction de 'pantalon' ? (Saisissez votre réponse)",
+      "acceptedAnswers": ["Trousers", "trousers", "Pants", "pants"],
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Comment dit-on 'vendredi' en anglais ?",
+      "choices": [
+        "Friday",
+        "Thursday",
+        "Saturday",
+        "Tuesday"
+      ],
+      "correctAnswer": "Friday",
+      "imageUrl": null
+    }
+  ]
+}

@@ -121,6 +121,21 @@ function validateConfig(config, errors, warnings) {
   if (config.tag && !Array.isArray(config.tag)) {
     errors.push('config.tag doit être un tableau');
   }
+
+  // Validation createdAt (optionnel)
+  if (config.createdAt) {
+    // Vérifier le format ISO 8601 (YYYY-MM-DD)
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    if (!datePattern.test(config.createdAt)) {
+      errors.push('config.createdAt doit être au format YYYY-MM-DD (ex: 2024-01-15)');
+    } else {
+      // Vérifier que c'est une date valide
+      const date = new Date(config.createdAt);
+      if (isNaN(date.getTime())) {
+        errors.push(`config.createdAt "${config.createdAt}" n'est pas une date valide`);
+      }
+    }
+  }
 }
 
 /**
@@ -146,15 +161,24 @@ function validateQuestions(questions, config, errors, warnings, quizPath) {
     if (!q.question) {
       errors.push(`Question ${questionNum}: propriété "question" manquante`);
     }
-    if (!q.choices || !Array.isArray(q.choices)) {
-      errors.push(`Question ${questionNum}: propriété "choices" manquante ou invalide`);
-    }
-    if (!q.correctAnswer) {
-      errors.push(`Question ${questionNum}: propriété "correctAnswer" manquante`);
+
+    // Déterminer le type de question
+    const isMultipleChoice = q.choices && Array.isArray(q.choices);
+    const isTextInput = q.acceptedAnswers || q.answer;
+
+    // Chaque question doit être soit QCM soit saisie de texte
+    if (!isMultipleChoice && !isTextInput) {
+      errors.push(
+        `Question ${questionNum}: doit avoir soit "choices" + "correctAnswer" (QCM) soit "acceptedAnswers" ou "answer" (saisie de texte)`
+      );
     }
 
-    // Validation des choix
-    if (q.choices) {
+    // Validation des questions à choix multiples
+    if (isMultipleChoice) {
+      if (!q.correctAnswer) {
+        errors.push(`Question ${questionNum}: propriété "correctAnswer" manquante pour question QCM`);
+      }
+
       if (q.choices.length < 2) {
         errors.push(`Question ${questionNum}: minimum 2 choix requis`);
       }
@@ -172,6 +196,26 @@ function validateQuestions(questions, config, errors, warnings, quizPath) {
       if (q.correctAnswer && !q.choices.includes(q.correctAnswer)) {
         errors.push(
           `Question ${questionNum}: correctAnswer "${q.correctAnswer}" n'est pas dans les choix`
+        );
+      }
+    }
+
+    // Validation des questions à saisie de texte
+    if (isTextInput) {
+      if (q.acceptedAnswers) {
+        if (!Array.isArray(q.acceptedAnswers)) {
+          errors.push(`Question ${questionNum}: "acceptedAnswers" doit être un tableau`);
+        } else if (q.acceptedAnswers.length === 0) {
+          errors.push(`Question ${questionNum}: "acceptedAnswers" ne peut pas être vide`);
+        }
+      } else if (q.answer && typeof q.answer !== 'string') {
+        errors.push(`Question ${questionNum}: "answer" doit être une chaîne de caractères`);
+      }
+
+      // Avertir si acceptedAnswers et answer sont tous les deux présents
+      if (q.acceptedAnswers && q.answer) {
+        warnings.push(
+          `Question ${questionNum}: "acceptedAnswers" et "answer" sont tous deux présents - "acceptedAnswers" sera utilisé`
         );
       }
     }
