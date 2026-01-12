@@ -596,7 +596,7 @@ export class TrophiesManager {
 
     showMessage(text, type) {
         const messageDiv = document.getElementById('code-message');
-        messageDiv.textContent = text;
+        messageDiv.innerHTML = text;
         messageDiv.className = type === 'success' ? 
             'hidden mt-3 p-3 rounded-lg text-sm bg-green-900/50 text-green-300 border border-green-600' :
             'hidden mt-3 p-3 rounded-lg text-sm bg-red-900/50 text-red-300 border border-red-600';
