@@ -617,7 +617,7 @@ export class QuestionManager {
                 <div class="mb-4">
                     <img src="${question.imageUrl}"
                          alt="Image révélée"
-                         class="w-full max-w-sm aspect-video object-cover rounded-lg mx-auto"
+                         class="w-full max-w-sm aspect-video object-contain rounded-lg mx-auto"
                          loading="lazy">
                 </div>
             `;
@@ -652,7 +652,7 @@ export class QuestionManager {
                 }
                 break;
             case 'error':
-                icon = '❌';
+                icon = '<i class="bi bi-x-circle-fill text-red-400"></i>';
                 title = 'Mauvaise réponse';
                 subtitle = message;
                 // Afficher la bonne réponse si showResponse est activé et la question est disponible
@@ -738,15 +738,17 @@ export class QuestionManager {
         }
 
         modalContent.innerHTML = `
-            <div class="text-6xl mb-4">${icon}</div>
-            <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r ${feedbackColors[type]} bg-clip-text text-transparent">
-                ${title}
-            </h3>
-            ${imageSection}
-            <p class="text-xl text-gray-300 leading-relaxed">
-                ${subtitle}
-            </p>
-            ${responseSection}
+            <div class="flex flex-col items-center">
+                <div class="text-7xl mb-6">${icon}</div>
+                <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r ${feedbackColors[type]} bg-clip-text text-transparent">
+                    ${title}
+                </h3>
+                ${imageSection}
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    ${subtitle}
+                </p>
+                ${responseSection}
+            </div>
         `;
 
         overlay.appendChild(modalContent);
