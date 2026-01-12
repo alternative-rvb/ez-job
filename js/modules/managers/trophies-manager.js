@@ -141,6 +141,11 @@ export class TrophiesManager {
             card.style.setProperty('--shine-y', '50%');
             card.style.setProperty('--shine-angle', '115deg');
 
+            // Variable pour tracker le mouvement du doigt
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let hasMoved = false;
+
             // Gestion souris
             card.addEventListener('mouseenter', () => {
                 card.classList.add('hover-active');
@@ -180,13 +185,15 @@ export class TrophiesManager {
                 card.style.setProperty('--shine-angle', '115deg');
             });
 
-            // Gestion tactile (mobile) - Phase progressive
+            // Gestion tactile (mobile)
             card.addEventListener('touchstart', (e) => {
-                // Phase 1 : Affichage estompé de l'effet dès le toucher
+                hasMoved = false;
                 card.classList.add('touch-start');
 
-                // Obtenir la position initiale du toucher
                 if (e.touches[0]) {
+                    touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+
                     const touch = e.touches[0];
                     const rect = card.getBoundingClientRect();
                     const x = touch.clientX - rect.left;
@@ -195,7 +202,6 @@ export class TrophiesManager {
                     const percentX = (x / rect.width) * 100;
                     const percentY = (y / rect.height) * 100;
 
-                    // Positionner le reflet à l'endroit du toucher initial
                     card.style.setProperty('--shine-x', `${percentX}%`);
                     card.style.setProperty('--shine-y', `${percentY}%`);
                 }
@@ -204,7 +210,20 @@ export class TrophiesManager {
             card.addEventListener('touchmove', (e) => {
                 if (!e.touches[0]) return;
 
-                // Phase 2 : Activation complète de l'effet lors du mouvement
+                // Vérifier que le mouvement dépasse un certain seuil (5px)
+                const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+                const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+                const movementThreshold = 5;
+
+                if (deltaX > movementThreshold || deltaY > movementThreshold) {
+                    hasMoved = true;
+                }
+
+                // Seulement appliquer l'effet si c'est vraiment un mouvement
+                if (!hasMoved) {
+                    return;
+                }
+
                 if (card.classList.contains('touch-start')) {
                     card.classList.remove('touch-start');
                     card.classList.add('touch-active');
@@ -221,23 +240,19 @@ export class TrophiesManager {
                 const rotateX = (y - centerY) / 10;
                 const rotateY = (centerX - x) / 10;
 
-                // Position du reflet (en pourcentage)
                 const percentX = (x / rect.width) * 100;
                 const percentY = (y / rect.height) * 100;
 
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
 
-                // Mettre à jour la position du reflet
                 card.style.setProperty('--shine-x', `${percentX}%`);
                 card.style.setProperty('--shine-y', `${percentY}%`);
 
-                // Calculer l'angle pour le gradient arc-en-ciel
                 const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
                 card.style.setProperty('--shine-angle', `${angle}deg`);
             });
 
             card.addEventListener('touchend', () => {
-                // Phase 3 : Reset complet
                 card.classList.remove('touch-start', 'touch-active');
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
                 card.style.setProperty('--shine-x', '50%');
@@ -249,6 +264,11 @@ export class TrophiesManager {
                 card.classList.remove('touch-start', 'touch-active');
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
                 card.style.setProperty('--shine-x', '50%');
+                card.style.setProperty('--shine-y', '50%');
+                card.style.setProperty('--shine-angle', '115deg');
+            });
+        });
+    }                card.style.setProperty('--shine-x', '50%');
                 card.style.setProperty('--shine-y', '50%');
                 card.style.setProperty('--shine-angle', '115deg');
             });
