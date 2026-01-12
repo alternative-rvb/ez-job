@@ -45,12 +45,14 @@ The application follows a clean modular architecture with separation of concerns
 
 ```plaintext
 job-ez/
-├── index.html                # Main HTML (411 lines, simplifié)
+├── index.html                # Main HTML (605 lines, simplifié)
 ├── sw.js                     # Service Worker PWA (offline support)
 ├── styles/
-│   └── main.css             # CSS externalisé (animations, trophées, modales)
+│   ├── main.css             # CSS externalisé (animations, trophées, modales)
+│   └── time-selector.css    # CSS pour le sélecteur de temps
 ├── scripts/
-│   └── validate-quiz.js     # Script de validation des quiz
+│   ├── validate-quiz.js     # Script de validation des quiz
+│   └── update-version.js    # Script automatique de mise à jour de version
 ├── js/
 │   ├── app.js                    # Main entry point, bootstraps QuizApp
 │   ├── modules/
@@ -75,12 +77,21 @@ job-ez/
 │       ├── trophies.json        # Trophy definitions
 │       └── *.json               # Individual quiz files
 ├── images/
-│   ├── characters/              # Centralized character images
-│   │   ├── spongebob/          # SpongeBob characters (quiz + trophies)
-│   │   └── les-sisters/        # Les Sisters characters (quiz + trophies)
-│   └── quiz/                    # Quiz-specific images
-│       ├── white-tiger/
-│       └── le-petit-nicolas/
+│   ├── quiz/                    # Quiz-specific images (11 dossiers)
+│   │   ├── animaux/
+│   │   ├── jules-ferry-ecole/
+│   │   ├── la-terre/
+│   │   ├── le-petit-nicolas/
+│   │   ├── le-petrole-et-l-energie/
+│   │   ├── spongebob/
+│   │   ├── systeme-solaire/
+│   │   ├── unites-mesure/
+│   │   └── white-tiger/
+│   └── trophies/
+│       └── characters/         # Centralized trophy character images
+│           ├── spongebob/      # SpongeBob characters (10 trophées)
+│           ├── les-sisters/    # Les Sisters characters (2 trophées)
+│           └── spy-x-family/   # Spy × Family characters (23 trophées)
 └── .doc/                        # Internal documentation (optional)
     └── quiz-format-specification.md
 ```
@@ -135,9 +146,9 @@ The `api.py` script scans `js/data/` and generates this index:
 
 ```json
 {
-  "quizzes": ["quiz-id-1", "quiz-id-2"],
-  "categories": ["Développement", "Divertissement"],
-  "count": 11,
+  "quizzes": ["quiz-id-1", "quiz-id-2", "..."],
+  "categories": ["CM2", "Coaching", "Divertissement", "Développement"],
+  "count": 21,
   "lastUpdated": "ISO-8601-timestamp",
   "generated_by": "api.py"
 }
@@ -182,7 +193,7 @@ Chaque quiz est un fichier JSON avec deux sections principales : `config` (méta
 | `description` | string | ✅ | Description courte du quiz | `"Testez vos connaissances de base en JavaScript"` |
 | `imageUrl` | string | ❌ | URL d'image pour la carte du quiz (rarement utilisé) | `""` (généralement vide) |
 | `spoilerMode` | boolean | ✅ | Active le floutage des images de questions | `true` (images floues), `false` (images visibles) |
-| `difficulty` | string | ✅ | Niveau de difficulté affiché | `"Facile"`, `"Moyen"`, `"Difficile"` |
+| `difficulty` | string/number | ✅ | Niveau de difficulté affiché | **Numérique** (recommandé): `1`, `2`, `3`, `4`, `5` OU **String** (ancien format): `"Facile"`, `"Moyen"`, `"Difficile"` |
 | `questionCount` | number | ✅ | Nombre total de questions | `10`, `20` (doit correspondre au nombre réel) |
 | `category` | string | ✅ | Catégorie principale du quiz | `"Développement"`, `"CM2"`, `"Coaching"`, `"Divertissement"` |
 | `createdAt` | string | ❌ | Date de création du quiz (format ISO 8601: YYYY-MM-DD) | `"2024-06-15"`, `"2026-01-11"` |
@@ -496,6 +507,43 @@ The `playerManager` in `player.js`:
 - Each result includes: quizId, score, percentage, timeSpent, date, difficulty, category
 - Provides `getStats()` for aggregated analytics
 
+### Trophy System
+
+The application features a comprehensive trophy system managed by `trophies-manager.js` and `rewards-manager.js`:
+
+**Trophy Collection**:
+- **35 trophées** répartis en 3 séries thématiques
+- **Série 1**: Les Sisters (2 trophées) - Wendy, Marine
+- **Série 2**: Spy × Family (23 trophées) - Famille Forger (Loid, Yor, Anya, Bond) + personnages principaux
+- **Série 3**: Bob l'Éponge (10 trophées) - Bob, Patrick, Carlo, Sandy, M. Krabs, etc.
+
+**Rarity System**:
+- Légendaire (legendary)
+- Épique (epic)
+- Rare (rare)
+- Commun (common)
+
+**Trophy Structure** (`trophies.json`):
+```json
+{
+  "id": "trophy_001",
+  "name": "Wendy",
+  "series": "Les Sisters",
+  "description": "La grande sœur rebelle et passionnée",
+  "image": "/images/trophies/characters/les-sisters/personnage-sisters-wendy.webp",
+  "rarity": "légendaire",
+  "order": 1,
+  "secretCode": "WENDY2025"
+}
+```
+
+**Features**:
+- Trophy unlock via secret codes
+- Persistent storage in localStorage
+- Visual display with rarity badges
+- Series-based organization
+- Right-click and long-press protection on trophy images
+
 ### Adding New Quizzes
 
 1. Create a JSON file in `js/data/` following the format above
@@ -589,14 +637,6 @@ Update `CONFIG.categoryFilter` in [js/modules/core/config.js](js/modules/core/co
 Edit the message logic in [js/modules/managers/results-manager.js](js/modules/managers/results-manager.js) `show()` method.
 
 ## Claude Code Integration
-
-### Available Skills
-
-The project includes custom skills in `.claude/skills/`:
-
-- **tailwind-ui**: Creates and adds UI elements with Tailwind CSS v3 using best practices. Automatically fetches up-to-date Tailwind documentation via Context7 MCP. Activated when building new UI components, forms, layouts, or modifying existing interface elements.
-
-To use a skill, simply request UI-related tasks (automatic activation) or invoke explicitly with the skill name.
 
 ### Custom Slash Commands
 
