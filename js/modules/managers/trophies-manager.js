@@ -268,11 +268,6 @@ export class TrophiesManager {
                 card.style.setProperty('--shine-angle', '115deg');
             });
         });
-    }                card.style.setProperty('--shine-x', '50%');
-                card.style.setProperty('--shine-y', '50%');
-                card.style.setProperty('--shine-angle', '115deg');
-            });
-        });
     }
 
     setupEventListeners() {
