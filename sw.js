@@ -1,5 +1,5 @@
 /**
- * Service Worker pour Job-EZ
+ * Service Worker pour Erudizz
  * Permet le fonctionnement offline et améliore les performances
  *
  * Stratégies de cache :
@@ -11,7 +11,7 @@
  */
 
 const CACHE_VERSION = 'v1.0.29';
-const CACHE_NAME = `job-ez-${CACHE_VERSION}`;
+const CACHE_NAME = `erudizz-${CACHE_VERSION}`;
 
 // Assets critiques à mettre en cache lors de l'installation
 const CRITICAL_ASSETS = [
@@ -84,7 +84,7 @@ self.addEventListener('activate', (event) => {
           cacheNames
             .filter((cacheName) => {
               // Supprimer les caches qui ne correspondent pas à la version actuelle
-              return cacheName.startsWith('job-ez-') && cacheName !== CACHE_NAME;
+              return cacheName.startsWith('erudizz-') && cacheName !== CACHE_NAME;
             })
             .map((cacheName) => {
               console.log('[Service Worker] Suppression cache obsolète:', cacheName);

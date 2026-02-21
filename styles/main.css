@@ -1,5 +1,5 @@
 /**
- * Job-EZ - Styles Principaux
+ * Erudizz - Styles Principaux
  * Styles personnalisés pour l'application de quiz
  */
 
@@ -7,9 +7,9 @@
 
 :root {
   /* Couleurs principales (RGB pour rgba()) */
-  --color-primary: 59, 130, 246;        /* Bleu primaire */
-  --color-secondary: 99, 102, 241;      /* Indigo */
-  --color-accent: 168, 85, 247;         /* Violet */
+  --color-primary: 90, 69, 148;         /* Violet principal #5a4594 */
+  --color-secondary: 239, 130, 24;      /* Orange accent #ef8218 */
+  --color-accent: 239, 130, 24;         /* Orange accent #ef8218 */
 
   /* Couleurs de fond */
   --color-bg-dark: 26, 30, 35;          /* Fond sombre */
@@ -19,7 +19,7 @@
   --color-success: 34, 197, 94;         /* Vert */
   --color-error: 239, 68, 68;           /* Rouge */
   --color-warning: 251, 191, 36;        /* Jaune */
-  --color-info: 59, 130, 246;           /* Bleu info */
+  --color-info: 90, 69, 148;            /* Violet info */
 
   /* Couleurs grises */
   --color-gray-600: 75, 85, 99;
@@ -51,6 +51,22 @@
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
+}
+
+/* ===== Typographie Erudizz ===== */
+
+body, html {
+  font-family: 'Heebo', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Couleur de texte principale Erudizz — remplace #ffffff */
+.text-white {
+  color: #CCC4E3 !important;
+}
+
+/* Couleur de texte secondaire Erudizz — remplace gray-400 (#9ca3af) */
+.text-gray-400 {
+  color: #9b92b0 !important;
 }
 
 /* ===== Bubbles Background ===== */
@@ -277,10 +293,10 @@
 }
 
 .feedback-modal-content {
-  background: rgba(30, 41, 59, 0.95);
+  background: rgba(49, 37, 80, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(90, 69, 148, 0.4);
   border-radius: var(--radius-lg);
   padding: 3rem 2rem;
   max-width: 500px;
@@ -332,7 +348,7 @@
 
 /* Retirer IMMÉDIATEMENT l'apparence active après le clic */
 .answer-btn:not(.correct):not(.incorrect):active {
-  background-color: rgb(55 65 81) !important; /* Retour à bg-gray-700 */
+  background-color: rgb(70, 54, 115) !important; /* #463673 fond tertiaire Erudizz */
   transform: none !important;
   border-color: transparent !important;
 }
@@ -340,7 +356,7 @@
 /* Désactiver TOUS les états après désactivation du bouton */
 .answer-btn:disabled,
 .answer-btn[disabled] {
-  background-color: rgb(55 65 81) !important;
+  background-color: rgb(70, 54, 115) !important; /* #463673 fond tertiaire Erudizz */
   border: 2px solid transparent !important;
   opacity: 1 !important;
   pointer-events: none !important;
@@ -398,7 +414,7 @@
 }
 
 .trophy-card-pokemon:hover {
-  box-shadow: 0 30px 50px -5px rgba(59, 130, 246, 0.4), 0 15px 25px -3px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 30px 50px -5px rgba(90, 69, 148, 0.4), 0 15px 25px -3px rgba(90, 69, 148, 0.25);
 }
 
 .trophy-card-pokemon.trophy-unlocked {
@@ -472,10 +488,10 @@
 
 @keyframes card-shine {
   0%, 100% {
-    filter: brightness(1) drop-shadow(0 0 0px rgba(59, 130, 246, 0));
+    filter: brightness(1) drop-shadow(0 0 0px rgba(90, 69, 148, 0));
   }
   50% {
-    filter: brightness(1.05) drop-shadow(0 5px 15px rgba(59, 130, 246, 0.3));
+    filter: brightness(1.05) drop-shadow(0 5px 15px rgba(90, 69, 148, 0.3));
   }
 }
 
@@ -502,18 +518,18 @@
   box-shadow: 0 20px 25px -5px rgba(107, 114, 128, 0.5), 0 10px 10px -5px rgba(107, 114, 128, 0.4);
 }
 
-/* Rare - Bleu */
+/* Rare - Violet */
 .rarity-rare.trophy-unlocked {
-  border-color: rgb(59, 130, 246);
-  background: rgba(59, 130, 246, 0.15);
-  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3), 0 2px 4px -1px rgba(59, 130, 246, 0.2);
+  border-color: rgb(90, 69, 148);
+  background: rgba(90, 69, 148, 0.15);
+  box-shadow: 0 4px 6px -1px rgba(90, 69, 148, 0.3), 0 2px 4px -1px rgba(90, 69, 148, 0.2);
   transition: box-shadow 0.3s ease;
 }
 
 .rarity-rare.trophy-unlocked:hover,
 .rarity-rare.trophy-unlocked.hover-active,
 .rarity-rare.trophy-unlocked.touch-active {
-  box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.5), 0 10px 10px -5px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 20px 25px -5px rgba(90, 69, 148, 0.5), 0 10px 10px -5px rgba(90, 69, 148, 0.4);
 }
 
 /* Épique - Violet */
@@ -550,7 +566,7 @@
 }
 
 .badge-rare {
-  background: rgb(59, 130, 246);
+  background: rgb(90, 69, 148);
   color: white;
 }
 
@@ -598,12 +614,12 @@
 
 /* Primary button style */
 .btn-primary {
-  background-color: rgb(37, 99, 235);
+  background-color: rgb(90, 69, 148);
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: rgb(29, 78, 216);
+  background-color: rgb(74, 53, 128);
   transform: translateY(-1px);
 }
 
@@ -612,18 +628,18 @@
 }
 
 .btn-primary.selected {
-  background-color: rgb(29, 78, 216);
-  box-shadow: 0 0 0 3px rgb(17, 24, 39), 0 0 0 5px rgb(59, 130, 246);
+  background-color: rgb(74, 53, 128);
+  box-shadow: 0 0 0 3px rgb(27, 21, 45), 0 0 0 5px rgb(90, 69, 148);
 }
 
 /* Secondary button style */
 .btn-secondary {
-  background-color: rgb(55, 65, 81);
+  background-color: rgb(70, 54, 115);
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: rgb(37, 99, 235);
+  background-color: rgb(74, 53, 128);
   transform: translateY(-1px);
 }
 
@@ -632,8 +648,8 @@
 }
 
 .btn-secondary.selected {
-  background-color: rgb(29, 78, 216);
-  box-shadow: 0 0 0 3px rgb(17, 24, 39), 0 0 0 5px rgb(59, 130, 246);
+  background-color: rgb(74, 53, 128);
+  box-shadow: 0 0 0 3px rgb(27, 21, 45), 0 0 0 5px rgb(90, 69, 148);
 }
 
 /* Category filter button with dynamic colors */
@@ -648,7 +664,7 @@
 }
 
 .btn-category.selected {
-  box-shadow: 0 0 0 2px rgb(17, 24, 39), 0 0 0 3px currentColor;
+  box-shadow: 0 0 0 2px rgb(27, 21, 45), 0 0 0 3px currentColor;
 }
 
 /* ===== Hero Section Styles ===== */
@@ -704,25 +720,3 @@
   }
 }
 
-.time-option-btn {
-  background-color: rgb(55, 65, 81);
-  color: rgb(209, 213, 219);
-  border: 2px solid rgb(75, 85, 99);
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.time-option-btn:hover {
-  background-color: rgb(75, 85, 99);
-  border-color: rgb(107, 114, 128);
-  color: rgb(243, 244, 246);
-  transform: scale(1.05);
-}
-
-.time-option-btn:active {
-  transform: scale(0.98);
-}
-
-.time-option-btn.selected,
-.time-option-btn.bg-gradient-to-r {
-}

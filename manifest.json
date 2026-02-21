@@ -1,11 +1,11 @@
 {
-  "name": "EZ JOB - De 0 à 100% Pro",
-  "short_name": "EZ JOB",
-  "description": "Formation et coaching en développement web pour tous. De 0 vers 100% pro avec des quiz interactifs.",
+  "name": "Erudizz - Quiz & Entraînement",
+  "short_name": "Erudizz",
+  "description": "Plateforme de quiz interactifs et d'entraînement pour progresser à votre rythme.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#5a4594",
+  "theme_color": "#5a4594",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -27,7 +27,7 @@
       "purpose": "maskable"
     },
     {
-      "src": "/images/logo.svg",
+      "src": "/images/erudizz-logo.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
@@ -35,7 +35,7 @@
   ],
   "screenshots": [
     {
-      "src": "/images/logo.svg",
+      "src": "/images/erudizz-logo.svg",
       "sizes": "540x720",
       "type": "image/svg+xml",
       "form_factor": "narrow"

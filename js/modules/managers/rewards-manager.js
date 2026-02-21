@@ -4,7 +4,7 @@
 
 export class RewardsManager {
     constructor() {
-        this.storageKey = 'ez_job_rewards';
+        this.storageKey = 'erudizz_rewards';
         this.initializeRewards();
     }
 

@@ -42,11 +42,11 @@ export class HistoryManager {
         const statsHTML = `
             <div class="bg-gray-800 rounded-lg p-4 text-center">
                 <p class="text-gray-400 text-sm">Quizzes terminés</p>
-                <p class="text-3xl font-bold text-primary-400">${stats.totalQuizzes}</p>
+                <p class="text-3xl font-bold text-accent-500">${stats.totalQuizzes}</p>
             </div>
             <div class="bg-gray-800 rounded-lg p-4 text-center">
                 <p class="text-gray-400 text-sm">Moyenne</p>
-                <p class="text-3xl font-bold text-primary-400">${stats.averageScore}%</p>
+                <p class="text-3xl font-bold text-accent-500">${stats.averageScore}%</p>
             </div>
             <div class="bg-gray-800 rounded-lg p-4 text-center">
                 <p class="text-gray-400 text-sm">Meilleur score</p>
@@ -109,7 +109,7 @@ export class HistoryManager {
                         </div>
                         <div class="flex gap-3 items-center">
                             ${result.pointsEarned !== undefined ? `
-                                <span class="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-xs font-semibold whitespace-nowrap">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" style="background:rgba(90,69,148,0.3);color:#8b72d4">
                                     <i class="bi bi-star-fill mr-1"></i>+${result.pointsEarned} pt${result.pointsEarned > 1 ? 's' : ''}
                                 </span>
                                 <span class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-xs font-semibold whitespace-nowrap">

@@ -220,7 +220,7 @@ export class QuizSelector {
 
         const timeButtonsHTML = this.timeOptions.map(time => {
             const isDefault = time === defaultTime;
-            const defaultClass = isDefault ? 'bg-gradient-to-r from-blue-500 to-blue-400 text-white border border-blue-300' : '';
+            const defaultClass = isDefault ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white border border-primary-400' : '';
             return `
             <button class="time-option-btn py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 ${defaultClass}"
                     data-time="${time}">
@@ -234,14 +234,14 @@ export class QuizSelector {
             <div id="${modalId}" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
                 <div class="bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full mx-4 border border-gray-700 overflow-hidden">
                     <!-- En-tête -->
-                    <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-6">
-                        <h2 class="text-2xl font-bold text-white mb-1">Sélectionner le temps</h2>
-                        <p class="text-blue-100 text-sm">${quiz.title}</p>
+                    <div class="bg-gradient-to-r from-primary-600 to-primary-500 p-6">
+                        <h2 class="text-2xl font-bold mb-1" style="color:#CCC4E3">Sélectionner le temps</h2>
+                        <p class="text-sm" style="color:#CCC4E3;opacity:0.75">${quiz.title}</p>
                     </div>
 
                     <!-- Contenu -->
                     <div class="p-6">
-                        <p class="text-gray-300 mb-6 text-center">
+                        <p class="mb-6 text-center" style="color:#CCC4E3">
                             Combien de secondes par question ?
                         </p>
 
@@ -251,7 +251,7 @@ export class QuizSelector {
                         </div>
 
                         <!-- Bouton Annuler -->
-                        <button class="close-time-modal w-full py-2 px-4 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm font-medium">
+                        <button class="close-time-modal w-full py-2 px-4 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm font-medium" style="color:#CCC4E3">
                             Annuler
                         </button>
                     </div>
@@ -282,8 +282,8 @@ export class QuizSelector {
             btn.addEventListener('click', (e) => {
                 const selectedTime = parseInt(btn.dataset.time);
                 // Ajouter la classe selected pour le feedback visuel
-                modal.querySelectorAll('.time-option-btn').forEach(b => b.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-blue-400', 'text-white', 'border', 'border-blue-300'));
-                btn.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-blue-400', 'text-white', 'border', 'border-blue-300');
+                modal.querySelectorAll('.time-option-btn').forEach(b => b.classList.remove('bg-gradient-to-r', 'from-primary-500', 'to-accent-500', 'text-white', 'border', 'border-primary-400'));
+                btn.classList.add('bg-gradient-to-r', 'from-primary-500', 'to-accent-500', 'text-white', 'border', 'border-primary-400');
 
                 // Petit délai pour voir l'effet de sélection
                 setTimeout(() => {
@@ -435,7 +435,7 @@ export class QuizSelector {
         
         const loaderHTML = `
             <div class="flex flex-col items-center justify-center py-8">
-                <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-primary-400 mb-6"></div>
+                <div class="animate-spin rounded-full h-16 w-16 mb-6" style="border-bottom:4px solid #5a4594"></div>
                 <p class="text-gray-400 text-xl font-medium">Chargement des quiz...</p>
                 <p class="text-gray-500 text-sm mt-2">Veuillez patienter</p>
             </div>

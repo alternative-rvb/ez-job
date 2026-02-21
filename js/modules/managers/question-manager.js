@@ -62,7 +62,7 @@ export class QuestionManager {
                     <button class="answer-btn ${isHidden} px-4 py-2 md:p-5 text-left bg-gray-700 rounded-lg md:rounded-xl border-2 border-transparent touch-manipulation"
                             data-answer-index="${index}">
                         <div class="flex items-center space-x-3">
-                            <span class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-primary-500 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base">${letter}</span>
+                            <span class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base" style="background-color:#5a4594">${letter}</span>
                             <span class="text-sm md:text-base leading-relaxed">${option}</span>
                         </div>
                     </button>
@@ -80,13 +80,15 @@ export class QuestionManager {
                         <input
                             type="text"
                             id="text-answer-input"
-                            class="w-full px-4 py-3 text-lg bg-gray-800 text-white border-2 border-gray-600 rounded-lg focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all"
+                            class="w-full px-4 py-3 text-lg bg-gray-800 text-white border-2 border-gray-600 rounded-lg focus:outline-none transition-all"
+                            style="--tw-ring-color:#5a459440"
                             placeholder="Entrez votre réponse..."
                             autocomplete="off"
                         />
                         <button
                             id="submit-text-answer"
-                            class="answer-submit-btn ${isHidden} w-full px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-bold rounded-lg transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                            class="answer-submit-btn ${isHidden} w-full px-6 py-3 text-white font-bold rounded-lg transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                            style="background:linear-gradient(to right,#5a4594,#ef8218)"
                         >
                             <div class="flex items-center justify-center space-x-2">
                                 <i class="bi bi-check-circle"></i>
@@ -100,7 +102,7 @@ export class QuestionManager {
             // Pas de choix ni de réponse - question informative
             optionsHTML = `
                 <div class="text-center py-8">
-                    <p class="text-lg md:text-xl text-blue-400 font-medium">Question informative</p>
+                    <p class="text-lg md:text-xl font-medium" style="color:#5a4594">Question informative</p>
                     <p class="text-sm text-gray-400 mt-2">Cette question ne compte pas dans le score</p>
                 </div>
             `;
@@ -110,7 +112,7 @@ export class QuestionManager {
             <div class="question-container">
                 <!-- Timer prominent en haut -->
                 <div class="mb-4 flex justify-center">
-                    <div class="bg-gradient-to-r from-primary-500 to-primary-600 rounded-full px-6 py-3 shadow-lg">
+                    <div id="timer-badge" class="rounded-full px-6 py-3 shadow-lg" style="background:linear-gradient(to right,#5a4594,#ef8218)">
                         <div class="flex items-center space-x-3">
                             <i class="bi bi-clock text-white text-lg"></i>
                             <span class="text-2xl font-bold text-white" id="timer-display-large">${quizState.timeRemaining}</span>
@@ -126,10 +128,10 @@ export class QuestionManager {
                 <!-- Options améliorées pour mobile -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-4 px-2">
                     ${CONFIG.freeMode ? `
-                        <div class="text-center py-4 px-6 bg-blue-900/30 border-2 border-blue-500/50 rounded-lg mb-4 md:col-span-2">
-                            <i class="bi bi-lightbulb text-2xl text-blue-400 mb-2"></i>
-                            <p class="text-blue-300 font-medium">Mode Libre activé</p>
-                            <p class="text-blue-400 text-sm">Les réponses sont cachées. Réfléchissez bien !</p>
+                        <div class="text-center py-4 px-6 rounded-lg mb-4 md:col-span-2" style="background:rgba(90,69,148,0.2);border:2px solid rgba(90,69,148,0.5)">
+                            <i class="bi bi-lightbulb text-2xl mb-2" style="color:#8b72d4"></i>
+                            <p class="font-medium" style="color:#8b72d4">Mode Libre activé</p>
+                            <p class="text-sm" style="color:#5a4594">Les réponses sont cachées. Réfléchissez bien !</p>
                         </div>
                     ` : ''}
                     ${optionsHTML}
@@ -141,10 +143,10 @@ export class QuestionManager {
                         <span class="text-sm font-semibold text-white">Progression</span>
                         <span class="text-sm font-semibold text-white" id="question-progress">${quizState.currentQuestionIndex + 1}/${quizState.questions.length}</span>
                     </div>
-                    <div class="w-full bg-gray-600 rounded-full h-4 overflow-hidden shadow-inner border border-gray-500">
-                        <div class="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full transition-all duration-1000 ease-out shadow-md" 
+                    <div class="w-full rounded-full h-4 overflow-hidden shadow-inner border border-gray-700" style="background:rgba(70,54,115,0.4)">
+                        <div class="h-4 rounded-full transition-all duration-1000 ease-out shadow-md"
                              id="question-progress-bar"
-                             style="width: ${((quizState.currentQuestionIndex + 1) / quizState.questions.length) * 100}%"></div>
+                             style="background:linear-gradient(to right,#5a4594,#ef8218);width:${((quizState.currentQuestionIndex + 1) / quizState.questions.length) * 100}%"></div>
                     </div>
                 </div>
             </div>
@@ -203,7 +205,7 @@ export class QuestionManager {
                             </div>
                         `;
                         submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                        submitBtn.classList.add('bg-gradient-to-r', 'from-primary-500', 'to-primary-600');
+                        submitBtn.style.background = 'linear-gradient(to right,#5a4594,#ef8218)';
                         clearTimeout(autoSubmitTimeout);
                     } else if (acceptedAnswers.includes(userAnswer) && !quizState.isAnswered) {
                         // Réponse correcte : bordure verte
@@ -218,7 +220,7 @@ export class QuestionManager {
                             </div>
                         `;
                         submitBtn.classList.add('bg-green-600', 'hover:bg-green-700');
-                        submitBtn.classList.remove('from-primary-500', 'to-primary-600', 'bg-gradient-to-r');
+                        submitBtn.style.background = '';
 
                         // Auto-soumettre après 1 seconde
                         clearTimeout(autoSubmitTimeout);
@@ -238,7 +240,7 @@ export class QuestionManager {
                             </div>
                         `;
                         submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                        submitBtn.classList.add('bg-gradient-to-r', 'from-primary-500', 'to-primary-600');
+                        submitBtn.style.background = 'linear-gradient(to right,#5a4594,#ef8218)';
 
                         // Annuler l'auto-soumission
                         clearTimeout(autoSubmitTimeout);
@@ -292,17 +294,20 @@ export class QuestionManager {
             
             if (timerDisplayLarge) {
                 timerDisplayLarge.textContent = quizState.timeRemaining;
-                
-                const timerContainer = timerDisplayLarge.closest('.bg-gradient-to-r');
-                
+
+                const timerContainer = document.getElementById('timer-badge');
+
                 if (quizState.timeRemaining <= 5) {
                     // Animation d'urgence
-                    timerContainer?.classList.remove('from-primary-500', 'to-primary-600');
-                    timerContainer?.classList.add('from-red-500', 'to-red-600', 'animate-pulse');
+                    if (timerContainer) {
+                        timerContainer.style.background = 'linear-gradient(to right,#ef4444,#dc2626)';
+                        timerContainer.classList.add('animate-pulse');
+                    }
                 } else if (quizState.timeRemaining <= 8) {
                     // Avertissement
-                    timerContainer?.classList.remove('from-primary-500', 'to-primary-600');
-                    timerContainer?.classList.add('from-yellow-500', 'to-orange-600');
+                    if (timerContainer) {
+                        timerContainer.style.background = 'linear-gradient(to right,#eab308,#f97316)';
+                    }
                 }
                 
                 // Vibration sur mobile pour les dernières secondes
@@ -515,7 +520,8 @@ export class QuestionManager {
         // Animation de sélection
         if (answerIndex >= 0) {
             const selectedButton = answerButtons[answerIndex];
-            selectedButton?.classList.add('scale-95', 'ring-2', 'ring-primary-400');
+            selectedButton?.classList.add('scale-95');
+            if (selectedButton) selectedButton.style.outline = '2px solid #5a4594';
         }
 
         // Délai pour l'animation de sélection
@@ -529,7 +535,7 @@ export class QuestionManager {
                 btn.disabled = true;
                 btn.blur(); // Retirer à nouveau le focus après avoir désactivé
                 btn.style.outline = 'none';
-                btn.classList.remove('hover:bg-gray-600', 'hover:border-primary-500');
+                btn.classList.remove('hover:bg-gray-600');
 
                 if (isCorrect) {
                     btn.classList.add('bg-green-600', 'border-green-400', 'shadow-lg');
@@ -592,7 +598,7 @@ export class QuestionManager {
         const feedbackColors = {
             success: 'from-green-400 to-emerald-500',
             error: 'from-red-400 to-pink-500',
-            neutral: 'from-blue-400 to-cyan-500',
+            neutral: 'from-primary-400 to-primary-500',
             timeout: 'from-yellow-400 to-orange-500'
         };
 
@@ -692,7 +698,7 @@ export class QuestionManager {
                 }
                 break;
             case 'neutral':
-                icon = '<i class="bi bi-journal-text text-blue-400"></i>';
+                icon = '<i class="bi bi-journal-text" style="color:#8b72d4"></i>';
                 title = 'Réponse enregistrée';
                 subtitle = message;
                 break;
@@ -767,7 +773,7 @@ export class QuestionManager {
     showLoadingMessage() {
         const loadingHTML = `
             <div class="text-center py-8">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-400 mx-auto mb-4"></div>
+                <div class="animate-spin rounded-full h-12 w-12 mx-auto mb-4" style="border-bottom:2px solid #5a4594"></div>
                 <p class="text-gray-300">Chargement des questions...</p>
             </div>
         `;
