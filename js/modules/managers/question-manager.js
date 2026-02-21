@@ -6,6 +6,7 @@ import { CONFIG } from '../core/config.js';
 import { quizState } from '../core/state.js';
 import { domManager } from '../ui/dom.js';
 import { launchConfetti } from '../core/utils.js';
+import { T } from '../core/theme.js';
 
 export class QuestionManager {
     constructor(onQuizComplete) {
@@ -62,7 +63,7 @@ export class QuestionManager {
                     <button class="answer-btn ${isHidden} px-4 py-2 md:p-5 text-left bg-gray-700 rounded-lg md:rounded-xl border-2 border-transparent touch-manipulation"
                             data-answer-index="${index}">
                         <div class="flex items-center space-x-3">
-                            <span class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base" style="background-color:#5a4594">${letter}</span>
+                            <span class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base" style="background-color:${T.hexPrimary}">${letter}</span>
                             <span class="text-sm md:text-base leading-relaxed">${option}</span>
                         </div>
                     </button>
@@ -81,14 +82,14 @@ export class QuestionManager {
                             type="text"
                             id="text-answer-input"
                             class="w-full px-4 py-3 text-lg bg-gray-800 text-white border-2 border-gray-600 rounded-lg focus:outline-none transition-all"
-                            style="--tw-ring-color:#5a459440"
+                            style="--tw-ring-color:${T.primaryA(0.25)}"
                             placeholder="Entrez votre réponse..."
                             autocomplete="off"
                         />
                         <button
                             id="submit-text-answer"
                             class="answer-submit-btn ${isHidden} w-full px-6 py-3 text-white font-bold rounded-lg transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-                            style="background:linear-gradient(to right,#5a4594,#ef8218)"
+                            style="background:${T.gradientMain}"
                         >
                             <div class="flex items-center justify-center space-x-2">
                                 <i class="bi bi-check-circle"></i>
@@ -102,7 +103,7 @@ export class QuestionManager {
             // Pas de choix ni de réponse - question informative
             optionsHTML = `
                 <div class="text-center py-8">
-                    <p class="text-lg md:text-xl font-medium" style="color:#5a4594">Question informative</p>
+                    <p class="text-lg md:text-xl font-medium" style="color:${T.hexPrimary}">Question informative</p>
                     <p class="text-sm text-gray-400 mt-2">Cette question ne compte pas dans le score</p>
                 </div>
             `;
@@ -112,7 +113,7 @@ export class QuestionManager {
             <div class="question-container">
                 <!-- Timer prominent en haut -->
                 <div class="mb-4 flex justify-center">
-                    <div id="timer-badge" class="rounded-full px-6 py-3 shadow-lg" style="background:linear-gradient(to right,#5a4594,#ef8218)">
+                    <div id="timer-badge" class="rounded-full px-6 py-3 shadow-lg" style="background:${T.gradientMain}">
                         <div class="flex items-center space-x-3">
                             <i class="bi bi-clock text-white text-lg"></i>
                             <span class="text-2xl font-bold text-white" id="timer-display-large">${quizState.timeRemaining}</span>
@@ -128,10 +129,10 @@ export class QuestionManager {
                 <!-- Options améliorées pour mobile -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-4 px-2">
                     ${CONFIG.freeMode ? `
-                        <div class="text-center py-4 px-6 rounded-lg mb-4 md:col-span-2" style="background:rgba(90,69,148,0.2);border:2px solid rgba(90,69,148,0.5)">
-                            <i class="bi bi-lightbulb text-2xl mb-2" style="color:#8b72d4"></i>
-                            <p class="font-medium" style="color:#8b72d4">Mode Libre activé</p>
-                            <p class="text-sm" style="color:#5a4594">Les réponses sont cachées. Réfléchissez bien !</p>
+                        <div class="text-center py-4 px-6 rounded-lg mb-4 md:col-span-2" style="background:${T.primaryA(0.2)};border:2px solid ${T.primaryA(0.5)}">
+                            <i class="bi bi-lightbulb text-2xl mb-2" style="color:${T.hexPrimaryLight}"></i>
+                            <p class="font-medium" style="color:${T.hexPrimaryLight}">Mode Libre activé</p>
+                            <p class="text-sm" style="color:${T.hexPrimary}">Les réponses sont cachées. Réfléchissez bien !</p>
                         </div>
                     ` : ''}
                     ${optionsHTML}
@@ -205,7 +206,7 @@ export class QuestionManager {
                             </div>
                         `;
                         submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                        submitBtn.style.background = 'linear-gradient(to right,#5a4594,#ef8218)';
+                        submitBtn.style.background = T.gradientMain;
                         clearTimeout(autoSubmitTimeout);
                     } else if (acceptedAnswers.includes(userAnswer) && !quizState.isAnswered) {
                         // Réponse correcte : bordure verte
@@ -240,7 +241,7 @@ export class QuestionManager {
                             </div>
                         `;
                         submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                        submitBtn.style.background = 'linear-gradient(to right,#5a4594,#ef8218)';
+                        submitBtn.style.background = T.gradientMain;
 
                         // Annuler l'auto-soumission
                         clearTimeout(autoSubmitTimeout);
@@ -300,13 +301,13 @@ export class QuestionManager {
                 if (quizState.timeRemaining <= 5) {
                     // Animation d'urgence
                     if (timerContainer) {
-                        timerContainer.style.background = 'linear-gradient(to right,#ef4444,#dc2626)';
+                        timerContainer.style.background = T.gradientTimerUrgent;
                         timerContainer.classList.add('animate-pulse');
                     }
                 } else if (quizState.timeRemaining <= 8) {
                     // Avertissement
                     if (timerContainer) {
-                        timerContainer.style.background = 'linear-gradient(to right,#eab308,#f97316)';
+                        timerContainer.style.background = T.gradientTimerAlert;
                     }
                 }
                 
@@ -521,7 +522,7 @@ export class QuestionManager {
         if (answerIndex >= 0) {
             const selectedButton = answerButtons[answerIndex];
             selectedButton?.classList.add('scale-95');
-            if (selectedButton) selectedButton.style.outline = '2px solid #5a4594';
+            if (selectedButton) selectedButton.style.outline = `2px solid ${T.hexPrimary}`;
         }
 
         // Délai pour l'animation de sélection
@@ -698,7 +699,7 @@ export class QuestionManager {
                 }
                 break;
             case 'neutral':
-                icon = '<i class="bi bi-journal-text" style="color:#8b72d4"></i>';
+                icon = `<i class="bi bi-journal-text" style="color:${T.hexPrimaryLight}"></i>`;
                 title = 'Réponse enregistrée';
                 subtitle = message;
                 break;
@@ -773,7 +774,7 @@ export class QuestionManager {
     showLoadingMessage() {
         const loadingHTML = `
             <div class="text-center py-8">
-                <div class="animate-spin rounded-full h-12 w-12 mx-auto mb-4" style="border-bottom:2px solid #5a4594"></div>
+                <div class="animate-spin rounded-full h-12 w-12 mx-auto mb-4" style="border-bottom:2px solid ${T.hexPrimary}"></div>
                 <p class="text-gray-300">Chargement des questions...</p>
             </div>
         `;

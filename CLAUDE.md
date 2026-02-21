@@ -2,9 +2,35 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Charte graphique
+
+La charte graphique complète (palette, typographie, emplacements des couleurs dans le code) est dans @.doc/charte-graphique.md.
+
+**Règle importante** : toujours mettre à jour `.doc/charte-graphique.md` après chaque changement de couleur ou de style. Ce fichier est la source de vérité pour l'identité visuelle.
+
+### Système de thème centralisé
+
+**Pour changer une couleur de la charte : ne modifier que `styles/main.css` (bloc `:root`).** Les valeurs se propagent automatiquement partout.
+
+Architecture :
+- `styles/main.css` (`:root`) — source unique de toutes les couleurs (variables CSS `--color-*`)
+- `js/modules/core/theme.js` — lit les variables CSS via `getComputedStyle` au démarrage et expose l'objet `T`
+- `js/modules/managers/*.js` — importent `{ T }` et utilisent `T.gradientMain`, `T.primaryA(0.5)`, etc. dans les templates HTML
+
+**Règles d'usage dans les managers JS :**
+- Toujours utiliser `T.*` pour les couleurs dans les `style=""` inline
+- Ne jamais écrire de valeurs hex/rgb directement dans les managers
+- Voir `theme.js` pour la liste complète des helpers disponibles (`T.hexPrimary`, `T.primaryA()`, `T.gradientMain`, etc.)
+
+**Couleurs intentionnellement hors charte (ne pas modifier) :**
+- `category-colors.js` — palette décorative rotative des cartes quiz
+- `rarity-épique` `rgb(147,51,234)` — rareté distincte du primary
+- `rarity-commun` `rgb(107,114,128)` — gris neutre sémantique pour trophées non débloqués
+- Couleurs sémantiques vert/rouge/jaune (`text-green-400`, `text-red-400`, `text-yellow-400`) — feedback utilisateur universel
+
 ## Project Overview
 
-Job-EZ is an interactive quiz application built with vanilla JavaScript ES6 modules and Tailwind CSS. It features a modern dark theme UI, player tracking with localStorage, quiz history, and support for multiple game modes (normal/spoiler).
+Erudizz est une application de quiz interactifs construite avec Vanilla JavaScript ES6 modules et Tailwind CSS. Elle dispose d'un thème sombre violet/orange, d'un suivi des joueurs via localStorage, d'un historique des quiz et de plusieurs modes de jeu (normal/spoiler).
 
 ## Development Commands
 

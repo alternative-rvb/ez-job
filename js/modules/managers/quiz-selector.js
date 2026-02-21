@@ -7,6 +7,7 @@ import { loadAvailableQuizzes, getDifficultyIcons } from '../core/utils.js';
 import { domManager } from '../ui/dom.js';
 import { getCategoryColors, initializeCategoryColors } from '../core/category-colors.js';
 import { playerManager } from '../core/player.js';
+import { T } from '../core/theme.js';
 
 export class QuizSelector {
     constructor(onQuizSelect) {
@@ -235,13 +236,13 @@ export class QuizSelector {
                 <div class="bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full mx-4 border border-gray-700 overflow-hidden">
                     <!-- En-tête -->
                     <div class="bg-gradient-to-r from-primary-600 to-primary-500 p-6">
-                        <h2 class="text-2xl font-bold mb-1" style="color:#CCC4E3">Sélectionner le temps</h2>
-                        <p class="text-sm" style="color:#CCC4E3;opacity:0.75">${quiz.title}</p>
+                        <h2 class="text-2xl font-bold mb-1" style="color:${T.hexTextPrimary}">Sélectionner le temps</h2>
+                        <p class="text-sm" style="color:${T.hexTextPrimary};opacity:0.75">${quiz.title}</p>
                     </div>
 
                     <!-- Contenu -->
                     <div class="p-6">
-                        <p class="mb-6 text-center" style="color:#CCC4E3">
+                        <p class="mb-6 text-center" style="color:${T.hexTextPrimary}">
                             Combien de secondes par question ?
                         </p>
 
@@ -251,7 +252,7 @@ export class QuizSelector {
                         </div>
 
                         <!-- Bouton Annuler -->
-                        <button class="close-time-modal w-full py-2 px-4 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm font-medium" style="color:#CCC4E3">
+                        <button class="close-time-modal w-full py-2 px-4 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm font-medium" style="color:${T.hexTextPrimary}">
                             Annuler
                         </button>
                     </div>
@@ -435,7 +436,7 @@ export class QuizSelector {
         
         const loaderHTML = `
             <div class="flex flex-col items-center justify-center py-8">
-                <div class="animate-spin rounded-full h-16 w-16 mb-6" style="border-bottom:4px solid #5a4594"></div>
+                <div class="animate-spin rounded-full h-16 w-16 mb-6" style="border-bottom:4px solid ${T.hexPrimary}"></div>
                 <p class="text-gray-400 text-xl font-medium">Chargement des quiz...</p>
                 <p class="text-gray-500 text-sm mt-2">Veuillez patienter</p>
             </div>

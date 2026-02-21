@@ -5,6 +5,7 @@
 import { rewardsManager } from './rewards-manager.js';
 import { domManager } from '../ui/dom.js';
 import { addCacheBuster } from '../core/version.js';
+import { T } from '../core/theme.js';
 
 export class TrophiesManager {
     constructor(onBack) {
@@ -116,7 +117,7 @@ export class TrophiesManager {
                                     <p class="text-gray-500 text-xs mt-1">Débloquez pour découvrir</p>
                                 </div>
                                 <div class="bg-gray-700/70 backdrop-blur-sm rounded p-2 border border-yellow-500/40">
-                                    <p class="text-xs font-mono font-bold text-center tracking-wider" style="color:#CCC4E3">${trophy.secretCode}</p>
+                                    <p class="text-xs font-mono font-bold text-center tracking-wider" style="color:${T.hexTextPrimary}">${trophy.secretCode}</p>
                                 </div>
                             </div>
                         `}

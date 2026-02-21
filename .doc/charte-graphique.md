@@ -33,12 +33,102 @@
 
 ```css
 background: linear-gradient(to right, #5a4594, #ef8218);
-/* ou en CSS inline : style="background:linear-gradient(to right,#5a4594,#ef8218)" */
+/* En JS : T.gradientMain */
 ```
 
 ---
 
-## Configuration Tailwind (index.html inline)
+## Modifier le thème : procédure unique
+
+**Pour changer une couleur, ne modifier qu'un seul fichier : `styles/main.css` (bloc `:root`)**
+
+Toutes les couleurs de la charte sont centralisées dans les variables CSS du `:root`. Le module `js/modules/core/theme.js` les lit via `getComputedStyle` au démarrage et les expose aux managers JS.
+
+```
+styles/main.css (:root)          ← SOURCE UNIQUE de toutes les couleurs
+       ↓ CSS variables
+styles/main.css (.sélecteurs)    ← Lus directement via var()
+styles/time-selector.css          ← Lus directement via var()
+       ↓ getComputedStyle
+js/modules/core/theme.js          ← Lu une fois au chargement
+       ↓ import { T }
+js/modules/managers/*.js          ← Utilisé dans les templates HTML générés
+```
+
+**Ne jamais** écrire des couleurs hex/rgb directement dans les managers JS. Utiliser `T.hexPrimary`, `T.gradientMain`, `T.primaryA(0.5)`, etc.
+
+---
+
+## Variables CSS (`styles/main.css` — `:root`)
+
+```css
+:root {
+  /* ===== PALETTE ERUDIZZ (modifier ici pour changer le thème) ===== */
+  --color-primary:        90, 69, 148;    /* #5a4594 — Violet principal */
+  --color-primary-light:  139, 114, 212;  /* #8b72d4 — Violet clair */
+  --color-primary-dark:   74, 53, 128;    /* #4a3580 — Violet foncé */
+  --color-secondary:      239, 130, 24;   /* #ef8218 — Orange accent */
+  --color-accent:         239, 130, 24;   /* #ef8218 — Orange (même que secondary) */
+  --color-bg-primary:     27, 21, 45;     /* #1B152D — Fond body */
+  --color-bg-secondary:   49, 37, 80;     /* #312550 — Fond cards */
+  --color-bg-tertiary:    70, 54, 115;    /* #463673 — Fond inputs/btn-secondary */
+  --color-text-primary:   204, 196, 227;  /* #CCC4E3 — Texte principal */
+  --color-text-secondary: 155, 146, 176;  /* #9b92b0 — Texte secondaire */
+  --color-success:        34, 197, 94;
+  --color-error:          239, 68, 68;
+  --color-warning:        251, 191, 36;
+  --color-info:           90, 69, 148;    /* Violet (remplace bleu) */
+  --color-timer-urgent:   239, 68, 68;
+  --color-timer-alert:    234, 179, 8;
+}
+```
+
+---
+
+## Module `theme.js` (`js/modules/core/theme.js`)
+
+Ce module est **la seule interface** entre les variables CSS et le code JS. Il lit les variables CSS une fois au chargement et expose un objet `T` typé.
+
+```javascript
+import { T } from '../core/theme.js';
+
+// Couleurs solides
+T.primary        // "rgb(90, 69, 148)"
+T.primaryLight   // "rgb(139, 114, 212)"
+T.secondary      // "rgb(239, 130, 24)"
+
+// Couleurs hex (pour CSS color:)
+T.hexPrimary      // "#5a4594"
+T.hexPrimaryLight // "#8b72d4"
+T.hexSecondary    // "#ef8218"
+T.hexTextPrimary  // "#CCC4E3"
+
+// Avec opacité (fonctions)
+T.primaryA(0.3)    // "rgba(90, 69, 148, 0.3)"
+T.secondaryA(0.3)  // "rgba(239, 130, 24, 0.3)"
+T.bgTertiaryA(0.4) // "rgba(70, 54, 115, 0.4)"
+
+// Dégradés prêts à l'emploi
+T.gradientMain         // "linear-gradient(to right, rgb(...), rgb(...))"
+T.gradientMain135      // Même dégradé à 135°
+T.gradientTimerUrgent  // Rouge — timer ≤5s
+T.gradientTimerAlert   // Jaune/orange — timer ≤8s
+```
+
+**Usage dans un manager :**
+```javascript
+// CORRECT
+style="background:${T.gradientMain};color:${T.hexTextPrimary}"
+style="background:${T.primaryA(0.2)};border:1px solid ${T.primaryA(0.5)}"
+
+// INCORRECT (ne jamais faire)
+style="background:linear-gradient(to right,#5a4594,#ef8218)"
+style="color:#CCC4E3"
+```
+
+---
+
+## Configuration Tailwind (`index.html` inline)
 
 ```js
 tailwind.config = {
@@ -73,16 +163,7 @@ tailwind.config = {
 }
 ```
 
----
-
-## Variables CSS (styles/main.css — :root)
-
-```css
---color-primary:   90, 69, 148;    /* Violet #5a4594 */
---color-secondary: 239, 130, 24;   /* Orange #ef8218 */
---color-accent:    239, 130, 24;   /* Orange #ef8218 */
---color-info:      90, 69, 148;    /* Violet (remplace bleu) */
-```
+**Note** : Tailwind ne scanne pas les templates JS générés dynamiquement. Les couleurs dans les managers utilisent donc `style=` inline via `T.*`, et non des classes Tailwind.
 
 ---
 
@@ -105,19 +186,11 @@ tailwind.config = {
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;500;700;900&display=swap" rel="stylesheet">
 ```
 
-**CSS global (styles/main.css)** :
-
-```css
-body, html {
-  font-family: 'Heebo', ui-sans-serif, system-ui, sans-serif;
-}
-```
-
 ---
 
 ## Emplacements des couleurs dans le code
 
-### 1. `index.html`
+### 1. `index.html` — classes Tailwind (charte via config)
 
 | Élément | Classe/Attribut |
 | --- | --- |
@@ -135,24 +208,24 @@ body, html {
 | Hover icônes nav/footer | `hover:text-accent-500` |
 | Input focus | `focus:border-primary-500` |
 
-### 2. `styles/main.css`
+### 2. `styles/main.css` — CSS natif via `var()`
 
 | Sélecteur | Couleur appliquée |
 | --- | --- |
-| `.text-white` | `#CCC4E3` via CSS override dans `main.css` |
-| `.text-gray-400` | `#9b92b0` via CSS override dans `main.css` — texte secondaire violet désaturé |
-| `.feedback-modal-content` (fond) | `rgba(49, 37, 80, 0.97)` — fond secondaire `#312550` |
+| `.text-white` | `#CCC4E3` via CSS override |
+| `.text-gray-400` | `#9b92b0` via CSS override — texte secondaire violet désaturé |
+| `.feedback-modal-content` (fond) | `rgba(49, 37, 80, 0.97)` — fond secondaire |
 | `.feedback-modal-content` (bordure) | `rgba(90, 69, 148, 0.4)` — violet principal |
-| `.btn-primary` | `rgb(90, 69, 148)` — violet |
-| `.btn-primary:hover` | `rgb(74, 53, 128)` — violet foncé |
+| `.btn-primary` | `rgb(90, 69, 148)` |
+| `.btn-primary:hover` | `rgb(74, 53, 128)` |
 | `.btn-primary.selected` | box-shadow ring `rgb(27, 21, 45)` + `rgb(90, 69, 148)` |
-| `.btn-secondary` | `rgb(70, 54, 115)` — `#463673` |
-| `.btn-secondary:hover` | `rgb(74, 53, 128)` — violet foncé |
+| `.btn-secondary` | `rgb(70, 54, 115)` |
+| `.btn-secondary:hover` | `rgb(74, 53, 128)` |
 | `.btn-secondary.selected` | box-shadow ring `rgb(27, 21, 45)` + `rgb(90, 69, 148)` |
-| `.answer-btn:active` | `rgb(70, 54, 115)` — `#463673` fond tertiaire |
-| `.answer-btn:disabled` | `rgb(70, 54, 115)` — `#463673` fond tertiaire |
-| `.rarity-rare` | `rgb(90, 69, 148)` — violet |
-| `.badge-rare` | `rgb(90, 69, 148)` — violet |
+| `.answer-btn:active` | `rgb(70, 54, 115)` — fond tertiaire |
+| `.answer-btn:disabled` | `rgb(70, 54, 115)` — fond tertiaire |
+| `.rarity-rare` | `rgb(90, 69, 148)` |
+| `.badge-rare` | `rgb(90, 69, 148)` |
 | `.trophy-card-pokemon:hover` | box-shadow violet |
 | `@keyframes card-shine` | drop-shadow violet |
 
@@ -160,68 +233,33 @@ body, html {
 
 | Sélecteur | Couleur appliquée |
 | --- | --- |
-| `.time-option-btn` (fond) | `#463673` — fond tertiaire |
-| `.time-option-btn` (texte) | `#CCC4E3` — texte principal |
-| `.time-option-btn` (bordure) | `#5a4594` — violet principal |
-| `.time-option-btn:hover` (fond) | `#5a4594` — violet principal |
-| `.time-option-btn:hover` (bordure) | `#8b72d4` — violet clair |
+| `.time-option-btn` (fond) | `#463673` |
+| `.time-option-btn` (texte) | `#CCC4E3` |
+| `.time-option-btn` (bordure) | `#5a4594` |
+| `.time-option-btn:hover` (fond) | `#5a4594` |
+| `.time-option-btn:hover` (bordure) | `#8b72d4` |
 | `.time-option-btn.selected` | `linear-gradient(135deg, rgb(90,69,148), rgb(239,130,24))` |
 
-### 4. `js/modules/managers/quiz-selector.js`
+### 4. `js/modules/managers/*.js` — via `import { T } from '../core/theme.js'`
 
-| Élément | Valeur |
+Tous les managers utilisent le module `theme.js`. Voir la section **Module `theme.js`** ci-dessus pour les helpers disponibles.
+
+| Manager | Éléments utilisant `T.*` |
 | --- | --- |
-| Bouton temps sélectionné (défaut) | `from-primary-500 to-accent-500 border-primary-400` |
-| En-tête modal temps | `from-primary-600 to-primary-500` |
-| Titre modal (`h2`) | `style="color:#CCC4E3"` |
-| Sous-titre modal | `style="color:#CCC4E3;opacity:0.75"` |
-| Description modale | `style="color:#CCC4E3"` |
-| Bouton Annuler | `style="color:#CCC4E3"` |
-| Spinner chargement | `style="border-bottom:4px solid #5a4594"` |
+| `quiz-selector.js` | Titres/textes modal, spinner chargement |
+| `question-manager.js` | Lettres A/B/C/D, timer badge, barre progression, bouton valider, mode libre, spinner |
+| `results-manager.js` | Barre score, section récompenses (fond + bordure), icônes étoiles |
+| `history-manager.js` | Badge points gagnés (fond + couleur texte) |
+| `trophies-manager.js` | Texte code secret |
 
-### 5. `js/modules/managers/question-manager.js`
-
-| Élément | Valeur |
-| --- | --- |
-| Lettre A/B/C/D | `style="background-color:#5a4594"` |
-| Badge timer (fond) | `style="background:linear-gradient(to right,#5a4594,#ef8218)"` |
-| Badge timer urgence (≤5s) | `style="background:linear-gradient(to right,#ef4444,#dc2626)"` |
-| Badge timer alerte (≤8s) | `style="background:linear-gradient(to right,#eab308,#f97316)"` |
-| Conteneur progress bar | `style="background:rgba(70,54,115,0.4)"` + `border-gray-700` |
-| Barre progression (intérieure) | `style="background:linear-gradient(to right,#5a4594,#ef8218);width:…%"` |
-| Bouton valider texte | `style="background:linear-gradient(to right,#5a4594,#ef8218)"` |
-| Mode Libre bloc | `style="background:rgba(90,69,148,0.2);border:2px solid rgba(90,69,148,0.5)"` |
-| Spinner chargement | `style="border-bottom:2px solid #5a4594"` |
-
-### 6. `js/modules/managers/results-manager.js`
-
-| Élément | Valeur |
-| --- | --- |
-| Barre score | `style="background:linear-gradient(to right,#5a4594,#ef8218)"` |
-| Section récompenses | `style="background:linear-gradient(to right,rgba(90,69,148,0.5),rgba(239,130,24,0.3));border:1px solid rgba(90,69,148,0.5)"` |
-
-### 7. `js/modules/managers/history-manager.js`
-
-| Élément | Valeur |
-| --- | --- |
-| Stats (total/moyenne) | `text-accent-500` |
-| Badge points gagnés | `style="background:rgba(90,69,148,0.3);color:#8b72d4"` |
-
-### 8. `manifest.json`
+### 5. `manifest.json`
 
 ```json
 "theme_color": "#5a4594",
 "background_color": "#5a4594"
 ```
 
-### 9. `sw.js`
-
-```js
-const CACHE_NAME = `erudizz-${CACHE_VERSION}`;
-// filtre: cacheName.startsWith('erudizz-')
-```
-
-### 10. `js/modules/managers/rewards-manager.js`
+### 6. `js/modules/managers/rewards-manager.js`
 
 ```js
 this.storageKey = 'erudizz_rewards';
@@ -241,10 +279,10 @@ this.storageKey = 'erudizz_rewards';
 
 | Couleur | Usage | Justification |
 | --- | --- | --- |
-| `text-yellow-300` (code secret trophée) → `#CCC4E3` inline | Page trophées, `trophies-manager.js` | Aligné sur la couleur de texte principale |
 | `text-green-400` | Bonne réponse, meilleur score | Feedback positif universel |
 | `text-red-400` | Mauvaise réponse, pire score | Feedback négatif universel |
 | `text-yellow-400` | Trophées, étoiles | Couleur "or" standard |
-| `rarity-épique` `rgb(147,51,234)` | Trophées épiques | Rareté distincte du primary |
+| `rarity-épique` `rgb(147,51,234)` | Trophées épiques | Rareté distincte du primary, intentionnel |
 | `rarity-légendaire` `rgb(249,115,22)` | Trophées légendaires | Accord charte (orange accent) |
-| Palette `category-colors.js` | Couleurs rotatives des cartes quiz | Décoratives, indépendantes |
+| `rarity-commun` `rgb(107,114,128)` | Trophées non débloqués | Gris neutre sémantique |
+| Palette `category-colors.js` | Couleurs rotatives des cartes quiz | Décoratives, indépendantes de la charte |

@@ -8,6 +8,7 @@ import { launchConfetti } from '../core/utils.js';
 import { CONFIG } from '../core/config.js';
 import { playerManager } from '../core/player.js';
 import { rewardsManager } from './rewards-manager.js';
+import { T } from '../core/theme.js';
 
 export class ResultsManager {
     constructor(onRestart, onBackToHome, onShowTrophies) {
@@ -102,12 +103,12 @@ export class ResultsManager {
                     
                     <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
                         <div class="h-full transition-all duration-500"
-                             style="width: ${percentage}%;background:linear-gradient(to right,#5a4594,#ef8218)"></div>
+                             style="width:${percentage}%;background:${T.gradientMain}"></div>
                     </div>
                 </div>
 
                 <!-- Rewards Section -->
-                <div class="rounded-2xl p-6 mb-8 shadow-lg" style="background:linear-gradient(to right,rgba(90,69,148,0.5),rgba(239,130,24,0.3));border:1px solid rgba(90,69,148,0.5)">
+                <div class="rounded-2xl p-6 mb-8 shadow-lg" style="background:linear-gradient(to right,${T.primaryA(0.5)},${T.secondaryA(0.3)});border:1px solid ${T.primaryA(0.5)}"
                     <div class="flex items-start gap-4">
                         <i class="bi bi-star-fill text-4xl text-yellow-400 flex-shrink-0"></i>
                         <div class="flex-1">
@@ -244,7 +245,7 @@ export class ResultsManager {
      */
     getRewardMessage(points, timeLimit) {
         if (points === 0) {
-            return '<i class="bi bi-journal-text" style="color:#8b72d4"></i> Score enregistré';
+            return `<i class="bi bi-journal-text" style="color:${T.hexPrimaryLight}"></i> Score enregistré`;
         }
 
         const difficultyLabel = {
@@ -254,7 +255,7 @@ export class ResultsManager {
             20: 'Mode Facile (20s)'
         }[timeLimit] || 'Mode Normal';
 
-        const emojis = ['<i class="bi bi-trophy-fill text-yellow-400"></i>', '<i class="bi bi-star-fill text-yellow-400"></i>', '<i class="bi bi-star-fill" style="color:#ef8218"></i>', '<i class="bi bi-star-fill" style="color:#8b72d4"></i>', '<i class="bi bi-trophy-fill text-green-400"></i>'];
+        const emojis = ['<i class="bi bi-trophy-fill text-yellow-400"></i>', '<i class="bi bi-star-fill text-yellow-400"></i>', `<i class="bi bi-star-fill" style="color:${T.hexSecondary}"></i>`, `<i class="bi bi-star-fill" style="color:${T.hexPrimaryLight}"></i>`, '<i class="bi bi-trophy-fill text-green-400"></i>'];
         const emoji = emojis[Math.min(points - 1, emojis.length - 1)] || '<i class="bi bi-star-fill text-yellow-400"></i>';
 
         return `${emoji} ${difficultyLabel} : +${points} point${points > 1 ? 's' : ''} !`;

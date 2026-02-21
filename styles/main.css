@@ -6,24 +6,33 @@
 /* ===== CSS Variables - Theme System ===== */
 
 :root {
-  /* Couleurs principales (RGB pour rgba()) */
-  --color-primary: 90, 69, 148;         /* Violet principal #5a4594 */
-  --color-secondary: 239, 130, 24;      /* Orange accent #ef8218 */
-  --color-accent: 239, 130, 24;         /* Orange accent #ef8218 */
+  /* ===== PALETTE ERUDIZZ (modifier ici pour changer le thème) ===== */
+
+  /* Couleurs principales (valeurs RGB pour usage dans rgba()) */
+  --color-primary:       90, 69, 148;   /* Violet principal  #5a4594 */
+  --color-primary-light: 139, 114, 212; /* Violet clair      #8b72d4 */
+  --color-primary-dark:  74, 53, 128;   /* Violet foncé      #4a3580 */
+  --color-secondary:     239, 130, 24;  /* Orange accent     #ef8218 */
+  --color-accent:        239, 130, 24;  /* Orange accent     #ef8218 */
 
   /* Couleurs de fond */
-  --color-bg-dark: 26, 30, 35;          /* Fond sombre */
-  --color-bg-darker: 17, 24, 39;        /* Fond très sombre */
+  --color-bg-primary:    27, 21, 45;    /* Fond body         #1B152D */
+  --color-bg-secondary:  49, 37, 80;    /* Fond cards        #312550 */
+  --color-bg-tertiary:   70, 54, 115;   /* Fond inputs/btns  #463673 */
 
-  /* Couleurs de feedback */
-  --color-success: 34, 197, 94;         /* Vert */
-  --color-error: 239, 68, 68;           /* Rouge */
-  --color-warning: 251, 191, 36;        /* Jaune */
-  --color-info: 90, 69, 148;            /* Violet info */
+  /* Couleurs de texte */
+  --color-text-primary:  204, 196, 227; /* Texte principal   #CCC4E3 */
+  --color-text-secondary: 155, 146, 176;/* Texte secondaire  #9b92b0 */
 
-  /* Couleurs grises */
-  --color-gray-600: 75, 85, 99;
-  --color-gray-700: 55, 65, 81;
+  /* Couleurs de feedback (sémantiques — à ne pas changer) */
+  --color-success: 34, 197, 94;         /* Vert  — bonne réponse */
+  --color-error:   239, 68, 68;         /* Rouge — mauvaise réponse */
+  --color-warning: 251, 191, 36;        /* Jaune — avertissement */
+  --color-info:    90, 69, 148;         /* Violet info */
+
+  /* Couleurs timer urgence (sémantiques — à ne pas changer) */
+  --color-timer-urgent:  239, 68, 68;   /* Rouge  ≤5s */
+  --color-timer-alert:   234, 179, 8;   /* Jaune  ≤8s */
 
   /* Bulles - Configuration */
   --bubble-opacity-base: 0.3;
