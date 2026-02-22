@@ -1,0 +1,238 @@
+{
+  "config": {
+    "title": "Le Petit Nicolas - Chapitres 15, 16 et 17",
+    "description": "Teste ta compréhension de trois histoires du Petit Nicolas : Je suis malade, On a bien rigolé, Je fréquente Agnan",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 3,
+    "questionCount": 20,
+    "category": "CM2",
+    "createdAt": "2026-02-22",
+    "tag": [
+      "Littérature",
+      "Jeunesse"
+    ]
+  },
+  "questions": [
+    {
+      "question": "Dans le chapitre 15, pourquoi Nicolas est-il tombé malade ?",
+      "choices": [
+        "Il a mangé des caramels, bonbons, gâteaux, frites et glaces",
+        "Il a été sous la pluie trop longtemps",
+        "Il a attrapé froid en jouant dehors",
+        "Il a bu trop de lait"
+      ],
+      "correctAnswer": "Il a mangé des caramels, bonbons, gâteaux, frites et glaces",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 15, qu'est-ce que Nicolas trouve amusant chez le docteur ?",
+      "choices": [
+        "Son crâne chauve qui brille quand il pose la tête sur la poitrine de Nicolas",
+        "Sa grosse moustache grise",
+        "Sa mallette pleine de médicaments",
+        "Ses grandes oreilles"
+      ],
+      "correctAnswer": "Son crâne chauve qui brille quand il pose la tête sur la poitrine de Nicolas",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 15, qu'a apporté Alceste en rendant visite à Nicolas ?",
+      "choices": [
+        "Une boîte de chocolats",
+        "Des bonbons",
+        "Un livre d'images",
+        "Des gâteaux"
+      ],
+      "correctAnswer": "Une boîte de chocolats",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 15, pourquoi Alceste avait-il apporté des chocolats ?",
+      "choices": [
+        "Pour les manger lui-même, pas pour les donner à Nicolas",
+        "Pour offrir à Nicolas et lui remonter le moral",
+        "Pour les partager avec la maman de Nicolas",
+        "Parce que la maman de Nicolas lui avait demandé"
+      ],
+      "correctAnswer": "Pour les manger lui-même, pas pour les donner à Nicolas",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 15, que s'est-il passé après que Nicolas et Alceste se sont battus ?",
+      "choices": [
+        "Il y avait des chocolats écrasés sur les draps, le pyjama et dans les cheveux de Nicolas",
+        "Nicolas a renversé son verre d'eau sur le lit",
+        "Alceste a renversé la boîte de chocolats par terre",
+        "Le lit s'est cassé"
+      ],
+      "correctAnswer": "Il y avait des chocolats écrasés sur les draps, le pyjama et dans les cheveux de Nicolas",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 15, que décide de faire Nicolas pour s'occuper après avoir abandonné son livre ?",
+      "choices": [
+        "Dessiner avec le stylo de papa",
+        "Jouer aux voitures miniatures",
+        "Chanter des chansons",
+        "Regarder par la fenêtre"
+      ],
+      "correctAnswer": "Dessiner avec le stylo de papa",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "À la fin du chapitre 15, qui doit se mettre à la diète et se coucher ?",
+      "choices": [
+        "La maman de Nicolas",
+        "Nicolas lui-même",
+        "Le docteur",
+        "Alceste"
+      ],
+      "correctAnswer": "La maman de Nicolas",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 16, quelle raison a finalement convaincu Nicolas de ne pas aller à l'école ?",
+      "choices": [
+        "L'après-midi, il y avait arithmétique",
+        "La maîtresse était absente",
+        "Il faisait très beau dehors",
+        "Alceste lui avait promis des bonbons"
+      ],
+      "correctAnswer": "L'après-midi, il y avait arithmétique",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 16, qu'est-ce qu'Alceste trouvait dans ses poches lorsqu'ils ont cherché de l'argent pour aller au cinéma ?",
+      "choices": [
+        "De la ficelle, des billes, deux élastiques et des miettes",
+        "Un billet froissé et des bonbons",
+        "Des cailloux et un stylo cassé",
+        "Rien du tout"
+      ],
+      "correctAnswer": "De la ficelle, des billes, deux élastiques et des miettes",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 16, pourquoi ne sont-ils pas allés au square pour jouer ?",
+      "choices": [
+        "Parce qu'il y avait le gardien qui aurait pu les signaler à leurs parents",
+        "Parce que le square était fermé cet après-midi-là",
+        "Parce qu'ils n'avaient pas de ballon",
+        "Parce que c'était trop loin"
+      ],
+      "correctAnswer": "Parce qu'il y avait le gardien qui aurait pu les signaler à leurs parents",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 16, où les deux garçons se sont-ils finalement réfugiés pour s'amuser ?",
+      "choices": [
+        "Dans le terrain vague",
+        "Dans la cabane d'Alceste",
+        "Sous le pont près de la rivière",
+        "Dans la cave de l'immeuble"
+      ],
+      "correctAnswer": "Dans le terrain vague",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "À la fin du chapitre 16, pourquoi Nicolas refuse-t-il que sa maman lui propose de ne pas aller à l'école le lendemain ?",
+      "choices": [
+        "Pour raconter aux copains comme ils avaient bien rigolé et les rendre jaloux",
+        "Parce qu'il avait peur de se faire gronder encore plus",
+        "Parce qu'il y avait un devoir important le lendemain",
+        "Parce qu'il voulait s'excuser auprès de la maîtresse"
+      ],
+      "correctAnswer": "Pour raconter aux copains comme ils avaient bien rigolé et les rendre jaloux",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 17, comment Agnan est-il décrit par Nicolas ?",
+      "choices": [
+        "Le premier de la classe et le chouchou de la maîtresse",
+        "Le meilleur ami de Nicolas",
+        "Un garçon sportif et courageux",
+        "Le plus grand de la classe"
+      ],
+      "correctAnswer": "Le premier de la classe et le chouchou de la maîtresse",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 17, comment Nicolas est-il habillé pour aller chez Agnan ?",
+      "choices": [
+        "Costume bleu marine, chemise blanche en soie et cravate à pois",
+        "Pull rouge et pantalon noir",
+        "Uniforme de l'école et chaussures cirées",
+        "Jeans et veste de sport"
+      ],
+      "correctAnswer": "Costume bleu marine, chemise blanche en soie et cravate à pois",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 17, comment Nicolas et Agnan jouent-ils aux bateaux ?",
+      "choices": [
+        "Ils remplissent la baignoire et font des bateaux en papier avec les feuilles du livre d'arithmétique d'Agnan",
+        "Ils utilisent de vrais petits bateaux en bois dans la baignoire",
+        "Ils jouent dans un bac d'eau dans le jardin",
+        "Ils font des bateaux avec des capsules de bouteilles dans l'évier"
+      ],
+      "correctAnswer": "Ils remplissent la baignoire et font des bateaux en papier avec les feuilles du livre d'arithmétique d'Agnan",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 17, que se passe-t-il quand ils jouent à se lancer la mappemonde ?",
+      "choices": [
+        "Agnan rate la mappemonde sans ses lunettes et elle brise le miroir du côté de l'Australie",
+        "Nicolas lâche la mappemonde et elle tombe sur le pied d'Agnan",
+        "La mappemonde roule sous le lit et ils n'arrivent plus à la récupérer",
+        "Agnan attrape la mappemonde mais glisse et tombe"
+      ],
+      "correctAnswer": "Agnan rate la mappemonde sans ses lunettes et elle brise le miroir du côté de l'Australie",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 17, qu'arrive-t-il quand ils font chauffer le mélange de toutes les poudres et liquides dans la grande bouteille du jeu de chimie ?",
+      "choices": [
+        "La bouteille éclate, une fumée noire remplit la pièce et les murs deviennent tout noirs",
+        "Il se produit une belle explosion de lumière colorée",
+        "Le liquide déborde doucement et tache le tapis",
+        "Rien ne se passe, l'expérience échoue"
+      ],
+      "correctAnswer": "La bouteille éclate, une fumée noire remplit la pièce et les murs deviennent tout noirs",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "Dans le chapitre 17, comment réagit la maman d'Agnan quand elle découvre l'état de la chambre après l'expérience de chimie ?",
+      "choices": [
+        "Elle ouvre les yeux et la bouche sans rien dire, puis se met à crier et donne une claque à Agnan",
+        "Elle sourit calmement et leur demande de nettoyer",
+        "Elle fond en larmes et appelle le papa d'Agnan",
+        "Elle punit Agnan en le privant de jeu de chimie pour un mois"
+      ],
+      "correctAnswer": "Elle ouvre les yeux et la bouche sans rien dire, puis se met à crier et donne une claque à Agnan",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "À la fin du chapitre 17, quelle punition Nicolas reçoit-il de sa maman ?",
+      "choices": [
+        "Il n'aura pas de dessert ce soir-là",
+        "Il est privé de sortie pendant une semaine",
+        "Il doit s'excuser par écrit à la maman d'Agnan",
+        "Il est envoyé dans sa chambre sans dîner"
+      ],
+      "correctAnswer": "Il n'aura pas de dessert ce soir-là",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    },
+    {
+      "question": "À la fin du chapitre 17, qui ne veut plus que Nicolas et Agnan se fréquentent ?",
+      "choices": [
+        "La maman d'Agnan",
+        "La maman de Nicolas",
+        "La maîtresse de l'école",
+        "Le papa d'Agnan"
+      ],
+      "correctAnswer": "La maman d'Agnan",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas-chapitre_5.webp"
+    }
+  ]
+}

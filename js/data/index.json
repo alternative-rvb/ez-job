@@ -10,8 +10,9 @@
     "javascript",
     "jules-ferry-ecole",
     "la-terre",
-    "le-petit-nicolas-chapitre-5",
-    "le-petit-nicolas-les-carnets",
+    "le-petit-nicolas-chapitre-5-on-a-eu-l-inspecteur",
+    "le-petit-nicolas-chapitre-9-les-carnets",
+    "le-petit-nicolas-chapitres-15-16-17",
     "le-petrole-et-energie",
     "les-genres-litteraires",
     "multiples-3-et-9",
@@ -28,7 +29,7 @@
     "Divertissement",
     "Développement"
   ],
-  "count": 21,
-  "lastUpdated": "2026-02-21T12:11:58.591357",
+  "count": 22,
+  "lastUpdated": "2026-02-22T10:15:14.163040",
   "generated_by": "api.py"
 }
