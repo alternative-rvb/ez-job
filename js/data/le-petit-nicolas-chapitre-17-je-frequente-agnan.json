@@ -1,0 +1,128 @@
+{
+  "config": {
+    "title": "Le Petit Nicolas - Je fréquente Agnan (Chapitre 17)",
+    "description": "Teste ta compréhension du chapitre où Nicolas passe l'après-midi chez Agnan",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 3,
+    "questionCount": 10,
+    "category": "CM2",
+    "createdAt": "2026-02-22",
+    "tag": [
+      "Littérature",
+      "Jeunesse"
+    ]
+  },
+  "questions": [
+    {
+      "question": "Pourquoi la maman de Nicolas l'envoie-t-elle chez Agnan plutôt que jouer avec ses copains habituels ?",
+      "choices": [
+        "Elle n'aime pas les copains de Nicolas qui font des bêtises et pense qu'Agnan est bien élevé",
+        "Agnan est son meilleur ami et l'a invité pour son anniversaire",
+        "Les autres copains sont tous à la piscine et Nicolas n'a pas son maillot",
+        "La maîtresse a demandé à Nicolas de travailler avec Agnan"
+      ],
+      "correctAnswer": "Elle n'aime pas les copains de Nicolas qui font des bêtises et pense qu'Agnan est bien élevé",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Comment Nicolas décrit-il Agnan ?",
+      "choices": [
+        "Le premier de la classe, le chouchou de la maîtresse, pas bon camarade, mais on ne le tape pas car il porte des lunettes",
+        "Un garçon sportif et courageux, toujours prêt à rendre service",
+        "Un élève moyen mais très sympa et rigolo en dehors de l'école",
+        "Le meilleur ami de Nicolas depuis la maternelle"
+      ],
+      "correctAnswer": "Le premier de la classe, le chouchou de la maîtresse, pas bon camarade, mais on ne le tape pas car il porte des lunettes",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Comment Nicolas est-il habillé pour aller chez Agnan ?",
+      "choices": [
+        "Costume bleu marine avec des plis, chemise blanche en soie et cravate à pois",
+        "Pull rouge et pantalon noir repassé",
+        "Uniforme de l'école avec chaussures cirées",
+        "Jean propre et veste de sport bleue"
+      ],
+      "correctAnswer": "Costume bleu marine avec des plis, chemise blanche en soie et cravate à pois",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Qu'est-ce qu'Agnan propose de faire pour s'amuser après le goûter ?",
+      "choices": [
+        "Lire des livres et faire des problèmes d'arithmétique avec des robinets",
+        "Jouer aux petites voitures dans le couloir",
+        "Regarder la télévision dans le salon",
+        "Jouer aux cartes et aux jeux de société"
+      ],
+      "correctAnswer": "Lire des livres et faire des problèmes d'arithmétique avec des robinets",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Comment jouent-ils aux bateaux dans la salle de bains ?",
+      "choices": [
+        "Ils bouchent et remplissent la baignoire, puis font des bateaux en papier avec les feuilles du livre d'arithmétique",
+        "Ils utilisent de vrais petits bateaux en bois dans la baignoire",
+        "Ils jouent dans un bac en plastique posé par terre",
+        "Ils font des bateaux avec des bouchons de liège dans le lavabo"
+      ],
+      "correctAnswer": "Ils bouchent et remplissent la baignoire, puis font des bateaux en papier avec les feuilles du livre d'arithmétique",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Qu'arrive-t-il à la montre d'Agnan pendant le jeu dans la baignoire ?",
+      "choices": [
+        "Elle est trempée parce qu'Agnan n'a pas relevé sa manche, et elle marque désormais quatre heures vingt sans bouger",
+        "Elle glisse de son poignet et tombe au fond de la baignoire",
+        "Elle est abîmée par la vapeur d'eau mais continue de fonctionner",
+        "Agnan l'enlève à temps avant de mettre le bras dans l'eau"
+      ],
+      "correctAnswer": "Elle est trempée parce qu'Agnan n'a pas relevé sa manche, et elle marque désormais quatre heures vingt sans bouger",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Que se passe-t-il quand ils jouent à se lancer la mappemonde ?",
+      "choices": [
+        "Agnan la rate sans ses lunettes et elle brise le miroir du côté de l'Australie",
+        "Nicolas la lâche maladroitement et elle tombe sur le pied d'Agnan",
+        "La mappemonde roule sous le lit et ils n'arrivent plus à la récupérer",
+        "Agnan attrape la mappemonde mais glisse et tombe par terre"
+      ],
+      "correctAnswer": "Agnan la rate sans ses lunettes et elle brise le miroir du côté de l'Australie",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Qu'arrive-t-il quand ils mettent toutes les poudres et liquides du jeu de chimie dans la grande bouteille et la font chauffer ?",
+      "choices": [
+        "La bouteille éclate, une fumée noire envahit la pièce et noircit les murs et le tapis",
+        "Il se produit une belle réaction colorée qui les amuse beaucoup",
+        "Le liquide déborde doucement et tache le tapis sans exploser",
+        "Rien ne se passe, l'expérience échoue complètement"
+      ],
+      "correctAnswer": "La bouteille éclate, une fumée noire envahit la pièce et noircit les murs et le tapis",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Comment réagit la maman d'Agnan en découvrant l'état de la chambre après l'expérience de chimie ?",
+      "choices": [
+        "Elle reste bouche bée un moment, puis se met à crier et donne une claque à Agnan",
+        "Elle éclate en sanglots et appelle immédiatement le papa d'Agnan",
+        "Elle demande calmement aux garçons de nettoyer leur désordre",
+        "Elle punit Agnan en lui confisquant le jeu de chimie pour un mois"
+      ],
+      "correctAnswer": "Elle reste bouche bée un moment, puis se met à crier et donne une claque à Agnan",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Quelle est la conclusion de Nicolas à la fin du chapitre ?",
+      "choices": [
+        "Il s'est bien amusé et voudrait retourner chez Agnan, mais c'est la maman d'Agnan qui ne veut plus qu'il le fréquente",
+        "Il n'a pas aimé la visite et ne souhaite plus jamais retourner chez Agnan",
+        "Il pense qu'Agnan est finalement un bon ami et qu'ils se reverront bientôt",
+        "Il comprend que sa maman avait tort et que les livres ne sont pas amusants"
+      ],
+      "correctAnswer": "Il s'est bien amusé et voudrait retourner chez Agnan, mais c'est la maman d'Agnan qui ne veut plus qu'il le fréquente",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    }
+  ]
+}

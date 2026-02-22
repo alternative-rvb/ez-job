@@ -10,9 +10,11 @@
     "javascript",
     "jules-ferry-ecole",
     "la-terre",
+    "le-petit-nicolas-chapitre-15-je-suis-malade",
+    "le-petit-nicolas-chapitre-16-on-a-bien-rigole",
+    "le-petit-nicolas-chapitre-17-je-frequente-agnan",
     "le-petit-nicolas-chapitre-5-on-a-eu-l-inspecteur",
     "le-petit-nicolas-chapitre-9-les-carnets",
-    "le-petit-nicolas-chapitres-15-16-17",
     "le-petrole-et-energie",
     "les-genres-litteraires",
     "multiples-3-et-9",
@@ -29,7 +31,7 @@
     "Divertissement",
     "Développement"
   ],
-  "count": 22,
-  "lastUpdated": "2026-02-22T10:15:14.163040",
+  "count": 24,
+  "lastUpdated": "2026-02-22T10:41:56.710642",
   "generated_by": "api.py"
 }

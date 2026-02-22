@@ -1,0 +1,128 @@
+{
+  "config": {
+    "title": "Le Petit Nicolas - On a bien rigolé (Chapitre 16)",
+    "description": "Teste ta compréhension du chapitre où Nicolas et Alceste sèchent l'école",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 3,
+    "questionCount": 10,
+    "category": "CM2",
+    "createdAt": "2026-02-22",
+    "tag": [
+      "Littérature",
+      "Jeunesse"
+    ]
+  },
+  "questions": [
+    {
+      "question": "Qu'est-ce qui a finalement convaincu Nicolas de ne pas aller à l'école ?",
+      "choices": [
+        "Alceste lui a dit qu'il y avait arithmétique cet après-midi",
+        "Il faisait très beau et Alceste avait des bonbons",
+        "La maîtresse était absente ce jour-là",
+        "Alceste lui avait proposé d'aller au cinéma avec de l'argent"
+      ],
+      "correctAnswer": "Alceste lui a dit qu'il y avait arithmétique cet après-midi",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Pourquoi Alceste ne pouvait pas courir pour s'éloigner de l'école ?",
+      "choices": [
+        "Parce qu'il est gros et que ça le gêne de courir, surtout après le déjeuner",
+        "Parce qu'il portait un cartable trop lourd",
+        "Parce qu'il avait mal à la cheville",
+        "Parce qu'il ne voulait pas renverser ses biscuits"
+      ],
+      "correctAnswer": "Parce qu'il est gros et que ça le gêne de courir, surtout après le déjeuner",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Qu'est-ce que Nicolas dit pour faire courir Alceste plus vite ?",
+      "choices": [
+        "Que des inspecteurs de l'école les emmèneraient au cachot et leur donneraient du pain et de l'eau",
+        "Que la maîtresse les avait déjà vus et allait appeler leurs parents",
+        "Que le directeur les attendait au coin de la rue",
+        "Que des gendarmes patrouillaient dans le quartier"
+      ],
+      "correctAnswer": "Que des inspecteurs de l'école les emmèneraient au cachot et leur donneraient du pain et de l'eau",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Pourquoi les garçons ne peuvent-ils pas aller au cinéma ?",
+      "choices": [
+        "Ils n'ont pas d'argent dans leurs poches",
+        "Le cinéma est fermé cet après-midi",
+        "Leurs parents leur ont interdit le cinéma",
+        "Le film qu'ils voulaient voir est complet"
+      ],
+      "correctAnswer": "Ils n'ont pas d'argent dans leurs poches",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Qu'ont-ils trouvé dans leurs poches à la place de l'argent ?",
+      "choices": [
+        "De la ficelle, des billes, deux élastiques et des miettes",
+        "Des cailloux, un stylo cassé et un vieux ticket",
+        "Des bonbons collés, une gomme et un crayon",
+        "Rien du tout, leurs poches étaient vides"
+      ],
+      "correctAnswer": "De la ficelle, des billes, deux élastiques et des miettes",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Pourquoi ne sont-ils pas allés jouer au square ?",
+      "choices": [
+        "Il y avait le gardien qui aurait pu les voir et les signaler",
+        "Le square était fermé pour travaux",
+        "Il n'y avait pas de ballon pour jouer",
+        "C'était trop loin de l'endroit où ils se trouvaient"
+      ],
+      "correctAnswer": "Il y avait le gardien qui aurait pu les voir et les signaler",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Où les deux garçons finissent-ils par s'installer pour s'amuser ?",
+      "choices": [
+        "Dans le terrain vague, à lancer des pierres contre des boîtes de conserves",
+        "Derrière la vitrine de l'horloger, à regarder l'heure",
+        "Dans la boutique de monsieur Compani l'épicier",
+        "Sous le porche d'un immeuble pour se cacher"
+      ],
+      "correctAnswer": "Dans le terrain vague, à lancer des pierres contre des boîtes de conserves",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Pourquoi Nicolas finit-il par pleurer dans le terrain vague ?",
+      "choices": [
+        "Il réalise que c'est ennuyeux de se cacher et qu'il aurait préféré jouer aux billes avec les copains à la récré",
+        "Il s'est blessé en jetant des pierres contre les boîtes",
+        "Alceste a refusé de partager son sandwich au jambon",
+        "Il a peur que ses parents le découvrent et le punissent"
+      ],
+      "correctAnswer": "Il réalise que c'est ennuyeux de se cacher et qu'il aurait préféré jouer aux billes avec les copains à la récré",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Que se passe-t-il quand Nicolas et Alceste commencent à se disputer sur la faute de l'un ou de l'autre ?",
+      "choices": [
+        "Ils se battent, comme papa et monsieur Blédurt le voisin",
+        "Ils se boudent et rentrent chacun chez soi sans se parler",
+        "Alceste part en courant et abandonne Nicolas",
+        "Ils font la paix immédiatement et partagent les biscuits"
+      ],
+      "correctAnswer": "Ils se battent, comme papa et monsieur Blédurt le voisin",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Pourquoi Nicolas refuse-t-il que sa maman lui propose de ne pas aller à l'école le lendemain ?",
+      "choices": [
+        "Pour aller raconter aux copains comme ils ont bien rigolé et les rendre jaloux",
+        "Parce qu'il veut s'excuser auprès de la maîtresse",
+        "Parce qu'il a peur d'être puni encore plus sévèrement",
+        "Parce qu'il y a une interrogation importante le lendemain"
+      ],
+      "correctAnswer": "Pour aller raconter aux copains comme ils ont bien rigolé et les rendre jaloux",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    }
+  ]
+}

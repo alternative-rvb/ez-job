@@ -1,0 +1,128 @@
+{
+  "config": {
+    "title": "Le Petit Nicolas - Je suis malade (Chapitre 15)",
+    "description": "Teste ta compréhension du chapitre où Nicolas est malade et reçoit la visite d'Alceste",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 3,
+    "questionCount": 10,
+    "category": "CM2",
+    "createdAt": "2026-02-22",
+    "tag": [
+      "Littérature",
+      "Jeunesse"
+    ]
+  },
+  "questions": [
+    {
+      "question": "Pourquoi Nicolas est-il tombé malade dans la nuit ?",
+      "choices": [
+        "Il avait mangé des caramels, bonbons, gâteaux, frites et glaces",
+        "Il était resté sous la pluie trop longtemps",
+        "Il avait attrapé froid en jouant dehors",
+        "Il avait bu trop de lait froid"
+      ],
+      "correctAnswer": "Il avait mangé des caramels, bonbons, gâteaux, frites et glaces",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Qu'est-ce que Nicolas trouve amusant chez le docteur ?",
+      "choices": [
+        "Son crâne chauve qui brille juste sous son nez",
+        "Sa grosse moustache blanche",
+        "Sa mallette pleine de médicaments",
+        "Ses grandes oreilles décollées"
+      ],
+      "correctAnswer": "Son crâne chauve qui brille juste sous son nez",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Qu'ordonne le docteur à la maman de Nicolas ?",
+      "choices": [
+        "Le mettre à la diète et le laisser se reposer au lit",
+        "Lui donner des médicaments toutes les deux heures",
+        "Le faire marcher un peu dans la maison",
+        "L'emmener à l'hôpital pour des examens"
+      ],
+      "correctAnswer": "Le mettre à la diète et le laisser se reposer au lit",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "De quoi parle le livre que Nicolas commence à lire dans son lit ?",
+      "choices": [
+        "D'un petit ours qui se perdait dans la forêt avec des chasseurs",
+        "D'un cow-boy qui chassait des bandits dans le désert",
+        "D'un petit lapin qui fuyait un renard dans les champs",
+        "D'un petit chat perdu dans une grande ville"
+      ],
+      "correctAnswer": "D'un petit ours qui se perdait dans la forêt avec des chasseurs",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Pourquoi Alceste a-t-il apporté une boîte de chocolats ?",
+      "choices": [
+        "Pour les manger lui-même, pas pour les donner à Nicolas",
+        "Pour offrir à Nicolas et lui remonter le moral",
+        "Pour les partager avec la maman de Nicolas",
+        "Parce que la maman de Nicolas lui avait demandé"
+      ],
+      "correctAnswer": "Pour les manger lui-même, pas pour les donner à Nicolas",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Qu'y avait-il sur les draps et dans les cheveux de Nicolas après la bagarre avec Alceste ?",
+      "choices": [
+        "Des chocolats écrasés",
+        "De l'encre bleue",
+        "Du lait renversé",
+        "De la confiture"
+      ],
+      "correctAnswer": "Des chocolats écrasés",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Que fait Nicolas en se levant en cachette pour aller dans la cuisine ?",
+      "choices": [
+        "Il prend une cuisse de poulet, du gâteau à la crème et une bouteille de lait",
+        "Il mange des restes de frites et boit du jus d'orange",
+        "Il se prépare un sandwich au fromage",
+        "Il mange des chocolats cachés dans le placard"
+      ],
+      "correctAnswer": "Il prend une cuisse de poulet, du gâteau à la crème et une bouteille de lait",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Avec quoi Nicolas décide-t-il de dessiner pour s'occuper ?",
+      "choices": [
+        "Le vieux stylo de papa qui perd de l'encre",
+        "Ses crayons de couleur",
+        "Les feutres de sa trousse d'école",
+        "Un crayon à papier trouvé sous son lit"
+      ],
+      "correctAnswer": "Le vieux stylo de papa qui perd de l'encre",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Combien de pyjamas Nicolas a-t-il salis dans la journée ?",
+      "choices": [
+        "Trois pyjamas (bleu à rayures, rouge à carreaux, et une vieille chemise de papa)",
+        "Deux pyjamas (un bleu et un rouge)",
+        "Un seul pyjama, mais très sali",
+        "Aucun, c'est le lit qui a été sali"
+      ],
+      "correctAnswer": "Trois pyjamas (bleu à rayures, rouge à carreaux, et une vieille chemise de papa)",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    },
+    {
+      "question": "Que se passe-t-il à la fin du chapitre quand le docteur revient le soir ?",
+      "choices": [
+        "Nicolas est guéri, mais le docteur dit que c'est la maman qui doit se coucher et se mettre à la diète",
+        "Le docteur décide que Nicolas doit rester au lit encore deux jours",
+        "Le docteur repart sans examiner Nicolas car il est déjà mieux",
+        "Nicolas doit aller à l'hôpital pour la nuit"
+      ],
+      "correctAnswer": "Nicolas est guéri, mais le docteur dit que c'est la maman qui doit se coucher et se mettre à la diète",
+      "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
+    }
+  ]
+}
