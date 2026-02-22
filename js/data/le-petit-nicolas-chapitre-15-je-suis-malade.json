@@ -2,7 +2,7 @@
   "config": {
     "title": "Le Petit Nicolas - Je suis malade (Chapitre 15)",
     "description": "Teste ta compréhension du chapitre où Nicolas est malade et reçoit la visite d'Alceste",
-    "imageUrl": "",
+    "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp",
     "spoilerMode": false,
     "difficulty": 3,
     "questionCount": 10,

@@ -2,7 +2,7 @@
   "config": {
     "title": "Le petit Nicolas - On a eu l'inspecteur (Chapitre 5)",
     "description": "Teste ta compréhension de cette histoire du Petit Nicolas",
-    "imageUrl": "",
+    "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp",
     "spoilerMode": false,
     "difficulty": 3,
     "questionCount": 20,

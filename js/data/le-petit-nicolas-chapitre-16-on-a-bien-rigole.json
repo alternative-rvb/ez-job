@@ -2,7 +2,7 @@
   "config": {
     "title": "Le Petit Nicolas - On a bien rigolé (Chapitre 16)",
     "description": "Teste ta compréhension du chapitre où Nicolas et Alceste sèchent l'école",
-    "imageUrl": "",
+    "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp",
     "spoilerMode": false,
     "difficulty": 3,
     "questionCount": 10,
@@ -26,14 +26,14 @@
       "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
     },
     {
-      "question": "Pourquoi Alceste ne pouvait pas courir pour s'éloigner de l'école ?",
+      "question": "Pourquoi Alceste avait-il du mal à courir pour s'éloigner de l'école ?",
       "choices": [
-        "Parce qu'il est gros et que ça le gêne de courir, surtout après le déjeuner",
+        "Parce qu'il est gros et que ça le gêne pour courir",
         "Parce qu'il portait un cartable trop lourd",
         "Parce qu'il avait mal à la cheville",
         "Parce qu'il ne voulait pas renverser ses biscuits"
       ],
-      "correctAnswer": "Parce qu'il est gros et que ça le gêne de courir, surtout après le déjeuner",
+      "correctAnswer": "Parce qu'il est gros et que ça le gêne pour courir",
       "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp"
     },
     {
