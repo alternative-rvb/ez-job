@@ -197,7 +197,8 @@ import { T } from '../core/theme.js';
 | Titres hero | `from-primary-400 via-accent-500 to-primary-400` |
 | Boutons CTA | `from-accent-500 to-accent-600` |
 | Barre progression | `from-primary-500 to-accent-500` |
-| Input focus | `focus:border-primary-500` |
+| Input au repos | `border-primary-500/40` (violet charte 40% opacité) |
+| Input focus | `focus:border-accent-500` + `focus:ring-accent-500/30` (orange — cohérent avec CTA adjacent) |
 | Hover icônes | `hover:text-accent-500` |
 
 ### `styles/main.css` — CSS natif
@@ -208,7 +209,8 @@ import { T } from '../core/theme.js';
 | `.text-gray-400` override | `#9b92b0` — texte secondaire violet |
 | `.btn-primary` | Violet principal + hover foncé |
 | `.btn-secondary` | Fond tertiaire + hover foncé |
-| `.btn-*.selected` | Box-shadow ring violet |
+| `.btn-*.selected` | Box-shadow ring violet double |
+| `.time-option.selected` / `.game-mode.selected` | Dégradé violet → orange 135° + ring orange semi-transparent |
 | `.answer-btn:active/disabled` | Fond tertiaire `#463673` |
 | `.rarity-rare` / `.badge-rare` | Violet principal |
 | `.feedback-modal-content` | Fond secondaire + bordure violette |
