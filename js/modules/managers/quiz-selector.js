@@ -129,7 +129,7 @@ export class QuizSelector {
             ` : `
                 <div class="relative h-32 overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,${grad[0]} 0%,${grad[1]} 100%)">
                     <div class="text-center px-3 py-2 relative z-10">
-                        <p class="font-bold leading-tight line-clamp-3 text-white drop-shadow" style="font-family:'Fredoka',sans-serif;font-size:1rem">${quiz.title}</p>
+                        <p class="font-bold leading-tight line-clamp-3 text-white drop-shadow" style="font-family:'Baloo 2',sans-serif;font-size:1rem">${quiz.title}</p>
                     </div>
                     <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 80% 20%, white 0%, transparent 60%)"></div>
                 </div>
@@ -262,7 +262,7 @@ export class QuizSelector {
                 <div class="rounded-2xl shadow-2xl max-w-sm w-full mx-4 overflow-hidden" style="background:#fbf3ea;border:1px solid #dcc9b0">
                     <!-- En-tête -->
                     <div class="px-6 pt-6 pb-4">
-                        <h2 class="text-xl font-bold mb-1" style="color:#7c4004;font-family:'Fredoka',sans-serif">Temps par question</h2>
+                        <h2 class="text-xl font-bold mb-1" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Temps par question</h2>
                         <p class="text-sm" style="color:#b46e28">${quiz.title}</p>
                     </div>
 

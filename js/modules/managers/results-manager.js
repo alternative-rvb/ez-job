@@ -80,14 +80,14 @@ export class ResultsManager {
             <div class="py-8">
                 <!-- Header -->
                 <div class="text-center mb-6">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-1" style="color:#7c4004;font-family:'Fredoka',sans-serif">Résultats</h1>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-1" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Résultats</h1>
                     <p style="color:#b46e28">${quizTitle}</p>
                 </div>
 
                 <!-- Score Card -->
                 <div class="rounded-2xl p-8 mb-8 text-center shadow-lg" style="background:#f4eadd;border:1.5px solid #dcc9b0">
                     <div class="mb-4">
-                        <div class="text-7xl font-bold" style="color:#66bcb4;font-family:'Fredoka',sans-serif">
+                        <div class="text-7xl font-bold" style="color:#66bcb4;font-family:'Baloo 2',sans-serif">
                             ${percentage}%
                         </div>
                     </div>
@@ -112,7 +112,7 @@ export class ResultsManager {
                     <div class="flex items-start gap-4">
                         <i class="bi bi-star-fill text-3xl text-yellow-400 flex-shrink-0 mt-0.5"></i>
                         <div class="flex-1">
-                            <h3 class="text-base font-bold mb-1" style="color:#7c4004;font-family:'Fredoka',sans-serif">Récompense Gagnée !</h3>
+                            <h3 class="text-base font-bold mb-1" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Récompense Gagnée !</h3>
                             <p class="text-sm mb-3" style="color:#b46e28">
                                 ${this.getRewardMessage(rewardsResult.pointsEarned, CONFIG.timeLimit)}
                             </p>
@@ -156,7 +156,7 @@ export class ResultsManager {
 
                 <!-- Details Section -->
                 <div class="rounded-2xl p-6" style="background:#f4eadd;border:1.5px solid #dcc9b0">
-                    <h2 class="text-xl font-bold mb-6" style="color:#7c4004;font-family:'Fredoka',sans-serif">Détails des réponses</h2>
+                    <h2 class="text-xl font-bold mb-6" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Détails des réponses</h2>
                     <div class="space-y-4" id="detailsContainer">
                         ${this.renderDetails(quizState.questions)}
                     </div>

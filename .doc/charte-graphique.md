@@ -39,12 +39,12 @@
 
 | Police | Usage | Source |
 | --- | --- | --- |
-| **Fredoka** (400, 600) | Titres de section (h1, h2, h3), logo | Google Fonts |
-| **Nunito** (400, 600, 700) | Corps de texte, boutons, labels | Google Fonts |
+| **Baloo 2** (400, 600, 700) | Titres de section (h1, h2, h3), logo | Google Fonts |
+| **Almarai** (300, 400, 700) | Corps de texte, boutons, labels | Google Fonts |
 
-### Règles d'application Fredoka
+### Règles d'application Baloo 2
 
-Tous les titres de pages et sections doivent avoir `font-family:'Fredoka',sans-serif` :
+Tous les titres de pages et sections doivent avoir `font-family:'Baloo 2',sans-serif` :
 - Titres principaux `h1` : "Mes Trophées", "Historique", "Résultats"
 - Titres de sections `h2` : "Options de Jeu", "Recherche et Filtres", "Collection de Trophées", "Débloquer un Trophée", etc.
 
@@ -185,7 +185,7 @@ import { T } from '../core/theme.js';
 | --- | --- |
 | Fond page | `background: #fbf3ea` (via CSS `:root --color-bg-primary`) |
 | Navbar/footer | `bg-primary-500` = `#66bcb4` |
-| Titres sections | `style="color:#7c4004;font-family:'Fredoka',sans-serif"` |
+| Titres sections | `style="color:#7c4004;font-family:'Baloo 2',sans-serif"` |
 | Textes secondaires | `style="color:#b46e28"` |
 | Cartes | `style="background:#f4eadd;border:1.5px solid #dcc9b0"` |
 | Input | `style="background:white;border:1.5px solid #dcc9b0"` |

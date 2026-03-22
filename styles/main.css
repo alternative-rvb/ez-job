@@ -65,11 +65,11 @@
 /* ===== Typographie CamiLudik ===== */
 
 body, html {
-  font-family: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Almarai', ui-sans-serif, system-ui, sans-serif;
 }
 
 h1, h2, h3, .font-display {
-  font-family: 'Fredoka', 'Nunito', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Baloo 2', 'Almarai', ui-sans-serif, system-ui, sans-serif;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
