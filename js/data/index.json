@@ -5,6 +5,9 @@
     "connecteurs-logiques",
     "diviser-par-2-par-4",
     "english-vocabulary-test",
+    "entretien-dev-web-1",
+    "entretien-dev-web-2",
+    "javascript",
     "jules-ferry-ecole",
     "la-terre",
     "le-petit-nicolas-chapitre-15-je-suis-malade",
@@ -19,14 +22,17 @@
     "school-life-english",
     "spongebob",
     "systeme-solaire",
+    "tables-multiplication-cm2",
     "tigre-blanc",
     "unites-mesure"
   ],
   "categories": [
     "CM2",
-    "Divertissement"
+    "Coaching",
+    "Divertissement",
+    "Développement"
   ],
-  "count": 21,
-  "lastUpdated": "2026-03-22T10:15:54.077244",
+  "count": 25,
+  "lastUpdated": "2026-03-22T15:00:33.617836",
   "generated_by": "api.py"
 }
