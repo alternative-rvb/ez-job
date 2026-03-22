@@ -27,10 +27,10 @@ export const T = {
     secondary:     `rgb(${sec})`,
 
     // Couleurs hex (pour style color=)
-    hexPrimary:      '#5a4594',
-    hexPrimaryLight: '#8b72d4',
-    hexSecondary:    '#ef8218',
-    hexTextPrimary:  '#CCC4E3',
+    hexPrimary:      '#66bcb4',
+    hexPrimaryLight: '#8ad2cc',
+    hexSecondary:    '#ff9d00',
+    hexTextPrimary:  '#7c4004',
 
     // Couleurs avec opacité
     primaryA: (a) => `rgba(${p},${a})`,

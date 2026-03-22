@@ -1,34 +1,34 @@
 /**
- * Erudizz - Styles Principaux
+ * CamiLudik - Styles Principaux
  * Styles personnalisés pour l'application de quiz
  */
 
 /* ===== CSS Variables - Theme System ===== */
 
 :root {
-  /* ===== PALETTE ERUDIZZ (modifier ici pour changer le thème) ===== */
+  /* ===== PALETTE CAMILUDIK (modifier ici pour changer le thème) ===== */
 
   /* Couleurs principales (valeurs RGB pour usage dans rgba()) */
-  --color-primary:       90, 69, 148;   /* Violet principal  #5a4594 */
-  --color-primary-light: 139, 114, 212; /* Violet clair      #8b72d4 */
-  --color-primary-dark:  74, 53, 128;   /* Violet foncé      #4a3580 */
-  --color-secondary:     239, 130, 24;  /* Orange accent     #ef8218 */
-  --color-accent:        239, 130, 24;  /* Orange accent     #ef8218 */
+  --color-primary:       102, 188, 180; /* Turquoise principal  #66bcb4 */
+  --color-primary-light: 138, 210, 204; /* Turquoise clair      #8ad2cc */
+  --color-primary-dark:  72, 158, 150;  /* Turquoise foncé      #489e96 */
+  --color-secondary:     255, 157, 0;   /* Orange caméléon      #ff9d00 */
+  --color-accent:        255, 157, 0;   /* Orange caméléon      #ff9d00 */
 
   /* Couleurs de fond */
-  --color-bg-primary:    27, 21, 45;    /* Fond body         #1B152D */
-  --color-bg-secondary:  49, 37, 80;    /* Fond cards        #312550 */
-  --color-bg-tertiary:   70, 54, 115;   /* Fond inputs/btns  #463673 */
+  --color-bg-primary:    251, 243, 234; /* Fond body         #fbf3ea */
+  --color-bg-secondary:  244, 234, 221; /* Fond cards        #f4eadd */
+  --color-bg-tertiary:   234, 221, 204; /* Fond inputs/btns  #eaddcc */
 
   /* Couleurs de texte */
-  --color-text-primary:  204, 196, 227; /* Texte principal   #CCC4E3 */
-  --color-text-secondary: 155, 146, 176;/* Texte secondaire  #9b92b0 */
+  --color-text-primary:  124, 64, 4;   /* Texte principal   #7c4004 */
+  --color-text-secondary: 180, 110, 40; /* Texte secondaire  #b46e28 */
 
   /* Couleurs de feedback (sémantiques — à ne pas changer) */
   --color-success: 34, 197, 94;         /* Vert  — bonne réponse */
   --color-error:   239, 68, 68;         /* Rouge — mauvaise réponse */
   --color-warning: 251, 191, 36;        /* Jaune — avertissement */
-  --color-info:    90, 69, 148;         /* Violet info */
+  --color-info:    102, 188, 180;       /* Turquoise info */
 
   /* Couleurs timer urgence (sémantiques — à ne pas changer) */
   --color-timer-urgent:  239, 68, 68;   /* Rouge  ≤5s */
@@ -62,20 +62,21 @@
   --radius-lg: 1.5rem;
 }
 
-/* ===== Typographie Erudizz ===== */
+/* ===== Typographie CamiLudik ===== */
 
 body, html {
-  font-family: 'Heebo', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Nunito', ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Couleur de texte principale Erudizz — remplace #ffffff */
-.text-white {
-  color: #CCC4E3 !important;
+h1, h2, h3, .font-display {
+  font-family: 'Fredoka', 'Nunito', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
-/* Couleur de texte secondaire Erudizz — remplace gray-400 (#9ca3af) */
+/* Couleur de texte secondaire CamiLudik — remplace gray-400 sur fond beige */
 .text-gray-400 {
-  color: #9b92b0 !important;
+  color: #7c4004 !important;
 }
 
 /* ===== Bubbles Background ===== */
@@ -234,18 +235,71 @@ body, html {
 
 .time-option,
 .game-mode {
-  transition: transform var(--animation-duration-fast) var(--animation-ease);
+  position: relative;
+  background: white !important;
+  color: rgb(100, 60, 10);
+  border: 1.5px solid rgb(215, 198, 175) !important;
+  border-radius: 0.875rem !important;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+  overflow: hidden;
 }
 
+/* Petit indicateur radio en haut à droite (boutons temps uniquement) */
+.time-option::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgb(200, 185, 165);
+  transition: all 0.18s ease;
+}
+
+.time-option.selected::after {
+  background: rgb(102, 188, 180);
+  border-color: rgb(102, 188, 180);
+  box-shadow: 0 0 0 3px rgba(102, 188, 180, 0.18);
+}
+
+/* État sélectionné */
 .time-option.selected,
 .game-mode.selected {
-  background: linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary))) !important;
-  box-shadow: 0 0 0 2px rgba(var(--color-secondary), 0.5), 0 10px 15px -3px rgba(0, 0, 0, 0.2) !important;
+  background: white !important;
+  border-color: rgb(102, 188, 180) !important;
+  color: rgb(72, 158, 150) !important;
+  box-shadow: 0 0 0 3px rgba(102, 188, 180, 0.12), 0 2px 8px rgba(102, 188, 180, 0.2) !important;
+  font-weight: 700;
 }
 
-.time-option:hover,
-.game-mode:hover {
-  transform: scale(1.05);
+/* Hover sur les non-sélectionnés */
+.time-option:not(.selected):hover,
+.game-mode:not(.selected):hover {
+  border-color: rgb(170, 215, 210) !important;
+  background: rgb(250, 253, 253) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.07) !important;
+}
+
+/* Mode de jeu - icône étoile reste jaune même quand sélectionné */
+.game-mode.selected .bi-star-fill {
+  color: rgb(245, 158, 11) !important;
+}
+
+.game-mode.selected .bi-wind {
+  color: rgb(102, 188, 180) !important;
+}
+
+/* Texte secondaire des boutons mode de jeu */
+.game-mode .text-sm {
+  color: rgb(160, 120, 70);
+}
+
+.game-mode.selected .text-sm {
+  color: rgb(102, 158, 150);
 }
 
 /* ===== Mode Libre ===== */
@@ -302,10 +356,10 @@ body, html {
 }
 
 .feedback-modal-content {
-  background: rgba(49, 37, 80, 0.97);
+  background: rgba(251, 243, 234, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(90, 69, 148, 0.4);
+  border: 1px solid rgba(102, 188, 180, 0.4);
   border-radius: var(--radius-lg);
   padding: 3rem 2rem;
   max-width: 500px;
@@ -355,19 +409,27 @@ body, html {
   box-shadow: none !important;
 }
 
+/* Hover sur les boutons de réponse (non cliqués) */
+.answer-btn:not(.correct):not(.incorrect):not([disabled]):hover {
+  background-color: rgb(240, 250, 250) !important;
+  border-color: rgb(102, 188, 180) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(102, 188, 180, 0.18) !important;
+}
+
 /* Retirer IMMÉDIATEMENT l'apparence active après le clic */
 .answer-btn:not(.correct):not(.incorrect):active {
-  background-color: rgb(70, 54, 115) !important; /* #463673 fond tertiaire Erudizz */
+  background-color: rgb(230, 248, 246) !important;
   transform: none !important;
-  border-color: transparent !important;
+  border-color: rgb(102, 188, 180) !important;
 }
 
 /* Désactiver TOUS les états après désactivation du bouton */
 .answer-btn:disabled,
 .answer-btn[disabled] {
-  background-color: rgb(70, 54, 115) !important; /* #463673 fond tertiaire Erudizz */
-  border: 2px solid transparent !important;
-  opacity: 1 !important;
+  background-color: white !important;
+  border-color: rgb(215, 198, 175) !important;
+  opacity: 0.6 !important;
   pointer-events: none !important;
   outline: none !important;
   box-shadow: none !important;
@@ -423,7 +485,7 @@ body, html {
 }
 
 .trophy-card-pokemon:hover {
-  box-shadow: 0 30px 50px -5px rgba(90, 69, 148, 0.4), 0 15px 25px -3px rgba(90, 69, 148, 0.25);
+  box-shadow: 0 30px 50px -5px rgba(102, 188, 180, 0.4), 0 15px 25px -3px rgba(102, 188, 180, 0.25);
 }
 
 .trophy-card-pokemon.trophy-unlocked {
@@ -497,10 +559,10 @@ body, html {
 
 @keyframes card-shine {
   0%, 100% {
-    filter: brightness(1) drop-shadow(0 0 0px rgba(90, 69, 148, 0));
+    filter: brightness(1) drop-shadow(0 0 0px rgba(102, 188, 180, 0));
   }
   50% {
-    filter: brightness(1.05) drop-shadow(0 5px 15px rgba(90, 69, 148, 0.3));
+    filter: brightness(1.05) drop-shadow(0 5px 15px rgba(102, 188, 180, 0.3));
   }
 }
 
@@ -527,18 +589,18 @@ body, html {
   box-shadow: 0 20px 25px -5px rgba(107, 114, 128, 0.5), 0 10px 10px -5px rgba(107, 114, 128, 0.4);
 }
 
-/* Rare - Violet */
+/* Rare - Turquoise */
 .rarity-rare.trophy-unlocked {
-  border-color: rgb(90, 69, 148);
-  background: rgba(90, 69, 148, 0.15);
-  box-shadow: 0 4px 6px -1px rgba(90, 69, 148, 0.3), 0 2px 4px -1px rgba(90, 69, 148, 0.2);
+  border-color: rgb(102, 188, 180);
+  background: rgba(102, 188, 180, 0.15);
+  box-shadow: 0 4px 6px -1px rgba(102, 188, 180, 0.3), 0 2px 4px -1px rgba(102, 188, 180, 0.2);
   transition: box-shadow 0.3s ease;
 }
 
 .rarity-rare.trophy-unlocked:hover,
 .rarity-rare.trophy-unlocked.hover-active,
 .rarity-rare.trophy-unlocked.touch-active {
-  box-shadow: 0 20px 25px -5px rgba(90, 69, 148, 0.5), 0 10px 10px -5px rgba(90, 69, 148, 0.4);
+  box-shadow: 0 20px 25px -5px rgba(102, 188, 180, 0.5), 0 10px 10px -5px rgba(102, 188, 180, 0.4);
 }
 
 /* Épique - Violet */
@@ -575,7 +637,7 @@ body, html {
 }
 
 .badge-rare {
-  background: rgb(90, 69, 148);
+  background: rgb(102, 188, 180);
   color: white;
 }
 
@@ -623,33 +685,37 @@ body, html {
 
 /* Primary button style */
 .btn-primary {
-  background-color: rgb(90, 69, 148);
+  background-color: rgb(102, 188, 180);
   color: white;
+  border: none;
+  box-shadow: 0 2px 6px rgba(102, 188, 180, 0.35);
+  font-weight: 600;
 }
 
 .btn-primary:hover {
-  background-color: rgb(74, 53, 128);
-  transform: translateY(-1px);
+  background-color: rgb(82, 170, 162);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 188, 180, 0.4);
 }
 
 .btn-primary:active {
   transform: translateY(0);
-}
-
-.btn-primary.selected {
-  background-color: rgb(74, 53, 128);
-  box-shadow: 0 0 0 3px rgb(27, 21, 45), 0 0 0 5px rgb(90, 69, 148);
+  box-shadow: 0 1px 4px rgba(102, 188, 180, 0.3);
 }
 
 /* Secondary button style */
 .btn-secondary {
-  background-color: rgb(70, 54, 115);
-  color: white;
+  background-color: white;
+  color: rgb(124, 64, 4);
+  border: 1.5px solid rgb(215, 198, 175) !important;
+  font-weight: 600;
 }
 
 .btn-secondary:hover {
-  background-color: rgb(74, 53, 128);
-  transform: translateY(-1px);
+  background-color: rgb(253, 248, 242);
+  border-color: rgb(190, 165, 135) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
 }
 
 .btn-secondary:active {
@@ -657,23 +723,35 @@ body, html {
 }
 
 .btn-secondary.selected {
-  background-color: rgb(74, 53, 128);
-  box-shadow: 0 0 0 3px rgb(27, 21, 45), 0 0 0 5px rgb(90, 69, 148);
+  background-color: rgb(234, 221, 204);
+  color: rgb(124, 64, 4);
+  border-color: rgb(200, 180, 155) !important;
 }
 
-/* Category filter button with dynamic colors */
+/* Category filter button */
 .btn-category {
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
   transition: all 0.2s ease-in-out;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 0.875rem;
-  border: none;
+  border: 2px solid rgb(102, 188, 180);
   cursor: pointer;
+  background-color: white;
+  color: rgb(72, 158, 150);
+}
+
+.btn-category:hover {
+  background-color: rgb(102, 188, 180);
+  color: white;
+  transform: translateY(-1px);
 }
 
 .btn-category.selected {
-  box-shadow: 0 0 0 2px rgb(27, 21, 45), 0 0 0 3px currentColor;
+  background-color: rgb(102, 188, 180);
+  color: white;
+  border-color: rgb(102, 188, 180);
+  box-shadow: 0 4px 12px rgba(102, 188, 180, 0.4);
 }
 
 /* ===== Hero Section Styles ===== */

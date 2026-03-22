@@ -3,48 +3,20 @@
  * Cet objet est généré automatiquement basé sur l'index.json
  */
 
-// Palette de couleurs prédéfinies pour les catégories
+// Palette de couleurs prédéfinies pour les catégories — thème CamiLudik
+// bg/bgEnd : valeurs hex pour dégradés inline (Tailwind CDN ne détecte pas les classes JS dynamiques)
+// Utiliser des teintes assez foncées pour garantir la lisibilité du texte blanc
 const COLOR_PALETTE = [
-  {
-    bg: 'from-amber-400 to-orange-400',
-    badge: 'bg-amber-500/20 text-amber-300 border border-amber-500/50'
-  },
-  {
-    bg: 'from-purple-400 to-indigo-400',
-    badge: 'bg-purple-500/20 text-purple-300 border border-purple-500/50'
-  },
-  {
-    bg: 'from-green-400 to-emerald-400',
-    badge: 'bg-green-500/20 text-green-300 border border-green-500/50'
-  },
-  {
-    bg: 'from-blue-400 to-cyan-400',
-    badge: 'bg-blue-500/20 text-blue-300 border border-blue-500/50'
-  },
-  {
-    bg: 'from-pink-400 to-rose-400',
-    badge: 'bg-pink-500/20 text-pink-300 border border-pink-500/50'
-  },
-  {
-    bg: 'from-red-400 to-rose-400',
-    badge: 'bg-red-500/20 text-red-300 border border-red-500/50'
-  },
-  {
-    bg: 'from-violet-400 to-purple-400',
-    badge: 'bg-violet-500/20 text-violet-300 border border-violet-500/50'
-  },
-  {
-    bg: 'from-cyan-400 to-blue-400',
-    badge: 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50'
-  },
-  {
-    bg: 'from-teal-400 to-green-400',
-    badge: 'bg-teal-500/20 text-teal-300 border border-teal-500/50'
-  },
-  {
-    bg: 'from-orange-400 to-red-400',
-    badge: 'bg-orange-500/20 text-orange-300 border border-orange-500/50'
-  }
+  { bg: 'from-amber-500 to-orange-500',   bgHex: '#f59e0b', bgEndHex: '#f97316', badge: 'text-white font-semibold' },
+  { bg: 'from-emerald-500 to-teal-500',   bgHex: '#10b981', bgEndHex: '#14b8a6', badge: 'text-white font-semibold' },
+  { bg: 'from-sky-500 to-blue-500',       bgHex: '#0ea5e9', bgEndHex: '#3b82f6', badge: 'text-white font-semibold' },
+  { bg: 'from-rose-500 to-pink-500',      bgHex: '#f43f5e', bgEndHex: '#ec4899', badge: 'text-white font-semibold' },
+  { bg: 'from-violet-500 to-purple-500',  bgHex: '#8b5cf6', bgEndHex: '#a855f7', badge: 'text-white font-semibold' },
+  { bg: 'from-orange-500 to-red-500',     bgHex: '#f97316', bgEndHex: '#ef4444', badge: 'text-white font-semibold' },
+  { bg: 'from-cyan-500 to-sky-500',       bgHex: '#06b6d4', bgEndHex: '#0ea5e9', badge: 'text-white font-semibold' },
+  { bg: 'from-green-600 to-emerald-500',  bgHex: '#16a34a', bgEndHex: '#10b981', badge: 'text-white font-semibold' },
+  { bg: 'from-fuchsia-500 to-rose-500',   bgHex: '#d946ef', bgEndHex: '#f43f5e', badge: 'text-white font-semibold' },
+  { bg: 'from-red-600 to-orange-500',     bgHex: '#dc2626', bgEndHex: '#f97316', badge: 'text-white font-semibold' },
 ];
 
 // Index JSON avec les catégories (chargé une seule fois)
@@ -99,6 +71,6 @@ export function getCategoryColors(category) {
   
   return categoryColorMap[category] || {
     bg: 'from-gray-400 to-gray-500',
-    badge: 'bg-gray-500/20 text-gray-300 border border-gray-500/50'
+    badge: 'text-white border border-white/30' /* fallback catégorie inconnue */
   };
 }

@@ -29,17 +29,17 @@
 }
 
 .time-option-btn {
-  background-color: #463673;
-  color: #CCC4E3;
-  border: 2px solid #5a4594;
+  background-color: #e0d5bf;
+  color: #7c4004;
+  border: 2px solid #66bcb4;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .time-option-btn:hover {
-  background-color: #5a4594;
-  border-color: #8b72d4;
-  color: #CCC4E3;
+  background-color: #66bcb4;
+  border-color: #8ad2cc;
+  color: #fbf3ea;
   transform: scale(1.05);
 }
 
@@ -49,7 +49,7 @@
 
 .time-option-btn.selected,
 .time-option-btn.bg-gradient-to-r {
-  background: linear-gradient(135deg, rgb(90, 69, 148), rgb(239, 130, 24)) !important;
-  color: #CCC4E3 !important;
-  border-color: rgb(139, 114, 212) !important;
+  background: rgb(72, 158, 150) !important;
+  color: white !important;
+  border-color: rgb(72, 158, 150) !important;
 }

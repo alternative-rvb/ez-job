@@ -93,12 +93,26 @@ export class QuizSelector {
             });
         }
             
-        const quizCards = filteredQuizzes.map(quiz => {
-            // Image avec fallback placehold.co
-            const imageUrl = quiz.imageUrl || `https://placehold.co/400x200?text=${encodeURIComponent(quiz.title)}`;
+        // Palette hex pour les placeholders de cartes sans image (inline CSS, indépendant du cache Tailwind)
+        const CARD_GRADIENTS = [
+            ['#f59e0b', '#f97316'], // amber → orange
+            ['#10b981', '#14b8a6'], // emerald → teal
+            ['#0ea5e9', '#3b82f6'], // sky → blue
+            ['#f43f5e', '#ec4899'], // rose → pink
+            ['#8b5cf6', '#a855f7'], // violet → purple
+            ['#f97316', '#ef4444'], // orange → red
+            ['#06b6d4', '#0ea5e9'], // cyan → sky
+            ['#16a34a', '#10b981'], // green → emerald
+            ['#d946ef', '#f43f5e'], // fuchsia → rose
+            ['#dc2626', '#f97316'], // red → orange
+        ];
 
-            // Couleurs basées sur la catégorie
+        const quizCards = filteredQuizzes.map((quiz, idx) => {
+            // Couleurs basées sur la catégorie (pour les badges)
             const categoryColor = getCategoryColors(quiz.category);
+
+            // Dégradé de la carte : basé sur l'index pour varier les couleurs dans une même catégorie
+            const grad = CARD_GRADIENTS[idx % CARD_GRADIENTS.length];
 
             // Récupérer le meilleur résultat pour ce quiz
             const bestResult = this.getBestResult(quiz.id);
@@ -106,68 +120,76 @@ export class QuizSelector {
             // Vérifier si le quiz est nouveau
             const isNew = this.isNewQuiz(quiz.createdAt);
 
+            // Zone image : vraie image ou placeholder CSS selon disponibilité
+            const imageSectionHTML = quiz.imageUrl && quiz.imageUrl.trim() !== '' ? `
+                <div class="relative h-32 overflow-hidden" style="background-color:#eaddcc">
+                    <img src="${quiz.imageUrl}" alt="${quiz.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300"></div>
+                </div>
+            ` : `
+                <div class="relative h-32 overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,${grad[0]} 0%,${grad[1]} 100%)">
+                    <div class="text-center px-3 py-2 relative z-10">
+                        <p class="font-bold leading-tight line-clamp-3 text-white drop-shadow" style="font-family:'Fredoka',sans-serif;font-size:1rem">${quiz.title}</p>
+                    </div>
+                    <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 80% 20%, white 0%, transparent 60%)"></div>
+                </div>
+            `;
+
             return `
-                <div class="group cursor-pointer quiz-card overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 bg-gray-800"
+                <div class="group cursor-pointer quiz-card overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all duration-300" style="background:#f4eadd"
                      data-quiz-id="${quiz.id}">
-                    <!-- Image -->
-                    <div class="relative h-32 overflow-hidden bg-gray-700">
-                        <img src="${imageUrl}" alt="${quiz.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                    <!-- Image ou placeholder -->
+                    <div class="relative">
+                        ${imageSectionHTML}
                         ${isNew ? `
-                            <div class="absolute top-2 left-2 bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 rounded shadow-md">
-                                <div class="flex items-center gap-1">
-                                    <i class="bi bi-star-fill text-white text-xs"></i>
-                                    <span class="text-white font-bold text-xs tracking-wide">NEW</span>
-                                </div>
+                            <div class="absolute top-2 left-2 px-2 py-0.5 rounded-full shadow-sm" style="background:#ff9d00">
+                                <span class="text-white font-bold text-xs tracking-wide">Nouveau</span>
                             </div>
                         ` : ''}
                         ${bestResult ? `
-                            <div class="absolute top-2 right-2 bg-gray-900/90 backdrop-blur-sm px-2 py-1 rounded shadow-md border border-gray-600/50">
+                            <div class="absolute top-2 right-2 px-2 py-0.5 rounded-full shadow-sm" style="background:rgba(255,255,255,0.95)">
                                 <div class="flex items-center gap-1">
-                                    <i class="bi bi-star-fill text-gray-400 text-xs"></i>
-                                    <span class="text-gray-200 font-semibold text-xs">${bestResult.percentage}%</span>
+                                    <i class="bi bi-star-fill text-xs" style="color:#ff9d00"></i>
+                                    <span class="font-bold text-xs" style="color:#489e96">${bestResult.percentage}%</span>
                                 </div>
                             </div>
                         ` : ''}
                     </div>
-                    
+
                     <!-- Contenu -->
                     <div class="p-3">
                         <div class="flex items-start justify-between mb-1">
-                            <h3 class="text-sm font-bold text-white flex-1">${quiz.title}</h3>
+                            <h3 class="text-sm font-bold flex-1" style="color:#7c4004">${quiz.title}</h3>
                             <div class="text-right ml-1">
-                                <div class="text-xs font-semibold text-gray-300">${quiz.questionCount}</div>
-                                <div class="text-xs text-gray-500">Q.</div>
+                                <div class="text-xs font-bold" style="color:#489e96">${quiz.questionCount}</div>
+                                <div class="text-xs" style="color:#b46e28">Q.</div>
                             </div>
                         </div>
-                        
-                        <p class="text-xs text-gray-400 mb-2 line-clamp-2">${quiz.description}</p>
-                        
-                        <!-- Badges -->
+
+                        <p class="text-xs mb-2 line-clamp-2" style="color:#b46e28">${quiz.description}</p>
+
+                        <!-- Badge catégorie -->
                         <div class="flex flex-wrap gap-1 mb-2">
-                            <span class="text-xs px-1 py-0.5 ${categoryColor.badge} rounded font-medium whitespace-nowrap">
-                                <i class="bi bi-folder mr-0.5"></i>${quiz.category}
-                            </span>
-                            <span class="text-xs px-1 py-0.5 bg-gray-700 text-gray-200 rounded font-medium whitespace-nowrap">
-                                ${getDifficultyIcons(quiz.difficulty)}
+                            <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap" style="background:#e0f4f2;color:#489e96;border:1px solid #b0ddd9">
+                                ${quiz.category}
                             </span>
                         </div>
-                        
+
                         <!-- Tags (au maximum 1 affiché) -->
                         ${quiz.tag && quiz.tag.length > 0 ? `
-                            <span class="text-xs px-1 py-0.5 bg-gray-700 text-gray-200 rounded font-medium whitespace-nowrap">
+                            <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap" style="background:#f4eadd;color:#b46e28;border:1px solid #e0d0bc">
                                 <i class="bi bi-tag mr-0.5"></i>${quiz.tag[0]}
                             </span>
                         ` : ''}
-                        
+
                         <!-- Infos bas -->
-                        <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-700">
-                            <div class="flex items-center text-xs text-gray-500">
-                                <i class="bi bi-clock mr-0.5"></i>
-                                <span>~${Math.ceil(quiz.questionCount * CONFIG.timeLimit / 60)}m</span>
+                        <div class="flex items-center justify-between mt-2 pt-2" style="border-top:1px solid #e0d0bc">
+                            <div class="flex items-center gap-2 text-xs" style="color:#b46e28">
+                                <span><i class="bi bi-clock mr-0.5"></i>~${Math.ceil(quiz.questionCount * CONFIG.timeLimit / 60)}m</span>
+                                <span style="color:#c8a882;letter-spacing:-1px">${getDifficultyIcons(quiz.difficulty)}</span>
                             </div>
-                            <span class="text-xs font-medium text-gray-400 group-hover:text-white transition-colors">
-                                <i class="bi bi-play-fill"></i>
+                            <span class="text-xs font-bold transition-colors" style="color:#66bcb4">
+                                <i class="bi bi-play-circle-fill text-base"></i>
                             </span>
                         </div>
                     </div>
@@ -221,38 +243,38 @@ export class QuizSelector {
 
         const timeButtonsHTML = this.timeOptions.map(time => {
             const isDefault = time === defaultTime;
-            const defaultClass = isDefault ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white border border-primary-400' : '';
+            const selectedStyle = isDefault
+                ? 'background:white;color:#489e96;border:2px solid #66bcb4;box-shadow:0 0 0 3px rgba(102,188,180,0.15);font-weight:700;'
+                : 'background:white;color:#7c4004;border:2px solid #dcc9b0;';
             return `
-            <button class="time-option-btn py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 ${defaultClass}"
+            <button class="time-option-btn py-4 px-6 rounded-xl font-semibold transition-all duration-200 hover:border-teal-300 hover:shadow-md relative"
+                    style="${selectedStyle}"
                     data-time="${time}">
-                <span class="text-2xl font-bold">${time}</span>
-                <span class="block text-xs text-gray-300 mt-1">secondes</span>
+                ${isDefault ? '<span style="position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:#66bcb4;box-shadow:0 0 0 3px rgba(102,188,180,0.2)"></span>' : ''}
+                <span class="text-2xl font-bold block">${time}</span>
+                <span class="block text-xs mt-0.5" style="color:${isDefault ? '#66bcb4' : '#b0906a'}">secondes</span>
             </button>
         `;
         }).join('');
 
         const modalHTML = `
-            <div id="${modalId}" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
-                <div class="bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full mx-4 border border-gray-700 overflow-hidden">
+            <div id="${modalId}" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+                <div class="rounded-2xl shadow-2xl max-w-sm w-full mx-4 overflow-hidden" style="background:#fbf3ea;border:1px solid #dcc9b0">
                     <!-- En-tête -->
-                    <div class="bg-gradient-to-r from-primary-600 to-primary-500 p-6">
-                        <h2 class="text-2xl font-bold mb-1" style="color:${T.hexTextPrimary}">Sélectionner le temps</h2>
-                        <p class="text-sm" style="color:${T.hexTextPrimary};opacity:0.75">${quiz.title}</p>
+                    <div class="px-6 pt-6 pb-4">
+                        <h2 class="text-xl font-bold mb-1" style="color:#7c4004;font-family:'Fredoka',sans-serif">Temps par question</h2>
+                        <p class="text-sm" style="color:#b46e28">${quiz.title}</p>
                     </div>
 
                     <!-- Contenu -->
-                    <div class="p-6">
-                        <p class="mb-6 text-center" style="color:${T.hexTextPrimary}">
-                            Combien de secondes par question ?
-                        </p>
-
+                    <div class="px-6 pb-6">
                         <!-- Grille de boutons -->
-                        <div class="grid grid-cols-2 gap-3 mb-6">
+                        <div class="grid grid-cols-2 gap-3 mb-5">
                             ${timeButtonsHTML}
                         </div>
 
                         <!-- Bouton Annuler -->
-                        <button class="close-time-modal w-full py-2 px-4 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm font-medium" style="color:${T.hexTextPrimary}">
+                        <button class="close-time-modal w-full py-2.5 px-4 rounded-xl text-sm font-semibold transition-all" style="background:white;color:#7c4004;border:1.5px solid #dcc9b0">
                             Annuler
                         </button>
                     </div>
@@ -339,17 +361,16 @@ export class QuizSelector {
 
         // Générer les boutons de filtres dynamiquement
         let filterButtonsHTML = `
-            <button type="button" data-category="all" class="btn-base btn-primary category-filter selected">
+            <button type="button" data-category="all" class="btn-base btn-category category-filter selected">
                 Toutes
             </button>
         `;
 
-        // Ajouter les catégories disponibles avec les couleurs appropriées
+        // Ajouter les catégories disponibles
         if (this.availableCategories && this.availableCategories.length > 0) {
             this.availableCategories.forEach(category => {
-                const colors = getCategoryColors(category);
                 filterButtonsHTML += `
-                    <button type="button" data-category="${category}" class="btn-category category-filter ${colors.badge}">
+                    <button type="button" data-category="${category}" class="btn-base btn-category category-filter">
                         ${category}
                     </button>
                 `;

@@ -40,3 +40,6 @@ Thumbs.db
 
 # Custom
 .tmp/
+
+#playwright
+.playwright-mcp/

@@ -1,11 +1,11 @@
 {
-  "name": "Erudizz - Quiz & Entraînement",
-  "short_name": "Erudizz",
+  "name": "CamiLudik - Quiz & Entraînement",
+  "short_name": "CamiLudik",
   "description": "Plateforme de quiz interactifs et d'entraînement pour progresser à votre rythme.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#5a4594",
-  "theme_color": "#5a4594",
+  "background_color": "#f5efe0",
+  "theme_color": "#3daf9e",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -27,7 +27,7 @@
       "purpose": "maskable"
     },
     {
-      "src": "/images/erudizz-logo.svg",
+      "src": "/images/camiludik-logo.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
@@ -35,7 +35,7 @@
   ],
   "screenshots": [
     {
-      "src": "/images/erudizz-logo.svg",
+      "src": "/images/camiludik-logo.svg",
       "sizes": "540x720",
       "type": "image/svg+xml",
       "form_factor": "narrow"

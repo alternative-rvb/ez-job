@@ -79,82 +79,84 @@ export class ResultsManager {
         const resultsHTML = `
             <div class="py-8">
                 <!-- Header -->
-                <div class="text-center mb-8">
-                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Résultats</h1>
-                    <p class="text-gray-400">${quizTitle}</p>
+                <div class="text-center mb-6">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-1" style="color:#7c4004;font-family:'Fredoka',sans-serif">Résultats</h1>
+                    <p style="color:#b46e28">${quizTitle}</p>
                 </div>
 
                 <!-- Score Card -->
-                <div class="bg-gray-800 rounded-2xl p-8 mb-8 text-center shadow-2xl">
-                    <div class="mb-6">
-                        <div class="text-7xl font-bold text-white">
+                <div class="rounded-2xl p-8 mb-8 text-center shadow-lg" style="background:#f4eadd;border:1.5px solid #dcc9b0">
+                    <div class="mb-4">
+                        <div class="text-7xl font-bold" style="color:#66bcb4;font-family:'Fredoka',sans-serif">
                             ${percentage}%
                         </div>
                     </div>
-                    
-                    <div class="mb-6">
-                        <p class="text-2xl font-bold text-white mb-2">${score} / ${totalScorable}</p>
-                        <p class="text-gray-400">Bonnes réponses</p>
+
+                    <div class="mb-5">
+                        <p class="text-2xl font-bold mb-1" style="color:#7c4004">${score} / ${totalScorable}</p>
+                        <p style="color:#b46e28">Bonnes réponses</p>
                     </div>
-                    
-                    <div class="p-4 bg-gray-700 rounded-xl mb-6">
-                        <p class="text-lg ${messageClass} font-semibold">${message}</p>
+
+                    <div class="p-3 rounded-xl mb-5" style="background:white;border:1px solid #dcc9b0">
+                        <p class="text-base ${messageClass} font-semibold">${message}</p>
                     </div>
-                    
-                    <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
-                        <div class="h-full transition-all duration-500"
-                             style="width:${percentage}%;background:${T.gradientMain}"></div>
+
+                    <div class="w-full rounded-full h-3 overflow-hidden" style="background:#eaddcc">
+                        <div class="h-full rounded-full transition-all duration-700"
+                             style="width:${percentage}%;background:linear-gradient(to right,#66bcb4,#489e96)"></div>
                     </div>
                 </div>
 
                 <!-- Rewards Section -->
-                <div class="rounded-2xl p-6 mb-8 shadow-lg" style="background:linear-gradient(to right,${T.primaryA(0.5)},${T.secondaryA(0.3)});border:1px solid ${T.primaryA(0.5)}"
+                <div class="rounded-2xl p-5 mb-6" style="background:#f4eadd;border:1.5px solid #dcc9b0">
                     <div class="flex items-start gap-4">
-                        <i class="bi bi-star-fill text-4xl text-yellow-400 flex-shrink-0"></i>
+                        <i class="bi bi-star-fill text-3xl text-yellow-400 flex-shrink-0 mt-0.5"></i>
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-white mb-2">Récompense Gagnée !</h3>
-                            <p class="text-purple-200 mb-3">
+                            <h3 class="text-base font-bold mb-1" style="color:#7c4004;font-family:'Fredoka',sans-serif">Récompense Gagnée !</h3>
+                            <p class="text-sm mb-3" style="color:#b46e28">
                                 ${this.getRewardMessage(rewardsResult.pointsEarned, CONFIG.timeLimit)}
                             </p>
                             <div class="flex flex-wrap gap-4">
                                 <div class="text-center">
-                                    <p class="text-2xl font-bold text-yellow-400">${rewardsResult.totalPoints}</p>
-                                    <p class="text-sm text-gray-300">Points totaux</p>
+                                    <p class="text-2xl font-bold text-yellow-500">${rewardsResult.totalPoints}</p>
+                                    <p class="text-xs" style="color:#b46e28">Points totaux</p>
                                 </div>
                                 ${rewardsResult.canBuySecretCode ? `
                                     <div class="text-center">
-                                        <p class="text-2xl font-bold text-purple-400">🔓</p>
-                                        <p class="text-sm text-green-300 font-semibold">Code disponible !</p>
+                                        <p class="text-2xl">🔓</p>
+                                        <p class="text-xs text-green-600 font-semibold">Code dispo !</p>
                                     </div>
                                 ` : `
                                     <div class="text-center">
-                                        <p class="text-2xl font-bold text-gray-400">${5 - rewardsResult.totalPoints}</p>
-                                        <p class="text-sm text-gray-400">Points restants</p>
+                                        <p class="text-2xl font-bold" style="color:#b46e28">${5 - rewardsResult.totalPoints}</p>
+                                        <p class="text-xs" style="color:#b46e28">Points restants</p>
                                     </div>
                                 `}
                             </div>
                         </div>
                     </div>
                     ${rewardsResult.canBuySecretCode ? `
-                        <button id="btnShowTrophies" class="btn-base btn-primary">
-                            <i class="bi bi-key-fill"></i>Aller débloquer un trophée
-                        </button>
+                        <div class="mt-4">
+                            <button id="btnShowTrophies" class="btn-base btn-primary w-full justify-center">
+                                <i class="bi bi-key-fill"></i>Débloquer un trophée
+                            </button>
+                        </div>
                     ` : ''}
                 </div>
 
                 <!-- Actions -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                    <button id="btnRetry" class="btn-base btn-primary w-full">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                    <button id="btnRetry" class="btn-base btn-primary w-full justify-center py-3">
                         <i class="bi bi-arrow-clockwise"></i> Rejouer
                     </button>
-                    <button id="btnHome" class="btn-base btn-secondary w-full">
-                        <i class="bi bi-house"></i> Retour à l'accueil
+                    <button id="btnHome" class="btn-base btn-secondary w-full justify-center py-3">
+                        <i class="bi bi-house"></i> Accueil
                     </button>
                 </div>
 
                 <!-- Details Section -->
-                <div class="bg-gray-800 rounded-2xl p-6 shadow-2xl">
-                    <h2 class="text-xl font-bold text-white mb-6">Détails des réponses</h2>
+                <div class="rounded-2xl p-6" style="background:#f4eadd;border:1.5px solid #dcc9b0">
+                    <h2 class="text-xl font-bold mb-6" style="color:#7c4004;font-family:'Fredoka',sans-serif">Détails des réponses</h2>
                     <div class="space-y-4" id="detailsContainer">
                         ${this.renderDetails(quizState.questions)}
                     </div>
@@ -278,21 +280,21 @@ export class ResultsManager {
             const statusColor = isCorrect ? 'text-green-400' : 'text-red-400';
             
             return `
-                <div class="border-l-4 ${isCorrect ? 'border-green-400' : 'border-red-400'} bg-gray-700 p-4 rounded">
+                <div class="border-l-4 ${isCorrect ? 'border-green-400' : 'border-red-400'} p-4 rounded-lg" style="background:white;border-top:1px solid #eaddcc;border-right:1px solid #eaddcc;border-bottom:1px solid #eaddcc">
                     <div class="flex items-start justify-between mb-2">
-                        <h3 class="font-bold text-white flex-1">${index + 1}. ${q.question}</h3>
+                        <h3 class="font-semibold flex-1" style="color:#7c4004">${index + 1}. ${q.question}</h3>
                         <span class="text-xl ml-2">${statusIcon}</span>
                     </div>
-                    
+
                     <div class="space-y-1 text-sm">
                         <div>
-                            <span class="text-gray-400">Votre réponse:</span>
+                            <span style="color:#b46e28">Votre réponse:</span>
                             <p class="${statusColor} font-semibold">${userAnswerText}</p>
                         </div>
                         ${!isCorrect ? `
                             <div>
-                                <span class="text-gray-400">Bonne réponse:</span>
-                                <p class="text-green-400 font-semibold">${q.correctAnswer}</p>
+                                <span style="color:#b46e28">Bonne réponse:</span>
+                                <p class="text-green-600 font-semibold">${q.correctAnswer}</p>
                             </div>
                         ` : ''}
                     </div>

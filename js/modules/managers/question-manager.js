@@ -60,10 +60,10 @@ export class QuestionManager {
                 const letter = String.fromCharCode(65 + index);
                 const isHidden = CONFIG.freeMode ? 'hidden' : '';
                 return `
-                    <button class="answer-btn ${isHidden} px-4 py-2 md:p-5 text-left bg-gray-700 rounded-lg md:rounded-xl border-2 border-transparent touch-manipulation"
+                    <button class="answer-btn ${isHidden} px-4 py-2 md:p-5 text-left rounded-xl border-2 touch-manipulation font-semibold transition-all duration-150" style="background-color:white;color:#5a3800;border-color:#dcc9b0"
                             data-answer-index="${index}">
                         <div class="flex items-center space-x-3">
-                            <span class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 text-white rounded-full flex items-center justify-center font-bold text-sm md:text-base" style="background-color:${T.hexPrimary}">${letter}</span>
+                            <span class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-sm md:text-base" style="background-color:#66bcb4;color:white">${letter}</span>
                             <span class="text-sm md:text-base leading-relaxed">${option}</span>
                         </div>
                     </button>
@@ -74,14 +74,14 @@ export class QuestionManager {
             const isHidden = CONFIG.freeMode ? 'hidden' : '';
             optionsHTML = `
                 <div class="md:col-span-2">
-                    <div class="bg-gray-700 rounded-lg p-6 space-y-4">
-                        <label for="text-answer-input" class="block text-lg font-medium text-gray-200 mb-2">
+                    <div class="rounded-lg p-6 space-y-4" style="background-color:#489e96">
+                        <label for="text-answer-input" class="block text-lg font-medium text-white mb-2">
                             Votre réponse :
                         </label>
                         <input
                             type="text"
                             id="text-answer-input"
-                            class="w-full px-4 py-3 text-lg bg-gray-800 text-white border-2 border-gray-600 rounded-lg focus:outline-none transition-all"
+                            class="w-full px-4 py-3 text-lg text-white border-2 rounded-lg focus:outline-none transition-all" style="background-color:#66bcb4;border-color:rgba(255,255,255,0.4);color:white"
                             style="--tw-ring-color:${T.primaryA(0.25)}"
                             placeholder="Entrez votre réponse..."
                             autocomplete="off"
@@ -104,7 +104,7 @@ export class QuestionManager {
             optionsHTML = `
                 <div class="text-center py-8">
                     <p class="text-lg md:text-xl font-medium" style="color:${T.hexPrimary}">Question informative</p>
-                    <p class="text-sm text-gray-400 mt-2">Cette question ne compte pas dans le score</p>
+                    <p class="text-sm text-white/70 mt-2">Cette question ne compte pas dans le score</p>
                 </div>
             `;
         }
@@ -144,7 +144,7 @@ export class QuestionManager {
                         <span class="text-sm font-semibold text-white">Progression</span>
                         <span class="text-sm font-semibold text-white" id="question-progress">${quizState.currentQuestionIndex + 1}/${quizState.questions.length}</span>
                     </div>
-                    <div class="w-full rounded-full h-4 overflow-hidden shadow-inner border border-gray-700" style="background:rgba(70,54,115,0.4)">
+                    <div class="w-full rounded-full h-4 overflow-hidden shadow-inner" style="background:rgba(72,158,150,0.5);border:1px solid rgba(255,255,255,0.2)"
                         <div class="h-4 rounded-full transition-all duration-1000 ease-out shadow-md"
                              id="question-progress-bar"
                              style="background:linear-gradient(to right,#5a4594,#ef8218);width:${((quizState.currentQuestionIndex + 1) / quizState.questions.length) * 100}%"></div>
@@ -198,7 +198,7 @@ export class QuestionManager {
                     if (userAnswer.length === 0) {
                         // Champ vide : bordure grise neutre
                         textInput.classList.remove('border-green-500', 'border-red-500');
-                        textInput.classList.add('border-gray-600');
+                        textInput.classList.add('border-white/40');
                         submitBtn.innerHTML = `
                             <div class="flex items-center justify-center space-x-2">
                                 <i class="bi bi-check-circle"></i>
@@ -210,7 +210,7 @@ export class QuestionManager {
                         clearTimeout(autoSubmitTimeout);
                     } else if (acceptedAnswers.includes(userAnswer) && !quizState.isAnswered) {
                         // Réponse correcte : bordure verte
-                        textInput.classList.remove('border-gray-600', 'border-red-500');
+                        textInput.classList.remove('border-white/40', 'border-red-500');
                         textInput.classList.add('border-green-500');
 
                         // Afficher un indicateur visuel
@@ -232,7 +232,7 @@ export class QuestionManager {
                         }, 1000);
                     } else {
                         // En cours de frappe, réponse incorrecte : bordure rouge
-                        textInput.classList.remove('border-gray-600', 'border-green-500');
+                        textInput.classList.remove('border-white/40', 'border-green-500');
                         textInput.classList.add('border-red-500');
                         submitBtn.innerHTML = `
                             <div class="flex items-center justify-center space-x-2">
@@ -386,14 +386,14 @@ export class QuestionManager {
                 quizState.addScore();
                 quizState.recordAnswerCorrectness(true);
                 if (textInput) {
-                    textInput.classList.remove('border-gray-600');
+                    textInput.classList.remove('border-white/40');
                     textInput.classList.add('border-green-500', 'bg-green-900/20');
                 }
                 this.showFeedbackMessage('Bonne réponse !', 'success', question, null, userAnswer);
             } else {
                 quizState.recordAnswerCorrectness(false);
                 if (textInput) {
-                    textInput.classList.remove('border-gray-600');
+                    textInput.classList.remove('border-white/40');
                     textInput.classList.add('border-red-500', 'bg-red-900/20');
                 }
                 // Utiliser 'timeout' si la réponse est vide (temps écoulé), sinon 'error'
@@ -536,7 +536,7 @@ export class QuestionManager {
                 btn.disabled = true;
                 btn.blur(); // Retirer à nouveau le focus après avoir désactivé
                 btn.style.outline = 'none';
-                btn.classList.remove('hover:bg-gray-600');
+                btn.classList.remove('hover:bg-primary-600');
 
                 if (isCorrect) {
                     btn.classList.add('bg-green-600', 'border-green-400', 'shadow-lg');
@@ -639,8 +639,8 @@ export class QuestionManager {
                 if (userTextAnswer !== null) {
                     // Question à saisie de texte
                     responseSection = `
-                        <div class="mt-4 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
-                            <p class="text-sm text-gray-300 mb-2">Votre réponse:</p>
+                        <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                            <p class="text-sm text-white/80 mb-2">Votre réponse:</p>
                             <p class="text-lg font-semibold text-green-400">
                                 ${userTextAnswer}
                             </p>
@@ -649,8 +649,8 @@ export class QuestionManager {
                 } else if (question && answerIndex !== null) {
                     // Question à choix multiples
                     responseSection = `
-                        <div class="mt-4 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
-                            <p class="text-sm text-gray-300 mb-2">Votre réponse:</p>
+                        <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                            <p class="text-sm text-white/80 mb-2">Votre réponse:</p>
                             <p class="text-lg font-semibold text-green-400">
                                 ${String.fromCharCode(65 + answerIndex)} : ${question.choices[answerIndex]}
                             </p>
@@ -672,14 +672,14 @@ export class QuestionManager {
                         // Gérer userTextAnswer qui peut être null, undefined ou une chaîne vide
                         const displayAnswer = (userTextAnswer && userTextAnswer.trim()) ? userTextAnswer : '(aucune réponse)';
                         responseSection = `
-                            <div class="mt-4 p-3 bg-gray-700 border-2 border-red-500/50 rounded-lg mb-2">
-                                <p class="text-sm text-gray-300 mb-2">Votre réponse:</p>
+                            <div class="mt-4 p-3 rounded-lg border-2 border-red-500/50 mb-2" style="background:rgba(72,158,150,0.6)">
+                                <p class="text-sm text-white/80 mb-2">Votre réponse:</p>
                                 <p class="text-lg font-semibold text-red-400">
                                     ${displayAnswer}
                                 </p>
                             </div>
-                            <div class="mt-2 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
-                                <p class="text-sm text-gray-300 mb-2">La bonne réponse était:</p>
+                            <div class="mt-2 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                                <p class="text-sm text-white/80 mb-2">La bonne réponse était:</p>
                                 <p class="text-lg font-semibold text-green-400">
                                     ${correctAnswer}
                                 </p>
@@ -689,8 +689,8 @@ export class QuestionManager {
                 } else if (CONFIG.showResponse && question && answerIndex !== null) {
                     // Question à choix multiples
                     responseSection = `
-                        <div class="mt-4 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
-                            <p class="text-sm text-gray-300 mb-2">La bonne réponse était:</p>
+                        <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                            <p class="text-sm text-white/80 mb-2">La bonne réponse était:</p>
                             <p class="text-lg font-semibold text-green-400">
                                 ${String.fromCharCode(65 + answerIndex)} : ${question.choices[answerIndex]}
                             </p>
@@ -714,8 +714,8 @@ export class QuestionManager {
                             ? question.acceptedAnswers[0]
                             : question.answer;
                         responseSection = `
-                            <div class="mt-4 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
-                                <p class="text-sm text-gray-300 mb-2">La bonne réponse était:</p>
+                            <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                                <p class="text-sm text-white/80 mb-2">La bonne réponse était:</p>
                                 <p class="text-lg font-semibold text-green-400">
                                     ${correctAnswer}
                                 </p>
@@ -727,8 +727,8 @@ export class QuestionManager {
                     subtitle = 'Vous n\'avez pas eu le temps de répondre';
                     if (CONFIG.showResponse) {
                         responseSection = `
-                            <div class="mt-4 p-3 bg-gray-700 border-2 border-green-500/50 rounded-lg">
-                                <p class="text-sm text-gray-300 mb-2">La bonne réponse était:</p>
+                            <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                                <p class="text-sm text-white/80 mb-2">La bonne réponse était:</p>
                                 <p class="text-lg font-semibold text-green-400">
                                     ${String.fromCharCode(65 + answerIndex)} : ${question.choices[answerIndex]}
                                 </p>
@@ -751,7 +751,7 @@ export class QuestionManager {
                     ${title}
                 </h3>
                 ${imageSection}
-                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                <p class="text-lg text-white leading-relaxed mb-4">
                     ${subtitle}
                 </p>
                 ${responseSection}
@@ -775,7 +775,7 @@ export class QuestionManager {
         const loadingHTML = `
             <div class="text-center py-8">
                 <div class="animate-spin rounded-full h-12 w-12 mx-auto mb-4" style="border-bottom:2px solid ${T.hexPrimary}"></div>
-                <p class="text-gray-300">Chargement des questions...</p>
+                <p class="text-white/80">Chargement des questions...</p>
             </div>
         `;
         domManager.setContent('quizContent', loadingHTML);

@@ -8,11 +8,10 @@
  * @returns {string} - Chaîne d'icônes de flammes
  */
 export function getDifficultyIcons(difficulty) {
-    // Version mise à jour avec icônes Bootstrap
     if (typeof difficulty !== 'number' || difficulty < 1 || difficulty > 5) {
-        return '<i class="bi bi-fire text-orange-400"></i>'; // Par défaut une flamme
+        return '<i class="bi bi-fire"></i>';
     }
-    return '<i class="bi bi-fire text-orange-400"></i>'.repeat(difficulty);
+    return '<i class="bi bi-fire"></i>'.repeat(difficulty);
 }
 
 /**

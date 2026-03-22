@@ -74,7 +74,7 @@ export class TrophiesManager {
             const rarityLabel = rarityLabels[trophy.rarity] || trophy.rarity.toUpperCase();
             
             return `
-                <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative bg-gray-900" style="aspect-ratio: 9/16;">
+                <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative" style="aspect-ratio: 9/16; background-color:#eaddcc">
                     <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" />
                     ${isUnlocked ? '' : `
                         <!-- Overlay de verrouillage -->
@@ -82,7 +82,7 @@ export class TrophiesManager {
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="text-center">
                                     <i class="bi bi-lock-fill text-5xl opacity-60 mb-2"></i>
-                                    <p class="text-gray-300 text-sm font-semibold">À débloquer</p>
+                                    <p class="text-white/80 text-sm font-semibold">À débloquer</p>
                                 </div>
                             </div>
                         </div>
@@ -92,20 +92,20 @@ export class TrophiesManager {
                     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
                         ${isUnlocked ? `
                             <div class="space-y-1">
-                                ${trophy.series ? `<p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
+                                ${trophy.series ? `<p class="text-xs text-white/70 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
                                 <h3 class="font-bold text-base leading-tight">${trophy.name}</h3>
-                                <p class="text-gray-300 text-xs line-clamp-2">${trophy.description}</p>
+                                <p class="text-white/80 text-xs line-clamp-2">${trophy.description}</p>
                             </div>
-                            <div class="flex items-center justify-between pt-2 border-t border-gray-700/50">
+                            <div class="flex items-center justify-between pt-2 border-t" style="border-color:rgba(255,255,255,0.2)">
                                 <span class="inline-block px-2 py-1 ${badgeClass} rounded-md text-xs font-bold">
                                     <i class="bi bi-star-fill"></i>
                                     <span class="hidden sm:inline ml-1">${rarityLabel}</span>
                                 </span>
                                 <div class="flex items-center gap-2">
-                                    <button class="trophy-zoom-btn inline-flex items-center justify-center w-7 h-7 rounded-md bg-gray-600/30 hover:bg-gray-600/50 text-gray-300 hover:text-white transition transform hover:scale-110" title="Agrandir" data-trophy-id="${trophy.id}">
+                                    <button class="trophy-zoom-btn inline-flex items-center justify-center w-7 h-7 rounded-md text-white/80 hover:text-white transition transform hover:scale-110" style="background:rgba(72,158,150,0.3)" title="Agrandir" data-trophy-id="${trophy.id}">
                                         <i class="bi bi-zoom-in text-sm"></i>
                                     </button>
-                                    <a href="${trophy.image}" download class="inline-flex items-center justify-center w-7 h-7 rounded-md bg-gray-600/30 hover:bg-gray-600/50 text-gray-300 hover:text-white transition transform hover:scale-110" title="Télécharger">
+                                    <a href="${trophy.image}" download class="inline-flex items-center justify-center w-7 h-7 rounded-md text-white/80 hover:text-white transition transform hover:scale-110" style="background:rgba(72,158,150,0.3)" title="Télécharger">
                                         <i class="bi bi-download text-sm"></i>
                                     </a>
                                 </div>
@@ -113,11 +113,11 @@ export class TrophiesManager {
                         ` : `
                             <div class="space-y-2">
                                 <div class="text-center">
-                                    <h3 class="font-bold text-base leading-tight text-gray-500">Trophée Mystère</h3>
-                                    <p class="text-gray-500 text-xs mt-1">Débloquez pour découvrir</p>
+                                    <h3 class="font-bold text-base leading-tight text-white/50">Trophée Mystère</h3>
+                                    <p class="text-white/50 text-xs mt-1">Débloquez pour découvrir</p>
                                 </div>
-                                <div class="bg-gray-700/70 backdrop-blur-sm rounded p-2 border border-yellow-500/40">
-                                    <p class="text-xs font-mono font-bold text-center tracking-wider" style="color:${T.hexTextPrimary}">${trophy.secretCode}</p>
+                                <div class="backdrop-blur-sm rounded p-2" style="background:rgba(234,221,204,0.85);border:1px solid rgba(200,168,130,0.5)">
+                                    <p class="text-xs font-mono font-bold text-center tracking-wider" style="color:#7c4004">${trophy.secretCode}</p>
                                 </div>
                             </div>
                         `}
@@ -311,7 +311,7 @@ export class TrophiesManager {
         modal.id = 'trophy-modal';
         modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4';
         modal.innerHTML = `
-            <div class="trophy-card-pokemon-modal trophy-card-pokemon trophy-unlocked rounded-xl overflow-hidden border-2 ${rarityClass} relative bg-gray-900 shadow-2xl" style="aspect-ratio: 9/16; height: 80vh; max-width: 90vw;">
+            <div class="trophy-card-pokemon-modal trophy-card-pokemon trophy-unlocked rounded-xl overflow-hidden border-2 ${rarityClass} relative shadow-2xl" style="aspect-ratio: 9/16; height: 80vh; max-width: 90vw; background-color:#66bcb4">
                 <!-- Bouton fermer -->
                 <button class="absolute top-4 right-4 z-[200] w-10 h-10 rounded-full bg-black/70 hover:bg-black/90 text-white flex items-center justify-center transition" id="close-trophy-modal">
                     <i class="bi bi-x-lg text-xl"></i>
@@ -323,16 +323,16 @@ export class TrophiesManager {
                 <!-- Dégradé transparent vers noir en bas -->
                 <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
                     <div class="space-y-1">
-                        ${trophy.series ? `<p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
+                        ${trophy.series ? `<p class="text-xs text-white/70 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
                         <h3 class="font-bold text-lg leading-tight">${trophy.name}</h3>
-                        <p class="text-gray-300 text-sm">${trophy.description}</p>
+                        <p class="text-white/80 text-sm">${trophy.description}</p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-gray-700/50">
+                    <div class="flex items-center justify-between pt-2 border-t" style="border-color:rgba(255,255,255,0.2)">
                         <span class="inline-block px-2 py-1 ${badgeClass} rounded-full text-xs font-bold">
                             <i class="bi bi-star-fill"></i>
                             <span class="hidden sm:inline ml-1">${rarityLabel}</span>
                         </span>
-                        <a href="${trophy.image}" download class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-gray-600/30 hover:bg-gray-600/50 text-gray-300 hover:text-white transition transform hover:scale-110" title="Télécharger">
+                        <a href="${trophy.image}" download class="inline-flex items-center justify-center w-8 h-8 rounded-md text-white/80 hover:text-white transition transform hover:scale-110" style="background:rgba(72,158,150,0.3)" title="Télécharger">
                             <i class="bi bi-download text-sm"></i>
                         </a>
                     </div>
