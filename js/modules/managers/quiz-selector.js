@@ -244,15 +244,15 @@ export class QuizSelector {
         const timeButtonsHTML = this.timeOptions.map(time => {
             const isDefault = time === defaultTime;
             const selectedStyle = isDefault
-                ? 'background:white;color:#489e96;border:2px solid #66bcb4;box-shadow:0 0 0 3px rgba(102,188,180,0.15);font-weight:700;'
+                ? 'background:linear-gradient(to right,#ff9d00,#e08800);color:white;border:2px solid #ff9d00;font-weight:700;'
                 : 'background:white;color:#7c4004;border:2px solid #dcc9b0;';
             return `
             <button class="time-option-btn py-4 px-6 rounded-xl font-semibold transition-all duration-200 hover:border-teal-300 hover:shadow-md relative"
                     style="${selectedStyle}"
                     data-time="${time}">
-                ${isDefault ? '<span style="position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:#66bcb4;box-shadow:0 0 0 3px rgba(102,188,180,0.2)"></span>' : ''}
+                ${isDefault ? '<span style="position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:white;opacity:0.7"></span>' : ''}
                 <span class="text-2xl font-bold block">${time}</span>
-                <span class="block text-xs mt-0.5" style="color:${isDefault ? '#66bcb4' : '#b0906a'}">secondes</span>
+                <span class="block text-xs mt-0.5" style="color:${isDefault ? 'rgba(255,255,255,0.85)' : '#b0906a'}">secondes</span>
             </button>
         `;
         }).join('');
@@ -304,9 +304,17 @@ export class QuizSelector {
         modal.querySelectorAll('.time-option-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const selectedTime = parseInt(btn.dataset.time);
-                // Ajouter la classe selected pour le feedback visuel
-                modal.querySelectorAll('.time-option-btn').forEach(b => b.classList.remove('bg-gradient-to-r', 'from-primary-500', 'to-accent-500', 'text-white', 'border', 'border-primary-400'));
-                btn.classList.add('bg-gradient-to-r', 'from-primary-500', 'to-accent-500', 'text-white', 'border', 'border-primary-400');
+                // Ajouter le style selected pour le feedback visuel
+                modal.querySelectorAll('.time-option-btn').forEach(b => {
+                    b.style.background = 'white';
+                    b.style.color = '#7c4004';
+                    b.style.border = '2px solid #dcc9b0';
+                    b.querySelector('span:last-child').style.color = '#b0906a';
+                });
+                btn.style.background = 'linear-gradient(to right,#ff9d00,#e08800)';
+                btn.style.color = 'white';
+                btn.style.border = '2px solid #ff9d00';
+                btn.querySelector('span:last-child').style.color = 'rgba(255,255,255,0.85)';
 
                 // Petit délai pour voir l'effet de sélection
                 setTimeout(() => {

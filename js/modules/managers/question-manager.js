@@ -74,22 +74,21 @@ export class QuestionManager {
             const isHidden = CONFIG.freeMode ? 'hidden' : '';
             optionsHTML = `
                 <div class="md:col-span-2">
-                    <div class="rounded-lg p-6 space-y-4" style="background-color:#489e96">
+                    <div class="rounded-lg p-6 space-y-4" style="background-color:rgba(251,243,234,0.15);border:2px solid rgba(255,255,255,0.3)">
                         <label for="text-answer-input" class="block text-lg font-medium text-white mb-2">
                             Votre réponse :
                         </label>
                         <input
                             type="text"
                             id="text-answer-input"
-                            class="w-full px-4 py-3 text-lg text-white border-2 rounded-lg focus:outline-none transition-all" style="background-color:#66bcb4;border-color:rgba(255,255,255,0.4);color:white"
-                            style="--tw-ring-color:${T.primaryA(0.25)}"
+                            class="w-full px-4 py-3 text-lg border-2 rounded-lg focus:outline-none transition-all" style="background-color:#fbf3ea;border-color:#dcc9b0;color:#7c4004"
                             placeholder="Entrez votre réponse..."
                             autocomplete="off"
                         />
                         <button
                             id="submit-text-answer"
                             class="answer-submit-btn ${isHidden} w-full px-6 py-3 text-white font-bold rounded-lg transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-                            style="background:${T.gradientMain}"
+                            style="background:linear-gradient(to right,#ff9d00,#e08800)"
                         >
                             <div class="flex items-center justify-center space-x-2">
                                 <i class="bi bi-check-circle"></i>
@@ -206,7 +205,7 @@ export class QuestionManager {
                             </div>
                         `;
                         submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                        submitBtn.style.background = T.gradientMain;
+                        submitBtn.style.background = 'linear-gradient(to right,#ff9d00,#e08800)';
                         clearTimeout(autoSubmitTimeout);
                     } else if (acceptedAnswers.includes(userAnswer) && !quizState.isAnswered) {
                         // Réponse correcte : bordure verte
@@ -396,10 +395,7 @@ export class QuestionManager {
                     textInput.classList.remove('border-white/40');
                     textInput.classList.add('border-red-500', 'bg-red-900/20');
                 }
-                // Utiliser 'timeout' si la réponse est vide (temps écoulé), sinon 'error'
-                const feedbackType = (!userAnswer || userAnswer === '') ? 'timeout' : 'error';
-                const feedbackMessage = (!userAnswer || userAnswer === '') ? 'Temps écoulé ! ⏰' : 'Mauvaise réponse 😔';
-                this.showFeedbackMessage(feedbackMessage, feedbackType, question, null, userAnswer);
+                this.showFeedbackMessage('Mauvaise réponse 😔', 'error', question, null, userAnswer);
             }
 
             domManager.updateQuizStats(
@@ -639,7 +635,7 @@ export class QuestionManager {
                 if (userTextAnswer !== null) {
                     // Question à saisie de texte
                     responseSection = `
-                        <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                        <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(40,120,112,0.85)">
                             <p class="text-sm text-white/80 mb-2">Votre réponse:</p>
                             <p class="text-lg font-semibold text-green-400">
                                 ${userTextAnswer}
@@ -649,7 +645,7 @@ export class QuestionManager {
                 } else if (question && answerIndex !== null) {
                     // Question à choix multiples
                     responseSection = `
-                        <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                        <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(40,120,112,0.85)">
                             <p class="text-sm text-white/80 mb-2">Votre réponse:</p>
                             <p class="text-lg font-semibold text-green-400">
                                 ${String.fromCharCode(65 + answerIndex)} : ${question.choices[answerIndex]}
@@ -672,13 +668,13 @@ export class QuestionManager {
                         // Gérer userTextAnswer qui peut être null, undefined ou une chaîne vide
                         const displayAnswer = (userTextAnswer && userTextAnswer.trim()) ? userTextAnswer : '(aucune réponse)';
                         responseSection = `
-                            <div class="mt-4 p-3 rounded-lg border-2 border-red-500/50 mb-2" style="background:rgba(72,158,150,0.6)">
+                            <div class="mt-4 p-3 rounded-lg border-2 border-red-500/50 mb-2" style="background:rgba(40,120,112,0.85)">
                                 <p class="text-sm text-white/80 mb-2">Votre réponse:</p>
                                 <p class="text-lg font-semibold text-red-400">
                                     ${displayAnswer}
                                 </p>
                             </div>
-                            <div class="mt-2 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                            <div class="mt-2 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(40,120,112,0.85)">
                                 <p class="text-sm text-white/80 mb-2">La bonne réponse était:</p>
                                 <p class="text-lg font-semibold text-green-400">
                                     ${correctAnswer}
@@ -689,7 +685,7 @@ export class QuestionManager {
                 } else if (CONFIG.showResponse && question && answerIndex !== null) {
                     // Question à choix multiples
                     responseSection = `
-                        <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                        <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(40,120,112,0.85)">
                             <p class="text-sm text-white/80 mb-2">La bonne réponse était:</p>
                             <p class="text-lg font-semibold text-green-400">
                                 ${String.fromCharCode(65 + answerIndex)} : ${question.choices[answerIndex]}
@@ -714,7 +710,7 @@ export class QuestionManager {
                             ? question.acceptedAnswers[0]
                             : question.answer;
                         responseSection = `
-                            <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                            <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(40,120,112,0.85)">
                                 <p class="text-sm text-white/80 mb-2">La bonne réponse était:</p>
                                 <p class="text-lg font-semibold text-green-400">
                                     ${correctAnswer}
@@ -727,7 +723,7 @@ export class QuestionManager {
                     subtitle = 'Vous n\'avez pas eu le temps de répondre';
                     if (CONFIG.showResponse) {
                         responseSection = `
-                            <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(72,158,150,0.6)">
+                            <div class="mt-4 p-3 rounded-lg border-2 border-green-500/50" style="background:rgba(40,120,112,0.85)">
                                 <p class="text-sm text-white/80 mb-2">La bonne réponse était:</p>
                                 <p class="text-lg font-semibold text-green-400">
                                     ${String.fromCharCode(65 + answerIndex)} : ${question.choices[answerIndex]}
@@ -751,7 +747,7 @@ export class QuestionManager {
                     ${title}
                 </h3>
                 ${imageSection}
-                <p class="text-lg text-white leading-relaxed mb-4">
+                <p class="text-lg leading-relaxed mb-4" style="color:#7c4004">
                     ${subtitle}
                 </p>
                 ${responseSection}
