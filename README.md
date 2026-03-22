@@ -1,4 +1,4 @@
-# 🎯 Job Ready - Application de Quiz Interactifs
+# CamiLudik - Application de Quiz Interactifs
 
 Une application web moderne de quiz interactifs développée avec JavaScript ES6 modules et Tailwind CSS. Parfaite pour tester vos connaissances dans différents domaines et vous préparer aux entretiens techniques.
 
@@ -7,9 +7,9 @@ Une application web moderne de quiz interactifs développée avec JavaScript ES6
 ![CSS](https://img.shields.io/badge/CSS-Tailwind-38B2AC.svg)
 ![License](https://img.shields.io/badge/license-ISC-green.svg)
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-### 🎮 Interface de Quiz
+### Interface de Quiz
 
 - **Timer dynamique** avec animations et changements de couleur
 - **Interface responsive** optimisée pour mobile et desktop
@@ -18,14 +18,14 @@ Une application web moderne de quiz interactifs développée avec JavaScript ES6
 - **Barre de progression** visuelle du quiz
 - **Messages flottants** de feedback
 
-### ⚙️ Options de Jeu Personnalisables
+### Options de Jeu Personnalisables
 
 - **Sélection du temps** : 5, 10, 15 ou 20 secondes par question
 - **Mode Spoiler** : Réponses cachées, révélation automatique à la fin du temps
 - **Temps estimé** mis à jour dynamiquement sur les cartes de quiz
 - **Configuration persistante** pendant la session
 
-### 🎨 Design Moderne
+### Design Moderne
 
 - **Dark theme** élégant avec Tailwind CSS
 - **Animations CSS** personnalisées et fluides
@@ -33,21 +33,21 @@ Une application web moderne de quiz interactifs développée avec JavaScript ES6
 - **Gradient backgrounds** et effets visuels
 - **Touch-friendly** avec gestes optimisés
 
-### 📊 Système de Résultats
+### Système de Résultats
 
 - **Cercle de progression SVG** animé
 - **Messages personnalisés** selon le score
 - **Effets confettis** pour les bons scores
 - **Statistiques détaillées** de performance
 
-### 🔧 Architecture Technique
+### Architecture Technique
 
 - **Modules ES6** avec import/export natifs
 - **Architecture MVC** avec séparation des responsabilités
 - **State management** centralisé
 - **Configuration modulaire** et extensible
 
-## 🚀 Démarrage Rapide
+## Démarrage Rapide
 
 ### Prérequis
 
@@ -63,7 +63,7 @@ git clone https://github.com/alternative-rvb/job-ready.git
 cd job-ready
 ```
 
-2. **Lancer un serveur local**
+1. **Lancer un serveur local**
 
 ```bash
 # Python 3
@@ -76,10 +76,10 @@ npx serve .
 php -S localhost:8000
 ```
 
-3. **Accéder à l'application**
+1. **Accéder à l'application**
 Ouvrez votre navigateur sur `http://localhost:8000`
 
-## 📱 Utilisation
+## Utilisation
 
 ### Sélection d'un Quiz
 
@@ -92,12 +92,14 @@ Ouvrez votre navigateur sur `http://localhost:8000`
 ### Pendant le Quiz
 
 #### Mode Normal
+
 - **Timer** : Compteur visible en haut avec animations
 - **Questions** : Une question à la fois avec options multiples
 - **Navigation** : Sélection directe des réponses
 - **Feedback** : Retour visuel immédiat sur chaque réponse
 
 #### Mode Spoiler
+
 - **Réponses cachées** : Les boutons de réponse ne sont pas visibles
 - **Réflexion pure** : Concentrez-vous sur la question sans distraction
 - **Révélation automatique** : La bonne réponse apparaît quand le temps est écoulé
@@ -109,10 +111,10 @@ Ouvrez votre navigateur sur `http://localhost:8000`
 - **Messages personnalisés** selon la performance
 - **Options** : Recommencer le même quiz ou choisir un autre
 
-## 🗂️ Structure du Projet
+## Structure du Projet
 
 ```
-job-ready/
+camiludik/
 ├── 📄 index.html              # Page principale avec Tailwind CSS
 ├── 📁 images/                 # Assets visuels
 │   ├── 1-Bob-leponge.jpg
@@ -167,9 +169,9 @@ app.js → QuizApp → Managers → State → DOM
 Config → Utils → Core Logic → UI → User
 ```
 
-## 🎨 Personnalisation
+## Personnalisation
 
-### 🎯 Ajouter un Nouveau Quiz (Automatique)
+### Ajouter un Nouveau Quiz (Automatique)
 
 1. **Créez votre fichier JSON** dans `js/data/` avec la structure complète :
 
@@ -195,7 +197,7 @@ Config → Utils → Core Logic → UI → User
 }
 ```
 
-2. **Régénérez l'index automatiquement** :
+1. **Régénérez l'index automatiquement** :
 
 ```bash
 npm run generate-index
@@ -203,12 +205,13 @@ npm run generate-index
 python3 api.py generate-index
 ```
 
-3. **C'est tout !** Votre quiz apparaîtra automatiquement dans l'application.
+1. **C'est tout !** Votre quiz apparaîtra automatiquement dans l'application.
 
 > 💡 **Pour Vercel** : L'index est généré automatiquement pendant le build grâce au `buildCommand` dans `vercel.json`
     file: 'mon-quiz.json'
   }
 ]
+
 ```
 
 ### Modifier le Design
@@ -227,7 +230,7 @@ export const CONFIG = {
 }
 ```
 
-## 🌐 Technologies Utilisées
+## Technologies Utilisées
 
 ### Frontend
 
@@ -247,7 +250,7 @@ export const CONFIG = {
 - **HTTP Server** pour le développement local
 - **ES6 Modules** pour l'organisation du code
 
-## 📊 Données et Format
+## Données et Format
 
 ### Structure d'un Quiz JSON
 
@@ -272,7 +275,7 @@ export const CONFIG = {
 - **Animaux** : Connaissances générales sur la faune
 - **Entretien Développeur Web** : Questions techniques d'entretien
 
-## 🎯 Fonctionnalités Avancées
+## Fonctionnalités Avancées
 
 ### Mobile-First
 
@@ -295,7 +298,7 @@ export const CONFIG = {
 - Navigation au clavier
 - Structure HTML5 sémantique
 
-## 🔄 Roadmap
+## Roadmap
 
 ### Version 2.1 (À venir)
 
@@ -311,7 +314,7 @@ export const CONFIG = {
 - [ ] Mode hors-ligne (PWA)
 - [ ] Analytics de performance
 
-## 🤝 Contribution
+## Contribution
 
 Les contributions sont les bienvenues ! Pour contribuer :
 
@@ -329,15 +332,15 @@ Les contributions sont les bienvenues ! Pour contribuer :
 - Testez sur mobile et desktop
 - Respectez l'architecture modulaire
 
-## 📄 License
+## License
 
 Ce projet est sous licence ISC. Voir le fichier `LICENSE` pour plus de détails.
 
-## 👥 Auteurs
+## Auteurs
 
 - **Alternative RVB** - Développement initial - [@alternative-rvb](https://github.com/alternative-rvb)
 
-## 🙏 Remerciements
+## Remerciements
 
 - **Tailwind CSS** pour le framework CSS moderne
 - **Bootstrap Icons** pour l'iconographie
@@ -346,4 +349,4 @@ Ce projet est sous licence ISC. Voir le fichier `LICENSE` pour plus de détails.
 
 ---
 
-⭐ **N'hésitez pas à mettre une étoile si ce projet vous a aidé !**
+**N'hésitez pas à mettre une étoile si ce projet vous a aidé !**
