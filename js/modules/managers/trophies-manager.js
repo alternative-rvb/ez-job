@@ -78,11 +78,12 @@ export class TrophiesManager {
                     <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" />
                     ${isUnlocked ? '' : `
                         <!-- Overlay de verrouillage -->
-                        <div class="absolute inset-0 backdrop-blur-xl bg-black/60">
+                        <div class="absolute inset-0 backdrop-blur-md" style="background:rgba(0,0,0,0.35)">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="text-center">
-                                    <i class="bi bi-lock-fill text-5xl opacity-60 mb-2"></i>
-                                    <p class="text-white/80 text-sm font-semibold">À débloquer</p>
+                                    <div class="rounded-full flex items-center justify-center mx-auto mb-2" style="width:52px;height:52px;background:rgba(255,157,0,0.9);box-shadow:0 0 0 4px rgba(255,157,0,0.3)">
+                                        <i class="bi bi-lock-fill text-2xl text-white"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
