@@ -462,8 +462,13 @@ export class QuizSelector {
 
         document.getElementById('subject-filters-wrapper')?.classList.remove('hidden');
 
+        // Réinitialiser la sélection si la matière actuelle n'est plus disponible
+        if (this.currentSubjectFilter !== 'all' && !subjectsInLevel.includes(this.currentSubjectFilter)) {
+            this.currentSubjectFilter = 'all';
+        }
+
         let subjectButtonsHTML = `
-            <button type="button" data-subject="all" class="btn-base btn-category subject-filter selected">
+            <button type="button" data-subject="all" class="btn-base btn-category subject-filter">
                 Toutes matières
             </button>
         `;
@@ -480,12 +485,7 @@ export class QuizSelector {
 
         subjectFiltersContainer.innerHTML = subjectButtonsHTML;
 
-        // Réinitialiser la sélection si la matière actuelle n'est plus disponible
-        if (this.currentSubjectFilter !== 'all' && !subjectsInLevel.includes(this.currentSubjectFilter)) {
-            this.currentSubjectFilter = 'all';
-        }
-
-        // Marquer le bouton actif
+        // Marquer le bouton actif (après injection du HTML)
         subjectFiltersContainer.querySelectorAll('.subject-filter').forEach(btn => {
             if (btn.dataset.subject === this.currentSubjectFilter) {
                 btn.classList.add('selected');
@@ -495,6 +495,23 @@ export class QuizSelector {
         this.setupSubjectFilters();
     }
 
+    updateResetButton() {
+        const wrapper = document.getElementById('reset-filters-wrapper');
+        if (!wrapper) return;
+        const isFiltered = this.currentLevelFilter !== 'all' || this.currentSubjectFilter !== 'all';
+        wrapper.classList.toggle('hidden', !isFiltered);
+    }
+
+    resetFilters() {
+        this.currentLevelFilter = 'all';
+        this.currentSubjectFilter = 'all';
+        document.querySelectorAll('.level-filter').forEach(btn => btn.classList.remove('selected'));
+        document.querySelector('.level-filter[data-level="all"]')?.classList.add('selected');
+        this.renderSubjectButtons();
+        this.renderQuizCards();
+        this.updateResetButton();
+    }
+
     setupFilters() {
         // Filtres niveau
         document.querySelectorAll('.level-filter').forEach(button => {
@@ -502,11 +519,16 @@ export class QuizSelector {
                 document.querySelectorAll('.level-filter').forEach(btn => btn.classList.remove('selected'));
                 button.classList.add('selected');
                 this.currentLevelFilter = button.dataset.level;
-                // Recalculer les matières disponibles pour ce niveau
                 this.currentSubjectFilter = 'all';
                 this.renderSubjectButtons();
                 this.renderQuizCards();
+                this.updateResetButton();
             });
+        });
+
+        // Bouton reset
+        document.getElementById('reset-filters-btn')?.addEventListener('click', () => {
+            this.resetFilters();
         });
     }
 
@@ -517,6 +539,7 @@ export class QuizSelector {
                 button.classList.add('selected');
                 this.currentSubjectFilter = button.dataset.subject;
                 this.renderQuizCards();
+                this.updateResetButton();
             });
         });
     }
