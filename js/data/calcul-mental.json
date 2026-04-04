@@ -8,7 +8,12 @@
     "questionCount": 20,
     "category": "CM2",
     "createdAt": "2024-06-15",
-    "tag": ["Mathématiques", "Calcul"]
+    "tag": [
+      "Mathématiques",
+      "Calcul"
+    ],
+    "level": "CM2",
+    "subject": "Mathématiques"
   },
   "questions": [
     {

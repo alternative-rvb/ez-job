@@ -1,0 +1,84 @@
+{
+  "config": {
+    "title": "Puissances et priorités - 5ème",
+    "description": "Maîtrise les puissances de 10, les opérations et les priorités de calcul",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 3,
+    "questionCount": 10,
+    "category": "CM2",
+    "level": "5eme",
+    "subject": "Mathématiques",
+    "createdAt": "2026-04-04",
+    "tag": ["Mathématiques", "Puissances", "Calcul"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien vaut 10² ?",
+      "choices": ["20", "100", "1000", "12"],
+      "correctAnswer": "100",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Combien vaut 2³ ?",
+      "acceptedAnswers": ["8"],
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Combien vaut 10⁰ ?",
+      "choices": ["0", "1", "10", "100"],
+      "correctAnswer": "1",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Quel est le résultat de 3 + 4 × 2 ?",
+      "choices": ["14", "11", "10", "24"],
+      "correctAnswer": "11",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Combien vaut 5² ?",
+      "acceptedAnswers": ["25"],
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "En notation scientifique, 3 000 s'écrit :",
+      "choices": ["3 × 10²", "3 × 10³", "3 × 10⁴", "30 × 10²"],
+      "correctAnswer": "3 × 10³",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Quel est le résultat de (2 + 3)² ?",
+      "choices": ["10", "13", "25", "7"],
+      "correctAnswer": "25",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Combien vaut 10⁻¹ ?",
+      "choices": ["-10", "0,1", "0,01", "1"],
+      "correctAnswer": "0,1",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Quel est le résultat de 2⁴ ?",
+      "acceptedAnswers": ["16"],
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Dans le calcul 12 ÷ 4 + 2 × 3, quelle opération effectue-t-on en premier ?",
+      "choices": ["12 ÷ 4", "4 + 2", "2 × 3", "12 ÷ 4 et 2 × 3 simultanément"],
+      "correctAnswer": "12 ÷ 4 et 2 × 3 simultanément",
+      "imageUrl": null
+    }
+  ]
+}

@@ -14,6 +14,8 @@ class AppConfig {
         this.showResponse = true;   // Afficher la bonne réponse en cas de mauvaise réponse
         this.categoryFilter = null;  // null = toutes les catégories
         this.availableCategories = [];  // Mis à jour dynamiquement depuis l'index
+        this.availableLevels = [];      // Niveaux scolaires (CM2, 6eme, 5eme...)
+        this.availableSubjects = [];    // Matières (Mathématiques, Français...)
         this.isPrivate = isPrivate;
     }
 
@@ -21,6 +23,18 @@ class AppConfig {
     setAvailableCategories(categories) {
         this.availableCategories = categories || [];
         console.log('📦 Catégories disponibles mises à jour:', this.availableCategories);
+    }
+
+    // Méthode pour mettre à jour les niveaux scolaires disponibles
+    setAvailableLevels(levels) {
+        this.availableLevels = levels || [];
+        console.log('🎓 Niveaux disponibles mis à jour:', this.availableLevels);
+    }
+
+    // Méthode pour mettre à jour les matières disponibles
+    setAvailableSubjects(subjects) {
+        this.availableSubjects = subjects || [];
+        console.log('📚 Matières disponibles mises à jour:', this.availableSubjects);
     }
 
     // Méthode pour mettre à jour le filtre de catégories (utile pour la version privée)

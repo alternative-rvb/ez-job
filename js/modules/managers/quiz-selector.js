@@ -9,6 +9,26 @@ import { getCategoryColors, initializeCategoryColors } from '../core/category-co
 import { playerManager } from '../core/player.js';
 import { T } from '../core/theme.js';
 
+// Palette de couleurs par matière (point coloré + badge)
+const SUBJECT_STYLES = {
+    'Mathématiques': { dot: '#ef4444', bg: '#fef2f2', color: '#991b1b', border: '#fecaca' },
+    'Français':      { dot: '#3b82f6', bg: '#eff6ff', color: '#1e40af', border: '#bfdbfe' },
+    'Histoire':      { dot: '#f59e0b', bg: '#fffbeb', color: '#92400e', border: '#fde68a' },
+    'Géographie':    { dot: '#10b981', bg: '#ecfdf5', color: '#065f46', border: '#a7f3d0' },
+    'Sciences':      { dot: '#8b5cf6', bg: '#f5f3ff', color: '#5b21b6', border: '#ddd6fe' },
+    'Anglais':       { dot: '#06b6d4', bg: '#ecfeff', color: '#155e75', border: '#a5f3fc' },
+    'Arts':          { dot: '#ec4899', bg: '#fdf2f8', color: '#9d174d', border: '#fbcfe8' },
+    'Musique':       { dot: '#f97316', bg: '#fff7ed', color: '#9a3412', border: '#fed7aa' },
+    'SVT':           { dot: '#22c55e', bg: '#f0fdf4', color: '#14532d', border: '#bbf7d0' },
+    'Physique':      { dot: '#6366f1', bg: '#eef2ff', color: '#3730a3', border: '#c7d2fe' },
+    'Chimie':        { dot: '#14b8a6', bg: '#f0fdfa', color: '#134e4a', border: '#99f6e4' },
+    'Informatique':  { dot: '#64748b', bg: '#f8fafc', color: '#1e293b', border: '#cbd5e1' },
+};
+
+function getSubjectStyle(subject) {
+    return SUBJECT_STYLES[subject] || { dot: '#b46e28', bg: '#fef3e2', color: '#7c4004', border: '#fde8c0' };
+}
+
 export class QuizSelector {
     constructor(onQuizSelect) {
         this.onQuizSelect = onQuizSelect;
@@ -19,15 +39,15 @@ export class QuizSelector {
     async render() {
         // Afficher le loader
         this.showLoader();
-        
+
         const startTime = Date.now();
-        
+
         try {
             // S'assurer que les couleurs sont initialisées
             await initializeCategoryColors();
-            
+
             let availableQuizzes = await loadAvailableQuizzes();
-            
+
             // Appliquer le filtre de catégories si défini dans CONFIG
             if (CONFIG.categoryFilter && Array.isArray(CONFIG.categoryFilter)) {
                 availableQuizzes = availableQuizzes.filter(quiz =>
@@ -45,25 +65,27 @@ export class QuizSelector {
                 // Trier par date décroissante (plus récent en premier)
                 return new Date(b.createdAt) - new Date(a.createdAt);
             });
-            
+
             this.allQuizzes = sortedQuizzes;
             this.currentFilter = 'all';
+            this.currentLevelFilter = 'all';
+            this.currentSubjectFilter = 'all';
             this.searchQuery = '';
 
-            // Récupérer les catégories disponibles depuis CONFIG
+            // Récupérer les catégories, niveaux et matières depuis CONFIG
             this.availableCategories = CONFIG.availableCategories || [];
-            console.log('📦 Catégories pour les filtres:', this.availableCategories);
-            
+            this.availableLevels = CONFIG.availableLevels || [];
+            this.availableSubjects = CONFIG.availableSubjects || [];
+
             // Assurer un délai minimum de 500ms pour le loader
             const elapsedTime = Date.now() - startTime;
             const remainingTime = Math.max(0, 500 - elapsedTime);
-            
-            setTimeout(() => {
-                this.renderFilterButtons();
-                this.renderQuizCards();
-                this.hideLoader();
-            }, remainingTime);
-            
+
+            await new Promise(resolve => setTimeout(resolve, remainingTime));
+            this.renderFilterButtons();
+            this.renderQuizCards();
+            this.hideLoader();
+
         } catch (error) {
             console.error('Erreur lors du chargement des quiz:', error);
             this.showError('Erreur lors du chargement des quiz. Veuillez réessayer.');
@@ -75,10 +97,14 @@ export class QuizSelector {
         const quizListContainer = document.getElementById('quiz-list');
         quizListContainer.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
 
-        // Appliquer les filtres (catégorie + recherche)
-        let filteredQuizzes = this.currentFilter === 'all'
+        // Appliquer les filtres (niveau + matière + recherche)
+        let filteredQuizzes = this.currentLevelFilter === 'all'
             ? this.allQuizzes
-            : this.allQuizzes.filter(quiz => quiz.category === this.currentFilter);
+            : this.allQuizzes.filter(quiz => quiz.level === this.currentLevelFilter);
+
+        if (this.currentSubjectFilter !== 'all') {
+            filteredQuizzes = filteredQuizzes.filter(quiz => quiz.subject === this.currentSubjectFilter);
+        }
 
         // Appliquer la recherche textuelle
         if (this.searchQuery.trim()) {
@@ -88,8 +114,10 @@ export class QuizSelector {
                 const matchesDescription = quiz.description.toLowerCase().includes(query);
                 const matchesTags = quiz.tag && quiz.tag.some(tag => tag.toLowerCase().includes(query));
                 const matchesCategory = quiz.category.toLowerCase().includes(query);
+                const matchesLevel = quiz.level && quiz.level.toLowerCase().includes(query);
+                const matchesSubject = quiz.subject && quiz.subject.toLowerCase().includes(query);
 
-                return matchesTitle || matchesDescription || matchesTags || matchesCategory;
+                return matchesTitle || matchesDescription || matchesTags || matchesCategory || matchesLevel || matchesSubject;
             });
         }
             
@@ -111,6 +139,9 @@ export class QuizSelector {
             // Couleurs basées sur la catégorie (pour les badges)
             const categoryColor = getCategoryColors(quiz.category);
 
+            // Couleur et icône de la matière
+            const subjectStyle = quiz.subject ? getSubjectStyle(quiz.subject) : null;
+
             // Dégradé de la carte : basé sur l'index pour varier les couleurs dans une même catégorie
             const grad = CARD_GRADIENTS[idx % CARD_GRADIENTS.length];
 
@@ -120,18 +151,20 @@ export class QuizSelector {
             // Vérifier si le quiz est nouveau
             const isNew = this.isNewQuiz(quiz.createdAt);
 
-            // Zone image : vraie image ou placeholder CSS selon disponibilité
+            // Zone image : vraie image ou placeholder CSS selon disponibilité (ratio 16:9)
             const imageSectionHTML = quiz.imageUrl && quiz.imageUrl.trim() !== '' ? `
-                <div class="relative h-32 overflow-hidden" style="background-color:#eaddcc">
-                    <img src="${quiz.imageUrl}" alt="${quiz.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="relative overflow-hidden" style="background-color:#eaddcc;padding-top:56.25%">
+                    <img src="${quiz.imageUrl}" alt="${quiz.title}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300"></div>
                 </div>
             ` : `
-                <div class="relative h-32 overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,${grad[0]} 0%,${grad[1]} 100%)">
-                    <div class="text-center px-3 py-2 relative z-10">
-                        <p class="font-bold leading-tight line-clamp-3 text-white drop-shadow" style="font-family:'Baloo 2',sans-serif;font-size:1rem">${quiz.title}</p>
+                <div class="relative overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,${grad[0]} 0%,${grad[1]} 100%);padding-top:56.25%">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center px-3 py-2">
+                            <p class="font-bold leading-tight line-clamp-3 text-white drop-shadow" style="font-family:'Baloo 2',sans-serif;font-size:1rem">${quiz.title}</p>
+                        </div>
+                        <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 80% 20%, white 0%, transparent 60%)"></div>
                     </div>
-                    <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 80% 20%, white 0%, transparent 60%)"></div>
                 </div>
             `;
 
@@ -168,11 +201,21 @@ export class QuizSelector {
 
                         <p class="text-xs mb-2 line-clamp-2" style="color:#b46e28">${quiz.description}</p>
 
-                        <!-- Badge catégorie -->
+                        <!-- Badge catégorie + niveau + matière -->
                         <div class="flex flex-wrap gap-1 mb-2">
                             <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap" style="background:#e0f4f2;color:#489e96;border:1px solid #b0ddd9">
                                 ${quiz.category}
                             </span>
+                            ${quiz.level ? `
+                            <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap" style="background:#fef3c7;color:#92400e;border:1px solid #fde68a">
+                                ${quiz.level}
+                            </span>
+                            ` : ''}
+                            ${quiz.subject && subjectStyle ? `
+                            <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap flex items-center gap-0.5" style="background:${subjectStyle.bg};color:${subjectStyle.color};border:1px solid ${subjectStyle.border}">
+                                <span style="color:${subjectStyle.dot}" aria-hidden="true">&#11044;</span>${quiz.subject}
+                            </span>
+                            ` : ''}
                         </div>
 
                         <!-- Tags (au maximum 1 affiché) -->
@@ -361,51 +404,118 @@ export class QuizSelector {
     }
 
     renderFilterButtons() {
-        const categoryFiltersContainer = document.getElementById('category-filters');
-        if (!categoryFiltersContainer) {
-            console.warn('⚠️ Conteneur category-filters non trouvé');
+        const levelFiltersContainer = document.getElementById('level-filters');
+        const subjectFiltersContainer = document.getElementById('subject-filters');
+
+        if (!levelFiltersContainer || !subjectFiltersContainer) {
+            console.warn('⚠️ Conteneurs de filtres non trouvés');
             return;
         }
 
-        // Générer les boutons de filtres dynamiquement
-        let filterButtonsHTML = `
-            <button type="button" data-category="all" class="btn-base btn-category category-filter selected">
-                Toutes
+        // --- Filtre Niveau ---
+        let levelButtonsHTML = `
+            <button type="button" data-level="all" class="btn-base btn-category level-filter selected">
+                Tous niveaux
             </button>
         `;
 
-        // Ajouter les catégories disponibles
-        if (this.availableCategories && this.availableCategories.length > 0) {
-            this.availableCategories.forEach(category => {
-                filterButtonsHTML += `
-                    <button type="button" data-category="${category}" class="btn-base btn-category category-filter">
-                        ${category}
+        if (this.availableLevels && this.availableLevels.length > 0) {
+            this.availableLevels.forEach(level => {
+                levelButtonsHTML += `
+                    <button type="button" data-level="${level}" class="btn-base btn-category level-filter">
+                        ${level}
                     </button>
                 `;
             });
         }
 
-        categoryFiltersContainer.innerHTML = filterButtonsHTML;
-        
+        levelFiltersContainer.innerHTML = levelButtonsHTML;
+
+        // --- Filtre Matière (affiche uniquement les matières du niveau sélectionné) ---
+        this.renderSubjectButtons();
+
         // Réappliquer les écouteurs d'événements
         this.setupFilters();
     }
 
-    setupFilters() {
-        document.querySelectorAll('.category-filter').forEach(button => {
-            button.addEventListener('click', () => {
-                const isAllBtn = button.dataset.category === 'all';
-                
-                // Retirer la classe selected de tous les boutons
-                document.querySelectorAll('.category-filter').forEach(btn => {
-                    btn.classList.remove('selected');
-                });
-                
-                // Ajouter la classe selected au bouton cliqué
-                button.classList.add('selected');
+    renderSubjectButtons() {
+        const subjectFiltersContainer = document.getElementById('subject-filters');
+        if (!subjectFiltersContainer) return;
 
-                // Mettre à jour le filtre
-                this.currentFilter = button.dataset.category;
+        // Calculer les matières disponibles selon le niveau actif
+        const quizzesForLevel = this.currentLevelFilter === 'all'
+            ? this.allQuizzes
+            : this.allQuizzes.filter(q => q.level === this.currentLevelFilter);
+
+        const subjectsInLevel = [...new Set(
+            quizzesForLevel
+                .filter(q => q.subject)
+                .map(q => q.subject)
+        )].sort();
+
+        // Si aucune matière disponible, masquer le conteneur
+        if (subjectsInLevel.length === 0) {
+            subjectFiltersContainer.innerHTML = '';
+            document.getElementById('subject-filters-wrapper')?.classList.add('hidden');
+            return;
+        }
+
+        document.getElementById('subject-filters-wrapper')?.classList.remove('hidden');
+
+        let subjectButtonsHTML = `
+            <button type="button" data-subject="all" class="btn-base btn-category subject-filter selected">
+                Toutes matières
+            </button>
+        `;
+
+        subjectsInLevel.forEach(subject => {
+            const style = getSubjectStyle(subject);
+            subjectButtonsHTML += `
+                <button type="button" data-subject="${subject}" class="btn-base btn-category subject-filter"
+                        style="--subject-dot-color:${style.dot}">
+                    <span style="color:${style.dot};font-size:0.6rem;margin-right:3px" aria-hidden="true">&#11044;</span>${subject}
+                </button>
+            `;
+        });
+
+        subjectFiltersContainer.innerHTML = subjectButtonsHTML;
+
+        // Réinitialiser la sélection si la matière actuelle n'est plus disponible
+        if (this.currentSubjectFilter !== 'all' && !subjectsInLevel.includes(this.currentSubjectFilter)) {
+            this.currentSubjectFilter = 'all';
+        }
+
+        // Marquer le bouton actif
+        subjectFiltersContainer.querySelectorAll('.subject-filter').forEach(btn => {
+            if (btn.dataset.subject === this.currentSubjectFilter) {
+                btn.classList.add('selected');
+            }
+        });
+
+        this.setupSubjectFilters();
+    }
+
+    setupFilters() {
+        // Filtres niveau
+        document.querySelectorAll('.level-filter').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.level-filter').forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+                this.currentLevelFilter = button.dataset.level;
+                // Recalculer les matières disponibles pour ce niveau
+                this.currentSubjectFilter = 'all';
+                this.renderSubjectButtons();
+                this.renderQuizCards();
+            });
+        });
+    }
+
+    setupSubjectFilters() {
+        document.querySelectorAll('.subject-filter').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.subject-filter').forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+                this.currentSubjectFilter = button.dataset.subject;
                 this.renderQuizCards();
             });
         });

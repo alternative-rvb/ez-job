@@ -8,7 +8,13 @@
     "questionCount": 20,
     "category": "CM2",
     "createdAt": "2026-01-10",
-    "tag": ["Anglais", "Débutant", "Vocabulaire"]
+    "tag": [
+      "Anglais",
+      "Débutant",
+      "Vocabulaire"
+    ],
+    "level": "CM2",
+    "subject": "Anglais"
   },
   "questions": [
     {

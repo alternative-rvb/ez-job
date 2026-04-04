@@ -1,0 +1,86 @@
+{
+  "config": {
+    "title": "Grammaire - 6ème",
+    "description": "Révise la nature et la fonction des mots : noms, verbes, adjectifs, compléments",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 2,
+    "questionCount": 10,
+    "category": "CM2",
+    "level": "6eme",
+    "subject": "Français",
+    "createdAt": "2026-04-04",
+    "tag": ["Français", "Grammaire"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle est la nature du mot \"rapidement\" ?",
+      "choices": ["Un nom", "Un adjectif", "Un adverbe", "Un verbe"],
+      "correctAnswer": "Un adverbe",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Dans la phrase \"Le chien mange\", quel est le sujet ?",
+      "choices": ["mange", "Le", "chien", "Le chien"],
+      "correctAnswer": "Le chien",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Que remplace un pronom personnel ?",
+      "choices": ["Un verbe", "Un nom ou groupe nominal", "Un adjectif", "Un adverbe"],
+      "correctAnswer": "Un nom ou groupe nominal",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Lequel est un adjectif qualificatif ?",
+      "choices": ["courir", "maison", "grand", "lentement"],
+      "correctAnswer": "grand",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Dans \"Je mange une pomme rouge\", quel mot est le COD ?",
+      "choices": ["Je", "mange", "une pomme rouge", "rouge"],
+      "correctAnswer": "une pomme rouge",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Quel est l'infinitif du verbe \"nous allions\" ?",
+      "choices": ["aller", "allier", "alier", "aller à"],
+      "correctAnswer": "aller",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Une proposition subordonnée relative est introduite par :",
+      "choices": ["que, parce que", "qui, que, dont, où", "si, quand", "mais, ou"],
+      "correctAnswer": "qui, que, dont, où",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Quel est le pluriel de \"oeil\" ?",
+      "acceptedAnswers": ["yeux", "les yeux"],
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Dans \"Il travaille avec soin\", quel est le rôle de \"avec soin\" ?",
+      "choices": ["Sujet", "COD", "Complément circonstanciel de manière", "Attribut du sujet"],
+      "correctAnswer": "Complément circonstanciel de manière",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Combien de personnes comporte la conjugaison française ?",
+      "choices": ["4", "5", "6", "8"],
+      "correctAnswer": "6",
+      "imageUrl": null
+    }
+  ]
+}

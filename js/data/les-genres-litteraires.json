@@ -8,7 +8,12 @@
     "questionCount": 15,
     "category": "CM2",
     "createdAt": "2024-08-20",
-    "tag": ["Français", "Littérature"]
+    "tag": [
+      "Français",
+      "Littérature"
+    ],
+    "level": "CM2",
+    "subject": "Français"
   },
   "questions": [
     {

@@ -420,9 +420,21 @@
           </div>
         </div>
 
-        <!-- Filtres par catégorie -->
-        <div id="category-filters" class="flex flex-wrap justify-center gap-2">
-          <!-- Les boutons de filtres seront générés dynamiquement -->
+        <!-- Filtres par niveau scolaire -->
+        <div id="level-filters" class="flex flex-wrap justify-center gap-2 mb-3">
+          <!-- Les boutons de niveau seront générés dynamiquement -->
+        </div>
+
+        <!-- Filtres par matière (masqués si aucune matière disponible) -->
+        <div id="subject-filters-wrapper">
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <div style="height:1px;width:40px;background:#dcc9b0"></div>
+            <span class="text-xs font-semibold" style="color:#b46e28">Matière</span>
+            <div style="height:1px;width:40px;background:#dcc9b0"></div>
+          </div>
+          <div id="subject-filters" class="flex flex-wrap justify-center gap-2">
+            <!-- Les boutons de matière seront générés dynamiquement -->
+          </div>
         </div>
       </div>
 

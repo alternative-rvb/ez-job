@@ -8,7 +8,12 @@
     "questionCount": 10,
     "category": "CM2",
     "createdAt": "2024-08-10",
-    "tag": ["Histoire", "France"]
+    "tag": [
+      "Histoire",
+      "France"
+    ],
+    "level": "CM2",
+    "subject": "Histoire"
   },
   "questions": [
     {

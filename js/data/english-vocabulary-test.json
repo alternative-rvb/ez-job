@@ -8,13 +8,22 @@
     "questionCount": 10,
     "category": "CM2",
     "createdAt": "2026-01-11",
-    "tag": ["Anglais", "Vocabulaire", "Test"]
+    "tag": [
+      "Anglais",
+      "Vocabulaire",
+      "Test"
+    ],
+    "level": "CM2",
+    "subject": "Anglais"
   },
   "questions": [
     {
       "id": 1,
       "question": "Comment dit-on 'lundi' en anglais ? (Entrez votre réponse)",
-      "acceptedAnswers": ["Monday", "monday"],
+      "acceptedAnswers": [
+        "Monday",
+        "monday"
+      ],
       "imageUrl": null
     },
     {
@@ -32,7 +41,10 @@
     {
       "id": 3,
       "question": "Comment dit-on 'rouge' en anglais ? (Tapez la réponse)",
-      "acceptedAnswers": ["Red", "red"],
+      "acceptedAnswers": [
+        "Red",
+        "red"
+      ],
       "imageUrl": null
     },
     {
@@ -50,7 +62,10 @@
     {
       "id": 5,
       "question": "Tapez la traduction de 'chaussures' en anglais",
-      "acceptedAnswers": ["Shoes", "shoes"],
+      "acceptedAnswers": [
+        "Shoes",
+        "shoes"
+      ],
       "imageUrl": null
     },
     {
@@ -68,7 +83,10 @@
     {
       "id": 7,
       "question": "Écrivez 'mercredi' en anglais",
-      "acceptedAnswers": ["Wednesday", "wednesday"],
+      "acceptedAnswers": [
+        "Wednesday",
+        "wednesday"
+      ],
       "imageUrl": null
     },
     {
@@ -86,7 +104,12 @@
     {
       "id": 9,
       "question": "Quelle est la traduction de 'pantalon' ? (Saisissez votre réponse)",
-      "acceptedAnswers": ["Trousers", "trousers", "Pants", "pants"],
+      "acceptedAnswers": [
+        "Trousers",
+        "trousers",
+        "Pants",
+        "pants"
+      ],
       "imageUrl": null
     },
     {

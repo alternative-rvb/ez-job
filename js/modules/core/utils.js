@@ -155,8 +155,10 @@ export async function loadAvailableQuizzes() {
             const indexData = await response.json();
             quizIds = indexData.quizzes || [];
             categories = indexData.categories || [];
-            // Mettre à jour les catégories disponibles dans CONFIG
+            // Mettre à jour les catégories, niveaux et matières disponibles dans CONFIG
             CONFIG.setAvailableCategories(categories);
+            CONFIG.setAvailableLevels(indexData.levels || []);
+            CONFIG.setAvailableSubjects(indexData.subjects || []);
             console.log(`📋 Quiz chargés depuis l'index (${quizIds.length} quiz disponibles)`);
         } else {
             throw new Error('Fichier d\'index non trouvé');

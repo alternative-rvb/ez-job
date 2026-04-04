@@ -1,0 +1,101 @@
+{
+  "config": {
+    "title": "Le Moyen Âge - 5ème",
+    "description": "La société féodale, les croisades, l'Église au Moyen Âge",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 2,
+    "questionCount": 10,
+    "category": "CM2",
+    "level": "5eme",
+    "subject": "Histoire",
+    "createdAt": "2026-04-04",
+    "tag": ["Histoire", "Moyen Âge"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle est la période couverte par le Moyen Âge ?",
+      "choices": [
+        "De 476 à 1492",
+        "De 100 à 500 apr. J.-C.",
+        "De 1000 à 1500",
+        "De 800 à 1800"
+      ],
+      "correctAnswer": "De 476 à 1492",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Quel événement marque la fin du Moyen Âge en 1492 ?",
+      "choices": [
+        "La chute de Rome",
+        "La découverte de l'Amérique",
+        "La Révolution française",
+        "La prise de Constantinople"
+      ],
+      "correctAnswer": "La découverte de l'Amérique",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Comment appelle-t-on le seigneur au sommet de la hiérarchie féodale ?",
+      "choices": ["Le vassal", "Le serf", "Le suzerain", "Le chevalier"],
+      "correctAnswer": "Le suzerain",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Quel est le nom du lien qui unit le seigneur et son vassal ?",
+      "choices": ["Le féodalisme", "La féauté", "L'hommage", "La suzeraineté"],
+      "correctAnswer": "L'hommage",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Combien de croisades importantes ont eu lieu au Moyen Âge ?",
+      "choices": ["4", "6", "8", "10"],
+      "correctAnswer": "8",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Quelle ville sainte les croisés cherchaient-ils à reconquérir ?",
+      "acceptedAnswers": ["Jérusalem", "jerusalem"],
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Comment s'appelle la grande église du Moyen Âge construite en hauteur avec des arcs-boutants ?",
+      "choices": ["La basilique", "La cathédrale gothique", "L'abbaye romane", "Le baptistère"],
+      "correctAnswer": "La cathédrale gothique",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Quel roi franc a été couronné empereur d'Occident en l'an 800 ?",
+      "choices": ["Clovis", "Charles Martel", "Charlemagne", "Pépin le Bref"],
+      "correctAnswer": "Charlemagne",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Qui sont les serfs dans la société féodale ?",
+      "choices": [
+        "Des guerriers à cheval",
+        "Des paysans attachés à la terre du seigneur",
+        "Des marchands itinérants",
+        "Des moines copistes"
+      ],
+      "correctAnswer": "Des paysans attachés à la terre du seigneur",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Quel animal est le symbole de la royauté française au Moyen Âge ?",
+      "choices": ["L'aigle", "L'ours", "Le lys", "Le lion"],
+      "correctAnswer": "Le lys",
+      "imageUrl": null
+    }
+  ]
+}

@@ -8,127 +8,172 @@
     "questionCount": 20,
     "category": "CM2",
     "createdAt": "2026-03-22",
-    "tag": ["Mathématiques", "Calcul mental"]
+    "tag": [
+      "Mathématiques",
+      "Calcul mental"
+    ],
+    "level": "CM2",
+    "subject": "Mathématiques"
   },
   "questions": [
     {
       "id": 1,
       "question": "Combien font 7 × 8 ?",
-      "acceptedAnswers": ["56"],
+      "acceptedAnswers": [
+        "56"
+      ],
       "imageUrl": null
     },
     {
       "id": 2,
       "question": "Combien font 9 × 6 ?",
-      "acceptedAnswers": ["54"],
+      "acceptedAnswers": [
+        "54"
+      ],
       "imageUrl": null
     },
     {
       "id": 3,
       "question": "Combien font 8 × 8 ?",
-      "acceptedAnswers": ["64"],
+      "acceptedAnswers": [
+        "64"
+      ],
       "imageUrl": null
     },
     {
       "id": 4,
       "question": "Combien font 7 × 7 ?",
-      "acceptedAnswers": ["49"],
+      "acceptedAnswers": [
+        "49"
+      ],
       "imageUrl": null
     },
     {
       "id": 5,
       "question": "Combien font 6 × 9 ?",
-      "acceptedAnswers": ["54"],
+      "acceptedAnswers": [
+        "54"
+      ],
       "imageUrl": null
     },
     {
       "id": 6,
       "question": "Combien font 12 × 4 ?",
-      "acceptedAnswers": ["48"],
+      "acceptedAnswers": [
+        "48"
+      ],
       "imageUrl": null
     },
     {
       "id": 7,
       "question": "Combien font 11 × 7 ?",
-      "acceptedAnswers": ["77"],
+      "acceptedAnswers": [
+        "77"
+      ],
       "imageUrl": null
     },
     {
       "id": 8,
       "question": "Combien font 9 × 9 ?",
-      "acceptedAnswers": ["81"],
+      "acceptedAnswers": [
+        "81"
+      ],
       "imageUrl": null
     },
     {
       "id": 9,
       "question": "Combien font 8 × 6 ?",
-      "acceptedAnswers": ["48"],
+      "acceptedAnswers": [
+        "48"
+      ],
       "imageUrl": null
     },
     {
       "id": 10,
       "question": "Combien font 12 × 7 ?",
-      "acceptedAnswers": ["84"],
+      "acceptedAnswers": [
+        "84"
+      ],
       "imageUrl": null
     },
     {
       "id": 11,
       "question": "Combien font 6 × 7 ?",
-      "acceptedAnswers": ["42"],
+      "acceptedAnswers": [
+        "42"
+      ],
       "imageUrl": null
     },
     {
       "id": 12,
       "question": "Combien font 11 × 9 ?",
-      "acceptedAnswers": ["99"],
+      "acceptedAnswers": [
+        "99"
+      ],
       "imageUrl": null
     },
     {
       "id": 13,
       "question": "Combien font 8 × 7 ?",
-      "acceptedAnswers": ["56"],
+      "acceptedAnswers": [
+        "56"
+      ],
       "imageUrl": null
     },
     {
       "id": 14,
       "question": "Combien font 12 × 8 ?",
-      "acceptedAnswers": ["96"],
+      "acceptedAnswers": [
+        "96"
+      ],
       "imageUrl": null
     },
     {
       "id": 15,
       "question": "Combien font 9 × 7 ?",
-      "acceptedAnswers": ["63"],
+      "acceptedAnswers": [
+        "63"
+      ],
       "imageUrl": null
     },
     {
       "id": 16,
       "question": "Combien font 6 × 6 ?",
-      "acceptedAnswers": ["36"],
+      "acceptedAnswers": [
+        "36"
+      ],
       "imageUrl": null
     },
     {
       "id": 17,
       "question": "Combien font 11 × 6 ?",
-      "acceptedAnswers": ["66"],
+      "acceptedAnswers": [
+        "66"
+      ],
       "imageUrl": null
     },
     {
       "id": 18,
       "question": "Combien font 12 × 9 ?",
-      "acceptedAnswers": ["108"],
+      "acceptedAnswers": [
+        "108"
+      ],
       "imageUrl": null
     },
     {
       "id": 19,
       "question": "Combien font 8 × 9 ?",
-      "acceptedAnswers": ["72"],
+      "acceptedAnswers": [
+        "72"
+      ],
       "imageUrl": null
     },
     {
       "id": 20,
       "question": "Combien font 11 × 12 ?",
-      "acceptedAnswers": ["132"],
+      "acceptedAnswers": [
+        "132"
+      ],
       "imageUrl": null
     }
   ]

@@ -5,9 +5,9 @@
     "connecteurs-logiques",
     "diviser-par-2-par-4",
     "english-vocabulary-test",
-    "entretien-dev-web-1",
-    "entretien-dev-web-2",
-    "javascript",
+    "fractions-6eme",
+    "grammaire-6eme",
+    "histoire-moyen-age-5eme",
     "jules-ferry-ecole",
     "la-terre",
     "le-petit-nicolas-chapitre-15-je-suis-malade",
@@ -19,6 +19,7 @@
     "les-genres-litteraires",
     "multiples-3-et-9",
     "orthographe-erreurs-courantes",
+    "puissances-5eme",
     "school-life-english",
     "spongebob",
     "systeme-solaire",
@@ -29,11 +30,22 @@
   ],
   "categories": [
     "CM2",
-    "Coaching",
-    "Divertissement",
-    "Développement"
+    "Divertissement"
   ],
-  "count": 26,
-  "lastUpdated": "2026-03-22T15:25:39.728322",
+  "levels": [
+    "CM2",
+    "6eme",
+    "5eme"
+  ],
+  "subjects": [
+    "Anglais",
+    "Français",
+    "Géographie",
+    "Histoire",
+    "Mathématiques",
+    "Sciences"
+  ],
+  "count": 27,
+  "lastUpdated": "2026-04-04T09:49:22.792183",
   "generated_by": "api.py"
 }
