@@ -102,15 +102,14 @@ class QuizApp {
         this.setupGameOptions();
         this.initializeGameOptions();
 
-        // Charger la liste des quiz disponibles
-        const { loadAvailableQuizzes } = await import('./modules/core/utils.js');
-        this.availableQuizzes = await loadAvailableQuizzes();
+        // Afficher la sélection des quiz (charge les quiz en interne)
+        await this.quizSelector.show();
+
+        // Récupérer la liste chargée depuis le sélecteur (évite un double fetch)
+        this.availableQuizzes = this.quizSelector.allQuizzes || [];
 
         // Mettre à jour la carte Hero avec le dernier quiz
         this.updateHeroCard();
-
-        // Afficher la sélection des quiz
-        await this.quizSelector.show();
 
         // Ajouter les écouteurs pour l'historique et le changement de joueur
         this.setupHistoryButtons();

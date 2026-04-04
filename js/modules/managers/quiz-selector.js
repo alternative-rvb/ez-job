@@ -201,16 +201,17 @@ export class QuizSelector {
 
                         <p class="text-xs mb-2 line-clamp-2" style="color:#b46e28">${quiz.description}</p>
 
-                        <!-- Badge catégorie + niveau + matière -->
+                        <!-- Badge niveau + matière (ou catégorie si pas de niveau) -->
                         <div class="flex flex-wrap gap-1 mb-2">
-                            <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap" style="background:#e0f4f2;color:#489e96;border:1px solid #b0ddd9">
-                                ${quiz.category}
-                            </span>
                             ${quiz.level ? `
                             <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap" style="background:#fef3c7;color:#92400e;border:1px solid #fde68a">
                                 ${quiz.level}
                             </span>
-                            ` : ''}
+                            ` : `
+                            <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap" style="background:#e0f4f2;color:#489e96;border:1px solid #b0ddd9">
+                                ${quiz.category}
+                            </span>
+                            `}
                             ${quiz.subject && subjectStyle ? `
                             <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap flex items-center gap-0.5" style="background:${subjectStyle.bg};color:${subjectStyle.color};border:1px solid ${subjectStyle.border}">
                                 <span style="color:${subjectStyle.dot}" aria-hidden="true">&#11044;</span>${quiz.subject}
@@ -218,12 +219,15 @@ export class QuizSelector {
                             ` : ''}
                         </div>
 
-                        <!-- Tags (au maximum 1 affiché) -->
-                        ${quiz.tag && quiz.tag.length > 0 ? `
+                        <!-- Premier tag non redondant avec niveau/matière/catégorie -->
+                        ${(() => {
+                            const excluded = new Set([quiz.subject, quiz.level, quiz.category].filter(Boolean));
+                            const firstTag = quiz.tag && quiz.tag.find(t => !excluded.has(t));
+                            return firstTag ? `
                             <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap" style="background:#f4eadd;color:#b46e28;border:1px solid #e0d0bc">
-                                <i class="bi bi-tag mr-0.5"></i>${quiz.tag[0]}
-                            </span>
-                        ` : ''}
+                                <i class="bi bi-tag mr-0.5"></i>${firstTag}
+                            </span>` : '';
+                        })()}
 
                         <!-- Infos bas -->
                         <div class="flex items-center justify-between mt-2 pt-2" style="border-top:1px solid #e0d0bc">
