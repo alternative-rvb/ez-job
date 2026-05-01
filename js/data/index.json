@@ -1,37 +1,14 @@
 {
   "quizzes": [
-    "animaux",
-    "calcul-mental",
-    "connecteurs-logiques",
-    "diviser-par-2-par-4",
-    "english-vocabulary-test",
     "entretien-dev-web-1",
     "entretien-dev-web-2",
-    "javascript",
-    "jules-ferry-ecole",
-    "la-terre",
-    "le-petit-nicolas-chapitre-15-je-suis-malade",
-    "le-petit-nicolas-chapitre-16-on-a-bien-rigole",
-    "le-petit-nicolas-chapitre-17-je-frequente-agnan",
-    "le-petit-nicolas-chapitre-5-on-a-eu-l-inspecteur",
-    "le-petit-nicolas-chapitre-9-les-carnets",
-    "le-petrole-et-energie",
-    "les-genres-litteraires",
-    "multiples-3-et-9",
-    "orthographe-erreurs-courantes",
-    "school-life-english",
-    "spongebob",
-    "systeme-solaire",
-    "tigre-blanc",
-    "unites-mesure"
+    "javascript"
   ],
   "categories": [
-    "CM2",
     "Coaching",
-    "Divertissement",
     "Développement"
   ],
-  "count": 24,
-  "lastUpdated": "2026-03-06T13:00:57.406828",
+  "count": 3,
+  "lastUpdated": "2026-05-01T22:02:46.998581",
   "generated_by": "api.py"
 }

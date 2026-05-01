@@ -5,7 +5,7 @@
       "name": "Wendy",
       "series": "Les Sisters",
       "description": "La grande sœur rebelle et passionnée",
-      "image": "/images/trophies/characters/les-sisters/personnage-sisters-wendy.webp",
+      "image": "https://placehold.co/300x300/ffffff/b45309?text=Tu+es+au+sommet+%21&font=playfair-display",
       "rarity": "légendaire",
       "order": 1,
       "secretCode": "WENDY2025"
@@ -15,7 +15,7 @@
       "name": "Marine",
       "series": "Les Sisters",
       "description": "La petite sœur malicieuse et pleine d'énergie",
-      "image": "/images/trophies/characters/les-sisters/personnage-sisters-marine.webp",
+      "image": "https://placehold.co/300x300/ffffff/b45309?text=Rien+ne+t%27arrête+%21&font=playfair-display",
       "rarity": "légendaire",
       "order": 2,
       "secretCode": "MARINE2025"
@@ -25,7 +25,7 @@
       "name": "Loid Forger",
       "series": "Spy × Family",
       "description": "L'espion d'élite alias Twilight en mission secrète",
-      "image": "/images/trophies/characters/spy-x-family/Loid_Forger_Anime_3.webp",
+      "image": "https://placehold.co/300x300/ffffff/b45309?text=Le+savoir%2C+ta+force+%21&font=playfair-display",
       "rarity": "légendaire",
       "order": 7,
       "secretCode": "TWILIGHT25"
@@ -35,7 +35,7 @@
       "name": "Yor Forger",
       "series": "Spy × Family",
       "description": "L'assassin redoutable alias Thorn Princess",
-      "image": "/images/trophies/characters/spy-x-family/Yor_Forger_Anime_3.webp",
+      "image": "https://placehold.co/300x300/ffffff/b45309?text=Champion+absolu+%21&font=playfair-display",
       "rarity": "légendaire",
       "order": 8,
       "secretCode": "THORN2025"
@@ -45,7 +45,7 @@
       "name": "Anya Forger",
       "series": "Spy × Family",
       "description": "La télépathe adorable qui lit dans les pensées",
-      "image": "/images/trophies/characters/spy-x-family/Anya_Forger_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/b45309?text=Légende+vivante+%21&font=playfair-display",
       "rarity": "légendaire",
       "order": 9,
       "secretCode": "WAKU2025"
@@ -55,7 +55,7 @@
       "name": "Bond Forger",
       "series": "Spy × Family",
       "description": "Le chien précognition aux pouvoirs mystérieux",
-      "image": "/images/trophies/characters/spy-x-family/Bond_Forger_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/7c3aed?text=Continue+comme+ça+%21&font=playfair-display",
       "rarity": "épique",
       "order": 10,
       "secretCode": "BOND2025"
@@ -65,7 +65,7 @@
       "name": "Damian Desmond",
       "series": "Spy × Family",
       "description": "Le rival tsundere d'Anya à l'école Eden",
-      "image": "/images/trophies/characters/spy-x-family/Damian_Desmond_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/7c3aed?text=Tu+progresses+vite+%21&font=playfair-display",
       "rarity": "épique",
       "order": 11,
       "secretCode": "DAMIAN25"
@@ -75,7 +75,7 @@
       "name": "Becky Blackbell",
       "series": "Spy × Family",
       "description": "La meilleure amie riche et loyale d'Anya",
-      "image": "/images/trophies/characters/spy-x-family/Becky_Blackbell_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/7c3aed?text=Hors+du+commun+%21&font=playfair-display",
       "rarity": "épique",
       "order": 12,
       "secretCode": "BECKY2025"
@@ -85,7 +85,7 @@
       "name": "Franky Franklin",
       "series": "Spy × Family",
       "description": "L'informateur et ami fidèle de Loid",
-      "image": "/images/trophies/characters/spy-x-family/Franky_Franklin_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/1d4ed8?text=Beau+travail+%21&font=playfair-display",
       "rarity": "rare",
       "order": 13,
       "secretCode": "FRANKY25"
@@ -95,7 +95,7 @@
       "name": "Yuri Briar",
       "series": "Spy × Family",
       "description": "Le frère protecteur de Yor et membre de la police secrète",
-      "image": "/images/trophies/characters/spy-x-family/Yuri_Briar_Anime_2.webp",
+      "image": "https://placehold.co/300x300/ffffff/1d4ed8?text=Tu+t%27améliores+%21&font=playfair-display",
       "rarity": "rare",
       "order": 14,
       "secretCode": "YURI2025"
@@ -105,7 +105,7 @@
       "name": "Sylvia Sherwood",
       "series": "Spy × Family",
       "description": "La responsable de Loid alias Handler",
-      "image": "/images/trophies/characters/spy-x-family/Sylvia_Sherwood_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/1d4ed8?text=Bien+joué+%21&font=playfair-display",
       "rarity": "rare",
       "order": 15,
       "secretCode": "HANDLER25"
@@ -115,7 +115,7 @@
       "name": "Henry Henderson",
       "series": "Spy × Family",
       "description": "Le professeur élégant obsédé par l'élégance",
-      "image": "/images/trophies/characters/spy-x-family/Henry_Henderson_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/1d4ed8?text=Tu+es+sur+la+bonne+voie&font=playfair-display",
       "rarity": "rare",
       "order": 16,
       "secretCode": "ELEGANT25"
@@ -125,7 +125,7 @@
       "name": "Donovan Desmond",
       "series": "Spy × Family",
       "description": "Le père mystérieux de Damian et cible de la mission",
-      "image": "/images/trophies/characters/spy-x-family/Donovan_Desmond_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/7c3aed?text=Très+impressionnant+%21&font=playfair-display",
       "rarity": "épique",
       "order": 17,
       "secretCode": "DONOVAN25"
@@ -135,7 +135,7 @@
       "name": "Melinda Desmond",
       "series": "Spy × Family",
       "description": "La mère énigmatique de Damian",
-      "image": "/images/trophies/characters/spy-x-family/Melinda_Desmond_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/1d4ed8?text=Garde+ce+rythme+%21&font=playfair-display",
       "rarity": "rare",
       "order": 18,
       "secretCode": "MELINDA25"
@@ -145,7 +145,7 @@
       "name": "Emile Elman",
       "series": "Spy × Family",
       "description": "L'ami fidèle et admirateur de Damian",
-      "image": "/images/trophies/characters/spy-x-family/Emile_Elman_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/4b5563?text=C%27est+un+début+%21&font=playfair-display",
       "rarity": "commun",
       "order": 19,
       "secretCode": "EMILE2025"
@@ -155,7 +155,7 @@
       "name": "Ewen Egeburg",
       "series": "Spy × Family",
       "description": "L'autre ami loyal de Damian",
-      "image": "/images/trophies/characters/spy-x-family/Ewen_Egeburg_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/4b5563?text=Chaque+quiz+compte&font=playfair-display",
       "rarity": "commun",
       "order": 20,
       "secretCode": "EWEN2025"
@@ -165,7 +165,7 @@
       "name": "Camilla",
       "series": "Spy × Family",
       "description": "La collègue jalouse de Yor à l'hôtel de ville",
-      "image": "/images/trophies/characters/spy-x-family/Camilla_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/4b5563?text=Courage%2C+tu+avances+%21&font=playfair-display",
       "rarity": "commun",
       "order": 21,
       "secretCode": "CAMILLA25"
@@ -175,7 +175,7 @@
       "name": "Dominic",
       "series": "Spy × Family",
       "description": "Le collègue sympathique de Yor",
-      "image": "/images/trophies/characters/spy-x-family/Dominic_Anime.webp",
+      "image": "https://placehold.co/300x300/ffffff/4b5563?text=La+régularité+paie&font=playfair-display",
       "rarity": "commun",
       "order": 22,
       "secretCode": "DOMINIC25"
@@ -185,7 +185,7 @@
       "name": "Martha Marriott",
       "series": "Spy × Family",
       "description": "La matronne de l'école Eden",
-      "image": "/images/trophies/characters/spy-x-family/Martha_Marriott_Anime_Infobox.webp",
+      "image": "https://placehold.co/300x300/ffffff/4b5563?text=Pas+à+pas+vers+le+top&font=playfair-display",
       "rarity": "commun",
       "order": 23,
       "secretCode": "MARTHA25"
@@ -195,7 +195,7 @@
       "name": "Matthew McMahon",
       "series": "Spy × Family",
       "description": "Le directeur de l'école Eden",
-      "image": "/images/trophies/characters/spy-x-family/Matthew_McMahon_Anime_Infobox.webp",
+      "image": "https://placehold.co/300x300/ffffff/4b5563?text=C%27est+un+début+%21&font=playfair-display",
       "rarity": "commun",
       "order": 24,
       "secretCode": "MATTHEW25"
@@ -205,7 +205,7 @@
       "name": "Le Commerçant",
       "series": "Spy × Family",
       "description": "Le marchand mystérieux d'informations",
-      "image": "/images/trophies/characters/spy-x-family/Shopkeeper_Anime_Infobox.webp",
+      "image": "https://placehold.co/300x300/ffffff/4b5563?text=Chaque+quiz+compte&font=playfair-display",
       "rarity": "commun",
       "order": 25,
       "secretCode": "SHOP2025"
@@ -215,7 +215,7 @@
       "name": "Bob l'Éponge",
       "series": "Bob l'Éponge",
       "description": "L'éponge optimiste qui vit dans un ananas sous la mer",
-      "image": "/images/trophies/characters/spongebob/SpongeBob_stock_art.webp",
+      "image": "https://placehold.co/300x300/ffffff/b45309?text=L%27excellence+te+définit&font=playfair-display",
       "rarity": "légendaire",
       "order": 26,
       "secretCode": "SPONGEBOB25"
@@ -225,7 +225,7 @@
       "name": "Patrick Étoile",
       "series": "Bob l'Éponge",
       "description": "Le meilleur ami naïf et attachant de Bob",
-      "image": "/images/trophies/characters/spongebob/Patrick_stock_art.webp",
+      "image": "https://placehold.co/300x300/ffffff/b45309?text=Tu+es+au+sommet+%21&font=playfair-display",
       "rarity": "légendaire",
       "order": 27,
       "secretCode": "PATRICK25"
@@ -235,7 +235,7 @@
       "name": "Carlo Tentacule",
       "series": "Bob l'Éponge",
       "description": "Le voisin grincheux et artiste incompris",
-      "image": "/images/trophies/characters/spongebob/Squidward_stock_art.webp",
+      "image": "https://placehold.co/300x300/ffffff/7c3aed?text=Tu+maîtrises+le+sujet&font=playfair-display",
       "rarity": "épique",
       "order": 28,
       "secretCode": "SQUIDWARD25"
@@ -245,7 +245,7 @@
       "name": "Sandy Écureuil",
       "series": "Bob l'Éponge",
       "description": "L'écureuil scientifique du Texas pleine de ressources",
-      "image": "/images/trophies/characters/spongebob/Sandy_stock_art.webp",
+      "image": "https://placehold.co/300x300/ffffff/7c3aed?text=Continue+comme+ça+%21&font=playfair-display",
       "rarity": "épique",
       "order": 29,
       "secretCode": "SANDY2025"
@@ -255,7 +255,7 @@
       "name": "M. Krabs",
       "series": "Bob l'Éponge",
       "description": "Le patron avare du Crabe Croustillant",
-      "image": "/images/trophies/characters/spongebob/Krabs_artwork.webp",
+      "image": "https://placehold.co/300x300/ffffff/7c3aed?text=Tu+progresses+vite+%21&font=playfair-display",
       "rarity": "épique",
       "order": 30,
       "secretCode": "KRABS2025"
@@ -265,7 +265,7 @@
       "name": "Plankton",
       "series": "Bob l'Éponge",
       "description": "Le petit ennemi qui convoite la formule secrète",
-      "image": "/images/trophies/characters/spongebob/Plankton_stock_art.webp",
+      "image": "https://placehold.co/300x300/ffffff/1d4ed8?text=Beau+travail+%21&font=playfair-display",
       "rarity": "rare",
       "order": 31,
       "secretCode": "PLANKTON25"
@@ -275,7 +275,7 @@
       "name": "Gary",
       "series": "Bob l'Éponge",
       "description": "L'escargot de compagnie intelligent de Bob",
-      "image": "/images/trophies/characters/spongebob/Gary_looking_up_stock_art.webp",
+      "image": "https://placehold.co/300x300/ffffff/1d4ed8?text=Tu+t%27améliores+%21&font=playfair-display",
       "rarity": "rare",
       "order": 32,
       "secretCode": "GARY2025"
@@ -285,7 +285,7 @@
       "name": "Mme Puff",
       "series": "Bob l'Éponge",
       "description": "La professeure de conduite perpétuellement stressée",
-      "image": "/images/trophies/characters/spongebob/Mrs_Puff_stock_art.webp",
+      "image": "https://placehold.co/300x300/ffffff/1d4ed8?text=Bien+joué+%21&font=playfair-display",
       "rarity": "rare",
       "order": 33,
       "secretCode": "MRSPUFF25"
@@ -295,7 +295,7 @@
       "name": "Karen",
       "series": "Bob l'Éponge",
       "description": "L'ordinateur sarcastique et femme de Plankton",
-      "image": "/images/trophies/characters/spongebob/Karen-blue-form-stock-art.webp",
+      "image": "https://placehold.co/300x300/ffffff/1d4ed8?text=Tu+es+sur+la+bonne+voie&font=playfair-display",
       "rarity": "rare",
       "order": 34,
       "secretCode": "KAREN2025"
@@ -305,7 +305,7 @@
       "name": "Perle Krabs",
       "series": "Bob l'Éponge",
       "description": "La fille adolescente baleine de M. Krabs",
-      "image": "/images/trophies/characters/spongebob/SpongeBob_SquarePants_-_Pearl_Krabs_promo_art.webp",
+      "image": "https://placehold.co/300x300/ffffff/4b5563?text=Courage%2C+tu+avances+%21&font=playfair-display",
       "rarity": "commun",
       "order": 35,
       "secretCode": "PEARL2025"
