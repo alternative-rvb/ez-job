@@ -699,6 +699,22 @@ h1, h2, h3, .font-display {
   box-shadow: 0 4px 12px rgba(102, 188, 180, 0.4);
 }
 
+.subject-filter {
+  border-color: var(--subject-accent, rgb(102, 188, 180));
+  color: var(--subject-accent, rgb(72, 158, 150));
+}
+
+.subject-filter:hover {
+  background-color: var(--subject-accent, rgb(102, 188, 180));
+  color: white;
+}
+
+.subject-filter.selected {
+  background-color: var(--subject-accent, rgb(102, 188, 180));
+  border-color: var(--subject-accent, rgb(102, 188, 180));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--subject-accent, rgb(102, 188, 180)) 40%, transparent);
+}
+
 /* ===== Hero Section Styles ===== */
 
 #latest-quiz-hero-card {

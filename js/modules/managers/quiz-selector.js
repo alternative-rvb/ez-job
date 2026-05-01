@@ -8,6 +8,7 @@ import { domManager } from '../ui/dom.js';
 import { getCategoryColors, initializeCategoryColors } from '../core/category-colors.js';
 import { playerManager } from '../core/player.js';
 import { T } from '../core/theme.js';
+import { getSubjectIcon } from '../core/subject-icons.js';
 
 // Palette de couleurs par matière (point coloré + badge)
 const SUBJECT_STYLES = {
@@ -141,6 +142,7 @@ export class QuizSelector {
 
             // Couleur et icône de la matière
             const subjectStyle = quiz.subject ? getSubjectStyle(quiz.subject) : null;
+            const subjectIcon = quiz.subject ? getSubjectIcon(quiz.subject) : null;
 
             // Dégradé de la carte : basé sur l'index pour varier les couleurs dans une même catégorie
             const grad = CARD_GRADIENTS[idx % CARD_GRADIENTS.length];
@@ -213,8 +215,8 @@ export class QuizSelector {
                             </span>
                             `}
                             ${quiz.subject && subjectStyle ? `
-                            <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap flex items-center gap-0.5" style="background:${subjectStyle.bg};color:${subjectStyle.color};border:1px solid ${subjectStyle.border}">
-                                <span style="color:${subjectStyle.dot}" aria-hidden="true">&#11044;</span>${quiz.subject}
+                            <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap flex items-center gap-1" style="background:${subjectStyle.bg};color:${subjectStyle.color};border:1px solid ${subjectStyle.border}">
+                                ${subjectIcon ? `<span style="color:${subjectStyle.dot};display:inline-flex;width:12px;height:12px;flex-shrink:0" aria-hidden="true">${subjectIcon}</span>` : `<span style="color:${subjectStyle.dot};font-size:0.6rem" aria-hidden="true">&#11044;</span>`}${quiz.subject}
                             </span>
                             ` : ''}
                         </div>
@@ -479,10 +481,13 @@ export class QuizSelector {
 
         subjectsInLevel.forEach(subject => {
             const style = getSubjectStyle(subject);
+            const icon = getSubjectIcon(subject);
+            const iconHTML = icon
+                ? `<span style="display:inline-flex;width:14px;height:14px;flex-shrink:0" aria-hidden="true">${icon}</span>`
+                : `<span style="font-size:0.6rem" aria-hidden="true">&#11044;</span>`;
             subjectButtonsHTML += `
-                <button type="button" data-subject="${subject}" class="btn-base btn-category subject-filter"
-                        style="--subject-dot-color:${style.dot}">
-                    <span style="color:${style.dot};font-size:0.6rem;margin-right:3px" aria-hidden="true">&#11044;</span>${subject}
+                <button type="button" data-subject="${subject}" class="btn-base btn-category subject-filter flex items-center gap-1.5" style="--subject-accent:${style.dot}">
+                    ${iconHTML}${subject}
                 </button>
             `;
         });
