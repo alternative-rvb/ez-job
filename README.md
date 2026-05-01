@@ -339,6 +339,7 @@ Ce projet est sous licence ISC. Voir le fichier `LICENSE` pour plus de détails.
 ## Auteurs
 
 - **Alternative RVB** - Développement initial - [@alternative-rvb](https://github.com/alternative-rvb)
+- **Chloé Martin** - Design & identité visuelle
 
 ## Remerciements
 
