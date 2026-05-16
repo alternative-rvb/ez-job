@@ -1,0 +1,200 @@
+{
+  "config": {
+    "title": "Orthographe - Homophones grammaticaux",
+    "description": "Entraîne-toi à distinguer les homophones qui se prononcent pareil mais s'écrivent différemment",
+    "imageUrl": "",
+    "spoilerMode": true,
+    "difficulty": 3,
+    "questionCount": 15,
+    "category": "CM2",
+    "createdAt": "2026-05-16",
+    "tag": [
+      "Français",
+      "Orthographe"
+    ],
+    "level": "CM2",
+    "subject": "Français"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Choisir la bonne orthographe : \"Il ___ parti tôt ce matin.\"",
+      "choices": [
+        "est",
+        "et",
+        "ai",
+        "ait"
+      ],
+      "correctAnswer": "est",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Choisir la bonne orthographe : \"Elle a pris son manteau ___ ses gants.\"",
+      "choices": [
+        "et",
+        "est",
+        "ai",
+        "ait"
+      ],
+      "correctAnswer": "et",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Choisir la bonne orthographe : \"___ tu fini tes devoirs ?\"",
+      "choices": [
+        "As",
+        "A",
+        "À",
+        "Ha"
+      ],
+      "correctAnswer": "As",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Choisir la bonne orthographe : \"Il va ___ la piscine.\"",
+      "choices": [
+        "à",
+        "a",
+        "as",
+        "â"
+      ],
+      "correctAnswer": "à",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Choisir la bonne orthographe : \"___ livre est très intéressant.\"",
+      "choices": [
+        "Ce",
+        "Se",
+        "Cet",
+        "Ces"
+      ],
+      "correctAnswer": "Ce",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Choisir la bonne orthographe : \"Il ___ regarde dans le miroir chaque matin.\"",
+      "choices": [
+        "se",
+        "ce",
+        "cet",
+        "s'"
+      ],
+      "correctAnswer": "se",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Choisir la bonne orthographe : \"___ enfants jouent dans le jardin.\"",
+      "choices": [
+        "Ces",
+        "Ses",
+        "Ce",
+        "Se"
+      ],
+      "correctAnswer": "Ces",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Choisir la bonne orthographe : \"Elle a rangé ___ affaires dans le placard.\"",
+      "choices": [
+        "ses",
+        "ces",
+        "ce",
+        "se"
+      ],
+      "correctAnswer": "ses",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Choisir la bonne orthographe : \"Viens ___ moi, j'ai quelque chose à te montrer.\"",
+      "choices": [
+        "vers",
+        "verts",
+        "verre",
+        "ver"
+      ],
+      "correctAnswer": "vers",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Choisir la bonne orthographe : \"___ chaussures sont trop petites.\"",
+      "choices": [
+        "Mes",
+        "Mais",
+        "Met",
+        "Mets"
+      ],
+      "correctAnswer": "Mes",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Choisir la bonne orthographe : \"Il ___ son chapeau avant d'entrer.\"",
+      "choices": [
+        "met",
+        "mais",
+        "mes",
+        "mets"
+      ],
+      "correctAnswer": "met",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Choisir la bonne orthographe : \"J'aime le sport ___ pas la pluie.\"",
+      "choices": [
+        "mais",
+        "met",
+        "mes",
+        "mets"
+      ],
+      "correctAnswer": "mais",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Choisir la bonne orthographe : \"Ils ___ levés très tard aujourd'hui.\"",
+      "choices": [
+        "se sont",
+        "ce sont",
+        "ses sont",
+        "ces sont"
+      ],
+      "correctAnswer": "se sont",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Choisir la bonne orthographe : \"___ des champions qui ont gagné la coupe !\"",
+      "choices": [
+        "Ce sont",
+        "Se sont",
+        "Ces sont",
+        "Ses sont"
+      ],
+      "correctAnswer": "Ce sont",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Choisir la bonne orthographe : \"La maison ___ ma grand-mère est grande.\"",
+      "choices": [
+        "de",
+        "dès",
+        "des",
+        "dé"
+      ],
+      "correctAnswer": "de",
+      "imageUrl": null
+    }
+  ]
+}

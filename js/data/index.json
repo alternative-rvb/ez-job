@@ -18,7 +18,10 @@
     "le-petrole-et-energie",
     "les-genres-litteraires",
     "multiples-3-et-9",
+    "orthographe-accords",
+    "orthographe-doublement-consonnes",
     "orthographe-erreurs-courantes",
+    "orthographe-homophones",
     "school-life-english",
     "spongebob",
     "systeme-solaire",
@@ -42,7 +45,7 @@
     "Mathématiques",
     "Sciences"
   ],
-  "count": 26,
-  "lastUpdated": "2026-05-16T14:38:47.243023",
+  "count": 29,
+  "lastUpdated": "2026-05-16T18:45:31.027171",
   "generated_by": "api.py"
 }

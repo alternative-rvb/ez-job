@@ -1,0 +1,200 @@
+{
+  "config": {
+    "title": "Orthographe - Doublement des consonnes",
+    "description": "Apprends à écrire correctement les mots avec consonnes doublées ou simples",
+    "imageUrl": "",
+    "spoilerMode": true,
+    "difficulty": 3,
+    "questionCount": 15,
+    "category": "CM2",
+    "createdAt": "2026-05-16",
+    "tag": [
+      "Français",
+      "Orthographe"
+    ],
+    "level": "CM2",
+    "subject": "Français"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "une adresse",
+        "une adrese",
+        "une addresse",
+        "une addrese"
+      ],
+      "correctAnswer": "une adresse",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "une barrière",
+        "une barière",
+        "une barriere",
+        "une barièrre"
+      ],
+      "correctAnswer": "une barrière",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "une bouteille",
+        "une bouteile",
+        "une boutteille",
+        "une bouteïle"
+      ],
+      "correctAnswer": "une bouteille",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "un chariot",
+        "un charriot",
+        "un charriott",
+        "un chariott"
+      ],
+      "correctAnswer": "un chariot",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "la chaussure",
+        "la chaussurre",
+        "la chausure",
+        "la chausurre"
+      ],
+      "correctAnswer": "la chaussure",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "une colonne",
+        "une colone",
+        "une collonne",
+        "une collone"
+      ],
+      "correctAnswer": "une colonne",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "un couloir",
+        "un coulloir",
+        "un couloirr",
+        "un coulloire"
+      ],
+      "correctAnswer": "un couloir",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "une grammaire",
+        "une gramaire",
+        "une grammère",
+        "une gramère"
+      ],
+      "correctAnswer": "une grammaire",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "une noisette",
+        "une noiset",
+        "une noisete",
+        "une noissette"
+      ],
+      "correctAnswer": "une noisette",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "un oreiller",
+        "un oreiler",
+        "un oreilller",
+        "un oreillé"
+      ],
+      "correctAnswer": "un oreiller",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "une sonnerie",
+        "une sonerie",
+        "une sonnnerie",
+        "une sonnerrie"
+      ],
+      "correctAnswer": "une sonnerie",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "une terrasse",
+        "une terase",
+        "une terasse",
+        "une terrace"
+      ],
+      "correctAnswer": "une terrasse",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "attraper",
+        "atraper",
+        "attreper",
+        "attrapper"
+      ],
+      "correctAnswer": "attraper",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "permettre",
+        "permetere",
+        "permetre",
+        "permettttre"
+      ],
+      "correctAnswer": "permettre",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Quelle est la bonne orthographe ?",
+      "choices": [
+        "développer",
+        "developper",
+        "developpé",
+        "développper"
+      ],
+      "correctAnswer": "développer",
+      "imageUrl": null
+    }
+  ]
+}

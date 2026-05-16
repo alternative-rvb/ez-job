@@ -1,0 +1,201 @@
+{
+  "config": {
+    "title": "Orthographe - Accords en genre et nombre",
+    "description": "Entraîne-toi à accorder correctement les noms, adjectifs et participes passés",
+    "imageUrl": "",
+    "spoilerMode": true,
+    "difficulty": 3,
+    "questionCount": 15,
+    "category": "CM2",
+    "createdAt": "2026-05-16",
+    "tag": [
+      "Français",
+      "Orthographe",
+      "Grammaire"
+    ],
+    "level": "CM2",
+    "subject": "Français"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle phrase est correctement accordée ?",
+      "choices": [
+        "Les filles sont contentes.",
+        "Les filles sont content.",
+        "Les filles sont contenttes.",
+        "Les filles sont contentent."
+      ],
+      "correctAnswer": "Les filles sont contentes.",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Choisir la forme correcte : \"Les garçons ___ rentrés à la maison.\"",
+      "choices": [
+        "sont",
+        "est",
+        "as",
+        "a"
+      ],
+      "correctAnswer": "sont",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Quelle phrase est correctement accordée ?",
+      "choices": [
+        "Les chevaux blancs galopent dans le pré.",
+        "Les chevaux blanc galopent dans le pré.",
+        "Les cheval blancs galopent dans le pré.",
+        "Les chevaux blanches galopent dans le pré."
+      ],
+      "correctAnswer": "Les chevaux blancs galopent dans le pré.",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Choisir la forme correcte : \"Elle a ___ sa chambre.\"",
+      "choices": [
+        "rangé",
+        "rangée",
+        "rangés",
+        "rangées"
+      ],
+      "correctAnswer": "rangé",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Choisir la forme correcte : \"Les lettres ont été bien ___.\"",
+      "choices": [
+        "écrites",
+        "écrit",
+        "écrits",
+        "écrite"
+      ],
+      "correctAnswer": "écrites",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Quelle phrase est correctement accordée ?",
+      "choices": [
+        "Ces vieilles maisons sont belles.",
+        "Ces vieille maisons sont belles.",
+        "Ces vieilles maisons sont belle.",
+        "Ces vieilles maison sont belles."
+      ],
+      "correctAnswer": "Ces vieilles maisons sont belles.",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Choisir la forme correcte : \"Les enfants que j'ai ___ étaient fatigués.\"",
+      "choices": [
+        "vus",
+        "vu",
+        "vues",
+        "vue"
+      ],
+      "correctAnswer": "vus",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Quel est le pluriel correct de \"un bal\" ?",
+      "choices": [
+        "des bals",
+        "des baux",
+        "des balles",
+        "des bal"
+      ],
+      "correctAnswer": "des bals",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Quel est le pluriel correct de \"un œil\" ?",
+      "choices": [
+        "des yeux",
+        "des œils",
+        "des œufs",
+        "des œiles"
+      ],
+      "correctAnswer": "des yeux",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Choisir la forme correcte : \"La porte est ___.\"",
+      "choices": [
+        "ouverte",
+        "ouvert",
+        "ouverts",
+        "ouvertes"
+      ],
+      "correctAnswer": "ouverte",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Quelle phrase est correctement accordée ?",
+      "choices": [
+        "Les fleurs que j'ai cueillies sont magnifiques.",
+        "Les fleurs que j'ai cueillis sont magnifiques.",
+        "Les fleurs que j'ai cueillie sont magnifiques.",
+        "Les fleurs que j'ai cueilli sont magnifiques."
+      ],
+      "correctAnswer": "Les fleurs que j'ai cueillies sont magnifiques.",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Quel est le pluriel correct de \"un genou\" ?",
+      "choices": [
+        "des genoux",
+        "des genous",
+        "des genouxs",
+        "des genoues"
+      ],
+      "correctAnswer": "des genoux",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Choisir la forme correcte : \"Marie et Pierre sont ___.\"",
+      "choices": [
+        "fatigués",
+        "fatiguée",
+        "fatigué",
+        "fatiguées"
+      ],
+      "correctAnswer": "fatigués",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Quelle phrase est correctement accordée ?",
+      "choices": [
+        "Les nuages gris couvrent le ciel.",
+        "Les nuage gris couvrent le ciel.",
+        "Les nuages grises couvrent le ciel.",
+        "Les nuages gris couvre le ciel."
+      ],
+      "correctAnswer": "Les nuages gris couvrent le ciel.",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Choisir la forme correcte : \"Les feuilles ___ par le vent étaient sèches.\"",
+      "choices": [
+        "emportées",
+        "emporté",
+        "emportés",
+        "emportée"
+      ],
+      "correctAnswer": "emportées",
+      "imageUrl": null
+    }
+  ]
+}
