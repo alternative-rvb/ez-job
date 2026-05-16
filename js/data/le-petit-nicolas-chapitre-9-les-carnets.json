@@ -1,7 +1,7 @@
 {
   "config": {
-    "title": "Le petit Nicolas - Les carnets (Chapitre 9)",
-    "description": "Teste ta compréhension de cette histoire du Petit Nicolas",
+    "title": "Le Petit Nicolas - Ch. 9 : Les carnets",
+    "description": "Teste ta compréhension du chapitre où les carnets de notes arrivent et sèment la panique",
     "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp",
     "spoilerMode": false,
     "difficulty": 3,

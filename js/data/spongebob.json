@@ -1,7 +1,7 @@
 {
   "config": {
     "title": "Bob l'Éponge",
-    "description": "Tout sur votre éponge préférée de Bikini Bottom",
+    "description": "Tout sur ton éponge préférée de Bikini Bottom",
     "imageUrl": "/images/quiz/spongebob/spongebob.webp",
     "spoilerMode": true,
     "difficulty": 1,

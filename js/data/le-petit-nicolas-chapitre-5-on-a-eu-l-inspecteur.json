@@ -1,7 +1,7 @@
 {
   "config": {
-    "title": "Le petit Nicolas - On a eu l'inspecteur (Chapitre 5)",
-    "description": "Teste ta compréhension de cette histoire du Petit Nicolas",
+    "title": "Le Petit Nicolas - Ch. 5 : On a eu l'inspecteur",
+    "description": "Teste ta compréhension du chapitre où l'inspecteur débarque dans la classe de Nicolas",
     "imageUrl": "/images/quiz/le-petit-nicolas/le_petit_nicolas.webp",
     "spoilerMode": false,
     "difficulty": 3,

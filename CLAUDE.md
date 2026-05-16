@@ -303,7 +303,7 @@ Basées sur l'analyse de l'existant :
 {
   "config": {
     "title": "JavaScript Fondamentaux",
-    "description": "Testez vos connaissances de base en JavaScript",
+    "description": "Teste tes connaissances de base en JavaScript",
     "imageUrl": "",
     "spoilerMode": true,
     "difficulty": "Facile",
@@ -333,7 +333,7 @@ Basées sur l'analyse de l'existant :
 {
   "config": {
     "title": "Bob l'Éponge",
-    "description": "Tout sur votre éponge préférée de Bikini Bottom",
+    "description": "Tout sur ton éponge préférée de Bikini Bottom",
     "imageUrl": "",
     "spoilerMode": true,
     "difficulty": "Facile",
@@ -421,7 +421,7 @@ Basées sur l'analyse de l'existant :
 ```json
 {
   "config": {
-    "title": "Vocabulaire Anglais - Test Mixte",
+    "title": "Vocabulaire anglais - Test mixte",
     "description": "Quiz mêlant choix multiples et saisie de réponses",
     "imageUrl": "",
     "spoilerMode": false,
@@ -475,7 +475,9 @@ Basées sur l'analyse de l'existant :
 
 1. **Choisir le nom du fichier** : `[slug-kebab-case].json` dans `js/data/`
 2. **Définir la configuration** :
-   - Titre accrocheur et description engageante
+   - Titre : majuscule initiale uniquement (ex: `"Calcul mental 2"`, `"Les unités de mesure"`)
+   - Pour les séries (Le Petit Nicolas) : format `"Le Petit Nicolas - Ch. X : Titre du chapitre"`
+   - Description : tutoiement cohérent (`"Teste tes connaissances..."`, `"Entraîne-toi..."`, `"Découvre..."`)
    - Catégorie appropriée (Développement, CM2, Coaching, Divertissement)
    - Difficulté réaliste (Facile/Moyen/Difficile)
    - `spoilerMode: true` si les images révèlent les réponses
@@ -493,6 +495,8 @@ Basées sur l'analyse de l'existant :
 
 #### Règles importantes
 
+- **JAMAIS** de majuscule sur chaque mot du titre : `"Calcul mental"` et non `"Calcul Mental"`
+- **JAMAIS** tutoyer et vouvoyer dans le même fichier (la description utilise `tu`)
 - **JAMAIS** de faute de frappe entre `correctAnswer` et `choices` (sensible à la casse)
 - **JAMAIS** mélanger `choices`+`correctAnswer` avec `answer` dans la même question
 - Toujours mettre `questionCount` égal au nombre réel de questions
