@@ -1,0 +1,162 @@
+{
+  "config": {
+    "title": "Calcul Mental 2",
+    "description": "Entraîne-toi sur les multiplications et divisions des tables de 6 à 9",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 2,
+    "questionCount": 20,
+    "category": "CM2",
+    "createdAt": "2026-05-16",
+    "tag": [
+      "Mathématiques",
+      "Calcul",
+      "Multiplication",
+      "Division"
+    ],
+    "level": "CM2",
+    "subject": "Mathématiques"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien font 6 × 8 ?",
+      "choices": ["48", "42", "54", "46"],
+      "correctAnswer": "48",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Combien font 7 × 7 ?",
+      "choices": ["49", "42", "56", "47"],
+      "correctAnswer": "49",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Combien font 9 × 6 ?",
+      "choices": ["54", "48", "63", "52"],
+      "correctAnswer": "54",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Combien font 8 × 8 ?",
+      "choices": ["64", "56", "72", "62"],
+      "correctAnswer": "64",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Combien font 7 × 9 ?",
+      "choices": ["63", "54", "72", "61"],
+      "correctAnswer": "63",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Combien font 6 × 6 ?",
+      "choices": ["36", "30", "42", "34"],
+      "correctAnswer": "36",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Combien font 9 × 9 ?",
+      "choices": ["81", "72", "90", "79"],
+      "correctAnswer": "81",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Combien font 8 × 6 ?",
+      "choices": ["48", "42", "54", "46"],
+      "correctAnswer": "48",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Combien font 7 × 6 ?",
+      "choices": ["42", "36", "48", "40"],
+      "correctAnswer": "42",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Combien font 9 × 8 ?",
+      "choices": ["72", "64", "81", "70"],
+      "correctAnswer": "72",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Combien font 56 ÷ 7 ?",
+      "choices": ["8", "6", "9", "7"],
+      "correctAnswer": "8",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Combien font 63 ÷ 9 ?",
+      "choices": ["7", "6", "8", "9"],
+      "correctAnswer": "7",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Combien font 48 ÷ 6 ?",
+      "choices": ["8", "7", "9", "6"],
+      "correctAnswer": "8",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Combien font 72 ÷ 8 ?",
+      "choices": ["9", "8", "7", "6"],
+      "correctAnswer": "9",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Combien font 54 ÷ 6 ?",
+      "choices": ["9", "8", "7", "6"],
+      "correctAnswer": "9",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Combien font 81 ÷ 9 ?",
+      "choices": ["9", "8", "7", "6"],
+      "correctAnswer": "9",
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Combien font 42 ÷ 7 ?",
+      "choices": ["6", "5", "7", "8"],
+      "correctAnswer": "6",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Combien font 64 ÷ 8 ?",
+      "choices": ["8", "7", "9", "6"],
+      "correctAnswer": "8",
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Combien font 36 ÷ 6 ?",
+      "choices": ["6", "5", "7", "8"],
+      "correctAnswer": "6",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Combien font 49 ÷ 7 ?",
+      "choices": ["7", "6", "8", "9"],
+      "correctAnswer": "7",
+      "imageUrl": null
+    }
+  ]
+}

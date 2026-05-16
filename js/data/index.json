@@ -1,6 +1,9 @@
 {
   "quizzes": [
     "animaux",
+    "calcul-mental-2",
+    "calcul-mental-3",
+    "calcul-mental-4",
     "calcul-mental",
     "connecteurs-logiques",
     "diviser-par-2-par-4",
@@ -39,7 +42,7 @@
     "Mathématiques",
     "Sciences"
   ],
-  "count": 23,
-  "lastUpdated": "2026-05-01T22:14:08.135439",
+  "count": 26,
+  "lastUpdated": "2026-05-16T14:38:47.243023",
   "generated_by": "api.py"
 }

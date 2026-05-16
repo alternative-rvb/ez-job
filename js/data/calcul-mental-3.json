@@ -1,0 +1,161 @@
+{
+  "config": {
+    "title": "Calcul Mental 3",
+    "description": "Additions et soustractions avec des nombres à 3 chiffres et des centaines entières",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 2,
+    "questionCount": 20,
+    "category": "CM2",
+    "createdAt": "2026-05-16",
+    "tag": [
+      "Mathématiques",
+      "Calcul",
+      "Grands nombres"
+    ],
+    "level": "CM2",
+    "subject": "Mathématiques"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien font 200 + 300 ?",
+      "choices": ["500", "400", "600", "450"],
+      "correctAnswer": "500",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Combien font 700 - 400 ?",
+      "choices": ["300", "200", "400", "350"],
+      "correctAnswer": "300",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Combien font 450 + 250 ?",
+      "choices": ["700", "600", "800", "750"],
+      "correctAnswer": "700",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Combien font 830 - 120 ?",
+      "choices": ["710", "700", "720", "680"],
+      "correctAnswer": "710",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Combien font 365 + 135 ?",
+      "choices": ["500", "490", "510", "480"],
+      "correctAnswer": "500",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Combien font 600 - 150 ?",
+      "choices": ["450", "400", "500", "350"],
+      "correctAnswer": "450",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Combien font 125 + 375 ?",
+      "choices": ["500", "400", "600", "450"],
+      "correctAnswer": "500",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Combien font 920 - 370 ?",
+      "choices": ["550", "500", "600", "520"],
+      "correctAnswer": "550",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Combien font 480 + 160 ?",
+      "choices": ["640", "620", "660", "600"],
+      "correctAnswer": "640",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Combien font 750 - 280 ?",
+      "choices": ["470", "460", "480", "450"],
+      "correctAnswer": "470",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Combien font 300 × 2 ?",
+      "choices": ["600", "500", "700", "550"],
+      "correctAnswer": "600",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Combien font 400 × 3 ?",
+      "choices": ["1200", "1000", "1400", "1100"],
+      "correctAnswer": "1200",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Combien font 250 × 4 ?",
+      "choices": ["1000", "800", "1200", "900"],
+      "correctAnswer": "1000",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Combien font 600 ÷ 3 ?",
+      "choices": ["200", "150", "300", "180"],
+      "correctAnswer": "200",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Combien font 800 ÷ 4 ?",
+      "choices": ["200", "150", "250", "300"],
+      "correctAnswer": "200",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Combien font 345 + 255 ?",
+      "choices": ["600", "590", "610", "580"],
+      "correctAnswer": "600",
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Combien font 1 000 - 350 ?",
+      "choices": ["650", "600", "700", "750"],
+      "correctAnswer": "650",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Combien font 275 + 425 ?",
+      "choices": ["700", "650", "750", "680"],
+      "correctAnswer": "700",
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Combien font 900 - 450 ?",
+      "choices": ["450", "400", "500", "350"],
+      "correctAnswer": "450",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Combien font 500 × 5 ?",
+      "choices": ["2500", "2000", "3000", "2200"],
+      "correctAnswer": "2500",
+      "imageUrl": null
+    }
+  ]
+}
