@@ -20,8 +20,8 @@
       "choices": [
         "Un objet contenant uniquement de la logique métier",
         "Un objet simple pour transférer des données entre couches sans logique métier",
-        "Un objet pour gérer les connexions à la base de données",
-        "Un objet pour valider les formulaires"
+        "Une entité Doctrine mappée directement sur une table",
+        "Une classe abstraite servant de base à plusieurs entités"
       ],
       "correctAnswer": "Un objet simple pour transférer des données entre couches sans logique métier",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
@@ -224,8 +224,8 @@
       "choices": [
         "Un outil qui exécute le code pour trouver des erreurs",
         "Un outil analysant le code sans l'exécuter (PHPStan, Psalm) pour détecter erreurs et améliorations",
-        "Un compilateur",
-        "Un débogueur"
+        "Un outil qui formate automatiquement le code selon des règles de style",
+        "Un outil qui mesure la couverture de tests d'un projet"
       ],
       "correctAnswer": "Un outil analysant le code sans l'exécuter (PHPStan, Psalm) pour détecter erreurs et améliorations",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
@@ -448,15 +448,15 @@
     },
     {
       "id": 37,
-      "question": "Qu'est-ce que `git bisect` et dans quel contexte l'utiliser ?",
+      "question": "À quoi servent les migrations de base de données (Doctrine, Laravel...) ?",
       "choices": [
-        "Diviser un fichier en deux",
-        "Recherche dichotomique pour trouver le commit qui a introduit un bug",
-        "Fusionner deux branches",
-        "Créer deux branches parallèles"
+        "À sauvegarder les données avant une mise à jour",
+        "À versionner et appliquer de façon reproductible les changements de schéma de la base",
+        "À migrer d'un SGBD vers un autre automatiquement",
+        "À synchroniser les données entre environnements"
       ],
-      "correctAnswer": "Recherche dichotomique pour trouver le commit qui a introduit un bug",
-      "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+      "correctAnswer": "À versionner et appliquer de façon reproductible les changements de schéma de la base",
+      "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
     },
     {
       "id": 38,

@@ -18,10 +18,10 @@
       "id": 1,
       "question": "Quelle est votre principale motivation pour postuler à ce poste de développeur web ?",
       "choices": [
-        "Le salaire attractif",
+        "Les défis techniques et la réputation de l'entreprise",
         "L'opportunité d'apprendre de nouvelles technologies",
-        "La proximité géographique",
-        "Les horaires flexibles"
+        "Le télétravail proposé par l'offre",
+        "La stabilité du poste en CDI"
       ],
       "correctAnswer": "L'opportunité d'apprendre de nouvelles technologies",
       "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80"
@@ -31,9 +31,9 @@
       "question": "Comment restez-vous à jour avec les dernières technologies web ?",
       "choices": [
         "Je lis des blogs techniques et suis des formations",
-        "J'attends que mon entreprise me forme",
-        "Je ne m'en préoccupe pas vraiment",
-        "Je demande à mes collègues"
+        "Je me forme uniquement quand un projet l'exige",
+        "Je suis quelques newsletters sans pratique régulière",
+        "Je me fie à ce que mes collègues me montrent"
       ],
       "correctAnswer": "Je lis des blogs techniques et suis des formations",
       "imageUrl": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80"
@@ -42,10 +42,10 @@
       "id": 3,
       "question": "Décrivez votre approche pour déboguer un problème complexe dans votre code.",
       "choices": [
-        "Je demande immédiatement de l'aide à un collègue",
+        "Je relis le code plusieurs fois jusqu'à repérer l'erreur",
         "J'utilise des outils de debugging et j'analyse étape par étape",
-        "Je recommence le code depuis le début",
-        "J'espère que le problème se résoudra tout seul"
+        "J'ajoute des console.log un peu partout jusqu'à ce que ça marche",
+        "Je teste des corrections au hasard jusqu'à ce que ça fonctionne"
       ],
       "correctAnswer": "J'utilise des outils de debugging et j'analyse étape par étape",
       "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -54,10 +54,10 @@
       "id": 4,
       "question": "Comment gérez-vous les critiques constructives sur votre code lors des revues de code ?",
       "choices": [
-        "Je les prends personnellement et me défends",
+        "Je les applique directement sans en discuter",
         "Je les considère comme des opportunités d'amélioration",
-        "Je les ignore si je ne suis pas d'accord",
-        "Je change d'équipe"
+        "Je les accepte mais seulement si elles viennent d'un senior",
+        "J'explique mes choix et n'en tiens compte que si on insiste"
       ],
       "correctAnswer": "Je les considère comme des opportunités d'amélioration",
       "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
@@ -66,10 +66,10 @@
       "id": 5,
       "question": "Quelle est votre approche face à un délai serré sur un projet ?",
       "choices": [
-        "Je panique et travaille sans méthode",
+        "Je fais des heures supplémentaires pour tout tenir",
         "Je priorise les tâches et communique sur les risques",
-        "J'ignore le délai et continue à mon rythme",
-        "Je fais des heures supplémentaires sans limites"
+        "Je réduis la qualité du code pour aller plus vite",
+        "Je me concentre sur mes tâches sans remonter les risques"
       ],
       "correctAnswer": "Je priorise les tâches et communique sur les risques",
       "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80"
@@ -78,10 +78,10 @@
       "id": 6,
       "question": "Comment abordez-vous l'apprentissage d'un nouveau framework ou technologie ?",
       "choices": [
-        "J'attends qu'on me forme",
+        "Je regarde des tutoriels vidéo sans pratiquer en parallèle",
         "Je commence par la documentation officielle et des projets pratiques",
-        "Je copie du code trouvé sur internet",
-        "Je demande à quelqu'un de le faire à ma place"
+        "J'apprends uniquement sur le tas, projet en production",
+        "Je m'appuie sur ce que je connais déjà sans changer mes habitudes"
       ],
       "correctAnswer": "Je commence par la documentation officielle et des projets pratiques",
       "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -90,10 +90,10 @@
       "id": 7,
       "question": "Que faites-vous quand vous ne comprenez pas une exigence client ?",
       "choices": [
-        "Je fais au mieux avec ce que j'ai compris",
+        "Je développe une première version et j'ajuste selon les retours",
         "Je pose des questions pour clarifier avant de commencer",
-        "Je demande à un collègue de deviner",
-        "J'ignore cette partie du projet"
+        "Je me base sur des projets similaires déjà réalisés",
+        "Je choisis l'interprétation la plus simple à développer"
       ],
       "correctAnswer": "Je pose des questions pour clarifier avant de commencer",
       "imageUrl": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -102,10 +102,10 @@
       "id": 8,
       "question": "Comment organisez-vous votre journée de travail en tant que développeur ?",
       "choices": [
-        "Je travaille sans planification",
+        "Je traite les tâches dans l'ordre où elles arrivent",
         "Je planifie mes tâches et bloque du temps pour la concentration",
-        "Je réponds aux urgences au fur et à mesure",
-        "Je fais ce qui me plaît en premier"
+        "Je commence toujours par répondre aux emails et messages",
+        "Je m'adapte entièrement aux demandes de l'équipe au fil de l'eau"
       ],
       "correctAnswer": "Je planifie mes tâches et bloque du temps pour la concentration",
       "imageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
@@ -114,10 +114,10 @@
       "id": 9,
       "question": "Quelle est votre attitude face aux tests unitaires et à la qualité du code ?",
       "choices": [
-        "C'est une perte de temps",
+        "Utiles surtout sur les projets critiques ou très longs",
         "C'est essentiel pour maintenir un code fiable et évolutif",
-        "Je les fais seulement si on me le demande",
-        "Je préfère tester manuellement"
+        "Je les écris après coup si le temps le permet",
+        "Je préfère une revue de code approfondie aux tests automatisés"
       ],
       "correctAnswer": "C'est essentiel pour maintenir un code fiable et évolutif",
       "imageUrl": "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -126,10 +126,10 @@
       "id": 10,
       "question": "Comment gérez-vous le travail en équipe sur un projet de développement ?",
       "choices": [
-        "Je préfère travailler seul",
+        "Je me concentre sur mon périmètre et je fais un point en fin de sprint",
         "Je communique régulièrement et partage mes avancées",
-        "J'attends qu'on me dise quoi faire",
-        "Je fais ma partie sans me soucier des autres"
+        "Je préfère régler les points bloquants en message privé plutôt qu'en réunion",
+        "Je laisse le chef de projet coordonner les échanges entre développeurs"
       ],
       "correctAnswer": "Je communique régulièrement et partage mes avancées",
       "imageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -138,10 +138,10 @@
       "id": 11,
       "question": "Quelle est votre approche pour optimiser les performances d'une application web ?",
       "choices": [
-        "J'ajoute plus de serveurs",
+        "J'augmente les ressources serveur en priorité",
         "J'analyse les goulots d'étranglement et optimise le code",
-        "Je ne m'en préoccupe pas",
-        "Je change de technologie"
+        "Je mets en cache toutes les requêtes systématiquement",
+        "Je m'en occupe uniquement si un utilisateur se plaint"
       ],
       "correctAnswer": "J'analyse les goulots d'étranglement et optimise le code",
       "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -150,10 +150,10 @@
       "id": 12,
       "question": "Comment réagissez-vous face à un retour négatif sur votre travail ?",
       "choices": [
-        "Je me vexe et ne change rien",
+        "Je corrige immédiatement sans chercher à comprendre la cause",
         "J'écoute, j'analyse et j'améliore mon travail",
-        "Je blâme les autres",
-        "J'abandonne le projet"
+        "Je demande une seconde opinion pour confirmer avant d'agir",
+        "Je me justifie d'abord avant d'envisager de changer"
       ],
       "correctAnswer": "J'écoute, j'analyse et j'améliore mon travail",
       "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -162,10 +162,10 @@
       "id": 13,
       "question": "Que faites-vous quand vous êtes bloqué sur un problème technique depuis plusieurs heures ?",
       "choices": [
-        "Je continue à essayer la même approche",
+        "Je continue seul jusqu'à trouver la solution, quitte à y passer la nuit",
         "Je prends une pause et demande de l'aide ou cherche une approche différente",
-        "J'abandonne et passe à autre chose",
-        "Je stresse et panique"
+        "Je passe directement à une autre tâche en attendant l'inspiration",
+        "Je demande à quelqu'un de reprendre le problème à ma place"
       ],
       "correctAnswer": "Je prends une pause et demande de l'aide ou cherche une approche différente",
       "imageUrl": "https://images.unsplash.com/photo-1515378791036-0648a814c963?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -174,10 +174,10 @@
       "id": 14,
       "question": "Comment abordez-vous la sécurité dans vos développements web ?",
       "choices": [
-        "Ce n'est pas ma responsabilité",
+        "Je considère que c'est le rôle de l'équipe sécurité dédiée",
         "J'intègre les bonnes pratiques de sécurité dès le développement",
-        "Je m'en occupe à la fin du projet",
-        "Je fais confiance aux outils automatiques"
+        "Je m'appuie sur les audits de sécurité réalisés en fin de projet",
+        "Je me fie aux librairies utilisées pour gérer ces aspects"
       ],
       "correctAnswer": "J'intègre les bonnes pratiques de sécurité dès le développement",
       "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -186,10 +186,10 @@
       "id": 15,
       "question": "Quelle est votre attitude face aux changements fréquents de requirements ?",
       "choices": [
-        "Je refuse catégoriquement tout changement",
+        "J'applique les changements demandés sans évaluer leur impact",
         "Je m'adapte tout en communiquant l'impact sur les risques",
-        "Je fais tous les changements sans broncher",
-        "Je démissionne"
+        "Je limite les changements en cours de sprint autant que possible",
+        "Je laisse le chef de projet gérer seul l'impact des changements"
       ],
       "correctAnswer": "Je m'adapte tout en communiquant l'impact sur les risques",
       "imageUrl": "https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -198,10 +198,10 @@
       "id": 16,
       "question": "Comment documentez-vous votre code et vos projets ?",
       "choices": [
-        "Je ne documente jamais",
+        "Je privilégie un code lisible plutôt qu'une documentation séparée",
         "Je documente de manière claire et régulière",
-        "Je documente seulement à la fin",
-        "Je compte sur ma mémoire"
+        "Je documente seulement les parties les plus complexes",
+        "Je documente uniquement si le client le demande explicitement"
       ],
       "correctAnswer": "Je documente de manière claire et régulière",
       "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -210,10 +210,10 @@
       "id": 17,
       "question": "Quelle est votre approche pour estimer le temps nécessaire à une tâche de développement ?",
       "choices": [
-        "Je donne toujours le même délai",
+        "Je me base uniquement sur mon expérience de tâches similaires",
         "J'analyse la complexité et ajoute une marge pour les imprévus",
-        "Je sous-estime pour paraître efficace",
-        "Je sur-estime énormément par sécurité"
+        "J'estime au plus juste, sans marge, pour rester précis",
+        "Je laisse le chef de projet fixer les délais à ma place"
       ],
       "correctAnswer": "J'analyse la complexité et ajoute une marge pour les imprévus",
       "imageUrl": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2006&q=80"
@@ -222,10 +222,10 @@
       "id": 18,
       "question": "Comment gérez-vous la montée en version et le déploiement de vos applications ?",
       "choices": [
-        "Je déploie directement en production",
+        "Je teste en local puis je déploie directement en production",
         "J'utilise un processus de déploiement avec tests et environnements",
-        "Je laisse quelqu'un d'autre s'en occuper",
-        "Je déploie seulement le vendredi soir"
+        "Je m'appuie sur l'équipe DevOps sans suivre le processus",
+        "Je déploie dès que le développement est terminé, sans étape de staging"
       ],
       "correctAnswer": "J'utilise un processus de déploiement avec tests et environnements",
       "imageUrl": "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -234,10 +234,10 @@
       "id": 19,
       "question": "Que faites-vous pour améliorer l'expérience utilisateur de vos applications ?",
       "choices": [
-        "Je me concentre uniquement sur le code",
+        "Je me fie aux standards du design system de l'entreprise",
         "Je teste l'interface et recueille des retours utilisateurs",
-        "Je copie ce que font les autres",
-        "L'UX n'est pas mon problème"
+        "Je considère que c'est le rôle de l'équipe UX/UI",
+        "Je m'inspire des interfaces des concurrents"
       ],
       "correctAnswer": "Je teste l'interface et recueille des retours utilisateurs",
       "imageUrl": "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
@@ -246,10 +246,10 @@
       "id": 20,
       "question": "Où vous voyez-vous dans 5 ans en tant que développeur ?",
       "choices": [
-        "Exactement au même poste",
+        "Spécialisé sur une seule technologie que je maîtrise déjà",
         "Avoir évolué techniquement et peut-être managérialement",
-        "Dans une autre entreprise",
-        "Je ne me projette pas"
+        "Je préfère me concentrer sur le court terme",
+        "Cela dépendra uniquement des opportunités du marché"
       ],
       "correctAnswer": "Avoir évolué techniquement et peut-être managérialement",
       "imageUrl": "https://images.unsplash.com/photo-1549923746-c502d488b3ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
