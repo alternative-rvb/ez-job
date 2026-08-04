@@ -2,15 +2,26 @@
  * Module de gestion de l'affichage des trophées
  */
 
-import { rewardsManager } from './rewards-manager.js';
 import { domManager } from '../ui/dom.js';
 import { addCacheBuster } from '../core/version.js';
 import { T } from '../core/theme.js';
+import { playerManager } from '../core/player.js';
+import { getUnlockedTrophies, getNextTrophy } from './trophy-progress.js';
+
+const THEME_LABELS = {
+    'debut': 'Début',
+    'progression': 'Progression',
+    'resilience': 'Résilience',
+    'excellence': 'Excellence'
+};
+
+const THEME_ORDER = ['debut', 'progression', 'resilience', 'excellence'];
 
 export class TrophiesManager {
     constructor(onBack) {
         this.onBack = onBack;
         this.trophiesData = [];
+        this.successCount = 0;
     }
 
     async show() {
@@ -22,6 +33,8 @@ export class TrophiesManager {
             console.error('Erreur lors du chargement des trophées:', error);
             return;
         }
+
+        this.successCount = playerManager.getSuccessfulQuizCount();
 
         // Afficher l'écran des trophées
         domManager.showTrophies();
@@ -45,19 +58,24 @@ export class TrophiesManager {
     }
 
     updateStats() {
-        const rewards = rewardsManager.getRewards();
-        const totalPoints = rewards.totalPoints || 0;
-        const unlockedCount = rewards.unlockedTrophies.length;
+        const trophies = this.trophiesData.trophies;
+        const unlockedCount = getUnlockedTrophies(trophies, this.successCount).length;
+        const nextTrophy = getNextTrophy(trophies, this.successCount);
 
-        document.getElementById('total-points').textContent = totalPoints;
-        document.getElementById('unlocked-count').textContent = unlockedCount;
+        document.getElementById('unlocked-trophies-count').textContent = `${unlockedCount} / ${trophies.length}`;
+        document.getElementById('successful-quiz-count').textContent = this.successCount;
+
+        const nextTrophyEl = document.getElementById('next-trophy-progress');
+        if (nextTrophyEl) {
+            nextTrophyEl.textContent = nextTrophy
+                ? `${nextTrophy.unlockThreshold - this.successCount}`
+                : '🏆';
+        }
     }
 
     renderTrophies() {
         const container = document.getElementById('trophies-container');
-        const unlocked = rewardsManager.getUnlockedTrophies();
-        const rewards = rewardsManager.getRewards();
-        const canUnlock = rewards.totalPoints >= 5;
+        const unlockedIds = new Set(getUnlockedTrophies(this.trophiesData.trophies, this.successCount).map(t => t.id));
 
         // Mapping des rarités pour affichage
         const rarityLabels = {
@@ -67,69 +85,70 @@ export class TrophiesManager {
             'légendaire': 'Légendaire'
         };
 
-        container.innerHTML = this.trophiesData.trophies.map(trophy => {
-            const isUnlocked = unlocked.includes(trophy.id);
-            const rarityClass = `rarity-${trophy.rarity}`;
-            const badgeClass = `badge-${trophy.rarity}`;
-            const rarityLabel = rarityLabels[trophy.rarity] || trophy.rarity.toUpperCase();
-            
-            return `
-                <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative bg-gray-900" style="aspect-ratio: 9/16;">
-                    <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" />
-                    ${isUnlocked ? '' : `
-                        <!-- Overlay de verrouillage -->
-                        <div class="absolute inset-0 backdrop-blur-xl bg-black/60">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="text-center">
-                                    <i class="bi bi-lock-fill text-5xl opacity-60 mb-2"></i>
-                                    <p class="text-gray-300 text-sm font-semibold">À débloquer</p>
+        container.innerHTML = THEME_ORDER.map(theme => {
+            const themeTrophies = this.trophiesData.trophies
+                .filter(t => t.theme === theme)
+                .sort((a, b) => a.order - b.order);
+
+            if (themeTrophies.length === 0) return '';
+
+            const cardsHTML = themeTrophies.map(trophy => {
+                const isUnlocked = unlockedIds.has(trophy.id);
+                const rarityClass = `rarity-${trophy.rarity}`;
+                const badgeClass = `badge-${trophy.rarity}`;
+                const rarityLabel = rarityLabels[trophy.rarity] || trophy.rarity.toUpperCase();
+                const remaining = trophy.unlockThreshold - this.successCount;
+
+                return `
+                    <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative bg-gray-900 flex flex-col" style="aspect-ratio: 9/16;">
+                        <div class="absolute inset-0 flex items-center justify-center px-5 text-center">
+                            <p class="font-semibold leading-snug ${isUnlocked ? 'text-sm' : 'text-xs text-gray-500'}">${isUnlocked ? trophy.motivationUnlocked : trophy.motivationLocked}</p>
+                        </div>
+                        ${isUnlocked ? '' : `
+                            <!-- Overlay de verrouillage -->
+                            <div class="absolute inset-0 backdrop-blur-md bg-black/50">
+                                <div class="absolute top-4 inset-x-0 flex items-center justify-center">
+                                    <i class="bi bi-lock-fill text-3xl opacity-60"></i>
                                 </div>
                             </div>
-                        </div>
-                    `}
+                        `}
 
-                    <!-- Dégradé transparent vers noir en bas -->
-                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
-                        ${isUnlocked ? `
-                            <div class="space-y-1">
-                                ${trophy.series ? `<p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
-                                <h3 class="font-bold text-base leading-tight">${trophy.name}</h3>
-                                <p class="text-gray-300 text-xs line-clamp-2">${trophy.description}</p>
-                            </div>
+                        <!-- Dégradé transparent vers noir en bas -->
+                        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-10 pb-3 px-3 space-y-2">
+                            <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${THEME_LABELS[trophy.theme] || trophy.theme}</p>
                             <div class="flex items-center justify-between pt-2 border-t border-gray-700/50">
                                 <span class="inline-block px-2 py-1 ${badgeClass} rounded-md text-xs font-bold">
                                     <i class="bi bi-star-fill"></i>
                                     <span class="hidden sm:inline ml-1">${rarityLabel}</span>
                                 </span>
-                                <div class="flex items-center gap-2">
+                                ${isUnlocked ? `
                                     <button class="trophy-zoom-btn inline-flex items-center justify-center w-7 h-7 rounded-md bg-gray-600/30 hover:bg-gray-600/50 text-gray-300 hover:text-white transition transform hover:scale-110" title="Agrandir" data-trophy-id="${trophy.id}">
                                         <i class="bi bi-zoom-in text-sm"></i>
                                     </button>
-                                    <a href="${trophy.image}" download class="inline-flex items-center justify-center w-7 h-7 rounded-md bg-gray-600/30 hover:bg-gray-600/50 text-gray-300 hover:text-white transition transform hover:scale-110" title="Télécharger">
-                                        <i class="bi bi-download text-sm"></i>
-                                    </a>
-                                </div>
+                                ` : `
+                                    <span class="text-xs text-gray-400 font-semibold">${remaining > 0 ? `Encore ${remaining}` : 'Bientôt'}</span>
+                                `}
                             </div>
-                        ` : `
-                            <div class="space-y-2">
-                                <div class="text-center">
-                                    <h3 class="font-bold text-base leading-tight text-gray-500">Trophée Mystère</h3>
-                                    <p class="text-gray-500 text-xs mt-1">Débloquez pour découvrir</p>
-                                </div>
-                                <div class="bg-gray-700/70 backdrop-blur-sm rounded p-2 border border-yellow-500/40">
-                                    <p class="text-xs font-mono font-bold text-center tracking-wider" style="color:${T.hexTextPrimary}">${trophy.secretCode}</p>
-                                </div>
-                            </div>
-                        `}
+                        </div>
                     </div>
+                `;
+            }).join('');
+
+            return `
+                <div class="col-span-full mb-2 mt-6 first:mt-0">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="bi bi-signpost-2-fill" style="color:${T.hexPrimaryLight}"></i>
+                        ${THEME_LABELS[theme]}
+                    </h3>
                 </div>
+                ${cardsHTML}
             `;
         }).join('');
 
         // Ajouter l'effet 3D sur les cartes débloquées
         this.add3DEffect();
 
-        // Empêcher le clic long sur les images des trophées verrouillés
+        // Empêcher le clic long sur les cartes verrouillées
         this.preventLongPress();
     }
 
@@ -272,16 +291,6 @@ export class TrophiesManager {
     }
 
     setupEventListeners() {
-        // Utiliser un code secret
-        document.getElementById('use-code-btn').addEventListener('click', () => this.handleUseCode());
-
-        // Touche Entrée pour valider le code
-        document.getElementById('secret-code-input').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                this.handleUseCode();
-            }
-        });
-
         // Gestion des boutons de zoom (délégation d'événement)
         document.addEventListener('click', (e) => {
             if (e.target.closest('.trophy-zoom-btn')) {
@@ -317,24 +326,18 @@ export class TrophiesManager {
                     <i class="bi bi-x-lg text-xl"></i>
                 </button>
 
-                <!-- Image -->
-                <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" />
+                <div class="absolute inset-0 flex items-center justify-center px-8 text-center">
+                    <p class="font-semibold text-xl leading-snug">${trophy.motivationUnlocked}</p>
+                </div>
 
                 <!-- Dégradé transparent vers noir en bas -->
                 <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
-                    <div class="space-y-1">
-                        ${trophy.series ? `<p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
-                        <h3 class="font-bold text-lg leading-tight">${trophy.name}</h3>
-                        <p class="text-gray-300 text-sm">${trophy.description}</p>
-                    </div>
+                    <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${THEME_LABELS[trophy.theme] || trophy.theme}</p>
                     <div class="flex items-center justify-between pt-2 border-t border-gray-700/50">
                         <span class="inline-block px-2 py-1 ${badgeClass} rounded-full text-xs font-bold">
                             <i class="bi bi-star-fill"></i>
                             <span class="hidden sm:inline ml-1">${rarityLabel}</span>
                         </span>
-                        <a href="${trophy.image}" download class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-gray-600/30 hover:bg-gray-600/50 text-gray-300 hover:text-white transition transform hover:scale-110" title="Télécharger">
-                            <i class="bi bi-download text-sm"></i>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -488,35 +491,10 @@ export class TrophiesManager {
     }
 
     preventLongPress() {
-        // Sélectionner toutes les cartes de trophées (verrouillées et débloquées)
+        // Empêcher le menu contextuel / clic long sur toutes les cartes de trophées
         const allCards = document.querySelectorAll('.trophy-card-pokemon');
 
         allCards.forEach(card => {
-            const img = card.querySelector('img');
-            if (img) {
-                // Empêcher le menu contextuel (clic droit / clic long)
-                img.addEventListener('contextmenu', (e) => {
-                    e.preventDefault();
-                    return false;
-                });
-
-                // Empêcher la sélection de l'image
-                img.style.userSelect = 'none';
-                img.style.webkitUserSelect = 'none';
-                img.style.mozUserSelect = 'none';
-                img.style.msUserSelect = 'none';
-
-                // Empêcher le drag and drop de l'image
-                img.addEventListener('dragstart', (e) => {
-                    e.preventDefault();
-                    return false;
-                });
-
-                // Empêcher le touch callout sur iOS (menu qui apparaît au clic long)
-                img.style.webkitTouchCallout = 'none';
-            }
-
-            // Appliquer aussi sur toutes les cartes (verrouillées et débloquées)
             card.addEventListener('contextmenu', (e) => {
                 e.preventDefault();
                 return false;
@@ -526,85 +504,5 @@ export class TrophiesManager {
             card.style.webkitUserSelect = 'none';
             card.style.webkitTouchCallout = 'none';
         });
-    }
-
-    handleUseCode() {
-        const input = document.getElementById('secret-code-input');
-        const code = input.value.toUpperCase().trim();
-
-        if (!code) {
-            this.showMessage('Veuillez entrer un code', 'error');
-            return;
-        }
-
-        // Vérifier si c'est un code secret de trophée visible
-        let trophyMatch = null;
-        
-        if (this.trophiesData && this.trophiesData.trophies) {
-            for (const trophy of this.trophiesData.trophies) {
-                if (trophy.secretCode && trophy.secretCode.toUpperCase() === code) {
-                    trophyMatch = trophy;
-                    break;
-                }
-            }
-        }
-
-        if (trophyMatch) {
-            // C'est un code de trophée visible
-            const rewards = rewardsManager.getRewards();
-            
-            // Vérifier si le trophée est déjà débloqué
-            if (rewards.unlockedTrophies.includes(trophyMatch.id)) {
-                this.showMessage('<i class="bi bi-x-circle-fill text-red-400"></i> Ce trophée est déjà débloqué!', 'error');
-                return;
-            }
-
-            // Vérifier si l'utilisateur a assez de points
-            if (rewards.totalPoints < 5) {
-                this.showMessage(`<i class="bi bi-x-circle-fill text-red-400"></i> Vous n'avez pas assez de points! (Il vous en faut 5, vous en avez ${rewards.totalPoints})`, 'error');
-                return;
-            }
-
-            // Déduire 5 points et débloquer le trophée
-            rewards.totalPoints -= 5;
-            rewards.unlockedTrophies.push(trophyMatch.id);
-            rewardsManager.saveRewards(rewards);
-
-            this.showMessage(`<i class="bi bi-check-circle-fill text-green-400"></i> Trophée "${trophyMatch.name}" débloqué! (-5 points)`, 'success');
-            input.value = '';
-            setTimeout(() => {
-                this.renderTrophies();
-                this.updateStats();
-            }, 500);
-        } else {
-            // Sinon, vérifier les codes générés (système existant)
-            const result = rewardsManager.useSecretCode(code);
-
-            if (result) {
-                this.showMessage('<i class="bi bi-check-circle-fill text-green-400"></i> Trophée débloqué avec succès!', 'success');
-                input.value = '';
-                setTimeout(() => {
-                    this.renderTrophies();
-                    this.updateStats();
-                }, 500);
-            } else if (rewardsManager.getRewards().secretCodes[code]?.used) {
-                this.showMessage('<i class="bi bi-x-circle-fill text-red-400"></i> Ce code a déjà été utilisé', 'error');
-            } else {
-                this.showMessage('<i class="bi bi-x-circle-fill text-red-400"></i> Code invalide ou inexistant', 'error');
-            }
-        }
-    }
-
-    showMessage(text, type) {
-        const messageDiv = document.getElementById('code-message');
-        messageDiv.innerHTML = text;
-        messageDiv.className = type === 'success' ? 
-            'hidden mt-3 p-3 rounded-lg text-sm bg-green-900/50 text-green-300 border border-green-600' :
-            'hidden mt-3 p-3 rounded-lg text-sm bg-red-900/50 text-red-300 border border-red-600';
-        messageDiv.classList.remove('hidden');
-
-        setTimeout(() => {
-            messageDiv.classList.add('hidden');
-        }, 5000);
     }
 }

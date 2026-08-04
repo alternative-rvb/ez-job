@@ -105,6 +105,11 @@ class PlayerManager {
         };
     }
 
+    // Nombre de quiz réussis (score >= 80%)
+    getSuccessfulQuizCount() {
+        return this.results.filter(r => r.percentage >= 80).length;
+    }
+
     // Réinitialiser les données du joueur
     reset() {
         localStorage.removeItem('playerName');

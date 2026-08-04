@@ -5,7 +5,6 @@
 import { playerManager } from '../core/player.js';
 import { domManager } from '../ui/dom.js';
 import { getDifficultyIcons } from '../core/utils.js';
-import { T } from '../core/theme.js';
 
 export class HistoryManager {
     constructor(onBack) {
@@ -107,16 +106,6 @@ export class HistoryManager {
                         <div class="flex gap-4">
                             <span><i class="bi bi-calendar mr-1"></i>${date}</span>
                             <span><i class="bi bi-hourglass-split mr-1"></i>${Math.round(result.timeSpent)}s</span>
-                        </div>
-                        <div class="flex gap-3 items-center">
-                            ${result.pointsEarned !== undefined ? `
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" style="background:${T.primaryA(0.3)};color:${T.hexPrimaryLight}">
-                                    <i class="bi bi-star-fill mr-1"></i>+${result.pointsEarned} pt${result.pointsEarned > 1 ? 's' : ''}
-                                </span>
-                                <span class="px-3 py-1 bg-yellow-900/50 text-yellow-300 rounded-full text-xs font-semibold whitespace-nowrap">
-                                    <i class="bi bi-wallet2 mr-1"></i>Restants: ${result.totalPoints} pts
-                                </span>
-                            ` : ''}
                         </div>
                     </div>
                 </div>

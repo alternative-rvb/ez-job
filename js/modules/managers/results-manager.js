@@ -5,10 +5,17 @@
 import { quizState } from '../core/state.js';
 import { domManager } from '../ui/dom.js';
 import { launchConfetti } from '../core/utils.js';
-import { CONFIG } from '../core/config.js';
 import { playerManager } from '../core/player.js';
-import { rewardsManager } from './rewards-manager.js';
+import { getNewlyUnlocked, getNextTrophy } from './trophy-progress.js';
+import { addCacheBuster } from '../core/version.js';
 import { T } from '../core/theme.js';
+
+const THEME_LABELS = {
+    'debut': 'Début',
+    'progression': 'Progression',
+    'resilience': 'Résilience',
+    'excellence': 'Excellence'
+};
 
 export class ResultsManager {
     constructor(onRestart, onBackToHome, onShowTrophies) {
@@ -20,26 +27,25 @@ export class ResultsManager {
         this.onShowTrophies = onShowTrophies;
     }
 
-    show() {
+    async show() {
         console.log('🎯 ResultsManager.show() called');
         console.log('Quiz state:', quizState);
-        
+
         // Calculer le nombre de questions qui comptent pour le score
         // Inclut les QCM et les questions à saisie de texte
         const scorableQuestions = quizState.questions.filter(q =>
             (q.choices && q.choices.length > 0) || q.answer || q.acceptedAnswers
         );
         const totalScorable = scorableQuestions.length;
-        
+
         const score = quizState.score || 0;
         const percentage = totalScorable > 0 ? Math.round((score / totalScorable) * 100) : 0;
-        
+
         console.log(`📊 Score: ${score}/${totalScorable} = ${percentage}%`);
 
-        // Calculer et ajouter les points de récompense (en tenant compte du temps limite choisi)
-        const rewardsResult = rewardsManager.addPoints(percentage, quizState.currentQuiz?.title, quizState.currentTimeLimit);
+        // Progression trophées : nombre de quiz réussis avant/après ce résultat
+        const previousSuccessCount = playerManager.getSuccessfulQuizCount();
 
-        // Sauvegarder le résultat avec les points gagnés
         playerManager.saveResult({
             id: quizState.currentQuiz?.id,
             title: quizState.currentQuiz?.title,
@@ -48,10 +54,22 @@ export class ResultsManager {
             percentage: percentage,
             timeSpent: quizState.totalTime,
             difficulty: quizState.currentQuiz?.difficulty,
-            category: quizState.currentQuiz?.category,
-            pointsEarned: rewardsResult.pointsEarned,
-            totalPoints: rewardsResult.totalPoints
+            category: quizState.currentQuiz?.category
         });
+
+        const successCount = playerManager.getSuccessfulQuizCount();
+
+        let trophies = [];
+        try {
+            const response = await fetch(addCacheBuster('./js/data/trophies.json'));
+            const trophiesData = await response.json();
+            trophies = trophiesData.trophies;
+        } catch (error) {
+            console.error('Erreur lors du chargement des trophées:', error);
+        }
+
+        const newlyUnlocked = getNewlyUnlocked(trophies, previousSuccessCount, successCount);
+        const nextTrophy = getNextTrophy(trophies, successCount);
         
         // Déterminer le message basé sur le pourcentage
         let message = '';
@@ -107,37 +125,20 @@ export class ResultsManager {
                     </div>
                 </div>
 
-                <!-- Rewards Section -->
-                <div class="rounded-2xl p-6 mb-8 shadow-lg" style="background:linear-gradient(to right,${T.primaryA(0.5)},${T.secondaryA(0.3)});border:1px solid ${T.primaryA(0.5)}"
+                <!-- Trophy Progress Section -->
+                <div class="rounded-2xl p-6 mb-8 shadow-lg" style="background:linear-gradient(to right,${T.primaryA(0.5)},${T.secondaryA(0.3)});border:1px solid ${T.primaryA(0.5)}">
                     <div class="flex items-start gap-4">
-                        <i class="bi bi-star-fill text-4xl text-yellow-400 flex-shrink-0"></i>
+                        <i class="bi bi-trophy-fill text-4xl text-yellow-400 flex-shrink-0"></i>
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-white mb-2">Récompense Gagnée !</h3>
+                            <h3 class="text-xl font-bold text-white mb-2">${newlyUnlocked.length > 0 ? 'Nouveau trophée débloqué !' : 'Progression trophées'}</h3>
                             <p class="text-purple-200 mb-3">
-                                ${this.getRewardMessage(rewardsResult.pointsEarned, CONFIG.timeLimit)}
+                                ${this.getTrophyProgressMessage(newlyUnlocked, nextTrophy, successCount)}
                             </p>
-                            <div class="flex flex-wrap gap-4">
-                                <div class="text-center">
-                                    <p class="text-2xl font-bold text-yellow-400">${rewardsResult.totalPoints}</p>
-                                    <p class="text-sm text-gray-300">Points totaux</p>
-                                </div>
-                                ${rewardsResult.canBuySecretCode ? `
-                                    <div class="text-center">
-                                        <p class="text-2xl font-bold text-purple-400">🔓</p>
-                                        <p class="text-sm text-green-300 font-semibold">Code disponible !</p>
-                                    </div>
-                                ` : `
-                                    <div class="text-center">
-                                        <p class="text-2xl font-bold text-gray-400">${5 - rewardsResult.totalPoints}</p>
-                                        <p class="text-sm text-gray-400">Points restants</p>
-                                    </div>
-                                `}
-                            </div>
                         </div>
                     </div>
-                    ${rewardsResult.canBuySecretCode ? `
+                    ${newlyUnlocked.length > 0 ? `
                         <button id="btnShowTrophies" class="btn-base btn-primary">
-                            <i class="bi bi-key-fill"></i>Aller débloquer un trophée
+                            <i class="bi bi-trophy-fill"></i>Voir mes trophées
                         </button>
                     ` : ''}
                 </div>
@@ -238,27 +239,25 @@ export class ResultsManager {
     }
 
     /**
-     * Génère le message de récompense en fonction des points et du temps
-     * @param {number} points - Nombre de points gagnés
-     * @param {number} timeLimit - Temps limite utilisé
+     * Génère le message de progression trophées après un quiz
+     * @param {array} newlyUnlocked - Trophées venant d'être débloqués par ce quiz
+     * @param {object|null} nextTrophy - Prochain trophée à débloquer
+     * @param {number} successCount - Nombre total de quiz réussis
      * @returns {string} Message formaté
      */
-    getRewardMessage(points, timeLimit) {
-        if (points === 0) {
-            return `<i class="bi bi-journal-text" style="color:${T.hexPrimaryLight}"></i> Score enregistré`;
+    getTrophyProgressMessage(newlyUnlocked, nextTrophy, successCount) {
+        if (newlyUnlocked.length > 0) {
+            return newlyUnlocked
+                .map(t => `<i class="bi bi-star-fill" style="color:${T.hexSecondary}"></i> ${THEME_LABELS[t.theme] || t.theme} : « ${t.motivationUnlocked} »`)
+                .join('<br>');
         }
 
-        const difficultyLabel = {
-            5: 'Mode Expert (5s)',
-            10: 'Mode Difficile (10s)',
-            15: 'Mode Normal (15s)',
-            20: 'Mode Facile (20s)'
-        }[timeLimit] || 'Mode Normal';
+        if (!nextTrophy) {
+            return `<i class="bi bi-trophy-fill text-yellow-400"></i> Tous les trophées sont débloqués !`;
+        }
 
-        const emojis = ['<i class="bi bi-trophy-fill text-yellow-400"></i>', '<i class="bi bi-star-fill text-yellow-400"></i>', `<i class="bi bi-star-fill" style="color:${T.hexSecondary}"></i>`, `<i class="bi bi-star-fill" style="color:${T.hexPrimaryLight}"></i>`, '<i class="bi bi-trophy-fill text-green-400"></i>'];
-        const emoji = emojis[Math.min(points - 1, emojis.length - 1)] || '<i class="bi bi-star-fill text-yellow-400"></i>';
-
-        return `${emoji} ${difficultyLabel} : +${points} point${points > 1 ? 's' : ''} !`;
+        const remaining = nextTrophy.unlockThreshold - successCount;
+        return `<i class="bi bi-journal-text" style="color:${T.hexPrimaryLight}"></i> Encore ${remaining} quiz réussi${remaining > 1 ? 's' : ''} pour débloquer ton prochain trophée.`;
     }
 
     renderDetails(questions) {
