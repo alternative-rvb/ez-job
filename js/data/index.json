@@ -1,5 +1,6 @@
 {
   "quizzes": [
+    "anglais-symboles-monde-anglophone",
     "animaux",
     "calcul-mental-2",
     "calcul-mental-3",
@@ -35,7 +36,8 @@
     "Divertissement"
   ],
   "levels": [
-    "CM2"
+    "CM2",
+    "6eme"
   ],
   "subjects": [
     "Anglais",
@@ -45,7 +47,7 @@
     "Mathématiques",
     "Sciences"
   ],
-  "count": 29,
-  "lastUpdated": "2026-05-16T18:45:31.027171",
+  "count": 30,
+  "lastUpdated": "2026-09-05T20:25:10.983092",
   "generated_by": "api.py"
 }

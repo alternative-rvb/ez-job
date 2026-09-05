@@ -1,0 +1,247 @@
+{
+  "config": {
+    "title": "Anglais - Symboles du monde anglophone",
+    "description": "Traduis en anglais les mots et symboles emblématiques des pays anglophones",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 20,
+    "category": "CM2",
+    "createdAt": "2026-09-05",
+    "tag": [
+      "Anglais",
+      "Vocabulaire",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Anglais"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Comment dit-on « le drapeau américain » en anglais ?",
+      "choices": [
+        "The American flag",
+        "The America flag",
+        "The United flag",
+        "The USA banner"
+      ],
+      "correctAnswer": "The American flag",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Écris « le drapeau américain » en anglais.",
+      "acceptedAnswers": [
+        "The American flag",
+        "American flag"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Comment dit-on « le drapeau du Royaume-Uni » en anglais ?",
+      "choices": [
+        "The United Kingdom flag",
+        "The United States flag",
+        "The English kingdom flag",
+        "The United Country flag"
+      ],
+      "correctAnswer": "The United Kingdom flag",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Écris « le drapeau du Royaume-Uni » en anglais.",
+      "acceptedAnswers": [
+        "The United Kingdom flag",
+        "United Kingdom flag",
+        "The UK flag",
+        "UK flag",
+        "The Union Jack",
+        "Union Jack",
+        "the Union Flag",
+        "Union Flag"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Comment dit-on « le bus anglais à double étage » en anglais ?",
+      "choices": [
+        "The double-decker bus",
+        "The two-floor bus",
+        "The double-stairs bus",
+        "The high bus"
+      ],
+      "correctAnswer": "The double-decker bus",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Écris « le bus à impériale » (bus à double étage) en anglais.",
+      "acceptedAnswers": [
+        "The double-decker bus",
+        "double-decker bus",
+        "double decker bus",
+        "double-decker",
+        "double decker"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Comment dit-on « l'opéra » (le bâtiment) en anglais ?",
+      "choices": [
+        "The opera house",
+        "The opera building",
+        "The singing house",
+        "The music palace"
+      ],
+      "correctAnswer": "The opera house",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Écris « l'opéra » (le bâtiment) en anglais.",
+      "acceptedAnswers": [
+        "The opera house",
+        "opera house",
+        "an opera house",
+        "opera"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Comment dit-on « la vie » en anglais ?",
+      "choices": [
+        "Life",
+        "Live",
+        "Alive",
+        "Living"
+      ],
+      "correctAnswer": "Life",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Écris « la vie » en anglais.",
+      "acceptedAnswers": [
+        "Life"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Comment dit-on « le théâtre » en anglais ?",
+      "choices": [
+        "The theatre",
+        "The theater house",
+        "The cinema",
+        "The stage room"
+      ],
+      "correctAnswer": "The theatre",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Écris « le théâtre » en anglais (orthographe britannique ou américaine acceptée).",
+      "acceptedAnswers": [
+        "The theatre",
+        "theatre",
+        "The theater",
+        "theater"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Comment dit-on « un taxi jaune » (à New York) en anglais ?",
+      "choices": [
+        "A yellow taxi",
+        "A yellow car",
+        "A gold taxi",
+        "A yellow bus"
+      ],
+      "correctAnswer": "A yellow taxi",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Écris « un taxi jaune » en anglais.",
+      "acceptedAnswers": [
+        "A yellow taxi",
+        "yellow taxi",
+        "A yellow cab",
+        "yellow cab"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Comment dit-on « un taxi noir » (à Londres) en anglais ?",
+      "choices": [
+        "A black taxi",
+        "A dark taxi",
+        "A night taxi",
+        "A black bus"
+      ],
+      "correctAnswer": "A black taxi",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Écris « un taxi noir » (londonien) en anglais.",
+      "acceptedAnswers": [
+        "A black taxi",
+        "black taxi",
+        "A black cab",
+        "black cab"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Comment dit-on « la statue de la Liberté » en anglais ?",
+      "choices": [
+        "The Statue of Liberty",
+        "The Liberty Statue",
+        "The Freedom Statue",
+        "The Statue of Freedom"
+      ],
+      "correctAnswer": "The Statue of Liberty",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Écris « la statue de la Liberté » en anglais.",
+      "acceptedAnswers": [
+        "The Statue of Liberty",
+        "Statue of Liberty"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Comment appelle-t-on « la CN Tower » (la grande tour de Toronto) en anglais ?",
+      "choices": [
+        "The CN Tower",
+        "The Canada Needle",
+        "The Toronto Tower",
+        "The CN Building"
+      ],
+      "correctAnswer": "The CN Tower",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Écris le nom anglais de la grande tour de Toronto.",
+      "acceptedAnswers": [
+        "The CN Tower",
+        "CN Tower"
+      ],
+      "imageUrl": null
+    }
+  ]
+}
