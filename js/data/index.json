@@ -1,6 +1,7 @@
 {
   "quizzes": [
-    "anglais-symboles-monde-anglophone",
+    "anglais-symboles-monde-anglophone-1",
+    "anglais-symboles-monde-anglophone-2",
     "animaux",
     "calcul-mental-2",
     "calcul-mental-3",
@@ -47,7 +48,7 @@
     "Mathématiques",
     "Sciences"
   ],
-  "count": 30,
-  "lastUpdated": "2026-09-05T20:25:10.983092",
+  "count": 31,
+  "lastUpdated": "2026-09-06T11:46:15.576339",
   "generated_by": "api.py"
 }

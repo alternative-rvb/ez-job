@@ -1,0 +1,132 @@
+{
+  "config": {
+    "title": "Anglais - Symboles du monde anglophone (2)",
+    "description": "Traduis en anglais le théâtre, les taxis, la statue de la Liberté et la CN Tower",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 10,
+    "category": "CM2",
+    "createdAt": "2026-09-05",
+    "tag": [
+      "Anglais",
+      "Vocabulaire",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Anglais"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Comment dit-on « le théâtre » en anglais ?",
+      "choices": [
+        "The theatre",
+        "The theater house",
+        "The cinema",
+        "The stage room"
+      ],
+      "correctAnswer": "The theatre",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Écris « le théâtre » en anglais (orthographe britannique ou américaine acceptée).",
+      "acceptedAnswers": [
+        "The theatre",
+        "theatre",
+        "The theater",
+        "theater"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Comment dit-on « un taxi jaune » (à New York) en anglais ?",
+      "choices": [
+        "A yellow taxi",
+        "A yellow car",
+        "A gold taxi",
+        "A yellow bus"
+      ],
+      "correctAnswer": "A yellow taxi",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Écris « un taxi jaune » en anglais.",
+      "acceptedAnswers": [
+        "A yellow taxi",
+        "yellow taxi",
+        "A yellow cab",
+        "yellow cab"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Comment dit-on « un taxi noir » (à Londres) en anglais ?",
+      "choices": [
+        "A black taxi",
+        "A dark taxi",
+        "A night taxi",
+        "A black bus"
+      ],
+      "correctAnswer": "A black taxi",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Écris « un taxi noir » (londonien) en anglais.",
+      "acceptedAnswers": [
+        "A black taxi",
+        "black taxi",
+        "A black cab",
+        "black cab"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Comment dit-on « la statue de la Liberté » en anglais ?",
+      "choices": [
+        "The Statue of Liberty",
+        "The Liberty Statue",
+        "The Freedom Statue",
+        "The Statue of Freedom"
+      ],
+      "correctAnswer": "The Statue of Liberty",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Écris « la statue de la Liberté » en anglais.",
+      "acceptedAnswers": [
+        "The Statue of Liberty",
+        "Statue of Liberty"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Comment appelle-t-on « la CN Tower » (la grande tour de Toronto) en anglais ?",
+      "choices": [
+        "The CN Tower",
+        "The Canada Needle",
+        "The Toronto Tower",
+        "The CN Building"
+      ],
+      "correctAnswer": "The CN Tower",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Écris le nom anglais de la grande tour de Toronto.",
+      "acceptedAnswers": [
+        "The CN Tower",
+        "CN Tower"
+      ],
+      "imageUrl": null
+    }
+  ]
+}
