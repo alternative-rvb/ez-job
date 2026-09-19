@@ -10,6 +10,7 @@
     "connecteurs-logiques",
     "diviser-par-2-par-4",
     "english-vocabulary-test",
+    "francais-vocabulaire-6eme",
     "jules-ferry-ecole",
     "la-terre",
     "le-petit-nicolas-chapitre-15-je-suis-malade",
@@ -48,7 +49,7 @@
     "Mathématiques",
     "Sciences"
   ],
-  "count": 31,
-  "lastUpdated": "2026-09-06T11:46:15.576339",
+  "count": 32,
+  "lastUpdated": "2026-09-19T16:40:14.614345",
   "generated_by": "api.py"
 }

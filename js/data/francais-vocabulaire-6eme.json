@@ -1,0 +1,142 @@
+{
+  "config": {
+    "title": "Français 6e - Vocabulaire et notions littéraires",
+    "description": "Sens propre et figuré, préfixes, suffixes, synonymes, antonymes, protagoniste et antagoniste",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 10,
+    "category": "CM2",
+    "createdAt": "2026-09-19",
+    "tag": [
+      "Français",
+      "Vocabulaire",
+      "Littérature",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Français"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Dans quelle phrase le mot « cœur » est-il utilisé au sens figuré ?",
+      "choices": [
+        "Cet enfant a un cœur d'or.",
+        "Le chirurgien opère le cœur du patient.",
+        "Son cœur bat plus vite après la course.",
+        "Le cœur pompe le sang dans les artères."
+      ],
+      "correctAnswer": "Cet enfant a un cœur d'or.",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Dans quelle phrase le verbe « dévorer » est-il employé au sens propre ?",
+      "choices": [
+        "Le lion dévore sa proie dans la savane.",
+        "Elle dévore ce roman policier avec passion.",
+        "La jalousie le dévore depuis des semaines.",
+        "Il dévore des yeux ce gâteau appétissant."
+      ],
+      "correctAnswer": "Le lion dévore sa proie dans la savane.",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Que signifie l'expression au sens figuré « garder la tête froide » ?",
+      "choices": [
+        "Rester calme et lucide face à une situation difficile",
+        "Mettre un bonnet pour ne pas attraper froid",
+        "Avoir très froid pendant l'hiver",
+        "Refuser catégoriquement de réfléchir"
+      ],
+      "correctAnswer": "Rester calme et lucide face à une situation difficile",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Dans la phrase « La nuit est tombée sur le village », dans quel sens le mot « tombée » est-il employé ?",
+      "choices": [
+        "Au sens figuré",
+        "Au sens propre",
+        "Au sens contraire",
+        "Au sens technique"
+      ],
+      "correctAnswer": "Au sens figuré",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Dans le mot « impossible », quel élément est le préfixe ?",
+      "choices": [
+        "im-",
+        "-ible",
+        "poss-",
+        "possible"
+      ],
+      "correctAnswer": "im-",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Quel mot contient un suffixe qui sert à former un adverbe à partir d'un adjectif ?",
+      "choices": [
+        "Rapidement",
+        "Recommencer",
+        "Démonter",
+        "Extraordinaire"
+      ],
+      "correctAnswer": "Rapidement",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Quel mot est un synonyme de « courageux » ?",
+      "choices": [
+        "Brave",
+        "Peureux",
+        "Lâche",
+        "Prudent"
+      ],
+      "correctAnswer": "Brave",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Quel mot est l'antonyme (le contraire) de « éphémère » ?",
+      "choices": [
+        "Durable",
+        "Bref",
+        "Passager",
+        "Temporaire"
+      ],
+      "correctAnswer": "Durable",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Dans un récit, qui est le protagoniste ?",
+      "choices": [
+        "Le personnage principal autour duquel tourne l'histoire",
+        "Le personnage secondaire qui aide le héros",
+        "Le narrateur extérieur qui raconte les faits",
+        "L'ennemi juré qui combat le héros"
+      ],
+      "correctAnswer": "Le personnage principal autour duquel tourne l'histoire",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Dans une histoire, quel est le rôle d'un antagoniste ?",
+      "choices": [
+        "Il s'oppose au personnage principal et lui fait obstacle",
+        "Il aide le héros à accomplir sa quête avec succès",
+        "Il écrit et publie le roman ou la pièce de théâtre",
+        "Il observe les événements sans jamais intervenir"
+      ],
+      "correctAnswer": "Il s'oppose au personnage principal et lui fait obstacle",
+      "imageUrl": null
+    }
+  ]
+}
