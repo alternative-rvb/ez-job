@@ -25,6 +25,7 @@
     "orthographe-doublement-consonnes",
     "orthographe-erreurs-courantes",
     "orthographe-homophones",
+    "physique-chimie-materiaux-6eme",
     "school-life-english",
     "spongebob",
     "systeme-solaire",
@@ -47,9 +48,10 @@
     "Géographie",
     "Histoire",
     "Mathématiques",
+    "Physique",
     "Sciences"
   ],
-  "count": 32,
-  "lastUpdated": "2026-09-19T16:40:14.614345",
+  "count": 33,
+  "lastUpdated": "2026-09-19T17:06:03.535011",
   "generated_by": "api.py"
 }

@@ -1,0 +1,166 @@
+{
+  "config": {
+    "title": "Physique-Chimie 6e - Les matériaux (Organiques, Minéraux, Composites)",
+    "description": "Distingue les matières organiques, les matières minérales et les matériaux composites",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 12,
+    "category": "CM2",
+    "createdAt": "2026-09-19",
+    "tag": [
+      "Physique-Chimie",
+      "Sciences",
+      "Matériaux",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Physique"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "D'où provient principalement la matière organique naturelle ?",
+      "choices": [
+        "Des êtres vivants (animaux et végétaux)",
+        "Des roches volcaniques et du magma",
+        "De l'eau de mer et des sels minéraux",
+        "De l'air et de la poussière atmosphérique"
+      ],
+      "correctAnswer": "Des êtres vivants (animaux et végétaux)",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Lequel de ces matériaux est d'origine organique ?",
+      "choices": [
+        "Le bois",
+        "Le verre",
+        "Le granite",
+        "Le cuivre"
+      ],
+      "correctAnswer": "Le bois",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Quel matériau est une matière organique d'origine animale ?",
+      "choices": [
+        "La laine de mouton",
+        "Le coton",
+        "Le calcaire",
+        "L'aluminium"
+      ],
+      "correctAnswer": "La laine de mouton",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Que se passe-t-il généralement lorsqu'on brûle de la matière organique sous l'effet de la chaleur ?",
+      "choices": [
+        "Elle noircit et se consume en dégageant du carbone",
+        "Elle fond instantanément comme du métal",
+        "Elle ne brûle jamais sous l'effet de la chaleur",
+        "Elle se transforme directement en roche solide"
+      ],
+      "correctAnswer": "Elle noircit et se consume en dégageant du carbone",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Qu'est-ce qu'une matière minérale ?",
+      "choices": [
+        "Une matière non vivante provenant du sol et des roches",
+        "Une matière fabriquée uniquement par les plantes vertes",
+        "Une substance composée exclusivement de matière végétale",
+        "Un mélange de plastique et de résine synthétique"
+      ],
+      "correctAnswer": "Une matière non vivante provenant du sol et des roches",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Le verre est un matériau minéral obtenu principalement par fusion à partir de :",
+      "choices": [
+        "Sable (silice)",
+        "Bois d'arbre",
+        "Pétrole brut",
+        "Feuilles séchées"
+      ],
+      "correctAnswer": "Sable (silice)",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Lequel de ces matériaux appartient à la famille des matériaux minéraux (roches et céramiques) ?",
+      "choices": [
+        "L'argile et la terre cuite",
+        "Le cuir",
+        "Le caoutchouc naturel",
+        "Le carton"
+      ],
+      "correctAnswer": "L'argile et la terre cuite",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Pourquoi le granite et le marbre sont-ils classés parmi les matières minérales ?",
+      "choices": [
+        "Parce qu'ils proviennent de roches et ne sont pas issus d'êtres vivants",
+        "Parce qu'ils sont fabriqués à base de pétrole",
+        "Parce qu'ils poussent comme les végétaux",
+        "Parce qu'ils sont souples et élastiques"
+      ],
+      "correctAnswer": "Parce qu'ils proviennent de roches et ne sont pas issus d'êtres vivants",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Qu'est-ce qu'un matériau composite ?",
+      "choices": [
+        "L'assemblage d'au moins deux matériaux différents pour améliorer leurs propriétés",
+        "Une roche pure extraite directement d'une carrière",
+        "Un liquide homogène composé d'eau et de sucre",
+        "Une matière organique 100 % naturelle sans aucune transformation"
+      ],
+      "correctAnswer": "L'assemblage d'au moins deux matériaux différents pour améliorer leurs propriétés",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Le béton armé est un matériau composite constitué de :",
+      "choices": [
+        "Béton et barres d'acier",
+        "Bois et colle naturelle",
+        "Verre et sable fin",
+        "Plastique et papier journal"
+      ],
+      "correctAnswer": "Béton et barres d'acier",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "La fibre de verre imprégnée de résine, utilisée pour fabriquer des coques de bateaux, est :",
+      "choices": [
+        "Un matériau composite à la fois léger et très résistant",
+        "Un matériau minéral brut non transformé",
+        "Une matière organique pure issue des arbres",
+        "Un métal ferreux lourd et conducteur"
+      ],
+      "correctAnswer": "Un matériau composite à la fois léger et très résistant",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Dans un matériau composite, pourquoi associe-t-on deux matériaux différents ?",
+      "choices": [
+        "Pour combiner leurs qualités et obtenir un matériau plus performant",
+        "Pour rendre le matériau plus fragile et cassant",
+        "Pour réduire son prix sans modifier ses propriétés",
+        "Pour qu'il fonde à très basse température"
+      ],
+      "correctAnswer": "Pour combiner leurs qualités et obtenir un matériau plus performant",
+      "imageUrl": null
+    }
+  ]
+}
