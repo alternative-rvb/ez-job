@@ -309,6 +309,186 @@
       "rarity": "commun",
       "order": 35,
       "secretCode": "PEARL2025"
+    },
+    {
+      "id": "trophy_036",
+      "name": "Ranma Saotome (garçon)",
+      "series": "Ranma 1/2",
+      "description": "Le jeune maître des arts martiaux qui se transforme à l'eau froide",
+      "image": "/images/trophies/characters/ranma/Ranma_ranma-male_Anime_2024.webp",
+      "rarity": "légendaire",
+      "order": 36,
+      "secretCode": "RANMAHOMME25"
+    },
+    {
+      "id": "trophy_037",
+      "name": "Ranma Saotome (fille)",
+      "series": "Ranma 1/2",
+      "description": "La forme féminine de Ranma, déclenchée par l'eau froide",
+      "image": "/images/trophies/characters/ranma/Ranma_ranma-female_Anime_2024.webp",
+      "rarity": "légendaire",
+      "order": 37,
+      "secretCode": "RANMAFILLE25"
+    },
+    {
+      "id": "trophy_038",
+      "name": "Akane Tendo",
+      "series": "Ranma 1/2",
+      "description": "La fiancée au caractère explosif et à la masse redoutable",
+      "image": "/images/trophies/characters/ranma/Ranma_akane_Anime_2024.webp",
+      "rarity": "légendaire",
+      "order": 38,
+      "secretCode": "AKANE2025"
+    },
+    {
+      "id": "trophy_039",
+      "name": "Ryoga Hibiki",
+      "series": "Ranma 1/2",
+      "description": "Le rival éternellement perdu qui devient un petit cochon noir",
+      "image": "/images/trophies/characters/ranma/Ranma_ryoga_Anime_2024.webp",
+      "rarity": "épique",
+      "order": 39,
+      "secretCode": "RYOGA2025"
+    },
+    {
+      "id": "trophy_040",
+      "name": "Shampoo",
+      "series": "Ranma 1/2",
+      "description": "La guerrière amazone chinoise amoureuse de Ranma",
+      "image": "/images/trophies/characters/ranma/Ranma_shampoo_Anime_2024.webp",
+      "rarity": "épique",
+      "order": 40,
+      "secretCode": "SHAMPOO2025"
+    },
+    {
+      "id": "trophy_041",
+      "name": "Ukyo Kuonji",
+      "series": "Ranma 1/2",
+      "description": "La cuisinière d'okonomiyaki et amie d'enfance de Ranma",
+      "image": "/images/trophies/characters/ranma/Ranma_ukyo_Anime_2024.webp",
+      "rarity": "épique",
+      "order": 41,
+      "secretCode": "UKYO2025"
+    },
+    {
+      "id": "trophy_042",
+      "name": "Tatewaki Kuno",
+      "series": "Ranma 1/2",
+      "description": "Le kendoka prétentieux qui rime en toute occasion",
+      "image": "/images/trophies/characters/ranma/Ranma_tatewaki_Anime_2024.webp",
+      "rarity": "rare",
+      "order": 42,
+      "secretCode": "KUNO2025"
+    },
+    {
+      "id": "trophy_043",
+      "name": "Kodachi Kuno",
+      "series": "Ranma 1/2",
+      "description": "La gymnaste rythmique extravagante et rusée",
+      "image": "/images/trophies/characters/ranma/Ranma_kodachi_Anime_2024.webp",
+      "rarity": "rare",
+      "order": 43,
+      "secretCode": "KODACHI2025"
+    },
+    {
+      "id": "trophy_044",
+      "name": "Genma Saotome",
+      "series": "Ranma 1/2",
+      "description": "Le père de Ranma, qui devient panda sous l'eau froide",
+      "image": "/images/trophies/characters/ranma/Ranma_genma_Anime_2024.webp",
+      "rarity": "rare",
+      "order": 44,
+      "secretCode": "GENMA2025"
+    },
+    {
+      "id": "trophy_045",
+      "name": "Happosai",
+      "series": "Ranma 1/2",
+      "description": "Le vieux maître pervers de l'école d'arts martiaux libres",
+      "image": "/images/trophies/characters/ranma/Ranma_happosai_Anime_2024.webp",
+      "rarity": "rare",
+      "order": 45,
+      "secretCode": "HAPPOSAI25"
+    },
+    {
+      "id": "trophy_046",
+      "name": "Cologne",
+      "series": "Ranma 1/2",
+      "description": "L'ancienne du village des amazones et grand-mère de Shampoo",
+      "image": "/images/trophies/characters/ranma/Ranma_cologne_Anime_2024.webp",
+      "rarity": "rare",
+      "order": 46,
+      "secretCode": "COLOGNE2025"
+    },
+    {
+      "id": "trophy_047",
+      "name": "Mousse",
+      "series": "Ranma 1/2",
+      "description": "Le guerrier myope et canard à la moindre éclaboussure",
+      "image": "/images/trophies/characters/ranma/Ranma_mousse_Anime_2024.webp",
+      "rarity": "commun",
+      "order": 47,
+      "secretCode": "MOUSSE2025"
+    },
+    {
+      "id": "trophy_048",
+      "name": "Soun Tendo",
+      "series": "Ranma 1/2",
+      "description": "Le père de famille larmoyant et maître du dojo Tendo",
+      "image": "/images/trophies/characters/ranma/Ranma_soun_Anime_2024.webp",
+      "rarity": "commun",
+      "order": 48,
+      "secretCode": "SOUN2025"
+    },
+    {
+      "id": "trophy_049",
+      "name": "Kasumi Tendo",
+      "series": "Ranma 1/2",
+      "description": "L'aînée douce et attentionnée de la famille Tendo",
+      "image": "/images/trophies/characters/ranma/Ranma_kasumi_Anime_2024.webp",
+      "rarity": "commun",
+      "order": 49,
+      "secretCode": "KASUMI2025"
+    },
+    {
+      "id": "trophy_050",
+      "name": "Nabiki Tendo",
+      "series": "Ranma 1/2",
+      "description": "La cadette calculatrice qui fait de tout une affaire d'argent",
+      "image": "/images/trophies/characters/ranma/Ranma_nabiki_Anime_2024.webp",
+      "rarity": "commun",
+      "order": 50,
+      "secretCode": "NABIKI2025"
+    },
+    {
+      "id": "trophy_051",
+      "name": "Docteur Tofu",
+      "series": "Ranma 1/2",
+      "description": "Le médecin du quartier qui perd ses moyens devant Kasumi",
+      "image": "/images/trophies/characters/ranma/Ranma_tofu_Anime_2024.webp",
+      "rarity": "commun",
+      "order": 51,
+      "secretCode": "TOFU2025"
+    },
+    {
+      "id": "trophy_052",
+      "name": "Guide de Jusenkyo",
+      "series": "Ranma 1/2",
+      "description": "Le guide des sources maudites qui raconte chaque légende de noyade",
+      "image": "/images/trophies/characters/ranma/Ranma_jusenkyo-guide_Anime_2024.webp",
+      "rarity": "commun",
+      "order": 52,
+      "secretCode": "JUSENKYO2025"
+    },
+    {
+      "id": "trophy_053",
+      "name": "Hikaru Gosunkugi",
+      "series": "Ranma 1/2",
+      "description": "Le camarade de classe malchanceux et fan de rituels de malédiction",
+      "image": "/images/trophies/characters/ranma/Ranma_gosunkugi_Anime_2024.webp",
+      "rarity": "commun",
+      "order": 53,
+      "secretCode": "GOSUNKUGI25"
     }
   ]
 }
