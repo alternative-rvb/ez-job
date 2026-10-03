@@ -145,6 +145,16 @@ h1, h2, h3, .font-display {
   50% { box-shadow: 0 0 20px rgba(var(--color-primary), 0.8), 0 0 30px rgba(var(--color-primary), 0.4); }
 }
 
+/* ANCHOR Pulsation du badge "Nouveau" sur les cartes quiz, pour le rendre bien visible */
+@keyframes new-badge-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85), 0 2px 6px rgba(236, 72, 153, 0.5); }
+  50% { box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85), 0 2px 12px rgba(236, 72, 153, 0.85); }
+}
+
+.quiz-new-badge {
+  animation: new-badge-pulse 2s ease-in-out infinite;
+}
+
 @keyframes fadeInModal {
   to { opacity: 1; }
 }

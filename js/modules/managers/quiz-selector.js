@@ -94,9 +94,9 @@ export class QuizSelector {
     }
 
     renderQuizCards() {
-        // Remettre les classes originales de la grille - 4 colonnes responsive
+        // Remettre les classes originales de la grille - cartes horizontales (image portrait à gauche), 3-4 colonnes
         const quizListContainer = document.getElementById('quiz-list');
-        quizListContainer.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4';
+        quizListContainer.className = 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4';
 
         // Appliquer les filtres (niveau + matière + recherche)
         let filteredQuizzes = this.currentLevelFilter === 'all'
@@ -153,17 +153,17 @@ export class QuizSelector {
             // Vérifier si le quiz est nouveau
             const isNew = this.isNewQuiz(quiz.createdAt);
 
-            // Zone image : vraie image ou placeholder CSS selon disponibilité (ratio 16:9)
+            // Zone image : vraie image ou placeholder CSS, en vignette portrait compacte à gauche de la carte (type couverture de livre)
             const imageSectionHTML = quiz.imageUrl && quiz.imageUrl.trim() !== '' ? `
-                <div class="relative overflow-hidden" style="background-color:#eaddcc;padding-top:56.25%">
+                <div class="relative overflow-hidden flex-shrink-0 w-20 sm:w-24 rounded-lg" style="background-color:#eaddcc;aspect-ratio:2/3">
                     <img src="${quiz.imageUrl}" alt="${quiz.title}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300"></div>
                 </div>
             ` : `
-                <div class="relative overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,${grad[0]} 0%,${grad[1]} 100%);padding-top:56.25%">
+                <div class="relative overflow-hidden flex-shrink-0 w-20 sm:w-24 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,${grad[0]} 0%,${grad[1]} 100%);aspect-ratio:2/3">
                     <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="text-center px-3 py-2">
-                            <p class="font-bold leading-tight line-clamp-3 text-white drop-shadow" style="font-family:'Baloo 2',sans-serif;font-size:1rem">${quiz.title}</p>
+                        <div class="text-center px-1.5 py-2">
+                            <p class="font-bold leading-tight line-clamp-4 text-white drop-shadow" style="font-family:'Baloo 2',sans-serif;font-size:0.75rem">${quiz.title}</p>
                         </div>
                         <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 80% 20%, white 0%, transparent 60%)"></div>
                     </div>
@@ -171,31 +171,32 @@ export class QuizSelector {
             `;
 
             return `
-                <div class="group cursor-pointer quiz-card overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all duration-300" style="background:#f4eadd"
+                <div class="group cursor-pointer quiz-card overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex gap-3 p-3" style="background:#f4eadd"
                      data-quiz-id="${quiz.id}">
-                    <!-- Image ou placeholder -->
-                    <div class="relative">
+                    <!-- Image ou placeholder (vignette à gauche) -->
+                    <div class="relative flex-shrink-0">
                         ${imageSectionHTML}
                         ${isNew ? `
-                            <div class="absolute top-2 left-2 px-2 py-0.5 rounded-full shadow-sm" style="background:#ff9d00">
-                                <span class="text-white font-bold text-xs tracking-wide">Nouveau</span>
+                            <div class="quiz-new-badge absolute top-1 left-1 flex items-center gap-0.5 px-1.5 py-0.5 rounded-full shadow-md" style="background:linear-gradient(135deg,#ef4444,#ec4899);box-shadow:0 0 0 2px rgba(255,255,255,0.85),0 2px 6px rgba(236,72,153,0.5)">
+                                <i class="bi bi-stars text-white text-[0.6rem]"></i>
+                                <span class="text-white font-bold text-[0.65rem] tracking-wide">Nouveau</span>
                             </div>
                         ` : ''}
                         ${bestResult ? `
-                            <div class="absolute top-2 right-2 px-2 py-0.5 rounded-full shadow-sm" style="background:rgba(255,255,255,0.95)">
-                                <div class="flex items-center gap-1">
-                                    <i class="bi bi-star-fill text-xs" style="color:#ff9d00"></i>
-                                    <span class="font-bold text-xs" style="color:#489e96">${bestResult.percentage}%</span>
+                            <div class="absolute top-1 right-1 px-1.5 py-0.5 rounded-full shadow-sm" style="background:rgba(255,255,255,0.95)">
+                                <div class="flex items-center gap-0.5">
+                                    <i class="bi bi-star-fill text-[0.6rem]" style="color:#ff9d00"></i>
+                                    <span class="font-bold text-[0.65rem]" style="color:#489e96">${bestResult.percentage}%</span>
                                 </div>
                             </div>
                         ` : ''}
                     </div>
 
                     <!-- Contenu -->
-                    <div class="p-3">
-                        <div class="flex items-start justify-between mb-1">
+                    <div class="flex-1 min-w-0 flex flex-col">
+                        <div class="flex items-start justify-between mb-1 gap-1">
                             <h3 class="text-sm font-bold flex-1" style="color:#7c4004">${quiz.title}</h3>
-                            <div class="text-right ml-1">
+                            <div class="text-right flex-shrink-0">
                                 <div class="text-xs font-bold" style="color:#489e96">${quiz.questionCount}</div>
                                 <div class="text-xs" style="color:#b46e28">Q.</div>
                             </div>
@@ -226,13 +227,13 @@ export class QuizSelector {
                             const excluded = new Set([quiz.subject, quiz.level, quiz.category].filter(Boolean));
                             const firstTag = quiz.tag && quiz.tag.find(t => !excluded.has(t));
                             return firstTag ? `
-                            <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap" style="background:#f4eadd;color:#b46e28;border:1px solid #e0d0bc">
+                            <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap self-start" style="background:#f4eadd;color:#b46e28;border:1px solid #e0d0bc">
                                 <i class="bi bi-tag mr-0.5"></i>${firstTag}
                             </span>` : '';
                         })()}
 
                         <!-- Infos bas -->
-                        <div class="flex items-center justify-between mt-2 pt-2" style="border-top:1px solid #e0d0bc">
+                        <div class="flex items-center justify-between mt-auto pt-2" style="border-top:1px solid #e0d0bc">
                             <div class="flex items-center gap-2 text-xs" style="color:#b46e28">
                                 <span><i class="bi bi-clock mr-0.5"></i>~${Math.ceil(quiz.questionCount * CONFIG.timeLimit / 60)}m</span>
                                 <span style="color:#c8a882;letter-spacing:-1px">${getDifficultyIcons(quiz.difficulty)}</span>
