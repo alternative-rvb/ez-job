@@ -75,10 +75,10 @@ export class TrophiesManager {
             
             return `
                 <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative" style="aspect-ratio: 9/16; background-color:#eaddcc">
-                    <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" />
+                    <img src="${trophy.image}" alt="${isUnlocked ? trophy.name : 'Trophée verrouillé'}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" style="${isUnlocked ? '' : 'filter:blur(18px) saturate(0.7);transform:scale(1.15)'}" />
                     ${isUnlocked ? '' : `
                         <!-- Overlay de verrouillage -->
-                        <div class="absolute inset-0 backdrop-blur-md" style="background:rgba(0,0,0,0.35)">
+                        <div class="absolute inset-0" style="background:rgba(0,0,0,0.45)">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="text-center">
                                     <div class="rounded-full flex items-center justify-center mx-auto mb-2" style="width:52px;height:52px;background:rgba(255,157,0,0.9);box-shadow:0 0 0 4px rgba(255,157,0,0.3)">
@@ -117,9 +117,10 @@ export class TrophiesManager {
                                     <h3 class="font-bold text-base leading-tight text-white/50">Trophée Mystère</h3>
                                     <p class="text-white/50 text-xs mt-1">Débloquez pour découvrir</p>
                                 </div>
-                                <div class="backdrop-blur-sm rounded p-2" style="background:rgba(234,221,204,0.85);border:1px solid rgba(200,168,130,0.5)">
-                                    <p class="text-xs font-mono font-bold text-center tracking-wider" style="color:#7c4004">${trophy.secretCode}</p>
-                                </div>
+                                <button class="trophy-copy-code-btn w-full flex items-center justify-center gap-1.5 backdrop-blur-sm rounded p-2 transition-colors hover:brightness-95" style="background:rgba(234,221,204,0.85);border:1px solid rgba(200,168,130,0.5)" data-code="${trophy.secretCode}" title="Copier le code">
+                                    <i class="bi bi-clipboard text-xs" style="color:#7c4004"></i>
+                                    <span class="copy-code-text text-xs font-mono font-bold text-center tracking-wider" style="color:#7c4004">${trophy.secretCode}</span>
+                                </button>
                             </div>
                         `}
                     </div>
@@ -291,6 +292,61 @@ export class TrophiesManager {
                 this.showTrophyModal(trophyId);
             }
         });
+
+        // Copier le code secret au clic/tap (délégation d'événement)
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.trophy-copy-code-btn');
+            if (btn) {
+                this.copyCodeToClipboard(btn);
+            }
+        });
+    }
+
+    /**
+     * Copie le code secret dans le presse-papier et affiche une confirmation visuelle temporaire
+     * @param {HTMLElement} btn - Le bouton cliqué, portant le code dans data-code
+     */
+    async copyCodeToClipboard(btn) {
+        const code = btn.dataset.code;
+        if (!code) return;
+
+        try {
+            await navigator.clipboard.writeText(code);
+        } catch (error) {
+            // Fallback si l'API Clipboard est indisponible (contexte non sécurisé, permission refusée...)
+            const textarea = document.createElement('textarea');
+            textarea.value = code;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+            } catch (fallbackError) {
+                console.error('Impossible de copier le code:', fallbackError);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Retour visuel temporaire
+        const icon = btn.querySelector('i');
+        const textEl = btn.querySelector('.copy-code-text');
+        if (icon && textEl) {
+            const originalIconClass = icon.className;
+            const originalText = textEl.textContent;
+
+            icon.className = 'bi bi-check2 text-xs';
+            icon.style.color = '#489e96';
+            textEl.textContent = 'Copié !';
+            textEl.style.color = '#489e96';
+
+            setTimeout(() => {
+                icon.className = originalIconClass;
+                icon.style.color = '';
+                textEl.textContent = originalText;
+                textEl.style.color = '';
+            }, 1500);
+        }
     }
 
     showTrophyModal(trophyId) {
