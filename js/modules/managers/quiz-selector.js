@@ -241,6 +241,13 @@ export class QuizSelector {
                                 <i class="bi bi-play-circle-fill text-base"></i>
                             </span>
                         </div>
+
+                        <!-- Lien vers le résumé optimisé pour la lecture -->
+                        ${quiz.summaryUrl ? `
+                        <a href="${quiz.summaryUrl}" target="_blank" rel="noopener" class="quiz-summary-link mt-2 flex items-center justify-center gap-1.5 text-xs font-semibold rounded-lg py-1.5 transition-colors" style="background:#fef3e2;color:#b46e28;border:1px solid #e0d0bc">
+                            <i class="bi bi-book-half"></i> Lire le résumé
+                        </a>
+                        ` : ''}
                     </div>
                 </div>
             `;
@@ -269,6 +276,13 @@ export class QuizSelector {
                 if (selectedQuiz) {
                     this.showTimeSelector(selectedQuiz);
                 }
+            });
+        });
+
+        // Empêcher le clic sur le lien résumé de déclencher l'ouverture du quiz
+        document.querySelectorAll('.quiz-summary-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.stopPropagation();
             });
         });
     }

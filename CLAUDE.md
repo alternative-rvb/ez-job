@@ -224,6 +224,14 @@ Chaque quiz est un fichier JSON avec deux sections principales : `config` (méta
 | `category` | string | ✅ | Catégorie principale du quiz | `"Développement"`, `"CM2"`, `"Coaching"`, `"Divertissement"` |
 | `createdAt` | string | ❌ | Date de création du quiz (format ISO 8601: YYYY-MM-DD) | `"2024-06-15"`, `"2026-01-11"` |
 | `tag` | array | ❌ | Tags secondaires pour filtrage | `["Programmation", "Web"]`, `["Nature", "Animaux"]` |
+| `summaryUrl` | string | ❌ | Lien vers une page de résumé optimisée pour la lecture, affiché sous forme de bouton "Lire le résumé" sur la carte du quiz | `"/resumes/fantome-canterville-1.html"` |
+
+**Note sur `summaryUrl`**:
+
+- Utilisé notamment pour les quiz basés sur une œuvre littéraire découpée en plusieurs parties (ex. Le Petit Nicolas, Le Fantôme de Canterville)
+- Les pages de résumé sont des fichiers HTML statiques dans `/resumes/`, stylés avec la charte graphique du projet (polices Baloo 2 / Almarai, palette turquoise/orange/beige)
+- Le lien s'ouvre dans un nouvel onglet (`target="_blank"`) et n'interfère pas avec le clic sur la carte (ouverture du quiz)
+- Rendu dans `js/modules/managers/quiz-selector.js` (bouton conditionnel `${quiz.summaryUrl ? ... : ''}`)
 
 **Note sur `createdAt`**:
 
