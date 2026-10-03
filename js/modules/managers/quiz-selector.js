@@ -94,8 +94,8 @@ export class QuizSelector {
         }
             
         const quizCards = filteredQuizzes.map(quiz => {
-            // Image avec fallback placehold.co
-            const imageUrl = quiz.imageUrl || `https://placehold.co/400x200?text=${encodeURIComponent(quiz.title)}`;
+            // Image avec fallback placehold.co (couleurs de la charte : fond violet foncé, texte orange)
+            const imageUrl = quiz.imageUrl || `https://placehold.co/400x200/463673/ef8218?text=${encodeURIComponent(quiz.title)}`;
 
             // Couleurs basées sur la catégorie
             const categoryColor = getCategoryColors(quiz.category);
