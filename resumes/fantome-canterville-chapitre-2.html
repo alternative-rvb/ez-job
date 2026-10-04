@@ -73,6 +73,23 @@
         font-weight: 700; padding: 12px 24px; border-radius: 12px; font-family: 'Baloo 2', sans-serif;
     }
     .cta.secondary { background: white; color: rgb(var(--text)); border: 1.5px solid rgb(var(--border)); }
+    .done-wrap { text-align: center; margin: 36px 0 0; }
+    .done-btn {
+        display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+        font-family: 'Baloo 2', sans-serif; font-size: 1.05rem; font-weight: 700;
+        padding: 14px 28px; border-radius: 14px; transition: all 0.2s;
+        background: white; color: rgb(var(--primary-dark)); border: 2px solid rgb(var(--primary));
+    }
+    .done-btn:hover { background: rgba(var(--primary), 0.1); }
+    .done-btn .check {
+        width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgb(var(--primary));
+        display: inline-flex; align-items: center; justify-content: center;
+    }
+    .done-btn .check svg { width: 14px; height: 14px; opacity: 0; }
+    .done-btn.is-done { background: rgb(var(--primary-dark)); color: white; border-color: rgb(var(--primary-dark)); }
+    .done-btn.is-done .check { background: white; border-color: white; }
+    .done-btn.is-done .check svg { opacity: 1; }
+    .done-hint { font-size: 0.85rem; color: rgb(var(--text-2)); margin: 8px 0 0; min-height: 1.2em; }
 </style>
 </head>
 <body>
@@ -105,11 +122,55 @@
     <h2>Vocabulaire</h2>
     <div class="vocab"><div><b>Dogmatique</b> : qui affirme ses idées sans accepter le doute.</div><div><b>Boiseries</b> : panneaux de bois qui recouvrent les murs.</div><div><b>Quatrième dimension</b> : dimension imaginaire qui permet au fantôme de traverser les murs.</div></div>
 
+    <div class="done-wrap">
+        <button type="button" class="done-btn" id="done-btn" aria-pressed="false">
+            <span class="check"><svg viewBox="0 0 16 16" fill="none" stroke="rgb(72,158,150)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span>
+            <span id="done-label">Marquer comme terminé</span>
+        </button>
+        <p class="done-hint" id="done-hint"></p>
+    </div>
+
     <footer>
         Résumé du chapitre 2
         <br>
         <a class="cta secondary" href="/resumes/fantome-canterville-chapitre-1.html">Chapitre précédent</a><a class="cta" href="/resumes/fantome-canterville-chapitre-3.html">Chapitre suivant</a>
     </footer>
 </div>
+<script>
+    // ANCHOR Bouton "Marquer comme terminé" : état mémorisé dans localStorage (clé summariesRead, partagée avec l'application)
+    (function () {
+        var KEY = 'summariesRead';
+        var id = location.pathname.split('/').pop().replace('.html', '');
+        var btn = document.getElementById('done-btn');
+        var label = document.getElementById('done-label');
+        var hint = document.getElementById('done-hint');
+
+        function load() {
+            try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; }
+        }
+        function save(list) {
+            try { localStorage.setItem(KEY, JSON.stringify(list)); return true; } catch (e) { return false; }
+        }
+        function render(done) {
+            btn.classList.toggle('is-done', done);
+            btn.setAttribute('aria-pressed', done ? 'true' : 'false');
+            label.textContent = done ? 'Terminé' : 'Marquer comme terminé';
+            hint.textContent = done ? 'Clique à nouveau pour annuler' : '';
+        }
+
+        render(load().indexOf(id) !== -1);
+
+        btn.addEventListener('click', function () {
+            var list = load();
+            var pos = list.indexOf(id);
+            if (pos === -1) { list.push(id); } else { list.splice(pos, 1); }
+            if (!save(list)) {
+                hint.textContent = "Impossible d'enregistrer dans ce navigateur";
+                return;
+            }
+            render(pos === -1);
+        });
+    })();
+</script>
 </body>
 </html>

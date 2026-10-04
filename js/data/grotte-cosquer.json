@@ -1,0 +1,152 @@
+{
+  "config": {
+    "title": "La grotte Cosquer",
+    "description": "Découvre la grotte préhistorique cachée sous la mer près de Marseille et ses peintures de plus de 20 000 ans",
+    "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 12,
+    "category": "CM2",
+    "createdAt": "2026-10-04",
+    "tag": [
+      "Préhistoire",
+      "Art pariétal"
+    ],
+    "level": "6eme",
+    "subject": "Histoire"
+  },
+  "questions": [
+    {
+      "question": "Qui a découvert la grotte Cosquer ?",
+      "choices": [
+        "Henri Cosquer, un plongeur",
+        "Un pêcheur de Marseille",
+        "Un groupe d'enfants en randonnée",
+        "Un archéologue en train de creuser"
+      ],
+      "correctAnswer": "Henri Cosquer, un plongeur",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Près de quelle ville se trouve la grotte Cosquer ?",
+      "choices": [
+        "Marseille",
+        "Nice",
+        "Lyon",
+        "Bordeaux"
+      ],
+      "correctAnswer": "Marseille",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Où se trouve aujourd'hui l'entrée de la grotte ?",
+      "choices": [
+        "Sous la mer, à environ 36 mètres de profondeur",
+        "En haut d'une montagne",
+        "Au milieu d'une forêt",
+        "Sous une maison de Marseille"
+      ],
+      "correctAnswer": "Sous la mer, à environ 36 mètres de profondeur",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "En quelle année Henri Cosquer découvre-t-il l'entrée de la grotte ?",
+      "choices": [
+        "1985",
+        "1940",
+        "2010",
+        "2022"
+      ],
+      "correctAnswer": "1985",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Quel dessin Henri Cosquer remarque-t-il en premier, en croyant d'abord à un tag ?",
+      "choices": [
+        "Une main",
+        "Un cheval",
+        "Un poisson",
+        "Un soleil"
+      ],
+      "correctAnswer": "Une main",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Qui a réalisé les peintures et les gravures de la grotte ?",
+      "choices": [
+        "Des hommes préhistoriques (Homo sapiens)",
+        "Des soldats romains",
+        "Des moines du Moyen Âge",
+        "Des artistes modernes"
+      ],
+      "correctAnswer": "Des hommes préhistoriques (Homo sapiens)",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Pourquoi les hommes préhistoriques pouvaient-ils entrer dans la grotte à pied ?",
+      "choices": [
+        "Parce que la mer était beaucoup plus basse qu'aujourd'hui",
+        "Parce qu'ils savaient nager très profond",
+        "Parce qu'ils avaient creusé un tunnel",
+        "Parce qu'il n'y avait pas encore de mer"
+      ],
+      "correctAnswer": "Parce que la mer était beaucoup plus basse qu'aujourd'hui",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Quel animal est le plus souvent représenté dans la grotte ?",
+      "choices": [
+        "Le cheval",
+        "Le chat",
+        "Le lion",
+        "Le dauphin"
+      ],
+      "correctAnswer": "Le cheval",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Quel animal surprenant pour la Provence a été dessiné dans la grotte ?",
+      "choices": [
+        "Le grand pingouin",
+        "Le kangourou",
+        "L'éléphant d'Afrique",
+        "Le panda"
+      ],
+      "correctAnswer": "Le grand pingouin",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Comment les hommes préhistoriques ont-ils fait les « mains négatives » ?",
+      "choices": [
+        "En soufflant de la couleur autour de leur main posée sur la paroi",
+        "En trempant leur main dans la peinture puis en la posant",
+        "En gravant le contour avec un silex",
+        "En dessinant avec un pinceau"
+      ],
+      "correctAnswer": "En soufflant de la couleur autour de leur main posée sur la paroi",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Qu'est-ce qui menace de faire disparaître les peintures de la grotte ?",
+      "choices": [
+        "La montée du niveau de la mer",
+        "Les touristes qui touchent les murs",
+        "Les chauves-souris",
+        "La lumière du soleil"
+      ],
+      "correctAnswer": "La montée du niveau de la mer",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Où peut-on visiter la réplique de la grotte Cosquer ?",
+      "choices": [
+        "À la Villa Méditerranée, à Marseille",
+        "Au musée du Louvre, à Paris",
+        "Dans la vraie grotte, en plongée",
+        "À Lascaux, en Dordogne"
+      ],
+      "correctAnswer": "À la Villa Méditerranée, à Marseille",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    }
+  ]
+}
