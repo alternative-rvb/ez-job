@@ -44,3 +44,4 @@ Thumbs.db
 #playwright
 .playwright-mcp/
 .playwright/
+.playwright-cli/

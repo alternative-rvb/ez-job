@@ -224,7 +224,7 @@ Chaque quiz est un fichier JSON avec deux sections principales : `config` (méta
 | `category` | string | ✅ | Catégorie principale du quiz | `"Développement"`, `"CM2"`, `"Coaching"`, `"Divertissement"` |
 | `createdAt` | string | ❌ | Date de création du quiz (format ISO 8601: YYYY-MM-DD) | `"2024-06-15"`, `"2026-01-11"` |
 | `tag` | array | ❌ | Tags secondaires pour filtrage | `["Programmation", "Web"]`, `["Nature", "Animaux"]` |
-| `summaryUrl` | string | ❌ | Lien vers une page de résumé optimisée pour la lecture, affiché sous forme de bouton "Lire le résumé" sur la carte du quiz | `"/resumes/fantome-canterville-1.html"` |
+| `summaryUrl` | string | ❌ | Lien vers une page de résumé optimisée pour la lecture, affiché sous forme de bouton "Lire le résumé" sur la carte du quiz | `"/resumes/fantome-canterville-chapitre-1.html"` |
 
 **Note sur `summaryUrl`**:
 

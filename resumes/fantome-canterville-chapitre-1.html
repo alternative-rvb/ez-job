@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résumé chapitre 1 - Le Fantôme de Canterville | CamiLudik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: 102, 188, 180;
+        --primary-dark: 72, 158, 150;
+        --accent: 255, 157, 0;
+        --bg: 251, 243, 234;
+        --bg-card: 244, 234, 221;
+        --border: 220, 201, 176;
+        --text: 124, 64, 4;
+        --text-2: 180, 110, 40;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background: rgb(var(--bg));
+        color: rgb(var(--text));
+        font-family: 'Almarai', sans-serif;
+        line-height: 1.75;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+    .back-link {
+        display: inline-block; margin-bottom: 20px; font-size: 0.9rem; font-weight: 700;
+        color: rgb(var(--primary-dark)); text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+    header.hero {
+        background: linear-gradient(135deg, rgb(var(--primary)) 0%, rgb(var(--primary-dark)) 100%);
+        border-radius: 18px; padding: 28px 24px; color: white; margin-bottom: 28px;
+        box-shadow: 0 4px 16px rgba(72, 158, 150, 0.25);
+    }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; font-weight: 700; opacity: 0.9; margin: 0 0 6px; }
+    h1 { font-family: 'Baloo 2', sans-serif; font-size: 1.6rem; margin: 0 0 4px; line-height: 1.3; }
+    .hero-sub { font-family: 'Baloo 2', sans-serif; font-size: 1.15rem; margin: 0; opacity: 0.95; }
+    .pages { font-size: 0.85rem; opacity: 0.85; margin: 6px 0 0; }
+    .pills { display: flex; gap: 8px; margin-top: 18px; }
+    .pill {
+        flex: 1; padding: 8px 6px; border-radius: 10px; text-align: center; font-size: 0.8rem; font-weight: 700;
+        text-decoration: none; color: white; background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.35);
+    }
+    .pill.active { background: rgb(var(--accent)); border-color: rgb(var(--accent)); }
+    h2 {
+        font-family: 'Baloo 2', sans-serif; font-size: 1.25rem; margin: 32px 0 12px;
+        display: flex; align-items: center; gap: 8px;
+    }
+    h2::before { content: ''; width: 6px; height: 24px; border-radius: 4px; background: rgb(var(--accent)); }
+    p { margin: 0 0 16px; font-size: 1.05rem; }
+    .card { background: rgb(var(--bg-card)); border: 1px solid rgb(var(--border)); border-radius: 14px; padding: 18px 20px; margin: 0 0 20px; }
+    .card p:last-child { margin-bottom: 0; }
+    .characters { display: grid; gap: 10px; margin: 0 0 20px; }
+    .char { background: white; border: 1px solid rgb(var(--border)); border-radius: 12px; padding: 12px 16px; }
+    .char strong { color: rgb(var(--primary-dark)); font-family: 'Baloo 2', sans-serif; font-size: 1rem; }
+    .char span { display: block; font-size: 0.95rem; color: rgb(var(--text-2)); margin-top: 2px; }
+    .quote { font-style: italic; border-left: 4px solid rgb(var(--accent)); padding-left: 16px; color: rgb(var(--text-2)); margin: 0 0 20px; }
+    .quote cite { display: block; font-style: normal; font-size: 0.9rem; margin-top: 4px; }
+    .keys { background: white; border: 2px solid rgb(var(--primary)); border-radius: 14px; padding: 16px 20px 16px 40px; margin: 0 0 20px; }
+    .keys li { margin: 0 0 6px; }
+    .keys li:last-child { margin-bottom: 0; }
+    .vocab { display: grid; gap: 8px; margin: 0 0 20px; }
+    .vocab div { background: white; border: 1px solid rgb(var(--border)); border-radius: 10px; padding: 10px 14px; font-size: 0.95rem; }
+    .vocab b { color: rgb(var(--primary-dark)); }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgb(var(--border)); text-align: center; font-size: 0.85rem; color: rgb(var(--text-2)); }
+    .cta {
+        display: inline-block; margin: 14px 6px 0; background: rgb(var(--text)); color: white; text-decoration: none;
+        font-weight: 700; padding: 12px 24px; border-radius: 12px; font-family: 'Baloo 2', sans-serif;
+    }
+    .cta.secondary { background: white; color: rgb(var(--text)); border: 1.5px solid rgb(var(--border)); }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <a class="back-link" href="/">&larr; Retour aux quiz</a>
+
+    <header class="hero">
+        <p class="eyebrow">Oscar Wilde &middot; Résumé de lecture</p>
+        <h1>Le Fantôme de Canterville</h1>
+        <p class="hero-sub">Chapitre 1 : L'arrivée à Canterville Chase</p>
+        <p class="pages">Pages 5 à 14</p>
+        <div class="pills"><span class="pill active">Chapitre 1</span><a class="pill" href="/resumes/fantome-canterville-chapitre-2.html">Chapitre 2</a><a class="pill" href="/resumes/fantome-canterville-chapitre-3.html">Chapitre 3</a></div>
+    </header>
+
+    <h2>Les personnages</h2>
+    <div class="characters"><div class="char"><strong>M. Hiram B. Otis</strong><span>Ministre (ambassadeur) des États-Unis en Angleterre. Il achète le manoir et ne croit pas aux fantômes.</span></div><div class="char"><strong>Mme Otis</strong><span>Sa femme, ancienne beauté de New York, solide et pleine de bon sens.</span></div><div class="char"><strong>Washington Otis</strong><span>Le fils aîné, blond, excellent danseur, persuadé que les produits modernes règlent tout.</span></div><div class="char"><strong>Virginia Otis</strong><span>Quinze ans, cavalière intrépide aux grands yeux bleus.</span></div><div class="char"><strong>Les jumeaux</strong><span>Les deux plus jeunes, surnommés « Stars and Stripes » tant ils sont souvent punis.</span></div><div class="char"><strong>Lord Canterville</strong><span>L'ancien propriétaire, qui prévient honnêtement que la maison est hantée.</span></div><div class="char"><strong>Mme Umney</strong><span>La vieille gouvernante du manoir, très impressionnable.</span></div></div>
+
+<h2>Un achat contre l'avis de tous</h2>
+<div class="card"><p>M. Otis, ministre américain, achète Canterville Chase, un vieux manoir anglais. Tout le monde lui dit qu'il fait une folie, car les lieux sont hantés. Lord Canterville lui-même le prévient : sa grand-tante, la duchesse douairière de Bolton, a vu deux mains de squelette se poser sur ses épaules, les domestiques sont partis et sa femme ne dort plus à cause des bruits de la nuit.</p><p>M. Otis ne se laisse pas impressionner. Il vient d'un pays moderne où l'on peut tout acheter, et il répond qu'il prendra le mobilier et le fantôme selon évaluation. Pour lui, les fantômes n'existent pas.</p></div>
+<h2>Le voyage jusqu'au manoir</h2>
+<div class="card"><p>Quelques semaines plus tard, la famille arrive. Le narrateur présente chacun : Mme Otis, Washington, Virginia, qui a un jour battu le vieux lord Bilton à la course sur son poney, et les jumeaux farceurs.</p><p>Le trajet depuis la gare d'Ascot commence sous le soleil de juillet, au milieu des pins, des écureuils et des lapins. Mais dès qu'ils entrent dans l'allée du manoir, le ciel se couvre, des corneilles passent au-dessus d'eux et la pluie commence à tomber. L'atmosphère devient inquiétante.</p></div>
+<h2>La tache de sang</h2>
+<div class="card"><p>Mme Umney, la gouvernante, les accueille et leur sert le thé dans la bibliothèque. Mme Otis remarque une tache rougeâtre sur le parquet. La gouvernante explique que c'est le sang de lady Eleanore de Canterville, tuée à cet endroit par son mari, sir Simon, en 1575. Sir Simon a disparu neuf ans plus tard, son corps n'a jamais été retrouvé, et son esprit hante toujours le manoir. La tache, dit-elle, est ineffaçable.</p><p>Washington se moque de cette histoire : il frotte le sol avec le Détachtou et le Superdétersif Pinkerton, et la tache disparaît. Aussitôt, un éclair illumine la pièce, le tonnerre éclate et Mme Umney s'évanouit. M. Otis reste parfaitement calme et plaisante sur le climat anglais.</p></div>
+
+    <div class="quote">« Milord, je prendrai le mobilier et le fantôme selon évaluation. »<cite>M. Otis à lord Canterville</cite></div>
+
+    <h2>À retenir</h2>
+    <ul class="keys"><li>Le manoir est hanté par le fantôme de sir Simon, qui a tué sa femme en 1575.</li><li>La famille Otis, américaine et moderne, ne croit pas aux fantômes.</li><li>Washington efface la tache de sang avec un détachant, mais un orage éclate aussitôt.</li><li>Le récit mélange déjà l'humour (le calme des Otis) et le fantastique (l'orage, la tache).</li></ul>
+
+    <h2>Vocabulaire</h2>
+    <div class="vocab"><div><b>Douairière</b> : veuve qui garde un titre de noblesse.</div><div><b>Ineffaçable</b> : qu'on ne peut pas effacer.</div><div><b>Se pâmer / tomber en pâmoison</b> : s'évanouir.</div></div>
+
+    <footer>
+        Résumé du chapitre 1
+        <br>
+        <a class="cta" href="/resumes/fantome-canterville-chapitre-2.html">Chapitre suivant</a>
+    </footer>
+</div>
+</body>
+</html>

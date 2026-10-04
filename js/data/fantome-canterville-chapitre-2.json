@@ -1,0 +1,153 @@
+{
+  "config": {
+    "title": "Le Fantôme de Canterville - Ch. 2 : La première apparition",
+    "description": "Teste ta compréhension du chapitre où la tache de sang revient chaque matin et où M. Otis rencontre le fantôme pour la première fois",
+    "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg",
+    "spoilerMode": false,
+    "difficulty": 3,
+    "questionCount": 12,
+    "category": "CM2",
+    "createdAt": "2026-10-03",
+    "tag": [
+      "Littérature",
+      "Classique"
+    ],
+    "level": "6eme",
+    "subject": "Français",
+    "summaryUrl": "/resumes/fantome-canterville-chapitre-2.html"
+  },
+  "questions": [
+    {
+      "question": "Que découvre la famille en descendant prendre le petit déjeuner, le lendemain de l'orage ?",
+      "choices": [
+        "La tache de sang est revenue sur le sol",
+        "Le fantôme les attend dans la salle à manger",
+        "Mme Umney a quitté le manoir",
+        "Toutes les fenêtres ont été brisées"
+      ],
+      "correctAnswer": "La tache de sang est revenue sur le sol",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Que fait M. Otis le troisième soir pour percer le mystère de la tache ?",
+      "choices": [
+        "Il ferme la bibliothèque à double tour et emporte la clé",
+        "Il dort dans la bibliothèque pour surveiller",
+        "Il fait garder la porte par un domestique",
+        "Il recouvre la tache d'un tapis"
+      ],
+      "correctAnswer": "Il ferme la bibliothèque à double tour et emporte la clé",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "À quelle société Mme Otis envisage-t-elle de s'inscrire ?",
+      "choices": [
+        "La Société de psychisme",
+        "La Société des amis des fantômes",
+        "La Société royale de Londres",
+        "La Société des bonnes mœurs"
+      ],
+      "correctAnswer": "La Société de psychisme",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "À quelle heure exacte M. Otis est-il réveillé par un bruit étrange dans le couloir ?",
+      "choices": [
+        "Une heure du matin",
+        "Minuit",
+        "Trois heures du matin",
+        "Onze heures du soir"
+      ],
+      "correctAnswer": "Une heure du matin",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Quel bruit réveille M. Otis ?",
+      "choices": [
+        "Un tintement de métal qui se rapproche peu à peu",
+        "Un hurlement qui vient du grenier",
+        "Des coups frappés à sa porte",
+        "Une musique d'orgue dans la chapelle"
+      ],
+      "correctAnswer": "Un tintement de métal qui se rapproche peu à peu",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Comment sont les yeux du fantôme quand M. Otis ouvre la porte ?",
+      "choices": [
+        "Aussi rouges que des charbons ardents",
+        "Verts et brillants comme ceux d'un chat",
+        "Complètement blancs, sans pupille",
+        "Noirs et vides comme deux trous"
+      ],
+      "correctAnswer": "Aussi rouges que des charbons ardents",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Que porte le fantôme aux poignets et aux chevilles ?",
+      "choices": [
+        "De pesants fers mangés de rouille",
+        "Des bracelets d'or",
+        "Des bandages ensanglantés",
+        "Des cordes nouées"
+      ],
+      "correctAnswer": "De pesants fers mangés de rouille",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Que propose M. Otis au fantôme ?",
+      "choices": [
+        "Une petite bouteille de lubrifiant indien pour huiler ses chaînes",
+        "Une tasse de thé pour le réchauffer",
+        "Un livre de prières pour apaiser son âme",
+        "De l'argent pour qu'il quitte le manoir"
+      ],
+      "correctAnswer": "Une petite bouteille de lubrifiant indien pour huiler ses chaînes",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Que reçoit le fantôme en arrivant au sommet du grand escalier de chêne ?",
+      "choices": [
+        "Un énorme oreiller lancé par deux petites silhouettes blanches",
+        "Un seau d'eau froide",
+        "Un coup de revolver",
+        "Une volée de pantoufles"
+      ],
+      "correctAnswer": "Un énorme oreiller lancé par deux petites silhouettes blanches",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Comment le fantôme s'échappe-t-il ?",
+      "choices": [
+        "Il passe à travers les boiseries grâce à la quatrième dimension",
+        "Il saute par une fenêtre",
+        "Il se cache dans une armoire",
+        "Il descend par la cheminée"
+      ],
+      "correctAnswer": "Il passe à travers les boiseries grâce à la quatrième dimension",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Depuis combien de temps dure la « brillante carrière » du fantôme ?",
+      "choices": [
+        "Trois cents ans",
+        "Cent ans",
+        "Cinquante ans",
+        "Mille ans"
+      ],
+      "correctAnswer": "Trois cents ans",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Que décide le fantôme à la fin du chapitre ?",
+      "choices": [
+        "De se venger de la famille Otis",
+        "De quitter le manoir pour toujours",
+        "De se réconcilier avec les Otis",
+        "De demander de l'aide à lord Canterville"
+      ],
+      "correctAnswer": "De se venger de la famille Otis",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    }
+  ]
+}

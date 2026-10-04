@@ -1,0 +1,153 @@
+{
+  "config": {
+    "title": "Le Fantôme de Canterville - Ch. 1 : L'arrivée à Canterville Chase",
+    "description": "Teste ta compréhension du chapitre où la famille Otis achète le manoir hanté et découvre la mystérieuse tache de sang",
+    "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg",
+    "spoilerMode": false,
+    "difficulty": 3,
+    "questionCount": 12,
+    "category": "CM2",
+    "createdAt": "2026-10-03",
+    "tag": [
+      "Littérature",
+      "Classique"
+    ],
+    "level": "6eme",
+    "subject": "Français",
+    "summaryUrl": "/resumes/fantome-canterville-chapitre-1.html"
+  },
+  "questions": [
+    {
+      "question": "Qui achète le manoir de Canterville Chase ?",
+      "choices": [
+        "M. Hiram B. Otis, le ministre américain",
+        "Lord Canterville",
+        "Le jeune duc de Cheshire",
+        "Le révérend Augustus Dampier"
+      ],
+      "correctAnswer": "M. Hiram B. Otis, le ministre américain",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Qu'a vu la grand-tante de lord Canterville, la duchesse douairière de Bolton, en s'habillant pour dîner ?",
+      "choices": [
+        "Deux mains de squelette posées sur ses épaules",
+        "Un visage effrayant dans son miroir",
+        "Une tache de sang sur sa robe",
+        "Un énorme chien noir au pied de son lit"
+      ],
+      "correctAnswer": "Deux mains de squelette posées sur ses épaules",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Que répond M. Otis quand lord Canterville le prévient que la maison est hantée ?",
+      "choices": [
+        "Qu'il prendra le mobilier et le fantôme selon évaluation",
+        "Qu'il renonce à acheter la maison",
+        "Qu'il exige une forte baisse du prix",
+        "Qu'il fera venir un prêtre pour chasser le fantôme"
+      ],
+      "correctAnswer": "Qu'il prendra le mobilier et le fantôme selon évaluation",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Depuis quelle année le fantôme est-il connu, selon lord Canterville ?",
+      "choices": [
+        "1584",
+        "1575",
+        "1684",
+        "1890"
+      ],
+      "correctAnswer": "1584",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Quel surnom donne-t-on aux jumeaux de la famille Otis ?",
+      "choices": [
+        "Stars and Stripes",
+        "Les Petits Diables",
+        "Castor et Pollux",
+        "Les Yankees"
+      ],
+      "correctAnswer": "Stars and Stripes",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Quel âge a Virginia au début de l'histoire ?",
+      "choices": [
+        "Quinze ans",
+        "Douze ans",
+        "Dix-huit ans",
+        "Dix ans"
+      ],
+      "correctAnswer": "Quinze ans",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Contre qui Virginia a-t-elle gagné une course sur son poney ?",
+      "choices": [
+        "Le vieux lord Bilton",
+        "Le jeune duc de Cheshire",
+        "Son frère Washington",
+        "Lord Canterville"
+      ],
+      "correctAnswer": "Le vieux lord Bilton",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Qui accueille la famille Otis sur les marches du manoir ?",
+      "choices": [
+        "Mme Umney, la vieille gouvernante",
+        "Lord Canterville en personne",
+        "Le maître d'hôtel de la famille",
+        "Le révérend Augustus Dampier"
+      ],
+      "correctAnswer": "Mme Umney, la vieille gouvernante",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Où Mme Otis remarque-t-elle une tache rougeâtre ?",
+      "choices": [
+        "Sur le parquet de la bibliothèque",
+        "Sur le mur du grand hall",
+        "Sur le tapis de sa chambre",
+        "Sur les marches de l'escalier"
+      ],
+      "correctAnswer": "Sur le parquet de la bibliothèque",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "D'après Mme Umney, de qui vient le sang de cette tache ?",
+      "choices": [
+        "De lady Eleanore de Canterville, tuée par son mari sir Simon en 1575",
+        "De sir Simon de Canterville, tué par sa femme",
+        "D'un domestique tombé dans l'escalier",
+        "D'un voleur surpris pendant la nuit"
+      ],
+      "correctAnswer": "De lady Eleanore de Canterville, tuée par son mari sir Simon en 1575",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Avec quoi Washington Otis efface-t-il la tache ?",
+      "choices": [
+        "Le Détachtou et le Superdétersif Pinkerton",
+        "De l'eau de Cologne",
+        "Du savon noir et une brosse",
+        "Du vinaigre blanc"
+      ],
+      "correctAnswer": "Le Détachtou et le Superdétersif Pinkerton",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Que se passe-t-il juste après que Washington a effacé la tache ?",
+      "choices": [
+        "Un éclair illumine la pièce, le tonnerre gronde et Mme Umney s'évanouit",
+        "Le fantôme apparaît au milieu de la bibliothèque",
+        "La tache réapparaît aussitôt sous leurs yeux",
+        "Toutes les bougies s'éteignent d'un coup"
+      ],
+      "correctAnswer": "Un éclair illumine la pièce, le tonnerre gronde et Mme Umney s'évanouit",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    }
+  ]
+}

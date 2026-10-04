@@ -1,0 +1,153 @@
+{
+  "config": {
+    "title": "Le Fantôme de Canterville - Ch. 3 : Le fantôme humilié",
+    "description": "Teste ta compréhension du chapitre où le fantôme multiplie les tentatives pour effrayer les Otis et tombe sur plus malin que lui",
+    "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg",
+    "spoilerMode": false,
+    "difficulty": 3,
+    "questionCount": 12,
+    "category": "CM2",
+    "createdAt": "2026-10-03",
+    "tag": [
+      "Littérature",
+      "Classique"
+    ],
+    "level": "6eme",
+    "subject": "Français",
+    "summaryUrl": "/resumes/fantome-canterville-chapitre-3.html"
+  },
+  "questions": [
+    {
+      "question": "Pourquoi M. Otis est-il un peu dépité au petit déjeuner ?",
+      "choices": [
+        "Parce que le fantôme a dédaigné son cadeau",
+        "Parce que la tache de sang a disparu",
+        "Parce que les jumeaux ont cassé un vase",
+        "Parce que Mme Umney veut démissionner"
+      ],
+      "correctAnswer": "Parce que le fantôme a dédaigné son cadeau",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Quelle couleur surprenante la tache de sang prend-elle un matin ?",
+      "choices": [
+        "Vert émeraude",
+        "Bleu nuit",
+        "Jaune citron",
+        "Rose pâle"
+      ],
+      "correctAnswer": "Vert émeraude",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Qui est le seul membre de la famille à ne pas s'amuser des changements de couleur de la tache ?",
+      "choices": [
+        "Virginia",
+        "Washington",
+        "Mme Otis",
+        "Les jumeaux"
+      ],
+      "correctAnswer": "Virginia",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Qu'est-ce qui provoque un terrible fracas dans le hall, un dimanche soir ?",
+      "choices": [
+        "Une énorme armure ancienne qui s'est détachée de son socle",
+        "Un lustre qui tombe du plafond",
+        "Une fenêtre brisée par l'orage",
+        "Une pile d'assiettes renversée par un domestique"
+      ],
+      "correctAnswer": "Une énorme armure ancienne qui s'est détachée de son socle",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Que propose Mme Otis au fantôme après son rire satanique ?",
+      "choices": [
+        "Un flacon d'élixir du Dr Dabell contre l'indigestion",
+        "Une couverture pour qu'il n'ait pas froid",
+        "Une tasse de lait chaud",
+        "Des boules de coton pour ses oreilles"
+      ],
+      "correctAnswer": "Un flacon d'élixir du Dr Dabell contre l'indigestion",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "En quoi le fantôme voulait-il se transformer pour effrayer Mme Otis ?",
+      "choices": [
+        "En un énorme chien noir",
+        "En un corbeau géant",
+        "En un squelette dansant",
+        "En une chauve-souris"
+      ],
+      "correctAnswer": "En un énorme chien noir",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Pourquoi le fantôme n'a-t-il pas réussi à porter sa propre armure ?",
+      "choices": [
+        "Il a été écrasé par son poids et s'est écorché les genoux en tombant",
+        "Elle était trop petite pour lui",
+        "Les jumeaux l'avaient remplie de farine",
+        "Elle était rouillée et ne s'ouvrait plus"
+      ],
+      "correctAnswer": "Il a été écrasé par son poids et s'est écorché les genoux en tombant",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Quel jour le fantôme choisit-il pour sa troisième tentative ?",
+      "choices": [
+        "Le vendredi 17 août",
+        "Le dimanche 19 septembre",
+        "Le jour de Noël",
+        "Le soir d'Halloween"
+      ],
+      "correctAnswer": "Le vendredi 17 août",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Pourquoi le fantôme en veut-il particulièrement à Washington ?",
+      "choices": [
+        "Parce qu'il efface chaque jour la tache de sang avec le Superdétersif Pinkerton",
+        "Parce qu'il lui a lancé un oreiller",
+        "Parce qu'il s'est moqué de lui pendant le dîner",
+        "Parce qu'il lui a pris sa chambre"
+      ],
+      "correctAnswer": "Parce qu'il efface chaque jour la tache de sang avec le Superdétersif Pinkerton",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "De quoi est fait en réalité l'horrible spectre qui terrifie le fantôme dans le couloir ?",
+      "choices": [
+        "D'un rideau blanc, d'un balai, d'un couperet de cuisine et d'un navet creux",
+        "D'une vieille armure recouverte d'un drap",
+        "D'un mannequin de couturière et d'une citrouille",
+        "D'un domestique déguisé"
+      ],
+      "correctAnswer": "D'un rideau blanc, d'un balai, d'un couperet de cuisine et d'un navet creux",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Quels mots sont écrits sur la pancarte du faux spectre ?",
+      "choices": [
+        "Le fantôme Otis, unique modèle déposé",
+        "Bienvenue à Canterville Chase",
+        "Attention, fantôme méchant",
+        "Défense d'entrer"
+      ],
+      "correctAnswer": "Le fantôme Otis, unique modèle déposé",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    },
+    {
+      "question": "Pourquoi le terrible serment de vengeance du fantôme ne se réalise-t-il pas ?",
+      "choices": [
+        "Le coq ne chante qu'une seule fois au lieu de deux",
+        "Les jumeaux l'enferment dans un placard",
+        "Il s'endort avant le lever du jour",
+        "M. Otis le surprend et l'oblige à fuir"
+      ],
+      "correctAnswer": "Le coq ne chante qu'une seule fois au lieu de deux",
+      "imageUrl": "/images/quiz/fantome-canterville/fantome-canterville.jpg"
+    }
+  ]
+}

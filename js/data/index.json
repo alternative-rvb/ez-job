@@ -10,9 +10,9 @@
     "connecteurs-logiques",
     "diviser-par-2-par-4",
     "english-vocabulary-test",
-    "fantome-canterville-1",
-    "fantome-canterville-2",
-    "fantome-canterville-3",
+    "fantome-canterville-chapitre-1",
+    "fantome-canterville-chapitre-2",
+    "fantome-canterville-chapitre-3",
     "francais-vocabulaire-6eme",
     "jules-ferry-ecole",
     "la-terre",
@@ -55,6 +55,6 @@
     "Sciences"
   ],
   "count": 36,
-  "lastUpdated": "2026-10-03T20:59:16.184873",
+  "lastUpdated": "2026-10-04T11:40:42.703460",
   "generated_by": "api.py"
 }
