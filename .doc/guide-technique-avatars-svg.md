@@ -115,10 +115,17 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
 - **Placé au-dessus de la frange** : Permet aux sourcils et aux yeux manga d'être toujours parfaitement lisibles.
 - **Yeux manga détaillés** :
   - Fond blanc (`ellipse rx="6.5" ry="5.5"`).
-  - Iris bicolore dégradé (couleur sombre en haut, couleur vive en bas).
+  - Iris bicolore dégradé (couleur sombre en haut `#6d2e05`, couleur vive en bas `#b45309`).
   - Pupille noire + 2 reflets blancs pétillants (un grand en haut à gauche, un petit en bas à droite).
-  - Ligne de cils supérieure épaisse noire (`stroke-width="2.2"`).
-  - **Cils manga stylisés (Fille)** : 3 pointes triangulaires dégressives sur la paupière supérieure (orientées vers le haut) et 3 pointes triangulaires dégressives sur la paupière inférieure (orientées vers le bas) avec trait de contour inférieur fin (`stroke-width="1.1"`).
+  - Ligne de cils supérieure épaisse noire (`stroke-width="2.2"`, `d="M30 38 Q37 33 44 38"`).
+  - **Cils manga supérieurs (Fille)** : 3 pointes triangulaires dégressives en hauteur le long de la courbure extérieure haute de la paupière (`points="29.5,39.2 26.5,35.8 31.8,37.5"`, `points="32.2,37.2 30.8,34.2 34.2,36.0"`, `points="34.8,35.6 34.2,33.5 36.5,34.8"`).
+  - **Trait de contour inférieur (Fille)** : Ligne fine discrète sous l'œil (`stroke-width="1"`, `d="M32 44.5 Q37 47.5 42 44.5"`).
+  - **Cils manga inférieurs (Fille)** : 
+    - 3 pointes triangulaires dégressives orientées vers le bas.
+    - **Positionnement centré** : réparties sur la portion centrale du trait inférieur (sous la pupille / iris entre $X=33.5$ et $X=40.5$).
+    - **Règle d'ancrage strict** : La base de chaque triangle doit impérativement mordre de 0.2 à 0.4px dans l'épaisseur de la courbe inférieure (`y = 45.0` à `45.7`) pour éviter tout interstice ou impression de cil flottant.
+    - Oeil gauche : `points="33.5,45.0 34.2,47.2 35.0,45.5"`, `points="36.2,45.7 37.0,47.6 37.8,45.7"`, `points="39.0,45.5 39.8,46.9 40.5,45.0"`.
+    - Oeil droit (symétrie $X' = 100 - X$) : `points="66.5,45.0 65.8,47.2 65.0,45.5"`, `points="63.8,45.7 63.0,47.6 62.2,45.7"`, `points="61.0,45.5 60.2,46.9 59.5,45.0"`.
 - **Sourcils** : Arcs expressifs fins (`stroke-width="1.8"` à `2.2"`).
 - **Nez** : Discret point chaud sous les yeux (`cx="50" cy="47.5" r="0.9"`).
 - **Bouche** : Arc souriant ou ouvert (`d="M45 51 Q50 56.5 55 51"`).
@@ -142,17 +149,28 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
 
 ---
 
-## 6. Synchronisation dans le Codebase
+## 6. Bonnes Pratiques & Retours d'Expérience (Learnings)
 
-Tout changement de SVG avatar ou ajout d'un nouvel avatar doit être reporté à **deux endroits obligatoires** :
+1. **Simplicité et Absence de Sur-Ingénierie (KISS)** :
+   - Les modales de prévisualisation ou zoom (ex. [test-avatars.html](file:///home/nicolas/projets/_github/ez-job/test-avatars.html)) doivent rester minimalistes (plein écran, sans boutons superflus, simple clic / croix pour fermer).
+   - Ne pas ajouter de fonctionnalités non explicitement demandées.
 
-1. **[js/modules/ui/avatars.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatars.js)** :
-   - Objet `AVATARS[id]` contenant `headSvg` (tête isolée) et `svg` (corps entier).
-   - Utilisé dans le gameplay, l'affichage de la roadmap, le header et les profils.
-2. **[index.html](file:///home/nicolas/projets/_github/ez-job/index.html)** :
-   - Cartes de sélection du personnage de départ dans la modale `#start-avatar-picker` (boutons `boy` et `girl`).
+2. **Équilibre des Cils Chibi Manga** :
+   - Les cils supérieurs définissent le regard principal (trait épais $2.2\text{px}$ + 3 pointes dynamiques sur le coin externe).
+   - Les cils inférieurs doivent être **subtils, plus courts et fins** que les cils supérieurs, et centrés sous l'iris pour ne pas alourdir le regard ou ressembler à des épines extérieures.
+   - Toujours calculer les coordonnées $Y$ selon l'équation de la courbe de Bézier pour garantir la continuité visuelle.
 
-### Workflow de validation & déploiement
+3. **Synchronisation Quadruple Obligatoire** :
+   Tout changement de tracé SVG doit être immédiatement reporté sur :
+   - [test-avatars.html](file:///home/nicolas/projets/_github/ez-job/test-avatars.html) (environnement de test visuel et modale plein écran)
+   - [js/modules/ui/avatars.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatars.js) (`headSvg` et `svg`)
+   - [index.html](file:///home/nicolas/projets/_github/ez-job/index.html) (cartes du sélecteur de personnage)
+   - [.doc/guide-technique-avatars-svg.md](file:///home/nicolas/projets/_github/ez-job/.doc/guide-technique-avatars-svg.md) (spécification technique)
+
+---
+
+## 7. Workflow de Validation & Déploiement
+
 ```bash
 npm run update-version
 npm run build
