@@ -118,7 +118,7 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
   - Iris bicolore dégradé (couleur sombre en haut, couleur vive en bas).
   - Pupille noire + 2 reflets blancs pétillants (un grand en haut à gauche, un petit en bas à droite).
   - Ligne de cils supérieure épaisse noire (`stroke-width="2.2"`).
-  - **Cils manga stylisés (Fille)** : Suite de 3 pointes triangulaires dégressives en hauteur et taille le long de la paupière supérieure, de l'extérieur vers l'intérieur (`polygon`).
+  - **Cils manga stylisés (Fille)** : 3 pointes triangulaires dégressives sur la paupière supérieure (orientées vers le haut) et 3 pointes triangulaires dégressives sur la paupière inférieure (orientées vers le bas) avec trait de contour inférieur fin (`stroke-width="1.1"`).
 - **Sourcils** : Arcs expressifs fins (`stroke-width="1.8"` à `2.2"`).
 - **Nez** : Discret point chaud sous les yeux (`cx="50" cy="47.5" r="0.9"`).
 - **Bouche** : Arc souriant ou ouvert (`d="M45 51 Q50 56.5 55 51"`).
