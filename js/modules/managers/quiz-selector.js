@@ -616,18 +616,34 @@ export class QuizSelector {
     }
 
     showLoader() {
-        // Changer les classes du conteneur pour permettre le centrage
         const quizListContainer = document.getElementById('quiz-list');
-        quizListContainer.className = 'flex items-center justify-center min-h-[300px]';
+        if (!quizListContainer) return;
+        quizListContainer.className = 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4';
         
-        const loaderHTML = `
-            <div class="flex flex-col items-center justify-center py-8">
-                <div class="animate-spin rounded-full h-16 w-16 mb-6" style="border-bottom:4px solid ${T.hexPrimary}"></div>
-                <p class="text-gray-400 text-xl font-medium">Chargement des quiz...</p>
-                <p class="text-gray-500 text-sm mt-2">Veuillez patienter</p>
+        const skeletonCards = Array(8).fill(0).map(() => `
+            <div class="rounded-xl overflow-hidden shadow-sm flex flex-row border border-amber-900/10" style="background:#fdf8f2;min-height:140px">
+                <!-- Bloc image skeleton -->
+                <div class="w-28 sm:w-32 flex-shrink-0 skeleton-shimmer"></div>
+                <!-- Contenu skeleton -->
+                <div class="p-3 flex-1 flex flex-col justify-between space-y-2">
+                    <div class="space-y-1.5">
+                        <div class="h-4 w-3/4 rounded skeleton-shimmer"></div>
+                        <div class="h-3 w-full rounded skeleton-shimmer"></div>
+                        <div class="h-3 w-2/3 rounded skeleton-shimmer"></div>
+                    </div>
+                    <div class="flex gap-1.5">
+                        <div class="h-4 w-12 rounded-full skeleton-shimmer"></div>
+                        <div class="h-4 w-16 rounded-full skeleton-shimmer"></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-1 border-t border-amber-900/10">
+                        <div class="h-3 w-16 rounded skeleton-shimmer"></div>
+                        <div class="h-4 w-4 rounded-full skeleton-shimmer"></div>
+                    </div>
+                </div>
             </div>
-        `;
-        domManager.setContent('quizList', loaderHTML);
+        `).join('');
+
+        domManager.setContent('quizList', skeletonCards);
     }
 
     hideLoader() {

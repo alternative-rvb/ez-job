@@ -55,7 +55,21 @@ location.reload();
 
 ---
 
-## 4. Dépannage & Cache Navigateur
+## 4. Effet Squelette Fidèle (Skeleton Loading / Shimmer)
+
+Un effet squelette complet, chaleureux et fidèle à la charte CamiLudik est implémenté :
+- **CSS** : classes `.skeleton-shimmer`, `.skeleton-shimmer-subtle` et `.skeleton-svg-pulse` dans `styles/main.css`.
+- **Roadmap Card** : silhouette exacte du profil, des montagnes SVG, de la route en pointillés fantômes, des 7 jalons et de la barre de progression.
+- **Cartes de Quiz** : grilles de cartes horizontales avec bloc image, badges et lignes de texte en shimmer.
+- **Commande de test console** :
+  ```javascript
+  showSkeleton(); // Affiche le squelette de la roadmap pendant 2.5 secondes puis réaffiche la carte
+  showSkeleton(5000); // Définir une durée personnalisée en ms (ou 0 pour infini)
+  ```
+
+---
+
+## 5. Dépannage & Cache Navigateur
 
 Lors de modifications sur les modules JavaScript :
 - Effectuer un **rechargement forcé sans cache** : `Ctrl + F5` (ou `Ctrl + Shift + R`).

@@ -119,6 +119,88 @@ export class RoadmapManager {
     }
 
     /**
+     * Génère le HTML fidèle de l'effet Squelette (Skeleton Shimmer) de la Roadmap
+     */
+    getSkeletonHTML() {
+        return `
+            <div class="fantasy-roadmap-card rounded-2xl overflow-hidden shadow-lg border border-amber-900/10 flex flex-col justify-between" style="background: linear-gradient(180deg, #fdf8f2 0%, #f4eadd 100%);">
+                <!-- Header Skeleton -->
+                <div class="p-3 sm:p-4 md:p-5 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
+                    <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                        <!-- Avatar box skeleton -->
+                        <div class="w-10 h-12 sm:w-12 sm:h-14 rounded-xl skeleton-shimmer flex-shrink-0"></div>
+                        <div class="space-y-2 min-w-0">
+                            <div class="flex items-center gap-2">
+                                <div class="h-4 w-24 sm:w-32 rounded skeleton-shimmer"></div>
+                                <div class="h-4 w-12 rounded-full skeleton-shimmer"></div>
+                            </div>
+                            <div class="h-3 w-20 sm:w-28 rounded skeleton-shimmer"></div>
+                        </div>
+                    </div>
+
+                    <!-- Score & Avatar switch skeleton -->
+                    <div class="flex flex-col items-end gap-1.5 flex-shrink-0">
+                        <div class="h-7 w-20 sm:w-24 rounded-full skeleton-shimmer"></div>
+                        <div class="h-3 w-16 sm:w-20 rounded skeleton-shimmer"></div>
+                    </div>
+                </div>
+
+                <!-- Carte Fantasy Squelette Fidèle (SVG Shimmer) -->
+                <div class="relative p-1.5 sm:p-2 md:p-3 flex-1 flex flex-col justify-center">
+                    <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[190px] max-h-[260px] rounded-xl overflow-hidden shadow-inner border border-amber-800/15 skeleton-shimmer-subtle">
+                        <svg viewBox="-20 -38 560 320" class="w-full h-full skeleton-svg-pulse" preserveAspectRatio="none">
+                            <!-- Arrière-plan collines et montagnes fantômes -->
+                            <path d="M-20 200 Q 120 160, 260 210 T 540 180 L 540 320 L -20 320 Z" fill="#dfcfbd" opacity="0.4"/>
+                            <path d="M220 250 L 360 80 L 460 250 Z" fill="#d5c2ae" opacity="0.5"/>
+                            <path d="M380 250 L 455 35 L 535 240 Z" fill="#ccb8a2" opacity="0.6"/>
+                            <!-- Silhouette Citadelle Sommet -->
+                            <rect x="430" y="8" width="50" height="28" rx="2" fill="#bc9f82" opacity="0.7"/>
+                            <polygon points="425,12 455,-12 485,12" fill="#bc9f82" opacity="0.8"/>
+                            <!-- Tracé courbe en S fantôme -->
+                            <path d="M 25 245 C 50 245, 70 238, 90 225 C 120 205, 140 195, 175 198 C 210 202, 235 220, 260 224 C 290 228, 315 210, 335 185 C 355 160, 365 130, 385 105 C 400 85, 420 62, 455 48" 
+                                  fill="none" stroke="#bc9f82" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 8" opacity="0.6"/>
+                            <!-- 7 Jalons Checkpoints fantômes -->
+                            <circle cx="25" cy="231" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="95" cy="208" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="160" cy="184" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="230" cy="204" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="335" cy="171" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="410" cy="74" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="455" cy="34" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <!-- Avatar fantôme au départ -->
+                            <rect x="36" y="195" width="22" height="28" rx="4" fill="#bc9f82" opacity="0.6"/>
+                            <rect x="20" y="172" width="55" height="16" rx="8" fill="#ffffff" opacity="0.8"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Footer Skeleton -->
+                <div class="p-2.5 sm:p-3 md:p-4 bg-amber-900/5 border-t border-amber-900/10 flex items-center justify-between gap-3 text-xs">
+                    <div class="flex-1 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <div class="h-3.5 w-36 rounded skeleton-shimmer"></div>
+                            <div class="h-3.5 w-20 rounded skeleton-shimmer"></div>
+                        </div>
+                        <div class="w-full bg-amber-900/10 h-2 rounded-full overflow-hidden">
+                            <div class="h-full w-1/3 rounded-full skeleton-shimmer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    /**
+     * Rendu de l'effet Squelette dans le conteneur
+     */
+    renderSkeleton() {
+        const container = document.getElementById(this.containerId);
+        if (container) {
+            container.innerHTML = this.getSkeletonHTML();
+        }
+    }
+
+    /**
      * Initialise et rend la Roadmap dans le conteneur du Hero
      */
     render() {
@@ -663,5 +745,12 @@ if (typeof window !== 'undefined') {
         roadmapManager.render();
         console.log(`⭐ Score : +${pts} pts (Total : ${next} pts)`);
         return next;
+    };
+    window.showSkeleton = (duration = 2500) => {
+        roadmapManager.renderSkeleton();
+        console.log(`💀 Effet squelette Roadmap activé (durée : ${duration}ms)`);
+        if (duration > 0) {
+            setTimeout(() => roadmapManager.render(), duration);
+        }
     };
 }
