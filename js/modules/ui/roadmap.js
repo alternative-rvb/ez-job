@@ -731,24 +731,32 @@ export class RoadmapManager {
 
 export const roadmapManager = new RoadmapManager();
 
-// Expose aussi directement sur window pour un accès immédiat
+// =============================================================================
+// OUTILS DE DÉVELOPPEMENT & TESTS PROVISOIRES (À EXCLURE DE PRODUCTION)
+// =============================================================================
 if (typeof window !== 'undefined') {
     window.setScore = (pts) => {
         rewardsManager.setTotalPoints(pts);
         roadmapManager.render();
-        console.log(`⭐ Score mis à jour : ${pts} pts`);
+        console.log(`⭐ [DEV] Score mis à jour : ${pts} pts`);
         return pts;
     };
     window.addScore = (pts = 10) => {
         const cur = rewardsManager.getTotalPoints();
         const next = rewardsManager.setTotalPoints(cur + pts);
         roadmapManager.render();
-        console.log(`⭐ Score : +${pts} pts (Total : ${next} pts)`);
+        console.log(`⭐ [DEV] Score : +${pts} pts (Total : ${next} pts)`);
         return next;
+    };
+    window.resetScore = () => {
+        rewardsManager.setTotalPoints(0);
+        roadmapManager.render();
+        console.log(`🔄 [DEV] Score réinitialisé à 0 pt`);
+        return 0;
     };
     window.showSkeleton = (duration = 2500) => {
         roadmapManager.renderSkeleton();
-        console.log(`💀 Effet squelette Roadmap activé (durée : ${duration}ms)`);
+        console.log(`💀 [DEV] Effet squelette Roadmap activé (durée : ${duration}ms)`);
         if (duration > 0) {
             setTimeout(() => roadmapManager.render(), duration);
         }
