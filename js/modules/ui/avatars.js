@@ -1,13 +1,15 @@
 /**
  * Module de définition et rendu des Avatars (Style Manga Chibi)
- * Structure de calques stricte :
+ * Structure de calques optimisée :
  * 1. Ombre au sol
- * 2. GROUPE CHEVEUX ARRIERE (Calque le plus au fond, derrière le corps entier)
+ * 2. GROUPE CHEVEUX ARRIERE (Calque le plus au fond)
  * 3. Jambes & Chaussures
- * 4. Corps & Vêtements
- * 5. Bras & Mains
- * 6. GROUPE TÊTE & VISAGE (Cou, crâne, visage, yeux, bandeau/serre-tête)
- * 7. GROUPE CHEVEUX AVANT (Frange et mèches de premier plan)
+ * 4. Corps & Vêtements (Trapèze)
+ * 5. Ceinture & Accessoires
+ * 6. Bras & Mains
+ * 7. BASE TÊTE (Cou, forme du crâne, oreilles, bandeau/serre-tête)
+ * 8. GROUPE CHEVEUX AVANT (Frange et mèches)
+ * 9. TRAITS DU VISAGE EN AVANT-PLAN (Sourcils, yeux expressifs, nez, bouche par-dessus la frange)
  */
 
 export const AVATARS = {
@@ -18,7 +20,7 @@ export const AVATARS = {
         image: null,
         headSvg: `
             <svg viewBox="4 -8 92 80" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <!-- 1. CHEVEUX ARRIERE (Le plus en fond) -->
+    <!-- 1. CHEVEUX ARRIERE (Arrière-plan) -->
     <g id="boy-hair-back">
         <path d="M 18,42 
                  C 12,34 8,26 10,20 
@@ -34,8 +36,8 @@ export const AVATARS = {
                  C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
     </g>
 
-    <!-- 2. TETE ET VISAGE -->
-    <g id="boy-head">
+    <!-- 2. BASE DE LA TETE (Cou, crâne, oreilles, bandeau) -->
+    <g id="boy-head-base">
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
         <path d="M42 63 L50 65 L58 63 Z" fill="#ff9d00"/>
 
@@ -52,7 +54,24 @@ export const AVATARS = {
         <path d="M22 24 C33 17, 67 17, 78 24 L79 28 C68 21, 32 21, 21 28 Z" fill="#489e96"/>
         <rect x="45" y="19" width="10" height="6" rx="1.5" fill="#ff9d00"/>
         <circle cx="50" cy="22" r="1.5" fill="#ffffff"/>
+    </g>
 
+    <!-- 3. CHEVEUX AVANT (Frange) -->
+    <g id="boy-hair-front">
+        <path d="M 20,32 
+                 C 21,24 24,14 34,8 
+                 C 44,4 56,4 66,8 
+                 C 76,14 79,24 80,32 
+                 C 78,35 76,33 74,27 
+                 C 72,34 66,35 62,28 
+                 C 58,35 52,36 48,27 
+                 C 44,35 38,34 34,27 
+                 C 30,34 26,35 24,28 
+                 C 22,34 20,34 20,32 Z" fill="#5a2d0c"/>
+    </g>
+
+    <!-- 4. VISAGE EN AVANT-PLAN (Sourcils, yeux, nez, bouche par-dessus les cheveux) -->
+    <g id="boy-face-features">
         <!-- Oeil gauche -->
         <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
@@ -64,7 +83,7 @@ export const AVATARS = {
         <path d="M30 38 Q37 34 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
         <path d="M32 31 Q38 27 43 30" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round"/>
 
-        <!-- Oeil droit -->
+        <!-- Oeil droit & Sourcil droit -->
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
         <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="#542c0e"/>
@@ -78,20 +97,6 @@ export const AVATARS = {
         <!-- Nez et bouche -->
         <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
         <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
-    </g>
-
-    <!-- 3. CHEVEUX AVANT (Premier plan) -->
-    <g id="boy-hair-front">
-        <path d="M 20,32 
-                 C 21,24 24,14 34,8 
-                 C 44,4 56,4 66,8 
-                 C 76,14 79,24 80,32 
-                 C 78,35 76,33 74,27 
-                 C 72,34 66,35 62,28 
-                 C 58,35 52,36 48,27 
-                 C 44,35 38,34 34,27 
-                 C 30,34 26,35 24,28 
-                 C 22,34 20,34 20,32 Z" fill="#5a2d0c"/>
     </g>
 </svg>
         `,
@@ -153,8 +158,8 @@ export const AVATARS = {
     <path d="M68 68 C76 72, 78 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#489e96"/>
     <circle cx="77" cy="80" r="4.2" fill="#ffd4a3"/>
 
-    <!-- 7. GROUPE TETE ET VISAGE -->
-    <g id="boy-head-full">
+    <!-- 7. BASE TETE (Cou, crâne, oreilles, bandeau) -->
+    <g id="boy-head-base-full">
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
         <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
         <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
@@ -165,7 +170,24 @@ export const AVATARS = {
         <path d="M22 24 C33 17, 67 17, 78 24 L79 28 C68 21, 32 21, 21 28 Z" fill="#489e96"/>
         <rect x="45" y="19" width="10" height="6" rx="1.5" fill="#ff9d00"/>
         <circle cx="50" cy="22" r="1.5" fill="#ffffff"/>
+    </g>
 
+    <!-- 8. CHEVEUX AVANT (Frange) -->
+    <g id="boy-hair-front-full">
+        <path d="M 20,32 
+                 C 21,24 24,14 34,8 
+                 C 44,4 56,4 66,8 
+                 C 76,14 79,24 80,32 
+                 C 78,35 76,33 74,27 
+                 C 72,34 66,35 62,28 
+                 C 58,35 52,36 48,27 
+                 C 44,35 38,34 34,27 
+                 C 30,34 26,35 24,28 
+                 C 22,34 20,34 20,32 Z" fill="#5a2d0c"/>
+    </g>
+
+    <!-- 9. VISAGE EN AVANT-PLAN (Sourcils, yeux, nez, bouche par-dessus les cheveux) -->
+    <g id="boy-face-features-full">
         <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
         <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#542c0e"/>
@@ -189,20 +211,6 @@ export const AVATARS = {
         <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
         <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
-
-    <!-- 8. GROUPE CHEVEUX AVANT -->
-    <g id="boy-hair-front-full">
-        <path d="M 20,32 
-                 C 21,24 24,14 34,8 
-                 C 44,4 56,4 66,8 
-                 C 76,14 79,24 80,32 
-                 C 78,35 76,33 74,27 
-                 C 72,34 66,35 62,28 
-                 C 58,35 52,36 48,27 
-                 C 44,35 38,34 34,27 
-                 C 30,34 26,35 24,28 
-                 C 22,34 20,34 20,32 Z" fill="#5a2d0c"/>
-    </g>
 </svg>
         `
     },
@@ -213,7 +221,7 @@ export const AVATARS = {
         image: null,
         headSvg: `
             <svg viewBox="4 -6 92 78" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <!-- 1. GROUPE CHEVEUX ARRIERE (Même teinte #8a3c08 - Calque le plus au fond) -->
+    <!-- 1. CHEVEUX ARRIERE -->
     <g id="girl-hair-back">
         <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
         <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
@@ -226,17 +234,29 @@ export const AVATARS = {
         <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
     </g>
 
-    <!-- 2. GROUPE TETE ET VISAGE -->
-    <g id="girl-head">
+    <!-- 2. BASE DE LA TETE (Cou, crâne, oreilles, serre-tête) -->
+    <g id="girl-head-base">
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
         <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
         <circle cx="23" cy="38" r="4.5" fill="#ffd4a3"/>
         <circle cx="77" cy="38" r="4.5" fill="#ffd4a3"/>
 
+        <!-- Serre-tête turquoise & noeud -->
         <path d="M22 23 C33 16, 67 16, 78 23 L79 27 C68 20, 32 20, 21 27 Z" fill="#489e96"/>
         <circle cx="28" cy="22" r="3.5" fill="#ff9d00"/>
         <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>
+    </g>
 
+    <!-- 3. CHEVEUX AVANT (Frange et mèches de joues) -->
+    <g id="girl-hair-front">
+        <path d="M 18,28 C 22,38 30,42 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,42 78,38 82,28 C 76,12 64,6 50,6 C 36,6 24,12 18,28 Z" fill="#8a3c08"/>
+        <path d="M 18,28 C 14,40 16,54 24,60 C 24,50 22,40 22,30 Z" fill="#8a3c08"/>
+        <path d="M 82,28 C 86,40 84,54 76,60 C 76,50 78,40 78,30 Z" fill="#8a3c08"/>
+    </g>
+
+    <!-- 4. VISAGE EN AVANT-PLAN (Sourcils, yeux, nez, bouche par-dessus les cheveux) -->
+    <g id="girl-face-features">
+        <!-- Oeil gauche -->
         <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
         <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
@@ -248,6 +268,7 @@ export const AVATARS = {
         <path d="M31 35 L34 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M32 30 Q37 26 43 29" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
+        <!-- Oeil droit & Sourcil droit -->
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
         <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
@@ -259,15 +280,9 @@ export const AVATARS = {
         <path d="M69 35 L66 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
+        <!-- Nez et bouche -->
         <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
         <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
-    </g>
-
-    <!-- 3. GROUPE CHEVEUX AVANT (Premier plan) -->
-    <g id="girl-hair-front">
-        <path d="M 18,28 C 22,38 30,42 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,42 78,38 82,28 C 76,12 64,6 50,6 C 36,6 24,12 18,28 Z" fill="#8a3c08"/>
-        <path d="M 18,28 C 14,40 16,54 24,60 C 24,50 22,40 22,30 Z" fill="#8a3c08"/>
-        <path d="M 82,28 C 86,40 84,54 76,60 C 76,50 78,40 78,30 Z" fill="#8a3c08"/>
     </g>
 </svg>
         `,
@@ -276,7 +291,7 @@ export const AVATARS = {
     <!-- 1. Ombre au sol -->
     <ellipse cx="50" cy="120" rx="24" ry="4" fill="rgba(124, 64, 4, 0.18)"/>
 
-    <!-- 2. GROUPE CHEVEUX ARRIERE (Calque le plus au fond, derrière le corps entier) -->
+    <!-- 2. GROUPE CHEVEUX ARRIERE -->
     <g id="girl-hair-back-full">
         <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
         <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
@@ -334,8 +349,8 @@ export const AVATARS = {
     <path d="M67 68 C75 70, 77 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#ff9d00"/>
     <circle cx="77" cy="78" r="3.8" fill="#ffd4a3"/>
 
-    <!-- 7. GROUPE TETE ET VISAGE -->
-    <g id="girl-head-full">
+    <!-- 7. BASE TETE (Cou, crâne, oreilles, serre-tête) -->
+    <g id="girl-head-base-full">
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
         <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
         <circle cx="23" cy="38" r="4.5" fill="#ffd4a3"/>
@@ -344,7 +359,17 @@ export const AVATARS = {
         <path d="M22 23 C33 16, 67 16, 78 23 L79 27 C68 20, 32 20, 21 27 Z" fill="#489e96"/>
         <circle cx="28" cy="22" r="3.5" fill="#ff9d00"/>
         <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>
+    </g>
 
+    <!-- 8. CHEVEUX AVANT (Frange et mèches) -->
+    <g id="girl-hair-front-full">
+        <path d="M 18,28 C 22,38 30,42 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,42 78,38 82,28 C 76,12 64,6 50,6 C 36,6 24,12 18,28 Z" fill="#8a3c08"/>
+        <path d="M 18,28 C 14,40 16,54 24,60 C 24,50 22,40 22,30 Z" fill="#8a3c08"/>
+        <path d="M 82,28 C 86,40 84,54 76,60 C 76,50 78,40 78,30 Z" fill="#8a3c08"/>
+    </g>
+
+    <!-- 9. VISAGE EN AVANT-PLAN (Sourcils, yeux, nez, bouche par-dessus les cheveux) -->
+    <g id="girl-face-features-full">
         <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
         <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
@@ -369,13 +394,6 @@ export const AVATARS = {
 
         <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
         <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
-    </g>
-
-    <!-- 8. GROUPE CHEVEUX AVANT (Premier plan) -->
-    <g id="girl-hair-front-full">
-        <path d="M 18,28 C 22,38 30,42 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,42 78,38 82,28 C 76,12 64,6 50,6 C 36,6 24,12 18,28 Z" fill="#8a3c08"/>
-        <path d="M 18,28 C 14,40 16,54 24,60 C 24,50 22,40 22,30 Z" fill="#8a3c08"/>
-        <path d="M 82,28 C 86,40 84,54 76,60 C 76,50 78,40 78,30 Z" fill="#8a3c08"/>
     </g>
 </svg>
         `
