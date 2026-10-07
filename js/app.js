@@ -13,6 +13,7 @@ import { QuestionManager } from './modules/managers/question-manager.js';
 import { ResultsManager } from './modules/managers/results-manager.js';
 import { HistoryManager } from './modules/managers/history-manager.js';
 import { TrophiesManager } from './modules/managers/trophies-manager.js';
+import { roadmapManager } from './modules/ui/roadmap.js';
 import { shuffleArray, loadQuizData, getDifficultyIcons } from './modules/core/utils.js';
 import { initializeCategoryColors, getCategoryColors } from './modules/core/category-colors.js';
 
@@ -53,10 +54,28 @@ class QuizApp {
         const screen = document.getElementById('player-name-screen');
         const form = document.getElementById('player-name-form');
         const input = document.getElementById('player-name-input');
+        const avatarButtons = document.querySelectorAll('#start-avatar-picker .avatar-select-btn');
 
         if (screen) {
             screen.classList.remove('hidden');
         }
+
+        // Gestion de la sélection de l'avatar au démarrage
+        avatarButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                avatarButtons.forEach(b => {
+                    b.classList.remove('selected', 'bg-white/20', 'border-white', 'text-white');
+                    b.classList.add('bg-white/10', 'border-white/40', 'text-white/80');
+                });
+                btn.classList.add('selected', 'bg-white/20', 'border-white', 'text-white');
+                btn.classList.remove('bg-white/10', 'border-white/40', 'text-white/80');
+
+                const avatarId = btn.dataset.avatar;
+                if (avatarId) {
+                    playerManager.setPlayerAvatar(avatarId);
+                }
+            });
+        });
 
         if (form) {
             form.addEventListener('submit', (e) => {
@@ -108,8 +127,8 @@ class QuizApp {
         // Récupérer la liste chargée depuis le sélecteur (évite un double fetch)
         this.availableQuizzes = this.quizSelector.allQuizzes || [];
 
-        // Mettre à jour la carte Hero avec le dernier quiz
-        this.updateHeroCard();
+        // Rendre la Roadmap Fantasy dans la section Hero
+        roadmapManager.render();
 
         // Ajouter les écouteurs pour l'historique et le changement de joueur
         this.setupHistoryButtons();
@@ -444,6 +463,9 @@ class QuizApp {
         }
         
         domManager.showQuizSelection();
+
+        // Mettre à jour la Roadmap avec les nouveaux points gagnés
+        roadmapManager.render();
     }
 }
 

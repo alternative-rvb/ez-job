@@ -725,27 +725,44 @@ h1, h2, h3, .font-display {
   box-shadow: 0 4px 12px color-mix(in srgb, var(--subject-accent, rgb(102, 188, 180)) 40%, transparent);
 }
 
-/* ===== Hero Section Styles ===== */
+/* ===== Hero Section & Fantasy Roadmap Styles ===== */
 
-#latest-quiz-hero-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.fantasy-roadmap-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#latest-quiz-hero-card:hover {
-  transform: translateY(-4px);
+.fantasy-roadmap-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px -8px rgba(124, 64, 4, 0.15);
 }
 
-#hero-start-quiz-btn {
-  transition: all 0.3s ease-in-out;
+.avatar-select-btn.selected {
+  background-color: rgba(255, 255, 255, 0.35) !important;
+  border-color: #ff9d00 !important;
+  box-shadow: 0 0 0 3px rgba(255, 157, 0, 0.45);
+  transform: scale(1.03);
 }
 
-#hero-start-quiz-btn:hover {
-  transform: translateY(-2px);
+.milestone-node {
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-#hero-start-quiz-btn:active {
-  transform: translateY(0);
+.milestone-node:hover {
+  transform: scale(1.25);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
 }
+
+#player-avatar-marker {
+  animation: avatar-bob 2.2s infinite ease-in-out;
+}
+
+@keyframes avatar-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 /* ===== Sélecteur de Temps Modal ===== */

@@ -5,8 +5,25 @@
 class PlayerManager {
     constructor() {
         this.playerName = this.loadPlayerName();
+        this.playerAvatar = this.loadPlayerAvatar();
         this.results = this.loadResults();
         this.defaultTimeLimit = this.loadDefaultTimeLimit();
+    }
+
+    // Charger l'avatar du joueur depuis le localStorage
+    loadPlayerAvatar() {
+        return localStorage.getItem('playerAvatar') || 'boy';
+    }
+
+    // Sauvegarder l'avatar du joueur ('boy' ou 'girl')
+    setPlayerAvatar(avatarId) {
+        if (['boy', 'girl'].includes(avatarId)) {
+            this.playerAvatar = avatarId;
+            localStorage.setItem('playerAvatar', avatarId);
+            console.log(`🎭 Avatar sélectionné: ${avatarId}`);
+            return true;
+        }
+        return false;
     }
 
     // Charger le nom du joueur depuis le localStorage

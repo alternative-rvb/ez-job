@@ -229,22 +229,180 @@
     <!-- Page de saisie du nom du joueur -->
     <div id="player-name-screen" class="hidden max-w-md mx-auto flex items-center justify-center min-h-[70vh]">
       <div class="bg-primary-500 rounded-2xl p-8 shadow-2xl w-full">
-        <div class="text-center mb-8">
-          <h1 class="text-4xl font-bold mb-4 text-white">
+        <div class="text-center mb-6">
+          <h1 class="text-4xl font-bold mb-2 text-white">
             CamiLudik
           </h1>
-          <p class="text-white/80 text-lg">Quel est votre nom ?</p>
+          <p class="text-white/80 text-base">Choisis ton personnage et entre ton nom !</p>
         </div>
 
-        <form id="player-name-form" class="space-y-4">
+        <form id="player-name-form" class="space-y-5">
+          <!-- Sélection de l'avatar de départ -->
           <div>
-            <input type="text" id="player-name-input" placeholder="Entrez votre nom..."
-              class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/60 rounded-lg border-2 border-white/40 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/30 focus:outline-none transition-colors"
+            <label class="block text-white/90 text-sm font-semibold mb-3 text-center">Choisis ton personnage</label>
+            <div class="grid grid-cols-2 gap-4" id="start-avatar-picker">
+              <button type="button" data-avatar="boy" class="avatar-select-btn selected flex flex-col items-center justify-center p-3 rounded-2xl bg-white/20 border-2 border-white text-white transition-all duration-200 hover:bg-white/30 hover:scale-105" aria-label="Personnage 1">
+                <div class="w-20 h-28 flex items-center justify-center">
+                  <svg viewBox="0 0 100 125" class="w-full h-full drop-shadow">
+                    <ellipse cx="50" cy="120" rx="24" ry="4" fill="rgba(0, 0, 0, 0.15)"/>
+                    <rect x="36" y="86" width="10" height="18" rx="4" fill="#5c3818"/>
+                    <rect x="35" y="98" width="12" height="7" rx="2" fill="#ffffff"/>
+                    <rect x="35" y="100" width="12" height="2" fill="#ff9d00"/>
+                    <path d="M33 105 C33 102, 47 102, 47 105 L48 116 C48 118, 30 118, 30 116 Z" fill="#7c4004"/>
+                    <path d="M29 114 L49 114 L48 118 L28 118 Z" fill="#442100"/>
+                    <rect x="34" y="107" width="9" height="3" rx="1" fill="#ff9d00"/>
+                    <rect x="54" y="86" width="10" height="18" rx="4" fill="#5c3818"/>
+                    <rect x="53" y="98" width="12" height="7" rx="2" fill="#ffffff"/>
+                    <rect x="53" y="100" width="12" height="2" fill="#ff9d00"/>
+                    <path d="M53 105 C53 102, 67 102, 67 105 L70 116 C70 118, 52 118, 52 116 Z" fill="#7c4004"/>
+                    <path d="M51 114 L71 114 L72 118 L52 118 Z" fill="#442100"/>
+                    <rect x="57" y="107" width="9" height="3" rx="1" fill="#ff9d00"/>
+                    <path d="M34 66 L66 66 L64 88 L36 88 Z" fill="#ffffff"/>
+                    <path d="M33 66 C33 66, 40 76, 44 88 L34 88 L31 70 Z" fill="#489e96"/>
+                    <path d="M67 66 C67 66, 60 76, 56 88 L66 88 L69 70 Z" fill="#489e96"/>
+                    <path d="M42 63 L50 72 L58 63 Z" fill="#ff9d00"/>
+                    <path d="M47 70 L50 80 L53 70 Z" fill="#e08900"/>
+                    <rect x="33" y="84" width="34" height="5" rx="1" fill="#7c4004"/>
+                    <rect x="46" y="83" width="8" height="7" rx="1.5" fill="#ffb733" stroke="#7c4004" stroke-width="1"/>
+                    <rect x="31" y="84" width="6" height="8" rx="1.5" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
+                    <circle cx="34" cy="88" r="0.8" fill="#ffb733"/>
+                    <path d="M32 68 C24 74, 23 80, 29 85 C32 85, 34 82, 35 78 Z" fill="#489e96"/>
+                    <circle cx="30" cy="85" r="4" fill="#ffd4a3"/>
+                    <path d="M68 68 C76 72, 78 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#489e96"/>
+                    <circle cx="77" cy="80" r="4.2" fill="#ffd4a3"/>
+                    <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
+                    <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
+                    <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
+                    <circle cx="22" cy="38" r="2.5" fill="#f0be8d"/>
+                    <circle cx="78" cy="38" r="4.5" fill="#ffd4a3"/>
+                    <circle cx="78" cy="38" r="2.5" fill="#f0be8d"/>
+                    <path d="M21 34 C19 22, 28 8, 50 8 C72 8, 81 22, 79 34 C77 24, 69 16, 50 16 C31 16, 23 24, 21 34 Z" fill="#6d3a14"/>
+                    <polygon points="34,12 40,3 44,11" fill="#6d3a14"/>
+                    <polygon points="45,10 52,2 56,10" fill="#6d3a14"/>
+                    <polygon points="57,10 65,4 67,12" fill="#6d3a14"/>
+                    <polygon points="26,20 20,13 28,15" fill="#6d3a14"/>
+                    <polygon points="74,20 80,13 72,15" fill="#6d3a14"/>
+                    <path d="M22 30 L27 34 L31 24 L37 35 L43 25 L49 36 L55 25 L61 35 L67 24 L73 34 L78 30 C74 18, 62 14, 50 14 C38 14, 26 18, 22 30 Z" fill="#6d3a14"/>
+                    <polygon points="22,30 25,38 27,33" fill="#6d3a14"/>
+                    <polygon points="78,30 75,38 73,33" fill="#6d3a14"/>
+                    <path d="M24 23 C34 18, 66 18, 76 23 L77 27 C67 22, 33 22, 23 27 Z" fill="#489e96"/>
+                    <rect x="45" y="19" width="10" height="6" rx="1.5" fill="#ff9d00"/>
+                    <circle cx="50" cy="22" r="1.5" fill="#ffffff"/>
+                    <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
+                    <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
+                    <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#542c0e"/>
+                    <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="#8c4e1e"/>
+                    <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
+                    <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
+                    <circle cx="39.5" cy="43.5" r="0.9" fill="#ffffff"/>
+                    <path d="M30 38 Q37 34 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M32 31 Q38 27 43 30" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round"/>
+                    <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
+                    <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
+                    <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="#542c0e"/>
+                    <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="#8c4e1e"/>
+                    <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
+                    <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
+                    <circle cx="64.5" cy="43.5" r="0.9" fill="#ffffff"/>
+                    <path d="M56 38 Q63 34 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M57 30 Q62 27 68 31" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round"/>
+                    <ellipse cx="30" cy="46" rx="4.5" ry="2.2" fill="#ff7070" opacity="0.55"/>
+                    <ellipse cx="70" cy="46" rx="4.5" ry="2.2" fill="#ff7070" opacity="0.55"/>
+                    <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
+                    <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </button>
+
+              <button type="button" data-avatar="girl" class="avatar-select-btn flex flex-col items-center justify-center p-3 rounded-2xl bg-white/10 border-2 border-white/40 text-white/80 transition-all duration-200 hover:bg-white/20 hover:scale-105" aria-label="Personnage 2">
+                <div class="w-20 h-28 flex items-center justify-center">
+                  <svg viewBox="0 0 100 125" class="w-full h-full drop-shadow">
+                    <ellipse cx="50" cy="120" rx="24" ry="4" fill="rgba(0, 0, 0, 0.15)"/>
+                    <path d="M18 36 C10 54, 12 76, 18 90 C22 84, 24 70, 24 50 Z" fill="#8c3e06"/>
+                    <path d="M82 36 C90 54, 88 76, 82 90 C78 84, 76 70, 76 50 Z" fill="#8c3e06"/>
+                    <ellipse cx="20" cy="44" rx="4" ry="3" fill="#489e96"/>
+                    <ellipse cx="80" cy="44" rx="4" ry="3" fill="#489e96"/>
+                    <rect x="36" y="86" width="10" height="18" rx="4" fill="#ffd4a3"/>
+                    <rect x="35" y="94" width="12" height="11" rx="2" fill="#489e96"/>
+                    <rect x="35" y="96" width="12" height="2" fill="#ffffff"/>
+                    <path d="M33 105 C33 102, 47 102, 47 105 L48 116 C48 118, 30 118, 30 116 Z" fill="#ff9d00"/>
+                    <path d="M29 114 L49 114 L48 118 L28 118 Z" fill="#c47000"/>
+                    <rect x="34" y="106" width="9" height="3" rx="1.5" fill="#ffffff"/>
+                    <rect x="54" y="86" width="10" height="18" rx="4" fill="#ffd4a3"/>
+                    <rect x="53" y="94" width="12" height="11" rx="2" fill="#489e96"/>
+                    <rect x="53" y="96" width="12" height="2" fill="#ffffff"/>
+                    <path d="M53 105 C53 102, 67 102, 67 105 L70 116 C70 118, 52 118, 52 116 Z" fill="#ff9d00"/>
+                    <path d="M51 114 L71 114 L72 118 L52 118 Z" fill="#c47000"/>
+                    <rect x="57" y="106" width="9" height="3" rx="1.5" fill="#ffffff"/>
+                    <path d="M32 82 L68 82 L72 90 L28 90 Z" fill="#5c3818"/>
+                    <line x1="40" y1="82" x2="38" y2="90" stroke="#40240d" stroke-width="1.2"/>
+                    <line x1="50" y1="82" x2="50" y2="90" stroke="#40240d" stroke-width="1.2"/>
+                    <line x1="60" y1="82" x2="62" y2="90" stroke="#40240d" stroke-width="1.2"/>
+                    <path d="M34 66 L66 66 L66 82 L34 82 Z" fill="#ff9d00"/>
+                    <path d="M44 64 L50 74 L56 64 Z" fill="#ffffff"/>
+                    <circle cx="50" cy="69" r="2.5" fill="#489e96"/>
+                    <polygon points="46,67 50,69 46,72" fill="#489e96"/>
+                    <polygon points="54,67 50,69 54,72" fill="#489e96"/>
+                    <circle cx="50" cy="76" r="1.5" fill="#ffde6a"/>
+                    <circle cx="50" cy="80" r="1.5" fill="#ffde6a"/>
+                    <rect x="33" y="81" width="34" height="4" fill="#7c4004"/>
+                    <rect x="47" y="80" width="6" height="6" rx="1" fill="#ffb733"/>
+                    <rect x="62" y="81" width="4" height="6" rx="1.5" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
+                    <circle cx="64" cy="84" r="1" fill="#ffffff"/>
+                    <path d="M33 68 C25 72, 23 78, 26 84 C29 84, 32 80, 35 76 Z" fill="#ff9d00"/>
+                    <circle cx="26" cy="84" r="3.8" fill="#ffd4a3"/>
+                    <path d="M67 68 C75 70, 77 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#ff9d00"/>
+                    <circle cx="77" cy="78" r="3.8" fill="#ffd4a3"/>
+                    <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
+                    <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
+                    <circle cx="23" cy="38" r="4.5" fill="#ffd4a3"/>
+                    <circle cx="77" cy="38" r="4.5" fill="#ffd4a3"/>
+                    <path d="M22 34 C20 18, 32 8, 50 8 C68 8, 80 18, 78 34 C74 24, 68 20, 58 18 C48 16, 36 20, 28 26 C24 28, 22 34, 22 34 Z" fill="#a84e0e"/>
+                    <path d="M23 32 C26 38, 32 40, 36 34 C40 40, 48 40, 52 33 C56 40, 64 40, 68 34 C72 38, 75 36, 77 31 C72 16, 58 12, 50 12 C36 12, 26 20, 23 32 Z" fill="#a84e0e"/>
+                    <path d="M23 32 C21 44, 25 54, 28 58 C29 52, 27 42, 26 36 Z" fill="#8c3e06"/>
+                    <path d="M77 32 C79 44, 75 54, 72 58 C71 52, 73 42, 74 36 Z" fill="#8c3e06"/>
+                    <path d="M25 24 C35 19, 65 19, 75 24 L76 27 C66 22, 34 22, 24 27 Z" fill="#489e96"/>
+                    <circle cx="30" cy="23" r="3.5" fill="#ff9d00"/>
+                    <circle cx="30" cy="23" r="1.8" fill="#ffffff"/>
+                    <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
+                    <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
+                    <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
+                    <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="#b45309"/>
+                    <circle cx="37.5" cy="41.5" r="2.2" fill="#2b1404"/>
+                    <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
+                    <circle cx="39.5" cy="43.5" r="1.5" fill="#ffffff"/>
+                    <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M31 35 L34 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M32 30 Q37 26 43 29" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
+                    <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
+                    <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
+                    <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
+                    <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="#b45309"/>
+                    <circle cx="62.5" cy="41.5" r="2.2" fill="#2b1404"/>
+                    <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
+                    <circle cx="64.5" cy="43.5" r="1.5" fill="#ffffff"/>
+                    <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M69 35 L66 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
+                    <ellipse cx="30" cy="46" rx="4.5" ry="2.2" fill="#ff6b6b" opacity="0.55"/>
+                    <ellipse cx="70" cy="46" rx="4.5" ry="2.2" fill="#ff6b6b" opacity="0.55"/>
+                    <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
+                    <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <input type="text" id="player-name-input" placeholder="Ton prénom ou pseudo..."
+              class="w-full px-4 py-3 bg-white/20 text-white placeholder-white/60 rounded-lg border-2 border-white/40 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/30 focus:outline-none transition-colors font-semibold text-center"
               maxlength="30" autocomplete="off" />
           </div>
           <button type="submit"
-            class="w-full px-6 py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg hover:opacity-90 transition-opacity font-bold text-lg">
-            <i class="bi bi-arrow-right mr-2"></i>Commencer
+            class="w-full px-6 py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg hover:opacity-90 transition-opacity font-bold text-lg shadow-lg flex items-center justify-center gap-2">
+            <span>Commencer l'aventure</span>
+            <i class="bi bi-arrow-right"></i>
           </button>
         </form>
       </div>
@@ -265,7 +423,7 @@
             
             <div class="mb-8">
               <p class="text-2xl md:text-3xl font-bold mb-3" style="color: #7c4004;">Apprends en t'amusant !</p>
-              <p class="text-base md:text-lg mb-6" style="color: #7c4004;">Des quiz interactifs sur plein de sujets fun et éducatifs.<br>Teste tes connaissances, bats tes records et collectionne des trophées !</p>
+              <p class="text-base md:text-lg mb-6" style="color: #7c4004;">Des quiz interactifs sur plein de sujets fun et éducatifs.<br>Teste tes connaissances, grimpe jusqu'à la Citadelle du Savoir et collectionne des trophées !</p>
             </div>
 
             <!-- Boutons CTA Principaux -->
@@ -288,59 +446,9 @@
             </a>
           </div>
 
-          <!-- Colonne Droite : Dernier Quiz Hero Card -->
-          <div id="hero-latest-quiz" class="max-w-2xl mx-auto lg:mx-0 w-full">
-            <div id="latest-quiz-hero-card" class="group rounded-2xl transition-all duration-300 overflow-hidden cursor-pointer shadow-md hover:shadow-lg" style="background:#f4eadd">
-              <div class="relative p-6 md:p-8">
-                <!-- Header -->
-                <div class="mb-6">
-                  <div class="flex items-center gap-2 mb-3">
-                    <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap" style="background:#e0f4f2;color:#489e96;border:1px solid #b0ddd9">
-                      <i class="bi bi-star-fill mr-1" style="color:#ff9d00"></i>Dernier Ajout
-                    </span>
-                    <span id="hero-quiz-date" class="text-xs font-medium" style="color:#b46e28">Aujourd'hui</span>
-                  </div>
-
-                  <h2 id="hero-quiz-title" class="text-2xl md:text-3xl font-bold mb-2" style="color:#7c4004">
-                    Vocabulaire Anglais - Test Mixte
-                  </h2>
-
-                  <p id="hero-quiz-description" class="text-sm mb-4" style="color:#b46e28">
-                    Testez vos connaissances en vocabulaire anglais avec ce quiz varié et complet.
-                  </p>
-                </div>
-
-                <!-- Badges infos -->
-                <div class="grid grid-cols-2 gap-2 mb-6">
-                  <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background:#eaddcc">
-                    <i class="bi bi-question-circle text-sm" style="color:#66bcb4"></i>
-                    <span id="hero-quiz-questions" class="text-xs font-medium whitespace-nowrap" style="color:#7c4004">10 questions</span>
-                  </div>
-
-                  <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background:#eaddcc">
-                    <i class="bi bi-hourglass-split text-sm" style="color:#66bcb4"></i>
-                    <span id="hero-quiz-time" class="text-xs font-medium whitespace-nowrap" style="color:#7c4004">~3 min</span>
-                  </div>
-
-                  <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background:#eaddcc">
-                    <span id="hero-quiz-difficulty-icons" class="text-xs font-medium whitespace-nowrap" style="color:#c8a882">
-                      <i class="bi bi-fire"></i>
-                    </span>
-                  </div>
-
-                  <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background:#eaddcc">
-                    <span class="w-2 h-2 rounded-full" id="hero-quiz-color-dot" style="background:#66bcb4"></span>
-                    <span id="hero-quiz-category" class="text-xs font-medium whitespace-nowrap" style="color:#7c4004">Catégorie</span>
-                  </div>
-                </div>
-
-                <!-- Bouton CTA -->
-                <button id="hero-start-quiz-btn" class="w-full px-6 py-3 text-white font-bold rounded-xl hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" style="background:#7c4004">
-                  <i class="bi bi-play-circle-fill text-lg"></i>
-                  <span>Commencer</span>
-                </button>
-              </div>
-            </div>
+          <!-- Colonne Droite : Roadmap Fantasy Card -->
+          <div id="hero-roadmap-container" class="max-w-2xl mx-auto lg:mx-0 w-full">
+            <!-- La roadmap interactive sera insérée dynamiquement ici -->
           </div>
         </div>
       </div>
@@ -407,8 +515,8 @@
               type="text"
               id="quiz-search-input"
               placeholder="Rechercher un quiz par titre, description ou tag..."
-              class="w-full px-4 py-3 pl-12 rounded-xl border-2 focus:outline-none transition-colors"
-              style="background:white;color:#7c4004;border-color:#66bcb4;placeholder-color:#b46e28"
+              class="w-full px-4 py-3 pl-12 rounded-xl border-2 focus:outline-none transition-colors placeholder-[#b46e28]"
+              style="background:white;color:#7c4004;border-color:#66bcb4;"
               autocomplete="off"
             />
             <i class="bi bi-search absolute left-4 top-1/2 -translate-y-1/2 text-xl" style="color:#66bcb4"></i>
