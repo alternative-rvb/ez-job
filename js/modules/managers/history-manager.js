@@ -42,20 +42,20 @@ export class HistoryManager {
 
         const statsHTML = `
             <div class="rounded-xl p-4 text-center" style="background:#f4eadd;border:1.5px solid #dcc9b0">
-                <p class="text-sm mb-1" style="color:#b46e28">Quiz terminés</p>
-                <p class="text-3xl font-bold" style="color:#66bcb4">${stats.totalQuizzes}</p>
+                <p class="text-sm mb-1 font-medium" style="color:#6b3603">Quiz terminés</p>
+                <p class="text-3xl font-bold" style="color:#2e7c75">${stats.totalQuizzes}</p>
             </div>
             <div class="rounded-xl p-4 text-center" style="background:#f4eadd;border:1.5px solid #dcc9b0">
-                <p class="text-sm mb-1" style="color:#b46e28">Moyenne</p>
-                <p class="text-3xl font-bold" style="color:#66bcb4">${stats.averageScore}%</p>
+                <p class="text-sm mb-1 font-medium" style="color:#6b3603">Moyenne</p>
+                <p class="text-3xl font-bold" style="color:#2e7c75">${stats.averageScore}%</p>
             </div>
             <div class="rounded-xl p-4 text-center" style="background:#f4eadd;border:1.5px solid #dcc9b0">
-                <p class="text-sm mb-1" style="color:#b46e28">Meilleur</p>
-                <p class="text-3xl font-bold text-green-500">${stats.bestScore}%</p>
+                <p class="text-sm mb-1 font-medium" style="color:#6b3603">Meilleur</p>
+                <p class="text-3xl font-bold text-green-600">${stats.bestScore}%</p>
             </div>
             <div class="rounded-xl p-4 text-center" style="background:#f4eadd;border:1.5px solid #dcc9b0">
-                <p class="text-sm mb-1" style="color:#b46e28">Moins bon</p>
-                <p class="text-3xl font-bold text-red-400">${stats.worstScore}%</p>
+                <p class="text-sm mb-1 font-medium" style="color:#6b3603">Moins bon</p>
+                <p class="text-3xl font-bold text-red-600">${stats.worstScore}%</p>
             </div>
         `;
 
@@ -69,9 +69,9 @@ export class HistoryManager {
         if (results.length === 0) {
             listContainer.innerHTML = `
                 <div class="text-center py-12">
-                    <i class="bi bi-inbox text-6xl mb-4" style="color:#c8a882"></i>
-                    <p class="text-lg" style="color:#b46e28">Aucun résultat pour le moment.</p>
-                    <p style="color:#c8a882">Lancez un quiz pour voir vos résultats ici !</p>
+                    <i class="bi bi-inbox text-6xl mb-4" style="color:#8c4808"></i>
+                    <p class="text-lg font-bold" style="color:#7c4004">Aucun résultat pour le moment.</p>
+                    <p style="color:#6b3603">Lancez un quiz pour voir vos résultats ici !</p>
                 </div>
             `;
             return;
@@ -83,8 +83,8 @@ export class HistoryManager {
         );
 
         const resultsHTML = sortedResults.map(result => {
-            const scoreClass = result.percentage >= 80 ? 'text-green-400' : 
-                               result.percentage >= 60 ? 'text-yellow-400' : 'text-red-400';
+            const scoreClass = result.percentage >= 80 ? 'text-green-600' : 
+                               result.percentage >= 60 ? 'text-amber-600' : 'text-red-600';
             
             const date = playerManager.formatDate(result.date);
 
@@ -94,24 +94,24 @@ export class HistoryManager {
                         <div class="flex-1">
                             <h3 class="text-lg font-bold mb-2" style="color:#7c4004">${result.quizTitle}</h3>
                             <div class="flex gap-2 text-xs flex-wrap">
-                                <span class="px-2 py-1 rounded-full whitespace-nowrap" style="background:#eaddcc;color:#b46e28">${getDifficultyIcons(result.difficulty)}</span>
-                                <span class="px-2 py-1 rounded-full whitespace-nowrap" style="background:#e0f4f2;color:#489e96;border:1px solid #b0ddd9">${result.category}</span>
+                                <span class="px-2 py-1 rounded-full whitespace-nowrap font-medium" style="background:#eaddcc;color:#6b3603">${getDifficultyIcons(result.difficulty)}</span>
+                                <span class="px-2 py-1 rounded-full whitespace-nowrap font-medium" style="background:#e0f4f2;color:#1e5e57;border:1px solid #99d6d0">${result.category}</span>
                             </div>
                         </div>
                         <div class="text-right ml-4">
-                            <p class="text-4xl font-bold ${scoreClass}">${result.percentage}%</p>
-                            <p class="text-sm" style="color:#b46e28">${result.score}/${result.totalQuestions}</p>
+                            <p class="text-4xl font-black ${scoreClass}">${result.percentage}%</p>
+                            <p class="text-sm font-medium" style="color:#6b3603">${result.score}/${result.totalQuestions}</p>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center text-sm pt-3 border-t" style="border-color:#dcc9b0;color:#b46e28">
+                    <div class="flex justify-between items-center text-sm pt-3 border-t font-medium" style="border-color:#dcc9b0;color:#6b3603">
                         <div class="flex gap-4">
                             <span><i class="bi bi-calendar mr-1"></i>${date}</span>
                             <span><i class="bi bi-hourglass-split mr-1"></i>${Math.round(result.timeSpent)}s</span>
                         </div>
                         <div class="flex gap-2 items-center">
                             ${result.pointsEarned !== undefined ? `
-                                <span class="px-2 py-1 rounded-full text-xs font-semibold whitespace-nowrap" style="background:#fff8e0;color:#b45309;border:1px solid #fde68a">
-                                    <i class="bi bi-star-fill mr-1"></i>+${result.pointsEarned} pt${result.pointsEarned > 1 ? 's' : ''}
+                                <span class="px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap" style="background:#fff8e0;color:#853e04;border:1px solid #fde68a">
+                                    <i class="bi bi-star-fill mr-1 text-accent-500"></i>+${result.pointsEarned} pt${result.pointsEarned > 1 ? 's' : ''}
                                 </span>
                             ` : ''}
                         </div>

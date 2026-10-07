@@ -11,7 +11,7 @@
   /* Couleurs principales (valeurs RGB pour usage dans rgba()) */
   --color-primary:       102, 188, 180; /* Turquoise principal  #66bcb4 */
   --color-primary-light: 138, 210, 204; /* Turquoise clair      #8ad2cc */
-  --color-primary-dark:  72, 158, 150;  /* Turquoise foncé      #489e96 */
+  --color-primary-dark:  53, 131, 124;  /* Turquoise foncé      #35837c (contraste AA) */
   --color-secondary:     255, 157, 0;   /* Orange caméléon      #ff9d00 */
   --color-accent:        255, 157, 0;   /* Orange caméléon      #ff9d00 */
 
@@ -21,8 +21,8 @@
   --color-bg-tertiary:   234, 221, 204; /* Fond inputs/btns  #eaddcc */
 
   /* Couleurs de texte */
-  --color-text-primary:  124, 64, 4;   /* Texte principal   #7c4004 */
-  --color-text-secondary: 180, 110, 40; /* Texte secondaire  #b46e28 */
+  --color-text-primary:  124, 64, 4;    /* Texte principal   #7c4004 (contraste 9.8:1) */
+  --color-text-secondary: 140, 72, 8;   /* Texte secondaire  #8c4808 (contraste 6.5:1) */
 
   /* Couleurs de feedback (sémantiques — à ne pas changer) */
   --color-success: 34, 197, 94;         /* Vert  — bonne réponse */
@@ -690,39 +690,39 @@ h1, h2, h3, .font-display {
   transition: all 0.2s ease-in-out;
   font-weight: 700;
   font-size: 0.875rem;
-  border: 2px solid rgb(102, 188, 180);
+  border: 2px solid rgb(53, 131, 124);
   cursor: pointer;
   background-color: white;
-  color: rgb(72, 158, 150);
+  color: rgb(46, 120, 113);
 }
 
 .btn-category:hover {
-  background-color: rgb(102, 188, 180);
+  background-color: rgb(53, 131, 124);
   color: white;
   transform: translateY(-1px);
 }
 
 .btn-category.selected {
-  background-color: rgb(102, 188, 180);
+  background-color: rgb(53, 131, 124);
   color: white;
-  border-color: rgb(102, 188, 180);
-  box-shadow: 0 4px 12px rgba(102, 188, 180, 0.4);
+  border-color: rgb(53, 131, 124);
+  box-shadow: 0 4px 12px rgba(53, 131, 124, 0.4);
 }
 
 .subject-filter {
-  border-color: var(--subject-accent, rgb(102, 188, 180));
-  color: var(--subject-accent, rgb(72, 158, 150));
+  border-color: var(--subject-accent, rgb(53, 131, 124));
+  color: var(--subject-accent, rgb(46, 120, 113));
 }
 
 .subject-filter:hover {
-  background-color: var(--subject-accent, rgb(102, 188, 180));
+  background-color: var(--subject-accent, rgb(53, 131, 124));
   color: white;
 }
 
 .subject-filter.selected {
-  background-color: var(--subject-accent, rgb(102, 188, 180));
-  border-color: var(--subject-accent, rgb(102, 188, 180));
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--subject-accent, rgb(102, 188, 180)) 40%, transparent);
+  background-color: var(--subject-accent, rgb(53, 131, 124));
+  border-color: var(--subject-accent, rgb(53, 131, 124));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--subject-accent, rgb(53, 131, 124)) 40%, transparent);
 }
 
 /* ===== Hero Section & Fantasy Roadmap Styles ===== */

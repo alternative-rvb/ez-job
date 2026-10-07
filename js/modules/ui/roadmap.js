@@ -575,7 +575,7 @@ export class RoadmapManager {
                 <circle cx="0" cy="0" r="16" fill="transparent" pointer-events="all"/>
                 <line x1="0" y1="0" x2="0" y2="14" stroke="#7c4004" stroke-width="1.8" stroke-linecap="round" pointer-events="none"/>
                 <circle cx="0" cy="0" r="8.5" fill="${isUnlocked ? '#ff9d00' : '#e8d8c8'}" stroke="#ffffff" stroke-width="2" pointer-events="none"/>
-                <text x="0" y="3.2" font-size="6.5" font-weight="bold" fill="${isUnlocked ? '#ffffff' : '#7c4004'}" text-anchor="middle" font-family="'Nunito', sans-serif" pointer-events="none">
+                <text x="0" y="3.2" font-size="6.5" font-weight="900" fill="${isUnlocked ? '#5c2800' : '#7c4004'}" text-anchor="middle" font-family="'Nunito', sans-serif" pointer-events="none">
                     ${isUnlocked ? '✓' : m.points}
                 </text>
             `;

@@ -197,12 +197,12 @@ export class QuizSelector {
                         <div class="flex items-start justify-between mb-1 gap-1">
                             <h3 class="text-sm font-bold flex-1" style="color:#7c4004">${quiz.title}</h3>
                             <div class="text-right flex-shrink-0">
-                                <div class="text-xs font-bold" style="color:#489e96">${quiz.questionCount}</div>
-                                <div class="text-xs" style="color:#b46e28">Q.</div>
+                                <div class="text-xs font-bold" style="color:#2e7c75">${quiz.questionCount}</div>
+                                <div class="text-xs" style="color:#7c4004">Q.</div>
                             </div>
                         </div>
 
-                        <p class="text-xs mb-2 line-clamp-2" style="color:#b46e28">${quiz.description}</p>
+                        <p class="text-xs mb-2 line-clamp-2" style="color:#6b3603">${quiz.description}</p>
 
                         <!-- Badge niveau + matière (ou catégorie si pas de niveau) -->
                         <div class="flex flex-wrap gap-1 mb-2">
@@ -211,7 +211,7 @@ export class QuizSelector {
                                 ${quiz.level}
                             </span>
                             ` : `
-                            <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap" style="background:#e0f4f2;color:#489e96;border:1px solid #b0ddd9">
+                            <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap" style="background:#e0f4f2;color:#1e5e57;border:1px solid #99d6d0">
                                 ${quiz.category}
                             </span>
                             `}
@@ -227,25 +227,25 @@ export class QuizSelector {
                             const excluded = new Set([quiz.subject, quiz.level, quiz.category].filter(Boolean));
                             const firstTag = quiz.tag && quiz.tag.find(t => !excluded.has(t));
                             return firstTag ? `
-                            <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap self-start" style="background:#f4eadd;color:#b46e28;border:1px solid #e0d0bc">
+                            <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap self-start font-medium" style="background:#f4eadd;color:#6b3603;border:1px solid #d8c4ad">
                                 <i class="bi bi-tag mr-0.5"></i>${firstTag}
                             </span>` : '';
                         })()}
 
                         <!-- Infos bas -->
-                        <div class="flex items-center justify-between mt-auto pt-2" style="border-top:1px solid #e0d0bc">
-                            <div class="flex items-center gap-2 text-xs" style="color:#b46e28">
+                        <div class="flex items-center justify-between mt-auto pt-2" style="border-top:1px solid #d8c4ad">
+                            <div class="flex items-center gap-2 text-xs font-medium" style="color:#6b3603">
                                 <span><i class="bi bi-clock mr-0.5"></i>~${Math.ceil(quiz.questionCount * CONFIG.timeLimit / 60)}m</span>
-                                <span style="color:#c8a882;letter-spacing:-1px">${getDifficultyIcons(quiz.difficulty)}</span>
+                                <span style="color:#9e621d;letter-spacing:-1px">${getDifficultyIcons(quiz.difficulty)}</span>
                             </div>
-                            <span class="text-xs font-bold transition-colors" style="color:#66bcb4">
+                            <span class="text-xs font-bold transition-colors" style="color:#2e7c75">
                                 <i class="bi bi-play-circle-fill text-base"></i>
                             </span>
                         </div>
 
                         <!-- Lien vers le résumé optimisé pour la lecture -->
                         ${quiz.summaryUrl ? `
-                        <a href="${quiz.summaryUrl}" target="_blank" rel="noopener" class="quiz-summary-link mt-2 flex items-center justify-center gap-1.5 text-xs font-semibold rounded-lg py-1.5 transition-colors" style="background:#fef3e2;color:#b46e28;border:1px solid #e0d0bc">
+                        <a href="${quiz.summaryUrl}" target="_blank" rel="noopener" class="quiz-summary-link mt-2 flex items-center justify-center gap-1.5 text-xs font-semibold rounded-lg py-1.5 transition-colors" style="background:#fef3e2;color:#7c4004;border:1px solid #d8c4ad">
                             <i class="bi bi-book-half"></i> Lire le résumé
                         </a>
                         ` : ''}

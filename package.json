@@ -1,6 +1,6 @@
 {
   "name": "ez-job",
-  "version": "1.0.48",
+  "version": "1.0.49",
   "description": "Application de quiz interactive",
   "scripts": {
     "build": "python3 api.py generate-index && echo 'Build completed'",
