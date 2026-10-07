@@ -312,7 +312,7 @@ export const AVATARS = {
         <polygon points="33.5,45.0 34.2,47.2 35.0,45.5" fill="#2b1404"/>
         <polygon points="36.2,45.7 37.0,47.6 37.8,45.7" fill="#2b1404"/>
         <polygon points="39.0,45.5 39.8,46.9 40.5,45.0" fill="#2b1404"/>
-        <path d="M32 30 Q37 26 43 29" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M31.5 30 L37.5 26.5 L43 28.5" fill="none" stroke="#381603" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
         <!-- Oeil droit & Sourcil droit -->
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
@@ -332,7 +332,7 @@ export const AVATARS = {
         <polygon points="66.5,45.0 65.8,47.2 65.0,45.5" fill="#2b1404"/>
         <polygon points="63.8,45.7 63.0,47.6 62.2,45.7" fill="#2b1404"/>
         <polygon points="61.0,45.5 60.2,46.9 59.5,45.0" fill="#2b1404"/>
-        <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M57 28.5 L62.5 26.5 L68.5 30" fill="none" stroke="#381603" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
         <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
@@ -466,7 +466,7 @@ export const AVATARS = {
         <polygon points="33.5,45.0 34.2,47.2 35.0,45.5" fill="#2b1404"/>
         <polygon points="36.2,45.7 37.0,47.6 37.8,45.7" fill="#2b1404"/>
         <polygon points="39.0,45.5 39.8,46.9 40.5,45.0" fill="#2b1404"/>
-        <path d="M32 30 Q37 26 43 29" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M31.5 30 L37.5 26.5 L43 28.5" fill="none" stroke="#381603" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
@@ -485,7 +485,7 @@ export const AVATARS = {
         <polygon points="66.5,45.0 65.8,47.2 65.0,45.5" fill="#2b1404"/>
         <polygon points="63.8,45.7 63.0,47.6 62.2,45.7" fill="#2b1404"/>
         <polygon points="61.0,45.5 60.2,46.9 59.5,45.0" fill="#2b1404"/>
-        <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M57 28.5 L62.5 26.5 L68.5 30" fill="none" stroke="#381603" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
         <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
