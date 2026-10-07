@@ -132,18 +132,18 @@ export const AVATARS = {
     <path d="M51 114 L71 114 L72 118 L52 118 Z" fill="#442100"/>
     <rect x="57" y="107" width="9" height="3" rx="1" fill="#ff9d00"/>
 
-    <!-- 4. Corps / Kimono -->
-    <path d="M34 66 L66 66 L64 88 L36 88 Z" fill="#ffffff"/>
-    <path d="M33 66 C33 66, 40 76, 44 88 L34 88 L31 70 Z" fill="#489e96"/>
-    <path d="M67 66 C67 66, 60 76, 56 88 L66 88 L69 70 Z" fill="#489e96"/>
+    <!-- 4. Corps / Kimono (Buste en trapèze élégant) -->
+    <path d="M32 66 L68 66 L62 85 L38 85 Z" fill="#ffffff"/>
+    <path d="M32 66 C32 66, 40 75, 43 85 L38 85 L30 69 Z" fill="#489e96"/>
+    <path d="M68 66 C68 66, 60 75, 57 85 L62 85 L70 69 Z" fill="#489e96"/>
     <path d="M42 63 L50 72 L58 63 Z" fill="#ff9d00"/>
     <path d="M47 70 L50 80 L53 70 Z" fill="#e08900"/>
 
     <!-- 5. Ceinture / Obi -->
-    <rect x="33" y="84" width="34" height="5" rx="1" fill="#7c4004"/>
+    <rect x="36" y="84" width="28" height="5" rx="1" fill="#7c4004"/>
     <rect x="46" y="83" width="8" height="7" rx="1.5" fill="#ffb733" stroke="#7c4004" stroke-width="1"/>
-    <rect x="31" y="84" width="6" height="8" rx="1.5" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
-    <circle cx="34" cy="88" r="0.8" fill="#ffb733"/>
+    <rect x="34" y="84" width="5" height="8" rx="1.5" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
+    <circle cx="36.5" cy="88" r="0.8" fill="#ffb733"/>
 
     <!-- 6. Bras gauche -->
     <path d="M32 68 C24 74, 23 80, 29 85 C32 85, 34 82, 35 78 Z" fill="#489e96"/>
@@ -306,13 +306,13 @@ export const AVATARS = {
     <rect x="57" y="106" width="9" height="3" rx="1.5" fill="#ffffff"/>
 
     <!-- 4. Jupe plissée marron -->
-    <path d="M33 82 C33 82, 40 83.5, 50 83.5 C60 83.5, 67 82, 67 82 C72 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 28 85, 33 82 Z" fill="#5c3818"/>
-    <path d="M38 83 C38 85, 36 88, 35 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M38 82 C38 82, 44 83.5, 50 83.5 C56 83.5, 62 82, 62 82 C70 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 30 85, 38 82 Z" fill="#5c3818"/>
+    <path d="M40 83 C40 85, 38 88, 37 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
     <path d="M50 83.5 L50 93.5" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
-    <path d="M62 83 C62 85, 64 88, 65 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M60 83 C60 85, 62 88, 63 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
 
-    <!-- 4. Haut / Veste orange -->
-    <path d="M34 66 L66 66 L66 82 L34 82 Z" fill="#ff9d00"/>
+    <!-- 4. Haut / Veste orange (Trapèze cintré élégant) -->
+    <path d="M32 66 L68 66 L62 82 L38 82 Z" fill="#ff9d00"/>
     <path d="M44 64 L50 74 L56 64 Z" fill="#ffffff"/>
     <circle cx="50" cy="69" r="2.5" fill="#489e96"/>
     <polygon points="46,67 50,69 46,72" fill="#489e96"/>
@@ -321,10 +321,10 @@ export const AVATARS = {
     <circle cx="50" cy="80" r="1.5" fill="#ffde6a"/>
 
     <!-- 5. Ceinture -->
-    <rect x="33" y="81" width="34" height="4" fill="#7c4004"/>
+    <rect x="37" y="81" width="26" height="4" fill="#7c4004"/>
     <rect x="47" y="80" width="6" height="6" rx="1" fill="#ffb733"/>
-    <rect x="62" y="81" width="4" height="6" rx="1.5" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
-    <circle cx="64" cy="84" r="1" fill="#ffffff"/>
+    <rect x="60" y="81" width="3.5" height="5.5" rx="1.2" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
+    <circle cx="61.7" cy="83.8" r="0.8" fill="#ffffff"/>
 
     <!-- 6. Bras gauche -->
     <path d="M33 68 C25 72, 23 78, 26 84 C29 84, 32 80, 35 76 Z" fill="#ff9d00"/>
