@@ -7,7 +7,7 @@
  * 4. Corps & Vêtements (<g id="...-body">)
  * 5. Ceinture & Accessoires (<g id="...-belt">)
  * 6. Bras & Mains (<g id="...-arms">)
- * 7. Base de la tête (<g id="...-head-base">)
+ * 7. Base de la tête (<g id="...-head-base">) avec oreilles placées derrière le crâne
  * 8. Cheveux avant / Frange (<g id="...-hair-front">)
  * 9. Traits du visage en avant-plan (<g id="...-face-features">)
  */
@@ -36,19 +36,22 @@ export const AVATARS = {
                  C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
     </g>
 
-    <!-- 2. BASE DE LA TÊTE (Cou, crâne, oreilles, bandeau) -->
+    <!-- 2. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
     <g id="boy-head-base">
+        <!-- Cou & Col -->
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
         <path d="M42 63 L50 65 L58 63 Z" fill="#ff9d00"/>
 
-        <!-- Forme du crâne et visage -->
-        <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
+        <!-- Oreilles (derrière le crâne) -->
+        <g id="boy-ears">
+            <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
+            <circle cx="22" cy="38" r="2.5" fill="#f0be8d"/>
+            <circle cx="78" cy="38" r="4.5" fill="#ffd4a3"/>
+            <circle cx="78" cy="38" r="2.5" fill="#f0be8d"/>
+        </g>
 
-        <!-- Oreilles -->
-        <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
-        <circle cx="22" cy="38" r="2.5" fill="#f0be8d"/>
-        <circle cx="78" cy="38" r="4.5" fill="#ffd4a3"/>
-        <circle cx="78" cy="38" r="2.5" fill="#f0be8d"/>
+        <!-- Forme du crâne et visage (devant les oreilles) -->
+        <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
 
         <!-- Bandeau frontal ninja turquoise -->
         <path d="M22 24 C33 17, 67 17, 78 24 L79 28 C68 21, 32 21, 21 28 Z" fill="#489e96"/>
@@ -159,7 +162,7 @@ export const AVATARS = {
         <circle cx="36.5" cy="88" r="0.8" fill="#ffb733"/>
     </g>
 
-    <!-- 6. BRAS & MAINS (2 ovales : paume + pouce) -->
+    <!-- 6. BRAS & MAINS -->
     <g id="boy-arms">
         <!-- Bras gauche -->
         <path d="M32 68 C24 74, 23 80, 29 85 C32 85, 34 82, 35 78 Z" fill="#489e96"/>
@@ -172,15 +175,24 @@ export const AVATARS = {
         <ellipse cx="74" cy="78" rx="2" ry="1.4" fill="#ffd4a3" transform="rotate(30 74 78)"/>
     </g>
 
-    <!-- 7. BASE DE LA TÊTE (Cou, crâne, oreilles, bandeau) -->
+    <!-- 7. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
     <g id="boy-head-base-full">
+        <!-- Cou & Col -->
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
-        <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
-        <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
-        <circle cx="22" cy="38" r="2.5" fill="#f0be8d"/>
-        <circle cx="78" cy="38" r="4.5" fill="#ffd4a3"/>
-        <circle cx="78" cy="38" r="2.5" fill="#f0be8d"/>
+        <path d="M42 63 L50 65 L58 63 Z" fill="#ff9d00"/>
 
+        <!-- Oreilles (derrière le crâne) -->
+        <g id="boy-ears-full">
+            <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
+            <circle cx="22" cy="38" r="2.5" fill="#f0be8d"/>
+            <circle cx="78" cy="38" r="4.5" fill="#ffd4a3"/>
+            <circle cx="78" cy="38" r="2.5" fill="#f0be8d"/>
+        </g>
+
+        <!-- Forme du crâne et visage (devant les oreilles) -->
+        <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
+
+        <!-- Bandeau frontal ninja turquoise -->
         <path d="M22 24 C33 17, 67 17, 78 24 L79 28 C68 21, 32 21, 21 28 Z" fill="#489e96"/>
         <rect x="45" y="19" width="10" height="6" rx="1.5" fill="#ff9d00"/>
         <circle cx="50" cy="22" r="1.5" fill="#ffffff"/>
@@ -248,12 +260,21 @@ export const AVATARS = {
         <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
     </g>
 
-    <!-- 2. BASE DE LA TÊTE (Cou, crâne, oreilles, serre-tête) -->
+    <!-- 2. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
     <g id="girl-head-base">
+        <!-- Cou -->
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
+
+        <!-- Oreilles (derrière le crâne) -->
+        <g id="girl-ears">
+            <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
+            <circle cx="22" cy="38" r="2.5" fill="#f0be8d"/>
+            <circle cx="78" cy="38" r="4.5" fill="#ffd4a3"/>
+            <circle cx="78" cy="38" r="2.5" fill="#f0be8d"/>
+        </g>
+
+        <!-- Forme du crâne et visage (devant les oreilles) -->
         <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
-        <circle cx="23" cy="38" r="4.5" fill="#ffd4a3"/>
-        <circle cx="77" cy="38" r="4.5" fill="#ffd4a3"/>
 
         <!-- Serre-tête turquoise & noeud -->
         <path d="M22 23 C33 16, 67 16, 78 23 L79 27 C68 20, 32 20, 21 27 Z" fill="#489e96"/>
@@ -363,7 +384,7 @@ export const AVATARS = {
         <circle cx="61.7" cy="83.8" r="0.8" fill="#ffffff"/>
     </g>
 
-    <!-- 6. BRAS & MAINS (2 ovales : paume + pouce) -->
+    <!-- 6. BRAS & MAINS -->
     <g id="girl-arms">
         <!-- Bras gauche -->
         <path d="M33 68 C25 72, 23 78, 26 84 C29 84, 32 80, 35 76 Z" fill="#ff9d00"/>
@@ -376,12 +397,21 @@ export const AVATARS = {
         <ellipse cx="74" cy="76" rx="1.8" ry="1.3" fill="#ffd4a3" transform="rotate(30 74 76)"/>
     </g>
 
-    <!-- 7. BASE DE LA TÊTE (Cou, crâne, oreilles, serre-tête) -->
+    <!-- 7. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
     <g id="girl-head-base-full">
+        <!-- Cou -->
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
+
+        <!-- Oreilles (derrière le crâne) -->
+        <g id="girl-ears-full">
+            <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
+            <circle cx="22" cy="38" r="2.5" fill="#f0be8d"/>
+            <circle cx="78" cy="38" r="4.5" fill="#ffd4a3"/>
+            <circle cx="78" cy="38" r="2.5" fill="#f0be8d"/>
+        </g>
+
+        <!-- Forme du crâne et visage (devant les oreilles) -->
         <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
-        <circle cx="23" cy="38" r="4.5" fill="#ffd4a3"/>
-        <circle cx="77" cy="38" r="4.5" fill="#ffd4a3"/>
 
         <!-- Serre-tête turquoise & noeud -->
         <path d="M22 23 C33 16, 67 16, 78 23 L79 27 C68 20, 32 20, 21 27 Z" fill="#489e96"/>
@@ -402,7 +432,7 @@ export const AVATARS = {
         <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
         <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
         <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="#b45309"/>
-        <circle cx="37.5" cy="41.5" r="2.2" fill="#2b1404"/>
+        <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="39.5" cy="43.5" r="1" fill="#ffffff"/>
         <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
@@ -413,13 +443,14 @@ export const AVATARS = {
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
         <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
         <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="#b45309"/>
-        <circle cx="62.5" cy="41.5" r="2.2" fill="#2b1404"/>
+        <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="64.5" cy="43.5" r="1" fill="#ffffff"/>
         <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
         <path d="M69 35 L66 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
+        <!-- Nez et bouche -->
         <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
         <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
