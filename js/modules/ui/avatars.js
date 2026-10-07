@@ -84,7 +84,7 @@ export const AVATARS = {
         <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="39.5" cy="43.5" r="0.9" fill="#ffffff"/>
         <path d="M30 38 Q37 34 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M31.5 29.5 L35.5 27 L43 29.5" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M43 28.4 L35.5 26.2 L31 29.5 L35.8 28.2 L43 30.6 Z" fill="#542c0e"/>
 
         <!-- Oeil droit & Sourcil droit -->
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
@@ -95,7 +95,7 @@ export const AVATARS = {
         <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="64.5" cy="43.5" r="0.9" fill="#ffffff"/>
         <path d="M56 38 Q63 34 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M57 29.5 L64.5 27 L68.5 29.5" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M57 28.4 L64.5 26.2 L69 29.5 L64.2 28.2 L57 30.8 Z" fill="#542c0e"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
         <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
@@ -224,7 +224,7 @@ export const AVATARS = {
         <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="39.5" cy="43.5" r="0.9" fill="#ffffff"/>
         <path d="M30 38 Q37 34 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M31.5 29.5 L35.5 27 L43 29.5" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M43 28.4 L35.5 26.2 L31 29.5 L35.8 28.2 L43 30.6 Z" fill="#542c0e"/>
 
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
@@ -234,7 +234,7 @@ export const AVATARS = {
         <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="64.5" cy="43.5" r="0.9" fill="#ffffff"/>
         <path d="M56 38 Q63 34 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M57 29.5 L64.5 27 L68.5 29.5" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M57 28.4 L64.5 26.2 L69 29.5 L64.2 28.2 L57 30.8 Z" fill="#542c0e"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
         <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
@@ -312,7 +312,7 @@ export const AVATARS = {
         <polygon points="33.5,45.0 34.2,47.2 35.0,45.5" fill="#2b1404"/>
         <polygon points="36.2,45.7 37.0,47.6 37.8,45.7" fill="#2b1404"/>
         <polygon points="39.0,45.5 39.8,46.9 40.5,45.0" fill="#2b1404"/>
-        <path d="M31.5 29.5 L35.5 27 L43 29.5" fill="none" stroke="#6d2e05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M43 28.5 L35.5 26.3 L31 29.5 L35.8 28.1 L43 30.5 Z" fill="#6d2e05"/>
 
         <!-- Oeil droit & Sourcil droit -->
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
@@ -332,7 +332,7 @@ export const AVATARS = {
         <polygon points="66.5,45.0 65.8,47.2 65.0,45.5" fill="#2b1404"/>
         <polygon points="63.8,45.7 63.0,47.6 62.2,45.7" fill="#2b1404"/>
         <polygon points="61.0,45.5 60.2,46.9 59.5,45.0" fill="#2b1404"/>
-        <path d="M57 29.5 L64.5 27 L68.5 29.5" fill="none" stroke="#6d2e05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M57 28.5 L64.5 26.3 L69 29.5 L64.2 28.1 L57 30.5 Z" fill="#6d2e05"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
         <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
@@ -466,7 +466,7 @@ export const AVATARS = {
         <polygon points="33.5,45.0 34.2,47.2 35.0,45.5" fill="#2b1404"/>
         <polygon points="36.2,45.7 37.0,47.6 37.8,45.7" fill="#2b1404"/>
         <polygon points="39.0,45.5 39.8,46.9 40.5,45.0" fill="#2b1404"/>
-        <path d="M31.5 29.5 L35.5 27 L43 29.5" fill="none" stroke="#6d2e05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M43 28.5 L35.5 26.3 L31 29.5 L35.8 28.1 L43 30.5 Z" fill="#6d2e05"/>
 
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
@@ -485,7 +485,7 @@ export const AVATARS = {
         <polygon points="66.5,45.0 65.8,47.2 65.0,45.5" fill="#2b1404"/>
         <polygon points="63.8,45.7 63.0,47.6 62.2,45.7" fill="#2b1404"/>
         <polygon points="61.0,45.5 60.2,46.9 59.5,45.0" fill="#2b1404"/>
-        <path d="M57 29.5 L64.5 27 L68.5 29.5" fill="none" stroke="#6d2e05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M57 28.5 L64.5 26.3 L69 29.5 L64.2 28.1 L57 30.5 Z" fill="#6d2e05"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
         <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>

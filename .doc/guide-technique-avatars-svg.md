@@ -126,13 +126,17 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
     - **Règle d'ancrage strict** : La base de chaque triangle doit impérativement mordre de 0.2 à 0.4px dans l'épaisseur de la courbe inférieure (`y = 45.0` à `45.7`) pour éviter tout interstice ou impression de cil flottant.
     - Oeil gauche : `points="33.5,45.0 34.2,47.2 35.0,45.5"`, `points="36.2,45.7 37.0,47.6 37.8,45.7"`, `points="39.0,45.5 39.8,46.9 40.5,45.0"`.
     - Oeil droit (symétrie $X' = 100 - X$) : `points="66.5,45.0 65.8,47.2 65.0,45.5"`, `points="63.8,45.7 63.0,47.6 62.2,45.7"`, `points="61.0,45.5 60.2,46.9 59.5,45.0"`.
-- **Sourcils (Règle d'anatomie 1/3 - 2/3)** :
-  - **Forme en pointe manga cassée pour les deux sexes** : La pointe/apex du sourcil est positionnée aux 2/3 en partant de l'intérieur (nez) vers l'extérieur (tempe), soit à 1/3 du coin externe.
-    - Oeil gauche : `d="M31.5 29.5 L35.5 27 L43 29.5"`
-    - Oeil droit (symétrie) : `d="M57 29.5 L64.5 27 L68.5 29.5"`
-  - **Couleur & Épaisseur** :
-    - **Garçon** : `stroke="#542c0e"`, `stroke-width="2.2"`, `stroke-linecap="round"`, `stroke-linejoin="round"`.
-    - **Fille** : `stroke="#6d2e05"`, `stroke-width="2"`, `stroke-linecap="round"`, `stroke-linejoin="round"`.
+- **Sourcils effilés en pointe (Règle d'anatomie 1/3 - 2/3 & Tapered Tail)** :
+  - **Forme polygonale effilée pour les deux sexes** : Base intérieure plus épaisse près du nez, apex en pointe haute situé aux 2/3 de l'intérieur (1/3 de l'extérieur), et terminaison en pointe aiguë vers la tempe.
+    - Oeil gauche :
+      - Garçon : `<path d="M43 28.4 L35.5 26.2 L31 29.5 L35.8 28.2 L43 30.6 Z" fill="#542c0e"/>`
+      - Fille : `<path d="M43 28.5 L35.5 26.3 L31 29.5 L35.8 28.1 L43 30.5 Z" fill="#6d2e05"/>`
+    - Oeil droit (symétrie $X' = 100 - X$) :
+      - Garçon : `<path d="M57 28.4 L64.5 26.2 L69 29.5 L64.2 28.2 L57 30.8 Z" fill="#542c0e"/>`
+      - Fille : `<path d="M57 28.5 L64.5 26.3 L69 29.5 L64.2 28.1 L57 30.5 Z" fill="#6d2e05"/>`
+  - **Couleur & Teinte adoucie** :
+    - **Garçon** : `fill="#542c0e"` (brun chaud texturé).
+    - **Fille** : `fill="#6d2e05"` (châtain cuivré).
 - **Nez** : Discret point chaud sous les yeux (`cx="50" cy="47.5" r="0.9"`).
 - **Bouche** : Arc souriant ou ouvert (`d="M45 51 Q50 56.5 55 51"`).
 
