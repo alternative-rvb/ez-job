@@ -13,7 +13,25 @@ export class TrophiesManager {
         this.trophiesData = [];
     }
 
+    renderSkeleton() {
+        const container = document.getElementById('trophies-container');
+        if (!container) return;
+        container.innerHTML = Array(6).fill(0).map(() => `
+            <div class="trophy-card-pokemon rounded-xl overflow-hidden relative skeleton-shimmer-subtle border border-amber-900/10" style="aspect-ratio: 9/16; background-color:#eaddcc">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-3 space-y-2">
+                    <div class="h-3 w-16 rounded skeleton-shimmer"></div>
+                    <div class="h-4 w-28 rounded skeleton-shimmer"></div>
+                    <div class="h-3 w-full rounded skeleton-shimmer"></div>
+                </div>
+            </div>
+        `).join('');
+    }
+
     async show() {
+        // Afficher l'écran des trophées avec l'effet squelette
+        domManager.showTrophies();
+        this.renderSkeleton();
+
         // Charger les données des trophées
         try {
             const response = await fetch(addCacheBuster('./js/data/trophies.json'));
@@ -22,9 +40,6 @@ export class TrophiesManager {
             console.error('Erreur lors du chargement des trophées:', error);
             return;
         }
-
-        // Afficher l'écran des trophées
-        domManager.showTrophies();
 
         // Mettre à jour les statistiques et afficher les trophées
         this.updateStats();

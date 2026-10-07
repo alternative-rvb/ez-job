@@ -618,24 +618,29 @@ export class QuizSelector {
     showLoader() {
         const quizListContainer = document.getElementById('quiz-list');
         if (!quizListContainer) return;
-        quizListContainer.className = 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4';
+        quizListContainer.className = 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 sm:gap-4';
         
         const skeletonCards = Array(8).fill(0).map(() => `
-            <div class="rounded-xl overflow-hidden shadow-sm flex flex-row border border-amber-900/10" style="background:#fdf8f2;min-height:140px">
-                <!-- Bloc image skeleton -->
-                <div class="w-28 sm:w-32 flex-shrink-0 skeleton-shimmer"></div>
+            <div class="quiz-card overflow-hidden rounded-xl shadow-sm flex gap-3 p-3 border border-amber-900/10" style="background:#f4eadd;min-height:130px">
+                <!-- Vignette portrait 2/3 skeleton -->
+                <div class="relative overflow-hidden flex-shrink-0 w-20 sm:w-24 rounded-lg skeleton-shimmer" style="aspect-ratio:2/3"></div>
                 <!-- Contenu skeleton -->
-                <div class="p-3 flex-1 flex flex-col justify-between space-y-2">
-                    <div class="space-y-1.5">
-                        <div class="h-4 w-3/4 rounded skeleton-shimmer"></div>
-                        <div class="h-3 w-full rounded skeleton-shimmer"></div>
-                        <div class="h-3 w-2/3 rounded skeleton-shimmer"></div>
+                <div class="flex-1 min-w-0 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-1 mb-2">
+                            <div class="h-4 w-3/4 rounded skeleton-shimmer"></div>
+                            <div class="h-3 w-6 rounded skeleton-shimmer flex-shrink-0"></div>
+                        </div>
+                        <div class="space-y-1 mb-2">
+                            <div class="h-3 w-full rounded skeleton-shimmer"></div>
+                            <div class="h-3 w-4/5 rounded skeleton-shimmer"></div>
+                        </div>
+                        <div class="flex gap-1.5 mb-2">
+                            <div class="h-4 w-12 rounded-full skeleton-shimmer"></div>
+                            <div class="h-4 w-16 rounded-full skeleton-shimmer"></div>
+                        </div>
                     </div>
-                    <div class="flex gap-1.5">
-                        <div class="h-4 w-12 rounded-full skeleton-shimmer"></div>
-                        <div class="h-4 w-16 rounded-full skeleton-shimmer"></div>
-                    </div>
-                    <div class="flex items-center justify-between pt-1 border-t border-amber-900/10">
+                    <div class="flex items-center justify-between pt-2 border-t border-[#e0d0bc]">
                         <div class="h-3 w-16 rounded skeleton-shimmer"></div>
                         <div class="h-4 w-4 rounded-full skeleton-shimmer"></div>
                     </div>
