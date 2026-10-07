@@ -302,11 +302,10 @@ export const AVATARS = {
         <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="39.5" cy="43.5" r="1" fill="#ffffff"/>
-        <!-- Cils manga : pointe principale + 3 cils d'accentuation -->
+        <!-- Cils manga supérieurs : 3 pointes dégressives de l'extérieur vers l'intérieur -->
         <polygon points="29.5,38.5 25,34 31.8,36.8" fill="#2b1404"/>
-        <path d="M33.5 35.5 L31 32" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M36.5 34 L35.5 31.5" stroke="#2b1404" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M31 41.5 L29 43.5" stroke="#2b1404" stroke-width="1.3" stroke-linecap="round"/>
+        <polygon points="32.2,36.5 29.5,32.5 34.2,35.2" fill="#2b1404"/>
+        <polygon points="34.8,34.8 33.5,31.8 36.5,34" fill="#2b1404"/>
         <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
         <path d="M32 30 Q37 26 43 29" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
@@ -318,11 +317,10 @@ export const AVATARS = {
         <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="64.5" cy="43.5" r="1" fill="#ffffff"/>
-        <!-- Cils manga : pointe principale + 3 cils d'accentuation -->
+        <!-- Cils manga supérieurs : 3 pointes dégressives de l'extérieur vers l'intérieur -->
         <polygon points="70.5,38.5 75,34 68.2,36.8" fill="#2b1404"/>
-        <path d="M66.5 35.5 L69 32" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M63.5 34 L64.5 31.5" stroke="#2b1404" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M69 41.5 L71 43.5" stroke="#2b1404" stroke-width="1.3" stroke-linecap="round"/>
+        <polygon points="67.8,36.5 70.5,32.5 65.8,35.2" fill="#2b1404"/>
+        <polygon points="65.2,34.8 66.5,31.8 63.5,34" fill="#2b1404"/>
         <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
         <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
@@ -448,11 +446,10 @@ export const AVATARS = {
         <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="39.5" cy="43.5" r="1" fill="#ffffff"/>
-        <!-- Cils manga : pointe principale + 3 cils d'accentuation -->
+        <!-- Cils manga supérieurs : 3 pointes dégressives de l'extérieur vers l'intérieur -->
         <polygon points="29.5,38.5 25,34 31.8,36.8" fill="#2b1404"/>
-        <path d="M33.5 35.5 L31 32" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M36.5 34 L35.5 31.5" stroke="#2b1404" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M31 41.5 L29 43.5" stroke="#2b1404" stroke-width="1.3" stroke-linecap="round"/>
+        <polygon points="32.2,36.5 29.5,32.5 34.2,35.2" fill="#2b1404"/>
+        <polygon points="34.8,34.8 33.5,31.8 36.5,34" fill="#2b1404"/>
         <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
         <path d="M32 30 Q37 26 43 29" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
@@ -463,11 +460,10 @@ export const AVATARS = {
         <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="64.5" cy="43.5" r="1" fill="#ffffff"/>
-        <!-- Cils manga : pointe principale + 3 cils d'accentuation -->
+        <!-- Cils manga supérieurs : 3 pointes dégressives de l'extérieur vers l'intérieur -->
         <polygon points="70.5,38.5 75,34 68.2,36.8" fill="#2b1404"/>
-        <path d="M66.5 35.5 L69 32" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M63.5 34 L64.5 31.5" stroke="#2b1404" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M69 41.5 L71 43.5" stroke="#2b1404" stroke-width="1.3" stroke-linecap="round"/>
+        <polygon points="67.8,36.5 70.5,32.5 65.8,35.2" fill="#2b1404"/>
+        <polygon points="65.2,34.8 66.5,31.8 63.5,34" fill="#2b1404"/>
         <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
         <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
