@@ -259,140 +259,14 @@
 
   </div>
 
-  <!-- ================= MODALE DE ZOOM INTERACTIVE ================= -->
-  <div id="zoom-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="relative w-full max-w-5xl bg-slate-900/95 border border-white/20 rounded-3xl shadow-2xl flex flex-col overflow-hidden max-h-[94vh]">
-      
-      <!-- Modal Header -->
-      <div class="px-6 py-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-4 bg-white/5">
-        <div class="flex items-center gap-3">
-          <div id="zoom-modal-icon" class="w-10 h-10 rounded-xl bg-primary-500 flex items-center justify-center text-white text-xl shadow">👦</div>
-          <div>
-            <h3 id="zoom-modal-title" class="text-xl font-bold text-white flex items-center gap-2">
-              Zoom & Inspection Détaillée
-            </h3>
-            <p id="zoom-modal-subtitle" class="text-xs text-white/70">Inspectez les calques, pointes, cils et finitions vectorielles</p>
-          </div>
-        </div>
-
-        <!-- Switcher Avatar & Coupes -->
-        <div class="flex flex-wrap items-center gap-2">
-          <div class="flex bg-black/40 p-1 rounded-xl border border-white/10 text-xs font-bold">
-            <button id="zoom-btn-boy" onclick="switchZoomAvatar('boy')" class="px-3 py-1.5 rounded-lg transition-colors bg-primary-500 text-white shadow">👦 Garçon</button>
-            <button id="zoom-btn-girl" onclick="switchZoomAvatar('girl')" class="px-3 py-1.5 rounded-lg transition-colors text-white/70 hover:text-white">👧 Fille</button>
-          </div>
-
-          <div id="zoom-style-selector" class="flex gap-1 bg-black/40 p-1 rounded-xl border border-white/10 text-xs font-bold">
-            <!-- Rempli dynamiquement pour les styles 1..4 -->
-          </div>
-
-          <button onclick="closeZoomModal()" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white text-lg transition-all hover:scale-105" title="Fermer (Échap)">
-            <i class="bi bi-x-lg"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Modal Body : Viewport + Controls -->
-      <div class="flex-1 flex flex-col md:flex-row overflow-hidden">
-        
-        <!-- Viewer Stage (Zone de rendu SVG avec pan/zoom) -->
-        <div class="flex-1 relative flex items-center justify-center overflow-hidden min-h-[380px] sm:min-h-[460px] bg-slate-950/80 cursor-grab active:cursor-grabbing select-none" id="zoom-stage">
-          
-          <!-- Background Grid optionnel -->
-          <div id="zoom-grid-bg" class="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-
-          <!-- Conteneur transformé du SVG -->
-          <div id="zoom-svg-container" class="w-72 h-96 flex items-center justify-center transition-transform duration-100 ease-out origin-center pointer-events-none">
-            <!-- SVG injecté dynamiquement -->
-          </div>
-
-          <!-- Badge niveau de zoom actuel -->
-          <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-xl bg-black/60 border border-white/15 text-xs font-mono text-white/90 backdrop-blur-sm pointer-events-none flex items-center gap-2">
-            <i class="bi bi-zoom-in text-accent-400"></i>
-            <span id="zoom-level-badge">Zoom: 1.8x</span>
-          </div>
-
-          <!-- Aide navigation -->
-          <div class="absolute top-4 left-4 hidden sm:flex items-center gap-1.5 text-[11px] text-white/60 bg-black/40 px-2.5 py-1 rounded-lg border border-white/10 pointer-events-none">
-            <i class="bi bi-mouse"></i> Molette pour zoomer • Glisser pour déplacer
-          </div>
-        </div>
-
-        <!-- Sidebar des Contrôles de Précision -->
-        <div class="w-full md:w-72 bg-white/5 border-t md:border-t-0 md:border-l border-white/10 p-5 flex flex-col justify-between space-y-4 overflow-y-auto">
-          
-          <div class="space-y-4">
-            <!-- Gros plans rapides (Presets) -->
-            <div>
-              <label class="block text-xs font-bold text-accent-400 uppercase tracking-wider mb-2">
-                <i class="bi bi-crosshair"></i> Gros Plans Rapides
-              </label>
-              <div class="grid grid-cols-2 gap-2">
-                <button onclick="setZoomPreset('full')" class="zoom-preset-btn px-2.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-xs font-bold text-left flex items-center gap-2 transition-all">
-                  <span>🎯</span> Corps Entier
-                </button>
-                <button onclick="setZoomPreset('face')" class="zoom-preset-btn px-2.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-xs font-bold text-left flex items-center gap-2 transition-all">
-                  <span>👁️</span> Yeux & Cils
-                </button>
-                <button onclick="setZoomPreset('hair')" class="zoom-preset-btn px-2.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-xs font-bold text-left flex items-center gap-2 transition-all">
-                  <span>👑</span> Cheveux & Haut
-                </button>
-                <button onclick="setZoomPreset('body')" class="zoom-preset-btn px-2.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-xs font-bold text-left flex items-center gap-2 transition-all">
-                  <span>🥋</span> Buste & Ceinture
-                </button>
-                <button onclick="setZoomPreset('shoes')" class="zoom-preset-btn px-2.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-xs font-bold text-left flex items-center gap-2 transition-all col-span-2">
-                  <span>👟</span> Chaussures & Sol
-                </button>
-              </div>
-            </div>
-
-            <!-- Contrôle manuel de Zoom -->
-            <div>
-              <div class="flex items-center justify-between text-xs font-bold text-white/80 mb-2">
-                <span>Échelle :</span>
-                <span id="zoom-range-val" class="font-mono text-accent-300">1.8x</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <button onclick="stepZoom(-0.3)" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm">
-                  <i class="bi bi-dash"></i>
-                </button>
-                <input id="zoom-slider" type="range" min="0.8" max="5.5" step="0.1" value="1.8" oninput="onZoomSliderChange(this.value)" class="flex-1 accent-accent-500 cursor-pointer">
-                <button onclick="stepZoom(0.3)" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm">
-                  <i class="bi bi-plus"></i>
-                </button>
-                <button onclick="resetZoomTransform()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center text-xs" title="Réinitialiser">
-                  <i class="bi bi-arrow-counterclockwise"></i>
-                </button>
-              </div>
-            </div>
-
-            <!-- Mode de vue (Corps vs Tête) -->
-            <div>
-              <label class="block text-xs font-bold text-white/80 mb-2">Mode de cadrage SVG :</label>
-              <div class="grid grid-cols-2 gap-2">
-                <button id="zoom-view-full" onclick="setZoomViewMode('full')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-accent-500 text-white shadow">Corps</button>
-                <button id="zoom-view-head" onclick="setZoomViewMode('head')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-white/10 text-white/80 hover:bg-white/20">Tête</button>
-              </div>
-            </div>
-
-            <!-- Fond du visualiseur -->
-            <div>
-              <label class="block text-xs font-bold text-white/80 mb-2">Contraste de fond :</label>
-              <div class="flex gap-2">
-                <button onclick="setZoomStageTheme('dark')" class="flex-1 py-1.5 rounded-xl text-xs font-bold bg-white/20 border border-white/20 text-white">Sombre</button>
-                <button onclick="setZoomStageTheme('grid')" class="flex-1 py-1.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white/80">Grille</button>
-                <button onclick="setZoomStageTheme('light')" class="flex-1 py-1.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white/80">Clair</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bouton de fermeture -->
-          <button onclick="closeZoomModal()" class="w-full py-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/15 transition-colors">
-            Fermer l'inspecteur
-          </button>
-        </div>
-
-      </div>
+  <!-- Modale Zoom Simple -->
+  <div id="zoom-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200" onclick="if(event.target===this) closeZoomModal()">
+    <div class="relative bg-slate-900 border border-white/20 rounded-3xl p-6 shadow-2xl flex flex-col items-center max-w-md w-full">
+      <button onclick="closeZoomModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm" title="Fermer">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <h3 id="zoom-modal-title" class="text-lg font-bold text-white mb-4"></h3>
+      <div id="zoom-modal-content" class="w-64 h-80 flex items-center justify-center"></div>
     </div>
   </div>
 
@@ -757,20 +631,6 @@
       `;
     }
 
-    // État du zoom modal
-    const zoomState = {
-      active: false,
-      avatar: 'boy',
-      style: 1,
-      mode: 'full',
-      scale: 1.8,
-      panX: 0,
-      panY: 0,
-      isDragging: false,
-      startX: 0,
-      startY: 0
-    };
-
     // Mise à jour de la vue
     function updatePreviews() {
       document.getElementById('boy-preview-box').innerHTML = buildAvatarSvg('boy', currentBoyStyle, currentViewMode);
@@ -790,21 +650,15 @@
         const btnG = document.getElementById(`btn-girl-style-${i}`);
         if (btnG) btnG.classList.toggle('active', i === currentGirlStyle);
       }
-
-      if (zoomState.active) {
-        renderZoomModal();
-      }
     }
 
     function selectBoyStyle(id) {
       currentBoyStyle = id;
-      if (zoomState.avatar === 'boy') zoomState.style = id;
       updatePreviews();
     }
 
     function selectGirlStyle(id) {
       currentGirlStyle = id;
-      if (zoomState.avatar === 'girl') zoomState.style = id;
       updatePreviews();
     }
 
@@ -821,230 +675,26 @@
       updatePreviews();
     }
 
-    // ================= LOGIQUE DU ZOOM MODAL =================
-
-    function openZoomModal(avatar = 'boy') {
-      zoomState.active = true;
-      zoomState.avatar = avatar;
-      zoomState.style = avatar === 'boy' ? currentBoyStyle : currentGirlStyle;
-      zoomState.mode = currentViewMode;
-      zoomState.scale = 1.8;
-      zoomState.panX = 0;
-      zoomState.panY = 0;
-
+    // Modale de zoom simple
+    function openZoomModal(avatar) {
+      const isBoy = avatar === 'boy';
+      const styleId = isBoy ? currentBoyStyle : currentGirlStyle;
+      const style = (isBoy ? BOY_STYLES : GIRL_STYLES)[styleId];
+      
+      document.getElementById('zoom-modal-title').textContent = `${isBoy ? '👦 Garçon' : '👧 Fille'} - ${style.name}`;
+      document.getElementById('zoom-modal-content').innerHTML = buildAvatarSvg(avatar, styleId, currentViewMode);
+      
       const modal = document.getElementById('zoom-modal');
       modal.classList.remove('opacity-0', 'pointer-events-none');
-
-      renderZoomModal();
-      applyZoomTransform();
     }
 
     function closeZoomModal() {
-      zoomState.active = false;
       const modal = document.getElementById('zoom-modal');
       modal.classList.add('opacity-0', 'pointer-events-none');
     }
 
-    function switchZoomAvatar(avatar) {
-      zoomState.avatar = avatar;
-      zoomState.style = avatar === 'boy' ? currentBoyStyle : currentGirlStyle;
-      renderZoomModal();
-    }
-
-    function switchZoomStyle(styleId) {
-      zoomState.style = styleId;
-      if (zoomState.avatar === 'boy') {
-        currentBoyStyle = styleId;
-      } else {
-        currentGirlStyle = styleId;
-      }
-      updatePreviews();
-      renderZoomModal();
-    }
-
-    function setZoomViewMode(mode) {
-      zoomState.mode = mode;
-      document.getElementById('zoom-view-full').className = mode === 'full'
-        ? "px-2.5 py-1.5 rounded-xl text-xs font-bold bg-accent-500 text-white shadow"
-        : "px-2.5 py-1.5 rounded-xl text-xs font-bold bg-white/10 text-white/80 hover:bg-white/20";
-      
-      document.getElementById('zoom-view-head').className = mode === 'head'
-        ? "px-2.5 py-1.5 rounded-xl text-xs font-bold bg-accent-500 text-white shadow"
-        : "px-2.5 py-1.5 rounded-xl text-xs font-bold bg-white/10 text-white/80 hover:bg-white/20";
-      
-      renderZoomModal();
-    }
-
-    function setZoomPreset(preset) {
-      if (preset === 'full') {
-        zoomState.scale = 1.6;
-        zoomState.panX = 0;
-        zoomState.panY = 0;
-      } else if (preset === 'face') {
-        zoomState.scale = 3.8;
-        zoomState.panX = 0;
-        zoomState.panY = 70;
-      } else if (preset === 'hair') {
-        zoomState.scale = 3.2;
-        zoomState.panX = 0;
-        zoomState.panY = 130;
-      } else if (preset === 'body') {
-        zoomState.scale = 3.2;
-        zoomState.panX = 0;
-        zoomState.panY = -35;
-      } else if (preset === 'shoes') {
-        zoomState.scale = 4.0;
-        zoomState.panX = 0;
-        zoomState.panY = -140;
-      }
-      applyZoomTransform();
-    }
-
-    function stepZoom(delta) {
-      zoomState.scale = Math.min(5.5, Math.max(0.8, zoomState.scale + delta));
-      applyZoomTransform();
-    }
-
-    function onZoomSliderChange(val) {
-      zoomState.scale = parseFloat(val);
-      applyZoomTransform();
-    }
-
-    function resetZoomTransform() {
-      zoomState.scale = 1.8;
-      zoomState.panX = 0;
-      zoomState.panY = 0;
-      applyZoomTransform();
-    }
-
-    function setZoomStageTheme(theme) {
-      const stage = document.getElementById('zoom-stage');
-      const grid = document.getElementById('zoom-grid-bg');
-      if (theme === 'dark') {
-        stage.className = "flex-1 relative flex items-center justify-center overflow-hidden min-h-[380px] sm:min-h-[460px] bg-slate-950/80 cursor-grab active:cursor-grabbing select-none";
-        grid.style.display = 'block';
-      } else if (theme === 'grid') {
-        stage.className = "flex-1 relative flex items-center justify-center overflow-hidden min-h-[380px] sm:min-h-[460px] bg-slate-800 cursor-grab active:cursor-grabbing select-none";
-        grid.style.display = 'block';
-      } else if (theme === 'light') {
-        stage.className = "flex-1 relative flex items-center justify-center overflow-hidden min-h-[380px] sm:min-h-[460px] bg-slate-100 cursor-grab active:cursor-grabbing select-none";
-        grid.style.display = 'none';
-      }
-    }
-
-    function applyZoomTransform() {
-      const container = document.getElementById('zoom-svg-container');
-      if (!container) return;
-      container.style.transform = `translate(${zoomState.panX}px, ${zoomState.panY}px) scale(${zoomState.scale})`;
-      
-      const slider = document.getElementById('zoom-slider');
-      if (slider) slider.value = zoomState.scale.toFixed(1);
-      
-      const valText = document.getElementById('zoom-range-val');
-      if (valText) valText.textContent = `${zoomState.scale.toFixed(1)}x`;
-
-      const badge = document.getElementById('zoom-level-badge');
-      if (badge) badge.textContent = `Zoom: ${zoomState.scale.toFixed(1)}x`;
-    }
-
-    function renderZoomModal() {
-      const isBoy = zoomState.avatar === 'boy';
-      const styles = isBoy ? BOY_STYLES : GIRL_STYLES;
-      const currentStyle = styles[zoomState.style] || styles[1];
-
-      // Header info
-      document.getElementById('zoom-modal-icon').textContent = isBoy ? '👦' : '👧';
-      document.getElementById('zoom-modal-icon').className = `w-10 h-10 rounded-xl ${isBoy ? 'bg-primary-500' : 'bg-accent-500'} flex items-center justify-center text-white text-xl shadow`;
-      document.getElementById('zoom-modal-title').textContent = `${isBoy ? 'Garçon' : 'Fille'} : ${currentStyle.name}`;
-      
-      // Avatar switch buttons
-      document.getElementById('zoom-btn-boy').className = isBoy 
-        ? "px-3 py-1.5 rounded-lg transition-colors bg-primary-500 text-white shadow"
-        : "px-3 py-1.5 rounded-lg transition-colors text-white/70 hover:text-white";
-      document.getElementById('zoom-btn-girl').className = !isBoy 
-        ? "px-3 py-1.5 rounded-lg transition-colors bg-accent-500 text-white shadow"
-        : "px-3 py-1.5 rounded-lg transition-colors text-white/70 hover:text-white";
-
-      // Style pills selector
-      const selector = document.getElementById('zoom-style-selector');
-      selector.innerHTML = [1, 2, 3, 4].map(id => `
-        <button onclick="switchZoomStyle(${id})" class="px-2.5 py-1 rounded-lg transition-colors ${zoomState.style === id ? (isBoy ? 'bg-primary-600 text-white' : 'bg-accent-600 text-white') : 'text-white/60 hover:text-white'}">
-          #${id}
-        </button>
-      `).join('');
-
-      // View mode buttons
-      setZoomViewMode(zoomState.mode);
-
-      // Render SVG
-      document.getElementById('zoom-svg-container').innerHTML = buildAvatarSvg(zoomState.avatar, zoomState.style, zoomState.mode);
-      applyZoomTransform();
-    }
-
-    // Gestion Drag & Pan / Mouse Wheel
-    const stage = document.getElementById('zoom-stage');
-
-    stage.addEventListener('mousedown', (e) => {
-      zoomState.isDragging = true;
-      zoomState.startX = e.clientX - zoomState.panX;
-      zoomState.startY = e.clientY - zoomState.panY;
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!zoomState.isDragging || !zoomState.active) return;
-      zoomState.panX = e.clientX - zoomState.startX;
-      zoomState.panY = e.clientY - zoomState.startY;
-      applyZoomTransform();
-    });
-
-    window.addEventListener('mouseup', () => {
-      zoomState.isDragging = false;
-    });
-
-    stage.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      const zoomFactor = e.deltaY < 0 ? 0.2 : -0.2;
-      stepZoom(zoomFactor);
-    }, { passive: false });
-
-    // Touch events pour mobile
-    stage.addEventListener('touchstart', (e) => {
-      if (e.touches.length === 1) {
-        zoomState.isDragging = true;
-        zoomState.startX = e.touches[0].clientX - zoomState.panX;
-        zoomState.startY = e.touches[0].clientY - zoomState.panY;
-      }
-    });
-
-    window.addEventListener('touchmove', (e) => {
-      if (!zoomState.isDragging || !zoomState.active || e.touches.length !== 1) return;
-      zoomState.panX = e.touches[0].clientX - zoomState.startX;
-      zoomState.panY = e.touches[0].clientY - zoomState.startY;
-      applyZoomTransform();
-    });
-
-    window.addEventListener('touchend', () => {
-      zoomState.isDragging = false;
-    });
-
-    // Raccourcis clavier
     window.addEventListener('keydown', (e) => {
-      if (!zoomState.active) return;
       if (e.key === 'Escape') closeZoomModal();
-      if (e.key === '+' || e.key === '=') stepZoom(0.25);
-      if (e.key === '-' || e.key === '_') stepZoom(-0.25);
-      if (e.key === '0') resetZoomTransform();
-      if (e.key === 'ArrowUp') { zoomState.panY += 20; applyZoomTransform(); }
-      if (e.key === 'ArrowDown') { zoomState.panY -= 20; applyZoomTransform(); }
-      if (e.key === 'ArrowLeft') { zoomState.panX += 20; applyZoomTransform(); }
-      if (e.key === 'ArrowRight') { zoomState.panX -= 20; applyZoomTransform(); }
-    });
-
-    // Fermeture en cliquant sur le backdrop
-    document.getElementById('zoom-modal').addEventListener('click', (e) => {
-      if (e.target.id === 'zoom-modal') {
-        closeZoomModal();
-      }
     });
 
     // Initialisation au chargement
