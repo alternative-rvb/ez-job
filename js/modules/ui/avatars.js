@@ -268,12 +268,12 @@ export const AVATARS = {
         <!-- Cou court -->
         <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
 
-        <!-- Oreilles (derrière le crâne) -->
+        <!-- Oreilles (devant les cheveux arrière, juste derrière le crâne) -->
         <g id="girl-ears">
-            <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
-            <circle cx="22" cy="38" r="2.5" fill="#f0be8d"/>
-            <circle cx="78" cy="38" r="4.5" fill="#ffd4a3"/>
-            <circle cx="78" cy="38" r="2.5" fill="#f0be8d"/>
+            <circle cx="21" cy="38" r="4.8" fill="#ffd4a3"/>
+            <circle cx="21" cy="38" r="2.8" fill="#f0be8d"/>
+            <circle cx="79" cy="38" r="4.8" fill="#ffd4a3"/>
+            <circle cx="79" cy="38" r="2.8" fill="#f0be8d"/>
         </g>
 
         <!-- Forme du crâne et visage (devant les oreilles) -->
@@ -285,11 +285,11 @@ export const AVATARS = {
         <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>
     </g>
 
-    <!-- 3. CHEVEUX AVANT (Frange et mèches de joues) -->
+    <!-- 3. CHEVEUX AVANT (Frange & mèches légères dégageant les oreilles) -->
     <g id="girl-hair-front">
-        <path d="M 18,28 C 22,38 30,42 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,42 78,38 82,28 C 76,12 64,6 50,6 C 36,6 24,12 18,28 Z" fill="#8a3c08"/>
-        <path d="M 18,28 C 14,40 16,54 24,60 C 24,50 22,40 22,30 Z" fill="#8a3c08"/>
-        <path d="M 82,28 C 86,40 84,54 76,60 C 76,50 78,40 78,30 Z" fill="#8a3c08"/>
+        <path d="M 21,30 C 24,37 30,41 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,41 76,37 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>
+        <path d="M 23,30 C 23,39 25,48 27,54 C 26,46 25,38 25,30 Z" fill="#8a3c08"/>
+        <path d="M 77,30 C 77,39 75,48 73,54 C 74,46 75,38 75,30 Z" fill="#8a3c08"/>
     </g>
 
     <!-- 4. TRAITS DU VISAGE EN AVANT-PLAN (Sourcils, yeux, nez, bouche) -->
@@ -407,12 +407,12 @@ export const AVATARS = {
         <!-- Cou court -->
         <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
 
-        <!-- Oreilles (derrière le crâne) -->
+        <!-- Oreilles (devant les cheveux arrière, juste derrière le crâne) -->
         <g id="girl-ears-full">
-            <circle cx="22" cy="38" r="4.5" fill="#ffd4a3"/>
-            <circle cx="22" cy="38" r="2.5" fill="#f0be8d"/>
-            <circle cx="78" cy="38" r="4.5" fill="#ffd4a3"/>
-            <circle cx="78" cy="38" r="2.5" fill="#f0be8d"/>
+            <circle cx="21" cy="38" r="4.8" fill="#ffd4a3"/>
+            <circle cx="21" cy="38" r="2.8" fill="#f0be8d"/>
+            <circle cx="79" cy="38" r="4.8" fill="#ffd4a3"/>
+            <circle cx="79" cy="38" r="2.8" fill="#f0be8d"/>
         </g>
 
         <!-- Forme du crâne et visage (devant les oreilles) -->
@@ -424,11 +424,11 @@ export const AVATARS = {
         <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>
     </g>
 
-    <!-- 8. CHEVEUX AVANT (Frange et mèches) -->
+    <!-- 8. CHEVEUX AVANT (Frange & mèches légères dégageant les oreilles) -->
     <g id="girl-hair-front-full">
-        <path d="M 18,28 C 22,38 30,42 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,42 78,38 82,28 C 76,12 64,6 50,6 C 36,6 24,12 18,28 Z" fill="#8a3c08"/>
-        <path d="M 18,28 C 14,40 16,54 24,60 C 24,50 22,40 22,30 Z" fill="#8a3c08"/>
-        <path d="M 82,28 C 86,40 84,54 76,60 C 76,50 78,40 78,30 Z" fill="#8a3c08"/>
+        <path d="M 21,30 C 24,37 30,41 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,41 76,37 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>
+        <path d="M 23,30 C 23,39 25,48 27,54 C 26,46 25,38 25,30 Z" fill="#8a3c08"/>
+        <path d="M 77,30 C 77,39 75,48 73,54 C 74,46 75,38 75,30 Z" fill="#8a3c08"/>
     </g>
 
     <!-- 9. TRAITS DU VISAGE EN AVANT-PLAN (Sourcils, yeux, nez, bouche) -->
