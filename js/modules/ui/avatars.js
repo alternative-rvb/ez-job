@@ -302,8 +302,9 @@ export const AVATARS = {
         <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="39.5" cy="43.5" r="1" fill="#ffffff"/>
+        <!-- Cils manga : triangle effilé sur le coin externe de l'oeil -->
+        <polygon points="30,38.5 27,34 34,36.2" fill="#2b1404"/>
         <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M31 35 L34 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M32 30 Q37 26 43 29" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
         <!-- Oeil droit & Sourcil droit -->
@@ -314,8 +315,9 @@ export const AVATARS = {
         <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="64.5" cy="43.5" r="1" fill="#ffffff"/>
+        <!-- Cils manga : triangle effilé sur le coin externe de l'oeil -->
+        <polygon points="70,38.5 73,34 66,36.2" fill="#2b1404"/>
         <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M69 35 L66 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
@@ -440,8 +442,9 @@ export const AVATARS = {
         <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="39.5" cy="43.5" r="1" fill="#ffffff"/>
+        <!-- Cils manga : triangle effilé sur le coin externe de l'oeil -->
+        <polygon points="30,38.5 27,34 34,36.2" fill="#2b1404"/>
         <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M31 35 L34 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M32 30 Q37 26 43 29" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
         <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
@@ -451,8 +454,9 @@ export const AVATARS = {
         <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
         <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
         <circle cx="64.5" cy="43.5" r="1" fill="#ffffff"/>
+        <!-- Cils manga : triangle effilé sur le coin externe de l'oeil -->
+        <polygon points="70,38.5 73,34 66,36.2" fill="#2b1404"/>
         <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M69 35 L66 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
