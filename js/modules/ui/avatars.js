@@ -166,17 +166,19 @@ export const AVATARS = {
         <circle cx="36.5" cy="88" r="0.8" fill="#ffb733"/>
     </g>
 
-    <!-- 6. BRAS & MAINS -->
+    <!-- 6. BRAS & MAINS (2 ovales formant une pince : doigts + pouce plus petit) -->
     <g id="boy-arms">
         <!-- Bras gauche -->
-        <path d="M32 68 C24 74, 23 80, 29 85 C32 85, 34 82, 35 78 Z" fill="#489e96"/>
-        <ellipse cx="29" cy="85" rx="3.8" ry="3.5" fill="#ffd4a3"/>
-        <ellipse cx="32" cy="83" rx="2" ry="1.4" fill="#ffd4a3" transform="rotate(-30 32 83)"/>
+        <path d="M32 68 C24 74, 23 80, 28 83 C31 84, 33 81, 35 78 Z" fill="#489e96"/>
+        <!-- Pince main gauche (doigts + pouce plus petit) -->
+        <ellipse cx="26" cy="88" rx="3.8" ry="2.2" transform="rotate(50 26 88)" fill="#ffd4a3"/>
+        <ellipse cx="30" cy="85.5" rx="2.5" ry="1.5" transform="rotate(-30 30 85.5)" fill="#ffd4a3"/>
 
         <!-- Bras droit -->
-        <path d="M68 68 C76 72, 78 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#489e96"/>
-        <ellipse cx="77" cy="80" rx="3.8" ry="3.5" fill="#ffd4a3"/>
-        <ellipse cx="74" cy="78" rx="2" ry="1.4" fill="#ffd4a3" transform="rotate(30 74 78)"/>
+        <path d="M68 68 C76 72, 78 74, 73 78 C71 79, 69 77, 66 76 Z" fill="#489e96"/>
+        <!-- Pince main droite (doigts + pouce plus petit) -->
+        <ellipse cx="78.5" cy="81.5" rx="3.8" ry="2.2" transform="rotate(-40 78.5 81.5)" fill="#ffd4a3"/>
+        <ellipse cx="74" cy="79.5" rx="2.5" ry="1.5" transform="rotate(30 74 79.5)" fill="#ffd4a3"/>
     </g>
 
     <!-- 7. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
@@ -392,17 +394,19 @@ export const AVATARS = {
         <circle cx="61.7" cy="83.8" r="0.8" fill="#ffffff"/>
     </g>
 
-    <!-- 6. BRAS & MAINS -->
+    <!-- 6. BRAS & MAINS (2 ovales formant une pince : doigts + pouce plus petit) -->
     <g id="girl-arms">
         <!-- Bras gauche -->
-        <path d="M33 68 C25 72, 23 78, 26 84 C29 84, 32 80, 35 76 Z" fill="#ff9d00"/>
-        <ellipse cx="26" cy="84" rx="3.6" ry="3.3" fill="#ffd4a3"/>
-        <ellipse cx="29" cy="82" rx="1.8" ry="1.3" fill="#ffd4a3" transform="rotate(-30 29 82)"/>
+        <path d="M33 68 C25 72, 23 78, 27 82 C30 83, 32 80, 35 76 Z" fill="#ff9d00"/>
+        <!-- Pince main gauche (doigts + pouce plus petit) -->
+        <ellipse cx="25" cy="87.5" rx="3.5" ry="2.0" transform="rotate(50 25 87.5)" fill="#ffd4a3"/>
+        <ellipse cx="29" cy="85" rx="2.3" ry="1.4" transform="rotate(-30 29 85)" fill="#ffd4a3"/>
 
         <!-- Bras droit -->
-        <path d="M67 68 C75 70, 77 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#ff9d00"/>
-        <ellipse cx="77" cy="78" rx="3.6" ry="3.3" fill="#ffd4a3"/>
-        <ellipse cx="74" cy="76" rx="1.8" ry="1.3" fill="#ffd4a3" transform="rotate(30 74 76)"/>
+        <path d="M67 68 C75 70, 77 74, 73 76 C71 78, 69 77, 66 76 Z" fill="#ff9d00"/>
+        <!-- Pince main droite (doigts + pouce plus petit) -->
+        <ellipse cx="78" cy="80.5" rx="3.5" ry="2.0" transform="rotate(-40 78 80.5)" fill="#ffd4a3"/>
+        <ellipse cx="73.5" cy="78.5" rx="2.3" ry="1.4" transform="rotate(30 73.5 78.5)" fill="#ffd4a3"/>
     </g>
 
     <!-- 7. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
