@@ -38,9 +38,9 @@ export const AVATARS = {
 
     <!-- 2. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
     <g id="boy-head-base">
-        <!-- Cou & Col -->
-        <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
-        <path d="M42 63 L50 65 L58 63 Z" fill="#ff9d00"/>
+        <!-- Cou court & Col -->
+        <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
+        <path d="M42 60 L50 62 L58 60 Z" fill="#ff9d00"/>
 
         <!-- Oreilles (derrière le crâne) -->
         <g id="boy-ears">
@@ -149,13 +149,13 @@ export const AVATARS = {
         <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#ff9d00"/>
     </g>
 
-    <!-- 4. CORPS & VETEMENTS (Kimono en trapèze élégant) -->
+    <!-- 4. CORPS & VETEMENTS (Kimono en trapèze élégant connecté aux épaules) -->
     <g id="boy-body">
-        <path d="M32 66 L68 66 L62 85 L38 85 Z" fill="#ffffff"/>
-        <path d="M32 66 C32 66, 40 75, 43 85 L38 85 L30 69 Z" fill="#489e96"/>
-        <path d="M68 66 C68 66, 60 75, 57 85 L62 85 L70 69 Z" fill="#489e96"/>
-        <path d="M42 63 L50 72 L58 63 Z" fill="#ff9d00"/>
-        <path d="M47 70 L50 80 L53 70 Z" fill="#e08900"/>
+        <path d="M32 62 L68 62 L62 85 L38 85 Z" fill="#ffffff"/>
+        <path d="M32 62 C32 62, 40 73, 43 85 L38 85 L30 66 Z" fill="#489e96"/>
+        <path d="M68 62 C68 62, 60 73, 57 85 L62 85 L70 66 Z" fill="#489e96"/>
+        <path d="M42 60 L50 69 L58 60 Z" fill="#ff9d00"/>
+        <path d="M47 67 L50 78 L53 67 Z" fill="#e08900"/>
     </g>
 
     <!-- 5. CEINTURE / OBI & ACCESSOIRES (Ceinture ajustée à la taille) -->
@@ -169,19 +169,19 @@ export const AVATARS = {
     <!-- 6. BRAS & MAINS (Un seul ovale pour la main chibi) -->
     <g id="boy-arms">
         <!-- Bras gauche -->
-        <path d="M32 68 C24 74, 23 80, 29 85 C32 85, 34 82, 35 78 Z" fill="#489e96"/>
-        <ellipse cx="29" cy="85" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+        <path d="M32 64 C24 71, 23 78, 29 84 C32 84, 34 81, 35 77 Z" fill="#489e96"/>
+        <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="#ffd4a3"/>
 
         <!-- Bras droit -->
-        <path d="M68 68 C76 72, 78 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#489e96"/>
-        <ellipse cx="77" cy="80" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+        <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#489e96"/>
+        <ellipse cx="77" cy="79" rx="3.8" ry="3.5" fill="#ffd4a3"/>
     </g>
 
-    <!-- 7. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
+    <!-- 7. BASE DE LA TÊTE (Oreilles derrière le crâne, cou court) -->
     <g id="boy-head-base-full">
-        <!-- Cou & Col -->
-        <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
-        <path d="M42 63 L50 65 L58 63 Z" fill="#ff9d00"/>
+        <!-- Cou court & Col -->
+        <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
+        <path d="M42 60 L50 62 L58 60 Z" fill="#ff9d00"/>
 
         <!-- Oreilles (derrière le crâne) -->
         <g id="boy-ears-full">
@@ -263,10 +263,10 @@ export const AVATARS = {
         <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
     </g>
 
-    <!-- 2. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
+    <!-- 2. BASE DE LA TÊTE (Oreilles derrière le crâne, cou court) -->
     <g id="girl-head-base">
-        <!-- Cou -->
-        <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
+        <!-- Cou court -->
+        <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
 
         <!-- Oreilles (derrière le crâne) -->
         <g id="girl-ears">
@@ -367,20 +367,20 @@ export const AVATARS = {
         <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#ffffff"/>
     </g>
 
-    <!-- 4. CORPS & JUPE (Veste en trapèze élégant & jupe plissée) -->
+    <!-- 4. CORPS & JUPE (Veste en trapèze élégant connectée aux épaules & jupe plissée) -->
     <g id="girl-body">
         <path d="M38 82 C38 82, 44 83.5, 50 83.5 C56 83.5, 62 82, 62 82 C70 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 30 85, 38 82 Z" fill="#5c3818"/>
         <path d="M40 83 C40 85, 38 88, 37 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
         <path d="M50 83.5 L50 93.5" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
         <path d="M60 83 C60 85, 62 88, 63 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
 
-        <path d="M32 66 L68 66 L62 82 L38 82 Z" fill="#ff9d00"/>
-        <path d="M44 64 L50 74 L56 64 Z" fill="#ffffff"/>
-        <circle cx="50" cy="69" r="2.5" fill="#489e96"/>
-        <polygon points="46,67 50,69 46,72" fill="#489e96"/>
-        <polygon points="54,67 50,69 54,72" fill="#489e96"/>
-        <circle cx="50" cy="76" r="1.5" fill="#ffde6a"/>
-        <circle cx="50" cy="80" r="1.5" fill="#ffde6a"/>
+        <path d="M32 62 L68 62 L62 82 L38 82 Z" fill="#ff9d00"/>
+        <path d="M44 60 L50 71 L56 60 Z" fill="#ffffff"/>
+        <circle cx="50" cy="66" r="2.5" fill="#489e96"/>
+        <polygon points="46,64 50,66 46,69" fill="#489e96"/>
+        <polygon points="54,64 50,66 54,69" fill="#489e96"/>
+        <circle cx="50" cy="73" r="1.5" fill="#ffde6a"/>
+        <circle cx="50" cy="77" r="1.5" fill="#ffde6a"/>
     </g>
 
     <!-- 5. CEINTURE & ACCESSOIRES (Ceinture ajustée sur la taille) -->
@@ -394,18 +394,18 @@ export const AVATARS = {
     <!-- 6. BRAS & MAINS (Un seul ovale pour la main chibi) -->
     <g id="girl-arms">
         <!-- Bras gauche -->
-        <path d="M33 68 C25 72, 23 78, 26 84 C29 84, 32 80, 35 76 Z" fill="#ff9d00"/>
-        <ellipse cx="26" cy="84" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+        <path d="M33 64 C25 69, 23 76, 26 83 C29 83, 32 79, 35 75 Z" fill="#ff9d00"/>
+        <ellipse cx="26" cy="83" rx="3.6" ry="3.3" fill="#ffd4a3"/>
 
         <!-- Bras droit -->
-        <path d="M67 68 C75 70, 77 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#ff9d00"/>
-        <ellipse cx="77" cy="78" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+        <path d="M67 64 C75 68, 77 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#ff9d00"/>
+        <ellipse cx="77" cy="77" rx="3.6" ry="3.3" fill="#ffd4a3"/>
     </g>
 
-    <!-- 7. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
+    <!-- 7. BASE DE LA TÊTE (Oreilles derrière le crâne, cou court) -->
     <g id="girl-head-base-full">
-        <!-- Cou -->
-        <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
+        <!-- Cou court -->
+        <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
 
         <!-- Oreilles (derrière le crâne) -->
         <g id="girl-ears-full">
