@@ -126,9 +126,13 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
     - **Règle d'ancrage strict** : La base de chaque triangle doit impérativement mordre de 0.2 à 0.4px dans l'épaisseur de la courbe inférieure (`y = 45.0` à `45.7`) pour éviter tout interstice ou impression de cil flottant.
     - Oeil gauche : `points="33.5,45.0 34.2,47.2 35.0,45.5"`, `points="36.2,45.7 37.0,47.6 37.8,45.7"`, `points="39.0,45.5 39.8,46.9 40.5,45.0"`.
     - Oeil droit (symétrie $X' = 100 - X$) : `points="66.5,45.0 65.8,47.2 65.0,45.5"`, `points="63.8,45.7 63.0,47.6 62.2,45.7"`, `points="61.0,45.5 60.2,46.9 59.5,45.0"`.
-- **Sourcils** : 
-  - **Garçon** : Arcs expressifs fins (`stroke-width="1.8"`, `d="M32 29 Q37 26 43 29"`).
-  - **Fille** : Ligne en angle / pointe manga cassée nette (`stroke-width="2"`, `stroke="#381603"`, `d="M31.5 30 L37.5 26.5 L43 28.5"`), teinte brun sombre très contrastée par rapport aux cheveux roux/châtains.
+- **Sourcils (Règle d'anatomie 1/3 - 2/3)** :
+  - **Forme en pointe manga cassée pour les deux sexes** : La pointe/apex du sourcil est positionnée aux 2/3 en partant de l'intérieur (nez) vers l'extérieur (tempe), soit à 1/3 du coin externe.
+    - Oeil gauche : `d="M31.5 29.5 L35.5 27 L43 29.5"`
+    - Oeil droit (symétrie) : `d="M57 29.5 L64.5 27 L68.5 29.5"`
+  - **Couleur & Épaisseur** :
+    - **Garçon** : `stroke="#542c0e"`, `stroke-width="2.2"`, `stroke-linecap="round"`, `stroke-linejoin="round"`.
+    - **Fille** : `stroke="#6d2e05"`, `stroke-width="2"`, `stroke-linecap="round"`, `stroke-linejoin="round"`.
 - **Nez** : Discret point chaud sous les yeux (`cx="50" cy="47.5" r="0.9"`).
 - **Bouche** : Arc souriant ou ouvert (`d="M45 51 Q50 56.5 55 51"`).
 
