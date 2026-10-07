@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CamiLudik - Laboratoire des Avatars & Coupes SVG</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              400: '#85ccc5',
+              500: '#66bcb4',
+              600: '#489e96',
+              700: '#357d77',
+            },
+            accent: {
+              400: '#ffb733',
+              500: '#ff9d00',
+              600: '#e08900',
+            }
+          },
+          fontFamily: {
+            sans: ['"Baloo 2"', 'cursive', 'sans-serif'],
+            body: ['Almarai', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #357d77 0%, #1c4441 100%);
+      font-family: 'Almarai', sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+    h1, h2, h3, h4, .font-title {
+      font-family: 'Baloo 2', cursive;
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.25s ease;
+    }
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-3px);
+    }
+    .glass-card.active {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: #ff9d00;
+      box-shadow: 0 0 20px rgba(255, 157, 0, 0.3);
+    }
+  </style>
+</head>
+
+<body class="p-4 sm:p-6 lg:p-8">
+  <div class="max-w-7xl mx-auto space-y-8">
+    
+    <!-- Header -->
+    <header class="glass-panel rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xl">
+      <div class="flex items-center gap-4">
+        <a href="/" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-white text-xl">
+          <i class="bi bi-arrow-left"></i>
+        </a>
+        <div>
+          <h1 class="text-3xl font-extrabold text-white flex items-center gap-2">
+            <i class="bi bi-magic text-accent-400"></i> Laboratoire des Avatars SVG
+          </h1>
+          <p class="text-white/80 text-sm">
+            Testeur visuel des coupes de cheveux Chibi Manga & inspection des calques
+          </p>
+        </div>
+      </div>
+      
+      <!-- Contrôles globaux -->
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="flex items-center gap-2 bg-black/20 px-3 py-1.5 rounded-xl border border-white/10">
+          <span class="text-xs font-semibold text-white/70">Vue :</span>
+          <button id="view-full-btn" onclick="setViewMode('full')" class="px-2.5 py-1 text-xs rounded-lg font-bold bg-accent-500 text-white shadow">Corps Entier</button>
+          <button id="view-head-btn" onclick="setViewMode('head')" class="px-2.5 py-1 text-xs rounded-lg font-bold bg-white/10 text-white/80 hover:bg-white/20">Tête Seule</button>
+        </div>
+
+        <a href="/.doc/guide-technique-avatars-svg.md" target="_blank" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold flex items-center gap-1 border border-white/15">
+          <i class="bi bi-file-earmark-text"></i> Guide Tech
+        </a>
+      </div>
+    </header>
+
+    <!-- Zone principale : Comparateur Garçon / Fille -->
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- ================= SECTION GARÇON ================= -->
+      <section class="glass-panel rounded-3xl p-6 space-y-6 shadow-2xl border-t-4 border-t-primary-400">
+        <div class="flex items-center justify-between border-b border-white/15 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-xl bg-primary-500 flex items-center justify-center text-white font-bold text-lg">👦</span>
+            <div>
+              <h2 class="text-2xl font-bold text-white">Garçon (Chibi Ninja)</h2>
+              <p class="text-xs text-white/70">Couleur base : <code class="bg-black/30 px-1.5 py-0.5 rounded text-accent-400">#5a2d0c</code></p>
+            </div>
+          </div>
+          <span id="boy-style-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-primary-600/60 border border-primary-400 text-white">Style 1 : Hérissé + Bandeau</span>
+        </div>
+
+        <!-- Grand Affichage Actuel -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 p-6 rounded-2xl bg-black/20 border border-white/10">
+          <div id="boy-preview-box" class="w-48 h-64 flex items-center justify-center transition-all duration-300">
+            <!-- SVG inséré dynamiquement -->
+          </div>
+          <div class="space-y-3 text-xs sm:text-sm text-white/80 max-w-xs">
+            <div class="font-bold text-accent-400 flex items-center gap-1.5">
+              <i class="bi bi-check2-circle"></i> Spécifications appliquées :
+            </div>
+            <ul class="space-y-1.5 list-disc list-inside text-white/75">
+              <li>Oreilles à <code class="text-accent-300">x=21/79</code> derrière le crâne</li>
+              <li>Visage par-dessus la frange (yeux nets)</li>
+              <li>Nez bas à <code class="text-accent-300">y=47.5</code>, bouche à <code class="text-accent-300">y=51..56.5</code></li>
+              <li>Cou court (<code class="text-accent-300">h=4</code>), épaules rehaussées à <code class="text-accent-300">y=62</code></li>
+              <li>Jambes en trapèze resserrées (<code class="text-accent-300">4px</code> au sol)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Galerie des coupes pour Garçon -->
+        <div>
+          <h3 class="text-base font-bold text-white mb-3 flex items-center gap-2">
+            <i class="bi bi-scissors text-accent-400"></i> Choisis une coupe à tester :
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            
+            <button onclick="selectBoyStyle(1)" id="btn-boy-style-1" class="glass-card active rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
+              <div class="w-16 h-20 flex items-center justify-center pointer-events-none" id="thumb-boy-1"></div>
+              <span class="text-xs font-bold">1. Hérissé</span>
+            </button>
+
+            <button onclick="selectBoyStyle(2)" id="btn-boy-style-2" class="glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
+              <div class="w-16 h-20 flex items-center justify-center pointer-events-none" id="thumb-boy-2"></div>
+              <span class="text-xs font-bold">2. Samouraï</span>
+            </button>
+
+            <button onclick="selectBoyStyle(3)" id="btn-boy-style-3" class="glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
+              <div class="w-16 h-20 flex items-center justify-center pointer-events-none" id="thumb-boy-3"></div>
+              <span class="text-xs font-bold">3. Mèches libres</span>
+            </button>
+
+            <button onclick="selectBoyStyle(4)" id="btn-boy-style-4" class="glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
+              <div class="w-16 h-20 flex items-center justify-center pointer-events-none" id="thumb-boy-4"></div>
+              <span class="text-xs font-bold">4. Bob Shonen</span>
+            </button>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SECTION FILLE ================= -->
+      <section class="glass-panel rounded-3xl p-6 space-y-6 shadow-2xl border-t-4 border-t-accent-500">
+        <div class="flex items-center justify-between border-b border-white/15 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-xl bg-accent-500 flex items-center justify-center text-white font-bold text-lg">👧</span>
+            <div>
+              <h2 class="text-2xl font-bold text-white">Fille (Chibi Aventure)</h2>
+              <p class="text-xs text-white/70">Couleur base : <code class="bg-black/30 px-1.5 py-0.5 rounded text-accent-400">#8a3c08</code></p>
+            </div>
+          </div>
+          <span id="girl-style-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-accent-600/60 border border-accent-400 text-white">Style 1 : Macarons & Long</span>
+        </div>
+
+        <!-- Grand Affichage Actuel -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 p-6 rounded-2xl bg-black/20 border border-white/10">
+          <div id="girl-preview-box" class="w-48 h-64 flex items-center justify-center transition-all duration-300">
+            <!-- SVG inséré dynamiquement -->
+          </div>
+          <div class="space-y-3 text-xs sm:text-sm text-white/80 max-w-xs">
+            <div class="font-bold text-accent-400 flex items-center gap-1.5">
+              <i class="bi bi-check2-circle"></i> Spécifications appliquées :
+            </div>
+            <ul class="space-y-1.5 list-disc list-inside text-white/75">
+              <li>Masse longue arrière en calque 1 (au fond)</li>
+              <li>Oreilles <code class="text-accent-300">x=21/79</code> devant cheveux arrière & derrière crâne</li>
+              <li>Frange avant dégagée sans masquer les oreilles</li>
+              <li>Cou court (<code class="text-accent-300">h=4</code>), épaules rehaussées à <code class="text-accent-300">y=62</code></li>
+              <li>Jambes trapèze et jupe connectée</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Galerie des coupes pour Fille -->
+        <div>
+          <h3 class="text-base font-bold text-white mb-3 flex items-center gap-2">
+            <i class="bi bi-scissors text-accent-400"></i> Choisis une coupe à tester :
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            
+            <button onclick="selectGirlStyle(1)" id="btn-girl-style-1" class="glass-card active rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
+              <div class="w-16 h-20 flex items-center justify-center pointer-events-none" id="thumb-girl-1"></div>
+              <span class="text-xs font-bold">1. Macarons</span>
+            </button>
+
+            <button onclick="selectGirlStyle(2)" id="btn-girl-style-2" class="glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
+              <div class="w-16 h-20 flex items-center justify-center pointer-events-none" id="thumb-girl-2"></div>
+              <span class="text-xs font-bold">2. Ponytail Haute</span>
+            </button>
+
+            <button onclick="selectGirlStyle(3)" id="btn-girl-style-3" class="glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
+              <div class="w-16 h-20 flex items-center justify-center pointer-events-none" id="thumb-girl-3"></div>
+              <span class="text-xs font-bold">3. Carré Court</span>
+            </button>
+
+            <button onclick="selectGirlStyle(4)" id="btn-girl-style-4" class="glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
+              <div class="w-16 h-20 flex items-center justify-center pointer-events-none" id="thumb-girl-4"></div>
+              <span class="text-xs font-bold">4. Tresses Twin</span>
+            </button>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Zone d'explication de la méthode -->
+    <footer class="glass-panel rounded-2xl p-6 text-center text-xs text-white/70 space-y-2">
+      <p class="font-bold text-white text-sm">
+        💡 Astuce de composition : Les coupes testées ici respectent à 100% la hiérarchie des 9 calques et les nouvelles proportions définies avec Nicolas.
+      </p>
+      <p>
+        Pour appliquer l'une de ces coupes en jeu, il suffit de reporter les balises <code class="text-accent-300">&lt;g id="...-hair-back"&gt;</code> et <code class="text-accent-300">&lt;g id="...-hair-front"&gt;</code> dans <code class="text-white">js/modules/ui/avatars.js</code> et <code class="text-white">index.html</code>.
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Script des définitions de styles SVG & interactivité -->
+  <script>
+    let currentViewMode = 'full'; // 'full' ou 'head'
+    let currentBoyStyle = 1;
+    let currentGirlStyle = 1;
+
+    // Modèles communs pour le garçon
+    const BOY_BASE = {
+      shadow: `<g id="boy-shadow"><ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/></g>`,
+      legs: `
+        <g id="boy-legs">
+            <polygon points="39,85 49,85 48,106 41,106" fill="#5c3818"/>
+            <polygon points="40,99 48.5,99 48,106 41,106" fill="#ffffff"/>
+            <polygon points="39.8,101 48.7,101 48.3,102.5 40.2,102.5" fill="#ff9d00"/>
+            <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#7c4004"/>
+            <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#442100"/>
+            <rect x="42.5" y="107" width="4" height="2" rx="0.8" fill="#ff9d00"/>
+            <polygon points="51,85 61,85 59,106 52,106" fill="#5c3818"/>
+            <polygon points="51.5,99 60,99 59,106 52,106" fill="#ffffff"/>
+            <polygon points="51.3,101 60.2,101 59.8,102.5 51.7,102.5" fill="#ff9d00"/>
+            <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#7c4004"/>
+            <path d="M49.5 112 L61.5 112 L61 114 L50 114 Z" fill="#442100"/>
+            <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#ff9d00"/>
+        </g>`,
+      body: `
+        <g id="boy-body">
+            <path d="M32 62 L68 62 L62 85 L38 85 Z" fill="#ffffff"/>
+            <path d="M32 62 C32 62, 40 73, 43 85 L38 85 L30 66 Z" fill="#489e96"/>
+            <path d="M68 62 C68 62, 60 73, 57 85 L62 85 L70 66 Z" fill="#489e96"/>
+            <path d="M42 60 L50 69 L58 60 Z" fill="#ff9d00"/>
+            <path d="M47 67 L50 78 L53 67 Z" fill="#e08900"/>
+        </g>`,
+      belt: `
+        <g id="boy-belt">
+            <rect x="37" y="82.5" width="26" height="4.5" rx="1" fill="#7c4004"/>
+            <rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#ffb733" stroke="#7c4004" stroke-width="0.8"/>
+            <rect x="36" y="82.5" width="4.5" height="7" rx="1.2" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
+            <circle cx="38.2" cy="86" r="0.7" fill="#ffb733"/>
+        </g>`,
+      arms: `
+        <g id="boy-arms">
+            <path d="M32 64 C24 71, 23 78, 29 84 C32 84, 34 81, 35 77 Z" fill="#489e96"/>
+            <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+            <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#489e96"/>
+            <ellipse cx="77" cy="79" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+        </g>`,
+      headBase: (withBand = true) => `
+        <g id="boy-head-base-full">
+            <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
+            <path d="M42 60 L50 62 L58 60 Z" fill="#ff9d00"/>
+            <g id="boy-ears-full">
+                <circle cx="21" cy="38" r="4.8" fill="#ffd4a3"/>
+                <circle cx="21" cy="38" r="2.8" fill="#f0be8d"/>
+                <circle cx="79" cy="38" r="4.8" fill="#ffd4a3"/>
+                <circle cx="79" cy="38" r="2.8" fill="#f0be8d"/>
+            </g>
+            <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
+            ${withBand ? `
+            <path d="M22 24 C33 17, 67 17, 78 24 L79 28 C68 21, 32 21, 21 28 Z" fill="#489e96"/>
+            <rect x="45" y="19" width="10" height="6" rx="1.5" fill="#ff9d00"/>
+            <circle cx="50" cy="22" r="1.5" fill="#ffffff"/>` : ''}
+        </g>`,
+      faceFeatures: `
+        <g id="boy-face-features-full">
+            <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
+            <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
+            <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#542c0e"/>
+            <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="#8c4e1e"/>
+            <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
+            <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
+            <circle cx="39.5" cy="43.5" r="0.9" fill="#ffffff"/>
+            <path d="M30 38 Q37 34 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M32 31 Q38 27 43 30" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round"/>
+
+            <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
+            <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
+            <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="#542c0e"/>
+            <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="#8c4e1e"/>
+            <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
+            <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
+            <circle cx="64.5" cy="43.5" r="0.9" fill="#ffffff"/>
+            <path d="M56 38 Q63 34 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M57 30 Q62 27 68 31" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round"/>
+
+            <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+            <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
+        </g>`
+    };
+
+    // Variantes de coupes Garçon
+    const BOY_STYLES = {
+      1: {
+        name: "1. Hérissé + Bandeau (Actuel)",
+        hairColor: "#5a2d0c",
+        hairBack: `
+          <g id="boy-hair-back-full">
+              <path d="M 18,42 C 12,34 8,26 10,20 C 12,14 6,10 12,4 C 16,-2 24,-6 30,-4 C 34,-12 44,-14 50,-10 C 56,-14 66,-12 70,-4 C 76,-6 84,-2 88,4 C 94,10 88,14 90,20 C 92,26 88,34 82,42 C 78,34 76,28 74,22 C 66,12 34,12 26,22 C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
+          </g>`,
+        hairFront: `
+          <g id="boy-hair-front-full">
+              <path d="M 20,32 C 21,24 24,14 34,8 C 44,4 56,4 66,8 C 76,14 79,24 80,32 C 78,35 76,33 74,27 C 72,34 66,35 62,28 C 58,35 52,36 48,27 C 44,35 38,34 34,27 C 30,34 26,35 24,28 C 22,34 20,34 20,32 Z" fill="#5a2d0c"/>
+          </g>`,
+        withBand: true
+      },
+      2: {
+        name: "2. Chignon Samouraï (Topknot)",
+        hairColor: "#5a2d0c",
+        hairBack: `
+          <g id="boy-hair-back-full">
+              <!-- Chignon haut à l'arrière -->
+              <circle cx="50" cy="-6" r="10" fill="#5a2d0c"/>
+              <ellipse cx="50" cy="-2" rx="5" ry="3" fill="#ff9d00"/>
+              <path d="M 20,40 C 14,32 14,20 18,10 C 24,0 36,-4 50,-4 C 64,-4 76,0 82,10 C 86,20 86,32 80,40 C 76,32 74,22 70,16 C 62,8 38,8 30,16 C 26,22 24,32 20,40 Z" fill="#5a2d0c"/>
+          </g>`,
+        hairFront: `
+          <g id="boy-hair-front-full">
+              <!-- Mèches dynamiques parted -->
+              <path d="M 21,30 C 22,20 28,12 38,8 C 44,6 48,8 49,16 C 45,26 36,32 26,34 Z" fill="#5a2d0c"/>
+              <path d="M 79,30 C 78,20 72,12 62,8 C 56,6 52,8 51,16 C 55,26 64,32 74,34 Z" fill="#5a2d0c"/>
+          </g>`,
+        withBand: true
+      },
+      3: {
+        name: "3. Mèches Libres (Shonen sans bandeau)",
+        hairColor: "#5a2d0c",
+        hairBack: `
+          <g id="boy-hair-back-full">
+              <path d="M 16,44 C 10,36 6,24 10,16 C 12,8 8,4 16,-2 C 22,-8 32,-10 38,-8 C 42,-16 52,-18 58,-14 C 66,-18 76,-14 80,-6 C 88,-6 94,2 92,12 C 96,20 92,32 84,44 C 80,34 76,26 72,20 C 64,10 36,10 28,20 C 24,26 20,34 16,44 Z" fill="#5a2d0c"/>
+          </g>`,
+        hairFront: `
+          <g id="boy-hair-front-full">
+              <!-- Pointes asymétriques tombant sur le front -->
+              <path d="M 21,32 C 22,22 28,10 38,4 C 48,0 56,2 66,6 C 76,12 79,22 80,32 C 77,28 73,36 68,24 C 64,38 58,36 54,22 C 50,38 44,38 40,24 C 36,36 30,34 26,24 C 23,32 21,32 21,32 Z" fill="#5a2d0c"/>
+          </g>`,
+        withBand: false
+      },
+      4: {
+        name: "4. Bob Moderne / Coupe au bol Shonen",
+        hairColor: "#5a2d0c",
+        hairBack: `
+          <g id="boy-hair-back-full">
+              <!-- Volume arrondi descendant derrière les oreilles -->
+              <ellipse cx="50" cy="24" rx="34" ry="28" fill="#5a2d0c"/>
+          </g>`,
+        hairFront: `
+          <g id="boy-hair-front-full">
+              <!-- Frange arrondie nette -->
+              <path d="M 20,32 C 21,22 28,10 50,10 C 72,10 79,22 80,32 C 76,34 72,32 68,28 C 64,32 58,32 54,26 C 50,32 44,32 40,26 C 36,32 30,32 26,28 C 23,32 21,32 20,32 Z" fill="#5a2d0c"/>
+          </g>`,
+        withBand: false
+      }
+    };
+
+    // Modèles communs pour la fille
+    const GIRL_BASE = {
+      shadow: `<g id="girl-shadow"><ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/></g>`,
+      legs: `
+        <g id="girl-legs">
+            <polygon points="39,88 49,88 48,106 41,106" fill="#ffd4a3"/>
+            <polygon points="40,96 48.5,96 48,106 41,106" fill="#489e96"/>
+            <polygon points="40,96 48.5,96 48.3,98 40.2,98" fill="#ffffff"/>
+            <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#ff9d00"/>
+            <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#c47000"/>
+            <rect x="42.5" y="107" width="4" height="2" rx="0.8" fill="#ffffff"/>
+            <polygon points="51,88 61,88 59,106 52,106" fill="#ffd4a3"/>
+            <polygon points="51.5,96 60,96 59,106 52,106" fill="#489e96"/>
+            <polygon points="51.5,96 60,96 59.8,98 51.7,98" fill="#ffffff"/>
+            <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#ff9d00"/>
+            <path d="M49.5 112 L61.5 112 L61 114 L50 114 Z" fill="#c47000"/>
+            <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#ffffff"/>
+        </g>`,
+      body: `
+        <g id="girl-body">
+            <path d="M38 82 C38 82, 44 83.5, 50 83.5 C56 83.5, 62 82, 62 82 C70 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 30 85, 38 82 Z" fill="#5c3818"/>
+            <path d="M40 83 C40 85, 38 88, 37 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M50 83.5 L50 93.5" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M60 83 C60 85, 62 88, 63 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M32 62 L68 62 L62 82 L38 82 Z" fill="#ff9d00"/>
+            <path d="M44 60 L50 71 L56 60 Z" fill="#ffffff"/>
+            <circle cx="50" cy="66" r="2.5" fill="#489e96"/>
+            <polygon points="46,64 50,66 46,69" fill="#489e96"/>
+            <polygon points="54,64 50,66 54,69" fill="#489e96"/>
+            <circle cx="50" cy="73" r="1.5" fill="#ffde6a"/>
+            <circle cx="50" cy="77" r="1.5" fill="#ffde6a"/>
+        </g>`,
+      belt: `
+        <g id="girl-belt">
+            <rect x="37" y="80.5" width="26" height="4" rx="1" fill="#7c4004"/>
+            <rect x="47" y="79.5" width="6" height="6" rx="1.2" fill="#ffb733" stroke="#7c4004" stroke-width="0.8"/>
+            <rect x="58.5" y="80.5" width="3.5" height="5.5" rx="1.2" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
+            <circle cx="60.2" cy="83.2" r="0.7" fill="#ffffff"/>
+        </g>`,
+      arms: `
+        <g id="girl-arms">
+            <path d="M33 64 C25 69, 23 76, 26 83 C29 83, 32 79, 35 75 Z" fill="#ff9d00"/>
+            <ellipse cx="26" cy="83" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+            <path d="M67 64 C75 68, 77 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#ff9d00"/>
+            <ellipse cx="77" cy="77" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+        </g>`,
+      headBase: (withTiara = true) => `
+        <g id="girl-head-base-full">
+            <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
+            <g id="girl-ears-full">
+                <circle cx="21" cy="38" r="4.8" fill="#ffd4a3"/>
+                <circle cx="21" cy="38" r="2.8" fill="#f0be8d"/>
+                <circle cx="79" cy="38" r="4.8" fill="#ffd4a3"/>
+                <circle cx="79" cy="38" r="2.8" fill="#f0be8d"/>
+            </g>
+            <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
+            ${withTiara ? `
+            <path d="M22 23 C33 16, 67 16, 78 23 L79 27 C68 20, 32 20, 21 27 Z" fill="#489e96"/>
+            <circle cx="28" cy="22" r="3.5" fill="#ff9d00"/>
+            <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>` : ''}
+        </g>`,
+      faceFeatures: `
+        <g id="girl-face-features-full">
+            <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
+            <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
+            <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
+            <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="#b45309"/>
+            <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
+            <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
+            <circle cx="39.5" cy="43.5" r="1" fill="#ffffff"/>
+            <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M31 35 L34 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M32 30 Q37 26 43 29" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
+
+            <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
+            <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
+            <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
+            <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="#b45309"/>
+            <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
+            <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
+            <circle cx="64.5" cy="43.5" r="1" fill="#ffffff"/>
+            <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M69 35 L66 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
+
+            <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+            <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
+        </g>`
+    };
+
+    // Variantes de coupes Fille
+    const GIRL_STYLES = {
+      1: {
+        name: "1. Macarons & Long (Actuelle)",
+        hairColor: "#8a3c08",
+        hairBack: `
+          <g id="girl-hair-back-full">
+              <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
+              <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
+              <path d="M 12,36 C 8,14 20,-2 50,-2 C 80,-2 92,14 88,36 C 94,50 90,64 82,70 C 78,64 76,52 76,42 C 74,32 26,32 24,42 C 24,52 22,64 18,70 C 10,64 6,50 12,36 Z" fill="#8a3c08"/>
+              <circle cx="16" cy="10" r="13" fill="#8a3c08"/>
+              <circle cx="84" cy="10" r="13" fill="#8a3c08"/>
+              <ellipse cx="12" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(-25 12 21)"/>
+              <ellipse cx="18" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 18 21)"/>
+              <ellipse cx="82" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(-25 82 21)"/>
+              <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
+          </g>`,
+        hairFront: `
+          <g id="girl-hair-front-full">
+              <path d="M 21,30 C 24,37 30,41 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,41 76,37 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>
+              <path d="M 23,30 C 23,39 25,48 27,54 C 26,46 25,38 25,30 Z" fill="#8a3c08"/>
+              <path d="M 77,30 C 77,39 75,48 73,54 C 74,46 75,38 75,30 Z" fill="#8a3c08"/>
+          </g>`,
+        withTiara: true
+      },
+      2: {
+        name: "2. Ponytail Haute Dynamique",
+        hairColor: "#8a3c08",
+        hairBack: `
+          <g id="girl-hair-back-full">
+              <!-- Queue de cheval haute tombant sur le côté -->
+              <circle cx="50" cy="26" rx="34" ry="28" fill="#8a3c08"/>
+              <path d="M 50,0 C 70,-15 88,5 86,30 C 84,48 78,65 72,80 C 70,70 76,45 74,25 C 72,15 62,8 50,10 Z" fill="#8a3c08"/>
+              <!-- Chouchou turquoise -->
+              <ellipse cx="58" cy="6" rx="6" ry="4" fill="#489e96" transform="rotate(30 58 6)"/>
+              <circle cx="58" cy="6" r="2" fill="#ff9d00"/>
+          </g>`,
+        hairFront: `
+          <g id="girl-hair-front-full">
+              <!-- Frange asymétrique moderne -->
+              <path d="M 21,30 C 23,20 30,10 50,8 C 68,8 78,18 79,30 C 76,34 70,30 65,36 C 58,26 50,34 42,38 C 34,28 26,34 21,30 Z" fill="#8a3c08"/>
+          </g>`,
+        withTiara: false
+      },
+      3: {
+        name: "3. Carré Court Chibi (Bob)",
+        hairColor: "#8a3c08",
+        hairBack: `
+          <g id="girl-hair-back-full">
+              <!-- Masse courte évasée au niveau des oreilles -->
+              <path d="M 16,42 C 10,24 18,2 50,2 C 82,2 90,24 84,42 C 88,52 82,58 76,56 C 76,44 76,34 74,26 C 66,14 34,14 26,26 C 24,34 24,44 24,56 C 18,58 12,52 16,42 Z" fill="#8a3c08"/>
+          </g>`,
+        hairFront: `
+          <g id="girl-hair-front-full">
+              <path d="M 21,30 C 24,37 30,41 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,41 76,37 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>
+          </g>`,
+        withTiara: true
+      },
+      4: {
+        name: "4. Tresses Jumelles (Twin Braids)",
+        hairColor: "#8a3c08",
+        hairBack: `
+          <g id="girl-hair-back-full">
+              <ellipse cx="50" cy="24" rx="34" ry="26" fill="#8a3c08"/>
+              <!-- Tresse gauche -->
+              <path d="M 22,34 C 14,46 14,60 18,74 C 20,84 18,92 16,96 L 20,97 C 22,90 26,80 24,70 C 22,58 24,46 26,38 Z" fill="#8a3c08"/>
+              <circle cx="17" cy="96" r="3" fill="#489e96"/>
+              <!-- Tresse droite -->
+              <path d="M 78,34 C 86,46 86,60 82,74 C 80,84 82,92 84,96 L 80,97 C 78,90 74,80 76,70 C 78,58 76,46 74,38 Z" fill="#8a3c08"/>
+              <circle cx="83" cy="96" r="3" fill="#489e96"/>
+          </g>`,
+        hairFront: `
+          <g id="girl-hair-front-full">
+              <path d="M 21,30 C 24,37 30,41 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,41 76,37 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>
+              <path d="M 23,30 C 23,39 25,48 27,54 C 26,46 25,38 25,30 Z" fill="#8a3c08"/>
+              <path d="M 77,30 C 77,39 75,48 73,54 C 74,46 75,38 75,30 Z" fill="#8a3c08"/>
+          </g>`,
+        withTiara: true
+      }
+    };
+
+    // Générateur de SVG complet ou tête seule
+    function buildAvatarSvg(type, styleId, mode = 'full') {
+      const isBoy = type === 'boy';
+      const base = isBoy ? BOY_BASE : GIRL_BASE;
+      const style = (isBoy ? BOY_STYLES : GIRL_STYLES)[styleId];
+      
+      const viewBox = mode === 'full' 
+        ? (isBoy ? "0 -8 100 133" : "0 -6 100 131")
+        : (isBoy ? "4 -8 92 80" : "4 -6 92 78");
+
+      if (mode === 'head') {
+        return `
+          <svg viewBox="${viewBox}" class="w-full h-full drop-shadow-lg" xmlns="http://www.w3.org/2000/svg">
+              ${style.hairBack}
+              ${base.headBase(isBoy ? style.withBand : style.withTiara)}
+              ${style.hairFront}
+              ${base.faceFeatures}
+          </svg>
+        `;
+      }
+
+      return `
+        <svg viewBox="${viewBox}" class="w-full h-full drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
+            ${base.shadow}
+            ${style.hairBack}
+            ${base.legs}
+            ${base.body}
+            ${base.belt}
+            ${base.arms}
+            ${base.headBase(isBoy ? style.withBand : style.withTiara)}
+            ${style.hairFront}
+            ${base.faceFeatures}
+        </svg>
+      `;
+    }
+
+    // Mise à jour de la vue
+    function updatePreviews() {
+      document.getElementById('boy-preview-box').innerHTML = buildAvatarSvg('boy', currentBoyStyle, currentViewMode);
+      document.getElementById('girl-preview-box').innerHTML = buildAvatarSvg('girl', currentGirlStyle, currentViewMode);
+
+      document.getElementById('boy-style-badge').textContent = BOY_STYLES[currentBoyStyle].name;
+      document.getElementById('girl-style-badge').textContent = GIRL_STYLES[currentGirlStyle].name;
+
+      // Actualiser les vignettes
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById(`thumb-boy-${i}`).innerHTML = buildAvatarSvg('boy', i, 'head');
+        document.getElementById(`thumb-girl-${i}`).innerHTML = buildAvatarSvg('girl', i, 'head');
+
+        const btnB = document.getElementById(`btn-boy-style-${i}`);
+        if (btnB) btnB.classList.toggle('active', i === currentBoyStyle);
+
+        const btnG = document.getElementById(`btn-girl-style-${i}`);
+        if (btnG) btnG.classList.toggle('active', i === currentGirlStyle);
+      }
+    }
+
+    function selectBoyStyle(id) {
+      currentBoyStyle = id;
+      updatePreviews();
+    }
+
+    function selectGirlStyle(id) {
+      currentGirlStyle = id;
+      updatePreviews();
+    }
+
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      document.getElementById('view-full-btn').className = mode === 'full' 
+        ? "px-2.5 py-1 text-xs rounded-lg font-bold bg-accent-500 text-white shadow"
+        : "px-2.5 py-1 text-xs rounded-lg font-bold bg-white/10 text-white/80 hover:bg-white/20";
+      
+      document.getElementById('view-head-btn').className = mode === 'head' 
+        ? "px-2.5 py-1 text-xs rounded-lg font-bold bg-accent-500 text-white shadow"
+        : "px-2.5 py-1 text-xs rounded-lg font-bold bg-white/10 text-white/80 hover:bg-white/20";
+      
+      updatePreviews();
+    }
+
+    // Initialisation au chargement
+    document.addEventListener('DOMContentLoaded', () => {
+      updatePreviews();
+    });
+  </script>
+</body>
+
+</html>
