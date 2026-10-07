@@ -128,7 +128,7 @@ export class RoadmapManager {
                 <div class="p-3 sm:p-4 md:p-5 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
                     <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
                         <!-- Avatar box skeleton -->
-                        <div class="w-10 h-12 sm:w-12 sm:h-14 rounded-xl skeleton-shimmer flex-shrink-0"></div>
+                        <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl skeleton-shimmer flex-shrink-0"></div>
                         <div class="space-y-2 min-w-0">
                             <div class="flex items-center gap-2">
                                 <div class="h-4 w-24 sm:w-32 rounded skeleton-shimmer"></div>
@@ -227,10 +227,10 @@ export class RoadmapManager {
                 <!-- Header Profil & Rang -->
                 <div class="p-3 sm:p-4 md:p-5 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
                     <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                        <!-- Avatar interactif -->
+                        <!-- Avatar interactif (Portrait Tête) -->
                         <div class="relative group cursor-pointer flex-shrink-0" id="roadmap-avatar-toggle" title="Cliquer pour changer de personnage">
-                            <div class="w-10 h-12 sm:w-12 sm:h-14 rounded-xl ring-2 ring-primary-500 shadow-md bg-amber-100/90 overflow-hidden flex items-center justify-center transition-transform transform group-hover:scale-105 p-1">
-                                ${avatarData.svg}
+                            <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl ring-2 ring-primary-500 shadow-md bg-amber-100/90 overflow-hidden flex items-center justify-center transition-transform transform group-hover:scale-105 p-0.5">
+                                ${avatarData.headSvg || avatarData.svg}
                             </div>
                             <span class="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent-500 text-white flex items-center justify-center text-[9px] sm:text-[10px] shadow" title="Changer de personnage">
                                 <i class="bi bi-arrow-repeat"></i>
