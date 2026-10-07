@@ -109,11 +109,11 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
 
 ### Calque 8 : Cheveux avant / Frange (`<g id="...-hair-front-full">`)
 - Frange manga découpée en pointes dynamiques sur le front (`y = 10` à `y = 43`).
-- **Structure Frange Fille (3 Blocs distincts)** :
-  - Bloc gauche ($X = 21..42$), pointe à $(33, 36)$.
-  - Bloc central ($X = 42..58$), mèche centrale descendant bas entre les yeux jusqu'à $(50, 43)$.
-  - Bloc droit ($X = 58..79$), pointe à $(67, 36)$.
-  - Tracé : `<path d="M 21,30 C 23,36 28,39 33,36 C 37,34 39,29 42,28 C 44,30 46,43 50,43 C 54,43 56,30 58,28 C 61,29 63,34 67,36 C 72,39 77,36 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>`
+- **Structure Frange Fille (3 Blocs distincts & Mèche centrale élargie)** :
+  - Bloc gauche ($X = 21..38$), pointe à $(30, 36)$.
+  - Bloc central large ($X = 38..62$), mèche centrale descendant bas entre les yeux jusqu'à $(50, 43)$.
+  - Bloc droit ($X = 62..79$), pointe à $(70, 36)$.
+  - Tracé : `<path d="M 21,30 C 23,36 26,38 30,36 C 34,34 36,29 38,28 C 41,32 45,43 50,43 C 55,43 59,32 62,28 C 64,29 66,34 70,36 C 74,38 77,36 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>`
 - Les mèches latérales (`y = 30..54`) encadrent l'intérieur des joues **sans recouvrir les oreilles de face**.
 
 ### Calque 9 : Traits du visage en avant-plan (`<g id="...-face-features-full">`)
