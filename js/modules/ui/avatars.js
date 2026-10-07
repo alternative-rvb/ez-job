@@ -211,6 +211,8 @@ export const AVATARS = {
             <svg viewBox="4 -6 92 78" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
     <!-- GROUPE 1 : CHEVEUX ARRIERE (Même teinte #8a3c08) -->
     <g id="girl-hair-back">
+        <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
+        <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
         <path d="M 12,36 C 8,14 20,-2 50,-2 C 80,-2 92,14 88,36 C 94,50 90,64 82,70 C 78,64 76,52 76,42 C 74,32 26,32 24,42 C 24,52 22,64 18,70 C 10,64 6,50 12,36 Z" fill="#8a3c08"/>
         <circle cx="16" cy="10" r="13" fill="#8a3c08"/>
         <circle cx="84" cy="10" r="13" fill="#8a3c08"/>
@@ -308,6 +310,8 @@ export const AVATARS = {
 
     <!-- GROUPE 1 : CHEVEUX ARRIERE -->
     <g id="girl-hair-back-full">
+        <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
+        <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
         <path d="M 12,36 C 8,14 20,-2 50,-2 C 80,-2 92,14 88,36 C 94,50 90,64 82,70 C 78,64 76,52 76,42 C 74,32 26,32 24,42 C 24,52 22,64 18,70 C 10,64 6,50 12,36 Z" fill="#8a3c08"/>
         <circle cx="16" cy="10" r="13" fill="#8a3c08"/>
         <circle cx="84" cy="10" r="13" fill="#8a3c08"/>
