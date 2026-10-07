@@ -107,7 +107,7 @@ export const AVATARS = {
             <svg viewBox="0 -8 100 133" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. OMBRE AU SOL -->
     <g id="boy-shadow">
-        <ellipse cx="50" cy="120" rx="24" ry="4" fill="rgba(124, 64, 4, 0.18)"/>
+        <ellipse cx="50" cy="116" rx="20" ry="3.5" fill="rgba(124, 64, 4, 0.18)"/>
     </g>
 
     <!-- 2. GROUPE CHEVEUX ARRIERE (Calque le plus au fond) -->
@@ -126,23 +126,27 @@ export const AVATARS = {
                  C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
     </g>
 
-    <!-- 3. JAMBES & CHAUSSURES -->
+    <!-- 3. JAMBES & CHAUSSURES (Jambes en trapèze : plus larges en haut, plus fines en bas & chaussures affinées) -->
     <g id="boy-legs">
-        <!-- Jambe gauche -->
-        <rect x="36" y="86" width="10" height="18" rx="4" fill="#5c3818"/>
-        <rect x="35" y="98" width="12" height="7" rx="2" fill="#ffffff"/>
-        <rect x="35" y="100" width="12" height="2" fill="#ff9d00"/>
-        <path d="M33 105 C33 102, 47 102, 47 105 L48 116 C48 118, 30 118, 30 116 Z" fill="#7c4004"/>
-        <path d="M29 114 L49 114 L48 118 L28 118 Z" fill="#442100"/>
-        <rect x="34" y="107" width="9" height="3" rx="1" fill="#ff9d00"/>
+        <!-- Jambe gauche (trapèze) -->
+        <polygon points="35,85 47,85 44.5,106 37.5,106" fill="#5c3818"/>
+        <!-- Chaussette / guêtre gauche -->
+        <polygon points="36.5,99 45.5,99 44.5,106 37.5,106" fill="#ffffff"/>
+        <polygon points="36.3,101 45.7,101 45.3,102.5 36.7,102.5" fill="#ff9d00"/>
+        <!-- Chaussure gauche (compacte & stylisée) -->
+        <path d="M35 106 C35 104, 46 104, 46 106 L47 113 C47 115, 34 115, 34 113 Z" fill="#7c4004"/>
+        <path d="M33.5 112 L47.5 112 L47 114 L34 114 Z" fill="#442100"/>
+        <rect x="38" y="107" width="5" height="2" rx="0.8" fill="#ff9d00"/>
 
-        <!-- Jambe droite -->
-        <rect x="54" y="86" width="10" height="18" rx="4" fill="#5c3818"/>
-        <rect x="53" y="98" width="12" height="7" rx="2" fill="#ffffff"/>
-        <rect x="53" y="100" width="12" height="2" fill="#ff9d00"/>
-        <path d="M53 105 C53 102, 67 102, 67 105 L70 116 C70 118, 52 118, 52 116 Z" fill="#7c4004"/>
-        <path d="M51 114 L71 114 L72 118 L52 118 Z" fill="#442100"/>
-        <rect x="57" y="107" width="9" height="3" rx="1" fill="#ff9d00"/>
+        <!-- Jambe droite (trapèze) -->
+        <polygon points="53,85 65,85 62.5,106 55.5,106" fill="#5c3818"/>
+        <!-- Chaussette / guêtre droite -->
+        <polygon points="54.5,99 63.5,99 62.5,106 55.5,106" fill="#ffffff"/>
+        <polygon points="54.3,101 63.7,101 63.3,102.5 54.7,102.5" fill="#ff9d00"/>
+        <!-- Chaussure droite (compacte & stylisée) -->
+        <path d="M54 106 C54 104, 65 104, 65 106 L66 113 C66 115, 53 115, 53 113 Z" fill="#7c4004"/>
+        <path d="M52.5 112 L66.5 112 L66 114 L53 114 Z" fill="#442100"/>
+        <rect x="57" y="107" width="5" height="2" rx="0.8" fill="#ff9d00"/>
     </g>
 
     <!-- 4. CORPS & VETEMENTS (Kimono en trapèze élégant) -->
@@ -325,7 +329,7 @@ export const AVATARS = {
             <svg viewBox="0 -6 100 131" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. OMBRE AU SOL -->
     <g id="girl-shadow">
-        <ellipse cx="50" cy="120" rx="24" ry="4" fill="rgba(124, 64, 4, 0.18)"/>
+        <ellipse cx="50" cy="116" rx="20" ry="3.5" fill="rgba(124, 64, 4, 0.18)"/>
     </g>
 
     <!-- 2. GROUPE CHEVEUX ARRIERE -->
@@ -341,23 +345,27 @@ export const AVATARS = {
         <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
     </g>
 
-    <!-- 3. JAMBES & CHAUSSURES -->
+    <!-- 3. JAMBES & CHAUSSURES (Jambes en trapèze : plus larges en haut, plus fines en bas & chaussures affinées) -->
     <g id="girl-legs">
-        <!-- Jambe gauche -->
-        <rect x="36" y="86" width="10" height="18" rx="4" fill="#ffd4a3"/>
-        <rect x="35" y="94" width="12" height="11" rx="2" fill="#489e96"/>
-        <rect x="35" y="96" width="12" height="2" fill="#ffffff"/>
-        <path d="M33 105 C33 102, 47 102, 47 105 L48 116 C48 118, 30 118, 30 116 Z" fill="#ff9d00"/>
-        <path d="M29 114 L49 114 L48 118 L28 118 Z" fill="#c47000"/>
-        <rect x="34" y="106" width="9" height="3" rx="1.5" fill="#ffffff"/>
+        <!-- Jambe gauche (trapèze) -->
+        <polygon points="36,88 46,88 44,106 38,106" fill="#ffd4a3"/>
+        <!-- Chaussette montante gauche -->
+        <polygon points="37,96 45,96 44,106 38,106" fill="#489e96"/>
+        <polygon points="37,96 45,96 44.7,98 37.3,98" fill="#ffffff"/>
+        <!-- Chaussure gauche (compacte & stylisée) -->
+        <path d="M35 106 C35 104, 46 104, 46 106 L47 113 C47 115, 34 115, 34 113 Z" fill="#ff9d00"/>
+        <path d="M33.5 112 L47.5 112 L47 114 L34 114 Z" fill="#c47000"/>
+        <rect x="38" y="107" width="5" height="2" rx="0.8" fill="#ffffff"/>
 
-        <!-- Jambe droite -->
-        <rect x="54" y="86" width="10" height="18" rx="4" fill="#ffd4a3"/>
-        <rect x="53" y="94" width="12" height="11" rx="2" fill="#489e96"/>
-        <rect x="53" y="96" width="12" height="2" fill="#ffffff"/>
-        <path d="M53 105 C53 102, 67 102, 67 105 L70 116 C70 118, 52 118, 52 116 Z" fill="#ff9d00"/>
-        <path d="M51 114 L71 114 L72 118 L52 118 Z" fill="#c47000"/>
-        <rect x="57" y="106" width="9" height="3" rx="1.5" fill="#ffffff"/>
+        <!-- Jambe droite (trapèze) -->
+        <polygon points="54,88 64,88 62,106 56,106" fill="#ffd4a3"/>
+        <!-- Chaussette montante droite -->
+        <polygon points="55,96 63,96 62,106 56,106" fill="#489e96"/>
+        <polygon points="55,96 63,96 62.7,98 55.3,98" fill="#ffffff"/>
+        <!-- Chaussure droite (compacte & stylisée) -->
+        <path d="M54 106 C54 104, 65 104, 65 106 L66 113 C66 115, 53 115, 53 113 Z" fill="#ff9d00"/>
+        <path d="M52.5 112 L66.5 112 L66 114 L53 114 Z" fill="#c47000"/>
+        <rect x="57" y="107" width="5" height="2" rx="0.8" fill="#ffffff"/>
     </g>
 
     <!-- 4. CORPS & JUPE (Veste en trapèze élégant & jupe plissée) -->
