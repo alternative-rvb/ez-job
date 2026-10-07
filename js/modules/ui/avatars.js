@@ -107,7 +107,7 @@ export const AVATARS = {
             <svg viewBox="0 -8 100 133" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. OMBRE AU SOL -->
     <g id="boy-shadow">
-        <ellipse cx="50" cy="116" rx="20" ry="3.5" fill="rgba(124, 64, 4, 0.18)"/>
+        <ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/>
     </g>
 
     <!-- 2. GROUPE CHEVEUX ARRIERE (Calque le plus au fond) -->
@@ -126,27 +126,27 @@ export const AVATARS = {
                  C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
     </g>
 
-    <!-- 3. JAMBES & CHAUSSURES (Jambes en trapèze : plus larges en haut, plus fines en bas & chaussures affinées) -->
+    <!-- 3. JAMBES & CHAUSSURES (Jambes rapprochées en trapèze & chaussures compactes) -->
     <g id="boy-legs">
-        <!-- Jambe gauche (trapèze) -->
-        <polygon points="35,85 47,85 44.5,106 37.5,106" fill="#5c3818"/>
+        <!-- Jambe gauche (trapèze resserré) -->
+        <polygon points="39,85 49,85 48,106 41,106" fill="#5c3818"/>
         <!-- Chaussette / guêtre gauche -->
-        <polygon points="36.5,99 45.5,99 44.5,106 37.5,106" fill="#ffffff"/>
-        <polygon points="36.3,101 45.7,101 45.3,102.5 36.7,102.5" fill="#ff9d00"/>
-        <!-- Chaussure gauche (compacte & stylisée) -->
-        <path d="M35 106 C35 104, 46 104, 46 106 L47 113 C47 115, 34 115, 34 113 Z" fill="#7c4004"/>
-        <path d="M33.5 112 L47.5 112 L47 114 L34 114 Z" fill="#442100"/>
-        <rect x="38" y="107" width="5" height="2" rx="0.8" fill="#ff9d00"/>
+        <polygon points="40,99 48.5,99 48,106 41,106" fill="#ffffff"/>
+        <polygon points="39.8,101 48.7,101 48.3,102.5 40.2,102.5" fill="#ff9d00"/>
+        <!-- Chaussure gauche -->
+        <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#7c4004"/>
+        <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#442100"/>
+        <rect x="42.5" y="107" width="4" height="2" rx="0.8" fill="#ff9d00"/>
 
-        <!-- Jambe droite (trapèze) -->
-        <polygon points="53,85 65,85 62.5,106 55.5,106" fill="#5c3818"/>
+        <!-- Jambe droite (trapèze resserré) -->
+        <polygon points="51,85 61,85 59,106 52,106" fill="#5c3818"/>
         <!-- Chaussette / guêtre droite -->
-        <polygon points="54.5,99 63.5,99 62.5,106 55.5,106" fill="#ffffff"/>
-        <polygon points="54.3,101 63.7,101 63.3,102.5 54.7,102.5" fill="#ff9d00"/>
-        <!-- Chaussure droite (compacte & stylisée) -->
-        <path d="M54 106 C54 104, 65 104, 65 106 L66 113 C66 115, 53 115, 53 113 Z" fill="#7c4004"/>
-        <path d="M52.5 112 L66.5 112 L66 114 L53 114 Z" fill="#442100"/>
-        <rect x="57" y="107" width="5" height="2" rx="0.8" fill="#ff9d00"/>
+        <polygon points="51.5,99 60,99 59,106 52,106" fill="#ffffff"/>
+        <polygon points="51.3,101 60.2,101 59.8,102.5 51.7,102.5" fill="#ff9d00"/>
+        <!-- Chaussure droite -->
+        <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#7c4004"/>
+        <path d="M49.5 112 L61.5 112 L61 114 L50 114 Z" fill="#442100"/>
+        <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#ff9d00"/>
     </g>
 
     <!-- 4. CORPS & VETEMENTS (Kimono en trapèze élégant) -->
@@ -158,12 +158,12 @@ export const AVATARS = {
         <path d="M47 70 L50 80 L53 70 Z" fill="#e08900"/>
     </g>
 
-    <!-- 5. CEINTURE / OBI & ACCESSOIRES -->
+    <!-- 5. CEINTURE / OBI & ACCESSOIRES (Ceinture ajustée à la taille) -->
     <g id="boy-belt">
-        <rect x="36" y="84" width="28" height="5" rx="1" fill="#7c4004"/>
-        <rect x="46" y="83" width="8" height="7" rx="1.5" fill="#ffb733" stroke="#7c4004" stroke-width="1"/>
-        <rect x="34" y="84" width="5" height="8" rx="1.5" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
-        <circle cx="36.5" cy="88" r="0.8" fill="#ffb733"/>
+        <rect x="37" y="82.5" width="26" height="4.5" rx="1" fill="#7c4004"/>
+        <rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#ffb733" stroke="#7c4004" stroke-width="0.8"/>
+        <rect x="36" y="82.5" width="4.5" height="7" rx="1.2" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
+        <circle cx="38.2" cy="86" r="0.7" fill="#ffb733"/>
     </g>
 
     <!-- 6. BRAS & MAINS (2 ovales formant une pince : doigts + pouce plus petit) -->
@@ -331,7 +331,7 @@ export const AVATARS = {
             <svg viewBox="0 -6 100 131" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. OMBRE AU SOL -->
     <g id="girl-shadow">
-        <ellipse cx="50" cy="116" rx="20" ry="3.5" fill="rgba(124, 64, 4, 0.18)"/>
+        <ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/>
     </g>
 
     <!-- 2. GROUPE CHEVEUX ARRIERE -->
@@ -347,27 +347,27 @@ export const AVATARS = {
         <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
     </g>
 
-    <!-- 3. JAMBES & CHAUSSURES (Jambes en trapèze : plus larges en haut, plus fines en bas & chaussures affinées) -->
+    <!-- 3. JAMBES & CHAUSSURES (Jambes rapprochées en trapèze & chaussures compactes) -->
     <g id="girl-legs">
-        <!-- Jambe gauche (trapèze) -->
-        <polygon points="36,88 46,88 44,106 38,106" fill="#ffd4a3"/>
+        <!-- Jambe gauche (trapèze resserré) -->
+        <polygon points="39,88 49,88 48,106 41,106" fill="#ffd4a3"/>
         <!-- Chaussette montante gauche -->
-        <polygon points="37,96 45,96 44,106 38,106" fill="#489e96"/>
-        <polygon points="37,96 45,96 44.7,98 37.3,98" fill="#ffffff"/>
-        <!-- Chaussure gauche (compacte & stylisée) -->
-        <path d="M35 106 C35 104, 46 104, 46 106 L47 113 C47 115, 34 115, 34 113 Z" fill="#ff9d00"/>
-        <path d="M33.5 112 L47.5 112 L47 114 L34 114 Z" fill="#c47000"/>
-        <rect x="38" y="107" width="5" height="2" rx="0.8" fill="#ffffff"/>
+        <polygon points="40,96 48.5,96 48,106 41,106" fill="#489e96"/>
+        <polygon points="40,96 48.5,96 48.3,98 40.2,98" fill="#ffffff"/>
+        <!-- Chaussure gauche -->
+        <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#ff9d00"/>
+        <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#c47000"/>
+        <rect x="42.5" y="107" width="4" height="2" rx="0.8" fill="#ffffff"/>
 
-        <!-- Jambe droite (trapèze) -->
-        <polygon points="54,88 64,88 62,106 56,106" fill="#ffd4a3"/>
+        <!-- Jambe droite (trapèze resserré) -->
+        <polygon points="51,88 61,88 59,106 52,106" fill="#ffd4a3"/>
         <!-- Chaussette montante droite -->
-        <polygon points="55,96 63,96 62,106 56,106" fill="#489e96"/>
-        <polygon points="55,96 63,96 62.7,98 55.3,98" fill="#ffffff"/>
-        <!-- Chaussure droite (compacte & stylisée) -->
-        <path d="M54 106 C54 104, 65 104, 65 106 L66 113 C66 115, 53 115, 53 113 Z" fill="#ff9d00"/>
-        <path d="M52.5 112 L66.5 112 L66 114 L53 114 Z" fill="#c47000"/>
-        <rect x="57" y="107" width="5" height="2" rx="0.8" fill="#ffffff"/>
+        <polygon points="51.5,96 60,96 59,106 52,106" fill="#489e96"/>
+        <polygon points="51.5,96 60,96 59.8,98 51.7,98" fill="#ffffff"/>
+        <!-- Chaussure droite -->
+        <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#ff9d00"/>
+        <path d="M49.5 112 L61.5 112 L61 114 L50 114 Z" fill="#c47000"/>
+        <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#ffffff"/>
     </g>
 
     <!-- 4. CORPS & JUPE (Veste en trapèze élégant & jupe plissée) -->
@@ -386,12 +386,12 @@ export const AVATARS = {
         <circle cx="50" cy="80" r="1.5" fill="#ffde6a"/>
     </g>
 
-    <!-- 5. CEINTURE & ACCESSOIRES -->
+    <!-- 5. CEINTURE & ACCESSOIRES (Ceinture ajustée sur la taille) -->
     <g id="girl-belt">
-        <rect x="37" y="81" width="26" height="4" fill="#7c4004"/>
-        <rect x="47" y="80" width="6" height="6" rx="1" fill="#ffb733"/>
-        <rect x="60" y="81" width="3.5" height="5.5" rx="1.2" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
-        <circle cx="61.7" cy="83.8" r="0.8" fill="#ffffff"/>
+        <rect x="37" y="80.5" width="26" height="4" rx="1" fill="#7c4004"/>
+        <rect x="47" y="79.5" width="6" height="6" rx="1.2" fill="#ffb733" stroke="#7c4004" stroke-width="0.8"/>
+        <rect x="58.5" y="80.5" width="3.5" height="5.5" rx="1.2" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
+        <circle cx="60.2" cy="83.2" r="0.7" fill="#ffffff"/>
     </g>
 
     <!-- 6. BRAS & MAINS (2 ovales formant une pince : doigts + pouce plus petit) -->
