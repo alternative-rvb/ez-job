@@ -1,7 +1,13 @@
 /**
  * Module de définition et rendu des Avatars (Style Manga Chibi)
- * Structure en 2 groupes capillaires superposés : cheveux arrière + cheveux avant.
- * Teinte 100% uniforme par personnage pour validation de la coupe.
+ * Structure de calques stricte :
+ * 1. Ombre au sol
+ * 2. GROUPE CHEVEUX ARRIERE (Calque le plus au fond, derrière le corps entier)
+ * 3. Jambes & Chaussures
+ * 4. Corps & Vêtements
+ * 5. Bras & Mains
+ * 6. GROUPE TÊTE & VISAGE (Cou, crâne, visage, yeux, bandeau/serre-tête)
+ * 7. GROUPE CHEVEUX AVANT (Frange et mèches de premier plan)
  */
 
 export const AVATARS = {
@@ -12,9 +18,8 @@ export const AVATARS = {
         image: null,
         headSvg: `
             <svg viewBox="4 -8 92 80" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <!-- GROUPE 1 : CHEVEUX ARRIERE (Même teinte #5a2d0c) -->
+    <!-- 1. CHEVEUX ARRIERE (Le plus en fond) -->
     <g id="boy-hair-back">
-        <!-- Spikes shonen dynamiques et equilibres autour du crane -->
         <path d="M 18,42 
                  C 12,34 8,26 10,20 
                  C 12,14 6,10 12,4 
@@ -29,7 +34,7 @@ export const AVATARS = {
                  C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
     </g>
 
-    <!-- GROUPE 2 : TETE ET VISAGE -->
+    <!-- 2. TETE ET VISAGE -->
     <g id="boy-head">
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
         <path d="M42 63 L50 65 L58 63 Z" fill="#ff9d00"/>
@@ -75,9 +80,8 @@ export const AVATARS = {
         <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 
-    <!-- GROUPE 3 : CHEVEUX AVANT (Même teinte #5a2d0c) -->
+    <!-- 3. CHEVEUX AVANT (Premier plan) -->
     <g id="boy-hair-front">
-        <!-- Frange nette et meches courtes shonen bien decoupees -->
         <path d="M 20,32 
                  C 21,24 24,14 34,8 
                  C 44,4 56,4 66,8 
@@ -93,47 +97,10 @@ export const AVATARS = {
         `,
         svg: `
             <svg viewBox="0 -8 100 133" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
-    <!-- Ombre au sol -->
+    <!-- 1. Ombre au sol -->
     <ellipse cx="50" cy="120" rx="24" ry="4" fill="rgba(124, 64, 4, 0.18)"/>
 
-    <!-- Jambe gauche -->
-    <rect x="36" y="86" width="10" height="18" rx="4" fill="#5c3818"/>
-    <rect x="35" y="98" width="12" height="7" rx="2" fill="#ffffff"/>
-    <rect x="35" y="100" width="12" height="2" fill="#ff9d00"/>
-    <path d="M33 105 C33 102, 47 102, 47 105 L48 116 C48 118, 30 118, 30 116 Z" fill="#7c4004"/>
-    <path d="M29 114 L49 114 L48 118 L28 118 Z" fill="#442100"/>
-    <rect x="34" y="107" width="9" height="3" rx="1" fill="#ff9d00"/>
-
-    <!-- Jambe droite -->
-    <rect x="54" y="86" width="10" height="18" rx="4" fill="#5c3818"/>
-    <rect x="53" y="98" width="12" height="7" rx="2" fill="#ffffff"/>
-    <rect x="53" y="100" width="12" height="2" fill="#ff9d00"/>
-    <path d="M53 105 C53 102, 67 102, 67 105 L70 116 C70 118, 52 118, 52 116 Z" fill="#7c4004"/>
-    <path d="M51 114 L71 114 L72 118 L52 118 Z" fill="#442100"/>
-    <rect x="57" y="107" width="9" height="3" rx="1" fill="#ff9d00"/>
-
-    <!-- Corps / Kimono -->
-    <path d="M34 66 L66 66 L64 88 L36 88 Z" fill="#ffffff"/>
-    <path d="M33 66 C33 66, 40 76, 44 88 L34 88 L31 70 Z" fill="#489e96"/>
-    <path d="M67 66 C67 66, 60 76, 56 88 L66 88 L69 70 Z" fill="#489e96"/>
-    <path d="M42 63 L50 72 L58 63 Z" fill="#ff9d00"/>
-    <path d="M47 70 L50 80 L53 70 Z" fill="#e08900"/>
-
-    <!-- Ceinture / Obi -->
-    <rect x="33" y="84" width="34" height="5" rx="1" fill="#7c4004"/>
-    <rect x="46" y="83" width="8" height="7" rx="1.5" fill="#ffb733" stroke="#7c4004" stroke-width="1"/>
-    <rect x="31" y="84" width="6" height="8" rx="1.5" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
-    <circle cx="34" cy="88" r="0.8" fill="#ffb733"/>
-
-    <!-- Bras gauche -->
-    <path d="M32 68 C24 74, 23 80, 29 85 C32 85, 34 82, 35 78 Z" fill="#489e96"/>
-    <circle cx="30" cy="85" r="4" fill="#ffd4a3"/>
-
-    <!-- Bras droit -->
-    <path d="M68 68 C76 72, 78 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#489e96"/>
-    <circle cx="77" cy="80" r="4.2" fill="#ffd4a3"/>
-
-    <!-- GROUPE 1 : CHEVEUX ARRIERE -->
+    <!-- 2. GROUPE CHEVEUX ARRIERE (Calque le plus au fond) -->
     <g id="boy-hair-back-full">
         <path d="M 18,42 
                  C 12,34 8,26 10,20 
@@ -149,7 +116,44 @@ export const AVATARS = {
                  C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
     </g>
 
-    <!-- GROUPE 2 : TETE ET VISAGE -->
+    <!-- 3. Jambe gauche -->
+    <rect x="36" y="86" width="10" height="18" rx="4" fill="#5c3818"/>
+    <rect x="35" y="98" width="12" height="7" rx="2" fill="#ffffff"/>
+    <rect x="35" y="100" width="12" height="2" fill="#ff9d00"/>
+    <path d="M33 105 C33 102, 47 102, 47 105 L48 116 C48 118, 30 118, 30 116 Z" fill="#7c4004"/>
+    <path d="M29 114 L49 114 L48 118 L28 118 Z" fill="#442100"/>
+    <rect x="34" y="107" width="9" height="3" rx="1" fill="#ff9d00"/>
+
+    <!-- 3. Jambe droite -->
+    <rect x="54" y="86" width="10" height="18" rx="4" fill="#5c3818"/>
+    <rect x="53" y="98" width="12" height="7" rx="2" fill="#ffffff"/>
+    <rect x="53" y="100" width="12" height="2" fill="#ff9d00"/>
+    <path d="M53 105 C53 102, 67 102, 67 105 L70 116 C70 118, 52 118, 52 116 Z" fill="#7c4004"/>
+    <path d="M51 114 L71 114 L72 118 L52 118 Z" fill="#442100"/>
+    <rect x="57" y="107" width="9" height="3" rx="1" fill="#ff9d00"/>
+
+    <!-- 4. Corps / Kimono -->
+    <path d="M34 66 L66 66 L64 88 L36 88 Z" fill="#ffffff"/>
+    <path d="M33 66 C33 66, 40 76, 44 88 L34 88 L31 70 Z" fill="#489e96"/>
+    <path d="M67 66 C67 66, 60 76, 56 88 L66 88 L69 70 Z" fill="#489e96"/>
+    <path d="M42 63 L50 72 L58 63 Z" fill="#ff9d00"/>
+    <path d="M47 70 L50 80 L53 70 Z" fill="#e08900"/>
+
+    <!-- 5. Ceinture / Obi -->
+    <rect x="33" y="84" width="34" height="5" rx="1" fill="#7c4004"/>
+    <rect x="46" y="83" width="8" height="7" rx="1.5" fill="#ffb733" stroke="#7c4004" stroke-width="1"/>
+    <rect x="31" y="84" width="6" height="8" rx="1.5" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
+    <circle cx="34" cy="88" r="0.8" fill="#ffb733"/>
+
+    <!-- 6. Bras gauche -->
+    <path d="M32 68 C24 74, 23 80, 29 85 C32 85, 34 82, 35 78 Z" fill="#489e96"/>
+    <circle cx="30" cy="85" r="4" fill="#ffd4a3"/>
+
+    <!-- 6. Bras droit -->
+    <path d="M68 68 C76 72, 78 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#489e96"/>
+    <circle cx="77" cy="80" r="4.2" fill="#ffd4a3"/>
+
+    <!-- 7. GROUPE TETE ET VISAGE -->
     <g id="boy-head-full">
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
         <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
@@ -186,7 +190,7 @@ export const AVATARS = {
         <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 
-    <!-- GROUPE 3 : CHEVEUX AVANT -->
+    <!-- 8. GROUPE CHEVEUX AVANT -->
     <g id="boy-hair-front-full">
         <path d="M 20,32 
                  C 21,24 24,14 34,8 
@@ -209,7 +213,7 @@ export const AVATARS = {
         image: null,
         headSvg: `
             <svg viewBox="4 -6 92 78" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <!-- GROUPE 1 : CHEVEUX ARRIERE (Même teinte #8a3c08) -->
+    <!-- 1. GROUPE CHEVEUX ARRIERE (Même teinte #8a3c08 - Calque le plus au fond) -->
     <g id="girl-hair-back">
         <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
         <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
@@ -222,7 +226,7 @@ export const AVATARS = {
         <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
     </g>
 
-    <!-- GROUPE 2 : TETE ET VISAGE -->
+    <!-- 2. GROUPE TETE ET VISAGE -->
     <g id="girl-head">
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
         <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
@@ -259,7 +263,7 @@ export const AVATARS = {
         <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 
-    <!-- GROUPE 3 : CHEVEUX AVANT (Même teinte #8a3c08) -->
+    <!-- 3. GROUPE CHEVEUX AVANT (Premier plan) -->
     <g id="girl-hair-front">
         <path d="M 18,28 C 22,38 30,42 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,42 78,38 82,28 C 76,12 64,6 50,6 C 36,6 24,12 18,28 Z" fill="#8a3c08"/>
         <path d="M 18,28 C 14,40 16,54 24,60 C 24,50 22,40 22,30 Z" fill="#8a3c08"/>
@@ -269,46 +273,10 @@ export const AVATARS = {
         `,
         svg: `
             <svg viewBox="0 -6 100 131" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+    <!-- 1. Ombre au sol -->
     <ellipse cx="50" cy="120" rx="24" ry="4" fill="rgba(124, 64, 4, 0.18)"/>
 
-    <rect x="36" y="86" width="10" height="18" rx="4" fill="#ffd4a3"/>
-    <rect x="35" y="94" width="12" height="11" rx="2" fill="#489e96"/>
-    <rect x="35" y="96" width="12" height="2" fill="#ffffff"/>
-    <path d="M33 105 C33 102, 47 102, 47 105 L48 116 C48 118, 30 118, 30 116 Z" fill="#ff9d00"/>
-    <path d="M29 114 L49 114 L48 118 L28 118 Z" fill="#c47000"/>
-    <rect x="34" y="106" width="9" height="3" rx="1.5" fill="#ffffff"/>
-
-    <rect x="54" y="86" width="10" height="18" rx="4" fill="#ffd4a3"/>
-    <rect x="53" y="94" width="12" height="11" rx="2" fill="#489e96"/>
-    <rect x="53" y="96" width="12" height="2" fill="#ffffff"/>
-    <path d="M53 105 C53 102, 67 102, 67 105 L70 116 C70 118, 52 118, 52 116 Z" fill="#ff9d00"/>
-    <path d="M51 114 L71 114 L72 118 L52 118 Z" fill="#c47000"/>
-    <rect x="57" y="106" width="9" height="3" rx="1.5" fill="#ffffff"/>
-
-    <path d="M33 82 C33 82, 40 83.5, 50 83.5 C60 83.5, 67 82, 67 82 C72 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 28 85, 33 82 Z" fill="#5c3818"/>
-    <path d="M38 83 C38 85, 36 88, 35 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
-    <path d="M50 83.5 L50 93.5" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
-    <path d="M62 83 C62 85, 64 88, 65 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
-
-    <path d="M34 66 L66 66 L66 82 L34 82 Z" fill="#ff9d00"/>
-    <path d="M44 64 L50 74 L56 64 Z" fill="#ffffff"/>
-    <circle cx="50" cy="69" r="2.5" fill="#489e96"/>
-    <polygon points="46,67 50,69 46,72" fill="#489e96"/>
-    <polygon points="54,67 50,69 54,72" fill="#489e96"/>
-    <circle cx="50" cy="76" r="1.5" fill="#ffde6a"/>
-    <circle cx="50" cy="80" r="1.5" fill="#ffde6a"/>
-
-    <rect x="33" y="81" width="34" height="4" fill="#7c4004"/>
-    <rect x="47" y="80" width="6" height="6" rx="1" fill="#ffb733"/>
-    <rect x="62" y="81" width="4" height="6" rx="1.5" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
-    <circle cx="64" cy="84" r="1" fill="#ffffff"/>
-
-    <path d="M33 68 C25 72, 23 78, 26 84 C29 84, 32 80, 35 76 Z" fill="#ff9d00"/>
-    <circle cx="26" cy="84" r="3.8" fill="#ffd4a3"/>
-    <path d="M67 68 C75 70, 77 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#ff9d00"/>
-    <circle cx="77" cy="78" r="3.8" fill="#ffd4a3"/>
-
-    <!-- GROUPE 1 : CHEVEUX ARRIERE -->
+    <!-- 2. GROUPE CHEVEUX ARRIERE (Calque le plus au fond, derrière le corps entier) -->
     <g id="girl-hair-back-full">
         <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
         <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
@@ -321,7 +289,52 @@ export const AVATARS = {
         <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
     </g>
 
-    <!-- GROUPE 2 : TETE ET VISAGE -->
+    <!-- 3. Jambe gauche -->
+    <rect x="36" y="86" width="10" height="18" rx="4" fill="#ffd4a3"/>
+    <rect x="35" y="94" width="12" height="11" rx="2" fill="#489e96"/>
+    <rect x="35" y="96" width="12" height="2" fill="#ffffff"/>
+    <path d="M33 105 C33 102, 47 102, 47 105 L48 116 C48 118, 30 118, 30 116 Z" fill="#ff9d00"/>
+    <path d="M29 114 L49 114 L48 118 L28 118 Z" fill="#c47000"/>
+    <rect x="34" y="106" width="9" height="3" rx="1.5" fill="#ffffff"/>
+
+    <!-- 3. Jambe droite -->
+    <rect x="54" y="86" width="10" height="18" rx="4" fill="#ffd4a3"/>
+    <rect x="53" y="94" width="12" height="11" rx="2" fill="#489e96"/>
+    <rect x="53" y="96" width="12" height="2" fill="#ffffff"/>
+    <path d="M53 105 C53 102, 67 102, 67 105 L70 116 C70 118, 52 118, 52 116 Z" fill="#ff9d00"/>
+    <path d="M51 114 L71 114 L72 118 L52 118 Z" fill="#c47000"/>
+    <rect x="57" y="106" width="9" height="3" rx="1.5" fill="#ffffff"/>
+
+    <!-- 4. Jupe plissée marron -->
+    <path d="M33 82 C33 82, 40 83.5, 50 83.5 C60 83.5, 67 82, 67 82 C72 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 28 85, 33 82 Z" fill="#5c3818"/>
+    <path d="M38 83 C38 85, 36 88, 35 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M50 83.5 L50 93.5" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M62 83 C62 85, 64 88, 65 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- 4. Haut / Veste orange -->
+    <path d="M34 66 L66 66 L66 82 L34 82 Z" fill="#ff9d00"/>
+    <path d="M44 64 L50 74 L56 64 Z" fill="#ffffff"/>
+    <circle cx="50" cy="69" r="2.5" fill="#489e96"/>
+    <polygon points="46,67 50,69 46,72" fill="#489e96"/>
+    <polygon points="54,67 50,69 54,72" fill="#489e96"/>
+    <circle cx="50" cy="76" r="1.5" fill="#ffde6a"/>
+    <circle cx="50" cy="80" r="1.5" fill="#ffde6a"/>
+
+    <!-- 5. Ceinture -->
+    <rect x="33" y="81" width="34" height="4" fill="#7c4004"/>
+    <rect x="47" y="80" width="6" height="6" rx="1" fill="#ffb733"/>
+    <rect x="62" y="81" width="4" height="6" rx="1.5" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
+    <circle cx="64" cy="84" r="1" fill="#ffffff"/>
+
+    <!-- 6. Bras gauche -->
+    <path d="M33 68 C25 72, 23 78, 26 84 C29 84, 32 80, 35 76 Z" fill="#ff9d00"/>
+    <circle cx="26" cy="84" r="3.8" fill="#ffd4a3"/>
+
+    <!-- 6. Bras droit -->
+    <path d="M67 68 C75 70, 77 74, 76 80 C73 82, 70 80, 66 76 Z" fill="#ff9d00"/>
+    <circle cx="77" cy="78" r="3.8" fill="#ffd4a3"/>
+
+    <!-- 7. GROUPE TETE ET VISAGE -->
     <g id="girl-head-full">
         <rect x="46" y="58" width="8" height="8" fill="#ffd4a3"/>
         <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
@@ -358,7 +371,7 @@ export const AVATARS = {
         <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 
-    <!-- GROUPE 3 : CHEVEUX AVANT -->
+    <!-- 8. GROUPE CHEVEUX AVANT (Premier plan) -->
     <g id="girl-hair-front-full">
         <path d="M 18,28 C 22,38 30,42 36,34 C 40,42 46,44 50,35 C 54,44 60,42 64,34 C 70,42 78,38 82,28 C 76,12 64,6 50,6 C 36,6 24,12 18,28 Z" fill="#8a3c08"/>
         <path d="M 18,28 C 14,40 16,54 24,60 C 24,50 22,40 22,30 Z" fill="#8a3c08"/>
