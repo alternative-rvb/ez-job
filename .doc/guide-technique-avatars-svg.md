@@ -19,14 +19,15 @@ Les avatars sont dessinés **entièrement en SVG vectoriel natif** (sans images 
 ## 2. Repères & Système de Coordonnées
 
 ### 2.1 ViewBox
-- **Corps entier (Full body)** : `viewBox="0 -8 100 133"` (Garçon) / `viewBox="0 -6 100 131"` (Fille)
-- **Portrait / Tête seule (Head only)** : `viewBox="4 -8 92 80"` (Garçon) / `viewBox="4 -6 92 78"` (Fille)
+- **Corps entier (Full body)** : `viewBox="0 -22 100 144"` (permet d'englober sans découpage les mèches hautes, chignons et queues de cheval jusqu'à `y = -18` et l'ombre au sol jusqu'à `y = 120`).
+- **Portrait / Tête seule (Head only)** : `viewBox="4 -22 92 88"` (centré sur le visage et le volume haut des cheveux).
 - **Axe central de symétrie** : $X = 50$
 
 ### 2.2 Points d'ancrage verticaux (Y)
 | Zone anatomique | Position Y | Notes |
 |---|---|---|
-| **Sommet du crâne / Cheveux haut** | `y = -4` à `y = 10` | Volume capillaire et mèches hautes |
+| **Mèches hautes / Chignons / Queues** | `y = -18` à `y = 0` | Volume capillaire supérieur & pointes manga |
+| **Sommet du crâne** | `y = 10` | Base supérieure du crâne sous les cheveux |
 | **Bandeau / Serre-tête** | `y = 18` à `y = 28` | Sur le haut du front |
 | **Sourcils** | `y = 28` à `y = 31` | Expressifs et nets |
 | **Yeux (centre)** | `y = 41` | Grands yeux bicolores avec reflets blancs |
@@ -48,7 +49,7 @@ Les avatars sont dessinés **entièrement en SVG vectoriel natif** (sans images 
 En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code** (le premier élément est au fond, le dernier est au premier plan). L'arborescence doit **toujours** suivre ces 9 calques :
 
 ```
-<svg viewBox="0 -8 100 133" ...>
+<svg viewBox="0 -22 100 144" ...>
   ├── 1. <g id="...-shadow">              (Ombre au sol)
   ├── 2. <g id="...-hair-back-full">      (Cheveux arrière / masse longue)
   ├── 3. <g id="...-legs">                (Jambes, chaussettes & chaussures)

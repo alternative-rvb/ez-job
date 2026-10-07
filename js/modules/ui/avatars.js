@@ -19,7 +19,7 @@ export const AVATARS = {
         accent: '#ff9d00',
         image: null,
         headSvg: `
-            <svg viewBox="4 -8 92 80" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="4 -22 92 88" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. CHEVEUX ARRIERE -->
     <g id="boy-hair-back">
         <path d="M 18,42 
@@ -104,7 +104,7 @@ export const AVATARS = {
 </svg>
         `,
         svg: `
-            <svg viewBox="0 -8 100 133" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 -22 100 144" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. OMBRE AU SOL -->
     <g id="boy-shadow">
         <ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/>
@@ -249,7 +249,7 @@ export const AVATARS = {
         accent: '#489e96',
         image: null,
         headSvg: `
-            <svg viewBox="4 -6 92 78" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="4 -22 92 88" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. CHEVEUX ARRIERE -->
     <g id="girl-hair-back">
         <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
@@ -325,7 +325,7 @@ export const AVATARS = {
 </svg>
         `,
         svg: `
-            <svg viewBox="0 -6 100 131" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 -22 100 144" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. OMBRE AU SOL -->
     <g id="girl-shadow">
         <ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/>
