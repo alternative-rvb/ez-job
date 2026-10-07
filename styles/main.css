@@ -744,16 +744,49 @@ h1, h2, h3, .font-display {
 }
 
 .milestone-node {
-  transition: transform 0.25s ease, filter 0.25s ease;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.milestone-node:hover {
-  transform: scale(1.25);
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+.milestone-node:hover,
+.milestone-node:active {
+  opacity: 0.8;
 }
 
 #player-avatar-marker {
-  animation: avatar-bob 2.2s infinite ease-in-out;
+  transform-origin: center bottom;
+}
+
+.avatar-speech-bubble {
+  animation: bubble-fade-in 0.35s ease-out forwards;
+}
+
+@keyframes bubble-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.avatar-walking {
+  animation: avatar-walk 0.25s infinite alternate ease-in-out;
+}
+
+@keyframes avatar-walk {
+  0% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(-3px) rotate(2deg);
+  }
+}
+
+.avatar-idle {
+  animation: avatar-bob 2.4s infinite ease-in-out;
 }
 
 @keyframes avatar-bob {
@@ -761,7 +794,7 @@ h1, h2, h3, .font-display {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
   }
 }
 

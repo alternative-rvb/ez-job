@@ -225,6 +225,22 @@ export class RewardsManager {
     }
 
     /**
+     * Définit directement le total de points (utile pour les tests et réglages)
+     * @param {number} points
+     */
+    setTotalPoints(points) {
+        const rewards = this.getRewards() || {
+            totalPoints: 0,
+            unlockedTrophies: [],
+            secretCodes: {},
+            pointsHistory: []
+        };
+        rewards.totalPoints = Math.max(0, parseInt(points) || 0);
+        this.saveRewards(rewards);
+        return rewards.totalPoints;
+    }
+
+    /**
      * Réinitialise toutes les récompenses (pour les tests)
      */
     resetRewards() {

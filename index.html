@@ -411,36 +411,36 @@
     <!-- Page de sélection des quiz -->
     <div id="quiz-selection" class="hidden py-8">
       <!-- Section Hero - 2 Colonnes -->
-      <div class="mb-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12">
+      <div class="mb-8 md:mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center mb-8 md:mb-12">
           <!-- Colonne Gauche : Titre, Description et CTA -->
           <div class="text-center lg:text-left">
-            <a href="/" class="inline-block hover:opacity-80 transition-opacity mb-6">
-              <h1 class="text-6xl md:text-7xl lg:text-8xl font-black" style="color: #7c4004;">
+            <a href="/" class="inline-block hover:opacity-80 transition-opacity mb-4 sm:mb-6">
+              <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight" style="color: #7c4004;">
                 CamiLudik
               </h1>
             </a>
             
-            <div class="mb-8">
-              <p class="text-2xl md:text-3xl font-bold mb-3" style="color: #7c4004;">Apprends en t'amusant !</p>
-              <p class="text-base md:text-lg mb-6" style="color: #7c4004;">Des quiz interactifs sur plein de sujets fun et éducatifs.<br>Teste tes connaissances, grimpe jusqu'à la Citadelle du Savoir et collectionne des trophées !</p>
+            <div class="mb-6 sm:mb-8">
+              <p class="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3" style="color: #7c4004;">Apprends en t'amusant !</p>
+              <p class="text-sm sm:text-base md:text-lg mb-4 sm:mb-6" style="color: #7c4004;">Des quiz interactifs sur plein de sujets fun et éducatifs.<br class="hidden sm:inline">Teste tes connaissances, grimpe jusqu'à la Citadelle du Savoir et collectionne des trophées !</p>
             </div>
 
             <!-- Boutons CTA Principaux -->
-            <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8">
-              <button id="btn-change-player" class="btn-base btn-secondary whitespace-nowrap order-2 sm:order-1">
+            <div class="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-3 justify-center lg:justify-start mb-6 sm:mb-8">
+              <button id="btn-change-player" class="btn-base btn-secondary whitespace-nowrap text-xs sm:text-sm py-2 sm:py-2.5 px-3 sm:px-4">
                 <i class="bi bi-person"></i><span id="player-name-display"></span>
               </button>
-              <button id="btn-show-history" class="btn-base btn-secondary whitespace-nowrap order-3 sm:order-2">
+              <button id="btn-show-history" class="btn-base btn-secondary whitespace-nowrap text-xs sm:text-sm py-2 sm:py-2.5 px-3 sm:px-4">
                 <i class="bi bi-clock-history"></i>Historique
               </button>
-              <button id="btn-show-trophies" class="btn-base btn-secondary whitespace-nowrap order-4 sm:order-3">
+              <button id="btn-show-trophies" class="btn-base btn-secondary whitespace-nowrap text-xs sm:text-sm py-2 sm:py-2.5 px-3 sm:px-4">
                 <i class="bi bi-trophy-fill"></i>Mes Trophées
               </button>
             </div>
 
             <!-- Lien vers la collection -->
-            <a href="#quiz-list" class="inline-flex items-center gap-2 text-accent-500 hover:text-accent-400 transition-colors font-semibold">
+            <a href="#quiz-list" class="inline-flex items-center gap-2 text-accent-500 hover:text-accent-400 transition-colors font-semibold text-sm sm:text-base">
               <span>Voir tous les quiz</span>
               <i class="bi bi-arrow-down"></i>
             </a>

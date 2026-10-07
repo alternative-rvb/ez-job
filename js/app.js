@@ -13,6 +13,7 @@ import { QuestionManager } from './modules/managers/question-manager.js';
 import { ResultsManager } from './modules/managers/results-manager.js';
 import { HistoryManager } from './modules/managers/history-manager.js';
 import { TrophiesManager } from './modules/managers/trophies-manager.js';
+import { rewardsManager } from './modules/managers/rewards-manager.js';
 import { roadmapManager } from './modules/ui/roadmap.js';
 import { shuffleArray, loadQuizData, getDifficultyIcons } from './modules/core/utils.js';
 import { initializeCategoryColors, getCategoryColors } from './modules/core/category-colors.js';
@@ -468,6 +469,22 @@ class QuizApp {
         roadmapManager.render();
     }
 }
+
+// Fonctions d'aide globales pour tester et ajuster le score en direct depuis la console
+window.setScore = (points) => {
+    rewardsManager.setTotalPoints(points);
+    roadmapManager.render();
+    console.log(`⭐ Score mis à jour : ${points} pts`);
+    return points;
+};
+
+window.addScore = (points = 10) => {
+    const current = rewardsManager.getTotalPoints();
+    const updated = rewardsManager.setTotalPoints(current + points);
+    roadmapManager.render();
+    console.log(`⭐ Score augmenté de +${points} pts (Nouveau total : ${updated} pts)`);
+    return updated;
+};
 
 // Initialiser l'application quand le DOM est prêt
 document.addEventListener('DOMContentLoaded', () => {
