@@ -11,17 +11,22 @@ export const AVATARS = {
         accent: '#ff9d00',
         image: null,
         headSvg: `
-            <svg viewBox="4 -6 92 78" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="4 -8 92 80" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
     <!-- GROUPE 1 : CHEVEUX ARRIERE (Même teinte #5a2d0c) -->
     <g id="boy-hair-back">
-        <!-- Grande masse arriere shonen volumineuse -->
-        <path d="M 14,38 C 8,24 8,12 16,4 C 22,-2 30,-6 38,-4 C 36,-12 46,-16 52,-8 C 58,-16 72,-12 74,-4 C 82,-8 90,0 92,10 C 98,22 94,34 90,40 C 94,48 90,62 82,66 C 78,58 76,46 76,38 C 74,32 26,32 24,38 C 24,46 22,58 18,66 C 10,62 8,48 14,38 Z" fill="#5a2d0c"/>
-        <!-- Meches dynamiques orientees (gauche, haut, droite) -->
-        <path d="M 16,24 C 6,16 4,4 10,-4 C 16,2 20,12 22,20 Z" fill="#5a2d0c"/>
-        <path d="M 30,0 C 26,-10 32,-16 40,-12 C 38,-4 36,2 34,8 Z" fill="#5a2d0c"/>
-        <path d="M 46,-8 C 52,-20 62,-18 64,-8 C 58,-2 54,2 50,4 Z" fill="#5a2d0c"/>
-        <path d="M 68,-4 C 76,-16 88,-12 86,-2 C 80,4 76,8 72,12 Z" fill="#5a2d0c"/>
-        <path d="M 88,20 C 98,10 102,18 98,28 C 92,30 88,28 86,24 Z" fill="#5a2d0c"/>
+        <!-- Spikes shonen dynamiques et equilibres autour du crane -->
+        <path d="M 18,42 
+                 C 12,34 8,26 10,20 
+                 C 12,14 6,10 12,4 
+                 C 16,-2 24,-6 30,-4 
+                 C 34,-12 44,-14 50,-10 
+                 C 56,-14 66,-12 70,-4 
+                 C 76,-6 84,-2 88,4 
+                 C 94,10 88,14 90,20 
+                 C 92,26 88,34 82,42 
+                 C 78,34 76,28 74,22 
+                 C 66,12 34,12 26,22 
+                 C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
     </g>
 
     <!-- GROUPE 2 : TETE ET VISAGE -->
@@ -72,16 +77,22 @@ export const AVATARS = {
 
     <!-- GROUPE 3 : CHEVEUX AVANT (Même teinte #5a2d0c) -->
     <g id="boy-hair-front">
-        <!-- Frange et meches avant dynamiques courbees qui tombent sur le front -->
-        <path d="M 16,28 C 20,8 32,2 50,2 C 68,2 80,8 84,28 C 86,38 82,48 76,52 C 74,44 76,34 74,28 C 70,36 64,42 60,34 C 58,42 50,46 46,36 C 44,44 36,46 32,36 C 30,42 26,48 22,42 C 18,48 14,40 16,28 Z" fill="#5a2d0c"/>
-        <path d="M 40,16 C 46,30 54,34 50,44 C 44,36 40,26 40,16 Z" fill="#5a2d0c"/>
-        <path d="M 18,28 C 14,38 16,50 22,54 C 20,44 20,36 22,28 Z" fill="#5a2d0c"/>
-        <path d="M 82,28 C 86,38 84,50 78,54 C 80,44 80,36 78,28 Z" fill="#5a2d0c"/>
+        <!-- Frange nette et meches courtes shonen bien decoupees -->
+        <path d="M 20,32 
+                 C 21,24 24,14 34,8 
+                 C 44,4 56,4 66,8 
+                 C 76,14 79,24 80,32 
+                 C 78,35 76,33 74,27 
+                 C 72,34 66,35 62,28 
+                 C 58,35 52,36 48,27 
+                 C 44,35 38,34 34,27 
+                 C 30,34 26,35 24,28 
+                 C 22,34 20,34 20,32 Z" fill="#5a2d0c"/>
     </g>
 </svg>
         `,
         svg: `
-            <svg viewBox="0 -6 100 131" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 -8 100 133" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
     <!-- Ombre au sol -->
     <ellipse cx="50" cy="120" rx="24" ry="4" fill="rgba(124, 64, 4, 0.18)"/>
 
@@ -124,12 +135,18 @@ export const AVATARS = {
 
     <!-- GROUPE 1 : CHEVEUX ARRIERE -->
     <g id="boy-hair-back-full">
-        <path d="M 14,38 C 8,24 8,12 16,4 C 22,-2 30,-6 38,-4 C 36,-12 46,-16 52,-8 C 58,-16 72,-12 74,-4 C 82,-8 90,0 92,10 C 98,22 94,34 90,40 C 94,48 90,62 82,66 C 78,58 76,46 76,38 C 74,32 26,32 24,38 C 24,46 22,58 18,66 C 10,62 8,48 14,38 Z" fill="#5a2d0c"/>
-        <path d="M 16,24 C 6,16 4,4 10,-4 C 16,2 20,12 22,20 Z" fill="#5a2d0c"/>
-        <path d="M 30,0 C 26,-10 32,-16 40,-12 C 38,-4 36,2 34,8 Z" fill="#5a2d0c"/>
-        <path d="M 46,-8 C 52,-20 62,-18 64,-8 C 58,-2 54,2 50,4 Z" fill="#5a2d0c"/>
-        <path d="M 68,-4 C 76,-16 88,-12 86,-2 C 80,4 76,8 72,12 Z" fill="#5a2d0c"/>
-        <path d="M 88,20 C 98,10 102,18 98,28 C 92,30 88,28 86,24 Z" fill="#5a2d0c"/>
+        <path d="M 18,42 
+                 C 12,34 8,26 10,20 
+                 C 12,14 6,10 12,4 
+                 C 16,-2 24,-6 30,-4 
+                 C 34,-12 44,-14 50,-10 
+                 C 56,-14 66,-12 70,-4 
+                 C 76,-6 84,-2 88,4 
+                 C 94,10 88,14 90,20 
+                 C 92,26 88,34 82,42 
+                 C 78,34 76,28 74,22 
+                 C 66,12 34,12 26,22 
+                 C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
     </g>
 
     <!-- GROUPE 2 : TETE ET VISAGE -->
@@ -171,10 +188,16 @@ export const AVATARS = {
 
     <!-- GROUPE 3 : CHEVEUX AVANT -->
     <g id="boy-hair-front-full">
-        <path d="M 16,28 C 20,8 32,2 50,2 C 68,2 80,8 84,28 C 86,38 82,48 76,52 C 74,44 76,34 74,28 C 70,36 64,42 60,34 C 58,42 50,46 46,36 C 44,44 36,46 32,36 C 30,42 26,48 22,42 C 18,48 14,40 16,28 Z" fill="#5a2d0c"/>
-        <path d="M 40,16 C 46,30 54,34 50,44 C 44,36 40,26 40,16 Z" fill="#5a2d0c"/>
-        <path d="M 18,28 C 14,38 16,50 22,54 C 20,44 20,36 22,28 Z" fill="#5a2d0c"/>
-        <path d="M 82,28 C 86,38 84,50 78,54 C 80,44 80,36 78,28 Z" fill="#5a2d0c"/>
+        <path d="M 20,32 
+                 C 21,24 24,14 34,8 
+                 C 44,4 56,4 66,8 
+                 C 76,14 79,24 80,32 
+                 C 78,35 76,33 74,27 
+                 C 72,34 66,35 62,28 
+                 C 58,35 52,36 48,27 
+                 C 44,35 38,34 34,27 
+                 C 30,34 26,35 24,28 
+                 C 22,34 20,34 20,32 Z" fill="#5a2d0c"/>
     </g>
 </svg>
         `
