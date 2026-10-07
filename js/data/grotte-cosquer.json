@@ -5,7 +5,7 @@
     "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg",
     "spoilerMode": false,
     "difficulty": 1,
-    "questionCount": 12,
+    "questionCount": 20,
     "category": "CM2",
     "createdAt": "2026-10-04",
     "tag": [
@@ -13,7 +13,8 @@
       "Art pariétal"
     ],
     "level": "6eme",
-    "subject": "Histoire"
+    "subject": "Histoire",
+    "summaryUrl": "/resumes/grotte-cosquer.html"
   },
   "questions": [
     {
@@ -116,6 +117,28 @@
       "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
     },
     {
+      "question": "Combien de figures d'animaux ont été recensées dans la grotte ?",
+      "choices": [
+        "Plus de 170",
+        "Une dizaine",
+        "Environ 40",
+        "Plus de 2 000"
+      ],
+      "correctAnswer": "Plus de 170",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Combien d'espèces animales différentes sont représentées dans la grotte Cosquer ?",
+      "choices": [
+        "11",
+        "3",
+        "50",
+        "100"
+      ],
+      "correctAnswer": "11",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
       "question": "Comment les hommes préhistoriques ont-ils fait les « mains négatives » ?",
       "choices": [
         "En soufflant de la couleur autour de leur main posée sur la paroi",
@@ -127,6 +150,39 @@
       "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
     },
     {
+      "question": "Combien de peintures et de gravures (« entités graphiques ») ont été recensées dans la grotte ?",
+      "choices": [
+        "Plus de 500",
+        "Une cinquantaine",
+        "Environ 100",
+        "Plus de 10 000"
+      ],
+      "correctAnswer": "Plus de 500",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Comment la majorité des œuvres de la grotte ont-elles été réalisées ?",
+      "choices": [
+        "Elles sont gravées avec un silex ou avec les doigts",
+        "Elles sont peintes au pinceau",
+        "Elles sont sculptées dans des statues",
+        "Elles sont dessinées à la craie blanche"
+      ],
+      "correctAnswer": "Elles sont gravées avec un silex ou avec les doigts",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Combien de mains négatives a-t-on trouvées sur les parois ?",
+      "choices": [
+        "65",
+        "5",
+        "12",
+        "300"
+      ],
+      "correctAnswer": "65",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
       "question": "Qu'est-ce qui menace de faire disparaître les peintures de la grotte ?",
       "choices": [
         "La montée du niveau de la mer",
@@ -135,6 +191,39 @@
         "La lumière du soleil"
       ],
       "correctAnswer": "La montée du niveau de la mer",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Quelle décision de 1992 montre la volonté de protéger la grotte ?",
+      "choices": [
+        "Elle est classée monument historique",
+        "Elle est vendue à un musée",
+        "Elle est fermée avec du béton",
+        "Elle est vidée de son eau"
+      ],
+      "correctAnswer": "Elle est classée monument historique",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Qui a le droit de plonger jusqu'à la grotte depuis sa découverte officielle ?",
+      "choices": [
+        "Seulement les plongeurs autorisés par le ministère de la Culture",
+        "Tous les plongeurs",
+        "Les touristes avec un guide",
+        "Personne, l'entrée a été bouchée"
+      ],
+      "correctAnswer": "Seulement les plongeurs autorisés par le ministère de la Culture",
+      "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
+    },
+    {
+      "question": "Pourquoi les scientifiques ont-ils numérisé la grotte en 3D ?",
+      "choices": [
+        "Pour en garder une copie exacte et l'étudier dans les moindres détails",
+        "Pour créer un jeu vidéo",
+        "Pour vendre des photos aux touristes",
+        "Pour retrouver le trésor d'Henri Cosquer"
+      ],
+      "correctAnswer": "Pour en garder une copie exacte et l'étudier dans les moindres détails",
       "imageUrl": "/images/quiz/grotte-cosquer/grotte-cosquer.jpg"
     },
     {
