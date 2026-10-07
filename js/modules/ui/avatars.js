@@ -97,9 +97,9 @@ export const AVATARS = {
         <path d="M56 38 Q63 34 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
         <path d="M57 30 Q62 27 68 31" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round"/>
 
-        <!-- Nez et bouche -->
-        <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
-        <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
+        <!-- Nez et bouche (positionnés plus bas) -->
+        <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+        <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 </svg>
         `,
@@ -240,8 +240,9 @@ export const AVATARS = {
         <path d="M56 38 Q63 34 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
         <path d="M57 30 Q62 27 68 31" fill="none" stroke="#542c0e" stroke-width="2.2" stroke-linecap="round"/>
 
-        <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
-        <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
+        <!-- Nez et bouche (positionnés plus bas) -->
+        <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+        <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 </svg>
         `
@@ -321,9 +322,9 @@ export const AVATARS = {
         <path d="M69 35 L66 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
-        <!-- Nez et bouche -->
-        <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
-        <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
+        <!-- Nez et bouche (positionnés plus bas) -->
+        <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+        <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 </svg>
         `,
@@ -462,9 +463,9 @@ export const AVATARS = {
         <path d="M69 35 L66 37" stroke="#2b1404" stroke-width="1.6" stroke-linecap="round"/>
         <path d="M57 29 Q63 26 68 30" fill="none" stroke="#7c3405" stroke-width="1.8" stroke-linecap="round"/>
 
-        <!-- Nez et bouche -->
-        <circle cx="50" cy="44" r="0.9" fill="#d99866"/>
-        <path d="M45 48 Q50 54 55 48" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
+        <!-- Nez et bouche (positionnés plus bas) -->
+        <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+        <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 </svg>
         `
