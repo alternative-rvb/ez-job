@@ -399,10 +399,8 @@ export const GIRL_STYLES = {
                 <path d="M 20,32 C 21,22 26,12 36,8 C 44,5 56,5 64,8 C 74,12 79,22 80,32 C 77,35 75,32 72,26 C 70,33 64,34 60,27 C 56,34 50,35 46,26 C 42,34 36,33 32,26 C 28,33 24,34 22,27 C 21,33 20,33 20,32 Z" fill="${color}"/>
                 <!-- Mèche ondulée tempe gauche -->
                 <path d="M 22,30 C 22,40 25,48 28,54 C 27,46 25,38 25,30 Z" fill="${color}"/>
-                <circle cx="28" cy="54" r="3.2" fill="${color}"/>
                 <!-- Mèche ondulée tempe droite -->
                 <path d="M 78,30 C 78,40 75,48 72,54 C 73,46 75,38 75,30 Z" fill="${color}"/>
-                <circle cx="72" cy="54" r="3.2" fill="${color}"/>
             </g>`
     },
     3: {
