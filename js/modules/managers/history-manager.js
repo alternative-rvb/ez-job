@@ -6,6 +6,7 @@ import { playerManager } from '../core/player.js';
 import { domManager } from '../ui/dom.js';
 import { getDifficultyIcons } from '../core/utils.js';
 import { T } from '../core/theme.js';
+import { shareQuizResult } from '../core/share.js';
 
 export class HistoryManager {
     constructor(onBack) {
@@ -82,7 +83,7 @@ export class HistoryManager {
             new Date(b.date) - new Date(a.date)
         );
 
-        const resultsHTML = sortedResults.map(result => {
+        const resultsHTML = sortedResults.map((result, idx) => {
             const scoreClass = result.percentage >= 80 ? 'text-green-600' : 
                                result.percentage >= 60 ? 'text-amber-600' : 'text-red-600';
             
@@ -103,7 +104,7 @@ export class HistoryManager {
                             <p class="text-sm font-medium" style="color:#6b3603">${result.score}/${result.totalQuestions}</p>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center text-sm pt-3 border-t font-medium" style="border-color:#dcc9b0;color:#6b3603">
+                    <div class="flex justify-between items-center text-sm pt-3 border-t font-medium flex-wrap gap-2" style="border-color:#dcc9b0;color:#6b3603">
                         <div class="flex gap-4">
                             <span><i class="bi bi-calendar mr-1"></i>${date}</span>
                             <span><i class="bi bi-hourglass-split mr-1"></i>${Math.round(result.timeSpent)}s</span>
@@ -114,6 +115,10 @@ export class HistoryManager {
                                     <i class="bi bi-star-fill mr-1 text-accent-500"></i>+${result.pointsEarned} pt${result.pointsEarned > 1 ? 's' : ''}
                                 </span>
                             ` : ''}
+                            <button class="btn-share-history btn-base btn-secondary text-xs py-1 px-2.5 rounded-lg flex items-center gap-1.5 hover:border-amber-500" data-idx="${idx}" title="Partager ce résultat">
+                                <i class="bi bi-share-fill text-accent-500"></i>
+                                <span>Partager</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -121,5 +126,23 @@ export class HistoryManager {
         }).join('');
 
         listContainer.innerHTML = resultsHTML;
+
+        // Attacher les écouteurs de partage sur chaque bouton
+        listContainer.querySelectorAll('.btn-share-history').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const idx = parseInt(btn.dataset.idx, 10);
+                const result = sortedResults[idx];
+                if (result) {
+                    await shareQuizResult({
+                        title: result.quizTitle,
+                        score: result.score,
+                        totalQuestions: result.totalQuestions,
+                        percentage: result.percentage,
+                        pointsEarned: result.pointsEarned
+                    });
+                }
+            });
+        });
     }
 }

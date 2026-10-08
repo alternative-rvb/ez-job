@@ -9,6 +9,7 @@ import { CONFIG } from '../core/config.js';
 import { playerManager } from '../core/player.js';
 import { rewardsManager } from './rewards-manager.js';
 import { T } from '../core/theme.js';
+import { shareQuizResult } from '../core/share.js';
 
 export class ResultsManager {
     constructor(onRestart, onBackToHome, onShowTrophies) {
@@ -145,7 +146,10 @@ export class ResultsManager {
                 </div>
 
                 <!-- Actions -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+                    <button id="btnShare" class="btn-base btn-share w-full justify-center py-3 order-first sm:order-none">
+                        <i class="bi bi-share-fill"></i> Partager mon score
+                    </button>
                     <button id="btnRetry" class="btn-base btn-primary w-full justify-center py-3">
                         <i class="bi bi-arrow-clockwise"></i> Rejouer
                     </button>
@@ -184,14 +188,30 @@ export class ResultsManager {
             console.log('self.onRestart:', self.onRestart);
             console.log('self.onBackToHome:', self.onBackToHome);
             
+            const btnShare = document.getElementById('btnShare');
             const btnRetry = document.getElementById('btnRetry');
             const btnHome = document.getElementById('btnHome');
             const btnShowTrophies = document.getElementById('btnShowTrophies');
             
+            console.log('btnShare:', btnShare);
             console.log('btnRetry:', btnRetry);
             console.log('btnHome:', btnHome);
             console.log('btnShowTrophies:', btnShowTrophies);
             
+            if (btnShare) {
+                btnShare.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    console.log('📤 Share clicked');
+                    await shareQuizResult({
+                        title: quizTitle,
+                        score: score,
+                        totalQuestions: totalScorable,
+                        percentage: percentage,
+                        pointsEarned: rewardsResult.pointsEarned
+                    });
+                });
+            }
+
             if (btnRetry) {
                 btnRetry.addEventListener('click', (e) => {
                     e.preventDefault();

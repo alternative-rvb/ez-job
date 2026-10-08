@@ -498,10 +498,10 @@ export class QuizSelector {
             const style = getSubjectStyle(subject);
             const icon = getSubjectIcon(subject);
             const iconHTML = icon
-                ? `<span style="display:inline-flex;width:14px;height:14px;flex-shrink:0" aria-hidden="true">${icon}</span>`
-                : `<span style="font-size:0.6rem" aria-hidden="true">&#11044;</span>`;
+                ? `<span style="display:inline-flex;width:13px;height:13px;flex-shrink:0" aria-hidden="true">${icon}</span>`
+                : `<span style="font-size:0.5rem" aria-hidden="true">&#11044;</span>`;
             subjectButtonsHTML += `
-                <button type="button" data-subject="${subject}" class="btn-base btn-category subject-filter flex items-center gap-1.5" style="--subject-accent:${style.dot}">
+                <button type="button" data-subject="${subject}" class="btn-base btn-category subject-filter flex items-center gap-1" style="--subject-accent:${style.dot}">
                     ${iconHTML}${subject}
                 </button>
             `;
