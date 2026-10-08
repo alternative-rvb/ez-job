@@ -294,10 +294,10 @@ export const GIRL_BASE = {
             <polygon points="34.8,35.6 34.2,33.5 36.5,34.8" fill="#2b1404"/>
             <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
             <!-- Trait et cils inférieurs -->
-            <path d="M32 45.2 Q37 47.0 42 45.2" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
-            <polygon points="33.5,45.6 34.2,47.2 35.0,46.1" fill="#2b1404"/>
-            <polygon points="36.2,46.3 37.0,47.8 37.8,46.3" fill="#2b1404"/>
-            <polygon points="39.0,46.1 39.8,47.2 40.5,45.6" fill="#2b1404"/>
+            <path d="M32 46.0 Q37 48.1 42 46.0" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
+            <polygon points="33.5,46.5 34.2,48.3 35.0,47.0" fill="#2b1404"/>
+            <polygon points="36.2,47.2 37.0,48.8 37.8,47.2" fill="#2b1404"/>
+            <polygon points="39.0,47.0 39.8,48.2 40.5,46.5" fill="#2b1404"/>
             <path d="M 42.7,30.0 L 34.5,27.5 L 28.0,31.0 L 35.0,29.3 L 42.7,32.0 Z" fill="#6d2e05"/>
 
             <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
@@ -313,10 +313,10 @@ export const GIRL_BASE = {
             <polygon points="65.2,35.6 65.8,33.5 63.5,34.8" fill="#2b1404"/>
             <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
             <!-- Trait et cils inférieurs -->
-            <path d="M58 45.2 Q63 47.0 68 45.2" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
-            <polygon points="66.5,45.6 65.8,47.2 65.0,46.1" fill="#2b1404"/>
-            <polygon points="63.8,46.3 63.0,47.8 62.2,46.3" fill="#2b1404"/>
-            <polygon points="61.0,46.1 60.2,47.2 59.5,45.6" fill="#2b1404"/>
+            <path d="M58 46.0 Q63 48.1 68 46.0" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
+            <polygon points="66.5,46.5 65.8,48.3 65.0,47.0" fill="#2b1404"/>
+            <polygon points="63.8,47.2 63.0,48.8 62.2,47.2" fill="#2b1404"/>
+            <polygon points="61.0,47.0 60.2,48.2 59.5,46.5" fill="#2b1404"/>
             <path d="M 57.3,30.0 L 65.5,27.5 L 72.0,31.0 L 65.0,29.3 L 57.3,32.0 Z" fill="#6d2e05"/>
 
             <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>

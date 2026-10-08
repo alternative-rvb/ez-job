@@ -132,13 +132,13 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
   - Pupille noire + 2 reflets blancs pétillants (un grand en haut à gauche, un petit en bas à droite).
   - Ligne de cils supérieure épaisse noire (`stroke-width="2.2"`, `d="M30 38 Q37 33 44 38"`).
   - **Cils manga supérieurs (Fille)** : 3 pointes triangulaires dégressives en hauteur le long de la courbure extérieure haute de la paupière (`points="29.5,39.2 26.5,35.8 31.8,37.5"`, `points="32.2,37.2 30.8,34.2 34.2,36.0"`, `points="34.8,35.6 34.2,33.5 36.5,34.8"`).
-  - **Trait de contour inférieur (Fille)** : Ligne fine discrète sous l'œil descendant sous l'iris et le blanc de l'œil (`stroke-width="1"`, `d="M32 45.2 Q37 47.0 42 45.2"`).
+  - **Trait de contour inférieur (Fille)** : Ligne fine discrète sous l'œil descendant sous l'iris et le blanc de l'œil (`stroke-width="1"`, `d="M32 46.0 Q37 48.1 42 46.0"`).
   - **Cils manga inférieurs (Fille)** : 
     - 3 pointes triangulaires dégressives orientées vers le bas.
     - **Positionnement centré** : réparties sur la portion centrale du trait inférieur (sous la pupille / iris entre $X=33.5$ et $X=40.5$).
-    - **Règle d'ancrage strict** : La base de chaque triangle s'ancre précisément le long de la courbe inférieure (`y = 45.6` à `46.3`, pointes à `47.2..47.8`) pour préserver la visibilité des reflets tout en restant parfaitement accolée à l'œil.
-    - Oeil gauche : `points="33.5,45.6 34.2,47.2 35.0,46.1"`, `points="36.2,46.3 37.0,47.8 37.8,46.3"`, `points="39.0,46.1 39.8,47.2 40.5,45.6"`.
-    - Oeil droit (symétrie $X' = 100 - X$) : `points="66.5,45.6 65.8,47.2 65.0,46.1"`, `points="63.8,46.3 63.0,47.8 62.2,46.3"`, `points="61.0,46.1 60.2,47.2 59.5,45.6"`.
+    - **Règle d'ancrage strict** : La base de chaque triangle s'ancre le long de la courbe inférieure (`y = 46.5` à `47.2`, pointes à `48.2..48.8`) pour préserver la visibilité des reflets tout en restant parfaitement positionnée sous le regard.
+    - Oeil gauche : `points="33.5,46.5 34.2,48.3 35.0,47.0"`, `points="36.2,47.2 37.0,48.8 37.8,47.2"`, `points="39.0,47.0 39.8,48.2 40.5,46.5"`.
+    - Oeil droit (symétrie $X' = 100 - X$) : `points="66.5,46.5 65.8,48.3 65.0,47.0"`, `points="63.8,47.2 63.0,48.8 62.2,47.2"`, `points="61.0,47.0 60.2,48.2 59.5,46.5"`.
 - **Sourcils effilés en pointe (Règle d'anatomie 1/3 - 2/3 & Tapered Tail)** :
   - **Forme polygonale effilée pour les deux sexes** : Base intérieure plus épaisse près du nez, apex en pointe haute situé aux 2/3 de l'intérieur (1/3 de l'extérieur), et terminaison en pointe aiguë vers la tempe.
     - Oeil gauche :
