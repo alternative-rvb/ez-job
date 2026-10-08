@@ -6,12 +6,14 @@
 
 import { rewardsManager } from '../managers/rewards-manager.js';
 import { playerManager } from '../core/player.js';
-import { AVATARS } from './avatars.js';
+import { AVATARS, renderAvatarSvg, renderAvatarHeadSvg } from './avatars.js';
+import { avatarCustomizerModal } from './avatar-modal.js';
 
 export class RoadmapManager {
     constructor() {
         this.containerId = 'hero-roadmap-container';
         this.customDialogue = null;
+        window.addEventListener('avatar-updated', () => this.render());
         this.milestones = [
             {
                 id: 'village',
@@ -228,12 +230,12 @@ export class RoadmapManager {
                 <div class="p-3 sm:p-4 md:p-5 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
                     <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
                         <!-- Avatar interactif (Portrait Tête) -->
-                        <div class="relative group cursor-pointer flex-shrink-0" id="roadmap-avatar-toggle" title="Cliquer pour changer de personnage">
+                        <div class="relative group cursor-pointer flex-shrink-0" id="roadmap-avatar-toggle" title="Cliquer pour personnaliser ton avatar">
                             <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl ring-2 ring-primary-500 shadow-md bg-amber-100/90 overflow-hidden flex items-center justify-center transition-transform transform group-hover:scale-105 p-0.5">
                                 ${avatarData.headSvg || avatarData.svg}
                             </div>
-                            <span class="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent-500 text-white flex items-center justify-center text-[9px] sm:text-[10px] shadow" title="Changer de personnage">
-                                <i class="bi bi-arrow-repeat"></i>
+                            <span class="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent-500 text-white flex items-center justify-center text-[8px] sm:text-[9px] shadow" title="Personnaliser">
+                                <i class="bi bi-pencil-fill"></i>
                             </span>
                         </div>
 
@@ -248,7 +250,7 @@ export class RoadmapManager {
                         </div>
                     </div>
 
-                    <!-- Badge Score & Switch Avatar -->
+                    <!-- Badge Score & Lien de Modification Avatar -->
                     <div class="flex flex-col items-end gap-1 flex-shrink-0">
                         <button id="roadmap-score-badge" class="group/score flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-accent-500/15 hover:bg-accent-500/25 border border-accent-500/30 hover:border-accent-500/50 text-amber-900 font-bold text-xs transition cursor-pointer active:scale-95" title="Cliquer pour tester : +15 pts">
                             <i class="bi bi-star-fill text-accent-500 group-hover/score:scale-110 transition-transform text-xs"></i>
@@ -256,9 +258,9 @@ export class RoadmapManager {
                             <span class="text-[10px] sm:text-[11px] font-semibold text-amber-800">pts</span>
                             <span class="text-[9px] sm:text-[10px] text-accent-600 ml-0.5 opacity-70 group-hover/score:opacity-100">+15</span>
                         </button>
-                        <button id="quick-avatar-switch-btn" class="text-[10px] sm:text-[11px] font-semibold text-primary-600 hover:text-primary-700 flex items-center gap-1 transition whitespace-nowrap">
-                            <i class="bi bi-arrow-repeat"></i>
-                            <span>Changer d'avatar</span>
+                        <button id="open-avatar-customizer-btn" class="text-[11px] sm:text-xs font-semibold text-primary-700 hover:text-primary-900 hover:underline flex items-center gap-1 transition whitespace-nowrap cursor-pointer" title="Personnaliser ton avatar">
+                            <i class="bi bi-palette-fill text-accent-600"></i>
+                            <span>Modifier mon avatar</span>
                         </button>
                     </div>
                 </div>
@@ -293,9 +295,9 @@ export class RoadmapManager {
                             <polygon points="300,90 320,65 340,90" fill="#ffffff" opacity="0.95"/>
                             
                             <!-- Montagne majestueuse de la Citadelle (Pente naturelle continue sans rebord & névé sommital) -->
-                            <polygon points="260,240 415,64 465,64 525,240" fill="#7599b5"/>
-                            <polygon points="440,64 465,64 525,240 440,240" fill="#5c829e"/>
-                            <polygon points="320,240 415,64 440,64 360,240" fill="#88abc6" opacity="0.4"/>
+                            <polygon points="250,260 415,64 465,64 550,260" fill="#7599b5"/>
+                            <polygon points="440,64 465,64 550,260 440,260" fill="#5c829e"/>
+                            <polygon points="310,260 415,64 440,64 360,260" fill="#88abc6" opacity="0.4"/>
                             
                             <!-- Manteau de neige blanche recouvrant le sommet sous le château (aligné au millimètre sur les pentes) -->
                             <polygon points="379,105 415,64 465,64 479,105" fill="#ffffff" opacity="0.95"/>
@@ -304,10 +306,10 @@ export class RoadmapManager {
                             <!-- Plateau fortifié en pierre claire taillée sous le château -->
                             <polygon points="415,64 465,64 467,70 410,70" fill="#ffffff" stroke="#94a3b8" stroke-width="0.8"/>
 
-                            <!-- Collines verdoyantes étagées au premier plan -->
-                            <path d="M 0 175 Q 120 135 250 170 T 520 155 L 520 280 L 0 280 Z" fill="#6ba776"/>
-                            <path d="M 0 205 Q 150 155 310 195 T 520 185 L 520 280 L 0 280 Z" fill="#599965"/>
-                            <path d="M 0 235 Q 180 205 350 230 T 520 220 L 520 280 L 0 280 Z" fill="#4a8757"/>
+                            <!-- Collines verdoyantes étagées au premier plan (Couvrent toute la largeur de -40 à 580 et jusqu'en bas Y=320) -->
+                            <path d="M -40 175 Q 120 135 250 170 T 580 155 L 580 320 L -40 320 Z" fill="#6ba776"/>
+                            <path d="M -40 205 Q 150 155 310 195 T 580 185 L 580 320 L -40 320 Z" fill="#599965"/>
+                            <path d="M -40 235 Q 180 205 350 230 T 580 220 L 580 320 L -40 320 Z" fill="#4a8757"/>
 
                             <!-- Décor : Grand Lac Alpin au pied de la montagne -->
                             <g id="decor-lake">
@@ -686,27 +688,21 @@ export class RoadmapManager {
     }
 
     /**
-     * Bascule l'avatar du joueur entre Garçon et Fille
-     */
-    toggleAvatar() {
-        const current = playerManager.playerAvatar || 'boy';
-        const next = current === 'boy' ? 'girl' : 'boy';
-        playerManager.setPlayerAvatar(next);
-        this.render();
-    }
-
-    /**
      * Configure les écouteurs d'événements
      */
     setupEventListeners() {
         const avatarToggle = document.getElementById('roadmap-avatar-toggle');
         if (avatarToggle) {
-            avatarToggle.addEventListener('click', () => this.toggleAvatar());
+            avatarToggle.addEventListener('click', () => {
+                avatarCustomizerModal.open(() => this.render());
+            });
         }
 
-        const quickSwitchBtn = document.getElementById('quick-avatar-switch-btn');
-        if (quickSwitchBtn) {
-            quickSwitchBtn.addEventListener('click', () => this.toggleAvatar());
+        const customizerBtn = document.getElementById('open-avatar-customizer-btn');
+        if (customizerBtn) {
+            customizerBtn.addEventListener('click', () => {
+                avatarCustomizerModal.open(() => this.render());
+            });
         }
 
         const scoreBadge = document.getElementById('roadmap-score-badge');

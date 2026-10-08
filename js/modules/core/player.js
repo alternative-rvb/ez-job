@@ -15,11 +15,66 @@ class PlayerManager {
         return localStorage.getItem('playerAvatar') || 'boy';
     }
 
+    // Charger la configuration personnalisée de l'avatar (genre, coupe, tenue, couleur cheveux, couleur yeux)
+    getAvatarConfig() {
+        const stored = localStorage.getItem('playerAvatarConfig');
+        if (stored) {
+            try {
+                const config = JSON.parse(stored);
+                if (config && (config.type === 'boy' || config.type === 'girl')) {
+                    return {
+                        type: config.type,
+                        styleId: parseInt(config.styleId) || 1,
+                        outfitId: parseInt(config.outfitId) || 1,
+                        hairColor: config.hairColor || (config.type === 'boy' ? '#5a2d0c' : '#8a3c08'),
+                        eyeColor: config.eyeColor || (config.type === 'boy' ? 'brown' : 'amber')
+                    };
+                }
+            } catch (e) {
+                console.warn('Erreur parsing playerAvatarConfig:', e);
+            }
+        }
+        // Valeur par défaut
+        const type = this.playerAvatar || 'boy';
+        return {
+            type,
+            styleId: 1,
+            outfitId: 1,
+            hairColor: type === 'boy' ? '#5a2d0c' : '#8a3c08',
+            eyeColor: type === 'boy' ? 'brown' : 'amber'
+        };
+    }
+
+    // Sauvegarder la configuration personnalisée de l'avatar
+    setAvatarConfig(config) {
+        if (!config || !['boy', 'girl'].includes(config.type)) return false;
+        const cleanConfig = {
+            type: config.type,
+            styleId: parseInt(config.styleId) || 1,
+            outfitId: parseInt(config.outfitId) || 1,
+            hairColor: config.hairColor || (config.type === 'boy' ? '#5a2d0c' : '#8a3c08'),
+            eyeColor: config.eyeColor || (config.type === 'boy' ? 'brown' : 'amber')
+        };
+        this.playerAvatar = cleanConfig.type;
+        localStorage.setItem('playerAvatar', cleanConfig.type);
+        localStorage.setItem('playerAvatarConfig', JSON.stringify(cleanConfig));
+        console.log('✨ Avatar personnalisé sauvegardé:', cleanConfig);
+        return true;
+    }
+
     // Sauvegarder l'avatar du joueur ('boy' ou 'girl')
     setPlayerAvatar(avatarId) {
         if (['boy', 'girl'].includes(avatarId)) {
             this.playerAvatar = avatarId;
             localStorage.setItem('playerAvatar', avatarId);
+            // Mettre à jour le type dans la config tout en conservant les styles/couleurs si existants
+            const currentConfig = this.getAvatarConfig();
+            if (currentConfig.type !== avatarId) {
+                currentConfig.type = avatarId;
+                currentConfig.hairColor = avatarId === 'boy' ? '#5a2d0c' : '#8a3c08';
+                currentConfig.eyeColor = avatarId === 'boy' ? 'brown' : 'amber';
+                localStorage.setItem('playerAvatarConfig', JSON.stringify(currentConfig));
+            }
             console.log(`🎭 Avatar sélectionné: ${avatarId}`);
             return true;
         }

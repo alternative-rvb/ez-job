@@ -87,7 +87,7 @@
             <i class="bi bi-magic text-accent-400"></i> Laboratoire des Avatars SVG
           </h1>
           <p class="text-white/80 text-sm">
-            Testeur visuel des coupes de cheveux Chibi Manga & inspection des calques
+            Testeur visuel des coupes de cheveux Chibi Manga, tenues BÊTA & inspection des calques
           </p>
         </div>
       </div>
@@ -113,13 +113,13 @@
       <section class="glass-panel rounded-3xl p-6 space-y-6 shadow-2xl border-t-4 border-t-primary-400">
         <div class="flex items-center justify-between border-b border-white/15 pb-4">
           <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-xl bg-primary-500 flex items-center justify-center text-white font-bold text-lg">👦</span>
+            <span class="w-8 h-8 rounded-xl bg-primary-500 flex items-center justify-center text-white font-bold text-sm"><i class="bi bi-person"></i></span>
             <div>
               <h2 class="text-2xl font-bold text-white">Garçon (Chibi Ninja)</h2>
               <p class="text-xs text-white/70">Couleur base : <code class="bg-black/30 px-1.5 py-0.5 rounded text-accent-400">#5a2d0c</code></p>
             </div>
           </div>
-          <span id="boy-style-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-primary-600/60 border border-primary-400 text-white">Style 1 : Hérissé + Bandeau</span>
+          <span id="boy-style-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-primary-600/60 border border-primary-400 text-white">Style 1 : Ondulé (Bandeau)</span>
         </div>
 
         <!-- Grand Affichage Actuel -->
@@ -174,6 +174,53 @@
             </button>
 
           </div>
+
+          <!-- Sélecteur de Tenues RPG Garçon (BÊTA) -->
+          <div class="pt-4 mt-4 border-t border-white/10">
+            <div class="flex items-center justify-between mb-2.5">
+              <h3 class="text-sm font-bold text-accent-300 flex items-center gap-2 uppercase tracking-wide">
+                <i class="bi bi-shield-shaded"></i> Tenue & Équipement <span class="px-1.5 py-0.5 rounded bg-amber-500/30 text-amber-300 text-[10px] font-black border border-amber-400/40">BÊTA</span>
+              </h3>
+              <span id="boy-outfit-badge" class="text-xs font-bold text-white/90">1. Classique (Aventurier)</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <button onclick="selectBoyOutfit(1)" id="btn-boy-outfit-1" class="glass-card active rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center">
+                <div class="w-12 h-16 flex items-center justify-center pointer-events-none" id="thumb-boy-outfit-1"></div>
+                <span class="text-[11px] font-bold">1. Classique</span>
+              </button>
+              <button onclick="selectBoyOutfit(2)" id="btn-boy-outfit-2" class="glass-card rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center">
+                <div class="w-12 h-16 flex items-center justify-center pointer-events-none" id="thumb-boy-outfit-2"></div>
+                <span class="text-[11px] font-bold">2. Ninja</span>
+              </button>
+              <button onclick="selectBoyOutfit(3)" id="btn-boy-outfit-3" class="glass-card rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center">
+                <div class="w-12 h-16 flex items-center justify-center pointer-events-none" id="thumb-boy-outfit-3"></div>
+                <span class="text-[11px] font-bold">3. Mage</span>
+              </button>
+              <button onclick="selectBoyOutfit(4)" id="btn-boy-outfit-4" class="glass-card rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center">
+                <div class="w-12 h-16 flex items-center justify-center pointer-events-none" id="thumb-boy-outfit-4"></div>
+                <span class="text-[11px] font-bold">4. Archer</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sélecteur de Couleur Cheveux & Yeux Garçon -->
+          <div class="pt-4 border-t border-white/10 space-y-3">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-xs font-bold text-white/90 flex items-center gap-1.5"><i class="bi bi-palette text-accent-400"></i> Couleur des Cheveux :</span>
+                <span id="boy-hair-color-label" class="text-[11px] font-semibold text-accent-300">Brun Sombre (#5a2d0c)</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5" id="boy-hair-swatches"></div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-xs font-bold text-white/90 flex items-center gap-1.5"><i class="bi bi-eye text-accent-400"></i> Couleur des Yeux :</span>
+                <span id="boy-eye-color-label" class="text-[11px] font-semibold text-accent-300">Marron Chocolat</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5" id="boy-eye-swatches"></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -181,7 +228,7 @@
       <section class="glass-panel rounded-3xl p-6 space-y-6 shadow-2xl border-t-4 border-t-accent-500">
         <div class="flex items-center justify-between border-b border-white/15 pb-4">
           <div class="flex items-center gap-3">
-            <span class="w-8 h-8 rounded-xl bg-accent-500 flex items-center justify-center text-white font-bold text-lg">👧</span>
+            <span class="w-8 h-8 rounded-xl bg-accent-500 flex items-center justify-center text-white font-bold text-sm"><i class="bi bi-person"></i></span>
             <div>
               <h2 class="text-2xl font-bold text-white">Fille (Chibi Aventure)</h2>
               <p class="text-xs text-white/70">Couleur base : <code class="bg-black/30 px-1.5 py-0.5 rounded text-accent-400">#8a3c08</code></p>
@@ -242,6 +289,53 @@
             </button>
 
           </div>
+
+          <!-- Sélecteur de Tenues RPG Fille (BÊTA) -->
+          <div class="pt-4 mt-4 border-t border-white/10">
+            <div class="flex items-center justify-between mb-2.5">
+              <h3 class="text-sm font-bold text-accent-300 flex items-center gap-2 uppercase tracking-wide">
+                <i class="bi bi-shield-shaded"></i> Tenue & Équipement <span class="px-1.5 py-0.5 rounded bg-amber-500/30 text-amber-300 text-[10px] font-black border border-amber-400/40">BÊTA</span>
+              </h3>
+              <span id="girl-outfit-badge" class="text-xs font-bold text-white/90">1. Classique (Aventurière)</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <button onclick="selectGirlOutfit(1)" id="btn-girl-outfit-1" class="glass-card active rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center">
+                <div class="w-12 h-16 flex items-center justify-center pointer-events-none" id="thumb-girl-outfit-1"></div>
+                <span class="text-[11px] font-bold">1. Classique</span>
+              </button>
+              <button onclick="selectGirlOutfit(2)" id="btn-girl-outfit-2" class="glass-card rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center">
+                <div class="w-12 h-16 flex items-center justify-center pointer-events-none" id="thumb-girl-outfit-2"></div>
+                <span class="text-[11px] font-bold">2. Guerrière</span>
+              </button>
+              <button onclick="selectGirlOutfit(3)" id="btn-girl-outfit-3" class="glass-card rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center">
+                <div class="w-12 h-16 flex items-center justify-center pointer-events-none" id="thumb-girl-outfit-3"></div>
+                <span class="text-[11px] font-bold">3. Sorcière</span>
+              </button>
+              <button onclick="selectGirlOutfit(4)" id="btn-girl-outfit-4" class="glass-card rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center">
+                <div class="w-12 h-16 flex items-center justify-center pointer-events-none" id="thumb-girl-outfit-4"></div>
+                <span class="text-[11px] font-bold">4. Archère</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sélecteur de Couleur Cheveux & Yeux Fille -->
+          <div class="pt-4 border-t border-white/10 space-y-3">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-xs font-bold text-white/90 flex items-center gap-1.5"><i class="bi bi-palette text-accent-400"></i> Couleur des Cheveux :</span>
+                <span id="girl-hair-color-label" class="text-[11px] font-semibold text-accent-300">Roux Cuivré (#8a3c08)</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5" id="girl-hair-swatches"></div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-xs font-bold text-white/90 flex items-center gap-1.5"><i class="bi bi-eye text-accent-400"></i> Couleur des Yeux :</span>
+                <span id="girl-eye-color-label" class="text-[11px] font-semibold text-accent-300">Ambre / Noisette</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5" id="girl-eye-swatches"></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -250,10 +344,10 @@
     <!-- Zone d'explication de la méthode -->
     <footer class="glass-panel rounded-2xl p-6 text-center text-xs text-white/70 space-y-2">
       <p class="font-bold text-white text-sm">
-        💡 Astuce de composition : Les coupes testées ici respectent à 100% la hiérarchie des 9 calques et les nouvelles proportions définies avec Nicolas.
+        💡 Astuce de composition : Les coupes et tenues testées ici respectent à 100% la hiérarchie des 9 calques et les nouvelles proportions.
       </p>
       <p>
-        Pour appliquer l'une de ces coupes en jeu, il suffit de reporter les balises <code class="text-accent-300">&lt;g id="...-hair-back"&gt;</code> et <code class="text-accent-300">&lt;g id="...-hair-front"&gt;</code> dans <code class="text-white">js/modules/ui/avatars.js</code> et <code class="text-white">index.html</code>.
+        Les tenues et coupes sont entièrement intégrées dans <code class="text-white">js/modules/ui/avatars.js</code>, le panneau de personnalisation <code class="text-white">js/modules/ui/avatar-modal.js</code> et synchronisées avec le profil du joueur.
       </p>
     </footer>
 
@@ -277,485 +371,233 @@
   </div>
 
   <!-- Script des définitions de styles SVG & interactivité -->
-  <script>
+  <script type="module">
+    import {
+      HAIR_COLORS,
+      EYE_COLORS,
+      BOY_STYLES,
+      GIRL_STYLES,
+      BOY_OUTFITS,
+      GIRL_OUTFITS,
+      buildCustomAvatarSvg
+    } from './js/modules/ui/avatars.js';
+
     let currentViewMode = 'full'; // 'full' ou 'head'
     let currentBoyStyle = 1;
+    let currentBoyOutfit = 1;
+    let currentBoyHair = '#5a2d0c';
+    let currentBoyEye = 'brown';
+
     let currentGirlStyle = 1;
+    let currentGirlOutfit = 1;
+    let currentGirlHair = '#8a3c08';
+    let currentGirlEye = 'amber';
 
-    // Modèles communs pour le garçon
-    const BOY_BASE = {
-      shadow: `<g id="boy-shadow"><ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/></g>`,
-      legs: `
-        <g id="boy-legs">
-            <polygon points="39,85 49,85 48,106 41,106" fill="#5c3818"/>
-            <polygon points="40,99 48.5,99 48,106 41,106" fill="#ffffff"/>
-            <polygon points="39.8,101 48.7,101 48.3,102.5 40.2,102.5" fill="#ff9d00"/>
-            <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#7c4004"/>
-            <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#442100"/>
-            <rect x="42.5" y="107" width="4" height="2" rx="0.8" fill="#ff9d00"/>
-            <polygon points="51,85 61,85 59,106 52,106" fill="#5c3818"/>
-            <polygon points="51.5,99 60,99 59,106 52,106" fill="#ffffff"/>
-            <polygon points="51.3,101 60.2,101 59.8,102.5 51.7,102.5" fill="#ff9d00"/>
-            <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#7c4004"/>
-            <path d="M49.5 112 L61.5 112 L61 114 L50 114 Z" fill="#442100"/>
-            <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#ff9d00"/>
-        </g>`,
-      body: `
-        <g id="boy-body">
-            <path d="M 31,65 C 31,62 34,61.5 38,61.5 L 62,61.5 C 66,61.5 69,62 69,65 L 62.5,85 L 37.5,85 Z" fill="#ffffff"/>
-            <path d="M 31,65 C 31,62 34,61.5 38,61.5 C 38,61.5 40,73 43,85 L 37.5,85 L 30,66 Z" fill="#489e96"/>
-            <path d="M 69,65 C 69,62 66,61.5 62,61.5 C 62,61.5 60,73 57,85 L 62.5,85 L 70,66 Z" fill="#489e96"/>
-            <path d="M42 60 L50 69 L58 60 Z" fill="#ff9d00"/>
-            <path d="M47 67 L50 78 L53 67 Z" fill="#e08900"/>
-        </g>`,
-      belt: `
-        <g id="boy-belt">
-            <rect x="37" y="82.5" width="26" height="4.5" rx="1" fill="#7c4004"/>
-            <rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#ffb733" stroke="#7c4004" stroke-width="0.8"/>
-            <rect x="36" y="82.5" width="4.5" height="7" rx="1.2" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
-            <circle cx="38.2" cy="86" r="0.7" fill="#ffb733"/>
-        </g>`,
-      arms: `
-        <g id="boy-arms">
-            <path d="M32 64 C24 71, 23 78, 29 84 C32 84, 34 81, 35 77 Z" fill="#489e96"/>
-            <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="#ffd4a3"/>
-            <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#489e96"/>
-            <ellipse cx="77" cy="79" rx="3.8" ry="3.5" fill="#ffd4a3"/>
-        </g>`,
-      headBase: (withBand = true) => `
-        <g id="boy-head-base-full">
-            <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
-            <path d="M42 60 L50 62 L58 60 Z" fill="#ff9d00"/>
-            <g id="boy-ears-full">
-                <circle cx="21" cy="38" r="4.8" fill="#ffd4a3"/>
-                <circle cx="21" cy="38" r="2.8" fill="#f0be8d"/>
-                <circle cx="79" cy="38" r="4.8" fill="#ffd4a3"/>
-                <circle cx="79" cy="38" r="2.8" fill="#f0be8d"/>
-            </g>
-            <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
-            ${withBand ? `
-            <path d="M22 24 C33 17, 67 17, 78 24 L79 28 C68 21, 32 21, 21 28 Z" fill="#489e96"/>
-            <rect x="45" y="19" width="10" height="6" rx="1.5" fill="#ff9d00"/>
-            <circle cx="50" cy="22" r="1.5" fill="#ffffff"/>` : ''}
-        </g>`,
-      faceFeatures: `
-        <g id="boy-face-features-full">
-            <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
-            <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
-            <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#542c0e"/>
-            <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="#8c4e1e"/>
-            <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
-            <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
-            <circle cx="39.5" cy="43.5" r="0.9" fill="#ffffff"/>
-            <path d="M30 38 Q37 34 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M 44,28.2 L 32,27.5 L 30.5,28.5 L 33,29.2 L 44,31.2 Z" fill="#2b1404"/>
-
-            <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
-            <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
-            <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="#542c0e"/>
-            <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="#8c4e1e"/>
-            <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
-            <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
-            <circle cx="64.5" cy="43.5" r="0.9" fill="#ffffff"/>
-            <path d="M56 38 Q63 34 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M 56,28.2 L 68,27.5 L 69.5,28.5 L 67,29.2 L 56,31.2 Z" fill="#2b1404"/>
-
-            <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="#d99866" stroke="#d99866" stroke-width="0.7" stroke-linejoin="round"/>
-            <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
-        </g>`
-    };
-
-    // Variantes de coupes Garçon
-    const BOY_STYLES = {
-      1: {
-        name: "1. Ondulé (Bandeau)",
-        hairColor: "#5a2d0c",
-        hairBack: `
-          <g id="boy-hair-back-full">
-              <!-- Ellipse de base (+20% bas, sommet Y=-5, bas Y=61) -->
-              <ellipse cx="50" cy="28" rx="35" ry="33" fill="#5a2d0c"/>
-              <path d="M 18,44 C 12,34 8,26 10,20 C 12,14 6,10 12,4 C 16,-2 24,-6 30,-4 C 34,-12 44,-14 50,-10 C 56,-14 66,-12 70,-4 C 76,-6 84,-2 88,4 C 94,10 88,14 90,20 C 92,26 88,34 82,44 C 78,34 76,28 74,22 C 66,12 34,12 26,22 C 24,28 22,34 18,44 Z" fill="#5a2d0c"/>
-          </g>`,
-        hairFront: `
-          <g id="boy-hair-front-full">
-              <path d="M 20,32 C 21,24 24,14 34,8 C 44,4 56,4 66,8 C 76,14 79,24 80,32 C 78,35 76,33 74,27 C 72,34 66,35 62,28 C 58,35 52,36 48,27 C 44,35 38,34 34,27 C 30,34 26,35 24,28 C 22,34 20,34 20,32 Z" fill="#5a2d0c"/>
-          </g>`,
-        withBand: true
-      },
-      2: {
-        name: "2. Chignon haut",
-        hairColor: "#5a2d0c",
-        hairBack: `
-          <g id="boy-hair-back-full">
-              <!-- Ellipse de base (+20% bas, sommet Y=-5, bas Y=61) -->
-              <ellipse cx="50" cy="28" rx="35" ry="33" fill="#5a2d0c"/>
-              <!-- Chignon haut à l'arrière -->
-              <circle cx="50" cy="-6" r="10" fill="#5a2d0c"/>
-              <ellipse cx="50" cy="-2" rx="5" ry="3" fill="#ff9d00"/>
-              <path d="M 18,46 C 14,34 14,20 18,10 C 24,0 36,-4 50,-4 C 64,-4 76,0 82,10 C 86,20 86,34 82,46 C 76,34 74,22 70,16 C 62,8 38,8 30,16 C 26,22 24,34 18,46 Z" fill="#5a2d0c"/>
-          </g>`,
-        hairFront: `
-          <g id="boy-hair-front-full">
-              <!-- Mèches dynamiques qui se chevauchent au centre -->
-              <path d="M 21,30 C 22,18 35,6 48,5 C 53,5 56,10 56,19 C 50,28 38,33 26,34 Z" fill="#5a2d0c"/>
-              <path d="M 79,30 C 78,18 65,6 52,5 C 47,5 44,10 44,19 C 50,28 62,33 74,34 Z" fill="#5a2d0c"/>
-          </g>`,
-        withBand: false
-      },
-      3: {
-        name: "3. Mèches libres",
-        hairColor: "#5a2d0c",
-        hairBack: `
-          <g id="boy-hair-back-full">
-              <!-- Ellipse de base (+20% bas, sommet Y=-5, bas Y=61) -->
-              <ellipse cx="50" cy="28" rx="35" ry="33" fill="#5a2d0c"/>
-              <path d="M 16,46 C 10,36 6,24 10,16 C 12,8 8,4 16,-2 C 22,-8 32,-10 38,-8 C 42,-16 52,-18 58,-14 C 66,-18 76,-14 80,-6 C 88,-6 94,2 92,12 C 96,20 92,32 84,46 C 80,34 76,26 72,20 C 64,10 36,10 28,20 C 24,26 20,34 16,46 Z" fill="#5a2d0c"/>
-          </g>`,
-        hairFront: `
-          <g id="boy-hair-front-full">
-              <!-- Mèches libres décalées encore plus à droite et inclinées à 45° -->
-              <path d="M 21,28 C 23,16 36,8 50,4 C 64,4 76,10 80,22 C 82,26 81,30 79,31 C 77,26 76,23 74,21 C 75,26 75,32 72,35 C 69,28 67,25 65,21 C 66,27 66,35 63,38 C 60,29 58,25 56,21 C 56,26 56,33 53,35 C 50,28 47,25 44,21 C 44,26 42,30 38,30 C 32,28 26,28 21,28 Z" fill="#5a2d0c"/>
-          </g>`,
-        withBand: false
-      },
-      4: {
-        name: "4. Coupe en pics",
-        hairColor: "#5a2d0c",
-        hairBack: `
-          <g id="boy-hair-back-full">
-              <!-- Ellipse de base (+20% bas, sommet Y=-5, bas Y=61) -->
-              <ellipse cx="50" cy="28" rx="35" ry="33" fill="#5a2d0c"/>
-              <!-- Silhouette emblématique avec pointe supplémentaire à gauche -->
-              <path d="M 82,44 
-                       C 88,36 96,30 96,30 
-                       C 94,26 88,22 88,22 
-                       C 94,16 98,10 98,10 
-                       C 92,6 84,4 84,4 
-                       C 90,-4 92,-12 92,-12 
-                       C 84,-8 74,-6 74,-6 
-                       C 72,-14 64,-20 64,-20 
-                       C 58,-14 52,-12 52,-12 
-                       C 46,-16 38,-18 38,-18 
-                       C 34,-12 28,-6 28,-6 
-                       C 18,-4 8,-2 8,-2 
-                       C 14,6 18,10 18,10 
-                       C 10,12 2,16 2,16 
-                       C 8,22 16,24 16,24 
-                       C 10,26 4,32 4,32 
-                       C 10,36 18,44 18,44 
-                       C 24,34 26,22 30,16 
-                       C 38,8 62,8 70,16 
-                       C 74,22 76,34 82,44 Z" fill="#5a2d0c"/>
-          </g>`,
-        hairFront: `
-          <g id="boy-hair-front-full">
-              <!-- Mèches frontales inversées (miroir axe vertical) -->
-              <path d="M 20,30 
-                       C 22,14 34,4 50,4 
-                       C 66,4 80,14 82,30 
-                       C 82,36 80,37 78,34 
-                       C 76,27 74,24 72,24 
-                       C 70,30 67,36 64,35 
-                       C 62,28 61,23 58,23 
-                       C 56,29 52,38 48,38 
-                       C 46,32 45,24 42,23 
-                       C 40,28 36,37 33,37 
-                       C 31,31 30,24 27,24 
-                       C 25,29 23,34 20,30 Z" fill="#5a2d0c"/>
-          </g>`,
-        withBand: false
-      }
-    };
-
-    // Modèles communs pour la fille
-    const GIRL_BASE = {
-      shadow: `<g id="girl-shadow"><ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/></g>`,
-      legs: `
-        <g id="girl-legs">
-            <polygon points="39,88 49,88 48,106 41,106" fill="#ffd4a3"/>
-            <polygon points="40,96 48.5,96 48,106 41,106" fill="#489e96"/>
-            <polygon points="40,96 48.5,96 48.3,98 40.2,98" fill="#ffffff"/>
-            <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#ff9d00"/>
-            <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#c47000"/>
-            <rect x="42.5" y="107" width="4" height="2" rx="0.8" fill="#ffffff"/>
-            <polygon points="51,88 61,88 59,106 52,106" fill="#ffd4a3"/>
-            <polygon points="51.5,96 60,96 59,106 52,106" fill="#489e96"/>
-            <polygon points="51.5,96 60,96 59.8,98 51.7,98" fill="#ffffff"/>
-            <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#ff9d00"/>
-            <path d="M49.5 112 L61.5 112 L61 114 L50 114 Z" fill="#c47000"/>
-            <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#ffffff"/>
-        </g>`,
-      body: `
-        <g id="girl-body">
-            <path d="M38 82 C38 82, 44 83.5, 50 83.5 C56 83.5, 62 82, 62 82 C70 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 30 85, 38 82 Z" fill="#5c3818"/>
-            <path d="M40 83 C40 85, 38 88, 37 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M50 83.5 L50 93.5" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M60 83 C60 85, 62 88, 63 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M 31,65 C 31,62 34,61.5 38,61.5 L 62,61.5 C 66,61.5 69,62 69,65 L 62.5,82 L 37.5,82 Z" fill="#ff9d00"/>
-            <path d="M44 60 L50 71 L56 60 Z" fill="#ffffff"/>
-            <circle cx="50" cy="66" r="2.5" fill="#489e96"/>
-            <polygon points="46,64 50,66 46,69" fill="#489e96"/>
-            <polygon points="54,64 50,66 54,69" fill="#489e96"/>
-            <circle cx="50" cy="73" r="1.5" fill="#ffde6a"/>
-            <circle cx="50" cy="77" r="1.5" fill="#ffde6a"/>
-        </g>`,
-      belt: `
-        <g id="girl-belt">
-            <rect x="37" y="80.5" width="26" height="4" rx="1" fill="#7c4004"/>
-            <rect x="47" y="79.5" width="6" height="6" rx="1.2" fill="#ffb733" stroke="#7c4004" stroke-width="0.8"/>
-            <rect x="58.5" y="80.5" width="3.5" height="5.5" rx="1.2" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
-            <circle cx="60.2" cy="83.2" r="0.7" fill="#ffffff"/>
-        </g>`,
-      arms: `
-        <g id="girl-arms">
-            <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="#ff9d00"/>
-            <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
-            <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="#ff9d00"/>
-            <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
-        </g>`,
-      headBase: (withTiara = true) => `
-        <g id="girl-head-base-full">
-            <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
-            <g id="girl-ears-full">
-                <circle cx="21" cy="38" r="4.8" fill="#ffd4a3"/>
-                <circle cx="21" cy="38" r="2.8" fill="#f0be8d"/>
-                <circle cx="79" cy="38" r="4.8" fill="#ffd4a3"/>
-                <circle cx="79" cy="38" r="2.8" fill="#f0be8d"/>
-            </g>
-            <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
-            ${withTiara ? `
-            <path d="M22 23 C33 16, 67 16, 78 23 L79 27 C68 20, 32 20, 21 27 Z" fill="#489e96"/>
-            <circle cx="28" cy="22" r="3.5" fill="#ff9d00"/>
-            <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>` : ''}
-        </g>`,
-      faceFeatures: `
-        <g id="girl-face-features-full">
-            <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
-            <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
-            <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
-            <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="#b45309"/>
-            <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
-            <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
-            <!-- Cils manga supérieurs : 3 pointes dégressives compactes -->
-            <polygon points="29.5,39.2 26.5,35.8 31.8,37.5" fill="#2b1404"/>
-            <polygon points="32.2,37.2 30.8,34.2 34.2,36.0" fill="#2b1404"/>
-            <polygon points="34.8,35.6 34.2,33.5 36.5,34.8" fill="#2b1404"/>
-            <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-            <!-- Trait et cils inférieurs (ancrés sur le trait inférieur) -->
-            <path d="M32 44.5 Q37 47.5 42 44.5" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
-            <polygon points="33.5,45.0 34.2,47.2 35.0,45.5" fill="#2b1404"/>
-            <polygon points="36.2,45.7 37.0,47.6 37.8,45.7" fill="#2b1404"/>
-            <polygon points="39.0,45.5 39.8,46.9 40.5,45.0" fill="#2b1404"/>
-            <path d="M 42.7,30.0 L 34.5,27.5 L 28.0,31.0 L 35.0,29.3 L 42.7,32.0 Z" fill="#6d2e05"/>
-
-            <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
-            <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
-            <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="#6d2e05"/>
-            <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="#b45309"/>
-            <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
-            <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
-            <circle cx="64.5" cy="43.5" r="1" fill="#ffffff"/>
-            <!-- Cils manga supérieurs : 3 pointes dégressives compactes -->
-            <polygon points="70.5,39.2 73.5,35.8 68.2,37.5" fill="#2b1404"/>
-            <polygon points="67.8,37.2 69.2,34.2 65.8,36.0" fill="#2b1404"/>
-            <polygon points="65.2,35.6 65.8,33.5 63.5,34.8" fill="#2b1404"/>
-            <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
-            <!-- Trait et cils inférieurs (ancrés sur le trait inférieur) -->
-            <path d="M58 44.5 Q63 47.5 68 44.5" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
-            <polygon points="66.5,45.0 65.8,47.2 65.0,45.5" fill="#2b1404"/>
-            <polygon points="63.8,45.7 63.0,47.6 62.2,45.7" fill="#2b1404"/>
-            <polygon points="61.0,45.5 60.2,46.9 59.5,45.0" fill="#2b1404"/>
-            <path d="M 57.3,30.0 L 65.5,27.5 L 72.0,31.0 L 65.0,29.3 L 57.3,32.0 Z" fill="#6d2e05"/>
-
-            <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="#d99866" stroke="#d99866" stroke-width="0.7" stroke-linejoin="round"/>
-            <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
-        </g>`
-    };
-
-    // Variantes de coupes Fille
-    const GIRL_STYLES = {
-      1: {
-        name: "1. Macarons",
-        hairColor: "#8a3c08",
-        hairBack: `
-          <g id="girl-hair-back-full">
-              <!-- Ellipse de base universelle (+20% bas, sommet Y=-5, bas Y=61) -->
-              <ellipse cx="50" cy="28" rx="35" ry="33" fill="#8a3c08"/>
-              <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
-              <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
-              <path d="M 12,36 C 8,14 20,-2 50,-2 C 80,-2 92,14 88,36 C 94,50 90,64 82,70 C 78,64 76,52 76,42 C 74,32 26,32 24,42 C 24,52 22,64 18,70 C 10,64 6,50 12,36 Z" fill="#8a3c08"/>
-              <circle cx="16" cy="10" r="13" fill="#8a3c08"/>
-              <circle cx="84" cy="10" r="13" fill="#8a3c08"/>
-              <!-- Chouchou macaron gauche (façon ponytail) -->
-              <ellipse cx="12" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-20 12 21)"/>
-              <ellipse cx="20" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(20 20 21)"/>
-              <circle cx="16" cy="21" r="2.6" fill="#ff9d00"/>
-              <circle cx="15.5" cy="20.5" r="1" fill="#ffffff"/>
-              <!-- Chouchou macaron droit (façon ponytail) -->
-              <ellipse cx="80" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-20 80 21)"/>
-              <ellipse cx="88" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(20 88 21)"/>
-              <circle cx="84" cy="21" r="2.6" fill="#ff9d00"/>
-              <circle cx="83.5" cy="20.5" r="1" fill="#ffffff"/>
-          </g>`,
-        hairFront: `
-          <g id="girl-hair-front-full">
-              <path d="M 21,30 C 23,35 25,37 28,36 C 31,35 33,30 35,28 C 39,33 46,38 50,41 C 54,38 61,33 65,28 C 67,30 69,35 72,36 C 75,37 77,35 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>
-              <path d="M 23,30 C 23,39 25,48 27,54 C 26,46 25,38 25,30 Z" fill="#8a3c08"/>
-              <path d="M 77,30 C 77,39 75,48 73,54 C 74,46 75,38 75,30 Z" fill="#8a3c08"/>
-          </g>`,
-        withTiara: false
-      },
-      2: {
-        name: "2. Queue de cheval",
-        hairColor: "#8a3c08",
-        hairBack: `
-          <g id="girl-hair-back-full">
-              <!-- Ellipse de base (+20% bas, sommet Y=-5, bas Y=61) + queue de cheval haute -->
-              <ellipse cx="50" cy="28" rx="35" ry="33" fill="#8a3c08"/>
-              <path d="M 48,-6 C 68,-26 98,-2 96,28 C 94,50 88,68 76,82 C 72,84 68,82 66,78 C 70,66 78,46 76,28 C 74,14 62,4 48,2 Z" fill="#8a3c08"/>
-              <!-- Chouchou naturel enserrant la base de la queue de cheval -->
-              <ellipse cx="53" cy="-3" rx="4.5" ry="3.5" fill="#489e96" transform="rotate(20 53 -3)"/>
-              <ellipse cx="61" cy="-1" rx="4.5" ry="3.5" fill="#489e96" transform="rotate(45 61 -1)"/>
-              <circle cx="57" cy="-2" r="2.8" fill="#ff9d00"/>
-              <circle cx="56.5" cy="-2.5" r="1" fill="#ffffff"/>
-          </g>`,
-        hairFront: `
-          <g id="girl-hair-front-full">
-              <!-- Frange asymétrique moderne -->
-              <path d="M 21,30 C 23,20 30,10 50,8 C 68,8 78,18 79,30 C 76,34 70,30 65,36 C 58,26 50,34 42,38 C 34,28 26,34 21,30 Z" fill="#8a3c08"/>
-          </g>`,
-        withTiara: false
-      },
-      3: {
-        name: "3. Carré court",
-        hairColor: "#8a3c08",
-        hairBack: `
-          <g id="girl-hair-back-full">
-              <!-- Ellipse de base (+20% bas, sommet Y=-5, bas Y=61) + demi-ovale épaules -->
-              <ellipse cx="50" cy="28" rx="35" ry="33" fill="#8a3c08"/>
-              <path d="M 15,66 C 15,22 26,2 50,2 C 74,2 85,22 85,66 Z" fill="#8a3c08"/>
-          </g>`,
-        hairFront: `
-          <g id="girl-hair-front-full">
-              <path d="M 21,30 C 23,35 25,37 28,36 C 31,35 33,30 35,28 C 39,33 46,38 50,41 C 54,38 61,33 65,28 C 67,30 69,35 72,36 C 75,37 77,35 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>
-              <path d="M 23,30 C 23,39 25,48 27,54 C 26,46 25,38 25,30 Z" fill="#8a3c08"/>
-              <path d="M 77,30 C 77,39 75,48 73,54 C 74,46 75,38 75,30 Z" fill="#8a3c08"/>
-          </g>`,
-        withTiara: false
-      },
-      4: {
-        name: "4. Tresses",
-        hairColor: "#8a3c08",
-        hairBack: `
-          <g id="girl-hair-back-full">
-              <!-- Ellipse de base (+20% bas, sommet Y=-5, bas Y=61) + couettes -->
-              <ellipse cx="50" cy="28" rx="35" ry="33" fill="#8a3c08"/>
-              <!-- Couette gauche -->
-              <path d="M 22,24 C 4,36 2,56 6,70 C 8,78 7,83 6,86 L 14,87 C 18,80 22,72 22,58 C 22,46 26,34 30,26 Z" fill="#8a3c08"/>
-              <path d="M 7,86 C 6,91 9,94 10,95 C 11,94 14,91 13,86 Z" fill="#8a3c08"/>
-              <!-- Chouchou bas gauche (façon ponytail) -->
-              <ellipse cx="7.5" cy="85.5" rx="3.5" ry="2.5" fill="#489e96" transform="rotate(-15 7.5 85.5)"/>
-              <ellipse cx="12.5" cy="85.5" rx="3.5" ry="2.5" fill="#489e96" transform="rotate(15 12.5 85.5)"/>
-              <circle cx="10" cy="85.5" r="1.8" fill="#ff9d00"/>
-              <circle cx="9.6" cy="85.1" r="0.7" fill="#ffffff"/>
-              <!-- Chouchou racine gauche -->
-              <ellipse cx="16" cy="24" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-30 16 24)"/>
-              <ellipse cx="24" cy="24" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(10 24 24)"/>
-              <circle cx="20" cy="24" r="2.4" fill="#ff9d00"/>
-              <circle cx="19.5" cy="23.5" r="0.9" fill="#ffffff"/>
-
-              <!-- Couette droite -->
-              <path d="M 78,24 C 96,36 98,56 94,70 C 92,78 93,83 94,86 L 86,87 C 82,80 78,72 78,58 C 78,46 74,34 70,26 Z" fill="#8a3c08"/>
-              <path d="M 87,86 C 86,91 89,94 90,95 C 91,94 94,91 93,86 Z" fill="#8a3c08"/>
-              <!-- Chouchou bas droit (façon ponytail) -->
-              <ellipse cx="87.5" cy="85.5" rx="3.5" ry="2.5" fill="#489e96" transform="rotate(-15 87.5 85.5)"/>
-              <ellipse cx="92.5" cy="85.5" rx="3.5" ry="2.5" fill="#489e96" transform="rotate(15 92.5 85.5)"/>
-              <circle cx="90" cy="85.5" r="1.8" fill="#ff9d00"/>
-              <circle cx="89.6" cy="85.1" r="0.7" fill="#ffffff"/>
-              <!-- Chouchou racine droite -->
-              <ellipse cx="76" cy="24" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-10 76 24)"/>
-              <ellipse cx="84" cy="24" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(30 84 24)"/>
-              <circle cx="80" cy="24" r="2.4" fill="#ff9d00"/>
-              <circle cx="79.5" cy="23.5" r="0.9" fill="#ffffff"/>
-          </g>`,
-        hairFront: `
-          <g id="girl-hair-front-full">
-              <path d="M 21,30 C 23,35 25,37 28,36 C 31,35 33,30 35,28 C 39,33 46,38 50,41 C 54,38 61,33 65,28 C 67,30 69,35 72,36 C 75,37 77,35 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="#8a3c08"/>
-              <path d="M 23,30 C 23,39 25,48 27,54 C 26,46 25,38 25,30 Z" fill="#8a3c08"/>
-              <path d="M 77,30 C 77,39 75,48 73,54 C 74,46 75,38 75,30 Z" fill="#8a3c08"/>
-          </g>`,
-        withTiara: true
-      }
-    };
-
-    // Générateur de SVG complet ou tête seule
-    function buildAvatarSvg(type, styleId, mode = 'full') {
-      const isBoy = type === 'boy';
-      const base = isBoy ? BOY_BASE : GIRL_BASE;
-      const style = (isBoy ? BOY_STYLES : GIRL_STYLES)[styleId];
-      
-      const viewBox = mode === 'full' 
-        ? "0 -22 100 144"
-        : "4 -22 92 88";
-
-      if (mode === 'head') {
-        return `
-          <svg viewBox="${viewBox}" class="w-full h-full drop-shadow-lg" xmlns="http://www.w3.org/2000/svg">
-              ${style.hairBack}
-              ${base.headBase(isBoy ? style.withBand : style.withTiara)}
-              ${style.hairFront}
-              ${base.faceFeatures}
-          </svg>
-        `;
-      }
-
-      return `
-        <svg viewBox="${viewBox}" class="w-full h-full drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
-            ${base.shadow}
-            ${style.hairBack}
-            ${base.legs}
-            ${base.body}
-            ${base.belt}
-            ${base.arms}
-            ${base.headBase(isBoy ? style.withBand : style.withTiara)}
-            ${style.hairFront}
-            ${base.faceFeatures}
-        </svg>
-      `;
+    function buildAvatar(gender, styleId, outfitId, hairColor, eyeColor, mode) {
+      return buildCustomAvatarSvg({
+        type: gender,
+        styleId: styleId,
+        outfitId: outfitId,
+        hairColor: hairColor,
+        eyeColor: eyeColor,
+        mode: mode
+      });
     }
 
-    // Mise à jour de la vue
     function updatePreviews() {
-      document.getElementById('boy-preview-box').innerHTML = buildAvatarSvg('boy', currentBoyStyle, currentViewMode);
-      document.getElementById('girl-preview-box').innerHTML = buildAvatarSvg('girl', currentGirlStyle, currentViewMode);
+      // 1. Preview Principale Garçon
+      const boyBox = document.getElementById('boy-preview-box');
+      if (boyBox) {
+        boyBox.innerHTML = buildAvatar('boy', currentBoyStyle, currentBoyOutfit, currentBoyHair, currentBoyEye, currentViewMode);
+      }
 
-      document.getElementById('boy-style-badge').textContent = BOY_STYLES[currentBoyStyle].name;
-      document.getElementById('girl-style-badge').textContent = GIRL_STYLES[currentGirlStyle].name;
+      // Badge Coupe Garçon
+      const boyStyleBadge = document.getElementById('boy-style-badge');
+      if (boyStyleBadge && BOY_STYLES[currentBoyStyle]) {
+        boyStyleBadge.textContent = BOY_STYLES[currentBoyStyle].name;
+      }
 
-      // Actualiser les vignettes
-      for (let i = 1; i <= 4; i++) {
-        document.getElementById(`thumb-boy-${i}`).innerHTML = buildAvatarSvg('boy', i, 'head');
-        document.getElementById(`thumb-girl-${i}`).innerHTML = buildAvatarSvg('girl', i, 'head');
+      // Badge Tenue Garçon
+      const boyOutfitBadge = document.getElementById('boy-outfit-badge');
+      if (boyOutfitBadge && BOY_OUTFITS[currentBoyOutfit]) {
+        boyOutfitBadge.textContent = BOY_OUTFITS[currentBoyOutfit].name;
+      }
 
-        const btnB = document.getElementById(`btn-boy-style-${i}`);
-        if (btnB) btnB.classList.toggle('active', i === currentBoyStyle);
+      // Miniatures Coupes Garçon
+      [1, 2, 3, 4].forEach(id => {
+        const thumb = document.getElementById(`thumb-boy-${id}`);
+        const btn = document.getElementById(`btn-boy-style-${id}`);
+        if (thumb) {
+          thumb.innerHTML = buildAvatar('boy', id, 1, currentBoyHair, currentBoyEye, 'head');
+        }
+        if (btn) {
+          if (id === currentBoyStyle) {
+            btn.className = "glass-card active rounded-2xl p-3 flex flex-col items-center gap-2 text-center ring-2 ring-primary-400 bg-white/20";
+          } else {
+            btn.className = "glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center hover:bg-white/10";
+          }
+        }
+      });
 
-        const btnG = document.getElementById(`btn-girl-style-${i}`);
-        if (btnG) btnG.classList.toggle('active', i === currentGirlStyle);
+      // Miniatures Tenues Garçon
+      [1, 2, 3, 4].forEach(id => {
+        const thumb = document.getElementById(`thumb-boy-outfit-${id}`);
+        const btn = document.getElementById(`btn-boy-outfit-${id}`);
+        if (thumb) {
+          thumb.innerHTML = buildAvatar('boy', currentBoyStyle, id, currentBoyHair, currentBoyEye, 'full');
+        }
+        if (btn) {
+          if (id === currentBoyOutfit) {
+            btn.className = "glass-card active rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center ring-2 ring-primary-400 bg-white/20";
+          } else {
+            btn.className = "glass-card rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center hover:bg-white/10";
+          }
+        }
+      });
+
+      // 2. Preview Principale Fille
+      const girlBox = document.getElementById('girl-preview-box');
+      if (girlBox) {
+        girlBox.innerHTML = buildAvatar('girl', currentGirlStyle, currentGirlOutfit, currentGirlHair, currentGirlEye, currentViewMode);
+      }
+
+      // Badge Coupe Fille
+      const girlStyleBadge = document.getElementById('girl-style-badge');
+      if (girlStyleBadge && GIRL_STYLES[currentGirlStyle]) {
+        girlStyleBadge.textContent = GIRL_STYLES[currentGirlStyle].name;
+      }
+
+      // Badge Tenue Fille
+      const girlOutfitBadge = document.getElementById('girl-outfit-badge');
+      if (girlOutfitBadge && GIRL_OUTFITS[currentGirlOutfit]) {
+        girlOutfitBadge.textContent = GIRL_OUTFITS[currentGirlOutfit].name;
+      }
+
+      // Miniatures Coupes Fille
+      [1, 2, 3, 4].forEach(id => {
+        const thumb = document.getElementById(`thumb-girl-${id}`);
+        const btn = document.getElementById(`btn-girl-style-${id}`);
+        if (thumb) {
+          thumb.innerHTML = buildAvatar('girl', id, 1, currentGirlHair, currentGirlEye, 'head');
+        }
+        if (btn) {
+          if (id === currentGirlStyle) {
+            btn.className = "glass-card active rounded-2xl p-3 flex flex-col items-center gap-2 text-center ring-2 ring-accent-400 bg-white/20";
+          } else {
+            btn.className = "glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center hover:bg-white/10";
+          }
+        }
+      });
+
+      // Miniatures Tenues Fille
+      [1, 2, 3, 4].forEach(id => {
+        const thumb = document.getElementById(`thumb-girl-outfit-${id}`);
+        const btn = document.getElementById(`btn-girl-outfit-${id}`);
+        if (thumb) {
+          thumb.innerHTML = buildAvatar('girl', currentGirlStyle, id, currentGirlHair, currentGirlEye, 'full');
+        }
+        if (btn) {
+          if (id === currentGirlOutfit) {
+            btn.className = "glass-card active rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center ring-2 ring-accent-400 bg-white/20";
+          } else {
+            btn.className = "glass-card rounded-2xl p-2.5 flex flex-col items-center gap-1.5 text-center hover:bg-white/10";
+          }
+        }
+      });
+
+      renderSwatches();
+    }
+
+    function renderSwatches() {
+      // Swatches Cheveux Garçon
+      const boyHairContainer = document.getElementById('boy-hair-swatches');
+      if (boyHairContainer) {
+        boyHairContainer.innerHTML = HAIR_COLORS.map(c => `
+          <button onclick="setBoyHair('${c.hex}', '${c.name}')" class="w-6 h-6 rounded-full border-2 transition transform hover:scale-110 relative ${currentBoyHair.toLowerCase() === c.hex.toLowerCase() ? 'border-white ring-2 ring-accent-400 scale-110' : 'border-black/40'}" style="background-color: ${c.hex};" title="${c.name}">
+            ${currentBoyHair.toLowerCase() === c.hex.toLowerCase() ? '<i class="bi bi-check text-white text-[10px] font-black absolute inset-0 flex items-center justify-center"></i>' : ''}
+          </button>
+        `).join('');
+      }
+
+      // Swatches Yeux Garçon
+      const boyEyeContainer = document.getElementById('boy-eye-swatches');
+      if (boyEyeContainer) {
+        boyEyeContainer.innerHTML = EYE_COLORS.map(e => `
+          <button onclick="setBoyEye('${e.id}', '${e.name}')" class="w-6 h-6 rounded-full border-2 transition transform hover:scale-110 relative overflow-hidden ${currentBoyEye === e.id ? 'border-white ring-2 ring-accent-400 scale-110' : 'border-black/40'}" title="${e.name}">
+            <div class="w-full h-full" style="background: radial-gradient(circle at 35% 35%, ${e.light} 0%, ${e.dark} 70%);"></div>
+            ${currentBoyEye === e.id ? '<i class="bi bi-check text-white text-[10px] font-black absolute inset-0 flex items-center justify-center"></i>' : ''}
+          </button>
+        `).join('');
+      }
+
+      // Swatches Cheveux Fille
+      const girlHairContainer = document.getElementById('girl-hair-swatches');
+      if (girlHairContainer) {
+        girlHairContainer.innerHTML = HAIR_COLORS.map(c => `
+          <button onclick="setGirlHair('${c.hex}', '${c.name}')" class="w-6 h-6 rounded-full border-2 transition transform hover:scale-110 relative ${currentGirlHair.toLowerCase() === c.hex.toLowerCase() ? 'border-white ring-2 ring-accent-400 scale-110' : 'border-black/40'}" style="background-color: ${c.hex};" title="${c.name}">
+            ${currentGirlHair.toLowerCase() === c.hex.toLowerCase() ? '<i class="bi bi-check text-white text-[10px] font-black absolute inset-0 flex items-center justify-center"></i>' : ''}
+          </button>
+        `).join('');
+      }
+
+      // Swatches Yeux Fille
+      const girlEyeContainer = document.getElementById('girl-eye-swatches');
+      if (girlEyeContainer) {
+        girlEyeContainer.innerHTML = EYE_COLORS.map(e => `
+          <button onclick="setGirlEye('${e.id}', '${e.name}')" class="w-6 h-6 rounded-full border-2 transition transform hover:scale-110 relative overflow-hidden ${currentGirlEye === e.id ? 'border-white ring-2 ring-accent-400 scale-110' : 'border-black/40'}" title="${e.name}">
+            <div class="w-full h-full" style="background: radial-gradient(circle at 35% 35%, ${e.light} 0%, ${e.dark} 70%);"></div>
+            ${currentGirlEye === e.id ? '<i class="bi bi-check text-white text-[10px] font-black absolute inset-0 flex items-center justify-center"></i>' : ''}
+          </button>
+        `).join('');
       }
     }
 
-    function selectBoyStyle(id) {
+    // Fonctions exposées sur window pour les onclick
+    window.setBoyHair = (hex, name) => {
+      currentBoyHair = hex;
+      document.getElementById('boy-hair-color-label').textContent = `${name} (${hex})`;
+      updatePreviews();
+    };
+
+    window.setBoyEye = (id, name) => {
+      currentBoyEye = id;
+      document.getElementById('boy-eye-color-label').textContent = name;
+      updatePreviews();
+    };
+
+    window.setGirlHair = (hex, name) => {
+      currentGirlHair = hex;
+      document.getElementById('girl-hair-color-label').textContent = `${name} (${hex})`;
+      updatePreviews();
+    };
+
+    window.setGirlEye = (id, name) => {
+      currentGirlEye = id;
+      document.getElementById('girl-eye-color-label').textContent = name;
+      updatePreviews();
+    };
+
+    window.selectBoyStyle = (id) => {
       currentBoyStyle = id;
       updatePreviews();
-    }
+    };
 
-    function selectGirlStyle(id) {
+    window.selectBoyOutfit = (id) => {
+      currentBoyOutfit = id;
+      updatePreviews();
+    };
+
+    window.selectGirlStyle = (id) => {
       currentGirlStyle = id;
       updatePreviews();
-    }
+    };
 
-    function setViewMode(mode) {
+    window.selectGirlOutfit = (id) => {
+      currentGirlOutfit = id;
+      updatePreviews();
+    };
+
+    window.setViewMode = (mode) => {
       currentViewMode = mode;
       document.getElementById('view-full-btn').className = mode === 'full' 
         ? "px-2.5 py-1 text-xs rounded-lg font-bold bg-accent-500 text-white shadow"
@@ -766,28 +608,32 @@
         : "px-2.5 py-1 text-xs rounded-lg font-bold bg-white/10 text-white/80 hover:bg-white/20";
       
       updatePreviews();
-    }
+    };
 
     // Modale de zoom simple
-    function openZoomModal(avatar) {
+    window.openZoomModal = (avatar) => {
       const isBoy = avatar === 'boy';
       const styleId = isBoy ? currentBoyStyle : currentGirlStyle;
+      const outfitId = isBoy ? currentBoyOutfit : currentGirlOutfit;
+      const hairColor = isBoy ? currentBoyHair : currentGirlHair;
+      const eyeColor = isBoy ? currentBoyEye : currentGirlEye;
       const style = (isBoy ? BOY_STYLES : GIRL_STYLES)[styleId];
+      const outfit = (isBoy ? BOY_OUTFITS : GIRL_OUTFITS)[outfitId];
       
-      document.getElementById('zoom-modal-title').textContent = `${isBoy ? '👦 Garçon' : '👧 Fille'} - ${style.name}`;
-      document.getElementById('zoom-modal-content').innerHTML = buildAvatarSvg(avatar, styleId, currentViewMode);
+      document.getElementById('zoom-modal-title').textContent = `${isBoy ? 'Garçon' : 'Fille'} - ${style ? style.name : ''} (${outfit ? outfit.name : ''})`;
+      document.getElementById('zoom-modal-content').innerHTML = buildAvatar(avatar, styleId, outfitId, hairColor, eyeColor, currentViewMode);
       
       const modal = document.getElementById('zoom-modal');
       modal.classList.remove('opacity-0', 'pointer-events-none');
-    }
+    };
 
-    function closeZoomModal() {
+    window.closeZoomModal = () => {
       const modal = document.getElementById('zoom-modal');
       modal.classList.add('opacity-0', 'pointer-events-none');
-    }
+    };
 
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeZoomModal();
+      if (e.key === 'Escape') window.closeZoomModal();
     });
 
     // Initialisation au chargement
