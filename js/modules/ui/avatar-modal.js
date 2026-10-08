@@ -101,6 +101,20 @@ class AvatarCustomizerModal {
                     <!-- Colonne DROITE : Sélecteurs & Options -->
                     <div class="md:col-span-7 space-y-5">
                         
+                        <!-- 0. Prénom / Pseudo du Joueur -->
+                        <div class="bg-black/20 p-3 sm:p-3.5 rounded-2xl border border-white/10">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <label for="customizer-player-name" class="text-xs font-bold text-accent-300 uppercase tracking-wider flex items-center gap-1.5">
+                                    <i class="bi bi-person-fill text-accent-400"></i> Prénom / Pseudo
+                                </label>
+                                <span class="text-[10px] text-white/50">Max 30 caractères</span>
+                            </div>
+                            <div class="relative">
+                                <input type="text" id="customizer-player-name" maxlength="30" placeholder="Ton prénom ou pseudo..." autocomplete="off" class="w-full px-3.5 py-2.5 bg-white/10 border border-white/20 focus:border-accent-400 focus:bg-white/15 rounded-xl text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-accent-400/30 transition placeholder-white/40">
+                                <i class="bi bi-pencil-fill absolute right-3.5 top-1/2 -translate-y-1/2 text-white/40 text-xs pointer-events-none"></i>
+                            </div>
+                        </div>
+
                         <!-- 1. Choix du Genre -->
                         <div>
                             <label class="block text-xs font-bold text-accent-300 uppercase tracking-wider mb-2">1. Personnage</label>
@@ -216,6 +230,11 @@ class AvatarCustomizerModal {
         };
 
         const modalEl = this.initModalStructure();
+
+        const nameInput = modalEl.querySelector('#customizer-player-name');
+        if (nameInput) {
+            nameInput.value = playerManager.playerName || '';
+        }
 
         this.syncUI();
 
@@ -649,6 +668,31 @@ class AvatarCustomizerModal {
             skinColor: this.state.skinColor
         };
 
+        // Mise à jour du prénom / pseudo du joueur
+        const nameInput = document.getElementById('customizer-player-name');
+        let newName = playerManager.playerName;
+        if (nameInput) {
+            const trimmedName = nameInput.value.trim();
+            if (trimmedName.length > 0) {
+                newName = trimmedName;
+                playerManager.setPlayerName(trimmedName);
+
+                // Mettre à jour l'affichage dans le hero et la navigation
+                const playerDisplay = document.getElementById('player-name-display');
+                if (playerDisplay) playerDisplay.textContent = trimmedName;
+
+                const navPlayerBtn = document.getElementById('nav-player-btn');
+                if (navPlayerBtn) {
+                    navPlayerBtn.innerHTML = `<i class="bi bi-person"></i><span>${trimmedName}</span>`;
+                }
+
+                const mobilePlayerBtn = document.getElementById('mobile-player-btn');
+                if (mobilePlayerBtn) {
+                    mobilePlayerBtn.innerHTML = `<i class="bi bi-person"></i><span>${trimmedName}</span>`;
+                }
+            }
+        }
+
         playerManager.setAvatarConfig(configToSave);
 
         // Déclencher confettis si disponibles
@@ -666,11 +710,11 @@ class AvatarCustomizerModal {
 
         // Callback de rafraîchissement
         if (typeof this.onSaveCallback === 'function') {
-            this.onSaveCallback(configToSave);
+            this.onSaveCallback({ ...configToSave, playerName: newName });
         }
 
         // Événement personnalisé global pour toute vue
-        window.dispatchEvent(new CustomEvent('avatar-updated', { detail: configToSave }));
+        window.dispatchEvent(new CustomEvent('avatar-updated', { detail: { ...configToSave, playerName: newName } }));
     }
 }
 

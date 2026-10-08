@@ -218,7 +218,11 @@ L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclus
 5. **Sélecteur de Teint sur l'Écran d'Accueil** :
    - L'écran initial d'accueil (`#player-name-screen`) intègre la palette des 6 carnations avec mise à jour en direct des SVG de prévisualisation Garçon/Fille et enregistrement transparent dans la configuration du joueur.
 
-6. **Synchronisation Complète Obligatoire** :
+6. **Modification du Nom / Pseudo dans l'Atelier Avatar** :
+   - L'atelier de personnalisation ([avatar-modal.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatar-modal.js)) intègre un champ de saisie direct pour modifier le prénom/pseudo du joueur.
+   - À l'enregistrement, le nom est sauvegardé dans `playerManager` et synchronisé instantanément sur tous les éléments d'interface (carte de progression roadmap, bouton joueur hero, barre de navigation desktop et mobile).
+
+7. **Synchronisation Complète Obligatoire** :
    Tout changement de tracé SVG ou d'attribut configurable doit être immédiatement reporté sur :
    - [index.html](file:///home/nicolas/projets/_github/ez-job/index.html) et [js/app.js](file:///home/nicolas/projets/_github/ez-job/js/app.js) (écran d'accueil et sélection initiale)
    - [test-avatars.html](file:///home/nicolas/projets/_github/ez-job/test-avatars.html) (laboratoire de test et modale zoom)
@@ -227,7 +231,7 @@ L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclus
    - [js/modules/core/player.js](file:///home/nicolas/projets/_github/ez-job/js/modules/core/player.js) (persistance du profil et des configs)
    - [.doc/guide-technique-avatars-svg.md](file:///home/nicolas/projets/_github/ez-job/.doc/guide-technique-avatars-svg.md) (spécification technique)
 
-7. **Harmonie Universelle des Cheveux Arrière (Calque 2)** :
+8. **Harmonie Universelle des Cheveux Arrière (Calque 2)** :
    - **Base minimale obligatoire** : Un cercle/volume englobant arrière (`<circle cx="50" cy="24" r="32" fill="..."/>`) pour structurer la masse qui déborde du crâne.
    - **Cheveux longs** : Ajouter un grand ovale descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
    - **Coupe au carré (Bob / mi-long)** : Ajouter un **demi-ovale** descendant jusqu'aux épaules/haut du buste (`Y=62..66`). Cette superposition d'un cercle crânien et d'un demi-ovale apporte une assise naturelle, fluide et beaucoup plus harmonieuse sans découpes superflues.
