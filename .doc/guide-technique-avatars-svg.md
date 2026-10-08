@@ -142,7 +142,7 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
   - **Couleur & Teinte adoucie** :
     - **Garçon** : `fill="#542c0e"` (brun chaud texturé).
     - **Fille** : `fill="#6d2e05"` (châtain cuivré).
-- **Nez** : Discret point chaud sous les yeux (`cx="50" cy="47.5" r="0.9"`).
+- **Nez** : Triangle manga pointant vers le bas aplati avec coins arrondis (`<polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="#d99866" stroke="#d99866" stroke-width="0.7" stroke-linejoin="round"/>`).
 - **Bouche** : Arc souriant ou ouvert (`d="M45 51 Q50 56.5 55 51"`).
 
 ---

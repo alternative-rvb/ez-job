@@ -98,7 +98,7 @@ export const AVATARS = {
         <path d="M57 28.4 L64.5 26.2 L69 29.5 L64.2 28.2 L57 30.8 Z" fill="#542c0e"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
-        <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+        <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="#d99866" stroke="#d99866" stroke-width="0.7" stroke-linejoin="round"/>
         <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 </svg>
@@ -237,7 +237,7 @@ export const AVATARS = {
         <path d="M57 28.4 L64.5 26.2 L69 29.5 L64.2 28.2 L57 30.8 Z" fill="#542c0e"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
-        <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+        <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="#d99866" stroke="#d99866" stroke-width="0.7" stroke-linejoin="round"/>
         <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 </svg>
@@ -335,7 +335,7 @@ export const AVATARS = {
         <path d="M57 28.5 L64.5 26.3 L69 29.5 L64.2 28.1 L57 30.5 Z" fill="#6d2e05"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
-        <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+        <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="#d99866" stroke="#d99866" stroke-width="0.7" stroke-linejoin="round"/>
         <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 </svg>
@@ -488,7 +488,7 @@ export const AVATARS = {
         <path d="M57 28.5 L64.5 26.3 L69 29.5 L64.2 28.1 L57 30.5 Z" fill="#6d2e05"/>
 
         <!-- Nez et bouche (positionnés plus bas) -->
-        <circle cx="50" cy="47.5" r="0.9" fill="#d99866"/>
+        <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="#d99866" stroke="#d99866" stroke-width="0.7" stroke-linejoin="round"/>
         <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
     </g>
 </svg>
