@@ -203,8 +203,16 @@
             </div>
           </div>
 
-          <!-- Sélecteur de Couleur Cheveux & Yeux Garçon -->
+          <!-- Sélecteur de Couleur Peau, Cheveux & Yeux Garçon -->
           <div class="pt-4 border-t border-white/10 space-y-3">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-xs font-bold text-white/90 flex items-center gap-1.5"><i class="bi bi-person-fill text-accent-400"></i> Teint de Peau :</span>
+                <span id="boy-skin-color-label" class="text-[11px] font-semibold text-accent-300">Pêche (Défaut)</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5" id="boy-skin-swatches"></div>
+            </div>
+
             <div>
               <div class="flex items-center justify-between mb-1.5">
                 <span class="text-xs font-bold text-white/90 flex items-center gap-1.5"><i class="bi bi-palette text-accent-400"></i> Couleur des Cheveux :</span>
@@ -275,7 +283,7 @@
 
             <button onclick="selectGirlStyle(2)" id="btn-girl-style-2" class="glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
               <div class="w-16 h-20 flex items-center justify-center pointer-events-none" id="thumb-girl-2"></div>
-              <span class="text-xs font-bold">2. Queue de cheval</span>
+              <span class="text-xs font-bold">2. Ondulé & boucles</span>
             </button>
 
             <button onclick="selectGirlStyle(3)" id="btn-girl-style-3" class="glass-card rounded-2xl p-3 flex flex-col items-center gap-2 text-center">
@@ -318,8 +326,16 @@
             </div>
           </div>
 
-          <!-- Sélecteur de Couleur Cheveux & Yeux Fille -->
+          <!-- Sélecteur de Couleur Peau, Cheveux & Yeux Fille -->
           <div class="pt-4 border-t border-white/10 space-y-3">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-xs font-bold text-white/90 flex items-center gap-1.5"><i class="bi bi-person-fill text-accent-400"></i> Teint de Peau :</span>
+                <span id="girl-skin-color-label" class="text-[11px] font-semibold text-accent-300">Pêche (Défaut)</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5" id="girl-skin-swatches"></div>
+            </div>
+
             <div>
               <div class="flex items-center justify-between mb-1.5">
                 <span class="text-xs font-bold text-white/90 flex items-center gap-1.5"><i class="bi bi-palette text-accent-400"></i> Couleur des Cheveux :</span>
@@ -373,6 +389,7 @@
   <!-- Script des définitions de styles SVG & interactivité -->
   <script type="module">
     import {
+      SKIN_COLORS,
       HAIR_COLORS,
       EYE_COLORS,
       BOY_STYLES,
@@ -387,19 +404,22 @@
     let currentBoyOutfit = 1;
     let currentBoyHair = '#5a2d0c';
     let currentBoyEye = 'brown';
+    let currentBoySkin = 'light';
 
     let currentGirlStyle = 1;
     let currentGirlOutfit = 1;
     let currentGirlHair = '#8a3c08';
     let currentGirlEye = 'amber';
+    let currentGirlSkin = 'light';
 
-    function buildAvatar(gender, styleId, outfitId, hairColor, eyeColor, mode) {
+    function buildAvatar(gender, styleId, outfitId, hairColor, eyeColor, skinColor, mode) {
       return buildCustomAvatarSvg({
         type: gender,
         styleId: styleId,
         outfitId: outfitId,
         hairColor: hairColor,
         eyeColor: eyeColor,
+        skinColor: skinColor,
         mode: mode
       });
     }
@@ -408,7 +428,7 @@
       // 1. Preview Principale Garçon
       const boyBox = document.getElementById('boy-preview-box');
       if (boyBox) {
-        boyBox.innerHTML = buildAvatar('boy', currentBoyStyle, currentBoyOutfit, currentBoyHair, currentBoyEye, currentViewMode);
+        boyBox.innerHTML = buildAvatar('boy', currentBoyStyle, currentBoyOutfit, currentBoyHair, currentBoyEye, currentBoySkin, currentViewMode);
       }
 
       // Badge Coupe Garçon
@@ -428,7 +448,7 @@
         const thumb = document.getElementById(`thumb-boy-${id}`);
         const btn = document.getElementById(`btn-boy-style-${id}`);
         if (thumb) {
-          thumb.innerHTML = buildAvatar('boy', id, 1, currentBoyHair, currentBoyEye, 'head');
+          thumb.innerHTML = buildAvatar('boy', id, 1, currentBoyHair, currentBoyEye, currentBoySkin, 'head');
         }
         if (btn) {
           if (id === currentBoyStyle) {
@@ -444,7 +464,7 @@
         const thumb = document.getElementById(`thumb-boy-outfit-${id}`);
         const btn = document.getElementById(`btn-boy-outfit-${id}`);
         if (thumb) {
-          thumb.innerHTML = buildAvatar('boy', currentBoyStyle, id, currentBoyHair, currentBoyEye, 'full');
+          thumb.innerHTML = buildAvatar('boy', currentBoyStyle, id, currentBoyHair, currentBoyEye, currentBoySkin, 'full');
         }
         if (btn) {
           if (id === currentBoyOutfit) {
@@ -458,7 +478,7 @@
       // 2. Preview Principale Fille
       const girlBox = document.getElementById('girl-preview-box');
       if (girlBox) {
-        girlBox.innerHTML = buildAvatar('girl', currentGirlStyle, currentGirlOutfit, currentGirlHair, currentGirlEye, currentViewMode);
+        girlBox.innerHTML = buildAvatar('girl', currentGirlStyle, currentGirlOutfit, currentGirlHair, currentGirlEye, currentGirlSkin, currentViewMode);
       }
 
       // Badge Coupe Fille
@@ -478,7 +498,7 @@
         const thumb = document.getElementById(`thumb-girl-${id}`);
         const btn = document.getElementById(`btn-girl-style-${id}`);
         if (thumb) {
-          thumb.innerHTML = buildAvatar('girl', id, 1, currentGirlHair, currentGirlEye, 'head');
+          thumb.innerHTML = buildAvatar('girl', id, 1, currentGirlHair, currentGirlEye, currentGirlSkin, 'head');
         }
         if (btn) {
           if (id === currentGirlStyle) {
@@ -494,7 +514,7 @@
         const thumb = document.getElementById(`thumb-girl-outfit-${id}`);
         const btn = document.getElementById(`btn-girl-outfit-${id}`);
         if (thumb) {
-          thumb.innerHTML = buildAvatar('girl', currentGirlStyle, id, currentGirlHair, currentGirlEye, 'full');
+          thumb.innerHTML = buildAvatar('girl', currentGirlStyle, id, currentGirlHair, currentGirlEye, currentGirlSkin, 'full');
         }
         if (btn) {
           if (id === currentGirlOutfit) {
@@ -509,6 +529,16 @@
     }
 
     function renderSwatches() {
+      // Swatches Peau Garçon
+      const boySkinContainer = document.getElementById('boy-skin-swatches');
+      if (boySkinContainer) {
+        boySkinContainer.innerHTML = SKIN_COLORS.map(s => `
+          <button onclick="setBoySkin('${s.id}', '${s.name}')" class="w-6 h-6 rounded-full border-2 transition transform hover:scale-110 relative ${currentBoySkin === s.id ? 'border-white ring-2 ring-accent-400 scale-110' : 'border-black/40'}" style="background-color: ${s.base};" title="${s.name}">
+            ${currentBoySkin === s.id ? '<i class="bi bi-check text-slate-800 text-[10px] font-black absolute inset-0 flex items-center justify-center"></i>' : ''}
+          </button>
+        `).join('');
+      }
+
       // Swatches Cheveux Garçon
       const boyHairContainer = document.getElementById('boy-hair-swatches');
       if (boyHairContainer) {
@@ -526,6 +556,16 @@
           <button onclick="setBoyEye('${e.id}', '${e.name}')" class="w-6 h-6 rounded-full border-2 transition transform hover:scale-110 relative overflow-hidden ${currentBoyEye === e.id ? 'border-white ring-2 ring-accent-400 scale-110' : 'border-black/40'}" title="${e.name}">
             <div class="w-full h-full" style="background: radial-gradient(circle at 35% 35%, ${e.light} 0%, ${e.dark} 70%);"></div>
             ${currentBoyEye === e.id ? '<i class="bi bi-check text-white text-[10px] font-black absolute inset-0 flex items-center justify-center"></i>' : ''}
+          </button>
+        `).join('');
+      }
+
+      // Swatches Peau Fille
+      const girlSkinContainer = document.getElementById('girl-skin-swatches');
+      if (girlSkinContainer) {
+        girlSkinContainer.innerHTML = SKIN_COLORS.map(s => `
+          <button onclick="setGirlSkin('${s.id}', '${s.name}')" class="w-6 h-6 rounded-full border-2 transition transform hover:scale-110 relative ${currentGirlSkin === s.id ? 'border-white ring-2 ring-accent-400 scale-110' : 'border-black/40'}" style="background-color: ${s.base};" title="${s.name}">
+            ${currentGirlSkin === s.id ? '<i class="bi bi-check text-slate-800 text-[10px] font-black absolute inset-0 flex items-center justify-center"></i>' : ''}
           </button>
         `).join('');
       }
@@ -553,6 +593,12 @@
     }
 
     // Fonctions exposées sur window pour les onclick
+    window.setBoySkin = (id, name) => {
+      currentBoySkin = id;
+      document.getElementById('boy-skin-color-label').textContent = name;
+      updatePreviews();
+    };
+
     window.setBoyHair = (hex, name) => {
       currentBoyHair = hex;
       document.getElementById('boy-hair-color-label').textContent = `${name} (${hex})`;
@@ -562,6 +608,12 @@
     window.setBoyEye = (id, name) => {
       currentBoyEye = id;
       document.getElementById('boy-eye-color-label').textContent = name;
+      updatePreviews();
+    };
+
+    window.setGirlSkin = (id, name) => {
+      currentGirlSkin = id;
+      document.getElementById('girl-skin-color-label').textContent = name;
       updatePreviews();
     };
 

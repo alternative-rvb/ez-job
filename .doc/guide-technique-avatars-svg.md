@@ -155,11 +155,35 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
 
 ---
 
-## 5. Palette de Couleurs Standard
+## 5. Système de Carnations de Peau (`SKIN_COLORS`)
+
+L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclusive de **6 teintes de peau prédéfinies** :
+
+| Identifiant | Nom | Couleur Base (`base`) | Ombrage / Oreilles (`shadow`) | Description |
+|---|---|---|---|---|
+| `porcelain` | Porcelaine | `#ffe8d6` | `#f4ccba` | Teint très clair, rosé |
+| `light` | Pêche (Défaut) | `#ffd4a3` | `#f0be8d` | Teint clair standard |
+| `golden` | Dorée | `#f6c48a` | `#dca66e` | Teint intermédiaire doré |
+| `tan` | Hâlée | `#df9b62` | `#bc7842` | Teint mat / hâlé chaud |
+| `brown` | Chocolat | `#9c5b2e` | `#7a411a` | Teint foncé chaud |
+| `dark` | Ébène | `#5c351c` | `#40220f` | Teint très foncé profond |
+
+### Règles d'application dynamique du teint :
+1. **Calques anatomiques de base (`headBase`, `faceFeatures`)** :
+   - Le cou, la silhouette du crâne et les oreilles reçoivent `skin.base`.
+   - L'intérieur des oreilles et le pli du cou reçoivent `skin.shadow`.
+   - Le nez s'adapte automatiquement (ou conserve une teinte contrastée harmonisée).
+2. **Tenues modulaires (`BOY_OUTFITS`, `GIRL_OUTFITS`)** :
+   - Les propriétés `arms` (bras nus, manches courtes, mains) et `legs` (jambes nues sous short/jupe) peuvent être définies sous forme de **fonctions dynamiques** : `(skin) => string`.
+   - Le moteur `renderPart(part, effectiveSkin)` évalue automatiquement la fonction en lui passant l'objet `{ base, shadow }`, garantissant que la peau visible sur les tenues s'adapte instantanément au teint choisi.
+
+---
+
+## 6. Palette de Couleurs Standard
 
 | Élément | Garçon (Style Ninja Turquoise) | Fille (Style Aventure Orange/Turquoise) |
 |---|---|---|
-| **Peau (Base)** | `#ffd4a3` | `#ffd4a3` |
+| **Peau (Base)** | `#ffd4a3` (par défaut) | `#ffd4a3` (par défaut) |
 | **Ombre peau / Oreilles intérieures** | `#f0be8d` | `#f0be8d` |
 | **Nez** | `#d99866` | `#d99866` |
 | **Cheveux (Uniforme)** | `#5a2d0c` (Brun chaud) | `#8a3c08` (Châtain cuivré) |
@@ -172,7 +196,7 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
 
 ---
 
-## 6. Bonnes Pratiques & Retours d'Expérience (Learnings)
+## 7. Bonnes Pratiques & Retours d'Expérience (Learnings)
 
 1. **Simplicité et Absence de Sur-Ingénierie (KISS)** :
    - Les modales de prévisualisation ou zoom (ex. [test-avatars.html](file:///home/nicolas/projets/_github/ez-job/test-avatars.html)) doivent rester minimalistes (plein écran, sans boutons superflus, simple clic / croix pour fermer).
@@ -183,21 +207,33 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
    - Les cils inférieurs doivent être **subtils, plus courts et fins** que les cils supérieurs, et centrés sous l'iris pour ne pas alourdir le regard ou ressembler à des épines extérieures.
    - Toujours calculer les coordonnées $Y$ selon l'équation de la courbe de Bézier pour garantir la continuité visuelle.
 
-3. **Synchronisation Quadruple Obligatoire** :
-   Tout changement de tracé SVG doit être immédiatement reporté sur :
+3. **Construction des Cheveux Bouclés / Ondulés (Curly Hair)** :
+   - **Masse volumique arrière (`hairBack`)** : Une grappe de cercles superposés ($r = 14..22$) positionnés latéralement ($x = 18..30$ et $x = 70..82$, $y = 30..70$) crée une sensation de volume bouclé riche et naturelle sans alourdir le tracé.
+   - **Frange avant (`hairFront`)** : Privilégier une ligne de mèches ondulées sur le front ($y = 20..36$). **Ne jamais placer de cercles parasites isolés sur les tempes ou en avant-plan du visage** ($x = 28$ ou $x = 72$), car ils créent des verrues/artéfacts visuels coupant les yeux et les joues.
+
+4. **Harmonie Chromatique des Capes & Tenues** :
+   - **Règle de tonalité pour les capes** : Une cape (`capeBack` / `capeFront`) doit impérativement reprendre la même famille de couleur que le vêtement principal du haut du corps (`body`), mais dans une **nuance plus foncée/profonde** (ex. pour un haut de mage violet améthyste `#4c1d95`, la cape et le pantalon doivent être en violet sombre `#2e1065`, avec liseré or `#fbbf24`).
+   - Éviter d'introduire une troisième couleur discordante pour les capes sans justification thématique.
+
+5. **Accessoires & Postures Dynamiques** :
+   - Pour les armes et objets tenus (ex. flèche d'archère dans la main libre), appliquer une rotation angulaire expressive (ex. `transform="rotate(45 68 84)"`) pour donner de la vie et éviter les lignes parfaitement orthogonales ou rigides.
+
+6. **Synchronisation Quadruple Obligatoire** :
+   Tout changement de tracé SVG ou d'attribut configurable doit être immédiatement reporté sur :
    - [test-avatars.html](file:///home/nicolas/projets/_github/ez-job/test-avatars.html) (environnement de test visuel et modale plein écran)
-   - [js/modules/ui/avatars.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatars.js) (`headSvg` et `svg`)
-   - [index.html](file:///home/nicolas/projets/_github/ez-job/index.html) (cartes du sélecteur de personnage)
+   - [js/modules/ui/avatars.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatars.js) (`headSvg`, `svg`, `buildCustomAvatarSvg`, palettes)
+   - [js/modules/ui/avatar-modal.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatar-modal.js) (options et prévisualisations de l'atelier)
+   - [js/modules/core/player.js](file:///home/nicolas/projets/_github/ez-job/js/modules/core/player.js) (persistance du profil et des configs)
    - [.doc/guide-technique-avatars-svg.md](file:///home/nicolas/projets/_github/ez-job/.doc/guide-technique-avatars-svg.md) (spécification technique)
 
-4. **Harmonie Universelle des Cheveux Arrière (Calque 2)** :
+7. **Harmonie Universelle des Cheveux Arrière (Calque 2)** :
    - **Base minimale obligatoire** : Un cercle/volume englobant arrière (`<circle cx="50" cy="24" r="32" fill="..."/>`) pour structurer la masse qui déborde du crâne.
    - **Cheveux longs** : Ajouter un grand ovale descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
    - **Coupe au carré (Bob / mi-long)** : Ajouter un **demi-ovale** descendant jusqu'aux épaules/haut du buste (`Y=62..66`). Cette superposition d'un cercle crânien et d'un demi-ovale apporte une assise naturelle, fluide et beaucoup plus harmonieuse sans découpes superflues.
 
 ---
 
-## 7. Workflow de Validation & Déploiement
+## 8. Workflow de Validation & Déploiement
 
 ```bash
 npm run update-version
@@ -206,3 +242,4 @@ git add .
 git commit -m "style(avatars): description des ajustements"
 git push origin CamiLudik
 ```
+

@@ -15,7 +15,7 @@ class PlayerManager {
         return localStorage.getItem('playerAvatar') || 'boy';
     }
 
-    // Charger la configuration personnalisée de l'avatar (genre, coupe, tenue, couleur cheveux, couleur yeux)
+    // Charger la configuration personnalisée de l'avatar (genre, coupe, tenue, couleur cheveux, couleur yeux, peau)
     getAvatarConfig() {
         const stored = localStorage.getItem('playerAvatarConfig');
         if (stored) {
@@ -27,7 +27,8 @@ class PlayerManager {
                         styleId: parseInt(config.styleId) || 1,
                         outfitId: parseInt(config.outfitId) || 1,
                         hairColor: config.hairColor || (config.type === 'boy' ? '#5a2d0c' : '#8a3c08'),
-                        eyeColor: config.eyeColor || (config.type === 'boy' ? 'brown' : 'amber')
+                        eyeColor: config.eyeColor || (config.type === 'boy' ? 'brown' : 'amber'),
+                        skinColor: config.skinColor || 'light'
                     };
                 }
             } catch (e) {
@@ -41,7 +42,8 @@ class PlayerManager {
             styleId: 1,
             outfitId: 1,
             hairColor: type === 'boy' ? '#5a2d0c' : '#8a3c08',
-            eyeColor: type === 'boy' ? 'brown' : 'amber'
+            eyeColor: type === 'boy' ? 'brown' : 'amber',
+            skinColor: 'light'
         };
     }
 
@@ -53,7 +55,8 @@ class PlayerManager {
             styleId: parseInt(config.styleId) || 1,
             outfitId: parseInt(config.outfitId) || 1,
             hairColor: config.hairColor || (config.type === 'boy' ? '#5a2d0c' : '#8a3c08'),
-            eyeColor: config.eyeColor || (config.type === 'boy' ? 'brown' : 'amber')
+            eyeColor: config.eyeColor || (config.type === 'boy' ? 'brown' : 'amber'),
+            skinColor: config.skinColor || 'light'
         };
         this.playerAvatar = cleanConfig.type;
         localStorage.setItem('playerAvatar', cleanConfig.type);

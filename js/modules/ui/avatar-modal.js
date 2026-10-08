@@ -6,6 +6,7 @@
 
 import { playerManager } from '../core/player.js';
 import { 
+    SKIN_COLORS,
     HAIR_COLORS, 
     EYE_COLORS, 
     BOY_STYLES, 
@@ -25,6 +26,7 @@ class AvatarCustomizerModal {
             outfitId: 1,
             hairColor: '#5a2d0c',
             eyeColor: 'brown',
+            skinColor: 'light',
             mode: 'full' // 'full' ou 'head'
         };
         this.onSaveCallback = null;
@@ -112,11 +114,22 @@ class AvatarCustomizerModal {
                             </div>
                         </div>
 
-                        <!-- 2. Choix de la Tenue (BÊTA) -->
+                        <!-- 2. Couleur de Peau -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <label class="text-xs font-bold text-accent-300 uppercase tracking-wider">2. Teint de Peau</label>
+                                <span id="selected-skin-color-name" class="text-[11px] font-semibold text-white/80"></span>
+                            </div>
+                            <div class="flex flex-wrap gap-2" id="skin-color-swatches">
+                                <!-- Swatches de peau insérés dynamiquement -->
+                            </div>
+                        </div>
+
+                        <!-- 3. Choix de la Tenue (BÊTA) -->
                         <div>
                             <div class="flex items-center justify-between mb-2">
                                 <label class="text-xs font-bold text-accent-300 uppercase tracking-wider flex items-center gap-1.5">
-                                    2. Tenue & Classe <span class="px-1.5 py-0.2 rounded bg-amber-500/30 text-amber-300 text-[9px] font-black border border-amber-400/40">BÊTA</span>
+                                    3. Tenue & Classe <span class="px-1.5 py-0.2 rounded bg-amber-500/30 text-amber-300 text-[9px] font-black border border-amber-400/40">BÊTA</span>
                                 </label>
                                 <span id="selected-outfit-name" class="text-[11px] font-semibold text-white/80"></span>
                             </div>
@@ -125,10 +138,10 @@ class AvatarCustomizerModal {
                             </div>
                         </div>
 
-                        <!-- 3. Choix de la Coupe de Cheveux -->
+                        <!-- 4. Choix de la Coupe de Cheveux -->
                         <div>
                             <div class="flex items-center justify-between mb-2">
-                                <label class="text-xs font-bold text-accent-300 uppercase tracking-wider">3. Coupe de Cheveux</label>
+                                <label class="text-xs font-bold text-accent-300 uppercase tracking-wider">4. Coupe de Cheveux</label>
                                 <span id="selected-style-name" class="text-[11px] font-semibold text-white/80"></span>
                             </div>
                             <div class="grid grid-cols-4 gap-2" id="hairstyles-picker-container">
@@ -136,10 +149,10 @@ class AvatarCustomizerModal {
                             </div>
                         </div>
 
-                        <!-- 4. Couleur des Cheveux -->
+                        <!-- 5. Couleur des Cheveux -->
                         <div>
                             <div class="flex items-center justify-between mb-2">
-                                <label class="text-xs font-bold text-accent-300 uppercase tracking-wider">4. Teinte des Cheveux</label>
+                                <label class="text-xs font-bold text-accent-300 uppercase tracking-wider">5. Teinte des Cheveux</label>
                                 <span id="selected-hair-color-name" class="text-[11px] font-semibold text-white/80"></span>
                             </div>
                             <div class="flex flex-wrap gap-2" id="hair-color-swatches">
@@ -147,10 +160,10 @@ class AvatarCustomizerModal {
                             </div>
                         </div>
 
-                        <!-- 5. Couleur des Yeux (Iris) -->
+                        <!-- 6. Couleur des Yeux (Iris) -->
                         <div>
                             <div class="flex items-center justify-between mb-2">
-                                <label class="text-xs font-bold text-accent-300 uppercase tracking-wider">5. Couleur des Yeux</label>
+                                <label class="text-xs font-bold text-accent-300 uppercase tracking-wider">6. Couleur des Yeux</label>
                                 <span id="selected-eye-color-name" class="text-[11px] font-semibold text-white/80"></span>
                             </div>
                             <div class="flex flex-wrap gap-2" id="eye-color-swatches">
@@ -198,6 +211,7 @@ class AvatarCustomizerModal {
             outfitId: current.outfitId || 1,
             hairColor: current.hairColor || (current.type === 'boy' ? '#5a2d0c' : '#8a3c08'),
             eyeColor: current.eyeColor || (current.type === 'boy' ? 'brown' : 'amber'),
+            skinColor: current.skinColor || 'light',
             mode: 'full'
         };
 
@@ -249,6 +263,7 @@ class AvatarCustomizerModal {
     syncUI() {
         this.updateGenderButtons();
         this.updateViewModeButtons();
+        this.renderSkinSwatches();
         this.renderOutfitButtons();
         this.renderHairstyleButtons();
         this.renderHairSwatches();
@@ -298,6 +313,38 @@ class AvatarCustomizerModal {
     }
 
     /**
+     * Rendu des pastilles de couleur de peau
+     */
+    renderSkinSwatches() {
+        const container = document.getElementById('skin-color-swatches');
+        if (!container) return;
+
+        container.innerHTML = SKIN_COLORS.map(s => {
+            const isSelected = this.state.skinColor === s.id || this.state.skinColor === s.base;
+            return `
+                <button type="button" data-skin-id="${s.id}" data-skin-name="${s.name}" class="skin-swatch w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 transition-all transform hover:scale-110 relative shadow-md cursor-pointer ${
+                    isSelected ? 'border-white ring-2 ring-accent-400 scale-110' : 'border-black/40 hover:border-white/80'
+                }" style="background-color: ${s.base};" title="${s.name}">
+                    ${isSelected ? '<i class="bi bi-check text-slate-800 text-xs font-black absolute inset-0 flex items-center justify-center drop-shadow"></i>' : ''}
+                </button>
+            `;
+        }).join('');
+
+        container.querySelectorAll('.skin-swatch').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const skinId = btn.dataset.skinId;
+                this.state.skinColor = skinId;
+                this.renderSkinSwatches();
+                this.renderOutfitButtons();
+                this.renderHairstyleButtons();
+                this.updateLabels();
+                this.updatePreview();
+            });
+        });
+    }
+
+    /**
      * Génère les boutons de tenues (Classes RPG) avec miniatures dynamiques
      */
     renderOutfitButtons() {
@@ -316,6 +363,7 @@ class AvatarCustomizerModal {
                 outfitId: id,
                 hairColor: this.state.hairColor,
                 eyeColor: this.state.eyeColor,
+                skinColor: this.state.skinColor,
                 mode: 'full'
             });
 
@@ -362,6 +410,7 @@ class AvatarCustomizerModal {
                 outfitId: 1, // Aperçu de coupe au naturel sans couvre-chef
                 hairColor: this.state.hairColor,
                 eyeColor: this.state.eyeColor,
+                skinColor: this.state.skinColor,
                 mode: 'head'
             });
 
@@ -471,6 +520,10 @@ class AvatarCustomizerModal {
         const outfitNameEl = document.getElementById('selected-outfit-name');
         if (outfitNameEl) outfitNameEl.textContent = currentOutfit.name;
 
+        const currentSkin = SKIN_COLORS.find(s => s.id === this.state.skinColor || s.base === this.state.skinColor);
+        const skinNameEl = document.getElementById('selected-skin-color-name');
+        if (skinNameEl) skinNameEl.textContent = currentSkin ? currentSkin.name : this.state.skinColor;
+
         const currentHair = HAIR_COLORS.find(c => c.hex.toLowerCase() === this.state.hairColor.toLowerCase());
         const hairNameEl = document.getElementById('selected-hair-color-name');
         if (hairNameEl) hairNameEl.textContent = currentHair ? currentHair.name : this.state.hairColor;
@@ -493,6 +546,7 @@ class AvatarCustomizerModal {
             outfitId: this.state.outfitId,
             hairColor: this.state.hairColor,
             eyeColor: this.state.eyeColor,
+            skinColor: this.state.skinColor,
             mode: this.state.mode
         });
 
@@ -564,6 +618,7 @@ class AvatarCustomizerModal {
             this.state.outfitId = 1;
             this.state.hairColor = isBoy ? '#5a2d0c' : '#8a3c08';
             this.state.eyeColor = isBoy ? 'brown' : 'amber';
+            this.state.skinColor = 'light';
             this.syncUI();
         });
 
@@ -590,7 +645,8 @@ class AvatarCustomizerModal {
             styleId: this.state.styleId,
             outfitId: this.state.outfitId,
             hairColor: this.state.hairColor,
-            eyeColor: this.state.eyeColor
+            eyeColor: this.state.eyeColor,
+            skinColor: this.state.skinColor
         };
 
         playerManager.setAvatarConfig(configToSave);

@@ -32,10 +32,20 @@ export const EYE_COLORS = [
     { id: 'onyx', name: 'Gris Onyx', dark: '#18181b', light: '#71717a' }
 ];
 
+// Palette de couleurs de peau (carnations variées)
+export const SKIN_COLORS = [
+    { id: 'pale', name: 'Porcelaine', base: '#ffe8d6', shadow: '#fcd3b8' },
+    { id: 'light', name: 'Pêche (Défaut)', base: '#ffd4a3', shadow: '#f0be8d' },
+    { id: 'golden', name: 'Dorée / Miel', base: '#f6c48a', shadow: '#df9f62' },
+    { id: 'tan', name: 'Hâlée / Caramel', base: '#df9b62', shadow: '#b8733a' },
+    { id: 'brown', name: 'Chocolat', base: '#9c5b2e', shadow: '#733d17' },
+    { id: 'dark', name: 'Ébène', base: '#5c351c', shadow: '#3e210e' }
+];
+
 // Modèles anatomiques de base Garçon
 export const BOY_BASE = {
     shadow: `<g id="boy-shadow"><ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/></g>`,
-    legs: `
+    legs: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="boy-legs">
             <polygon points="39,85 49,85 48,106 41,106" fill="#5c3818"/>
             <polygon points="40,99 48.5,99 48,106 41,106" fill="#ffffff"/>
@@ -65,30 +75,30 @@ export const BOY_BASE = {
             <rect x="36" y="82.5" width="4.5" height="7" rx="1.2" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
             <circle cx="38.2" cy="86" r="0.7" fill="#ffb733"/>
         </g>`,
-    arms: `
+    arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="boy-arms">
             <path d="M32 64 C24 71, 23 78, 29 84 C32 84, 34 81, 35 77 Z" fill="#489e96"/>
-            <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+            <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="${skin.base}"/>
             <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#489e96"/>
-            <ellipse cx="77" cy="79" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+            <ellipse cx="77" cy="79" rx="3.8" ry="3.5" fill="${skin.base}"/>
         </g>`,
-    headBase: (withBand = true) => `
+    headBase: (withBand = true, skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="boy-head-base-full">
-            <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
+            <rect x="46" y="58" width="8" height="4" fill="${skin.base}"/>
             <path d="M42 60 L50 62 L58 60 Z" fill="#ff9d00"/>
             <g id="boy-ears-full">
-                <circle cx="21" cy="38" r="4.8" fill="#ffd4a3"/>
-                <circle cx="21" cy="38" r="2.8" fill="#f0be8d"/>
-                <circle cx="79" cy="38" r="4.8" fill="#ffd4a3"/>
-                <circle cx="79" cy="38" r="2.8" fill="#f0be8d"/>
+                <circle cx="21" cy="38" r="4.8" fill="${skin.base}"/>
+                <circle cx="21" cy="38" r="2.8" fill="${skin.shadow}"/>
+                <circle cx="79" cy="38" r="4.8" fill="${skin.base}"/>
+                <circle cx="79" cy="38" r="2.8" fill="${skin.shadow}"/>
             </g>
-            <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
+            <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="${skin.base}"/>
             ${withBand ? `
             <path d="M22 24 C33 17, 67 17, 78 24 L79 28 C68 21, 32 21, 21 28 Z" fill="#489e96"/>
             <rect x="45" y="19" width="10" height="6" rx="1.5" fill="#ff9d00"/>
             <circle cx="50" cy="22" r="1.5" fill="#ffffff"/>` : ''}
         </g>`,
-    faceFeatures: (eye = { dark: '#542c0e', light: '#8c4e1e' }) => `
+    faceFeatures: (eye = { dark: '#542c0e', light: '#8c4e1e' }, skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="boy-face-features-full">
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
@@ -110,7 +120,7 @@ export const BOY_BASE = {
             <path d="M56 38 Q63 34 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
             <path d="M 56,28.2 L 68,27.5 L 69.5,28.5 L 67,29.2 L 56,31.2 Z" fill="#2b1404"/>
 
-            <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="#d99866" stroke="#d99866" stroke-width="0.7" stroke-linejoin="round"/>
+            <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>
             <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
         </g>`
 };
@@ -211,15 +221,15 @@ export const BOY_STYLES = {
 // Modèles anatomiques de base Fille
 export const GIRL_BASE = {
     shadow: `<g id="girl-shadow"><ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/></g>`,
-    legs: `
+    legs: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="girl-legs">
-            <polygon points="39,88 49,88 48,106 41,106" fill="#ffd4a3"/>
+            <polygon points="39,88 49,88 48,106 41,106" fill="${skin.base}"/>
             <polygon points="40,96 48.5,96 48,106 41,106" fill="#489e96"/>
             <polygon points="40,96 48.5,96 48.3,98 40.2,98" fill="#ffffff"/>
             <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#ff9d00"/>
             <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#c47000"/>
             <rect x="42.5" y="107" width="4" height="2" rx="0.8" fill="#ffffff"/>
-            <polygon points="51,88 61,88 59,106 52,106" fill="#ffd4a3"/>
+            <polygon points="51,88 61,88 59,106 52,106" fill="${skin.base}"/>
             <polygon points="51.5,96 60,96 59,106 52,106" fill="#489e96"/>
             <polygon points="51.5,96 60,96 59.8,98 51.7,98" fill="#ffffff"/>
             <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#ff9d00"/>
@@ -247,29 +257,29 @@ export const GIRL_BASE = {
             <rect x="58.5" y="80.5" width="3.5" height="5.5" rx="1.2" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
             <circle cx="60.2" cy="83.2" r="0.7" fill="#ffffff"/>
         </g>`,
-    arms: `
+    arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="girl-arms">
             <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="#ff9d00"/>
-            <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+            <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
             <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="#ff9d00"/>
-            <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+            <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
         </g>`,
-    headBase: (withTiara = false) => `
+    headBase: (withTiara = false, skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="girl-head-base-full">
-            <rect x="46" y="58" width="8" height="4" fill="#ffd4a3"/>
+            <rect x="46" y="58" width="8" height="4" fill="${skin.base}"/>
             <g id="girl-ears-full">
-                <circle cx="21" cy="38" r="4.8" fill="#ffd4a3"/>
-                <circle cx="21" cy="38" r="2.8" fill="#f0be8d"/>
-                <circle cx="79" cy="38" r="4.8" fill="#ffd4a3"/>
-                <circle cx="79" cy="38" r="2.8" fill="#f0be8d"/>
+                <circle cx="21" cy="38" r="4.8" fill="${skin.base}"/>
+                <circle cx="21" cy="38" r="2.8" fill="${skin.shadow}"/>
+                <circle cx="79" cy="38" r="4.8" fill="${skin.base}"/>
+                <circle cx="79" cy="38" r="2.8" fill="${skin.shadow}"/>
             </g>
-            <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="#ffd4a3"/>
+            <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="${skin.base}"/>
             ${withTiara ? `
             <path d="M22 23 C33 16, 67 16, 78 23 L79 27 C68 20, 32 20, 21 27 Z" fill="#489e96"/>
             <circle cx="28" cy="22" r="3.5" fill="#ff9d00"/>
             <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>` : ''}
         </g>`,
-    faceFeatures: (eye = { dark: '#6d2e05', light: '#b45309' }) => `
+    faceFeatures: (eye = { dark: '#6d2e05', light: '#b45309' }, skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="girl-face-features-full">
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="#e2d0c0" stroke-width="0.8"/>
@@ -309,7 +319,7 @@ export const GIRL_BASE = {
             <polygon points="61.0,45.5 60.2,46.9 59.5,45.0" fill="#2b1404"/>
             <path d="M 57.3,30.0 L 65.5,27.5 L 72.0,31.0 L 65.0,29.3 L 57.3,32.0 Z" fill="#6d2e05"/>
 
-            <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="#d99866" stroke="#d99866" stroke-width="0.7" stroke-linejoin="round"/>
+            <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>
             <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="#7c4004" stroke-width="2" stroke-linecap="round"/>
         </g>`
 };
@@ -522,15 +532,15 @@ export const BOY_OUTFITS = {
                 <path d="M 39,84 L 35,98 L 39,96 L 41,84 Z" fill="#b91c1c"/>
                 <path d="M 40,84 L 37,97 L 40,95 L 42,84 Z" fill="#09090b"/>
             </g>`,
-        arms: `
+        arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="boy-arms-ninja">
                 <!-- Bras shinobi avec protège-bras renforcés -->
                 <path d="M32 64 C23 71, 22 79, 28 85 C31 85, 33 81, 35 77 Z" fill="#09090b"/>
                 <rect x="25" y="73" width="7" height="8" rx="1" fill="#27272a" stroke="#09090b" stroke-width="0.6" transform="rotate(-15 28 77)"/>
-                <ellipse cx="28" cy="85" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+                <ellipse cx="28" cy="85" rx="3.8" ry="3.5" fill="${skin.base}"/>
                 <path d="M68 64 C77 69, 78 74, 76 81 C73 83, 70 80, 66 76 Z" fill="#09090b"/>
                 <rect x="68" y="70" width="7" height="8" rx="1" fill="#27272a" stroke="#09090b" stroke-width="0.6" transform="rotate(15 71 74)"/>
-                <ellipse cx="76" cy="81" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+                <ellipse cx="76" cy="81" rx="3.8" ry="3.5" fill="${skin.base}"/>
             </g>`,
         headAccessory: "",
         handItem: `
@@ -554,14 +564,14 @@ export const BOY_OUTFITS = {
         name: "3. Mage (Bandeau & Sceptre)",
         backEquipment: `
             <g id="boy-back-mage">
-                <!-- Cape magique indigo remontée au-dessus des pieds (s'arrête à y=99, pieds bien visibles) -->
-                <path d="M 33,65 C 24,76 19,88 17,99 C 32,102 68,102 83,99 C 81,88 76,76 67,65 Z" fill="#312e81"/>
+                <!-- Cape magique violette plus foncée assortie au buste (s'arrête à y=99, pieds bien visibles) -->
+                <path d="M 33,65 C 24,76 19,88 17,99 C 32,102 68,102 83,99 C 81,88 76,76 67,65 Z" fill="#2e1065"/>
                 <path d="M 17,99 C 32,102 68,102 83,99 L 84,101 C 68,104 32,104 16,101 Z" fill="#fbbf24"/>
             </g>`,
         legs: `
             <g id="boy-legs-mage">
-                <polygon points="39,85 49,85 48,105 41,105" fill="#1e1b4b"/>
-                <polygon points="51,85 61,85 59,105 52,105" fill="#1e1b4b"/>
+                <polygon points="39,85 49,85 48,105 41,105" fill="#2e1065"/>
+                <polygon points="51,85 61,85 59,105 52,105" fill="#2e1065"/>
                 <path d="M38.5 105 C38.5 103, 49.5 103, 49.5 105 L50 113.5 C50 115, 38 115, 38 113.5 Z" fill="#4c1d95"/>
                 <path d="M49.5 105 C49.5 103, 60.5 103, 60.5 105 L61 113.5 C61 115, 49 115, 49 113.5 Z" fill="#4c1d95"/>
                 <rect x="42" y="106" width="5" height="2.5" rx="0.6" fill="#fbbf24"/>
@@ -579,16 +589,16 @@ export const BOY_OUTFITS = {
             <g id="boy-belt-mage">
                 <rect x="36" y="82.5" width="28" height="4.5" rx="1" fill="#fbbf24"/>
                 <circle cx="50" cy="84.8" r="2.5" fill="#818cf8" stroke="#ffffff" stroke-width="0.6"/>
-                <rect x="58" y="83" width="5" height="6.5" rx="1.2" fill="#312e81" stroke="#fbbf24" stroke-width="0.8"/>
+                <rect x="58" y="83" width="5" height="6.5" rx="1.2" fill="#2e1065" stroke="#fbbf24" stroke-width="0.8"/>
             </g>`,
-        arms: `
+        arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="boy-arms-mage">
                 <path d="M32 64 C23 71, 20 78, 25 84 C28 84, 32 80, 35 77 Z" fill="#4c1d95"/>
                 <path d="M22 82 L26 84 L27 82 Z" fill="#fbbf24"/>
-                <ellipse cx="27" cy="84" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+                <ellipse cx="27" cy="84" rx="3.8" ry="3.5" fill="${skin.base}"/>
                 <path d="M68 64 C77 69, 80 75, 78 81 C75 83, 72 80, 66 76 Z" fill="#4c1d95"/>
                 <path d="M75 79 L79 81 L80 79 Z" fill="#fbbf24"/>
-                <ellipse cx="77" cy="80" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+                <ellipse cx="77" cy="80" rx="3.8" ry="3.5" fill="${skin.base}"/>
             </g>`,
         headAccessory: `
             <g id="boy-head-mage">
@@ -632,13 +642,13 @@ export const BOY_OUTFITS = {
                 <rect x="37" y="82.5" width="26" height="4.5" rx="1" fill="#451a03"/>
                 <rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#fbbf24" stroke="#451a03" stroke-width="0.8"/>
             </g>`,
-        arms: `
+        arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="boy-arms-archer">
                 <path d="M32 64 C24 71, 23 78, 29 84 C32 84, 34 81, 35 77 Z" fill="#16a34a"/>
                 <rect x="25" y="77" width="7" height="6" rx="1.2" fill="#78350f" transform="rotate(-20 28 80)"/>
-                <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+                <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="${skin.base}"/>
                 <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#16a34a"/>
-                <ellipse cx="77" cy="79" rx="3.8" ry="3.5" fill="#ffd4a3"/>
+                <ellipse cx="77" cy="79" rx="3.8" ry="3.5" fill="${skin.base}"/>
             </g>`,
         headAccessory: "",
         handItem: `
@@ -817,12 +827,12 @@ export const GIRL_OUTFITS = {
                 <circle cx="50" cy="82.5" r="3.2" fill="#fbbf24"/>
                 <circle cx="51.5" cy="81.5" r="2.8" fill="#7e22ce"/>
             </g>`,
-        arms: `
+        arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="girl-arms-witch">
                 <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="#6b21a8"/>
-                <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+                <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
                 <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="#6b21a8"/>
-                <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+                <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
             </g>`,
         headAccessory: `
             <g id="girl-head-witch">
@@ -858,7 +868,7 @@ export const GIRL_OUTFITS = {
         id: 4,
         name: "4. Archère (Arc & Flèche)",
         backEquipment: "",
-        legs: `
+        legs: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="girl-legs-archer">
                 <!-- Short d'archère aventurière & bottines de marche -->
                 <!-- Short vert émeraude sombre -->
@@ -868,8 +878,8 @@ export const GIRL_OUTFITS = {
                 <line x1="51" y1="93" x2="62.5" y2="93" stroke="#064e3b" stroke-width="1"/>
                 
                 <!-- Jambes nues -->
-                <polygon points="39,93 48.5,93 48,104 41,104" fill="#ffd4a3"/>
-                <polygon points="51.5,93 61,93 59,104 52,104" fill="#ffd4a3"/>
+                <polygon points="39,93 48.5,93 48,104 41,104" fill="${skin.base}"/>
+                <polygon points="51.5,93 61,93 59,104 52,104" fill="${skin.base}"/>
                 
                 <!-- Bottines d'aventurière en cuir avec revers -->
                 <path d="M39.5 104 C39.5 102, 49.5 102, 49.5 104 L50 113 C50 115, 39 115, 39 113 Z" fill="#78350f"/>
@@ -893,15 +903,15 @@ export const GIRL_OUTFITS = {
                 <rect x="37" y="80.5" width="26" height="4" rx="1" fill="#78350f"/>
                 <circle cx="50" cy="82.5" r="2.5" fill="#fbbf24"/>
             </g>`,
-        arms: `
+        arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="girl-arms-archer">
                 <!-- Bras nus sans manches avec protège-poignets en cuir -->
-                <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="#ffd4a3"/>
+                <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="${skin.base}"/>
                 <rect x="25" y="74" width="6.5" height="6.5" rx="1.2" fill="#78350f" stroke="#fbbf24" stroke-width="0.5" transform="rotate(-15 28 77)"/>
-                <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
-                <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="#ffd4a3"/>
+                <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
+                <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="${skin.base}"/>
                 <rect x="68" y="69" width="6.5" height="6" rx="1.2" fill="#78350f" stroke="#fbbf24" stroke-width="0.5" transform="rotate(15 71 72)"/>
-                <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+                <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
             </g>`,
         headAccessory: "",
         handItem: `
@@ -946,10 +956,11 @@ export const GIRL_OUTFITS = {
  * @param {number} options.outfitId - ID de la tenue (1..4)
  * @param {string} options.hairColor - Code hex de la couleur des cheveux
  * @param {string} options.eyeColor - ID ou objet de couleur des yeux
+ * @param {string} options.skinColor - ID ou objet de couleur de peau
  * @param {'full'|'head'} options.mode - Vue corps complet ou portrait tête seule
  * @returns {string} SVG complet
  */
-export function buildCustomAvatarSvg({ type = 'boy', styleId = 1, outfitId = 1, hairColor = null, eyeColor = null, mode = 'full' } = {}) {
+export function buildCustomAvatarSvg({ type = 'boy', styleId = 1, outfitId = 1, hairColor = null, eyeColor = null, skinColor = 'light', mode = 'full' } = {}) {
     const isBoy = type === 'boy';
     const base = isBoy ? BOY_BASE : GIRL_BASE;
     const styles = isBoy ? BOY_STYLES : GIRL_STYLES;
@@ -970,10 +981,21 @@ export function buildCustomAvatarSvg({ type = 'boy', styleId = 1, outfitId = 1, 
         effectiveEye = eyeColor;
     }
 
+    // Couleur de peau (recherche dans SKIN_COLORS)
+    let effectiveSkin = SKIN_COLORS[1]; // light
+    if (typeof skinColor === 'string') {
+        const found = SKIN_COLORS.find(c => c.id === skinColor || c.base === skinColor);
+        if (found) effectiveSkin = found;
+    } else if (skinColor && skinColor.base && skinColor.shadow) {
+        effectiveSkin = skinColor;
+    }
+
     const hairBack = style.getHairBack(effectiveHairColor);
     const hairFront = style.getHairFront(effectiveHairColor);
-    const headBase = isBoy ? base.headBase(style.withBand) : base.headBase(style.withTiara);
-    const faceFeatures = base.faceFeatures(effectiveEye);
+    const headBase = isBoy ? base.headBase(style.withBand, effectiveSkin) : base.headBase(style.withTiara, effectiveSkin);
+    const faceFeatures = base.faceFeatures(effectiveEye, effectiveSkin);
+
+    const renderPart = (part) => (typeof part === 'function' ? part(effectiveSkin) : (part || ''));
 
     if (mode === 'head') {
         return `
@@ -992,10 +1014,10 @@ export function buildCustomAvatarSvg({ type = 'boy', styleId = 1, outfitId = 1, 
             ${outfit.backEquipment || ''}
             ${base.shadow}
             ${hairBack}
-            ${outfit.legs}
-            ${outfit.body}
-            ${outfit.belt}
-            ${outfit.arms}
+            ${renderPart(outfit.legs)}
+            ${renderPart(outfit.body)}
+            ${renderPart(outfit.belt)}
+            ${renderPart(outfit.arms)}
             ${headBase}
             ${faceFeatures}
             ${hairFront}
