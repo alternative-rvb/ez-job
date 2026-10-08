@@ -74,9 +74,9 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
 ### Calque 2 : Cheveux arrière (`<g id="...-hair-back-full">`)
 - **Règle absolue d'ordre** : Ce calque doit impérativement être le premier calque de personnage (derrière tout le corps).
 - **Socle géométrique universel (Base minimale obligatoire pour toutes les coupes)** :
-  - **Ellipse de base universelle** : `<ellipse cx="50" cy="24" rx="35" ry="29" fill="..."/>`
+  - **Ellipse de base universelle** : `<ellipse cx="50" cy="26" rx="35" ry="31" fill="..."/>`
     - **Sommet** : $Y = -5$ ($15\text{px}$ au-dessus du crâne $Y=10$, donnant le volume supérieur manga).
-    - **Bas** : $Y = 53$ (s'arrête au niveau des oreilles et de la mâchoire sans descendre sous le cou ou le menton).
+    - **Bas** : $Y = 57$ (s'arrête au niveau de la mâchoire sans déborder sur les épaules ou les vêtements, soit exactement 4px relevé par rapport à l'original $Y=61$).
     - **Largeur** : $X = 15..85$ ($rx = 35$, englobant largement le crâne et les oreilles).
 - **Extensions selon la coupe** :
   1. **Cheveux longs** (ex: Fille Macarons) : On conserve l'ellipse de base universelle et on ajoute le grand ovale plein descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
@@ -232,9 +232,9 @@ L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclus
    - [.doc/guide-technique-avatars-svg.md](file:///home/nicolas/projets/_github/ez-job/.doc/guide-technique-avatars-svg.md) (spécification technique)
 
 8. **Harmonie Universelle des Cheveux Arrière (Calque 2)** :
-   - **Base minimale obligatoire** : Un cercle/volume englobant arrière (`<circle cx="50" cy="24" r="32" fill="..."/>`) pour structurer la masse qui déborde du crâne.
+   - **Base minimale obligatoire** : L'ellipse englobante arrière (`<ellipse cx="50" cy="26" rx="35" ry="31" fill="..."/>`) pour structurer la masse qui déborde du crâne sans descendre sur les vêtements (bas calé à $Y=57$).
    - **Cheveux longs** : Ajouter un grand ovale descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
-   - **Coupe au carré (Bob / mi-long)** : Ajouter un **demi-ovale** descendant jusqu'aux épaules/haut du buste (`Y=62..66`). Cette superposition d'un cercle crânien et d'un demi-ovale apporte une assise naturelle, fluide et beaucoup plus harmonieuse sans découpes superflues.
+   - **Coupe au carré (Bob / mi-long)** : Ajouter un **demi-ovale** descendant jusqu'aux épaules/haut du buste (`Y=62..66`). Cette superposition d'une ellipse crânienne et d'un demi-ovale apporte une assise naturelle, fluide et beaucoup plus harmonieuse sans découpes superflues.
 
 ---
 

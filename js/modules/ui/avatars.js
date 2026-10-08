@@ -133,7 +133,7 @@ export const BOY_STYLES = {
         withBand: true,
         getHairBack: (color) => `
             <g id="boy-hair-back-full">
-                <ellipse cx="50" cy="24" rx="35" ry="29" fill="${color}"/>
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <path d="M 18,44 C 12,34 8,26 10,20 C 12,14 6,10 12,4 C 16,-2 24,-6 30,-4 C 34,-12 44,-14 50,-10 C 56,-14 66,-12 70,-4 C 76,-6 84,-2 88,4 C 94,10 88,14 90,20 C 92,26 88,34 82,44 C 78,34 76,28 74,22 C 66,12 34,12 26,22 C 24,28 22,34 18,44 Z" fill="${color}"/>
             </g>`,
         getHairFront: (color) => `
@@ -147,7 +147,7 @@ export const BOY_STYLES = {
         withBand: false,
         getHairBack: (color) => `
             <g id="boy-hair-back-full">
-                <ellipse cx="50" cy="24" rx="35" ry="29" fill="${color}"/>
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <circle cx="50" cy="-6" r="10" fill="${color}"/>
                 <ellipse cx="50" cy="-2" rx="5" ry="3" fill="#ff9d00"/>
                 <path d="M 18,46 C 14,34 14,20 18,10 C 24,0 36,-4 50,-4 C 64,-4 76,0 82,10 C 86,20 86,34 82,46 C 76,34 74,22 70,16 C 62,8 38,8 30,16 C 26,22 24,34 18,46 Z" fill="${color}"/>
@@ -164,7 +164,7 @@ export const BOY_STYLES = {
         withBand: false,
         getHairBack: (color) => `
             <g id="boy-hair-back-full">
-                <ellipse cx="50" cy="24" rx="35" ry="29" fill="${color}"/>
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <path d="M 16,46 C 10,36 6,24 10,16 C 12,8 8,4 16,-2 C 22,-8 32,-10 38,-8 C 42,-16 52,-18 58,-14 C 66,-18 76,-14 80,-6 C 88,-6 94,2 92,12 C 96,20 92,32 84,46 C 80,34 76,26 72,20 C 64,10 36,10 28,20 C 24,26 20,34 16,46 Z" fill="${color}"/>
             </g>`,
         getHairFront: (color) => `
@@ -178,7 +178,7 @@ export const BOY_STYLES = {
         withBand: false,
         getHairBack: (color) => `
             <g id="boy-hair-back-full">
-                <ellipse cx="50" cy="24" rx="35" ry="29" fill="${color}"/>
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <path d="M 82,44 
                          C 88,36 96,30 96,30 
                          C 94,26 88,22 88,22 
@@ -332,7 +332,7 @@ export const GIRL_STYLES = {
         withTiara: false,
         getHairBack: (color) => `
             <g id="girl-hair-back-full">
-                <ellipse cx="50" cy="24" rx="35" ry="29" fill="${color}"/>
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <ellipse cx="50" cy="50" rx="34" ry="46" fill="${color}"/>
                 <path d="M 12,36 C 8,14 20,-2 50,-2 C 80,-2 92,14 88,36 C 94,50 90,64 82,70 C 78,64 76,52 76,42 C 74,32 26,32 24,42 C 24,52 22,64 18,70 C 10,64 6,50 12,36 Z" fill="${color}"/>
                 <circle cx="16" cy="10" r="13" fill="${color}"/>
@@ -360,7 +360,7 @@ export const GIRL_STYLES = {
         getHairBack: (color) => `
             <g id="girl-hair-back-full">
                 <!-- Volume de base du crâne -->
-                <ellipse cx="50" cy="24" rx="35" ry="29" fill="${color}"/>
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 
                 <!-- Masse supérieure et silhouette ondulée -->
                 <path d="M 16,40 C 10,28 10,16 16,6 C 22,-4 34,-8 44,-6 C 47,-12 55,-12 58,-6 C 68,-8 80,-4 86,6 C 92,16 92,28 86,40 C 82,30 78,22 74,16 C 66,8 34,8 26,16 C 22,22 18,30 16,40 Z" fill="${color}"/>
@@ -419,7 +419,7 @@ export const GIRL_STYLES = {
         withTiara: false,
         getHairBack: (color) => `
             <g id="girl-hair-back-full">
-                <ellipse cx="50" cy="24" rx="35" ry="29" fill="${color}"/>
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <path d="M 15,66 C 15,20 26,-5 50,-5 C 74,-5 85,20 85,66 Z" fill="${color}"/>
             </g>`,
         getHairFront: (color) => `
@@ -435,7 +435,7 @@ export const GIRL_STYLES = {
         withTiara: false,
         getHairBack: (color) => `
             <g id="girl-hair-back-full">
-                <ellipse cx="50" cy="24" rx="35" ry="29" fill="${color}"/>
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <path d="M 22,24 C 4,36 2,56 6,70 C 8,78 7,83 6,86 L 14,87 C 18,80 22,72 22,58 C 22,46 26,34 30,26 Z" fill="${color}"/>
                 <path d="M 7,86 C 6,91 9,94 10,95 C 11,94 14,91 13,86 Z" fill="${color}"/>
                 <ellipse cx="7.5" cy="85.5" rx="3.5" ry="2.5" fill="#489e96" transform="rotate(-15 7.5 85.5)"/>
