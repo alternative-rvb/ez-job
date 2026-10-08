@@ -3,7 +3,7 @@
  * Incrémente automatiquement la version à chaque build
  */
 
-export const APP_VERSION = '1.0.95';
+export const APP_VERSION = '1.0.96';
 export const BUILD_TIMESTAMP = Date.now();
 
 /**
