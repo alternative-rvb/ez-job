@@ -345,20 +345,64 @@ export const GIRL_STYLES = {
     },
     2: {
         id: 2,
-        name: "2. Queue de cheval",
+        name: "2. Ondulé & boucles",
         withTiara: false,
         getHairBack: (color) => `
             <g id="girl-hair-back-full">
+                <!-- Volume de base du crâne -->
                 <ellipse cx="50" cy="28" rx="35" ry="33" fill="${color}"/>
-                <path d="M 48,-6 C 68,-26 98,-2 96,28 C 94,50 88,68 76,82 C 72,84 68,82 66,78 C 70,66 78,46 76,28 C 74,14 62,4 48,2 Z" fill="${color}"/>
-                <ellipse cx="53" cy="-3" rx="4.5" ry="3.5" fill="#489e96" transform="rotate(20 53 -3)"/>
-                <ellipse cx="61" cy="-1" rx="4.5" ry="3.5" fill="#489e96" transform="rotate(45 61 -1)"/>
-                <circle cx="57" cy="-2" r="2.8" fill="#ff9d00"/>
-                <circle cx="56.5" cy="-2.5" r="1" fill="#ffffff"/>
+                
+                <!-- Masse supérieure et silhouette ondulée -->
+                <path d="M 16,40 C 10,28 10,16 16,6 C 22,-4 34,-8 44,-6 C 47,-12 55,-12 58,-6 C 68,-8 80,-4 86,6 C 92,16 92,28 86,40 C 82,30 78,22 74,16 C 66,8 34,8 26,16 C 22,22 18,30 16,40 Z" fill="${color}"/>
+
+                <!-- Cascade de boucles volumineuses formées par des cercles étagés -->
+                <!-- Côté gauche (boucles le long de l'épaule) -->
+                <circle cx="20" cy="28" r="10" fill="${color}"/>
+                <circle cx="14" cy="40" r="11" fill="${color}"/>
+                <circle cx="22" cy="48" r="10" fill="${color}"/>
+                <circle cx="16" cy="58" r="10" fill="${color}"/>
+                <circle cx="24" cy="66" r="9" fill="${color}"/>
+                <circle cx="18" cy="74" r="8" fill="${color}"/>
+                <circle cx="26" cy="80" r="6.5" fill="${color}"/>
+
+                <!-- Côté droit (boucles le long de l'épaule) -->
+                <circle cx="80" cy="28" r="10" fill="${color}"/>
+                <circle cx="86" cy="40" r="11" fill="${color}"/>
+                <circle cx="78" cy="48" r="10" fill="${color}"/>
+                <circle cx="84" cy="58" r="10" fill="${color}"/>
+                <circle cx="76" cy="66" r="9" fill="${color}"/>
+                <circle cx="82" cy="74" r="8" fill="${color}"/>
+                <circle cx="74" cy="80" r="6.5" fill="${color}"/>
+
+                <!-- Masse centrale arrière liant les boucles dans le dos -->
+                <ellipse cx="50" cy="54" rx="28" ry="26" fill="${color}"/>
+                <circle cx="39" cy="74" r="9" fill="${color}"/>
+                <circle cx="61" cy="74" r="9" fill="${color}"/>
+                <circle cx="50" cy="78" r="8" fill="${color}"/>
+
+                <!-- Reflets soyeux sur les boucles -->
+                <path d="M 12,36 C 8,42 12,48 18,48" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M 14,54 C 10,60 14,66 20,66" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M 16,70 C 14,75 18,78 22,78" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.3" stroke-linecap="round"/>
+
+                <path d="M 88,36 C 92,42 88,48 82,48" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M 86,54 C 90,60 86,66 80,66" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M 84,70 C 86,75 82,78 78,78" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.3" stroke-linecap="round"/>
+
+                <!-- Ombres de creux entre les boucles -->
+                <path d="M 16,46 C 22,46 24,52 24,56" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M 84,46 C 78,46 76,52 76,56" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="1.4" stroke-linecap="round"/>
             </g>`,
         getHairFront: (color) => `
             <g id="girl-hair-front-full">
-                <path d="M 21,30 C 23,20 30,10 50,8 C 68,8 78,18 79,30 C 76,34 70,30 65,36 C 58,26 50,34 42,38 C 34,28 26,34 21,30 Z" fill="${color}"/>
+                <!-- Frange ondulée en mèches souples -->
+                <path d="M 20,32 C 21,22 26,12 36,8 C 44,5 56,5 64,8 C 74,12 79,22 80,32 C 77,35 75,32 72,26 C 70,33 64,34 60,27 C 56,34 50,35 46,26 C 42,34 36,33 32,26 C 28,33 24,34 22,27 C 21,33 20,33 20,32 Z" fill="${color}"/>
+                <!-- Mèche ondulée tempe gauche -->
+                <path d="M 22,30 C 22,40 25,48 28,54 C 27,46 25,38 25,30 Z" fill="${color}"/>
+                <circle cx="28" cy="54" r="3.2" fill="${color}"/>
+                <!-- Mèche ondulée tempe droite -->
+                <path d="M 78,30 C 78,40 75,48 72,54 C 73,46 75,38 75,30 Z" fill="${color}"/>
+                <circle cx="72" cy="54" r="3.2" fill="${color}"/>
             </g>`
     },
     3: {
@@ -567,18 +611,8 @@ export const BOY_OUTFITS = {
     },
     4: {
         id: 4,
-        name: "4. Archer (Arc & Carquois)",
-        backEquipment: `
-            <g id="boy-back-archer">
-                <!-- Carquois en cuir avec flèches -->
-                <rect x="62" y="44" width="7" height="32" rx="2" fill="#78350f" stroke="#451a03" stroke-width="0.8" transform="rotate(18 65 60)"/>
-                <line x1="68" y1="42" x2="72" y2="30" stroke="#d97706" stroke-width="1.4"/>
-                <polygon points="70,30 74,32 72,28" fill="#15803d"/>
-                <line x1="64" y1="45" x2="67" y2="33" stroke="#d97706" stroke-width="1.4"/>
-                <polygon points="65,33 69,35 67,31" fill="#fbbf24"/>
-                <line x1="61" y1="47" x2="63" y2="36" stroke="#d97706" stroke-width="1.4"/>
-                <polygon points="61,36 65,38 63,34" fill="#15803d"/>
-            </g>`,
+        name: "4. Archer (Arc & Flèche)",
+        backEquipment: "",
         legs: `
             <g id="boy-legs-archer">
                 <polygon points="39,85 49,85 48,106 41,106" fill="#14532d"/>
@@ -594,10 +628,6 @@ export const BOY_OUTFITS = {
                 <path d="M 39,63 L 61,63 L 57,85 L 43,85 Z" fill="#78350f"/>
                 <line x1="50" y1="63" x2="50" y2="85" stroke="#fbbf24" stroke-width="1" stroke-dasharray="2 2"/>
                 <path d="M 44,60 L 50,67 L 56,60 Z" fill="#fef08a"/>
-                <!-- Sangle de carquois ajustée montant jusqu'au sommet de l'épaule gauche -->
-                <line x1="32" y1="61.5" x2="63" y2="83" stroke="#451a03" stroke-width="3"/>
-                <line x1="32" y1="61.5" x2="63" y2="83" stroke="#78350f" stroke-width="1.8"/>
-                <rect x="44" y="69" width="4.5" height="5.5" rx="1" fill="#fbbf24" stroke="#451a03" stroke-width="0.7" transform="rotate(35 46 72)"/>
             </g>`,
         belt: `
             <g id="boy-belt-archer">
@@ -614,14 +644,34 @@ export const BOY_OUTFITS = {
             </g>`,
         headAccessory: "",
         handItem: `
-            <g id="boy-hand-bow">
-                <!-- Corde tendue vers le personnage (côté intérieur à x=65) -->
-                <line x1="65" y1="53" x2="65" y2="105" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
-                <!-- Bois d'if courbé vers l'extérieur passant exactement dans la main à (77, 79) -->
-                <path d="M 65,53 Q 89,79 65,105" fill="none" stroke="#78350f" stroke-width="2.8" stroke-linecap="round"/>
-                <path d="M 65,53 Q 90,79 65,105" fill="none" stroke="#d97706" stroke-width="1.3" stroke-linecap="round"/>
-                <!-- Poignée en cuir placée directement sur le bois et dans la main (77, 79) -->
-                <rect x="74.5" y="75" width="5" height="8" rx="1.2" fill="#fbbf24" stroke="#78350f" stroke-width="0.6"/>
+            <g id="boy-hand-archer-equipment">
+                <!-- Flèche tenue dans la main droite à (29, 84) inclinée à 45° -->
+                <g id="boy-hand-arrow" transform="rotate(45 29 84)">
+                    <!-- Pointe de flèche en fer biseautée -->
+                    <polygon points="29,48 32,56 26,56" fill="#cbd5e1" stroke="#475569" stroke-width="0.7"/>
+                    <line x1="29" y1="48" x2="29" y2="56" stroke="#ffffff" stroke-width="0.8"/>
+                    <!-- Bague dorée sous la pointe -->
+                    <rect x="27.5" y="56" width="3" height="2" rx="0.5" fill="#fbbf24"/>
+                    <!-- Hampe en bois d'if traversant la main à (29, 84) -->
+                    <line x1="29" y1="56" x2="29" y2="94" stroke="#78350f" stroke-width="1.8" stroke-linecap="round"/>
+                    <line x1="29" y1="56" x2="29" y2="94" stroke="#d97706" stroke-width="0.8" stroke-linecap="round"/>
+                    <!-- Empennage à plumes d'archer vertes et or sous la main -->
+                    <polygon points="29,87 33.5,90 33.5,94 29,92" fill="#15803d"/>
+                    <polygon points="29,87 24.5,90 24.5,94 29,92" fill="#15803d"/>
+                    <polygon points="29,89 32,91 32,93 29,92" fill="#fbbf24"/>
+                    <polygon points="29,89 26,91 26,93 29,92" fill="#fbbf24"/>
+                    <circle cx="29" cy="94" r="0.9" fill="#78350f"/>
+                </g>
+                <!-- Arc long d'archer tenu dans l'autre main à (77, 79) -->
+                <g id="boy-hand-bow">
+                    <!-- Corde tendue vers le personnage (côté intérieur à x=65) -->
+                    <line x1="65" y1="53" x2="65" y2="105" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    <!-- Bois d'if courbé vers l'extérieur passant exactement dans la main à (77, 79) -->
+                    <path d="M 65,53 Q 89,79 65,105" fill="none" stroke="#78350f" stroke-width="2.8" stroke-linecap="round"/>
+                    <path d="M 65,53 Q 90,79 65,105" fill="none" stroke="#d97706" stroke-width="1.3" stroke-linecap="round"/>
+                    <!-- Poignée en cuir placée directement sur le bois et dans la main (77, 79) -->
+                    <rect x="74.5" y="75" width="5" height="8" rx="1.2" fill="#fbbf24" stroke="#78350f" stroke-width="0.6"/>
+                </g>
             </g>`
     }
 };
@@ -808,16 +858,8 @@ export const GIRL_OUTFITS = {
     },
     4: {
         id: 4,
-        name: "4. Archère (Short, Débardeur & Arc)",
-        backEquipment: `
-            <g id="girl-back-archer">
-                <!-- Carquois elfique avec flèches -->
-                <rect x="62" y="44" width="6.5" height="30" rx="2" fill="#854d0e" stroke="#533007" stroke-width="0.8" transform="rotate(18 65 60)"/>
-                <line x1="68" y1="42" x2="72" y2="30" stroke="#fbbf24" stroke-width="1.3"/>
-                <polygon points="70,30 74,32 72,28" fill="#10b981"/>
-                <line x1="64" y1="45" x2="67" y2="33" stroke="#fbbf24" stroke-width="1.3"/>
-                <polygon points="65,33 69,35 67,31" fill="#f8fafc"/>
-            </g>`,
+        name: "4. Archère (Arc & Flèche)",
+        backEquipment: "",
         legs: `
             <g id="girl-legs-archer">
                 <!-- Short d'archère aventurière & bottines de marche -->
@@ -847,10 +889,6 @@ export const GIRL_OUTFITS = {
                 <path d="M44 60 L50 69 L56 60 Z" fill="#fef08a"/>
                 <circle cx="50" cy="65" r="2.2" fill="#10b981"/>
                 <circle cx="50" cy="73" r="1.5" fill="#fbbf24"/>
-                <!-- Sangle de carquois ajustée montant jusqu'au sommet de l'épaule gauche -->
-                <line x1="33" y1="61.5" x2="62" y2="82.5" stroke="#451a03" stroke-width="2.8"/>
-                <line x1="33" y1="61.5" x2="62" y2="82.5" stroke="#854d0e" stroke-width="1.6"/>
-                <circle cx="45" cy="71" r="2" fill="#fbbf24"/>
             </g>`,
         belt: `
             <g id="girl-belt-archer">
@@ -869,15 +907,35 @@ export const GIRL_OUTFITS = {
             </g>`,
         headAccessory: "",
         handItem: `
-            <g id="girl-hand-bow">
-                <!-- Corde tendue vers le personnage (côté intérieur à x=64) -->
-                <line x1="64" y1="49.5" x2="64" y2="101.5" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
-                <!-- Bois elfique courbé vers l'extérieur passant exactement dans la main à (76, 75.5) -->
-                <path d="M 64,49.5 Q 88,75.5 64,101.5" fill="none" stroke="#a16207" stroke-width="2.6" stroke-linecap="round"/>
-                <path d="M 64,49.5 Q 89,75.5 64,101.5" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>
-                <!-- Poignée et ornementation émeraude placées directement sur le bois et dans la main (76, 75.5) -->
-                <rect x="73.8" y="72" width="4.4" height="7" rx="1" fill="#78350f" stroke="#fbbf24" stroke-width="0.6"/>
-                <circle cx="76" cy="75.5" r="2.2" fill="#10b981" stroke="#fbbf24" stroke-width="0.6"/>
+            <g id="girl-hand-archer-equipment">
+                <!-- Flèche elfique tenue dans la main droite à (27, 81.5) inclinée à 45° -->
+                <g id="girl-hand-arrow" transform="rotate(45 27 81.5)">
+                    <!-- Pointe elfique étincelante -->
+                    <polygon points="27,45 30.5,53 23.5,53" fill="#e2e8f0" stroke="#334155" stroke-width="0.7"/>
+                    <line x1="27" y1="45" x2="27" y2="53" stroke="#ffffff" stroke-width="0.9"/>
+                    <!-- Bague dorée sous la pointe -->
+                    <rect x="25.5" y="53" width="3" height="2" rx="0.5" fill="#fbbf24"/>
+                    <!-- Hampe en bois d'if traversant la main à (27, 81.5) -->
+                    <line x1="27" y1="53" x2="27" y2="91" stroke="#854d0e" stroke-width="1.6" stroke-linecap="round"/>
+                    <line x1="27" y1="53" x2="27" y2="91" stroke="#fbbf24" stroke-width="0.7" stroke-linecap="round"/>
+                    <!-- Empennage à plumes elfiques émeraude et or sous la main -->
+                    <polygon points="27,85 31.5,88 31.5,92 27,90" fill="#10b981"/>
+                    <polygon points="27,85 22.5,88 22.5,92 27,90" fill="#10b981"/>
+                    <polygon points="27,87 30,89 30,91 27,90" fill="#fbbf24"/>
+                    <polygon points="27,87 24,89 24,91 27,90" fill="#fbbf24"/>
+                    <circle cx="27" cy="92" r="0.8" fill="#78350f"/>
+                </g>
+                <!-- Arc elfique tenu dans l'autre main à (76, 75.5) -->
+                <g id="girl-hand-bow">
+                    <!-- Corde tendue vers le personnage (côté intérieur à x=64) -->
+                    <line x1="64" y1="49.5" x2="64" y2="101.5" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    <!-- Bois elfique courbé vers l'extérieur passant exactement dans la main à (76, 75.5) -->
+                    <path d="M 64,49.5 Q 88,75.5 64,101.5" fill="none" stroke="#a16207" stroke-width="2.6" stroke-linecap="round"/>
+                    <path d="M 64,49.5 Q 89,75.5 64,101.5" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>
+                    <!-- Poignée et ornementation émeraude placées directement sur le bois et dans la main (76, 75.5) -->
+                    <rect x="73.8" y="72" width="4.4" height="7" rx="1" fill="#78350f" stroke="#fbbf24" stroke-width="0.6"/>
+                    <circle cx="76" cy="75.5" r="2.2" fill="#10b981" stroke="#fbbf24" stroke-width="0.6"/>
+                </g>
             </g>`
     }
 };
