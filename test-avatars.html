@@ -400,6 +400,7 @@
     } from './js/modules/ui/avatars.js';
 
     let currentViewMode = 'full'; // 'full' ou 'head'
+    let currentZoomAvatar = null;
     let currentBoyStyle = 1;
     let currentBoyOutfit = 1;
     let currentBoyHair = '#5a2d0c';
@@ -524,6 +525,22 @@
           }
         }
       });
+
+      // 3. Rafraîchissement direct de la modale de zoom si elle est ouverte
+      if (currentZoomAvatar) {
+        const isBoy = currentZoomAvatar === 'boy';
+        const styleId = isBoy ? currentBoyStyle : currentGirlStyle;
+        const outfitId = isBoy ? currentBoyOutfit : currentGirlOutfit;
+        const hairColor = isBoy ? currentBoyHair : currentGirlHair;
+        const eyeColor = isBoy ? currentBoyEye : currentGirlEye;
+        const skinColor = isBoy ? currentBoySkin : currentGirlSkin;
+        const style = (isBoy ? BOY_STYLES : GIRL_STYLES)[styleId];
+        const outfit = (isBoy ? BOY_OUTFITS : GIRL_OUTFITS)[outfitId];
+        const titleEl = document.getElementById('zoom-modal-title');
+        const contentEl = document.getElementById('zoom-modal-content');
+        if (titleEl) titleEl.textContent = `${isBoy ? 'Garçon' : 'Fille'} - ${style ? style.name : ''} (${outfit ? outfit.name : ''})`;
+        if (contentEl) contentEl.innerHTML = buildAvatar(currentZoomAvatar, styleId, outfitId, hairColor, eyeColor, skinColor, currentViewMode);
+      }
 
       renderSwatches();
     }
@@ -664,22 +681,25 @@
 
     // Modale de zoom simple
     window.openZoomModal = (avatar) => {
+      currentZoomAvatar = avatar;
       const isBoy = avatar === 'boy';
       const styleId = isBoy ? currentBoyStyle : currentGirlStyle;
       const outfitId = isBoy ? currentBoyOutfit : currentGirlOutfit;
       const hairColor = isBoy ? currentBoyHair : currentGirlHair;
       const eyeColor = isBoy ? currentBoyEye : currentGirlEye;
+      const skinColor = isBoy ? currentBoySkin : currentGirlSkin;
       const style = (isBoy ? BOY_STYLES : GIRL_STYLES)[styleId];
       const outfit = (isBoy ? BOY_OUTFITS : GIRL_OUTFITS)[outfitId];
       
       document.getElementById('zoom-modal-title').textContent = `${isBoy ? 'Garçon' : 'Fille'} - ${style ? style.name : ''} (${outfit ? outfit.name : ''})`;
-      document.getElementById('zoom-modal-content').innerHTML = buildAvatar(avatar, styleId, outfitId, hairColor, eyeColor, currentViewMode);
+      document.getElementById('zoom-modal-content').innerHTML = buildAvatar(avatar, styleId, outfitId, hairColor, eyeColor, skinColor, currentViewMode);
       
       const modal = document.getElementById('zoom-modal');
       modal.classList.remove('opacity-0', 'pointer-events-none');
     };
 
     window.closeZoomModal = () => {
+      currentZoomAvatar = null;
       const modal = document.getElementById('zoom-modal');
       modal.classList.add('opacity-0', 'pointer-events-none');
     };

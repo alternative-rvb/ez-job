@@ -17,6 +17,7 @@ import { rewardsManager } from './modules/managers/rewards-manager.js';
 import { roadmapManager } from './modules/ui/roadmap.js';
 import { shuffleArray, loadQuizData, getDifficultyIcons } from './modules/core/utils.js';
 import { initializeCategoryColors, getCategoryColors } from './modules/core/category-colors.js';
+import { SKIN_COLORS, buildCustomAvatarSvg } from './modules/ui/avatars.js';
 
 class QuizApp {
     constructor() {
@@ -56,13 +57,90 @@ class QuizApp {
         const form = document.getElementById('player-name-form');
         const input = document.getElementById('player-name-input');
         const avatarButtons = document.querySelectorAll('#start-avatar-picker .avatar-select-btn');
+        const skinSwatchesContainer = document.getElementById('start-skin-swatches');
+        const skinLabel = document.getElementById('start-skin-label');
+        const boyPreviewEl = document.getElementById('start-avatar-boy-preview');
+        const girlPreviewEl = document.getElementById('start-avatar-girl-preview');
 
         if (screen) {
             screen.classList.remove('hidden');
         }
 
-        // Gestion de la sélection de l'avatar au démarrage
+        let selectedAvatar = playerManager.playerAvatar || 'boy';
+        let selectedSkin = 'light';
+        const currentConfig = playerManager.getAvatarConfig();
+        if (currentConfig && currentConfig.skinColor) {
+            selectedSkin = currentConfig.skinColor;
+        }
+
+        const renderPreviews = () => {
+            if (boyPreviewEl) {
+                boyPreviewEl.innerHTML = buildCustomAvatarSvg({
+                    type: 'boy',
+                    styleId: 1,
+                    outfitId: 1,
+                    hairColor: '#5a2d0c',
+                    eyeColor: 'brown',
+                    skinColor: selectedSkin,
+                    mode: 'full'
+                });
+            }
+            if (girlPreviewEl) {
+                girlPreviewEl.innerHTML = buildCustomAvatarSvg({
+                    type: 'girl',
+                    styleId: 1,
+                    outfitId: 1,
+                    hairColor: '#8a3c08',
+                    eyeColor: 'amber',
+                    skinColor: selectedSkin,
+                    mode: 'full'
+                });
+            }
+        };
+
+        const renderSkinSwatches = () => {
+            if (!skinSwatchesContainer) return;
+            const currentSkinObj = SKIN_COLORS.find(s => s.id === selectedSkin || s.base === selectedSkin) || SKIN_COLORS[1];
+            if (skinLabel) {
+                skinLabel.textContent = currentSkinObj ? currentSkinObj.name : selectedSkin;
+            }
+
+            skinSwatchesContainer.innerHTML = SKIN_COLORS.map(s => {
+                const isSelected = selectedSkin === s.id || selectedSkin === s.base;
+                return `
+                    <button type="button" data-skin-id="${s.id}" data-skin-name="${s.name}" class="start-skin-swatch w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 transition-all transform hover:scale-110 relative shadow-md cursor-pointer ${
+                        isSelected ? 'border-white ring-2 ring-accent-400 scale-110' : 'border-black/40 hover:border-white/80'
+                    }" style="background-color: ${s.base};" title="${s.name}">
+                        ${isSelected ? '<i class="bi bi-check text-slate-800 text-xs font-black absolute inset-0 flex items-center justify-center drop-shadow"></i>' : ''}
+                    </button>
+                `;
+            }).join('');
+
+            skinSwatchesContainer.querySelectorAll('.start-skin-swatch').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    selectedSkin = btn.dataset.skinId;
+                    renderSkinSwatches();
+                    renderPreviews();
+                });
+            });
+        };
+
+        // Rendu initial des previews et des pastilles de peau
+        renderPreviews();
+        renderSkinSwatches();
+
+        // Gestion de la sélection du genre au démarrage
         avatarButtons.forEach(btn => {
+            const isCurSelected = btn.dataset.avatar === selectedAvatar;
+            btn.classList.toggle('selected', isCurSelected);
+            btn.classList.toggle('bg-white/20', isCurSelected);
+            btn.classList.toggle('border-white', isCurSelected);
+            btn.classList.toggle('text-white', isCurSelected);
+            btn.classList.toggle('bg-white/10', !isCurSelected);
+            btn.classList.toggle('border-white/40', !isCurSelected);
+            btn.classList.toggle('text-white/80', !isCurSelected);
+
             btn.addEventListener('click', () => {
                 avatarButtons.forEach(b => {
                     b.classList.remove('selected', 'bg-white/20', 'border-white', 'text-white');
@@ -73,6 +151,7 @@ class QuizApp {
 
                 const avatarId = btn.dataset.avatar;
                 if (avatarId) {
+                    selectedAvatar = avatarId;
                     playerManager.setPlayerAvatar(avatarId);
                 }
             });
@@ -84,6 +163,14 @@ class QuizApp {
                 const name = input.value.trim();
                 if (name.length > 0) {
                     playerManager.setPlayerName(name);
+                    playerManager.setAvatarConfig({
+                        type: selectedAvatar,
+                        styleId: 1,
+                        outfitId: 1,
+                        hairColor: selectedAvatar === 'boy' ? '#5a2d0c' : '#8a3c08',
+                        eyeColor: selectedAvatar === 'boy' ? 'brown' : 'amber',
+                        skinColor: selectedSkin
+                    });
                     this.showQuizSelection();
                 } else {
                     input.focus();

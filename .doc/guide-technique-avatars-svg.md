@@ -132,13 +132,13 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
   - Pupille noire + 2 reflets blancs pétillants (un grand en haut à gauche, un petit en bas à droite).
   - Ligne de cils supérieure épaisse noire (`stroke-width="2.2"`, `d="M30 38 Q37 33 44 38"`).
   - **Cils manga supérieurs (Fille)** : 3 pointes triangulaires dégressives en hauteur le long de la courbure extérieure haute de la paupière (`points="29.5,39.2 26.5,35.8 31.8,37.5"`, `points="32.2,37.2 30.8,34.2 34.2,36.0"`, `points="34.8,35.6 34.2,33.5 36.5,34.8"`).
-  - **Trait de contour inférieur (Fille)** : Ligne fine discrète sous l'œil (`stroke-width="1"`, `d="M32 44.5 Q37 47.5 42 44.5"`).
+  - **Trait de contour inférieur (Fille)** : Ligne fine discrète sous l'œil descendant sous l'iris et le blanc de l'œil (`stroke-width="1"`, `d="M32 45.2 Q37 47.0 42 45.2"`).
   - **Cils manga inférieurs (Fille)** : 
     - 3 pointes triangulaires dégressives orientées vers le bas.
     - **Positionnement centré** : réparties sur la portion centrale du trait inférieur (sous la pupille / iris entre $X=33.5$ et $X=40.5$).
-    - **Règle d'ancrage strict** : La base de chaque triangle doit impérativement mordre de 0.2 à 0.4px dans l'épaisseur de la courbe inférieure (`y = 45.0` à `45.7`) pour éviter tout interstice ou impression de cil flottant.
-    - Oeil gauche : `points="33.5,45.0 34.2,47.2 35.0,45.5"`, `points="36.2,45.7 37.0,47.6 37.8,45.7"`, `points="39.0,45.5 39.8,46.9 40.5,45.0"`.
-    - Oeil droit (symétrie $X' = 100 - X$) : `points="66.5,45.0 65.8,47.2 65.0,45.5"`, `points="63.8,45.7 63.0,47.6 62.2,45.7"`, `points="61.0,45.5 60.2,46.9 59.5,45.0"`.
+    - **Règle d'ancrage strict** : La base de chaque triangle s'ancre précisément le long de la courbe inférieure (`y = 45.6` à `46.3`, pointes à `47.2..47.8`) pour préserver la visibilité des reflets tout en restant parfaitement accolée à l'œil.
+    - Oeil gauche : `points="33.5,45.6 34.2,47.2 35.0,46.1"`, `points="36.2,46.3 37.0,47.8 37.8,46.3"`, `points="39.0,46.1 39.8,47.2 40.5,45.6"`.
+    - Oeil droit (symétrie $X' = 100 - X$) : `points="66.5,45.6 65.8,47.2 65.0,46.1"`, `points="63.8,46.3 63.0,47.8 62.2,46.3"`, `points="61.0,46.1 60.2,47.2 59.5,45.6"`.
 - **Sourcils effilés en pointe (Règle d'anatomie 1/3 - 2/3 & Tapered Tail)** :
   - **Forme polygonale effilée pour les deux sexes** : Base intérieure plus épaisse près du nez, apex en pointe haute situé aux 2/3 de l'intérieur (1/3 de l'extérieur), et terminaison en pointe aiguë vers la tempe.
     - Oeil gauche :
@@ -189,8 +189,8 @@ L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclus
 | **Cheveux (Uniforme)** | `#5a2d0c` (Brun chaud) | `#8a3c08` (Châtain cuivré) |
 | **Couleur Principale** | `#489e96` (Turquoise) | `#ff9d00` (Orange vif) |
 | **Couleur Accent** | `#ff9d00` (Orange) | `#489e96` (Turquoise) |
-| **Cuir / Ceinture / Semelles** | `#7c4004` / `#442100` | `#7c4004` / `#c47000` |
-| **Boucle dorée** | `#ffb733` | `#ffb733` |
+| **Bas du corps (Tenue classique)** | `#1b4d49` (Bleu pétrole / Sarcelle) | `#236762` (Sarcelle canard) |
+| **Ceinture / Boucle** | `#1f2937` / `#ffb733` | `#1f2937` / `#ffb733` |
 | **Yeux (Iris)** | `#542c0e` / `#8c4e1e` | `#6d2e05` / `#b45309` |
 | **Cils & Contours** | `#2b1404` | `#2b1404` |
 
@@ -205,22 +205,23 @@ L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclus
 2. **Équilibre des Cils Chibi Manga** :
    - Les cils supérieurs définissent le regard principal (trait épais $2.2\text{px}$ + 3 pointes dynamiques sur le coin externe).
    - Les cils inférieurs doivent être **subtils, plus courts et fins** que les cils supérieurs, et centrés sous l'iris pour ne pas alourdir le regard ou ressembler à des épines extérieures.
-   - Toujours calculer les coordonnées $Y$ selon l'équation de la courbe de Bézier pour garantir la continuité visuelle.
+   - Ne pas descendre trop bas la courbure inférieure pour préserver la cohésion avec l'œil tout en laissant les reflets lumineux 100% visibles.
 
 3. **Construction des Cheveux Bouclés / Ondulés (Curly Hair)** :
    - **Masse volumique arrière (`hairBack`)** : Une grappe de cercles superposés ($r = 14..22$) positionnés latéralement ($x = 18..30$ et $x = 70..82$, $y = 30..70$) crée une sensation de volume bouclé riche et naturelle sans alourdir le tracé.
    - **Frange avant (`hairFront`)** : Privilégier une ligne de mèches ondulées sur le front ($y = 20..36$). **Ne jamais placer de cercles parasites isolés sur les tempes ou en avant-plan du visage** ($x = 28$ ou $x = 72$), car ils créent des verrues/artéfacts visuels coupant les yeux et les joues.
 
-4. **Harmonie Chromatique des Capes & Tenues** :
-   - **Règle de tonalité pour les capes** : Une cape (`capeBack` / `capeFront`) doit impérativement reprendre la même famille de couleur que le vêtement principal du haut du corps (`body`), mais dans une **nuance plus foncée/profonde** (ex. pour un haut de mage violet améthyste `#4c1d95`, la cape et le pantalon doivent être en violet sombre `#2e1065`, avec liseré or `#fbbf24`).
-   - Éviter d'introduire une troisième couleur discordante pour les capes sans justification thématique.
+4. **Harmonie Chromatique des Tenues & Évitement du Marron** :
+   - **Règle de tonalité pour les capes** : Une cape (`capeBack` / `capeFront`) doit impérativement reprendre la même famille de couleur que le vêtement principal du haut du corps (`body`), mais dans une **nuance plus foncée/profonde** (ex. pour un haut de mage violet améthyste `#4c1d95`, le pantalon est également en `#4c1d95` et la cape en violet sombre `#2e1065`, avec liseré or `#fbbf24`).
+   - **Tenues de base classiques** : Éviter le marron pour les vêtements bas (pantalons / jupes) ; privilégier des tons pétrole, sarcelle ou ardoise assortis à la charte.
 
-5. **Accessoires & Postures Dynamiques** :
-   - Pour les armes et objets tenus (ex. flèche d'archère dans la main libre), appliquer une rotation angulaire expressive (ex. `transform="rotate(45 68 84)"`) pour donner de la vie et éviter les lignes parfaitement orthogonales ou rigides.
+5. **Sélecteur de Teint sur l'Écran d'Accueil** :
+   - L'écran initial d'accueil (`#player-name-screen`) intègre la palette des 6 carnations avec mise à jour en direct des SVG de prévisualisation Garçon/Fille et enregistrement transparent dans la configuration du joueur.
 
-6. **Synchronisation Quadruple Obligatoire** :
+6. **Synchronisation Complète Obligatoire** :
    Tout changement de tracé SVG ou d'attribut configurable doit être immédiatement reporté sur :
-   - [test-avatars.html](file:///home/nicolas/projets/_github/ez-job/test-avatars.html) (environnement de test visuel et modale plein écran)
+   - [index.html](file:///home/nicolas/projets/_github/ez-job/index.html) et [js/app.js](file:///home/nicolas/projets/_github/ez-job/js/app.js) (écran d'accueil et sélection initiale)
+   - [test-avatars.html](file:///home/nicolas/projets/_github/ez-job/test-avatars.html) (laboratoire de test et modale zoom)
    - [js/modules/ui/avatars.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatars.js) (`headSvg`, `svg`, `buildCustomAvatarSvg`, palettes)
    - [js/modules/ui/avatar-modal.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatar-modal.js) (options et prévisualisations de l'atelier)
    - [js/modules/core/player.js](file:///home/nicolas/projets/_github/ez-job/js/modules/core/player.js) (persistance du profil et des configs)

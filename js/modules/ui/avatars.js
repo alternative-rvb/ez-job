@@ -47,17 +47,17 @@ export const BOY_BASE = {
     shadow: `<g id="boy-shadow"><ellipse cx="50" cy="116" rx="16" ry="3" fill="rgba(124, 64, 4, 0.18)"/></g>`,
     legs: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="boy-legs">
-            <polygon points="39,85 49,85 48,106 41,106" fill="#5c3818"/>
+            <polygon points="39,85 49,85 48,106 41,106" fill="#1b4d49"/>
             <polygon points="40,99 48.5,99 48,106 41,106" fill="#ffffff"/>
             <polygon points="39.8,101 48.7,101 48.3,102.5 40.2,102.5" fill="#ff9d00"/>
-            <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#7c4004"/>
-            <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#442100"/>
+            <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#1f2937"/>
+            <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#111827"/>
             <rect x="42.5" y="107" width="4" height="2" rx="0.8" fill="#ff9d00"/>
-            <polygon points="51,85 61,85 59,106 52,106" fill="#5c3818"/>
+            <polygon points="51,85 61,85 59,106 52,106" fill="#1b4d49"/>
             <polygon points="51.5,99 60,99 59,106 52,106" fill="#ffffff"/>
             <polygon points="51.3,101 60.2,101 59.8,102.5 51.7,102.5" fill="#ff9d00"/>
-            <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#7c4004"/>
-            <path d="M49.5 112 L61.5 112 L61 114 L50 114 Z" fill="#442100"/>
+            <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#1f2937"/>
+            <path d="M49.5 112 L61.5 112 L61 114 L50 114 Z" fill="#111827"/>
             <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#ff9d00"/>
         </g>`,
     body: `
@@ -70,9 +70,9 @@ export const BOY_BASE = {
         </g>`,
     belt: `
         <g id="boy-belt">
-            <rect x="37" y="82.5" width="26" height="4.5" rx="1" fill="#7c4004"/>
-            <rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#ffb733" stroke="#7c4004" stroke-width="0.8"/>
-            <rect x="36" y="82.5" width="4.5" height="7" rx="1.2" fill="#995208" stroke="#5c3818" stroke-width="0.8"/>
+            <rect x="37" y="82.5" width="26" height="4.5" rx="1" fill="#1f2937"/>
+            <rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#ffb733" stroke="#1f2937" stroke-width="0.8"/>
+            <rect x="36" y="82.5" width="4.5" height="7" rx="1.2" fill="#489e96" stroke="#1b4d49" stroke-width="0.8"/>
             <circle cx="38.2" cy="86" r="0.7" fill="#ffb733"/>
         </g>`,
     arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
@@ -238,10 +238,10 @@ export const GIRL_BASE = {
         </g>`,
     body: `
         <g id="girl-body">
-            <path d="M38 82 C38 82, 44 83.5, 50 83.5 C56 83.5, 62 82, 62 82 C70 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 30 85, 38 82 Z" fill="#5c3818"/>
-            <path d="M40 83 C40 85, 38 88, 37 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M50 83.5 L50 93.5" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M60 83 C60 85, 62 88, 63 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M38 82 C38 82, 44 83.5, 50 83.5 C56 83.5, 62 82, 62 82 C70 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 30 85, 38 82 Z" fill="#236762"/>
+            <path d="M40 83 C40 85, 38 88, 37 92" stroke="#133835" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M50 83.5 L50 93.5" stroke="#133835" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M60 83 C60 85, 62 88, 63 92" stroke="#133835" stroke-width="1.2" stroke-linecap="round"/>
             <path d="M 31,65 C 31,62 34,61.5 38,61.5 L 62,61.5 C 66,61.5 69,62 69,65 L 62.5,82 L 37.5,82 Z" fill="#ff9d00"/>
             <path d="M44 60 L50 71 L56 60 Z" fill="#ffffff"/>
             <circle cx="50" cy="66" r="2.5" fill="#489e96"/>
@@ -252,9 +252,9 @@ export const GIRL_BASE = {
         </g>`,
     belt: `
         <g id="girl-belt">
-            <rect x="37" y="80.5" width="26" height="4" rx="1" fill="#7c4004"/>
-            <rect x="47" y="79.5" width="6" height="6" rx="1.2" fill="#ffb733" stroke="#7c4004" stroke-width="0.8"/>
-            <rect x="58.5" y="80.5" width="3.5" height="5.5" rx="1.2" fill="#66bcb4" stroke="#7c4004" stroke-width="0.8"/>
+            <rect x="37" y="80.5" width="26" height="4" rx="1" fill="#1f2937"/>
+            <rect x="47" y="79.5" width="6" height="6" rx="1.2" fill="#ffb733" stroke="#1f2937" stroke-width="0.8"/>
+            <rect x="58.5" y="80.5" width="3.5" height="5.5" rx="1.2" fill="#489e96" stroke="#1b4d49" stroke-width="0.8"/>
             <circle cx="60.2" cy="83.2" r="0.7" fill="#ffffff"/>
         </g>`,
     arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
@@ -294,10 +294,10 @@ export const GIRL_BASE = {
             <polygon points="34.8,35.6 34.2,33.5 36.5,34.8" fill="#2b1404"/>
             <path d="M30 38 Q37 33 44 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
             <!-- Trait et cils inférieurs -->
-            <path d="M32 44.5 Q37 47.5 42 44.5" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
-            <polygon points="33.5,45.0 34.2,47.2 35.0,45.5" fill="#2b1404"/>
-            <polygon points="36.2,45.7 37.0,47.6 37.8,45.7" fill="#2b1404"/>
-            <polygon points="39.0,45.5 39.8,46.9 40.5,45.0" fill="#2b1404"/>
+            <path d="M32 45.2 Q37 47.0 42 45.2" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
+            <polygon points="33.5,45.6 34.2,47.2 35.0,46.1" fill="#2b1404"/>
+            <polygon points="36.2,46.3 37.0,47.8 37.8,46.3" fill="#2b1404"/>
+            <polygon points="39.0,46.1 39.8,47.2 40.5,45.6" fill="#2b1404"/>
             <path d="M 42.7,30.0 L 34.5,27.5 L 28.0,31.0 L 35.0,29.3 L 42.7,32.0 Z" fill="#6d2e05"/>
 
             <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="#ffffff"/>
@@ -313,10 +313,10 @@ export const GIRL_BASE = {
             <polygon points="65.2,35.6 65.8,33.5 63.5,34.8" fill="#2b1404"/>
             <path d="M56 38 Q63 33 70 38" fill="none" stroke="#2b1404" stroke-width="2.2" stroke-linecap="round"/>
             <!-- Trait et cils inférieurs -->
-            <path d="M58 44.5 Q63 47.5 68 44.5" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
-            <polygon points="66.5,45.0 65.8,47.2 65.0,45.5" fill="#2b1404"/>
-            <polygon points="63.8,45.7 63.0,47.6 62.2,45.7" fill="#2b1404"/>
-            <polygon points="61.0,45.5 60.2,46.9 59.5,45.0" fill="#2b1404"/>
+            <path d="M58 45.2 Q63 47.0 68 45.2" fill="none" stroke="#2b1404" stroke-width="1" stroke-linecap="round"/>
+            <polygon points="66.5,45.6 65.8,47.2 65.0,46.1" fill="#2b1404"/>
+            <polygon points="63.8,46.3 63.0,47.8 62.2,46.3" fill="#2b1404"/>
+            <polygon points="61.0,46.1 60.2,47.2 59.5,45.6" fill="#2b1404"/>
             <path d="M 57.3,30.0 L 65.5,27.5 L 72.0,31.0 L 65.0,29.3 L 57.3,32.0 Z" fill="#6d2e05"/>
 
             <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>
@@ -570,10 +570,10 @@ export const BOY_OUTFITS = {
             </g>`,
         legs: `
             <g id="boy-legs-mage">
-                <polygon points="39,85 49,85 48,105 41,105" fill="#2e1065"/>
-                <polygon points="51,85 61,85 59,105 52,105" fill="#2e1065"/>
-                <path d="M38.5 105 C38.5 103, 49.5 103, 49.5 105 L50 113.5 C50 115, 38 115, 38 113.5 Z" fill="#4c1d95"/>
-                <path d="M49.5 105 C49.5 103, 60.5 103, 60.5 105 L61 113.5 C61 115, 49 115, 49 113.5 Z" fill="#4c1d95"/>
+                <polygon points="39,85 49,85 48,105 41,105" fill="#4c1d95"/>
+                <polygon points="51,85 61,85 59,105 52,105" fill="#4c1d95"/>
+                <path d="M38.5 105 C38.5 103, 49.5 103, 49.5 105 L50 113.5 C50 115, 38 115, 38 113.5 Z" fill="#2e1065"/>
+                <path d="M49.5 105 C49.5 103, 60.5 103, 60.5 105 L61 113.5 C61 115, 49 115, 49 113.5 Z" fill="#2e1065"/>
                 <rect x="42" y="106" width="5" height="2.5" rx="0.6" fill="#fbbf24"/>
                 <rect x="53" y="106" width="5" height="2.5" rx="0.6" fill="#fbbf24"/>
             </g>`,
