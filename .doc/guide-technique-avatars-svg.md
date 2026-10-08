@@ -74,9 +74,9 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
 ### Calque 2 : Cheveux arrière (`<g id="...-hair-back-full">`)
 - **Règle absolue d'ordre** : Ce calque doit impérativement être le premier calque de personnage (derrière tout le corps).
 - **Socle géométrique universel (Base minimale obligatoire pour toutes les coupes)** :
-  - **Ellipse de base universelle** : `<ellipse cx="50" cy="28" rx="35" ry="33" fill="..."/>`
+  - **Ellipse de base universelle** : `<ellipse cx="50" cy="24" rx="35" ry="29" fill="..."/>`
     - **Sommet** : $Y = -5$ ($15\text{px}$ au-dessus du crâne $Y=10$, donnant le volume supérieur manga).
-    - **Bas** : $Y = 61$ (descend sous les oreilles $Y=42.8$ jusqu'au bas du menton/début du cou).
+    - **Bas** : $Y = 53$ (s'arrête au niveau des oreilles et de la mâchoire sans descendre sous le cou ou le menton).
     - **Largeur** : $X = 15..85$ ($rx = 35$, englobant largement le crâne et les oreilles).
 - **Extensions selon la coupe** :
   1. **Cheveux longs** (ex: Fille Macarons) : On conserve l'ellipse de base universelle et on ajoute le grand ovale plein descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
