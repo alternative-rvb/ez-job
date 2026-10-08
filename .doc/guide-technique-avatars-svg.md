@@ -72,8 +72,16 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
 - `cx="50" cy="116" rx="16" ry="3"`
 
 ### Calque 2 : Cheveux arrière (`<g id="...-hair-back-full">`)
-- **Règle absolue** : Ce calque doit impérativement être le premier calque de personnage (derrière tout le corps).
-- Pour les cheveux longs (ex. fille) : inclure une ellipse/forme qui part du haut du crâne et descend jusqu'aux jambes (`ellipse cx="50" cy="50" rx="34" ry="46"`).
+- **Règle absolue d'ordre** : Ce calque doit impérativement être le premier calque de personnage (derrière tout le corps).
+- **Socle géométrique universel (Base minimale obligatoire pour toutes les coupes)** :
+  - **Ellipse de base universelle** : `<ellipse cx="50" cy="28" rx="35" ry="33" fill="..."/>`
+    - **Sommet** : $Y = -5$ ($15\text{px}$ au-dessus du crâne $Y=10$, donnant le volume supérieur manga).
+    - **Bas** : $Y = 61$ (descend sous les oreilles $Y=42.8$ jusqu'au bas du menton/début du cou).
+    - **Largeur** : $X = 15..85$ ($rx = 35$, englobant largement le crâne et les oreilles).
+- **Extensions selon la coupe** :
+  1. **Cheveux longs** (ex: Fille Macarons) : On conserve l'ellipse de base universelle et on ajoute le grand ovale plein descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
+  2. **Coupe au carré / Bob** (ex: Carré Court, Bob Moderne) : On ajoute un **ovale coupé en 2** descendant jusqu'aux épaules/haut du buste (`Y=62..66`) : `<path d="M 15,66 C 15,22 26,2 50,2 C 74,2 85,22 85,66 Z" fill="..."/>`.
+  3. **Pointes / Chignons / Queues** : Se superposent sur cette ellipse de base.
 - Une couleur 100% unie pour la chevelure (`#5a2d0c` garçon, `#8a3c08` fille).
 
 ### Calque 3 : Jambes & Chaussures (`<g id="...-legs">`)
@@ -181,6 +189,11 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
    - [js/modules/ui/avatars.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatars.js) (`headSvg` et `svg`)
    - [index.html](file:///home/nicolas/projets/_github/ez-job/index.html) (cartes du sélecteur de personnage)
    - [.doc/guide-technique-avatars-svg.md](file:///home/nicolas/projets/_github/ez-job/.doc/guide-technique-avatars-svg.md) (spécification technique)
+
+4. **Harmonie Universelle des Cheveux Arrière (Calque 2)** :
+   - **Base minimale obligatoire** : Un cercle/volume englobant arrière (`<circle cx="50" cy="24" r="32" fill="..."/>`) pour structurer la masse qui déborde du crâne.
+   - **Cheveux longs** : Ajouter un grand ovale descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
+   - **Coupe au carré (Bob / mi-long)** : Ajouter un **demi-ovale** descendant jusqu'aux épaules/haut du buste (`Y=62..66`). Cette superposition d'un cercle crânien et d'un demi-ovale apporte une assise naturelle, fluide et beaucoup plus harmonieuse sans découpes superflues.
 
 ---
 

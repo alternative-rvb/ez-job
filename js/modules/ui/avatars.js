@@ -22,18 +22,9 @@ export const AVATARS = {
             <svg viewBox="4 -22 92 88" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. CHEVEUX ARRIERE -->
     <g id="boy-hair-back">
-        <path d="M 18,42 
-                 C 12,34 8,26 10,20 
-                 C 12,14 6,10 12,4 
-                 C 16,-2 24,-6 30,-4 
-                 C 34,-12 44,-14 50,-10 
-                 C 56,-14 66,-12 70,-4 
-                 C 76,-6 84,-2 88,4 
-                 C 94,10 88,14 90,20 
-                 C 92,26 88,34 82,42 
-                 C 78,34 76,28 74,22 
-                 C 66,12 34,12 26,22 
-                 C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
+        <!-- Ellipse de base universelle -->
+        <ellipse cx="50" cy="28" rx="35" ry="33" fill="#5a2d0c"/>
+        <path d="M 18,44 C 12,34 8,26 10,20 C 12,14 6,10 12,4 C 16,-2 24,-6 30,-4 C 34,-12 44,-14 50,-10 C 56,-14 66,-12 70,-4 C 76,-6 84,-2 88,4 C 94,10 88,14 90,20 C 92,26 88,34 82,44 C 78,34 76,28 74,22 C 66,12 34,12 26,22 C 24,28 22,34 18,44 Z" fill="#5a2d0c"/>
     </g>
 
     <!-- 2. BASE DE LA TÊTE (Oreilles derrière le crâne) -->
@@ -112,18 +103,9 @@ export const AVATARS = {
 
     <!-- 2. GROUPE CHEVEUX ARRIERE (Calque le plus au fond) -->
     <g id="boy-hair-back-full">
-        <path d="M 18,42 
-                 C 12,34 8,26 10,20 
-                 C 12,14 6,10 12,4 
-                 C 16,-2 24,-6 30,-4 
-                 C 34,-12 44,-14 50,-10 
-                 C 56,-14 66,-12 70,-4 
-                 C 76,-6 84,-2 88,4 
-                 C 94,10 88,14 90,20 
-                 C 92,26 88,34 82,42 
-                 C 78,34 76,28 74,22 
-                 C 66,12 34,12 26,22 
-                 C 24,28 22,34 18,42 Z" fill="#5a2d0c"/>
+        <!-- Ellipse de base universelle -->
+        <ellipse cx="50" cy="28" rx="35" ry="33" fill="#5a2d0c"/>
+        <path d="M 18,44 C 12,34 8,26 10,20 C 12,14 6,10 12,4 C 16,-2 24,-6 30,-4 C 34,-12 44,-14 50,-10 C 56,-14 66,-12 70,-4 C 76,-6 84,-2 88,4 C 94,10 88,14 90,20 C 92,26 88,34 82,44 C 78,34 76,28 74,22 C 66,12 34,12 26,22 C 24,28 22,34 18,44 Z" fill="#5a2d0c"/>
     </g>
 
     <!-- 3. JAMBES & CHAUSSURES (Jambes rapprochées en trapèze & chaussures compactes) -->
@@ -151,9 +133,9 @@ export const AVATARS = {
 
     <!-- 4. CORPS & VETEMENTS (Kimono en trapèze élégant connecté aux épaules) -->
     <g id="boy-body">
-        <path d="M32 62 L68 62 L62 85 L38 85 Z" fill="#ffffff"/>
-        <path d="M32 62 C32 62, 40 73, 43 85 L38 85 L30 66 Z" fill="#489e96"/>
-        <path d="M68 62 C68 62, 60 73, 57 85 L62 85 L70 66 Z" fill="#489e96"/>
+        <path d="M 31,65 C 31,62 34,61.5 38,61.5 L 62,61.5 C 66,61.5 69,62 69,65 L 62.5,85 L 37.5,85 Z" fill="#ffffff"/>
+        <path d="M 31,65 C 31,62 34,61.5 38,61.5 C 38,61.5 40,73 43,85 L 37.5,85 L 30,66 Z" fill="#489e96"/>
+        <path d="M 69,65 C 69,62 66,61.5 62,61.5 C 62,61.5 60,73 57,85 L 62.5,85 L 70,66 Z" fill="#489e96"/>
         <path d="M42 60 L50 69 L58 60 Z" fill="#ff9d00"/>
         <path d="M47 67 L50 78 L53 67 Z" fill="#e08900"/>
     </g>
@@ -252,15 +234,23 @@ export const AVATARS = {
             <svg viewBox="4 -22 92 88" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
     <!-- 1. CHEVEUX ARRIERE -->
     <g id="girl-hair-back">
+        <!-- Ellipse de base universelle -->
+        <ellipse cx="50" cy="28" rx="35" ry="33" fill="#8a3c08"/>
         <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
         <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
         <path d="M 12,36 C 8,14 20,-2 50,-2 C 80,-2 92,14 88,36 C 94,50 90,64 82,70 C 78,64 76,52 76,42 C 74,32 26,32 24,42 C 24,52 22,64 18,70 C 10,64 6,50 12,36 Z" fill="#8a3c08"/>
         <circle cx="16" cy="10" r="13" fill="#8a3c08"/>
         <circle cx="84" cy="10" r="13" fill="#8a3c08"/>
-        <ellipse cx="12" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(-25 12 21)"/>
-        <ellipse cx="18" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 18 21)"/>
-        <ellipse cx="82" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(-25 82 21)"/>
-        <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
+        <!-- Chouchou macaron gauche (façon ponytail) -->
+        <ellipse cx="12" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-20 12 21)"/>
+        <ellipse cx="20" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(20 20 21)"/>
+        <circle cx="16" cy="21" r="2.6" fill="#ff9d00"/>
+        <circle cx="15.5" cy="20.5" r="1" fill="#ffffff"/>
+        <!-- Chouchou macaron droit (façon ponytail) -->
+        <ellipse cx="80" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-20 80 21)"/>
+        <ellipse cx="88" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(20 88 21)"/>
+        <circle cx="84" cy="21" r="2.6" fill="#ff9d00"/>
+        <circle cx="83.5" cy="20.5" r="1" fill="#ffffff"/>
     </g>
 
     <!-- 2. BASE DE LA TÊTE (Oreilles derrière le crâne, cou court) -->
@@ -349,15 +339,23 @@ export const AVATARS = {
 
     <!-- 2. GROUPE CHEVEUX ARRIERE -->
     <g id="girl-hair-back-full">
+        <!-- Ellipse de base universelle -->
+        <ellipse cx="50" cy="28" rx="35" ry="33" fill="#8a3c08"/>
         <!-- Ovale arrière descendant du crâne jusqu'aux jambes -->
         <ellipse cx="50" cy="50" rx="34" ry="46" fill="#8a3c08"/>
         <path d="M 12,36 C 8,14 20,-2 50,-2 C 80,-2 92,14 88,36 C 94,50 90,64 82,70 C 78,64 76,52 76,42 C 74,32 26,32 24,42 C 24,52 22,64 18,70 C 10,64 6,50 12,36 Z" fill="#8a3c08"/>
         <circle cx="16" cy="10" r="13" fill="#8a3c08"/>
         <circle cx="84" cy="10" r="13" fill="#8a3c08"/>
-        <ellipse cx="12" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(-25 12 21)"/>
-        <ellipse cx="18" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 18 21)"/>
-        <ellipse cx="82" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(-25 82 21)"/>
-        <ellipse cx="88" cy="21" rx="4" ry="2.5" fill="#489e96" transform="rotate(25 88 21)"/>
+        <!-- Chouchou macaron gauche (façon ponytail) -->
+        <ellipse cx="12" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-20 12 21)"/>
+        <ellipse cx="20" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(20 20 21)"/>
+        <circle cx="16" cy="21" r="2.6" fill="#ff9d00"/>
+        <circle cx="15.5" cy="20.5" r="1" fill="#ffffff"/>
+        <!-- Chouchou macaron droit (façon ponytail) -->
+        <ellipse cx="80" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-20 80 21)"/>
+        <ellipse cx="88" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(20 88 21)"/>
+        <circle cx="84" cy="21" r="2.6" fill="#ff9d00"/>
+        <circle cx="83.5" cy="20.5" r="1" fill="#ffffff"/>
     </g>
 
     <!-- 3. JAMBES & CHAUSSURES (Jambes rapprochées en trapèze & chaussures compactes) -->
@@ -390,7 +388,7 @@ export const AVATARS = {
         <path d="M50 83.5 L50 93.5" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
         <path d="M60 83 C60 85, 62 88, 63 92" stroke="#40240d" stroke-width="1.2" stroke-linecap="round"/>
 
-        <path d="M32 62 L68 62 L62 82 L38 82 Z" fill="#ff9d00"/>
+        <path d="M 31,65 C 31,62 34,61.5 38,61.5 L 62,61.5 C 66,61.5 69,62 69,65 L 62.5,82 L 37.5,82 Z" fill="#ff9d00"/>
         <path d="M44 60 L50 71 L56 60 Z" fill="#ffffff"/>
         <circle cx="50" cy="66" r="2.5" fill="#489e96"/>
         <polygon points="46,64 50,66 46,69" fill="#489e96"/>
@@ -410,12 +408,12 @@ export const AVATARS = {
     <!-- 6. BRAS & MAINS (Un seul ovale pour la main chibi) -->
     <g id="girl-arms">
         <!-- Bras gauche -->
-        <path d="M33 64 C25 69, 23 76, 26 83 C29 83, 32 79, 35 75 Z" fill="#ff9d00"/>
-        <ellipse cx="26" cy="83" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+        <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="#ff9d00"/>
+        <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
 
         <!-- Bras droit -->
-        <path d="M67 64 C75 68, 77 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#ff9d00"/>
-        <ellipse cx="77" cy="77" rx="3.6" ry="3.3" fill="#ffd4a3"/>
+        <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="#ff9d00"/>
+        <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="#ffd4a3"/>
     </g>
 
     <!-- 7. BASE DE LA TÊTE (Oreilles derrière le crâne, cou court) -->
