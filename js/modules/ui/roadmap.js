@@ -369,6 +369,30 @@ export class RoadmapManager {
                                 <circle cx="368" cy="220" r="1.5" fill="#20502e"/>
                             </g>
 
+                            <!-- Décor : Champs de blé (flat design, sillons parallèles) -->
+                            <g id="decor-fields">
+                                <polygon points="184,172 232,169 238,182 188,186" fill="#f2c14e"/>
+                                <line x1="185" y1="175.5" x2="233.5" y2="172.2" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
+                                <line x1="186" y1="179" x2="235" y2="175.5" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
+                                <line x1="187" y1="182.5" x2="236.5" y2="178.8" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
+                                <polygon points="82,247 150,242 161,262 88,269" fill="#f2c14e"/>
+                                <line x1="83" y1="250.7" x2="151.8" y2="245.3" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
+                                <line x1="84" y1="254.3" x2="153.7" y2="248.7" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
+                                <line x1="85" y1="258" x2="155.5" y2="252" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
+                                <line x1="86" y1="261.7" x2="157.3" y2="255.3" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
+                                <line x1="87" y1="265.3" x2="159.2" y2="258.7" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
+                                <polygon points="154,240 214,236 225,254 165,260" fill="#c5d86d"/>
+                                <line x1="156.2" y1="244" x2="216.2" y2="239.6" stroke="#a6bd52" stroke-width="1.1" stroke-linecap="round"/>
+                                <line x1="158.4" y1="248" x2="218.4" y2="243.2" stroke="#a6bd52" stroke-width="1.1" stroke-linecap="round"/>
+                                <line x1="160.6" y1="252" x2="220.6" y2="246.8" stroke="#a6bd52" stroke-width="1.1" stroke-linecap="round"/>
+                                <line x1="162.8" y1="256" x2="222.8" y2="250.4" stroke="#a6bd52" stroke-width="1.1" stroke-linecap="round"/>
+                                <!-- Bottes de foin -->
+                                <circle cx="104" cy="256" r="3.2" fill="#e0a93b"/>
+                                <path d="M 104 252.8 A 3.2 3.2 0 0 1 104 259.2 Z" fill="#c98f2a"/>
+                                <circle cx="128" cy="252" r="2.8" fill="#e0a93b"/>
+                                <path d="M 128 249.2 A 2.8 2.8 0 0 1 128 254.8 Z" fill="#c98f2a"/>
+                            </g>
+
                             <!-- Décor : Forêt enchantée (flat design, deux rangs pour la profondeur) -->
                             <g id="decor-forest">
                                 <!-- Rang du fond -->
@@ -455,9 +479,15 @@ export class RoadmapManager {
 
                             <!-- Décor : Village de départ (flat design : aplats sans contours, volumes en deux tons) -->
                             <g id="decor-village">
-                                <!-- Place du village -->
-                                <ellipse cx="40" cy="227" rx="36" ry="11" fill="#e9d3b0"/>
-                                <ellipse cx="40" cy="227" rx="26" ry="7" fill="#f3e3c8"/>
+                                <!-- Chemin de terre reliant l'auberge à la petite place au départ du sentier -->
+                                <path d="M 23.5 210 C 24 215, 28 219, 35 222.5 L 39 220.5 C 33 218, 30 214, 29 210 Z" fill="#e2c79c"/>
+                                <ellipse cx="42" cy="224.5" rx="13" ry="5" fill="#e2c79c"/>
+                                <ellipse cx="42" cy="224.5" rx="9" ry="3.2" fill="#edd9b5"/>
+                                <g fill="#d4b483">
+                                    <ellipse cx="36" cy="225.5" rx="1.3" ry="0.6"/>
+                                    <ellipse cx="47" cy="223.5" rx="1.2" ry="0.6"/>
+                                    <ellipse cx="50" cy="226" rx="1.1" ry="0.5"/>
+                                </g>
 
                                 <!-- Arbre rond en arrière-plan -->
                                 <rect x="69" y="196" width="2.5" height="8" fill="#8d6e63"/>
