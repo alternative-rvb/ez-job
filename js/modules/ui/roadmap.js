@@ -310,11 +310,6 @@ export class RoadmapManager {
                                 <filter id="pin-shadow" x="-20%" y="-20%" width="140%" height="140%">
                                     <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.25"/>
                                 </filter>
-                                <linearGradient id="trail-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#dfbe99"/>
-                                    <stop offset="50%" stop-color="#cfab83"/>
-                                    <stop offset="100%" stop-color="#eed8b8"/>
-                                </linearGradient>
                                 <linearGradient id="trail-active-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
                                     <stop offset="0%" stop-color="#ff9d00"/>
                                     <stop offset="100%" stop-color="#ffd000"/>
@@ -633,28 +628,29 @@ export class RoadmapManager {
                                 <polygon points="25,-8 37,-4 25,0" fill="#ff9d00"/>
                             </g>
 
-                            <!-- Sentier en lacets avec dégradé d'épaisseur fine & élégante (6.5px au village -> 4.2px au lac -> 3.2px au sommet) -->
-                            <path d="M 45 222 C 80 222, 100 205, 130 205" fill="none" stroke="url(#trail-gradient)" stroke-width="6.5" stroke-linecap="round"/>
-                            <path d="M 130 205 C 160 205, 180 206, 210 205" fill="none" stroke="url(#trail-gradient)" stroke-width="5.2" stroke-linecap="round"/>
-                            <path d="M 210 205 C 240 202, 265 188, 295 185" fill="none" stroke="url(#trail-gradient)" stroke-width="4.2" stroke-linecap="round"/>
-                            <path d="M 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138" fill="none" stroke="url(#trail-gradient)" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64" fill="none" stroke="url(#trail-gradient)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Sentier en lacets, couleur de la terre du village, qui s'affine vers le sommet (6.5 au village -> 4.2 au lac -> 3.2 au sommet) -->
+                            <g fill="none" stroke="#dcc08f" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M 45 222 C 80 222, 100 205, 130 205" stroke-width="6.5"/>
+                                <path d="M 130 205 C 160 205, 180 206, 210 205" stroke-width="5.2"/>
+                                <path d="M 210 205 C 240 202, 265 188, 295 185" stroke-width="4.2"/>
+                                <path d="M 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138" stroke-width="3.7"/>
+                                <path d="M 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64" stroke-width="3.2"/>
+                            </g>
 
                             <!-- Sentier Principal continu de référence (invisible, pour le calcul mathématique) -->
-                            <path id="roadmap-trail" 
-                                  d="M 45 222 C 80 222, 100 205, 130 205 C 160 205, 180 206, 210 205 C 240 202, 265 188, 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64" 
-                                  fill="none" 
-                                  stroke="none" />
+                            <path id="roadmap-trail" d="M 45 222 C 80 222, 100 205, 130 205 C 160 205, 180 206, 210 205 C 240 202, 265 188, 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64" fill="none" stroke="none"/>
 
-                            <!-- Tracé actif doré complété grimpant en lacets directement sur la montagne jusqu'au plateau -->
-                            <path id="roadmap-trail-active" 
-                                  d="M 45 222 C 80 222, 100 205, 130 205 C 160 205, 180 206, 210 205 C 240 202, 265 188, 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64" 
-                                  fill="none" 
-                                  stroke="url(#trail-active-gradient)" 
-                                  stroke-width="3.2" 
-                                  stroke-linecap="round" 
-                                  stroke-linejoin="round"
-                                  style="opacity: 0.95; filter: drop-shadow(0 0 2px rgba(255,180,0,0.6));" />
+                            <!-- NOTE: la progression est un masque (dasharray piloté en JS sur #roadmap-trail-active) qui révèle une copie dorée du sentier de même épaisseur : pas de double bordure -->
+                            <mask id="trail-progress-mask" maskUnits="userSpaceOnUse" x="-20" y="-38" width="560" height="320">
+                                <path id="roadmap-trail-active" d="M 45 222 C 80 222, 100 205, 130 205 C 160 205, 180 206, 210 205 C 240 202, 265 188, 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </mask>
+                            <g fill="none" stroke="url(#trail-active-gradient)" stroke-linecap="round" stroke-linejoin="round" mask="url(#trail-progress-mask)">
+                                <path d="M 45 222 C 80 222, 100 205, 130 205" stroke-width="6.5"/>
+                                <path d="M 130 205 C 160 205, 180 206, 210 205" stroke-width="5.2"/>
+                                <path d="M 210 205 C 240 202, 265 188, 295 185" stroke-width="4.2"/>
+                                <path d="M 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138" stroke-width="3.7"/>
+                                <path d="M 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64" stroke-width="3.2"/>
+                            </g>
 
                             <!-- Checkpoints / Jalons (Milestones) -->
                             <g id="milestones-group"></g>
