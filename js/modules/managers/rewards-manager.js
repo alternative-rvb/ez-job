@@ -64,32 +64,23 @@ export class RewardsManager {
             return 0;
         }
 
-        // Moins de 80% = 0 point
-        if (scorePercentage < 80) {
+        // Moins de 60% = 0 point
+        if (scorePercentage < 60) {
             return 0;
         }
 
-        // Déterminer les points de base selon le temps limite
-        let basePoints = 0;
+        // NOTE Gain croissant par tranche : 60-69, 70-79, 80-89, 90-99, 100 %
+        // Chaque temps limite a sa ligne ; plus le temps est court, plus la tranche haute rapporte
+        const POINTS_PAR_TRANCHE = {
+            5:  [1, 2, 4, 6, 8],  // 5s - le plus difficile
+            10: [1, 2, 3, 5, 6],  // 10s - difficile (par défaut)
+            15: [1, 1, 2, 3, 4],  // 15s - moyen
+            20: [1, 1, 1, 2, 3]   // 20s - facile
+        };
+        const tranches = POINTS_PAR_TRANCHE[timeLimit] || POINTS_PAR_TRANCHE[10];
+        const index = Math.min(Math.floor((scorePercentage - 60) / 10), 4);
 
-        switch (timeLimit) {
-            case 5:  // 5s - le plus difficile
-                basePoints = scorePercentage === 100 ? 5 : 4;
-                break;
-            case 10: // 10s - difficile (par défaut)
-                basePoints = scorePercentage === 100 ? 4 : 3;
-                break;
-            case 15: // 15s - moyen
-                basePoints = scorePercentage === 100 ? 3 : 2;
-                break;
-            case 20: // 20s - facile
-                basePoints = scorePercentage === 100 ? 2 : 1;
-                break;
-            default: // Par défaut = 10s
-                basePoints = scorePercentage === 100 ? 4 : 3;
-        }
-
-        return basePoints;
+        return tranches[index];
     }
 
     /**
