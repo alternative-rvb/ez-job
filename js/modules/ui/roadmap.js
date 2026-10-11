@@ -369,35 +369,88 @@ export class RoadmapManager {
                                 <circle cx="368" cy="220" r="1.5" fill="#20502e"/>
                             </g>
 
-                            <!-- Forêt dense sur la colline (Centre-Gauche uniquement) -->
-                            <g fill="#336a44" opacity="0.85">
-                                <circle cx="85" cy="162" r="7"/>
-                                <circle cx="95" cy="157" r="9"/>
-                                <circle cx="108" cy="160" r="8"/>
-                                <circle cx="120" cy="155" r="9"/>
-                                <circle cx="155" cy="162" r="7"/>
-                                <circle cx="165" cy="157" r="9"/>
-                            </g>
-
-                            <!-- Décor : Grande Forêt Enchantée (Centre-Gauche) -->
-                            <g transform="translate(90, 160)">
-                                <circle cx="10" cy="15" r="9" fill="#2d6e40"/>
-                                <circle cx="24" cy="10" r="12" fill="#387e4c"/>
-                                <circle cx="38" cy="14" r="10" fill="#2d6e40"/>
-                                
-                                <polygon points="18,-6 10,8 26,8" fill="#1b522c"/>
-                                <polygon points="18,3 8,17 28,17" fill="#154223"/>
-                                
-                                <polygon points="35,-12 25,2 45,2" fill="#1e5c32"/>
-                                <polygon points="35,-2 23,12 47,12" fill="#174827"/>
-                                <polygon points="35,8 20,22 50,22" fill="#123a1f"/>
-
-                                <circle cx="52" cy="12" r="11" fill="#4d9b64"/>
-                                <circle cx="64" cy="16" r="8" fill="#3f8854"/>
-                                <circle cx="58" cy="5" r="9" fill="#58ad71"/>
-                                
-                                <polygon points="72,-4 65,8 79,8" fill="#1b522c"/>
-                                <polygon points="72,5 62,18 82,18" fill="#154223"/>
+                            <!-- Décor : Forêt enchantée (flat design, deux rangs pour la profondeur) -->
+                            <g id="decor-forest">
+                                <!-- Rang du fond -->
+                                <rect x="76" y="165" width="2" height="3" fill="#6d4c41"/>
+                                <polygon points="72.875,165 77,160 77,165" fill="#4f9463"/>
+                                <polygon points="77,160 81.125,165 77,165" fill="#448657"/>
+                                <polygon points="73.7825,161.6 77,156.8 77,161.6" fill="#4f9463"/>
+                                <polygon points="77,156.8 80.2175,161.6 77,161.6" fill="#448657"/>
+                                <polygon points="74.7313,158.8 77,153 77,158.8" fill="#4f9463"/>
+                                <polygon points="77,153 79.2687,158.8 77,158.8" fill="#448657"/>
+                                <rect x="135" y="163" width="2" height="3" fill="#6d4c41"/>
+                                <polygon points="130.5,163 136,155.9 136,163" fill="#4f9463"/>
+                                <polygon points="136,155.9 141.5,163 136,163" fill="#448657"/>
+                                <polygon points="131.71,158.2 136,151.4 136,158.2" fill="#4f9463"/>
+                                <polygon points="136,151.4 140.29,158.2 136,158.2" fill="#448657"/>
+                                <polygon points="132.975,154.2 136,146 136,154.2" fill="#4f9463"/>
+                                <polygon points="136,146 139.025,154.2 136,154.2" fill="#448657"/>
+                                <rect x="82.8" y="161.8" width="2.4" height="4.2" fill="#6d4c41"/>
+                                <circle cx="84" cy="156.7" r="6" fill="#7cb987"/>
+                                <path d="M 84 150.7 A 6 6 0 0 1 84 162.7 Z" fill="#6aa977"/>
+                                <rect x="92" y="164" width="2" height="3" fill="#6d4c41"/>
+                                <polygon points="88.05,164 93,157.7 93,164" fill="#4f9463"/>
+                                <polygon points="93,157.7 97.95,164 93,164" fill="#448657"/>
+                                <polygon points="89.139,159.8 93,153.8 93,159.8" fill="#4f9463"/>
+                                <polygon points="93,153.8 96.861,159.8 93,159.8" fill="#448657"/>
+                                <polygon points="90.2775,156.2 93,149 93,156.2" fill="#4f9463"/>
+                                <polygon points="93,149 95.7225,156.2 93,156.2" fill="#448657"/>
+                                <rect x="102.8" y="160.1" width="2.4" height="4.9" fill="#6d4c41"/>
+                                <circle cx="104" cy="154.2" r="7" fill="#7cb987"/>
+                                <path d="M 104 147.2 A 7 7 0 0 1 104 161.2 Z" fill="#6aa977"/>
+                                <rect x="119" y="161" width="2" height="3" fill="#6d4c41"/>
+                                <polygon points="113.95,161 120,153 120,161" fill="#4f9463"/>
+                                <polygon points="120,153 126.05,161 120,161" fill="#448657"/>
+                                <polygon points="115.281,155.7 120,148.1 120,155.7" fill="#4f9463"/>
+                                <polygon points="120,148.1 124.719,155.7 120,155.7" fill="#448657"/>
+                                <polygon points="116.672,151.1 120,142 120,151.1" fill="#4f9463"/>
+                                <polygon points="120,142 123.328,151.1 120,151.1" fill="#448657"/>
+                                <rect x="148.8" y="161.8" width="2.4" height="4.2" fill="#6d4c41"/>
+                                <circle cx="150" cy="156.7" r="6" fill="#7cb987"/>
+                                <path d="M 150 150.7 A 6 6 0 0 1 150 162.7 Z" fill="#6aa977"/>
+                                <rect x="160" y="164" width="2" height="3" fill="#6d4c41"/>
+                                <polygon points="155.775,164 161,157.3 161,164" fill="#4f9463"/>
+                                <polygon points="161,157.3 166.225,164 161,164" fill="#448657"/>
+                                <polygon points="156.924,159.5 161,153.1 161,159.5" fill="#4f9463"/>
+                                <polygon points="161,153.1 165.076,159.5 161,159.5" fill="#448657"/>
+                                <polygon points="158.126,155.7 161,148 161,155.7" fill="#4f9463"/>
+                                <polygon points="161,148 163.874,155.7 161,155.7" fill="#448657"/>
+                                <rect x="170.8" y="163.8" width="2.4" height="4.2" fill="#6d4c41"/>
+                                <circle cx="172" cy="158.7" r="6" fill="#7cb987"/>
+                                <path d="M 172 152.7 A 6 6 0 0 1 172 164.7 Z" fill="#6aa977"/>
+                                <!-- Ombres au sol du rang de devant -->
+                                <g fill="#3f7f4c" opacity="0.35">
+                                    <ellipse cx="96" cy="180.5" rx="9" ry="2"/>
+                                    <ellipse cx="110" cy="181.5" rx="8" ry="2"/>
+                                    <ellipse cx="128" cy="179.5" rx="10" ry="2.2"/>
+                                    <ellipse cx="143" cy="180.5" rx="7.5" ry="2"/>
+                                    <ellipse cx="158" cy="181.5" rx="8" ry="1.8"/>
+                                </g>
+                                <!-- Rang de devant -->
+                                <rect x="94.8" y="174.4" width="2.4" height="5.6" fill="#6d4c41"/>
+                                <circle cx="96" cy="167.6" r="8" fill="#4caf50"/>
+                                <path d="M 96 159.6 A 8 8 0 0 1 96 175.6 Z" fill="#3f9a45"/>
+                                <rect x="109" y="178" width="2" height="3" fill="#6d4c41"/>
+                                <polygon points="102.575,178 110,167.9 110,178" fill="#2e7d32"/>
+                                <polygon points="110,167.9 117.425,178 110,178" fill="#256b29"/>
+                                <polygon points="104.209,171.3 110,161.7 110,171.3" fill="#2e7d32"/>
+                                <polygon points="110,161.7 115.791,171.3 110,171.3" fill="#256b29"/>
+                                <polygon points="105.916,165.5 110,154 110,165.5" fill="#2e7d32"/>
+                                <polygon points="110,154 114.084,165.5 110,165.5" fill="#256b29"/>
+                                <rect x="126.8" y="172.7" width="2.4" height="6.3" fill="#6d4c41"/>
+                                <circle cx="128" cy="165" r="9" fill="#4caf50"/>
+                                <path d="M 128 156 A 9 9 0 0 1 128 174 Z" fill="#3f9a45"/>
+                                <rect x="142" y="177" width="2" height="3" fill="#6d4c41"/>
+                                <polygon points="136.4,177 143,168.2 143,177" fill="#2e7d32"/>
+                                <polygon points="143,168.2 149.6,177 143,177" fill="#256b29"/>
+                                <polygon points="137.852,171.1 143,162.7 143,171.1" fill="#2e7d32"/>
+                                <polygon points="143,162.7 148.148,171.1 143,171.1" fill="#256b29"/>
+                                <polygon points="139.37,166.1 143,156 143,166.1" fill="#2e7d32"/>
+                                <polygon points="143,156 146.63,166.1 143,166.1" fill="#256b29"/>
+                                <rect x="156.8" y="176.1" width="2.4" height="4.9" fill="#6d4c41"/>
+                                <circle cx="158" cy="170.2" r="7" fill="#4caf50"/>
+                                <path d="M 158 163.2 A 7 7 0 0 1 158 177.2 Z" fill="#3f9a45"/>
                             </g>
 
                             <!-- Décor : Village de départ (flat design : aplats sans contours, volumes en deux tons) -->
