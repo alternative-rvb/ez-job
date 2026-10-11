@@ -46,11 +46,36 @@ export function showToast(message, type = 'success') {
 }
 
 /**
+ * Détail question par question : réponse donnée, et bonne réponse en cas d'erreur
+ * @param {Array} questions - Questions du quiz
+ * @param {Array} userAnswers - Réponses du joueur (index pour un QCM, texte pour une saisie, -1 si temps écoulé)
+ * @param {Array} userAnswersCorrect - Booléens de réussite par question
+ * @returns {string} - Une ligne par question, vide s'il n'y a rien à détailler
+ */
+export function buildDetailsText(questions = [], userAnswers = [], userAnswersCorrect = []) {
+    const lines = [];
+    questions.forEach((q, i) => {
+        const isChoice = q.choices && q.choices.length > 0;
+        const isText = Boolean(q.answer || q.acceptedAnswers);
+        if (!isChoice && !isText) return; // question informative
+
+        const expected = isChoice ? q.correctAnswer : (q.acceptedAnswers ? q.acceptedAnswers[0] : q.answer);
+        const raw = userAnswers[i];
+        let given = isChoice ? q.choices[raw] : raw;
+        if (given === undefined || given === null || String(given).trim() === '') given = '(pas de réponse)';
+
+        const ok = userAnswersCorrect[i] === true;
+        lines.push(`${i + 1}. ${q.question}\n${ok ? '✅' : '❌'} ${given}${ok ? '' : `\n👉 Bonne réponse : ${expected}`}`);
+    });
+    return lines.join('\n\n');
+}
+
+/**
  * Génère le texte formaté pour le partage
  * @param {Object} data - Données du résultat
  * @returns {string} - Texte formaté pour le partage
  */
-export function generateShareText({ title, score, totalQuestions, percentage, pointsEarned }) {
+export function generateShareText({ title, score, totalQuestions, percentage, pointsEarned, details = '' }) {
     let emoji = '🎯';
     if (percentage === 100) emoji = '🏆';
     else if (percentage >= 80) emoji = '⭐';
@@ -62,7 +87,9 @@ export function generateShareText({ title, score, totalQuestions, percentage, po
 
     const pointsLine = pointsEarned ? ` (+${pointsEarned} pts)` : '';
 
-    return `${emoji} J'ai obtenu ${scoreLine}${pointsLine} au quiz "${title}" sur CamiLudik ! 🎉\nPeux-tu faire mieux ? Teste tes connaissances ici :`;
+    const detailsBlock = details ? `\n\n${details}\n\n` : '\n';
+
+    return `${emoji} J'ai obtenu ${scoreLine}${pointsLine} au quiz "${title}" sur CamiLudik ! 🎉${detailsBlock}Peux-tu faire mieux ? Teste tes connaissances ici :`;
 }
 
 /**
@@ -148,15 +175,17 @@ ${shareUrl}
  * @param {number} options.totalQuestions - Nombre total de questions
  * @param {number} options.percentage - Pourcentage de réussite
  * @param {number} [options.pointsEarned] - Points gagnés
+ * @param {string} [options.details] - Détail des questions et réponses (voir buildDetailsText)
  * @returns {Promise<boolean>} - Succès ou non
  */
-export async function shareQuizResult({ title, score, totalQuestions, percentage, pointsEarned }) {
+export async function shareQuizResult({ title, score, totalQuestions, percentage, pointsEarned, details = '' }) {
     const shareText = generateShareText({
         title: title || 'Quiz',
         score: score !== undefined ? score : 0,
         totalQuestions: totalQuestions !== undefined ? totalQuestions : 0,
         percentage: percentage !== undefined ? percentage : 0,
-        pointsEarned
+        pointsEarned,
+        details
     });
 
     const shareUrl = window.location.origin && window.location.origin !== 'null' && !window.location.origin.startsWith('file:')

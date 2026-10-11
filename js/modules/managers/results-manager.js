@@ -9,7 +9,7 @@ import { CONFIG } from '../core/config.js';
 import { playerManager } from '../core/player.js';
 import { rewardsManager, SUMMON_COST } from './rewards-manager.js';
 import { T } from '../core/theme.js';
-import { shareQuizResult } from '../core/share.js';
+import { shareQuizResult, buildDetailsText } from '../core/share.js';
 
 export class ResultsManager {
     constructor(onRestart, onBackToHome, onShowTrophies) {
@@ -190,7 +190,8 @@ export class ResultsManager {
                         score: score,
                         totalQuestions: totalScorable,
                         percentage: percentage,
-                        pointsEarned: rewardsResult.pointsEarned
+                        pointsEarned: rewardsResult.pointsEarned,
+                        details: buildDetailsText(quizState.questions, quizState.userAnswers, quizState.userAnswersCorrect)
                     });
                 });
             }
