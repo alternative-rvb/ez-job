@@ -14,6 +14,7 @@ export class RoadmapManager {
         this.containerId = 'hero-roadmap-container';
         this.customDialogue = null;
         window.addEventListener('avatar-updated', () => this.render());
+        window.addEventListener('resize', () => this.fitSpeechBubble());
         this.milestones = [
             {
                 id: 'village',
@@ -104,7 +105,41 @@ export class RoadmapManager {
         const textEl = document.getElementById('avatar-speech-text');
         if (textEl) {
             textEl.textContent = text;
+            this.fitSpeechBubble();
         }
+    }
+
+    /**
+     * Ajuste la largeur de la bulle au texte et la garde dans les limites de la carte
+     */
+    fitSpeechBubble() {
+        const svg = document.getElementById('fantasy-map-svg');
+        const marker = document.getElementById('player-avatar-marker');
+        const bubble = document.getElementById('avatar-speech-bubble');
+        const rect = document.getElementById('avatar-speech-rect');
+        const textEl = document.getElementById('avatar-speech-text');
+        if (!svg || !marker || !bubble || !rect || !textEl) return;
+
+        // NOTE: la carte est en preserveAspectRatio="none" ; on compense l'étirement horizontal pour garder un texte non déformé
+        const box = svg.getBoundingClientRect();
+        const k = box.width && box.height ? (box.height / 320) / (box.width / 560) : 1;
+        bubble.setAttribute('transform', `scale(${k}, 1)`);
+
+        const width = Math.max(80, textEl.getComputedTextLength() + 32);
+        const markerX = marker.transform.baseVal.consolidate()?.matrix.e ?? 0;
+
+        // NOTE: bornes horizontales du viewBox (-20 → 540) avec une petite marge
+        const minX = -16;
+        const maxX = 536;
+        const half = (width * k) / 2;
+        let shift = 0;
+        if (markerX - half < minX) shift = minX - (markerX - half);
+        if (markerX + half > maxX) shift = maxX - (markerX + half);
+        shift /= k;
+
+        rect.setAttribute('x', -width / 2 + shift);
+        rect.setAttribute('width', width);
+        textEl.setAttribute('x', shift);
     }
 
     /**
@@ -295,16 +330,18 @@ export class RoadmapManager {
                             <polygon points="300,90 320,65 340,90" fill="#ffffff" opacity="0.95"/>
                             
                             <!-- Montagne majestueuse de la Citadelle (Pente naturelle continue sans rebord & névé sommital) -->
-                            <polygon points="250,260 415,64 465,64 550,260" fill="#7599b5"/>
-                            <polygon points="440,64 465,64 550,260 440,260" fill="#5c829e"/>
-                            <polygon points="310,260 415,64 440,64 360,260" fill="#88abc6" opacity="0.4"/>
-                            
-                            <!-- Manteau de neige blanche recouvrant le sommet sous le château (aligné au millimètre sur les pentes) -->
-                            <polygon points="379,105 415,64 465,64 479,105" fill="#ffffff" opacity="0.95"/>
-                            <polygon points="440,64 465,64 479,105 440,105" fill="#dbe7f0" opacity="0.95"/>
-                            
-                            <!-- Plateau fortifié en pierre claire taillée sous le château -->
-                            <polygon points="415,64 465,64 467,70 410,70" fill="#ffffff" stroke="#94a3b8" stroke-width="0.8"/>
+                            <path d="M 250 260 L 409 71 Q 413 65 420 64 L 460 64 Q 466 65 469 72 L 550 260 Z" fill="#7599b5"/>
+                            <!-- Face ombrée à droite de l'arête (ligne de crête en diagonale) -->
+                            <path d="M 448 64 L 460 64 Q 466 65 469 72 L 550 260 L 478 260 L 470 220 L 474 180 L 463 140 L 466 104 L 455 80 Z" fill="#5c829e"/>
+                            <!-- Reflet de lumière sur la face gauche -->
+                            <path d="M 290 260 L 405 80 L 413 70 L 395 130 L 360 200 L 335 260 Z" fill="#88abc6" opacity="0.4"/>
+
+                            <!-- Manteau de neige sommital (bords calés sur les pentes, lisière inférieure dentelée) -->
+                            <path d="M 374.6 112 L 409 71 Q 413 65 420 64 L 460 64 Q 466 65 469 72 L 486 110 L 478 104 L 470 117 L 462 103 L 453 113 L 443 101 L 433 115 L 423 102 L 413 112 L 402 100 L 393 109 L 384 101 Z" fill="#ffffff" opacity="0.95"/>
+                            <path d="M 448 64 L 460 64 Q 466 65 469 72 L 486 110 L 478 104 L 470 117 L 466 110 L 466 104 L 455 80 Z" fill="#dbe7f0" opacity="0.95"/>
+
+                            <!-- Terrasse enneigée sous le château -->
+                            <ellipse cx="440" cy="65" rx="27" ry="3.5" fill="#f4f8fb" stroke="#c3d3e2" stroke-width="0.6"/>
 
                             <!-- Collines verdoyantes étagées au premier plan (Couvrent toute la largeur de -40 à 580 et jusqu'en bas Y=320) -->
                             <path d="M -40 175 Q 120 135 250 170 T 580 155 L 580 320 L -40 320 Z" fill="#6ba776"/>
@@ -358,67 +395,71 @@ export class RoadmapManager {
                                 <polygon points="72,5 62,18 82,18" fill="#154223"/>
                             </g>
 
-                            <!-- Décor : Village de départ (Place pavée & chaumières RPG) -->
+                            <!-- Décor : Village de départ (flat design : aplats sans contours, volumes en deux tons) -->
                             <g id="decor-village">
-                                <!-- Place pavée du village -->
-                                <ellipse cx="42" cy="225" rx="36" ry="15" fill="#e8cca8" opacity="0.7"/>
-                                <ellipse cx="42" cy="225" rx="33" ry="13" fill="#d9b68c" opacity="0.35" stroke="#a88458" stroke-dasharray="2 3" stroke-width="0.8"/>
+                                <!-- Place du village -->
+                                <ellipse cx="40" cy="227" rx="36" ry="11" fill="#e9d3b0"/>
+                                <ellipse cx="40" cy="227" rx="26" ry="7" fill="#f3e3c8"/>
 
-                                <!-- Maison 1 : L'Auberge du Départ (Arrière-gauche) -->
-                                <g transform="translate(14, 182)">
-                                    <!-- Cheminée avec fumée douce -->
-                                    <rect x="16" y="2" width="3.5" height="7" fill="#7d8a97" stroke="#525d67" stroke-width="0.6"/>
-                                    <circle cx="17.8" cy="-1.5" r="1.8" fill="#ffffff" opacity="0.6"/>
-                                    <circle cx="19.5" cy="-5" r="2.3" fill="#ffffff" opacity="0.4"/>
-                                    <circle cx="21" cy="-9" r="2.8" fill="#ffffff" opacity="0.2"/>
+                                <!-- Arbre rond en arrière-plan -->
+                                <rect x="69" y="196" width="2.5" height="8" fill="#8d6e63"/>
+                                <circle cx="70.2" cy="193" r="7" fill="#4caf50"/>
+                                <path d="M 70.2 186 A 7 7 0 0 1 70.2 200 Z" fill="#43a047"/>
 
-                                    <!-- Murs avec soubassement pierre & colombages -->
-                                    <rect x="0" y="8" width="22" height="16" fill="#eed9c4" stroke="#684624" stroke-width="0.8" rx="1"/>
-                                    <rect x="0" y="20" width="22" height="4" fill="#9ca3af" stroke="#684624" stroke-width="0.6"/>
-                                    <line x1="11" y1="8" x2="11" y2="20" stroke="#8b5a2b" stroke-width="0.8"/>
-                                    <line x1="0" y1="14" x2="22" y2="14" stroke="#8b5a2b" stroke-width="0.6"/>
-
-                                    <!-- Toit mansardé tuiles rouges -->
-                                    <polygon points="-3,8 11,-1 25,8" fill="#c04928" stroke="#7c2e1b" stroke-width="0.8"/>
-                                    <!-- Lucarne ronde -->
-                                    <circle cx="11" cy="4" r="2" fill="#ffeb99" stroke="#7c2e1b" stroke-width="0.6"/>
-                                    <line x1="11" y1="2" x2="11" y2="6" stroke="#7c2e1b" stroke-width="0.5"/>
-                                    <!-- Fenêtres lumineuses -->
-                                    <rect x="2.5" y="10" width="4" height="4" fill="#ffe066" stroke="#684624" stroke-width="0.5"/>
-                                    <rect x="15.5" y="10" width="4" height="4" fill="#ffe066" stroke="#684624" stroke-width="0.5"/>
-                                    <!-- Porte en bois voutée -->
-                                    <path d="M 8 24 L 8 18 A 3 3 0 0 1 14 18 L 14 24 Z" fill="#684624"/>
-                                    <circle cx="9.5" cy="21" r="0.5" fill="#ffe066"/>
+                                <!-- Maison 1 : l'auberge (arrière) -->
+                                <g transform="translate(14, 184)">
+                                    <circle cx="20" cy="-3" r="2" fill="#ffffff" opacity="0.7"/>
+                                    <circle cx="22" cy="-7.5" r="2.6" fill="#ffffff" opacity="0.45"/>
+                                    <rect x="17.5" y="1" width="4" height="8" fill="#8d6e63"/>
+                                    <rect x="0" y="10" width="24" height="16" fill="#f8ead6"/>
+                                    <rect x="16" y="10" width="8" height="16" fill="#ead5b8"/>
+                                    <polygon points="-3,11 12,-1 27,11" fill="#e0603f"/>
+                                    <polygon points="12,-1 27,11 12,11" fill="#c24a2c"/>
+                                    <circle cx="12" cy="5" r="2" fill="#ffd54f"/>
+                                    <rect x="3" y="14" width="4.5" height="4.5" rx="0.8" fill="#ffd54f"/>
+                                    <rect x="18" y="14" width="4" height="4.5" rx="0.8" fill="#ffca28"/>
+                                    <path d="M 9 26 L 9 20 A 3 3 0 0 1 15 20 L 15 26 Z" fill="#8d5a3b"/>
                                 </g>
 
-                                <!-- Maison 2 : Chaumière du Voyageur (Gauche au premier plan) -->
-                                <g transform="translate(2, 210)">
-                                    <rect x="0" y="7" width="16" height="13" fill="#e2c8a2" stroke="#684624" stroke-width="0.8" rx="1"/>
-                                    <polygon points="-2,7 8,-1 18,7" fill="#486b88" stroke="#2c445a" stroke-width="0.8"/>
-                                    <rect x="2.5" y="10" width="3.5" height="3.5" fill="#ffe066" stroke="#684624" stroke-width="0.5"/>
-                                    <rect x="9" y="11" width="5" height="9" fill="#583416"/>
-                                    <rect x="2" y="14" width="4.5" height="1.5" fill="#8b5a2b"/>
-                                    <circle cx="3" cy="13.5" r="0.8" fill="#e11d48"/>
-                                    <circle cx="4.5" cy="13.5" r="0.8" fill="#fbbf24"/>
-                                    <circle cx="6" cy="13.5" r="0.8" fill="#38bdf8"/>
+                                <!-- Maison 2 : la chaumière (premier plan) -->
+                                <g transform="translate(2, 208)">
+                                    <rect x="0" y="8" width="18" height="13" fill="#fdf1e0"/>
+                                    <rect x="12" y="8" width="6" height="13" fill="#efdcc3"/>
+                                    <polygon points="-2,9 9,0 20,9" fill="#4f83a8"/>
+                                    <polygon points="9,0 20,9 9,9" fill="#3d6c8e"/>
+                                    <rect x="2.5" y="11.5" width="3.5" height="3.5" rx="0.6" fill="#ffd54f"/>
+                                    <rect x="8" y="14" width="4.5" height="7" rx="1" fill="#6d4c41"/>
                                 </g>
 
-                                <!-- Puits de village sculpté en pierre -->
-                                <g transform="translate(24, 226)">
-                                    <ellipse cx="4.5" cy="7.5" rx="4.5" ry="2" fill="#525d67"/>
-                                    <rect x="0" y="4" width="9" height="5" fill="#7d8a97" stroke="#4b5563" stroke-width="0.6" rx="1"/>
-                                    <line x1="1.5" y1="4" x2="1.5" y2="0" stroke="#684624" stroke-width="0.8"/>
-                                    <line x1="7.5" y1="4" x2="7.5" y2="0" stroke="#684624" stroke-width="0.8"/>
-                                    <polygon points="0,1 4.5,-2 9,1" fill="#c04928" stroke="#7c2e1b" stroke-width="0.6"/>
-                                    <circle cx="4.5" cy="1.5" r="0.8" fill="#ffffff"/>
+                                <!-- Maison 3 : petite maison (arrière-gauche) -->
+                                <g transform="translate(-17, 186)">
+                                    <rect x="0" y="7" width="14" height="11" fill="#f8ead6"/>
+                                    <rect x="9" y="7" width="5" height="11" fill="#ead5b8"/>
+                                    <polygon points="-2,8 7,0 16,8" fill="#489e96"/>
+                                    <polygon points="7,0 16,8 7,8" fill="#3a857e"/>
+                                    <rect x="2.5" y="10" width="3.5" height="3.5" rx="0.6" fill="#ffd54f"/>
                                 </g>
 
-                                <!-- Panneau indicateur de route en bois -->
+                                <!-- Puits -->
+                                <g transform="translate(26, 224)">
+                                    <rect x="1.5" y="0" width="1" height="5" fill="#8d6e63"/>
+                                    <rect x="7.5" y="0" width="1" height="5" fill="#8d6e63"/>
+                                    <polygon points="0,1 5,-3 10,1" fill="#e0603f"/>
+                                    <polygon points="5,-3 10,1 5,1" fill="#c24a2c"/>
+                                    <rect x="0" y="5" width="10" height="5" rx="1.5" fill="#90a4ae"/>
+                                    <rect x="5" y="5" width="5" height="5" rx="1.5" fill="#78909c"/>
+                                </g>
+
+                                <!-- Buissons -->
+                                <circle cx="22" cy="231" r="3" fill="#66bb6a"/>
+                                <circle cx="25.5" cy="232" r="2.3" fill="#4caf50"/>
+                                <circle cx="62" cy="233" r="2.6" fill="#66bb6a"/>
+
+                                <!-- Panneau indicateur -->
                                 <g transform="translate(56, 232)">
-                                    <line x1="0" y1="6" x2="0" y2="0" stroke="#684624" stroke-width="1.2" stroke-linecap="round"/>
-                                    <polygon points="-1,0 6,0 8,2 6,4 -1,4" fill="#c49a6c" stroke="#684624" stroke-width="0.6"/>
-                                    <line x1="1" y1="2" x2="5" y2="2" stroke="#684624" stroke-width="0.6"/>
-                                 </g>
+                                    <rect x="-0.6" y="0" width="1.4" height="7" fill="#8d6e63"/>
+                                    <polygon points="-1,0 6,0 8,2 6,4 -1,4" fill="#d7a86e"/>
+                                </g>
                             </g>
 
                             <!-- Décor : Porte de Pierre au pied de la montagne -->
@@ -456,12 +497,12 @@ export class RoadmapManager {
                                 <polygon points="25,-8 37,-4 25,0" fill="#ff9d00"/>
                             </g>
 
-                            <!-- Sentier en lacets avec dégradé d'épaisseur fine & élégante (8.5px au village -> 3.5px au sommet) -->
-                            <path d="M 45 222 C 80 222, 100 205, 130 205" fill="none" stroke="url(#trail-gradient)" stroke-width="8.5" stroke-linecap="round"/>
-                            <path d="M 130 205 C 160 205, 180 206, 210 205" fill="none" stroke="url(#trail-gradient)" stroke-width="7.2" stroke-linecap="round"/>
-                            <path d="M 210 205 C 240 202, 265 188, 295 185" fill="none" stroke="url(#trail-gradient)" stroke-width="5.8" stroke-linecap="round"/>
-                            <path d="M 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138" fill="none" stroke="url(#trail-gradient)" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64" fill="none" stroke="url(#trail-gradient)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Sentier en lacets avec dégradé d'épaisseur fine & élégante (6.5px au village -> 4.2px au lac -> 3.2px au sommet) -->
+                            <path d="M 45 222 C 80 222, 100 205, 130 205" fill="none" stroke="url(#trail-gradient)" stroke-width="6.5" stroke-linecap="round"/>
+                            <path d="M 130 205 C 160 205, 180 206, 210 205" fill="none" stroke="url(#trail-gradient)" stroke-width="5.2" stroke-linecap="round"/>
+                            <path d="M 210 205 C 240 202, 265 188, 295 185" fill="none" stroke="url(#trail-gradient)" stroke-width="4.2" stroke-linecap="round"/>
+                            <path d="M 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138" fill="none" stroke="url(#trail-gradient)" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64" fill="none" stroke="url(#trail-gradient)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
 
                             <!-- Sentier Principal continu de référence (invisible, pour le calcul mathématique) -->
                             <path id="roadmap-trail" 
@@ -486,11 +527,11 @@ export class RoadmapManager {
                             <g id="player-avatar-marker">
                                 <!-- Bulle de dialogue Manga agrandie et bien lisible -->
                                 <g id="avatar-speech-bubble" transform="translate(0, 0)">
-                                    <rect x="-55" y="-66" width="110" height="23" rx="11.5" fill="#ffffff" stroke="#7c4004" stroke-width="1.4" filter="url(#pin-shadow)"/>
+                                    <rect id="avatar-speech-rect" x="-70" y="-79" width="140" height="36" rx="18" fill="#ffffff" stroke="#7c4004" stroke-width="1.4" filter="url(#pin-shadow)"/>
                                     <!-- Pointe dirigée vers le haut de la tête -->
-                                    <polygon points="-5,-43 5,-43 0,-36" fill="#ffffff"/>
-                                    <path d="M-5 -43 L0 -36 L5 -43" stroke="#7c4004" stroke-width="1.4" fill="none"/>
-                                    <text id="avatar-speech-text" x="0" y="-53.5" fill="#7c4004" font-size="9.5" font-weight="800" text-anchor="middle" dominant-baseline="central" font-family="'Nunito', sans-serif">
+                                    <polygon points="-6,-43.7 6,-43.7 0,-36" fill="#ffffff"/>
+                                    <path d="M-6 -43 L0 -36 L6 -43" stroke="#7c4004" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
+                                    <text id="avatar-speech-text" x="0" y="-61" fill="#7c4004" font-size="17" font-weight="700" text-anchor="middle" dominant-baseline="central" font-family="'Baloo 2', 'Almarai', sans-serif">
                                         ${this.getSpeechBubbleText(totalPoints)}
                                     </text>
                                 </g>
@@ -601,6 +642,7 @@ export class RoadmapManager {
             }
             if (activeTrail) activeTrail.style.strokeDasharray = `${startProgress * totalLength} ${totalLength}`;
             if (bubble) bubble.classList.add('avatar-speech-bubble');
+            document.fonts.ready.then(() => this.fitSpeechBubble());
             return;
         }
 
@@ -654,6 +696,7 @@ export class RoadmapManager {
                     bubble.style.opacity = '1';
                     bubble.classList.add('avatar-speech-bubble');
                 }
+                document.fonts.ready.then(() => this.fitSpeechBubble());
             }
         };
 
