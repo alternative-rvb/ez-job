@@ -8,6 +8,8 @@ import { domManager } from '../ui/dom.js';
 import { launchConfetti } from '../core/utils.js';
 import { T } from '../core/theme.js';
 import { renderAvatarHeadSvg } from '../ui/avatars.js';
+import { playerManager } from '../core/player.js';
+import { getCharacterId, getAnswerLine } from '../core/dialogues.js';
 
 export class QuestionManager {
     constructor(onQuizComplete) {
@@ -753,7 +755,7 @@ export class QuestionManager {
         const headSection = mood
             ? `<div class="avatar-reaction-wrap mb-4" aria-hidden="true">
                     <div class="avatar-reaction avatar-reaction-${mood}">${renderAvatarHeadSvg(null, mood === 'down' ? 'sad' : 'happy')}</div>
-                    <div class="avatar-bubble avatar-bubble-${mood}">${mood === 'up' ? 'Vrai !' : 'Faux !'}</div>
+                    <div class="avatar-bubble avatar-bubble-${mood}"><strong>${mood === 'up' ? 'Vrai !' : 'Faux !'}</strong><span>${getAnswerLine(getCharacterId(playerManager.getAvatarConfig()), mood === 'up')}</span></div>
                 </div>`
             : `<div class="text-7xl mb-6">${icon}</div>`;
         const nextArrow = quizState.isInfiniteTime()

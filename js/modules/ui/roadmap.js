@@ -8,6 +8,7 @@ import { rewardsManager } from '../managers/rewards-manager.js';
 import { playerManager } from '../core/player.js';
 import { AVATARS, renderAvatarSvg, renderAvatarHeadSvg } from './avatars.js';
 import { avatarCustomizerModal } from './avatar-modal.js';
+import { getCharacterId, getMapLine } from '../core/dialogues.js';
 
 export class RoadmapManager {
     constructor() {
@@ -87,14 +88,7 @@ export class RoadmapManager {
      */
     getSpeechBubbleText(totalPoints) {
         if (this.customDialogue) return this.customDialogue;
-        if (totalPoints >= 100) return 'Citadelle atteinte !';
-        if (totalPoints >= 80) return 'Le Sommet est proche !';
-        if (totalPoints >= 60) return 'Plus que la Crête !';
-        if (totalPoints >= 40) return 'L\'Ascension commence !';
-        if (totalPoints >= 25) return 'Cap sur la Porte !';
-        if (totalPoints >= 10) return 'Vers le Lac !';
-        if (totalPoints > 0) return 'En route vers la Forêt !';
-        return 'C\'est parti !';
+        return getMapLine(getCharacterId(playerManager.getAvatarConfig()), totalPoints);
     }
 
     /**
