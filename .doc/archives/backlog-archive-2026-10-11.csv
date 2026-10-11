@@ -1,0 +1,2 @@
+id,priorite,tache_principale,type,description,date_debut,date_fin
+1,3 normal 🔵,Doc agents : Fusion AGENTS.md/CLAUDE.md et mise en place du backlog CSV,doc,"CLAUDE.md réduit à @AGENTS.md. AGENTS.md fusionné puis allégé (42,6k vers 17,4k caractères) : contenu dérivable du code retiré, format quiz renvoyé vers .doc/quiz-format-specification.md (complété avec acceptedAnswers, createdAt, summaryUrl), charte en lien simple. Ajout du suivi par .doc/backlog.csv et .doc/archives/.",2026-10-11,2026-10-11

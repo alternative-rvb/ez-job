@@ -34,6 +34,8 @@ Les quiz de Job-EZ sont définis dans des fichiers JSON situés dans `js/data/`.
 | `imageUrl` | `string` | URL de l'image de couverture | `""` |
 | `spoilerMode` | `boolean` | Active le floutage des images | `false` |
 | `tag` | `array<string>` | Tags additionnels pour filtrage | `[]` |
+| `createdAt` | `string` | Date de création `YYYY-MM-DD`. Les quiz sont triés du plus récent au plus ancien, et ceux de moins de 30 jours affichent un badge "NEW" | aucune |
+| `summaryUrl` | `string` | Lien vers une page de résumé HTML statique dans `/resumes/` (ex. `/resumes/fantome-canterville-chapitre-1.html`), affiché en bouton "Lire le résumé" sur la carte du quiz et ouvert dans un nouvel onglet. Rendu conditionnel dans `js/modules/managers/quiz-selector.js` | aucune |
 | `icon` | `string` | Classe Bootstrap Icons | `"bi-question-circle"` |
 | `color` | `string` | Classes Tailwind pour gradient | `"from-blue-500 to-purple-600"` |
 
@@ -78,8 +80,10 @@ Les quiz de Job-EZ sont définis dans des fichiers JSON situés dans `js/data/`.
 |-----------|------|-------------|-------------|
 | `id` | `number` | ❌ Non | Identifiant unique (optionnel, pour référence) |
 | `question` | `string` | ✅ Oui | Texte de la question |
-| `choices` | `array<string>` | ✅ Oui | Liste de 2 à 6 choix possibles |
-| `correctAnswer` | `string` | ✅ Oui | Réponse correcte (doit être dans `choices`) |
+| `choices` | `array<string>` | ⚠️ QCM | Liste de 2 à 6 choix possibles |
+| `correctAnswer` | `string` | ⚠️ QCM | Réponse correcte (doit être dans `choices`) |
+| `acceptedAnswers` | `array<string>` | ⚠️ Saisie libre | Réponses acceptées pour une question à saisie libre (recommandé), ex. `["Trousers", "Pants"]` |
+| `answer` | `string` | ⚠️ Saisie libre | Réponse unique acceptée (déprécié, utiliser `acceptedAnswers`) |
 | `imageUrl` | `string` | ❌ Non | URL de l'image illustrative |
 
 ### Contraintes
@@ -88,6 +92,8 @@ Les quiz de Job-EZ sont définis dans des fichiers JSON situés dans `js/data/`.
 - **Réponse correcte** : Doit correspondre EXACTEMENT à l'un des éléments de `choices`
 - **Images** : Formats supportés : `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`, `.svg`
 - **Chemins d'images** : Absolus depuis la racine (`/images/...`)
+- **Type de question** : une question a SOIT `choices` + `correctAnswer` (QCM), SOIT `acceptedAnswers`/`answer` (saisie libre), jamais les deux. Les deux types peuvent se mélanger dans un même quiz
+- **Saisie libre** : validation insensible à la casse et aux espaces de début et de fin, en temps réel (le champ passe au vert), avec soumission automatique 1 seconde après une saisie correcte
 
 ---
 
