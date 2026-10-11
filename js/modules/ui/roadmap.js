@@ -346,7 +346,7 @@ export class RoadmapManager {
                             <path d="M 448 64 L 460 64 Q 466 65 469 72 L 486 110 L 478 104 L 470 117 L 466 110 L 466 104 L 455 80 Z" fill="#dbe7f0" opacity="0.95"/>
 
                             <!-- Terrasse enneigée sous le château -->
-                            <ellipse cx="440" cy="65" rx="27" ry="3.5" fill="#f4f8fb" stroke="#c3d3e2" stroke-width="0.6"/>
+                            <ellipse cx="440" cy="65" rx="27" ry="3.5" fill="#f4f8fb"/>
 
                             <!-- Collines verdoyantes étagées au premier plan (Couvrent toute la largeur de -40 à 580 et jusqu'en bas Y=320) -->
                             <path d="M -40 175 Q 120 135 250 170 T 580 155 L 580 320 L -40 320 Z" fill="#6ba776"/>
@@ -369,28 +369,31 @@ export class RoadmapManager {
                                 <circle cx="368" cy="220" r="1.5" fill="#20502e"/>
                             </g>
 
-                            <!-- Décor : Champs de blé (flat design, sillons parallèles) -->
+                            <!-- Décor : Champs sous la route (plaqués sur un relief bombé, sillons courbes, perspective vers le bas) -->
                             <g id="decor-fields">
-                                <polygon points="184,172 232,169 238,182 188,186" fill="#f2c14e"/>
-                                <line x1="185" y1="175.5" x2="233.5" y2="172.2" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
-                                <line x1="186" y1="179" x2="235" y2="175.5" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
-                                <line x1="187" y1="182.5" x2="236.5" y2="178.8" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
-                                <polygon points="82,247 150,242 161,262 88,269" fill="#f2c14e"/>
-                                <line x1="83" y1="250.7" x2="151.8" y2="245.3" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
-                                <line x1="84" y1="254.3" x2="153.7" y2="248.7" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
-                                <line x1="85" y1="258" x2="155.5" y2="252" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
-                                <line x1="86" y1="261.7" x2="157.3" y2="255.3" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
-                                <line x1="87" y1="265.3" x2="159.2" y2="258.7" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
-                                <polygon points="154,240 214,236 225,254 165,260" fill="#c5d86d"/>
-                                <line x1="156.2" y1="244" x2="216.2" y2="239.6" stroke="#a6bd52" stroke-width="1.1" stroke-linecap="round"/>
-                                <line x1="158.4" y1="248" x2="218.4" y2="243.2" stroke="#a6bd52" stroke-width="1.1" stroke-linecap="round"/>
-                                <line x1="160.6" y1="252" x2="220.6" y2="246.8" stroke="#a6bd52" stroke-width="1.1" stroke-linecap="round"/>
-                                <line x1="162.8" y1="256" x2="222.8" y2="250.4" stroke="#a6bd52" stroke-width="1.1" stroke-linecap="round"/>
+                                <path d="M 84 235.6 L 87 235.3 L 90 235.1 L 93 234.8 L 96 234.6 L 99 234.3 L 102 234.1 L 105 233.9 L 108 233.7 L 111 233.5 L 114 233.3 L 117 233.2 L 120 233 L 123 232.9 L 126 232.7 L 124 259.6 L 120.4 260 L 116.9 260.3 L 113.3 260.7 L 109.7 261.2 L 106.1 261.7 L 102.6 262.2 L 99 262.7 L 95.4 263.2 L 91.9 263.8 L 88.3 264.5 L 84.7 265.1 L 81.1 265.8 L 77.6 266.6 L 74 267.3 Z" fill="#f2c14e"/>
+                                <path d="M 84 238.5 L 86.9 238.2 L 89.9 237.9 L 92.8 237.6 L 95.7 237.4 L 98.6 237.1 L 101.5 236.9 L 104.4 236.7 L 107.3 236.4 L 110.2 236.2 L 113.2 236 L 116.1 235.9 L 119 235.7 L 121.9 235.5 L 124.8 235.4" fill="none" stroke="#dca23a" stroke-width="0.8" stroke-linecap="round"/>
+                                <path d="M 82.6 242.9 L 85.6 242.5 L 88.6 242.2 L 91.6 241.9 L 94.6 241.6 L 97.6 241.3 L 100.6 241 L 103.6 240.7 L 106.6 240.5 L 109.5 240.2 L 112.5 240 L 115.5 239.8 L 118.5 239.6 L 121.5 239.4 L 124.5 239.2" fill="none" stroke="#dca23a" stroke-width="0.9" stroke-linecap="round"/>
+                                <path d="M 80.9 248.1 L 84 247.7 L 87.1 247.2 L 90.2 246.9 L 93.3 246.5 L 96.4 246.1 L 99.5 245.8 L 102.6 245.5 L 105.7 245.2 L 108.7 244.9 L 111.8 244.6 L 114.9 244.4 L 118 244.1 L 121.1 243.9 L 124.2 243.7" fill="none" stroke="#dca23a" stroke-width="1" stroke-linecap="round"/>
+                                <path d="M 79.1 253.9 L 82.3 253.4 L 85.5 252.9 L 88.7 252.4 L 91.9 252 L 95.1 251.6 L 98.3 251.2 L 101.5 250.8 L 104.7 250.4 L 107.8 250.1 L 111 249.7 L 114.2 249.4 L 117.4 249.2 L 120.6 248.9 L 123.8 248.7" fill="none" stroke="#dca23a" stroke-width="1.1" stroke-linecap="round"/>
+                                <path d="M 77.1 260.2 L 80.4 259.6 L 83.7 259.1 L 87 258.5 L 90.3 258 L 93.7 257.5 L 97 257 L 100.3 256.5 L 103.6 256.1 L 106.9 255.7 L 110.2 255.3 L 113.5 254.9 L 116.8 254.6 L 120.1 254.3 L 123.4 254" fill="none" stroke="#dca23a" stroke-width="1.3" stroke-linecap="round"/>
+                                <path d="M 129 230.6 L 132.5 230.4 L 136 230.3 L 139.5 230.2 L 143 230.2 L 146.5 230.1 L 150 230.1 L 153.5 230 L 157 230 L 160.5 230 L 164 230 L 167.5 230 L 171 230.1 L 174.5 230.1 L 178 230.2 L 183 266.8 L 179 266.5 L 175 266.3 L 171 266.2 L 167 266.1 L 163 266 L 159 266 L 155 266 L 151 266.1 L 147 266.2 L 143 266.4 L 139 266.6 L 135 266.9 L 131 267.2 L 127 267.6 Z" fill="#c5d86d"/>
+                                <path d="M 129.8 233.5 L 133.2 233.3 L 136.6 233.2 L 140 233.1 L 143.4 233 L 146.8 233 L 150.2 232.9 L 153.6 232.9 L 157 232.9 L 160.4 232.9 L 163.8 232.9 L 167.2 232.9 L 170.6 232.9 L 174 233 L 177.4 233.1" fill="none" stroke="#a6bd52" stroke-width="0.8" stroke-linecap="round"/>
+                                <path d="M 129.6 237.8 L 133.1 237.6 L 136.5 237.5 L 140 237.4 L 143.4 237.3 L 146.9 237.2 L 150.3 237.1 L 153.8 237.1 L 157.2 237.1 L 160.7 237.1 L 164.2 237.1 L 167.6 237.1 L 171.1 237.2 L 174.5 237.2 L 178 237.3" fill="none" stroke="#a6bd52" stroke-width="0.8" stroke-linecap="round"/>
+                                <path d="M 129.3 242.8 L 132.9 242.6 L 136.4 242.4 L 139.9 242.3 L 143.4 242.2 L 147 242.1 L 150.5 242 L 154 242 L 157.5 242 L 161 242 L 164.6 242 L 168.1 242 L 171.6 242.1 L 175.1 242.2 L 178.7 242.3" fill="none" stroke="#a6bd52" stroke-width="0.9" stroke-linecap="round"/>
+                                <path d="M 129 248.4 L 132.6 248.1 L 136.2 248 L 139.8 247.8 L 143.4 247.7 L 147 247.6 L 150.6 247.5 L 154.2 247.4 L 157.8 247.4 L 161.4 247.4 L 165 247.4 L 168.6 247.5 L 172.2 247.5 L 175.8 247.6 L 179.4 247.8" fill="none" stroke="#a6bd52" stroke-width="1" stroke-linecap="round"/>
+                                <path d="M 128.7 254.4 L 132.4 254.1 L 136.1 253.9 L 139.7 253.7 L 143.4 253.6 L 147.1 253.4 L 150.8 253.3 L 154.5 253.3 L 158.1 253.2 L 161.8 253.2 L 165.5 253.3 L 169.2 253.3 L 172.9 253.4 L 176.5 253.6 L 180.2 253.7" fill="none" stroke="#a6bd52" stroke-width="1.2" stroke-linecap="round"/>
+                                <path d="M 128.4 260.8 L 132.1 260.5 L 135.9 260.2 L 139.7 260 L 143.4 259.8 L 147.2 259.7 L 151 259.6 L 154.7 259.5 L 158.5 259.5 L 162.3 259.5 L 166 259.5 L 169.8 259.6 L 173.6 259.7 L 177.3 259.9 L 181.1 260" fill="none" stroke="#a6bd52" stroke-width="1.3" stroke-linecap="round"/>
+                                <path d="M 181 233.3 L 184.6 233.4 L 188.3 233.5 L 191.9 233.7 L 195.6 233.8 L 199.2 234 L 202.9 234.2 L 206.5 234.4 L 210.1 234.6 L 213.8 234.9 L 217.4 235.1 L 221.1 235.4 L 224.7 235.7 L 228.4 236 L 232 236.4 L 246 264.9 L 241.7 264.1 L 237.4 263.3 L 233.1 262.5 L 228.9 261.7 L 224.6 261 L 220.3 260.4 L 216 259.8 L 211.7 259.2 L 207.4 258.7 L 203.1 258.3 L 198.9 257.8 L 194.6 257.4 L 190.3 257.1 L 186 256.8 Z" fill="#f5d27a"/>
+                                <path d="M 182.6 236.2 L 186.2 236.3 L 189.8 236.5 L 193.4 236.6 L 196.9 236.8 L 200.5 237 L 204.1 237.2 L 207.7 237.5 L 211.3 237.7 L 214.8 238 L 218.4 238.3 L 222 238.6 L 225.6 238.9 L 229.1 239.3 L 232.7 239.6" fill="none" stroke="#e2b450" stroke-width="0.8" stroke-linecap="round"/>
+                                <path d="M 183.5 240.4 L 187.2 240.6 L 190.9 240.8 L 194.6 241 L 198.3 241.2 L 202 241.4 L 205.7 241.7 L 209.4 242 L 213.1 242.3 L 216.8 242.6 L 220.5 243 L 224.2 243.4 L 227.9 243.8 L 231.6 244.2 L 235.3 244.6" fill="none" stroke="#e2b450" stroke-width="0.9" stroke-linecap="round"/>
+                                <path d="M 184.6 245.4 L 188.4 245.6 L 192.2 245.8 L 196.1 246.1 L 199.9 246.3 L 203.7 246.6 L 207.6 247 L 211.4 247.3 L 215.2 247.7 L 219.1 248.1 L 222.9 248.5 L 226.7 249 L 230.5 249.5 L 234.4 250 L 238.2 250.6" fill="none" stroke="#e2b450" stroke-width="1.1" stroke-linecap="round"/>
+                                <path d="M 185.7 250.9 L 189.7 251.2 L 193.7 251.4 L 197.7 251.7 L 201.7 252.1 L 205.6 252.4 L 209.6 252.8 L 213.6 253.3 L 217.6 253.8 L 221.6 254.3 L 225.6 254.8 L 229.5 255.4 L 233.5 256 L 237.5 256.6 L 241.5 257.3" fill="none" stroke="#e2b450" stroke-width="1.2" stroke-linecap="round"/>
                                 <!-- Bottes de foin -->
-                                <circle cx="104" cy="256" r="3.2" fill="#e0a93b"/>
-                                <path d="M 104 252.8 A 3.2 3.2 0 0 1 104 259.2 Z" fill="#c98f2a"/>
-                                <circle cx="128" cy="252" r="2.8" fill="#e0a93b"/>
-                                <path d="M 128 249.2 A 2.8 2.8 0 0 1 128 254.8 Z" fill="#c98f2a"/>
+                                <circle cx="97" cy="249.8" r="3.4" fill="#e0a93b"/>
+                                <path d="M 97 246.4 A 3.4 3.4 0 0 1 97 253.2 Z" fill="#c98f2a"/>
+                                <circle cx="113" cy="240.8" r="2.8" fill="#e0a93b"/>
+                                <path d="M 113 238 A 2.8 2.8 0 0 1 113 243.6 Z" fill="#c98f2a"/>
                             </g>
 
                             <!-- Décor : Forêt enchantée (flat design, deux rangs pour la profondeur) -->
@@ -479,14 +482,20 @@ export class RoadmapManager {
 
                             <!-- Décor : Village de départ (flat design : aplats sans contours, volumes en deux tons) -->
                             <g id="decor-village">
-                                <!-- Chemin de terre reliant l'auberge à la petite place au départ du sentier -->
-                                <path d="M 23.5 210 C 24 215, 28 219, 35 222.5 L 39 220.5 C 33 218, 30 214, 29 210 Z" fill="#e2c79c"/>
-                                <ellipse cx="42" cy="224.5" rx="13" ry="5" fill="#e2c79c"/>
-                                <ellipse cx="42" cy="224.5" rx="9" ry="3.2" fill="#edd9b5"/>
-                                <g fill="#d4b483">
-                                    <ellipse cx="36" cy="225.5" rx="1.3" ry="0.6"/>
-                                    <ellipse cx="47" cy="223.5" rx="1.2" ry="0.6"/>
-                                    <ellipse cx="50" cy="226" rx="1.1" ry="0.5"/>
+                                <!-- Terre battue sous le village : contour ondulé qui suit la pente, touffes d'herbe en lisière -->
+                                <path d="M -20 207 C -14 201, -4 200, 6 203.5 C 14 206, 22 207.5, 31 208.5 C 42 209.5, 55 212, 65 216.5 C 74 220.5, 79 227, 73 232 C 67 237, 54 238.5, 41 237.5 C 30 236.8, 19 238.8, 8 236.5 C -2 234.5, -14 233.5, -19 228 C -23 223, -24 212, -20 207 Z" fill="#dcc08f"/>
+                                <path d="M -12 213 C -6 208, 4 208, 12 210.5 C 22 213.5, 36 213, 48 216 C 58 218.5, 67 222, 66 227.5 C 65 232, 52 233.5, 40 232.8 C 28 232, 16 233.5, 6 231.5 C -4 229.5, -13 227, -14 221 C -15 217, -14.5 215, -12 213 Z" fill="#e8d2a8"/>
+                                <g fill="#cdb07c">
+                                    <ellipse cx="34" cy="226" rx="1.5" ry="0.7"/>
+                                    <ellipse cx="46" cy="229.5" rx="1.3" ry="0.6"/>
+                                    <ellipse cx="54" cy="224" rx="1.4" ry="0.7"/>
+                                    <ellipse cx="-4" cy="222" rx="1.3" ry="0.6"/>
+                                </g>
+                                <g fill="#599965">
+                                    <path d="M 66 233.5 L 67.5 229.5 L 69 233 L 70.5 230 L 71.5 233.5 Z"/>
+                                    <path d="M 22 238.5 L 23.3 235 L 24.6 238 L 26 235.3 L 27 238.6 Z"/>
+                                    <path d="M -17 230 L -15.8 226.5 L -14.6 229.5 L -13.3 227 L -12.4 230.3 Z"/>
+                                    <path d="M 56 214 L 57.2 210.8 L 58.4 213.6 L 59.6 211.2 L 60.4 214.4 Z"/>
                                 </g>
 
                                 <!-- Arbre rond en arrière-plan -->
@@ -560,20 +569,27 @@ export class RoadmapManager {
 
                             <!-- Décor : Citadelle Céleste / Château royal (Parfaitement posé sur le plateau sommital) -->
                             <g transform="translate(415, 16)">
+                                <!-- NOTE: flat design, aucun contour ; volumes rendus par une moitié droite ombrée -->
                                 <!-- Tour Gauche -->
-                                <rect x="4" y="24" width="10" height="24" fill="#f0f5fa" stroke="#b4c7d9" stroke-width="1"/>
-                                <polygon points="3,24 9,12 15,24" fill="#489e96"/>
-                                <rect x="7" y="30" width="4" height="6" rx="1" fill="#32516d"/>
+                                <rect x="4" y="24" width="10" height="24" fill="#eef3f8"/>
+                                <rect x="9" y="24" width="5" height="24" fill="#d9e3ec"/>
+                                <polygon points="3,24 9,12 9,24" fill="#489e96"/>
+                                <polygon points="9,12 15,24 9,24" fill="#3a857e"/>
+                                <rect x="7" y="30" width="4" height="6" rx="2" fill="#32516d"/>
 
                                 <!-- Tour Droite -->
-                                <rect x="36" y="24" width="10" height="24" fill="#f0f5fa" stroke="#b4c7d9" stroke-width="1"/>
-                                <polygon points="35,24 41,12 47,24" fill="#489e96"/>
-                                <rect x="39" y="30" width="4" height="6" rx="1" fill="#32516d"/>
+                                <rect x="36" y="24" width="10" height="24" fill="#eef3f8"/>
+                                <rect x="41" y="24" width="5" height="24" fill="#d9e3ec"/>
+                                <polygon points="35,24 41,12 41,24" fill="#489e96"/>
+                                <polygon points="41,12 47,24 41,24" fill="#3a857e"/>
+                                <rect x="39" y="30" width="4" height="6" rx="2" fill="#32516d"/>
 
                                 <!-- Corps Principal / Donjon Central -->
-                                <rect x="12" y="16" width="26" height="32" fill="#ffffff" stroke="#b4c7d9" stroke-width="1.2"/>
-                                <!-- Créneaux centraux -->
-                                <polygon points="12,16 25,2 38,16" fill="#e07e00"/>
+                                <rect x="12" y="16" width="26" height="32" fill="#ffffff"/>
+                                <rect x="25" y="16" width="13" height="32" fill="#e6edf3"/>
+                                <!-- Toit du donjon -->
+                                <polygon points="12,16 25,2 25,16" fill="#f08c1a"/>
+                                <polygon points="25,2 38,16 25,16" fill="#d47400"/>
                                 
                                 <!-- Grande Porte Royale / Arche -->
                                 <path d="M 20 48 L 20 36 A 5 5 0 0 1 30 36 L 30 48 Z" fill="#583416"/>
