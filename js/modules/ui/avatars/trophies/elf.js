@@ -144,15 +144,17 @@ export const ELF_STYLES = {
                 <!-- Volume de base du crâne arrière -->
                 <ellipse cx="50" cy="26" rx="35" ry="30" fill="${color}"/>
                 <!-- Chevelure noble courte s'arrêtant aux épaules/nuque -->
-                <path d="M 17,34 C 11,22 15,8 25,0 C 35,-6 65,-6 75,0 C 85,8 89,22 83,34 C 88,44 85,54 78,60 C 74,56 73,50 72,44 C 67,54 60,60 50,62 C 40,60 33,54 28,44 C 27,50 26,56 22,60 C 15,54 12,44 17,34 Z" fill="${color}"/>
+                <path d="M 17,34 C 11,22 15,8 25,0 C 35,-6 65,-6 75,0 C 85,8 89,22 83,34 C 85,41 80,46 72,44 C 67,54 60,60 50,62 C 40,60 33,54 28,44 C 27,46 21,41 17,34 Z" fill="${color}"/>
+                <!-- Nappe de mèches derrière la nuque, arrêtée au sommet des épaules, bouts pointus à angle obtus -->
+                <path d="M 25,40 C 22,50 25,58 29,64 L 33,58 L 37,66 L 42,59 L 46,67 L 50,60 L 54,67 L 58,59 L 63,66 L 67,58 L 71,64 C 75,58 78,50 75,40 Z" fill="${color}"/>
                 <!-- Mèches dorsales superposées plus courtes et effilées -->
                 <path d="M 28,42 C 24,50 26,58 32,63 C 34,56 34,48 32,42 Z" fill="${color}" opacity="0.95"/>
                 <path d="M 72,42 C 76,50 74,58 68,63 C 66,56 66,48 68,42 Z" fill="${color}" opacity="0.95"/>
                 <path d="M 43,48 C 42,55 45,61 50,64 C 55,61 58,55 57,48 Z" fill="${color}" opacity="0.9"/>
                 <!-- Mèches d'épaule courtes encadrant la nuque -->
-                <path d="M 20,38 C 15,46 16,54 21,60 C 23,56 24,50 23,44 Z" fill="${color}" opacity="0.9"/>
+                <path d="${fuseau('M 22,37 C 18.5,46 19.5,55 23.5,63', 4.2, 14)}" fill="${color}"/>
                 <path d="M 24,42 C 21,48 21,55 25,62 C 27,57 27,51 26,44 Z" fill="${color}"/>
-                <path d="M 80,38 C 85,46 84,54 79,60 C 77,56 76,50 77,44 Z" fill="${color}" opacity="0.9"/>
+                <path d="${fuseau('M 78,37 C 81.5,46 80.5,55 76.5,63', 4.2, 14)}" fill="${color}"/>
                 <path d="M 76,42 C 79,48 79,55 75,62 C 73,57 73,51 74,44 Z" fill="${color}"/>
             </g>`,
         getHairFront: (color) => `
@@ -170,11 +172,11 @@ export const ELF_STYLES = {
                          C 30,25 27,28 25,28 
                          C 26,36 26,46 24,54 
                          C 22,48 20,38 20,30 Z" fill="${color}"/>
-                <!-- Mèches fines de tempes encadrant délicatement les joues -->
-                <path d="M 22,34 C 19,42 20,50 22,58 C 24,52 24,44 23,36 Z" fill="${color}"/>
-                <path d="M 25,32 C 24,40 25,48 27,54 C 28,48 28,40 27,34 Z" fill="${color}" opacity="0.85"/>
-                <path d="M 78,34 C 81,42 80,50 78,58 C 76,52 76,44 77,36 Z" fill="${color}"/>
-                <path d="M 75,32 C 76,40 75,48 73,54 C 72,48 72,40 73,34 Z" fill="${color}" opacity="0.85"/>
+                <!-- Mèches de tempes devant les oreilles : traits en fuseau fins -->
+                <path d="${fuseau('M 22,34 C 19,42 20,50 22,58', 2.2, 12)}" fill="${color}"/>
+                <path d="${fuseau('M 25,32 C 24,40 25,48 27,54', 1.6, 12)}" fill="${color}"/>
+                <path d="${fuseau('M 78,34 C 81,42 80,50 78,58', 2.2, 12)}" fill="${color}"/>
+                <path d="${fuseau('M 75,32 C 76,40 75,48 73,54', 1.6, 12)}" fill="${color}"/>
                 <!-- Mèches supérieures souples et affinées sur le sommet -->
                 <path d="M 34,9 C 40,3 46,-1 50,-2 C 54,-1 60,3 66,9 C 60,6 55,6 50,7 C 45,6 40,6 34,9 Z" fill="${color}"/>
                 <path d="M 42,4 C 46,-2 50,-2 54,4 C 52,1 48,1 42,4 Z" fill="#ffffff" opacity="0.3"/>
@@ -191,7 +193,7 @@ export const ELF_STYLES = {
                 <!-- Volume de base du crâne arrière -->
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <!-- Grande chevelure longue elfique en cascade dans le dos -->
-                <path d="M 16,36 C 10,22 14,8 24,0 C 34,-6 66,-6 76,0 C 86,8 90,22 84,36 C 91,48 89,62 85,72 C 80,66 77,62 75,56 C 69,72 63,90 50,92 C 37,90 31,72 25,56 C 23,62 20,66 15,72 C 11,62 9,48 16,36 Z" fill="${color}"/>
+                <path d="M 16,36 C 10,22 14,8 24,0 C 34,-6 66,-6 76,0 C 86,8 90,22 84,36 C 88.5,48 87,62 83.5,72 C 80,66 77,62 75,56 C 69,72 63,90 50,92 C 37,90 31,72 25,56 C 23,62 20,66 16.5,72 C 13.5,62 11.5,48 16,36 Z" fill="${color}"/>
                 <!-- Mèches dorsales superposées plus fines et effilées -->
                 <path d="M 26,44 C 21,58 23,74 29,88 C 32,76 32,62 31,48 Z" fill="${color}" opacity="0.95"/>
                 <path d="M 74,44 C 79,58 77,74 71,88 C 68,76 68,62 69,48 Z" fill="${color}" opacity="0.95"/>
@@ -199,12 +201,12 @@ export const ELF_STYLES = {
                 <path d="M 62,50 C 65,64 62,78 58,90 C 56,78 57,64 59,52 Z" fill="${color}" opacity="0.9"/>
                 <!-- Tresse centrale effilée -->
                 <path d="M 46,58 C 45,70 48,82 50,93 C 52,82 55,70 54,58 Z" fill="${color}" opacity="0.85"/>
-                <!-- Mèches d'épaule gauche plus fines dédoublées en cascade -->
-                <path d="M 19,40 C 13,50 12,64 17,76 C 20,74 22,66 22,56 C 23,48 22,42 19,40 Z" fill="${color}" opacity="0.9"/>
+                <!-- Mèches d'épaule gauche plus fines dédoublées en cascade (la plus extérieure en fuseau) -->
+                <path d="${fuseau('M 20,40 C 16,52 15.5,66 18.5,78', 3.4, 14)}" fill="${color}"/>
                 <path d="M 23,44 C 18,54 18,68 23,82 C 26,80 27,70 27,60 C 28,52 26,46 23,44 Z" fill="${color}"/>
                 <path d="M 26,48 C 24,58 25,70 28,84 C 30,82 31,72 30,62 C 30,54 28,48 26,48 Z" fill="${color}" opacity="0.85"/>
                 <!-- Mèches d'épaule droite plus fines dédoublées en cascade -->
-                <path d="M 81,40 C 87,50 88,64 83,76 C 80,74 78,66 78,56 C 77,48 78,42 81,40 Z" fill="${color}" opacity="0.9"/>
+                <path d="${fuseau('M 80,40 C 84,52 84.5,66 81.5,78', 3.4, 14)}" fill="${color}"/>
                 <path d="M 77,44 C 82,54 82,68 77,82 C 74,80 73,70 73,60 C 72,52 74,46 77,44 Z" fill="${color}"/>
                 <path d="M 74,48 C 76,58 75,70 72,84 C 70,82 69,72 70,62 C 70,54 72,48 74,48 Z" fill="${color}" opacity="0.85"/>
             </g>`,
@@ -224,11 +226,11 @@ export const ELF_STYLES = {
                          C 29,32 27,29 25,28 
                          C 26,38 26,48 24,56 
                          C 22,48 20,38 20,30 Z" fill="${color}"/>
-                <!-- Mèches fines de tempes encadrant les pommettes -->
-                <path d="M 22,34 C 19,42 20,52 23,60 C 25,54 25,44 24,36 Z" fill="${color}"/>
-                <path d="M 26,32 C 24,42 25,50 27,56 C 28,50 28,42 27,34 Z" fill="${color}" opacity="0.85"/>
-                <path d="M 78,34 C 81,42 80,52 77,60 C 75,54 75,44 76,36 Z" fill="${color}"/>
-                <path d="M 74,32 C 76,42 75,50 73,56 C 72,50 72,42 73,34 Z" fill="${color}" opacity="0.85"/>
+                <!-- Mèches de tempes devant les oreilles : traits en fuseau fins -->
+                <path d="${fuseau('M 22,34 C 19,42 20,52 23,60', 2.2, 12)}" fill="${color}"/>
+                <path d="${fuseau('M 26,32 C 24,42 25,50 27,56', 1.6, 12)}" fill="${color}"/>
+                <path d="${fuseau('M 78,34 C 81,42 80,52 77,60', 2.2, 12)}" fill="${color}"/>
+                <path d="${fuseau('M 74,32 C 76,42 75,50 73,56', 1.6, 12)}" fill="${color}"/>
                 <!-- Reflet du sommet, identique au garçon elfe -->
                 <path d="M 42,4 C 46,-2 50,-2 54,4 C 52,1 48,1 42,4 Z" fill="#ffffff" opacity="0.3"/>
             </g>`

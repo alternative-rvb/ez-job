@@ -5,6 +5,7 @@
  */
 
 import { fuseau, sablier, gripHand, SKIN_DEFAULT } from '../avatar-kit.js';
+import { fairyGirlFrontHair } from './trophies/fairy.js';
 
 
 // ==========================================
@@ -427,9 +428,9 @@ export const GIRL_BASE = {
     body: `
         <g id="girl-body">
             <path d="M38 82 C38 82, 44 83.5, 50 83.5 C56 83.5, 62 82, 62 82 C70 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 30 85, 38 82 Z" fill="#236762"/>
-            <path d="${fuseau('M 40,83 C 39.59,86.16 37.63,88.88 37,92', 1.4, 10)}" fill="#133835"/>
-            <path d="${fuseau('M 50,83.5 C 50,86.83 50,90.17 50,93.5', 1.4, 10)}" fill="#133835"/>
-            <path d="${fuseau('M 60,83 C 60.41,86.16 62.37,88.88 63,92', 1.4, 10)}" fill="#133835"/>
+            <path d="${fuseau('M 40,83 C 39.59,86.16 37.63,88.88 37,92', 0.8, 10)}" fill="#133835"/>
+            <path d="${fuseau('M 50,83.5 C 50,86.83 50,90.17 50,93.5', 0.8, 10)}" fill="#133835"/>
+            <path d="${fuseau('M 60,83 C 60.41,86.16 62.37,88.88 63,92', 0.8, 10)}" fill="#133835"/>
             <path d="M 31,65 C 31,62 34,61.5 38,61.5 L 62,61.5 C 66,61.5 69,62 69,65 L 62.5,82 L 37.5,82 Z" fill="#ff9d00"/>
             <path d="M44 60 L50 71 L56 60 Z" fill="#ffffff"/>
             <circle cx="50" cy="66" r="2.5" fill="#489e96"/>
@@ -566,14 +567,9 @@ export const GIRL_STYLES = {
                 <path d="M 12,36 C 8,14 20,-2 50,-2 C 80,-2 92,14 88,36 C 94,50 90,64 82,70 C 78,64 76,52 76,42 C 74,32 26,32 24,42 C 24,52 22,64 18,70 C 10,64 6,50 12,36 Z" fill="${color}"/>
                 <circle cx="16" cy="10" r="13" fill="${color}"/>
                 <circle cx="84" cy="10" r="13" fill="${color}"/>
-                <ellipse cx="12" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-20 12 21)"/>
-                <ellipse cx="20" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(20 20 21)"/>
-                <circle cx="16" cy="21" r="2.6" fill="#ff9d00"/>
-                <circle cx="15.5" cy="20.5" r="1" fill="#ffffff"/>
-                <ellipse cx="80" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-20 80 21)"/>
-                <ellipse cx="88" cy="21" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(20 88 21)"/>
-                <circle cx="84" cy="21" r="2.6" fill="#ff9d00"/>
-                <circle cx="83.5" cy="20.5" r="1" fill="#ffffff"/>
+                <!-- Baguettes orange à 45° qui tiennent les chignons : traits en fuseau courbés, ajustés au diamètre du chignon (de bord à bord à 45°) -->
+                <path transform="translate(0 -4) rotate(-15 21 16)" d="${fuseau('M 14.8,22.2 C 20.7,19.9 24.9,15.7 27.2,9.8', 1.5, 14)}" fill="#ff9d00"/>
+                <path transform="translate(0 -4) rotate(15 79 16)" d="${fuseau('M 85.2,22.2 C 79.3,19.9 75.1,15.7 72.8,9.8', 1.5, 14)}" fill="#ff9d00"/>
             </g>`,
         getHairFront: (color) => `
             <g id="girl-hair-front-full">
@@ -619,18 +615,11 @@ export const GIRL_STYLES = {
                 <circle cx="61" cy="74" r="9" fill="${color}"/>
                 <circle cx="50" cy="78" r="8" fill="${color}"/>
 
-                <!-- Reflets soyeux sur les boucles -->
-                <path d="M 12,36 C 8,42 12,48 18,48" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M 14,54 C 10,60 14,66 20,66" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M 16,70 C 14,75 18,78 22,78" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.3" stroke-linecap="round"/>
+                <!-- Reflets soyeux sur les boucles : mêmes courbes qu'avant, tracées en fuseau -->
+                <path d="${fuseau('M 12,36 C 8,42 12,48 18,48', 1.6, 12)} ${fuseau('M 14,54 C 10,60 14,66 20,66', 1.5, 12)} ${fuseau('M 16,70 C 14,75 18,78 22,78', 1.3, 12)} ${fuseau('M 88,36 C 92,42 88,48 82,48', 1.6, 12)} ${fuseau('M 86,54 C 90,60 86,66 80,66', 1.5, 12)} ${fuseau('M 84,70 C 86,75 82,78 78,78', 1.3, 12)}" fill="#ffffff" opacity="0.22"/>
 
-                <path d="M 88,36 C 92,42 88,48 82,48" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M 86,54 C 90,60 86,66 80,66" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M 84,70 C 86,75 82,78 78,78" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.3" stroke-linecap="round"/>
-
-                <!-- Ombres de creux entre les boucles -->
-                <path d="M 16,46 C 22,46 24,52 24,56" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="1.4" stroke-linecap="round"/>
-                <path d="M 84,46 C 78,46 76,52 76,56" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="1.4" stroke-linecap="round"/>
+                <!-- Ombres de creux entre les boucles : mêmes courbes qu'avant, tracées en fuseau -->
+                <path d="${fuseau('M 16,46 C 22,46 24,52 24,56', 1.4, 12)} ${fuseau('M 84,46 C 78,46 76,52 76,56', 1.4, 12)}" fill="#000000" opacity="0.18"/>
             </g>`,
         getHairFront: (color) => `
             <g id="girl-hair-front-full">
@@ -649,11 +638,13 @@ export const GIRL_STYLES = {
         getHairBack: (color) => `
             <g id="girl-hair-back-full">
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <path d="M 15,66 C 15,20 26,-5 50,-5 C 74,-5 85,20 85,66 Z" fill="${color}"/>
+                <!-- Bas du carré : quelques brèches (encoches) le long de la coupe -->
+                <path d="M 15,66 C 15,20 26,-5 50,-5 C 74,-5 85,20 85,66 L 78,66 L 76.8,61 L 75.2,66 L 62,66 L 60.8,60.8 L 59.4,66 L 44,66 L 42.8,61.4 L 41.4,66 L 28,66 L 26.8,61 L 25.4,66 Z" fill="${color}"/>
             </g>`,
         getHairFront: (color) => `
             <g id="girl-hair-front-full">
-                <path d="M 21,30 C 23,35 25,37 28,36 C 31,35 33,30 35,28 C 39,33 46,38 50,41 C 54,38 61,33 65,28 C 67,30 69,35 72,36 C 75,37 77,35 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="${color}"/>
+                <!-- Frange droite, bord bas presque horizontal, quelques brèches (petites encoches) du côté droit -->
+                <path d="M 21,30 C 24,12 36,6 50,6 C 64,6 76,12 79,30 L 79,36 L 73,36 L 71.8,31.4 L 70.4,36 L 63,36 L 61.8,31.8 L 60.4,36 L 55,36 L 54,32.6 L 52.8,36 L 21,36 Z" fill="${color}"/>
                 <path d="M 23,30 C 23,39 25,48 27,54 C 26,46 25,38 25,30 Z" fill="${color}"/>
                 <path d="M 77,30 C 77,39 75,48 73,54 C 74,46 75,38 75,30 Z" fill="${color}"/>
             </g>`
@@ -665,32 +656,15 @@ export const GIRL_STYLES = {
         getHairBack: (color) => `
             <g id="girl-hair-back-full">
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <path d="M 22,24 C 4,36 2,56 6,70 C 8,78 7,83 6,86 L 14,87 C 18,80 22,72 22,58 C 22,46 26,34 30,26 Z" fill="${color}"/>
-                <path d="M 7,86 C 6,91 9,94 10,95 C 11,94 14,91 13,86 Z" fill="${color}"/>
-                <ellipse cx="7.5" cy="85.5" rx="3.5" ry="2.5" fill="#489e96" transform="rotate(-15 7.5 85.5)"/>
-                <ellipse cx="12.5" cy="85.5" rx="3.5" ry="2.5" fill="#489e96" transform="rotate(15 12.5 85.5)"/>
-                <circle cx="10" cy="85.5" r="1.8" fill="#ff9d00"/>
-                <circle cx="9.6" cy="85.1" r="0.7" fill="#ffffff"/>
-                <ellipse cx="16" cy="24" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-30 16 24)"/>
-                <ellipse cx="24" cy="24" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(10 24 24)"/>
-                <circle cx="20" cy="24" r="2.4" fill="#ff9d00"/>
-                <circle cx="19.5" cy="23.5" r="0.9" fill="#ffffff"/>
-                <path d="M 78,24 C 96,36 98,56 94,70 C 92,78 93,83 94,86 L 86,87 C 82,80 78,72 78,58 C 78,46 74,34 70,26 Z" fill="${color}"/>
-                <path d="M 87,86 C 86,91 89,94 90,95 C 91,94 94,91 93,86 Z" fill="${color}"/>
-                <ellipse cx="87.5" cy="85.5" rx="3.5" ry="2.5" fill="#489e96" transform="rotate(-15 87.5 85.5)"/>
-                <ellipse cx="92.5" cy="85.5" rx="3.5" ry="2.5" fill="#489e96" transform="rotate(15 92.5 85.5)"/>
-                <circle cx="90" cy="85.5" r="1.8" fill="#ff9d00"/>
-                <circle cx="89.6" cy="85.1" r="0.7" fill="#ffffff"/>
-                <ellipse cx="76" cy="24" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(-10 76 24)"/>
-                <ellipse cx="84" cy="24" rx="4.5" ry="3.2" fill="#489e96" transform="rotate(30 84 24)"/>
-                <circle cx="80" cy="24" r="2.4" fill="#ff9d00"/>
-                <circle cx="79.5" cy="23.5" r="0.9" fill="#ffffff"/>
+                <g transform="translate(0 4)">
+                <path d="M 22,24 C 4,36 2,56 6,70 C 8,78 8,88 10,95 C 14,88 20,80 22,60 C 22,46 26,34 30,26 Z" fill="${color}"/>
+                <path d="M 78,24 C 96,36 98,56 94,70 C 92,78 92,88 90,95 C 86,88 80,80 78,60 C 78,46 74,34 70,26 Z" fill="${color}"/>
+                </g>
             </g>`,
         getHairFront: (color) => `
             <g id="girl-hair-front-full">
-                <path d="M 21,30 C 23,35 25,37 28,36 C 31,35 33,30 35,28 C 39,33 46,38 50,41 C 54,38 61,33 65,28 C 67,30 69,35 72,36 C 75,37 77,35 79,30 C 76,12 64,6 50,6 C 36,6 24,12 21,30 Z" fill="${color}"/>
-                <path d="M 23,30 C 23,39 25,48 27,54 C 26,46 25,38 25,30 Z" fill="${color}"/>
-                <path d="M 77,30 C 77,39 75,48 73,54 C 74,46 75,38 75,30 Z" fill="${color}"/>
+                <!-- Cheveux de devant repris de la fée : frange en mèches et mèches latérales -->
+                ${fairyGirlFrontHair(color)}
             </g>`
     }
 };
@@ -1179,7 +1153,6 @@ export const GIRL_OUTFITS = {
                     <path d="M -12,-26 Q 12,0 -12,26" fill="none" stroke="#a16207" stroke-width="2.6" stroke-linecap="round"/>
                     <path d="M -12,-26 Q 13,0 -12,26" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>
                     <rect x="-2.2" y="-5" width="4.4" height="10" rx="1" fill="#78350f" stroke="#fbbf24" stroke-width="0.6"/>
-                    <circle cx="0" cy="-6.2" r="1.6" fill="#10b981" stroke="#fbbf24" stroke-width="0.5"/>
                     <!-- Main refermée sur la poignée (origine du groupe) -->
                     ${gripHand(skin)}
                 </g>

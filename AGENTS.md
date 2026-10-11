@@ -57,6 +57,8 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
 - Les mèches sont **soit elliptiques douces, soit pointues avec un angle obtus** (assez larges).
 - **Interdiction** : Ne jamais faire de simples aplats plats ou de découpes linéaires en dents de scie étroites (sawtooth). Garantir un plein volume sans trous ni calvitie.
 
+- **Brèches et mèches fines** : encoches triangulaires pour les brèches, un seul trait en fuseau de la couleur des cheveux pour une mèche ajoutée, qui suit la courbure de la mèche voisine ; détails et pièges dans le skill `avatars-svg` (section « Brèches et mèches »).
+
 ### 4. Parité Garçon / Fille & Accessoires
 - Pour chaque personnage / trophée, le garçon et la fille partagent **exactement les mêmes couleurs** (peau, yeux, cheveux).
 - Les nouveaux personnages RPG ne doivent **jamais hériter des accessoires d'écolier de base** (élastiques turquoise/orange `#489e96`/`#ff9d00`, serre-tête écolier).

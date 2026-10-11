@@ -23,7 +23,8 @@ const PALADIN_SWORD_MODEL = `
 const PALADIN_SHIELD_MODEL = `
     <path d="M -9.5,0 L 9.5,0 C 9.5,11 6,18 0,23 C -6,18 -9.5,11 -9.5,0 Z" fill="#fbbf24"/>
     <path d="M -7.8,1.6 L 7.8,1.6 C 7.8,10.5 5,16.5 0,20.6 C -5,16.5 -7.8,10.5 -7.8,1.6 Z" fill="#f8fafc"/>
-    <!-- Soleil d'or au centre -->
+    <!-- Soleil du bouclier, estompé pour ne pas concurrencer celui du diadème -->
+    <g opacity="0.4">
     <polygon points="3.4,9.9 6,9 3.4,8.1" fill="#ea580c"/>
             <polygon points="1.77,12.04 4.24,13.24 3.04,10.77" fill="#ea580c"/>
             <polygon points="-0.9,12.4 0,15 0.9,12.4" fill="#ea580c"/>
@@ -33,6 +34,7 @@ const PALADIN_SHIELD_MODEL = `
             <polygon points="0.9,5.6 0,3 -0.9,5.6" fill="#ea580c"/>
             <polygon points="3.04,7.23 4.24,4.76 1.77,5.96" fill="#ea580c"/>
     <circle cx="0" cy="9" r="3.2" fill="#fde047" stroke="#b45309" stroke-width="0.5"/>
+    </g>
     <circle cx="-0.9" cy="8.1" r="0.9" fill="#ffffff" opacity="0.8"/>
 `;
 
@@ -77,7 +79,8 @@ export const OUTFIT_PALADIN_LIGHT = {
             <path d="M 42,62 L 58,62 L 57,86 L 43,86 Z" fill="#f8fafc"/>
             <path d="${fuseau('M 42,62 C 42.33,70 42.67,78 43,86', 1.3, 8)}" fill="#fbbf24"/>
             <path d="${fuseau('M 58,62 C 57.67,70 57.33,78 57,86', 1.3, 8)}" fill="#fbbf24"/>
-            <!-- Soleil d'or brodé -->
+            <!-- Soleil brodé du tabard, estompé -->
+            <g opacity="0.4">
             <polygon points="53,72.8 55.2,72 53,71.2" fill="#ea580c"/>
             <polygon points="51.56,74.69 53.68,75.68 52.69,73.56" fill="#ea580c"/>
             <polygon points="49.2,75 50,77.2 50.8,75" fill="#ea580c"/>
@@ -87,6 +90,7 @@ export const OUTFIT_PALADIN_LIGHT = {
             <polygon points="50.8,69 50,66.8 49.2,69" fill="#ea580c"/>
             <polygon points="52.69,70.44 53.68,68.32 51.56,69.31" fill="#ea580c"/>
             <circle cx="50" cy="72" r="2.8" fill="#fde047" stroke="#b45309" stroke-width="0.5"/>
+            </g>
             <!-- Gorgerin d'acier -->
             <path d="M 43,60.5 L 50,64.5 L 57,60.5 L 57,62.5 L 50,66.5 L 43,62.5 Z" fill="#94a3b8"/>
         </g>`,
@@ -118,7 +122,9 @@ export const OUTFIT_PALADIN_LIGHT = {
     headAccessory: `
         <g id="outfit-paladin-head-accessory">
             <!-- Diadème en métal gris clair en fuseau, épais au front, fin aux tempes, contraste avec la chevelure Or Solaire -->
-            <path d="${fuseau('M 28,26 C 42.42,22.68 57.58,22.68 72,26', 3.8, 14)}" fill="#cbd5e1"/>
+            <path d="${fuseau('M 28,26 C 42.42,22.68 57.58,22.68 72,26', 6, 14)}" fill="#cbd5e1"/>
+            <!-- Soleil centré verticalement sur le diadème (le milieu du bandeau est à y 24.3) -->
+            <g transform="translate(0 3.8)">
             <polygon points="52.4,21.25 54.6,20.5 52.4,19.75" fill="#ea580c"/>
             <polygon points="51.17,22.73 53.25,23.75 52.23,21.67" fill="#ea580c"/>
             <polygon points="49.25,22.9 50,25.1 50.75,22.9" fill="#ea580c"/>
@@ -129,6 +135,7 @@ export const OUTFIT_PALADIN_LIGHT = {
             <polygon points="52.23,19.33 53.25,17.25 51.17,18.27" fill="#ea580c"/>
             <circle cx="50" cy="20.5" r="2.4" fill="#fde047" stroke="#b45309" stroke-width="0.5"/>
             <circle cx="49.3" cy="19.8" r="0.7" fill="#ffffff"/>
+            </g>
         </g>`,
     handItem: (skin = SKIN_DEFAULT) => `
         <g id="outfit-paladin-hand-items">
