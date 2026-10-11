@@ -9,6 +9,7 @@ import { getCategoryColors, initializeCategoryColors } from '../core/category-co
 import { playerManager } from '../core/player.js';
 import { T } from '../core/theme.js';
 import { getSubjectIcon } from '../core/subject-icons.js';
+import { pixelateImage } from '../ui/pixelate.js';
 
 // Palette de couleurs par matière (point coloré + badge)
 const SUBJECT_STYLES = {
@@ -156,7 +157,7 @@ export class QuizSelector {
             // Zone image : vraie image ou placeholder CSS, en vignette portrait compacte à gauche de la carte (type couverture de livre)
             const imageSectionHTML = quiz.imageUrl && quiz.imageUrl.trim() !== '' ? `
                 <div class="relative overflow-hidden flex-shrink-0 w-20 sm:w-24 rounded-lg" style="background-color:#eaddcc;aspect-ratio:2/3">
-                    <img src="${quiz.imageUrl}" alt="${quiz.title}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    <img src="${quiz.imageUrl}" alt="${quiz.title}" class="quiz-cover absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="visibility:hidden" loading="lazy">
                     <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300"></div>
                 </div>
             ` : `
@@ -269,6 +270,8 @@ export class QuizSelector {
 
         domManager.setContent('quizList', quizCards);
 
+        this.pixelateCovers();
+
         // Ajouter les écouteurs d'événements
         document.querySelectorAll('.quiz-card').forEach(card => {
             card.addEventListener('click', () => {
@@ -286,6 +289,11 @@ export class QuizSelector {
                 e.stopPropagation();
             });
         });
+    }
+
+    // ANCHOR: jaquettes affichées pixellisées en permanence
+    pixelateCovers() {
+        document.querySelectorAll('.quiz-card .quiz-cover').forEach(cover => pixelateImage(cover, 36));
     }
 
     /**
