@@ -474,10 +474,27 @@
 
       <!-- Recherche et Filtres -->
       <div class="rounded-xl sm:rounded-2xl p-3 sm:p-4 mb-3 sm:mb-4" style="background:#f4eadd">
-        <h2 class="text-base sm:text-lg font-bold mb-2.5 text-center" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Recherche et Filtres</h2>
+        <h2 class="text-base sm:text-lg font-bold mb-2.5 text-center" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Filtres et recherche</h2>
+
+        <!-- Filtres par niveau scolaire -->
+        <div id="level-filters" class="flex flex-wrap justify-center gap-1 sm:gap-1.5 mb-2">
+          <!-- Les boutons de niveau seront générés dynamiquement -->
+        </div>
+
+        <!-- Filtres par matière (masqués si aucune matière disponible) -->
+        <div id="subject-filters-wrapper">
+          <div class="flex items-center justify-center gap-2 mb-1.5">
+            <div style="height:1px;width:30px;background:#dcc9b0"></div>
+            <span class="text-[0.7rem] font-semibold uppercase tracking-wider" style="color:#b46e28">Matière</span>
+            <div style="height:1px;width:30px;background:#dcc9b0"></div>
+          </div>
+          <div id="subject-filters" class="flex flex-wrap justify-center gap-1 sm:gap-1.5">
+            <!-- Les boutons de matière seront générés dynamiquement -->
+          </div>
+        </div>
 
         <!-- Barre de recherche -->
-        <div class="mb-3 max-w-xl mx-auto">
+        <div class="mt-3 max-w-xl mx-auto">
           <div class="relative">
             <input
               type="text"
@@ -496,23 +513,6 @@
             >
               <i class="bi bi-x-circle-fill text-sm sm:text-base"></i>
             </button>
-          </div>
-        </div>
-
-        <!-- Filtres par niveau scolaire -->
-        <div id="level-filters" class="flex flex-wrap justify-center gap-1 sm:gap-1.5 mb-2">
-          <!-- Les boutons de niveau seront générés dynamiquement -->
-        </div>
-
-        <!-- Filtres par matière (masqués si aucune matière disponible) -->
-        <div id="subject-filters-wrapper">
-          <div class="flex items-center justify-center gap-2 mb-1.5">
-            <div style="height:1px;width:30px;background:#dcc9b0"></div>
-            <span class="text-[0.7rem] font-semibold uppercase tracking-wider" style="color:#b46e28">Matière</span>
-            <div style="height:1px;width:30px;background:#dcc9b0"></div>
-          </div>
-          <div id="subject-filters" class="flex flex-wrap justify-center gap-1 sm:gap-1.5">
-            <!-- Les boutons de matière seront générés dynamiquement -->
           </div>
         </div>
 
