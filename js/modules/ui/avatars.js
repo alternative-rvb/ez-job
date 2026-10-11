@@ -30,6 +30,8 @@ export const ALL_HAIR_COLORS = [
     { id: 'paladin-gold', name: 'Or Solaire', hex: '#facc15', isTrophyReward: true },
     { id: 'cat-violet', name: 'Violet Félin', hex: '#7c3aed', isTrophyReward: true },
     { id: 'cat-lilac', name: 'Lilas Félin', hex: '#a78bfa', isTrophyReward: true },
+    { id: 'shadow-dark', name: 'Noir Abyssal', hex: '#1e1435', isTrophyReward: true },
+    { id: 'shadow-purple', name: 'Violet Nuit', hex: '#3b0764', isTrophyReward: true },
     { id: 'silver', name: 'Blanc Argenté', hex: '#c5cbd4', isTrophyReward: true },
     { id: 'blue-night', name: 'Bleu Nuit', hex: '#1e3a5f', isTrophyReward: true },
     { id: 'ruby', name: 'Rouge Grenat', hex: '#6e1313', isTrophyReward: true },
@@ -85,7 +87,8 @@ export const BASE_SKIN_COLORS = [
 export const ALL_SKIN_COLORS = [
     ...BASE_SKIN_COLORS,
     { id: 'orc-green', name: 'Vert Olive (Orc)', base: '#659b5e', shadow: '#46723e', mouth: '#1b4218', isTrophyReward: true }, // Vert sous-bois sombre
-    { id: 'sun-bronze', name: 'Bronze Solaire (Paladin)', base: '#c68652', shadow: '#a0663a', mouth: '#5a240a', isTrophyReward: true } // Bronze chaud, contraste avec l'Or Solaire
+    { id: 'sun-bronze', name: 'Bronze Solaire (Paladin)', base: '#c68652', shadow: '#a0663a', mouth: '#5a240a', isTrophyReward: true }, // Bronze chaud, contraste avec l'Or Solaire
+    { id: 'shadow-lilac', name: 'Lilas Mystique (Ombre)', base: '#d8b4fe', shadow: '#a855f7', mouth: '#4c1d95', isTrophyReward: true } // Peau lilas éthérée mystique
 ];
 
 // Palette active pour la personnalisation des avatars de base
@@ -139,9 +142,65 @@ export function getCatTail(hairColor = '#7c3aed') {
     `;
 }
 
+// ANCHOR Cornes en S du Mage Noir / Sorcière (espèce shadow) : double courbure sinueuse et cannelures améthyste en fuseau
+// ANCHOR Cornes en S du Mage Noir / Sorcière (espèce shadow) : double courbure sinueuse et cannelures améthyste en fuseau
+export function getShadowHorns() {
+    return `
+        <g id="shadow-horns">
+            <!-- Corne gauche en S (échelle équilibrée S=0.84) -->
+            <path d="M 26.6,16.1 
+                     C 19,7.7 9.8,4.3 9,-4.1 
+                     C 8.1,-11.6 14,-16.7 19,-18.4 
+                     C 24.1,-20 24.9,-24.2 23.2,-28.4 
+                     C 22.4,-24.2 19,-21.7 14.8,-19.2 
+                     C 9.8,-16.7 3.9,-10.8 4.8,-3.2 
+                     C 5.6,5.2 16.5,9.4 22.4,16.9 Z" 
+                  fill="#130e24" stroke="#090514" stroke-width="0.8"/>
+            <path d="M 26.6,16.1 
+                     C 19.9,8.5 12.3,5.2 10.6,-3.2 
+                     C 9.8,-10 14.8,-15 18.2,-17.5 
+                     C 22.4,-19.2 23.2,-23.4 23.2,-27.6 
+                     C 22.4,-23.4 20.7,-20 17.4,-18.4 
+                     C 13.2,-15.8 9,-10 9.8,-2.4 
+                     C 10.6,4.3 19,8.5 24.1,16.1 Z" 
+                  fill="#7c3aed" opacity="0.6"/>
+            <!-- Stries fines en fuseau (en bas arc vers le bas, en haut arc vers le haut) -->
+            <path d="M 15,9.9 L 15.45,10.13 L 15.98,10.29 L 16.51,10.33 L 17.09,10.22 L 17.55,9.99 L 17.99,9.6 L 18.3,9.15 L 18.5,8.7 L 18.5,8.7 L 18.11,8.98 L 17.69,9.23 L 17.25,9.44 L 16.86,9.58 L 16.42,9.71 L 15.99,9.81 L 15.49,9.87 L 15,9.9 Z" fill="#c084fc"/>
+            <path d="M 7,2.4 L 7.47,2.66 L 8.03,2.84 L 8.67,2.91 L 9.23,2.84 L 9.76,2.64 L 10.3,2.28 L 10.71,1.85 L 11,1.4 L 11,1.4 L 10.54,1.64 L 10.04,1.85 L 9.52,2.04 L 9.07,2.16 L 8.61,2.27 L 8.06,2.35 L 7.52,2.39 L 7,2.4 Z" fill="#c084fc"/>
+            <path d="M 5.3,-8.6 L 5.84,-8.55 L 6.39,-8.52 L 6.92,-8.53 L 7.46,-8.59 L 7.98,-8.7 L 8.49,-8.87 L 9,-9.07 L 9.5,-9.3 L 9.5,-9.3 L 8.95,-9.33 L 8.41,-9.34 L 7.87,-9.32 L 7.34,-9.26 L 6.83,-9.15 L 6.31,-8.99 L 5.81,-8.81 L 5.3,-8.6 Z" fill="#c084fc"/>
+            <path d="M 10.3,-16.1 L 10.81,-16.24 L 11.35,-16.34 L 11.92,-16.4 L 12.39,-16.4 L 12.93,-16.36 L 13.44,-16.29 L 13.98,-16.16 L 14.5,-16 L 14.5,-16 L 14.1,-16.38 L 13.59,-16.72 L 13.05,-16.95 L 12.41,-17.05 L 11.83,-16.99 L 11.21,-16.78 L 10.71,-16.46 L 10.3,-16.1 Z" fill="#c084fc"/>
+            <path d="M 18.9,-21.9 L 19.42,-21.96 L 19.97,-21.97 L 20.52,-21.93 L 20.98,-21.83 L 21.49,-21.67 L 21.96,-21.48 L 22.45,-21.2 L 22.9,-20.9 L 22.9,-20.9 L 22.59,-21.36 L 22.18,-21.8 L 21.71,-22.13 L 21.12,-22.37 L 20.56,-22.43 L 19.92,-22.36 L 19.37,-22.17 L 18.9,-21.9 Z" fill="#c084fc"/>
+
+            <!-- Corne droite en S -->
+            <path d="M 73.4,16.1 
+                     C 81,7.7 90.2,4.3 91,-4.1 
+                     C 91.9,-11.6 86,-16.7 81,-18.4 
+                     C 75.9,-20 75.1,-24.2 76.8,-28.4 
+                     C 77.6,-24.2 81,-21.7 85.2,-19.2 
+                     C 90.2,-16.7 96.1,-10.8 95.2,-3.2 
+                     C 94.4,5.2 83.5,9.4 77.6,16.9 Z" 
+                  fill="#130e24" stroke="#090514" stroke-width="0.8"/>
+            <path d="M 73.4,16.1 
+                     C 80.1,8.5 87.7,5.2 89.4,-3.2 
+                     C 90.2,-10 85.2,-15 81.8,-17.5 
+                     C 77.6,-19.2 76.8,-23.4 76.8,-27.6 
+                     C 77.6,-23.4 79.3,-20 82.6,-18.4 
+                     C 86.8,-15.8 91,-10 90.2,-2.4 
+                     C 89.4,4.3 81,8.5 75.9,16.1 Z" 
+                  fill="#7c3aed" opacity="0.6"/>
+            <!-- Stries fines droite -->
+            <path d="M 85,9.9 L 84.51,9.87 L 84.01,9.81 L 83.58,9.71 L 83.14,9.58 L 82.75,9.44 L 82.31,9.23 L 81.89,8.98 L 81.5,8.7 L 81.5,8.7 L 81.7,9.15 L 82.01,9.6 L 82.45,9.99 L 82.91,10.22 L 83.49,10.33 L 84.02,10.29 L 84.55,10.13 L 85,9.9 Z" fill="#c084fc"/>
+            <path d="M 93,2.4 L 92.48,2.39 L 91.94,2.35 L 91.39,2.27 L 90.93,2.16 L 90.48,2.04 L 89.96,1.85 L 89.46,1.64 L 89,1.4 L 89,1.4 L 89.29,1.85 L 89.7,2.28 L 90.24,2.64 L 90.77,2.84 L 91.33,2.91 L 91.97,2.84 L 92.53,2.66 L 93,2.4 Z" fill="#c084fc"/>
+            <path d="M 94.7,-8.6 L 94.19,-8.81 L 93.69,-8.99 L 93.17,-9.15 L 92.66,-9.26 L 92.13,-9.32 L 91.59,-9.34 L 91.05,-9.33 L 90.5,-9.3 L 90.5,-9.3 L 91,-9.07 L 91.51,-8.87 L 92.02,-8.7 L 92.54,-8.59 L 93.08,-8.53 L 93.61,-8.52 L 94.16,-8.55 L 94.7,-8.6 Z" fill="#c084fc"/>
+            <path d="M 89.7,-16.1 L 89.29,-16.46 L 88.79,-16.78 L 88.17,-16.99 L 87.59,-17.05 L 86.95,-16.95 L 86.41,-16.72 L 85.9,-16.38 L 85.5,-16 L 85.5,-16 L 86.02,-16.16 L 86.56,-16.29 L 87.07,-16.36 L 87.61,-16.4 L 88.08,-16.4 L 88.65,-16.34 L 89.19,-16.24 L 89.7,-16.1 Z" fill="#c084fc"/>
+            <path d="M 81.1,-21.9 L 80.63,-22.17 L 80.08,-22.36 L 79.44,-22.43 L 78.88,-22.37 L 78.29,-22.13 L 77.82,-21.8 L 77.41,-21.36 L 77.1,-20.9 L 77.1,-20.9 L 77.55,-21.2 L 78.04,-21.48 L 78.51,-21.67 L 79.02,-21.83 L 79.48,-21.93 L 80.03,-21.97 L 80.58,-21.96 L 81.1,-21.9 Z" fill="#c084fc"/>
+        </g>
+    `;
+}
+
 // Générateur des oreilles selon l'espèce (Humain, Elfe, Orc, etc.)
 export function getSpeciesEars(species = 'human', skin = { base: '#ffd4a3', shadow: '#f0be8d' }, gender = 'boy') {
-    if (species === 'elf') {
+    if (species === 'elf' || species === 'shadow') {
         return `
             <!-- NOTE Oreilles descendues de 50 % de leur hauteur (12) et rapprochées de 25 % de leur largeur (2.6) -->
             <g id="${gender}-ears-elf" transform="translate(0 6)">
@@ -1819,6 +1878,80 @@ export const RPG_STYLES = {
                 <path d="M 22,34 C 18,44 19,54 24,62 C 26,54 26,44 24,36 Z" fill="${color}"/>
                 <path d="M 78,34 C 82,44 81,54 76,62 C 74,54 74,44 76,36 Z" fill="${color}"/>
             </g>`
+    },
+
+    // Coupe Trophée 5 Garçon : Mi-long ténébreux à mèches effilées
+    shadow_boy: {
+        id: 'shadow_boy',
+        name: 'Mi-long Ténébreux (Mage Noir)',
+        withBand: false,
+        getHairBack: (color) => `
+            <g id="hair-back-shadow-boy">
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
+                <path d="M 18,36 C 12,48 14,64 22,72 C 26,66 26,56 26,48 Z" fill="${color}"/>
+                <path d="M 82,36 C 88,48 86,64 78,72 C 74,66 74,56 74,48 Z" fill="${color}"/>
+                <path d="M 28,48 C 26,62 30,76 36,80 C 38,72 38,62 37,52 Z" fill="${color}"/>
+                <path d="M 72,48 C 74,62 70,76 64,80 C 62,72 62,62 63,52 Z" fill="${color}"/>
+                <path d="M 40,54 C 42,68 46,78 50,82 C 54,78 58,68 60,54 Z" fill="${color}"/>
+            </g>`,
+        getHairFront: (color) => `
+            <g id="hair-front-shadow-boy">
+                <path d="M 20,30 
+                         C 22,14 34,4 50,4 
+                         C 66,4 78,14 80,30 
+                         C 80,38 78,48 76,54 
+                         C 74,46 74,36 74,28 
+                         C 70,30 66,35 60,33 
+                         C 55,31 54,26 52,22 
+                         C 50,28 46,38 38,36 
+                         C 32,34 30,28 28,26 
+                         C 26,34 26,44 24,54 
+                         C 22,48 20,38 20,30 Z" fill="${color}"/>
+                <path d="M 23,32 C 20,40 22,48 24,54 C 25,48 26,40 25,34 Z" fill="${color}"/>
+                <path d="M 77,32 C 80,40 78,48 76,54 C 75,48 74,40 75,34 Z" fill="${color}"/>
+            </g>`
+    },
+
+    // Coupe Trophée 5 Fille : Longue chevelure de sorcière ondulée spectrale
+    shadow_girl: {
+        id: 'shadow_girl',
+        name: 'Ondulé Sombre en Cascade (Sorcière)',
+        withTiara: false,
+        getHairBack: (color) => `
+            <g id="hair-back-shadow-girl">
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
+                <path d="M 15,36 
+                         C 8,24 12,8 24,0 
+                         C 34,-6 66,-6 76,0 
+                         C 88,8 92,24 85,36 
+                         C 93,52 90,70 85,86 
+                         C 80,78 77,72 74,62 
+                         C 68,78 61,94 50,96 
+                         C 39,94 32,78 26,62 
+                         C 23,72 20,78 15,86 
+                         C 10,70 7,52 15,36 Z" fill="${color}"/>
+                <path d="M 22,42 C 16,56 16,74 23,88 C 26,82 27,72 26,60 Z" fill="${color}"/>
+                <path d="M 78,42 C 84,56 84,74 77,88 C 74,82 73,72 74,60 Z" fill="${color}"/>
+                <path d="M 27,52 C 24,68 28,84 34,92 C 35,82 34,70 32,58 Z" fill="${color}"/>
+                <path d="M 73,52 C 76,68 72,84 66,92 C 65,82 66,70 68,58 Z" fill="${color}"/>
+            </g>`,
+        getHairFront: (color) => `
+            <g id="hair-front-shadow-girl">
+                <path d="M 20,30 
+                         C 22,14 34,4 50,4 
+                         C 66,4 78,14 80,30 
+                         C 80,38 78,46 76,56 
+                         C 74,48 74,38 75,28 
+                         C 71,32 66,35 61,34 
+                         C 57,33 55,28 54,24 
+                         C 52,28 48,37 42,38 
+                         C 37,35 34,29 32,25 
+                         C 29,30 27,33 25,28 
+                         C 26,38 26,48 24,56 
+                         C 22,48 20,38 20,30 Z" fill="${color}"/>
+                <path d="M 22,34 C 18,44 20,56 24,64 C 25,56 25,46 24,36 Z" fill="${color}"/>
+                <path d="M 78,34 C 82,44 80,56 76,64 C 75,56 75,46 76,36 Z" fill="${color}"/>
+            </g>`
     }
 };
 
@@ -2043,12 +2176,167 @@ export const OUTFIT_CAT_THIEF = {
         </g>`
 };
 
+// Tenue Trophée 5 : Mage Noir & Sorcière des Ombres
+export const OUTFIT_SHADOW_MAGE = {
+    id: 'shadow_mage',
+    name: 'Robe de Sorcière & Cape des Ombres',
+    backEquipment: `
+        <g id="outfit-shadow-cape">
+            <!-- Cape pourpre nuit d'ébène (#1b122c, nettement plus foncée que la robe) -->
+            <path d="M 31,64 
+                     C 20,78 14,94 11,109 
+                     C 22,107 30,108 38,109 
+                     C 42,98 46,88 48,80 
+                     C 42,75 35,70 31,64 Z" 
+                  fill="#1b122c" stroke="#0a0512" stroke-width="0.8"/>
+            <path d="M 69,64 
+                     C 80,78 86,94 89,109 
+                     C 78,107 70,108 62,109 
+                     C 58,98 54,88 52,80 
+                     C 58,75 65,70 69,64 Z" 
+                  fill="#1b122c" stroke="#0a0512" stroke-width="0.8"/>
+            <path d="M 36,78 C 34,92 32,106 36,110 C 45,109 55,109 64,110 C 68,106 66,92 64,78 Z" 
+                  fill="#120b1f"/>
+            <!-- Liseré sur l'ourlet de la cape -->
+            <path d="M 31,64 C 20,78 14,94 11,109" stroke="#9333ea" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+            <path d="M 69,64 C 80,78 86,94 89,109" stroke="#9333ea" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+            <!-- Cols relevés de sorcière -->
+            <path d="M 28,62 L 23,53 L 34,59 Z" fill="#2e1065" stroke="#120b1f" stroke-width="0.6"/>
+            <path d="M 72,62 L 77,53 L 66,59 Z" fill="#2e1065" stroke="#120b1f" stroke-width="0.6"/>
+        </g>`,
+    legs: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
+        <g id="outfit-shadow-legs">
+            <rect x="42.5" y="86" width="4.5" height="18" rx="2" fill="#24143d"/>
+            <rect x="53" y="86" width="4.5" height="18" rx="2" fill="#24143d"/>
+            <!-- Bottine gauche à revers -->
+            <path d="M 41,98 C 41,96 48,96 48,98 L 48,111 C 47,113 42,113 40,111 L 39,112.5 C 38,113 48,114 49,112 L 49,98 Z" fill="#0f172a"/>
+            <path d="M 40.5,98 Q 44.5,96 48.5,98 L 47.5,101 Q 44.5,99 41.5,101 Z" fill="#581c87" stroke="#0f172a" stroke-width="0.5"/>
+            <circle cx="44.5" cy="104" r="0.9" fill="#cbd5e1"/>
+            <circle cx="44.5" cy="107" r="0.9" fill="#cbd5e1"/>
+            <path d="M 38,112.5 Q 44,113.5 49,112.5" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+
+            <!-- Bottine droite à revers -->
+            <path d="M 59,98 C 59,96 52,96 52,98 L 52,111 C 53,113 58,113 60,111 L 61,112.5 C 62,113 52,114 51,112 L 51,98 Z" fill="#0f172a"/>
+            <path d="M 51.5,98 Q 55.5,96 59.5,98 L 58.5,101 Q 55.5,99 52.5,101 Z" fill="#581c87" stroke="#0f172a" stroke-width="0.5"/>
+            <circle cx="55.5" cy="104" r="0.9" fill="#cbd5e1"/>
+            <circle cx="55.5" cy="107" r="0.9" fill="#cbd5e1"/>
+            <path d="M 51,112.5 Q 56,113.5 62,112.5" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+        </g>`,
+    body: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
+        <g id="outfit-shadow-body">
+            <!-- Haut / Buste en velours pourpre (#581c87) -->
+            <path d="M 35,63 C 35,60 41,58 50,58 C 59,58 65,60 65,63 L 63.5,82 L 36.5,82 Z" fill="#581c87" stroke="#2e1065" stroke-width="0.7"/>
+            <!-- Décolleté délicat -->
+            <path d="M 44,58 Q 50,65 56,58 Z" fill="${skin.base}"/>
+            <!-- Ras-du-cou avec pendentif améthyste -->
+            <path d="M 45,59 Q 50,62 55,59" stroke="#0f172a" stroke-width="1.1" fill="none"/>
+            <circle cx="50" cy="62" r="1.3" fill="#c084fc" stroke="#3b0764" stroke-width="0.5"/>
+            
+            <!-- Corset / Laçage croisé argenté -->
+            <path d="M 46,67 L 54,71 M 54,67 L 46,71" stroke="#c084fc" stroke-width="0.9" stroke-linecap="round"/>
+            <path d="M 46,72 L 54,76 M 54,72 L 46,76" stroke="#c084fc" stroke-width="0.9" stroke-linecap="round"/>
+            <line x1="46" y1="65" x2="46" y2="78" stroke="#3b0764" stroke-width="0.8"/>
+            <line x1="54" y1="65" x2="54" y2="78" stroke="#3b0764" stroke-width="0.8"/>
+
+            <!-- Jupe de sorcière évasée festonnée -->
+            <path d="M 36.5,82 
+                     C 32,86 28,92 31,98 
+                     L 38,94 
+                     L 44,99 
+                     L 50,93 
+                     L 56,99 
+                     L 62,94 
+                     L 69,98 
+                     C 72,92 68,86 63.5,82 Z" 
+                  fill="#4c1d95" stroke="#1e1b4b" stroke-width="0.8"/>
+            <path d="M 31,98 L 38,94 L 36,96 Z" fill="#7c3aed"/>
+            <path d="M 44,99 L 50,93 L 48,96 Z" fill="#7c3aed"/>
+            <path d="M 56,99 L 62,94 L 60,96 Z" fill="#7c3aed"/>
+            <path d="M 31,98 L 38,94 L 44,99 L 50,93 L 56,99 L 62,94 L 69,98" 
+                  stroke="#cbd5e1" stroke-width="0.8" fill="none" stroke-linejoin="round"/>
+        </g>`,
+    belt: `
+        <g id="outfit-shadow-belt">
+            <path d="M 36,79 Q 50,82 64,79 L 64,83 Q 50,86 36,83 Z" fill="#0f172a"/>
+            <rect x="47" y="79" width="6" height="5" rx="1.2" fill="#334155" stroke="#cbd5e1" stroke-width="0.6"/>
+            <path d="M 49,80.2 C 48.5,81.5 48.5,82.5 49,83.8 C 50.5,83.5 50.5,80.5 49,80.2 Z" fill="#f8fafc"/>
+            <!-- Fiole de potion magique luminescente à la taille -->
+            <g transform="translate(62, 82)">
+                <rect x="-1" y="-2" width="2" height="1.5" rx="0.3" fill="#b45309"/>
+                <circle cx="0" cy="2" r="2.8" fill="#a855f7" stroke="#3b0764" stroke-width="0.5"/>
+                <circle cx="0" cy="2" r="2" fill="#c084fc"/>
+                <circle cx="-0.8" cy="1.2" r="0.7" fill="#ffffff" opacity="0.8"/>
+            </g>
+        </g>`,
+    arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
+        <g id="outfit-shadow-arms">
+            <!-- Bras gauche manche pagode évasée -->
+            <path d="M 35,63 C 30,68 26,75 23,80 C 20,86 17,90 18,92 C 21,91 24,86 27,82 C 29,86 33,84 35,80 C 35,74 36,68 36,63 Z" fill="#581c87" stroke="#2e1065" stroke-width="0.7"/>
+            <path d="M 18,92 C 21,91 25,85 27,82 C 23,86 20,90 18,92 Z" fill="#7c3aed"/>
+            
+            <!-- Bras droit manche pagode évasée -->
+            <path d="M 65,63 C 70,68 74,75 77,80 C 80,86 83,90 82,92 C 79,91 76,86 73,82 C 71,86 67,84 65,80 C 65,74 64,68 64,63 Z" fill="#581c87" stroke="#2e1065" stroke-width="0.7"/>
+            <path d="M 82,92 C 79,91 75,85 73,82 C 77,86 80,90 82,92 Z" fill="#7c3aed"/>
+
+            <!-- Main droite délicate ouverte vers l'avant -->
+            <ellipse cx="76" cy="81" rx="3.1" ry="3.2" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+            <path d="M 74.5,80 Q 76,81 77.5,80" stroke="${skin.shadow}" stroke-width="0.6" fill="none"/>
+            <path d="M 75,82 Q 76.5,83 78,82" stroke="${skin.shadow}" stroke-width="0.6" fill="none"/>
+        </g>`,
+    headAccessory: `
+        <g id="outfit-shadow-crown">
+            <!-- Tiare / Diadème en croissant de lune et joyaux d'arcanes -->
+            <path d="M 31,21 Q 50,17 69,21 Q 50,19.5 31,21 Z" fill="#334155" stroke="#0f172a" stroke-width="0.6"/>
+            <path d="M 31,21 Q 50,17 69,21" stroke="#cbd5e1" stroke-width="0.8" fill="none"/>
+            <polygon points="38,20 41,15 44,19" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.4"/>
+            <polygon points="56,19 59,15 62,20" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.4"/>
+            <path d="M 46.5,17 C 46.5,12 53.5,12 53.5,17 C 51.5,14 48.5,14 46.5,17 Z" fill="#f8fafc" stroke="#475569" stroke-width="0.4"/>
+            <circle cx="50" cy="18" r="1.9" fill="#9333ea" stroke="#3b0764" stroke-width="0.5"/>
+            <circle cx="49.5" cy="17.5" r="0.6" fill="#ffffff"/>
+            <path d="M 50,19.5 L 50,22" stroke="#cbd5e1" stroke-width="0.6"/>
+            <path d="M 48.8,22 Q 50,25 50,25 Q 50,25 51.2,22 Q 50,21 48.8,22 Z" fill="#c084fc" stroke="#581c87" stroke-width="0.4"/>
+            <circle cx="49.8" cy="22.5" r="0.4" fill="#ffffff"/>
+        </g>`,
+    handItem: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
+        <g id="outfit-shadow-scepter" transform="translate(22, 80) rotate(-14)">
+            <!-- Sceptre de mage noir en bois noueux d'ébène et orbe flottant -->
+            <line x1="0" y1="-30" x2="0" y2="34" stroke="#0f172a" stroke-width="2.6" stroke-linecap="round"/>
+            <line x1="0" y1="-30" x2="0" y2="34" stroke="#3b0764" stroke-width="1.2" stroke-linecap="round"/>
+
+            <polygon points="-1.5,32 0,37 1.5,32" fill="#cbd5e1" stroke="#1e293b" stroke-width="0.5"/>
+            <rect x="-2" y="30" width="4" height="2" rx="0.5" fill="#475569"/>
+
+            <!-- Tête du sceptre : croissant enserrant l'orbe magique -->
+            <path d="M -3.5,-24 L 3.5,-24 L 2,-20 L -2,-20 Z" fill="#475569" stroke="#0f172a" stroke-width="0.5"/>
+            <path d="M -7,-34 
+                     C -9,-43 0,-49 8,-44 
+                     C 4,-41 0,-36 2,-30 
+                     C -3,-31 -6,-33 -7,-34 Z" 
+                  fill="#334155" stroke="#cbd5e1" stroke-width="0.7"/>
+            <path d="M -5,-33 C -6,-40 0,-45 6,-42" stroke="#f8fafc" stroke-width="0.6" fill="none"/>
+
+            <!-- Orbe d'arcanes flottant et brillant -->
+            <circle cx="0" cy="-36" r="7.5" fill="#a855f7" opacity="0.4"/>
+            <circle cx="0" cy="-36" r="4.8" fill="#7e22ce" stroke="#3b0764" stroke-width="0.7"/>
+            <circle cx="0" cy="-36" r="3.4" fill="#c084fc"/>
+            <circle cx="-1.2" cy="-37.2" r="1.3" fill="#ffffff" opacity="0.9"/>
+            <path d="M -4,-40 Q -1,-43 2,-40 Q 5,-37 2,-33" stroke="#f3e8ff" stroke-width="0.6" fill="none" opacity="0.8"/>
+
+            <!-- Main qui serre le sceptre (règle 9) -->
+            <ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+            <path d="M -1.8,-1.2 Q 0,-0.6 1.8,-1.2" stroke="${skin.shadow}" stroke-width="0.7" fill="none"/>
+            <path d="M -1.8,1.2 Q 0,1.8 1.8,1.2" stroke="${skin.shadow}" stroke-width="0.7" fill="none"/>
+            <circle cx="-1" cy="0" r="0.8" fill="#c084fc" stroke="#3b0764" stroke-width="0.3"/>
+        </g>`
+};
+
 // Registre des tenues RPG
 export const RPG_OUTFITS = {
     elf_ranger: OUTFIT_ELF_RANGER,
     orc_berserker: OUTFIT_ORC_BERSERKER,
     paladin_light: OUTFIT_PALADIN_LIGHT,
-    cat_thief: OUTFIT_CAT_THIEF
+    cat_thief: OUTFIT_CAT_THIEF,
+    shadow_mage: OUTFIT_SHADOW_MAGE
 };
 
 // Registre des Trophées RPG (Nouveau système de récompenses avec IDs courts pour chaque personnage)
@@ -2276,18 +2564,51 @@ export const RPG_TROPHIES = [
         number: 5,
         title: 'L’Énigme du Néant',
         species: 'shadow',
-        speciesName: 'Ombre / Démon',
-        className: 'Mage Noir Runique',
-        badge: 'À venir',
-        status: 'locked',
-        tagline: 'Tisseur d’arcanes aux runes spectrales',
-        description: 'Cinquième trophée : débloque la peau lilas sombre, yeux améthyste et robe runique.',
+        speciesName: 'Ombre',
+        className: 'Mage Noir & Sorcière',
+        badge: 'Nouveau',
+        rarity: 'légendaire',
+        unlocks: {
+            species: 'shadow',
+            skins: ['shadow-lilac'],
+            hairs: ['#1e1435', '#3b0764'],
+            eyes: ['amethyst'],
+            styles: { boy: 'shadow_boy', girl: 'shadow_girl' },
+            outfit: 'shadow_mage',
+            label: 'Mage Noir'
+        },
+        tagline: 'Maître des arcanes aux cornes en S et robe de sorcière',
+        description: "Cinquième trophée d'élite : débloque l'espèce Ombre (oreilles d'elfe pointues et cornes en S d'ébène), la robe de sorcière en velours pourpre, la tiare lunaire, le sceptre d'arcanes et la peau Lilas Mystique.",
         rewards: [
-            { icon: 'bi-feather', label: 'Espèce : Ombre' },
-            { icon: 'bi-shield-shaded', label: 'Classe : Mage Noir' }
+            { icon: 'bi-feather', label: "Espèce : Ombre (Oreilles d'elfe pointues & Cornes en S d'ébène)" },
+            { icon: 'bi-shield-shaded', label: "Classe : Mage Noir & Sorcière des Ombres" },
+            { icon: 'bi-scissors', label: "Coupes exclusives : Mi-long ténébreux (G) / Ondulé sombre en cascade (F)" },
+            { icon: 'bi-slash-square', label: "Arme : Sceptre d'arcanes à orbe améthyste flottant" },
+            { icon: 'bi-person-bounding-box', label: "Tenue : Robe de sorcière en velours, cape nuit d'ébène & tiare lunaire" },
+            { icon: 'bi-palette', label: "Teintes débloquées : Peau Lilas Mystique (#d8b4fe), Cheveux Noir Abyssal & Yeux Améthyste" }
         ],
-        boyPreset: { id: 'shd_b', type: 'boy', species: 'shadow' },
-        girlPreset: { id: 'shd_g', type: 'girl', species: 'shadow' }
+        boyPreset: {
+            id: 'shd_b',
+            type: 'boy',
+            styleKey: 'shadow_boy',
+            styleId: 1,
+            outfitKey: 'shadow_mage',
+            species: 'shadow',
+            skinColor: 'shadow-lilac',
+            hairColor: '#1e1435', // Noir Abyssal (contraste franc avec la peau lilas)
+            eyeColor: 'amethyst'
+        },
+        girlPreset: {
+            id: 'shd_g',
+            type: 'girl',
+            styleKey: 'shadow_girl',
+            styleId: 1,
+            outfitKey: 'shadow_mage',
+            species: 'shadow',
+            skinColor: 'shadow-lilac',
+            hairColor: '#1e1435', // Noir Abyssal (parité stricte)
+            eyeColor: 'amethyst'
+        }
     },
     {
         id: 'vampire',
@@ -2409,6 +2730,7 @@ export function buildCustomAvatarSvg({
     // NOTE Traits d'espèce qui suivent la couleur des cheveux, quelle que soit la tenue
     const catEars = species === 'cat' ? getCatEars(effectiveHairColor) : '';
     const catTail = species === 'cat' ? getCatTail(effectiveHairColor) : '';
+    const shadowHorns = species === 'shadow' ? getShadowHorns() : '';
     const renderPart = (part) => (typeof part === 'function' ? part(effectiveSkin) : (part || ''));
 
     if (mode === 'head') {
@@ -2418,6 +2740,7 @@ export function buildCustomAvatarSvg({
                 ${headBase}
                 ${faceFeatures}
                 ${catEars}
+                ${shadowHorns}
                 ${hairFront}
                 ${eyebrows}
                 ${renderPart(outfit.headAccessory)}
@@ -2438,6 +2761,7 @@ export function buildCustomAvatarSvg({
             ${headBase}
             ${faceFeatures}
             ${catEars}
+            ${shadowHorns}
             ${hairFront}
             ${eyebrows}
             ${renderPart(outfit.headAccessory)}
