@@ -34,7 +34,7 @@ function getSubjectStyle(subject) {
 export class QuizSelector {
     constructor(onQuizSelect) {
         this.onQuizSelect = onQuizSelect;
-        this.timeOptions = [5, 10, 15, 20]; // Options de temps en secondes
+        this.timeOptions = [5, 10, 15, 20, 0]; // Options de temps en secondes
         this.selectedQuiz = null;
     }
 
@@ -236,7 +236,7 @@ export class QuizSelector {
                         <!-- Infos bas -->
                         <div class="flex items-center justify-between mt-auto pt-2" style="border-top:1px solid #d8c4ad">
                             <div class="flex items-center gap-2 text-xs font-medium" style="color:#6b3603">
-                                <span><i class="bi bi-clock mr-0.5"></i>~${Math.ceil(quiz.questionCount * CONFIG.timeLimit / 60)}m</span>
+                                <span><i class="bi bi-clock mr-0.5"></i>~${Math.ceil(quiz.questionCount * (CONFIG.timeLimit || 10) / 60)}m</span>
                                 <span style="color:#9e621d;letter-spacing:-1px">${getDifficultyIcons(quiz.difficulty)}</span>
                             </div>
                             <span class="text-xs font-bold transition-colors" style="color:#2e7c75">
@@ -311,7 +311,7 @@ export class QuizSelector {
         }
 
         // Récupérer le temps par défaut du joueur
-        const defaultTime = playerManager.defaultTimeLimit || 10;
+        const defaultTime = playerManager.defaultTimeLimit ?? 10;
 
         const timeButtonsHTML = this.timeOptions.map(time => {
             const isDefault = time === defaultTime;
@@ -323,8 +323,8 @@ export class QuizSelector {
                     style="${selectedStyle}"
                     data-time="${time}">
                 ${isDefault ? '<span style="position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:white;opacity:0.7"></span>' : ''}
-                <span class="text-2xl font-bold block">${time}</span>
-                <span class="block text-xs mt-0.5" style="color:${isDefault ? 'rgba(255,255,255,0.85)' : '#b0906a'}">secondes</span>
+                <span class="text-2xl font-bold block">${time === 0 ? '∞' : time}</span>
+                <span class="block text-xs mt-0.5" style="color:${isDefault ? 'rgba(255,255,255,0.85)' : '#b0906a'}">${time === 0 ? 'sans limite' : 'secondes'}</span>
             </button>
         `;
         }).join('');

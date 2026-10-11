@@ -49,6 +49,15 @@ class QuizState {
      * Définit le temps limite par question
      * @param {number} seconds - Nombre de secondes
      */
+    // NOTE 0 = temps infini : pas de chrono, on passe à la question suivante avec la flèche
+    isInfiniteTime() {
+        return this.currentTimeLimit === 0;
+    }
+
+    get timeLabel() {
+        return this.isInfiniteTime() ? '∞' : this.timeRemaining;
+    }
+
     setTimeLimit(seconds) {
         this.currentTimeLimit = seconds;
         this.timeRemaining = seconds;

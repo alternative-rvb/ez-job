@@ -249,7 +249,8 @@ export class ResultsManager {
             5: 'Mode Expert (5s)',
             10: 'Mode Difficile (10s)',
             15: 'Mode Normal (15s)',
-            20: 'Mode Facile (20s)'
+            20: 'Mode Facile (20s)',
+            0: 'Mode sans limite'
         }[timeLimit] || 'Mode Normal';
 
         const emojis = ['<i class="bi bi-trophy-fill text-yellow-400"></i>', '<i class="bi bi-star-fill text-yellow-400"></i>', `<i class="bi bi-star-fill" style="color:${T.hexSecondary}"></i>`, `<i class="bi bi-star-fill" style="color:${T.hexPrimaryLight}"></i>`, '<i class="bi bi-trophy-fill text-green-400"></i>'];

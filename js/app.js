@@ -367,7 +367,7 @@ class QuizApp {
 
     initializeGameOptions() {
         // Initialiser les boutons avec les valeurs sauvegardées du joueur
-        const defaultTimeLimit = playerManager.defaultTimeLimit || 10;
+        const defaultTimeLimit = playerManager.defaultTimeLimit ?? 10;
         
         // Sélectionner le bouton de temps correspondant
         document.querySelectorAll('.time-option').forEach(button => {
@@ -393,7 +393,7 @@ class QuizApp {
             if (quiz) {
                 const timeElement = card.querySelector('.text-sm.text-gray-400 span');
                 if (timeElement) {
-                    const estimatedTime = Math.ceil(quiz.questionCount * CONFIG.timeLimit / 60);
+                    const estimatedTime = Math.ceil(quiz.questionCount * (CONFIG.timeLimit || 10) / 60);
                     timeElement.textContent = `~${estimatedTime} min`;
                 }
             }
@@ -426,7 +426,7 @@ class QuizApp {
         if (heroQuizQuestions) heroQuizQuestions.textContent = `${latestQuiz.questionCount} question${latestQuiz.questionCount > 1 ? 's' : ''}`;
 
         // Calculer le temps estimé
-        const estimatedTime = Math.ceil(latestQuiz.questionCount * CONFIG.timeLimit / 60);
+        const estimatedTime = Math.ceil(latestQuiz.questionCount * (CONFIG.timeLimit || 10) / 60);
         if (heroQuizTime) heroQuizTime.textContent = `~${estimatedTime} min`;
 
         if (heroQuizCategory) heroQuizCategory.textContent = latestQuiz.category;
@@ -466,7 +466,7 @@ class QuizApp {
     async startQuiz(selectedQuiz, selectedTime = null) {
         try {
             // Si un temps est sélectionné, le stocker dans l'état
-            if (selectedTime) {
+            if (selectedTime !== null && selectedTime !== undefined) {
                 quizState.setTimeLimit(selectedTime);
             } else {
                 // Sinon, utiliser le temps par défaut de la config

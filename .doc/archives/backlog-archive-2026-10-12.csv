@@ -1,0 +1,2 @@
+id,priorite,tache_principale,type,description,date_debut,date_fin
+42,3 normal 🔵,Quiz : Tête d'avatar dans la réponse et mode temps infini,feature,"Modal de réponse : tête de l'avatar relevée (bonne réponse) ou baissée (mauvaise ou temps écoulé). Nouveau choix de temps infini (valeur 0, symbole ∞) : pas de chrono, modal qui reste jusqu'au clic sur la flèche suivant, aucune gemme en mode infini. Mode libre ignoré en temps infini. Variante possible : bouche inversée au lieu de la tête inclinée.",2026-10-12,2026-10-12

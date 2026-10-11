@@ -59,6 +59,11 @@ export class RewardsManager {
      * @returns {number} Nombre de points gagnés
      */
     calculatePoints(scorePercentage, timeLimit = 10) {
+        // Temps infini = pas de défi chronométré, pas de gemme
+        if (timeLimit === 0) {
+            return 0;
+        }
+
         // Moins de 80% = 0 point
         if (scorePercentage < 80) {
             return 0;

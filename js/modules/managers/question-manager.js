@@ -7,6 +7,7 @@ import { quizState } from '../core/state.js';
 import { domManager } from '../ui/dom.js';
 import { launchConfetti } from '../core/utils.js';
 import { T } from '../core/theme.js';
+import { renderAvatarHeadSvg } from '../ui/avatars.js';
 
 export class QuestionManager {
     constructor(onQuizComplete) {
@@ -58,7 +59,7 @@ export class QuestionManager {
             // Mode choix multiples
             optionsHTML = question.choices.map((option, index) => {
                 const letter = String.fromCharCode(65 + index);
-                const isHidden = CONFIG.freeMode ? 'hidden' : '';
+                const isHidden = CONFIG.freeMode && !quizState.isInfiniteTime() ? 'hidden' : '';
                 return `
                     <button class="answer-btn ${isHidden} px-4 py-2 md:p-5 text-left rounded-xl border-2 touch-manipulation font-semibold transition-all duration-150" style="background-color:white;color:#5a3800;border-color:#dcc9b0"
                             data-answer-index="${index}">
@@ -71,7 +72,7 @@ export class QuestionManager {
             }).join('');
         } else if (question.answer || question.acceptedAnswers) {
             // Mode saisie de texte - champ input
-            const isHidden = CONFIG.freeMode ? 'hidden' : '';
+            const isHidden = CONFIG.freeMode && !quizState.isInfiniteTime() ? 'hidden' : '';
             optionsHTML = `
                 <div class="md:col-span-2">
                     <div class="rounded-lg p-6 space-y-4" style="background-color:rgba(251,243,234,0.15);border:2px solid rgba(255,255,255,0.3)">
@@ -104,6 +105,7 @@ export class QuestionManager {
                 <div class="text-center py-8">
                     <p class="text-lg md:text-xl font-medium" style="color:${T.hexPrimary}">Question informative</p>
                     <p class="text-sm text-white/70 mt-2">Cette question ne compte pas dans le score</p>
+                    ${quizState.isInfiniteTime() ? `<button id="info-next-btn" class="mt-4 w-12 h-12 rounded-full text-white text-xl shadow-lg" style="background:${T.gradientMain}" aria-label="Question suivante"><i class="bi bi-arrow-right"></i></button>` : ''}
                 </div>
             `;
         }
@@ -115,8 +117,8 @@ export class QuestionManager {
                     <div id="timer-badge" class="rounded-full px-6 py-3 shadow-lg" style="background:${T.gradientMain}">
                         <div class="flex items-center space-x-3">
                             <i class="bi bi-clock text-white text-lg"></i>
-                            <span class="text-2xl font-bold text-white" id="timer-display-large">${quizState.timeRemaining}</span>
-                            <span class="text-white text-sm">sec</span>
+                            <span class="text-2xl font-bold text-white" id="timer-display-large">${quizState.timeLabel}</span>
+                            ${quizState.isInfiniteTime() ? '' : '<span class="text-white text-sm">sec</span>'}
                         </div>
                     </div>
                 </div>
@@ -157,7 +159,7 @@ export class QuestionManager {
             quizState.currentQuestionIndex, 
             quizState.questions.length, 
             quizState.score, 
-            quizState.timeRemaining
+            quizState.timeLabel
         );
         
         // Ajouter les écouteurs d'événements
@@ -278,10 +280,28 @@ export class QuestionManager {
             document.querySelectorAll('.answer-btn').forEach(btn => btn.blur());
         }, 0);
 
+        const infoNextBtn = document.getElementById('info-next-btn');
+        if (infoNextBtn) {
+            infoNextBtn.addEventListener('click', () => {
+                if (!quizState.isAnswered) this.handleFreeResponseMode();
+            });
+        }
+
         this.startTimer();
     }
 
+    // Passe à la question suivante après un délai, sauf en temps infini (flèche du modal)
+    advanceAfter(delay) {
+        if (quizState.isInfiniteTime()) return;
+        setTimeout(() => {
+            quizState.nextQuestion();
+            this.showQuestion();
+        }, delay);
+    }
+
     startTimer() {
+        // NOTE Temps infini : aucun chrono, la flèche du modal fait avancer
+        if (quizState.isInfiniteTime()) return;
         quizState.timerInterval = setInterval(() => {
             quizState.timeRemaining--;
             
@@ -402,14 +422,11 @@ export class QuestionManager {
                 quizState.currentQuestionIndex,
                 quizState.questions.length,
                 quizState.score,
-                quizState.timeRemaining
+                quizState.timeLabel
             );
 
             // Passer à la question suivante après un délai
-            setTimeout(() => {
-                quizState.nextQuestion();
-                this.showQuestion();
-            }, 2500);
+            this.advanceAfter(2500);
         }
     }
 
@@ -461,7 +478,7 @@ export class QuestionManager {
                 quizState.currentQuestionIndex, 
                 quizState.questions.length, 
                 quizState.score, 
-                quizState.timeRemaining
+                quizState.timeLabel
             );
             
             this.handleNormalMode(answerIndex, question, answerButtons);
@@ -496,10 +513,7 @@ export class QuestionManager {
         }
 
         // Délai avant de passer à la question suivante
-        setTimeout(() => {
-            quizState.nextQuestion();
-            this.showQuestion();
-        }, 3000);
+        this.advanceAfter(3000);
     }
 
     handleNormalMode(answerIndex, question, answerButtons) {
@@ -553,10 +567,7 @@ export class QuestionManager {
             // La logique de vérification a été déplacée vers selectAnswer pour éviter les doublons
 
             // Passer à la question suivante après un délai
-            setTimeout(() => {
-                quizState.nextQuestion();
-                this.showQuestion();
-            }, 2500);
+            this.advanceAfter(2500);
 
         }, 300);
     }
@@ -585,10 +596,7 @@ export class QuestionManager {
         }
         
         // Passer à la question suivante après un délai
-        setTimeout(() => {
-            quizState.nextQuestion();
-            this.showQuestion();
-        }, 2000);
+        this.advanceAfter(2000);
     }
 
     showFeedbackMessage(message, type, question = null, answerIndex = null, userTextAnswer = null) {
@@ -740,9 +748,18 @@ export class QuestionManager {
                 break;
         }
 
+        // NOTE Tête de l'avatar : relevée et souriante si bonne réponse, baissée sinon
+        const mood = type === 'success' ? 'up' : (type === 'neutral' ? null : 'down');
+        const headSection = mood
+            ? `<div class="avatar-reaction avatar-reaction-${mood} mb-4" aria-hidden="true">${renderAvatarHeadSvg()}</div>`
+            : `<div class="text-7xl mb-6">${icon}</div>`;
+        const nextArrow = quizState.isInfiniteTime()
+            ? `<button type="button" class="feedback-next-btn mt-2 w-14 h-14 rounded-full text-white text-2xl shadow-lg active:scale-95 transition-transform" style="background:${T.gradientMain}" aria-label="Question suivante"><i class="bi bi-arrow-right"></i></button>`
+            : '';
+
         modalContent.innerHTML = `
             <div class="flex flex-col items-center">
-                <div class="text-7xl mb-6">${icon}</div>
+                ${headSection}
                 <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r ${feedbackColors[type]} bg-clip-text text-transparent">
                     ${title}
                 </h3>
@@ -751,11 +768,22 @@ export class QuestionManager {
                     ${subtitle}
                 </p>
                 ${responseSection}
+                ${nextArrow}
             </div>
         `;
 
         overlay.appendChild(modalContent);
         document.body.appendChild(overlay);
+
+        // Temps infini : le modal reste jusqu'au clic sur la flèche
+        if (quizState.isInfiniteTime()) {
+            modalContent.querySelector('.feedback-next-btn').addEventListener('click', () => {
+                overlay.remove();
+                quizState.nextQuestion();
+                this.showQuestion();
+            }, { once: true });
+            return;
+        }
 
         // Supprimer le modal après 3 secondes
         setTimeout(() => {

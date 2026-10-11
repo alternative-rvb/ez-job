@@ -121,7 +121,7 @@ class PlayerManager {
 
     // Sauvegarder le temps par défaut choisi
     setDefaultTimeLimit(timeLimit) {
-        if ([5, 10, 15, 20].includes(timeLimit)) {
+        if ([0, 5, 10, 15, 20].includes(timeLimit)) {
             this.defaultTimeLimit = timeLimit;
             localStorage.setItem('defaultTimeLimit', timeLimit.toString());
         }
