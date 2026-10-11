@@ -228,7 +228,8 @@ export const BOY_BASE = {
             <polygon points="29,45 38,47 37,49 28,47" fill="#b91c1c" opacity="0.85"/>
             <polygon points="71,45 62,47 63,49 72,47" fill="#b91c1c" opacity="0.85"/>
             <!-- Bouche orc droite et plus large basée sur la couleur de peau mais beaucoup plus foncée -->
-            <line x1="41" y1="52" x2="59" y2="52" stroke="${mouthColor}" stroke-width="2.6" stroke-linecap="round"/>
+            <!-- NOTE Trait à largeur variable profil sablier, généré depuis la droite 41,52 vers 59,52 -->
+            <path d="M 41,53.1 L 42.5,52.89 L 44,52.7 L 45.5,52.52 L 47,52.37 L 48.5,52.24 L 50,52.17 L 51.5,52.24 L 53,52.37 L 54.5,52.52 L 56,52.7 L 57.5,52.89 L 59,53.1 Q 60.54,52 59,50.9 L 57.5,51.11 L 56,51.3 L 54.5,51.48 L 53,51.63 L 51.5,51.76 L 50,51.84 L 48.5,51.76 L 47,51.63 L 45.5,51.48 L 44,51.3 L 42.5,51.11 L 41,50.9 Q 39.46,52 41,53.1 Z" fill="${mouthColor}"/>
             <path d="M 40.5,53.5 L 41.5,52 L 58.5,52 L 59.5,53.5" stroke="${mouthColor}" stroke-width="1.6" fill="none" stroke-linecap="round"/>
             <!-- Crocs inférieurs orc : écartés aux canines, légèrement plus petits et avec pointes arrondies SANS contour -->
             <path d="M 42.2,52.5 C 42.2,49.5 42.8,48 43.6,48 C 44.4,48 45.0,49.5 45.0,52.5 Z" fill="#fffbeb"/>
@@ -236,7 +237,8 @@ export const BOY_BASE = {
             <path d="M 55.0,52.5 C 55.0,49.5 55.6,48 56.4,48 C 57.2,48 57.8,49.5 57.8,52.5 Z" fill="#fffbeb"/>
             <ellipse cx="56.8" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>` : `
             <!-- Bouche souriante basée sur la couleur de peau mais beaucoup plus foncée -->
-            <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="${mouthColor}" stroke-width="2" stroke-linecap="round"/>`}
+            <!-- NOTE Trait à largeur variable profil sablier (épais aux commissures, étranglé au centre), généré depuis Q 45,51 50,56.5 55,51 -->
+            <path d="M 44.33,51.61 L 45.34,52.38 L 46.33,52.99 L 47.3,53.43 L 48.23,53.73 L 49.13,53.87 L 50,53.89 L 50.87,53.87 L 51.77,53.73 L 52.7,53.43 L 53.67,52.99 L 54.66,52.38 L 55.67,51.61 Q 55.85,50.07 54.33,50.39 L 53.67,51.3 L 53,52.07 L 52.3,52.69 L 51.56,53.16 L 50.8,53.48 L 50,53.62 L 49.2,53.48 L 48.44,53.16 L 47.7,52.69 L 47,52.07 L 46.33,51.3 L 45.67,50.39 Q 44.15,50.07 44.33,51.61 Z" fill="${mouthColor}"/>`}
         </g>`;
     },
     eyebrows: (color = '#5a2d0c', opacity = 0.85) => `
@@ -447,7 +449,8 @@ export const GIRL_BASE = {
             <polygon points="29,45 38,47 37,49 28,47" fill="#b91c1c" opacity="0.85"/>
             <polygon points="71,45 62,47 63,49 72,47" fill="#b91c1c" opacity="0.85"/>
             <!-- Bouche orc droite et plus large basée sur la couleur de peau mais beaucoup plus foncée -->
-            <line x1="41" y1="52" x2="59" y2="52" stroke="${mouthColor}" stroke-width="2.6" stroke-linecap="round"/>
+            <!-- NOTE Trait à largeur variable profil sablier, généré depuis la droite 41,52 vers 59,52 -->
+            <path d="M 41,53.1 L 42.5,52.89 L 44,52.7 L 45.5,52.52 L 47,52.37 L 48.5,52.24 L 50,52.17 L 51.5,52.24 L 53,52.37 L 54.5,52.52 L 56,52.7 L 57.5,52.89 L 59,53.1 Q 60.54,52 59,50.9 L 57.5,51.11 L 56,51.3 L 54.5,51.48 L 53,51.63 L 51.5,51.76 L 50,51.84 L 48.5,51.76 L 47,51.63 L 45.5,51.48 L 44,51.3 L 42.5,51.11 L 41,50.9 Q 39.46,52 41,53.1 Z" fill="${mouthColor}"/>
             <path d="M 40.5,53.5 L 41.5,52 L 58.5,52 L 59.5,53.5" stroke="${mouthColor}" stroke-width="1.6" fill="none" stroke-linecap="round"/>
             <!-- Crocs inférieurs orc : écartés aux canines, légèrement plus petits et avec pointes arrondies SANS contour -->
             <path d="M 42.2,52.5 C 42.2,49.5 42.8,48 43.6,48 C 44.4,48 45.0,49.5 45.0,52.5 Z" fill="#fffbeb"/>
@@ -455,7 +458,8 @@ export const GIRL_BASE = {
             <path d="M 55.0,52.5 C 55.0,49.5 55.6,48 56.4,48 C 57.2,48 57.8,49.5 57.8,52.5 Z" fill="#fffbeb"/>
             <ellipse cx="56.8" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>` : `
             <!-- Bouche souriante basée sur la couleur de peau mais beaucoup plus foncée -->
-            <path d="M45 51 Q50 56.5 55 51" fill="none" stroke="${mouthColor}" stroke-width="2" stroke-linecap="round"/>`}
+            <!-- NOTE Trait à largeur variable profil sablier (épais aux commissures, étranglé au centre), généré depuis Q 45,51 50,56.5 55,51 -->
+            <path d="M 44.33,51.61 L 45.34,52.38 L 46.33,52.99 L 47.3,53.43 L 48.23,53.73 L 49.13,53.87 L 50,53.89 L 50.87,53.87 L 51.77,53.73 L 52.7,53.43 L 53.67,52.99 L 54.66,52.38 L 55.67,51.61 Q 55.85,50.07 54.33,50.39 L 53.67,51.3 L 53,52.07 L 52.3,52.69 L 51.56,53.16 L 50.8,53.48 L 50,53.62 L 49.2,53.48 L 48.44,53.16 L 47.7,52.69 L 47,52.07 L 46.33,51.3 L 45.67,50.39 Q 44.15,50.07 44.33,51.61 Z" fill="${mouthColor}"/>`}
         </g>`;
     },
     eyebrows: (color = '#8a3c08', opacity = 0.85) => `

@@ -115,7 +115,7 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
   - Interdiction de faire déborder les extrémités inférieures au-delà de la largeur de taille/bassin (`x = 36.5..63.5`). Les sangles doivent s'ancrer impeccablement sur la ceinture.
 
 ### Documentation détaillée
-Voir le guide complet dans [.doc/guide-technique-avatars-svg.md](.doc/guide-technique-avatars-svg.md).
+Voir le guide complet dans [.doc/guide-technique-avatars-svg.md](.doc/guide-technique-avatars-svg.md). La méthode de création des trophées skins (socle réutilisable, apports d'un trophée, recette, lab) est dans [.claude/skills/avatars-svg/SKILL.md](.claude/skills/avatars-svg/SKILL.md).
 
 ## Project Overview
 
