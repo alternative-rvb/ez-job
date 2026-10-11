@@ -940,3 +940,53 @@ h1, h2, h3, .font-display {
 
 
 
+
+/* ANCHOR: Face des cartes trophées débloquées
+   La miniature et la modale partagent le même rendu : les tailles suivent la largeur
+   de la carte (unités cqw), bornées par clamp() pour rester lisibles en miniature. */
+.trophy-card-pokemon {
+  container-type: inline-size;
+}
+
+.trophy-face {
+  padding: 16cqw 4.5cqw 4cqw;
+}
+
+.trophy-face-text > * + * {
+  margin-top: 1cqw;
+}
+
+.trophy-face-series {
+  font-size: clamp(9px, 3cqw, 13px);
+}
+
+.trophy-face-name {
+  font-size: clamp(14px, 5.5cqw, 22px);
+}
+
+.trophy-face-desc {
+  font-size: clamp(11px, 3.6cqw, 15px);
+  line-height: 1.35;
+}
+
+.trophy-face-footer {
+  margin-top: 2.5cqw;
+  padding-top: 2.5cqw;
+  gap: 2cqw;
+}
+
+.trophy-face-badge {
+  font-size: clamp(10px, 3.2cqw, 13px);
+  padding: 0.3em 0.8em;
+  gap: 0.35em;
+}
+
+.trophy-face-actions {
+  gap: 2cqw;
+}
+
+.trophy-face-btn {
+  width: clamp(24px, 8cqw, 34px);
+  height: clamp(24px, 8cqw, 34px);
+  font-size: clamp(11px, 3.6cqw, 15px);
+}

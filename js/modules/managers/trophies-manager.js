@@ -68,28 +68,54 @@ export class TrophiesManager {
         document.getElementById('unlocked-count').textContent = unlockedCount;
     }
 
-    renderTrophies() {
-        const container = document.getElementById('trophies-container');
-        const unlocked = rewardsManager.getUnlockedTrophies();
-        const rewards = rewardsManager.getRewards();
-        const canUnlock = rewards.totalPoints >= 5;
-
-        // Mapping des rarités pour affichage
+    // ANCHOR: face d'une carte débloquée, commune à la miniature et à la modale (tailles en unités cqw dans main.css)
+    renderCardFace(trophy, { zoomable = false } = {}) {
         const rarityLabels = {
             'commun': 'Commun',
             'rare': 'Rare',
             'épique': 'Épique',
             'légendaire': 'Légendaire'
         };
+        const rarityLabel = rarityLabels[trophy.rarity] || trophy.rarity.toUpperCase();
+
+        return `
+            <div class="trophy-face absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent">
+                <div class="trophy-face-text">
+                    ${trophy.series ? `<p class="trophy-face-series text-white/70 font-semibold uppercase tracking-wide truncate">${trophy.series}</p>` : ''}
+                    <h3 class="trophy-face-name font-bold leading-tight text-white truncate">${trophy.name}</h3>
+                    <p class="trophy-face-desc text-white/80 line-clamp-2">${trophy.description}</p>
+                </div>
+                <div class="trophy-face-footer flex items-center justify-between border-t" style="border-color:rgba(255,255,255,0.2)">
+                    <span class="trophy-face-badge inline-flex items-center badge-${trophy.rarity} rounded-full font-bold whitespace-nowrap">
+                        <i class="bi bi-star-fill"></i>${rarityLabel}
+                    </span>
+                    <div class="trophy-face-actions flex items-center">
+                        ${zoomable ? `
+                            <button class="trophy-zoom-btn trophy-face-btn inline-flex items-center justify-center rounded-md text-white/80 hover:text-white transition transform hover:scale-110" style="background:${T.primaryA(0.3)}" title="Agrandir" data-trophy-id="${trophy.id}">
+                                <i class="bi bi-zoom-in"></i>
+                            </button>
+                        ` : ''}
+                        <a href="${trophy.image}" download class="trophy-face-btn inline-flex items-center justify-center rounded-md text-white/80 hover:text-white transition transform hover:scale-110" style="background:${T.primaryA(0.3)}" title="Télécharger">
+                            <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    renderTrophies() {
+        const container = document.getElementById('trophies-container');
+        const unlocked = rewardsManager.getUnlockedTrophies();
+        const rewards = rewardsManager.getRewards();
+        const canUnlock = rewards.totalPoints >= 5;
 
         container.innerHTML = this.trophiesData.trophies.map(trophy => {
             const isUnlocked = unlocked.includes(trophy.id);
             const rarityClass = `rarity-${trophy.rarity}`;
-            const badgeClass = `badge-${trophy.rarity}`;
-            const rarityLabel = rarityLabels[trophy.rarity] || trophy.rarity.toUpperCase();
             
             return `
-                <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative" style="aspect-ratio: 9/16; background-color:#eaddcc">
+                <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 ${rarityClass} ${isUnlocked ? 'trophy-unlocked' : ''} relative" style="aspect-ratio: 9/16; background-color:${T.hexPrimary}">
                     <img src="${trophy.image}" alt="${isUnlocked ? trophy.name : 'Trophée verrouillé'}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" style="${isUnlocked ? '' : 'filter:blur(18px) saturate(0.7);transform:scale(1.15)'}" />
                     ${isUnlocked ? '' : `
                         <!-- Overlay de verrouillage -->
@@ -105,28 +131,8 @@ export class TrophiesManager {
                     `}
 
                     <!-- Dégradé transparent vers noir en bas -->
+                    ${isUnlocked ? this.renderCardFace(trophy, { zoomable: true }) : `
                     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
-                        ${isUnlocked ? `
-                            <div class="space-y-1">
-                                ${trophy.series ? `<p class="text-xs text-white/70 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
-                                <h3 class="font-bold text-base leading-tight">${trophy.name}</h3>
-                                <p class="text-white/80 text-xs line-clamp-2">${trophy.description}</p>
-                            </div>
-                            <div class="flex items-center justify-between pt-2 border-t" style="border-color:rgba(255,255,255,0.2)">
-                                <span class="inline-block px-2 py-1 ${badgeClass} rounded-md text-xs font-bold">
-                                    <i class="bi bi-star-fill"></i>
-                                    <span class="hidden sm:inline ml-1">${rarityLabel}</span>
-                                </span>
-                                <div class="flex items-center gap-2">
-                                    <button class="trophy-zoom-btn inline-flex items-center justify-center w-7 h-7 rounded-md text-white/80 hover:text-white transition transform hover:scale-110" style="background:rgba(72,158,150,0.3)" title="Agrandir" data-trophy-id="${trophy.id}">
-                                        <i class="bi bi-zoom-in text-sm"></i>
-                                    </button>
-                                    <a href="${trophy.image}" download class="inline-flex items-center justify-center w-7 h-7 rounded-md text-white/80 hover:text-white transition transform hover:scale-110" style="background:rgba(72,158,150,0.3)" title="Télécharger">
-                                        <i class="bi bi-download text-sm"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        ` : `
                             <div class="space-y-2">
                                 <div class="text-center">
                                     <h3 class="font-bold text-base leading-tight text-white/50">Trophée Mystère</h3>
@@ -137,8 +143,8 @@ export class TrophiesManager {
                                     <span class="copy-code-text text-xs font-mono font-bold text-center tracking-wider" style="color:#7c4004">${trophy.secretCode}</span>
                                 </button>
                             </div>
-                        `}
                     </div>
+                    `}
                 </div>
             `;
         }).join('');
@@ -368,14 +374,6 @@ export class TrophiesManager {
         const trophy = this.trophiesData.trophies.find(t => t.id === trophyId);
         if (!trophy) return;
 
-        const rarityLabels = {
-            'commun': 'Commun',
-            'rare': 'Rare',
-            'épique': 'Épique',
-            'légendaire': 'Légendaire'
-        };
-        const rarityLabel = rarityLabels[trophy.rarity] || trophy.rarity.toUpperCase();
-        const badgeClass = `badge-${trophy.rarity}`;
         const rarityClass = `rarity-${trophy.rarity}`;
 
         // Créer la modale
@@ -383,7 +381,7 @@ export class TrophiesManager {
         modal.id = 'trophy-modal';
         modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4';
         modal.innerHTML = `
-            <div class="trophy-card-pokemon-modal trophy-card-pokemon trophy-unlocked rounded-xl overflow-hidden border-2 ${rarityClass} relative shadow-2xl" style="aspect-ratio: 9/16; height: 80vh; max-width: 90vw; background-color:#66bcb4">
+            <div class="trophy-card-pokemon-modal trophy-card-pokemon trophy-unlocked rounded-xl overflow-hidden border-2 ${rarityClass} relative shadow-2xl" style="aspect-ratio: 9/16; height: 80vh; max-width: 90vw; background-color:${T.hexPrimary}">
                 <!-- Bouton fermer -->
                 <button class="absolute top-4 right-4 z-[200] w-10 h-10 rounded-full bg-black/70 hover:bg-black/90 text-white flex items-center justify-center transition" id="close-trophy-modal">
                     <i class="bi bi-x-lg text-xl"></i>
@@ -393,22 +391,7 @@ export class TrophiesManager {
                 <img src="${trophy.image}" alt="${trophy.name}" class="absolute inset-0 w-full h-full object-contain px-2 pt-2 pb-6" />
 
                 <!-- Dégradé transparent vers noir en bas -->
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
-                    <div class="space-y-1">
-                        ${trophy.series ? `<p class="text-xs text-white/70 font-semibold uppercase tracking-wide">${trophy.series}</p>` : ''}
-                        <h3 class="font-bold text-lg leading-tight">${trophy.name}</h3>
-                        <p class="text-white/80 text-sm">${trophy.description}</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-2 border-t" style="border-color:rgba(255,255,255,0.2)">
-                        <span class="inline-block px-2 py-1 ${badgeClass} rounded-full text-xs font-bold">
-                            <i class="bi bi-star-fill"></i>
-                            <span class="hidden sm:inline ml-1">${rarityLabel}</span>
-                        </span>
-                        <a href="${trophy.image}" download class="inline-flex items-center justify-center w-8 h-8 rounded-md text-white/80 hover:text-white transition transform hover:scale-110" style="background:rgba(72,158,150,0.3)" title="Télécharger">
-                            <i class="bi bi-download text-sm"></i>
-                        </a>
-                    </div>
-                </div>
+                ${this.renderCardFace(trophy)}
             </div>
         `;
 
