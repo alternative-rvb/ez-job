@@ -82,7 +82,7 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
   1. **Cheveux longs** (ex: Fille Macarons) : On conserve l'ellipse de base universelle et on ajoute le grand ovale plein descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
   2. **Coupe au carré / Bob** (ex: Carré Court, Bob Moderne) : On ajoute un **ovale coupé en 2** descendant jusqu'aux épaules/haut du buste (`Y=62..66`) : `<path d="M 15,66 C 15,22 26,2 50,2 C 74,2 85,22 85,66 Z" fill="..."/>`.
   3. **Pointes / Chignons / Queues** : Se superposent sur cette ellipse de base.
-- Une couleur 100% unie pour la chevelure (`#5a2d0c` garçon, `#8a3c08` fille).
+- Une couleur 100% unie pour la chevelure (`#5a2d0c` Brun Sombre garçon, `#8a3c08` Roux Cuivré fille).
 
 ### Calque 3 : Jambes & Chaussures (`<g id="...-legs">`)
 - **Forme en trapèze** : Plus épais en haut (bassin) et s'affinant vers les chevilles (évite les rectangles rigides).
@@ -159,23 +159,26 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
 
 L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclusive de **6 teintes de peau prédéfinies** :
 
-| Identifiant | Nom | Couleur Base (`base`) | Ombrage / Oreilles (`shadow`) | Description |
-|---|---|---|---|---|
-| `porcelain` | Porcelaine | `#ffe8d6` | `#f4ccba` | Teint très clair, rosé |
-| `light` | Pêche (Défaut) | `#ffd4a3` | `#f0be8d` | Teint clair standard |
-| `golden` | Dorée | `#f6c48a` | `#dca66e` | Teint intermédiaire doré |
-| `tan` | Hâlée | `#df9b62` | `#bc7842` | Teint mat / hâlé chaud |
-| `brown` | Chocolat | `#9c5b2e` | `#7a411a` | Teint foncé chaud |
-| `dark` | Ébène | `#5c351c` | `#40220f` | Teint très foncé profond |
+| Identifiant | Nom | Couleur Base (`base`) | Ombrage / Oreilles (`shadow`) | Bouche (`mouth`) | Description |
+|---|---|---|---|---|---|
+| `pale` | Porcelaine | `#ffe8d6` | `#fcd3b8` | `#a25146` | Rose-chair ombré foncé élégant |
+| `light` | Pêche (Défaut) | `#ffd4a3` | `#f0be8d` | `#9c4933` | Rose-chair pêche foncé naturel |
+| `golden` | Dorée | `#f6c48a` | `#df9f62` | `#8a3e18` | Caramel ambré profond riche |
+| `tan` | Hâlée | `#df9b62` | `#b8733a` | `#6e2d0e` | Caramel terre cuite foncé |
+| `brown` | Chocolat | `#9c5b2e` | `#733d17` | `#441a05` | Cacao profond chaud |
+| `dark` | Ébène | `#5c351c` | `#3e210e` | `#220a02` | Ébène très sombre |
+| `orc-green` | Vert Olive (Orc) | `#659b5e` | `#46723e` | `#1b4218` | Vert sous-bois sombre |
 
 ### Règles d'application dynamique du teint :
 1. **Calques anatomiques de base (`headBase`, `faceFeatures`)** :
    - Le cou, la silhouette du crâne et les oreilles reçoivent `skin.base`.
    - L'intérieur des oreilles et le pli du cou reçoivent `skin.shadow`.
-   - Le nez s'adapte automatiquement (ou conserve une teinte contrastée harmonisée).
+   - Le nez s'adapte automatiquement via `skin.shadow`.
+   - **Bouche (`mouthColor`) (Règle Absolue)** : la bouche est **impérativement basée sur la couleur de la peau mais beaucoup plus foncée** (via `skin.mouth` ou calcul dynamique `getSkinMouthColor(skin)`). Jamais de valeur fixe déconnectée.
+   - **Contraste Cheveux / Peau (Règle Absolue)** : il est **strictement interdit d'associer une couleur de cheveux dont la teinte ou la clarté est trop proche de la peau** (ex. pas de cheveux blanc argenté terne sur peau porcelaine claire). Il doit toujours exister un contraste marqué pour garantir une silhouette nette.
 2. **Tenues modulaires (`BOY_OUTFITS`, `GIRL_OUTFITS`)** :
    - Les propriétés `arms` (bras nus, manches courtes, mains) et `legs` (jambes nues sous short/jupe) peuvent être définies sous forme de **fonctions dynamiques** : `(skin) => string`.
-   - Le moteur `renderPart(part, effectiveSkin)` évalue automatiquement la fonction en lui passant l'objet `{ base, shadow }`, garantissant que la peau visible sur les tenues s'adapte instantanément au teint choisi.
+   - Le moteur `renderPart(part, effectiveSkin)` évalue automatiquement la fonction en lui passant l'objet `{ base, shadow, mouth }`, garantissant que la peau visible sur les tenues s'adapte instantanément au teint choisi.
 
 ---
 
@@ -211,8 +214,19 @@ L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclus
    - **Masse volumique arrière (`hairBack`)** : Une grappe de cercles superposés ($r = 14..22$) positionnés latéralement ($x = 18..30$ et $x = 70..82$, $y = 30..70$) crée une sensation de volume bouclé riche et naturelle sans alourdir le tracé.
    - **Frange avant (`hairFront`)** : Privilégier une ligne de mèches ondulées sur le front ($y = 20..36$). **Ne jamais placer de cercles parasites isolés sur les tempes ou en avant-plan du visage** ($x = 28$ ou $x = 72$), car ils créent des verrues/artéfacts visuels coupant les yeux et les joues.
 
-4. **Harmonie Chromatique des Tenues & Évitement du Marron** :
-   - **Règle de tonalité pour les capes** : Une cape (`capeBack` / `capeFront`) doit impérativement reprendre la même famille de couleur que le vêtement principal du haut du corps (`body`), mais dans une **nuance plus foncée/profonde** (ex. pour un haut de mage violet améthyste `#4c1d95`, le pantalon est également en `#4c1d95` et la cape en violet sombre `#2e1065`, avec liseré or `#fbbf24`).
+4. **Harmonie Chromatique des Tenues & Règle Absolue pour les Capes (Teinte toujours plus foncée pour TOUS les personnages)** :
+   - **Règle absolue pour les capes (Tonalité & Contraste)** : **TOUTE CAPE (`capeBack` / `backEquipment` / pans d'épaules / manteau dorsal) DOIT IMPÉRATIVEMENT REPRENDRE LA MÊME FAMILLE DE COULEUR QUE LE VÊTEMENT PRINCIPAL DU CORPS (`body`), MAIS DANS UNE TEINTE NETTEMENT PLUS FONCÉE / PLUS PROFONDE (minimum 25% à 40% plus sombre), ET CE POUR TOUS LES PERSONNAGES SANS EXCEPTION.**
+     - **Principe optique** : La cape se situant à l'arrière-plan dans l'ombre projetée du corps, sa teinte doit créer une profondeur immédiate en étant toujours plus sombre que la pièce maîtresse du buste.
+     - **Interdictions formelles :**
+       - Ne jamais concevoir une cape plus claire ou de clarté identique à la tenue.
+       - Ne jamais concevoir une cape d'une couleur dépareillée par rapport à la tenue (ex. pas de cape blanche sur tenue sombre, pas de cape rouge sur tenue verte).
+     - *Exemples appliqués :*
+       - Haut de mage violet améthyste (`#4c1d95`) -> Cape violet sombre profond (`#2e1065`) avec liseré or (`#fbbf24`).
+       - Tunique d'éclaireur émeraude (`#1b5e52`) -> Cape sylvestre vert profond très sombre (`#0d332c` / `#144b41`).
+       - Harnais barbare orc en cuir (`#451a03`) -> Cape de fourrure de bête brun très sombre presque noire (`#261208` / `#381c0c`).
+       - Armure de paladin acier bleuté (`#cbd5e1`) -> Cape ardoise / acier profond sombre (`#334155` ou `#475569`) avec bordure or (`#fbbf24`).
+       - Robe de mage noir / ombre pourpre sombre (`#581c87`) -> Cape pourpre nuit d'ébène (`#2e1065` / `#1e1b4b`).
+       - Redingote noble vampire rouge velours (`#991b1b`) -> Cape pourpre sang très sombre (`#450a0a`).
    - **Tenues de base classiques** : Éviter le marron pour les vêtements bas (pantalons / jupes) ; privilégier des tons pétrole, sarcelle ou ardoise assortis à la charte.
 
 5. **Sélecteur de Teint sur l'Écran d'Accueil** :
@@ -235,6 +249,54 @@ L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclus
    - **Base minimale obligatoire** : L'ellipse englobante arrière (`<ellipse cx="50" cy="26" rx="35" ry="31" fill="..."/>`) pour structurer la masse qui déborde du crâne sans descendre sur les vêtements (bas calé à $Y=57$).
    - **Cheveux longs** : Ajouter un grand ovale descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
    - **Coupe au carré (Bob / mi-long)** : Ajouter un **demi-ovale** descendant jusqu'aux épaules/haut du buste (`Y=62..66`). Cette superposition d'une ellipse crânienne et d'un demi-ovale apporte une assise naturelle, fluide et beaucoup plus harmonieuse sans découpes superflues.
+
+9. **Paupières, Cils, Contour des Yeux et Regard (Différenciation Garçon / Fille & Mode Produit)** :
+   - **Contour de l'œil (Orbite / Tour de l'œil)** : Pour **tous les personnages**, le contour qui fait le tour de l'œil (`<ellipse ... fill="none" stroke="${skin.shadow}" stroke-width="0.8"/>`) doit **toujours adopter la teinte d'ombre de la carnation (`${skin.shadow}`)**, et jamais une couleur fixe en dur (ex: interdiction de `#e2d0c0`).
+   - **Garçons (Tous, base et RPG)** : **AUCUN cil saillant** (pas de pointes triangulaires ou épines latérales). Les garçons possèdent uniquement le **trait de paupière supérieur épuré** (`stroke-width="2.2"`, `d="M30 38 Q37 34 44 38"` et `d="M56 38 Q63 34 70 38"`).
+   - **Filles (Toutes, base et RPG)** : Cils manga supérieurs (3 pointes) et inférieurs dégressifs délicats.
+   - **Harmonie & Teinte** : Pour les deux, le tracé de paupière/cils adopte impérativement **la même teinte que les cheveux (`${hairColor}`)** avec le mode de fusion Produit (`style="mix-blend-mode: multiply;"`) pour une intégration harmonieuse et naturelle sur les yeux et la peau.
+
+10. **Construction des Cheveux en Blocs Larges (Règle d'Or)** :
+    - Les cheveux ne doivent jamais être conçus en simples aplats plats ou en découpes linéaires en dents de scie étroites (sawtooth).
+    - Ils sont formés de **blocs distincts et larges**, organisés entre calque arrière (`hairBack` : masse crânienne + retombées d'épaules) et calque avant (`hairFront` : calotte volumétrique couvrant le front + mèches larges).
+    - Les formes des mèches sont **soit elliptiques douces, soit pointues avec un angle obtus** (assez larges), garantissant un design anime/manga professionnel sans trous ni calvitie apparente.
+
+11. **Harmonie et Couleurs Partagées Garçon / Fille & Accessoires** :
+    - Pour un même palier ou un même avatar de trophée, les versions Garçon et Fille **partagent rigoureusement les mêmes teintes** (cheveux, yeux, peau).
+    - Les nouveaux personnages RPG ne doivent **jamais hériter des accessoires d'écolier de base** (élastiques turquoise/orange `#489e96`/`#ff9d00`, serre-tête écolier).
+    - Chaque avatar dispose d'un **ID court standardisé** (`boy`, `girl`, `elf`, `orc`, `paladin`, `kitsune`, `shadow`, `vampire`).
+
+12. **Règle absolue pour la Bouche (`mouthColor`)** :
+    - Pour tous les personnages, la couleur de la commissure/lèvre est **impérativement basée sur la couleur de la peau (`skin`), mais dans une teinte BEAUCOUP PLUS FONCÉE**.
+    - Interdiction absolue d'utiliser une couleur fixe en dur (comme `#7c4004` ou `#2b1404`).
+    - Implémenté via le champ `mouth` des palettes (`ALL_SKIN_COLORS`) et la fonction dynamique `getSkinMouthColor(skin)` qui applique un assombrissement à ~40% de luminosité.
+
+13. **Contraste Obligatoire Peau / Cheveux** :
+    - Interdiction absolue d'attribuer une couleur de cheveux dont la teinte ou la luminosité est trop proche de la carnation (ex. pas de cheveux blanc argenté clair sur peau porcelaine pâle, pas de cheveux jaune paille sur peau dorée).
+    - Exigence d'une rupture tonale franche assurant la lisibilité immédiate de la silhouette de la tête et des oreilles.
+
+14. **Construction des Oreilles Fantastiques (Elfes & Orcs)** :
+    - Oreilles rapprochées du crâne (base d'attache à $x=24/76$, extrémité à $x=13.5/86.5$).
+    - Tracé Bézier quadratique (`Q`) propre en deux aplats sans contour/stroke bavant.
+    - Lobe descendant vers la mâchoire (`y=43.5`), pointe elfique effilée et relevée vers le haut et l'extérieur (`y=31.5`), jamais tombante vers le bas.
+
+15. **Anatomie et Armes Orc & Barbare** :
+    - Crocs inférieurs situés aux canines (écartés, gap de $12.8\text{px}$), hauteur modérée ($4.5\text{px}$) avec pointes adoucies et arrondies, **strictement sans contour** (aplat ivoire pur `fill="#fffbeb"`).
+    - Hache de guerre en pierre taillée : fer taillé à facettes, tranchant extérieur vers la gauche, ligature croisée cuir/cordelette rouge.
+    - Fille Orc : crinière barbare longue sauvage descendant jusqu'à $y=90$ dans le même style que le garçon.
+
+16. **Alignement des Armes Vectorielles** :
+    - Toute arme doit être modélisée rigoureusement le long de l'axe central $X=0$ (pommeau, fusée, garde, quillons, lame et pointe colinéaires), puis orientée et positionnée via `<g transform="translate(x, y) rotate(angle)">`.
+    - L'elfe est équipé de dagues jumelles ciselées sans carquois.
+
+17. **Design UI & Micro-Badges** :
+    - Tous les badges de statut ("New", "Nouveau", tags d'IDs) doivent adopter un format micro-chip élégant et minimaliste (`text-[8px]`, `px-1.5 py-0.5`, fond sombre flouté, bordure fine).
+    - Interdiction formelle des gros pavés jaunes opaques qui dénaturent la présentation des avatars.
+
+18. **Ajustement des Bretelles, Sangles et Harnais (À fleur d'épaule)** :
+    - Toute bretelle, sangle, baudrier ou harnais passant sur le torse et les épaules doit impérativement avoir ses extrémités supérieures positionnées rigoureusement **à fleur d'épaule**.
+    - Le tracé supérieur de la sangle épouse fidèlement la courbure Bézier de l'épaule du torse ($y = 61.5..65$ entre $x = 31..38.5$ à gauche et $x = 61.5..69$ à droite) sans aucun coin de polygone débordant dans le vide.
+    - Aux extrémités inférieures, la sangle s'ancre impeccablement sur la ceinture ($y = 82..85$) sans déborder sur les flancs du torse ($x = 36.5..63.5$).
 
 ---
 

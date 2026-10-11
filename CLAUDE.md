@@ -28,6 +28,70 @@ Architecture :
 - `rarity-commun` `rgb(107,114,128)` — gris neutre sémantique pour trophées non débloqués
 - Couleurs sémantiques vert/rouge/jaune (`text-green-400`, `text-red-400`, `text-yellow-400`) — feedback utilisateur universel
 
+## Règles de Design des Avatars SVG & Trophées RPG
+
+La spécification complète est détaillée dans @.doc/guide-technique-avatars-svg.md.
+
+### 1. Règle absolue pour les Capes
+- **Toute cape (`capeBack` / `backEquipment` / pans d'épaules) DOIT impérativement reprendre la même famille de couleur que le vêtement principal du corps (`body`), mais dans une nuance PLUS FONCÉE / PLUS PROFONDE.**
+- Ne jamais concevoir une cape d'une couleur dépareillée par rapport à la tenue (ex. pas de cape blanche sur tenue sombre, pas de cape rouge sur tenue verte).
+- *Exemples de référence :*
+  - Robe/haut mage violet améthyste `#4c1d95` -> cape violet sombre d'ébène `#2e1065`.
+  - Tunique rôdeur émeraude `#1b5e52` -> cape sylvestre vert profond `#144b41`.
+  - Armure paladin acier bleuté `#cbd5e1` -> cape ardoise / acier profond `#334155` avec liseré or `#fbbf24`.
+  - Robe mage noir / ombre pourpre sombre `#581c87` -> cape pourpre nuit `#2e1065` / `#1e1b4b`.
+  - Redingote noble vampire rouge velours `#991b1b` -> cape pourpre sang très sombre `#450a0a`.
+
+### 2. Yeux, Paupières & Cils (Interdiction des cils chez les garçons & Contour carnation)
+- **Contour de l'œil (Orbite)** : Pour **tous les personnages**, le contour qui fait le tour de l'œil (`<ellipse ... fill="none" stroke="${skin.shadow}" stroke-width="0.8"/>`) doit **toujours adopter la couleur d'ombre de la carnation (`${skin.shadow}`)**, et JAMAIS une couleur fixe en dur (ex. `#e2d0c0`).
+- **Garçons (Tous, base et RPG)** : **AUCUN cil saillant** (interdiction absolue de polygones ou pointes de cils sur les côtés). Seul un **trait de paupière supérieur épuré** (`<path d="M30 38 Q37 34 44 38"...>`) est présent au-dessus de l'œil.
+- **Filles (Toutes, base et RPG)** : Cils manga supérieurs et inférieurs fins et élégants.
+- **Teinte cheveux & Mode Produit** : Pour les deux, le groupe de paupière/cils adopte **la même teinte que les cheveux (`${hairColor}`)** avec le mode de fusion Produit (`style="mix-blend-mode: multiply;"`).
+
+### 3. Construction des Cheveux en Blocs Larges
+- Les cheveux sont constitués de **petits blocs larges**, soit arrière (`hairBack`), soit avant (`hairFront`).
+- Formes des mèches : **soit elliptiques douces, soit pointues avec un angle obtus** (assez larges).
+- Jamais de découpes linéaires plates ou en dents de scie étroites (sawtooth). Jamais de trous ni de calvitie apparente.
+
+### 4. Parité Garçon / Fille & Accessoires
+- Pour chaque trophée / espèce, les versions Garçon et Fille partagent **rigoureusement les mêmes teintes** (peau, yeux, cheveux).
+- Les nouveaux skins RPG n'ont **aucun accessoire d'écolier** de base (élastiques turquoise/orange `#489e96`/`#ff9d00`, serre-tête écolier).
+- Chaque personnage dispose d'un **ID court standardisé** (`boy`, `girl`, `elf`, `orc`, `paladin`, `kitsune`, `shadow`, `vampire`).
+
+### 5. Règle absolue pour la Bouche (Teinte peau mais BEAUCOUP plus foncée)
+- Pour **TOUS les personnages**, la couleur de bouche (`mouthColor`) est obligatoirement **basée sur la couleur de peau (`skin`), mais dans une teinte BEAUCOUP PLUS FONCÉE** (via `getSkinMouthColor(skin)` ou propriété `mouth`).
+- **Interdiction absolue** : Ne jamais coder de couleur de bouche fixe en dur déconnectée de la carnation.
+
+### 6. Contraste Peau / Cheveux & Palette de départ Intangible
+- **Palette de départ inchangée (`BASE_HAIR_COLORS`)** : Les 5 couleurs de cheveux d'origine du sélecteur de départ ne doivent **JAMAIS** être modifiées ou recréées (`#5a2d0c`, `#8a3c08`, `#1c1917`, `#6b3e1b`, `#d99a38`).
+- **Sélecteur de départ** : Affiche uniquement `HAIR_COLORS` (ces 5 teintes de base).
+- **Règle de contraste pour la conception RPG** : Garantir un contraste marqué entre peau et cheveux lors de la conception de presets de trophées.
+
+### 7. Construction des Oreilles (Elfes & Orcs)
+- Oreilles rapprochées du crâne (base $x=24/76$, extrémité $x=13.5/86.5$), tracé Bézier quadratique (`Q`) propre sans contour/stroke.
+- Lobe descendant vers la mâchoire (`y=43.5`), pointe effilée elfique relevée vers le haut et l'extérieur (`y=31.5`).
+
+### 8. Anatomie et Armes Orc & Barbare
+- Crocs inférieurs écartés aux canines ($x=42.2$ et $x=57.8$), hauteur modérée ($4.5\text{px}$), pointes arrondies et **STRICTEMENT SANS CONTOUR / STROKE** (aplat ivoire pur `fill="#fffbeb"`).
+- Hache en pierre taillée : fer en facettes, tranchant extérieur vers la gauche, ligature cuir croisée rouge.
+- Fille orc : crinière longue sauvage étagée jusqu'à $y=90$.
+
+### 9. Alignement des Armes Vectorielles
+- Modélisation stricte le long de l'axe $X=0$ (colinéarité garantie) puis rotation/translation via `<g>`. Suppression du carquois elfe.
+
+### 10. Design UI & Badges
+- Micro-chips discrets (`text-[8px]`, `px-1.5 py-0.5`, fond translucide flouté), jamais de gros badges opaques envahissants.
+
+### 11. Workflow & Discipline
+- **Interdiction absolue de faire `git commit`** sans demande explicite. Test et inspection en direct par l'utilisateur.
+
+### 12. Spécificités Coupes et Teintes Elfe & Orc
+- Elfe garçon : mèches arrière courtes s'arrêtant proprement à la nuque/épaules ($y \approx 60-64$).
+- Elfe fille : frange longue pointue opaque, sans rayures parasites. Teintes féeriques (Turquoise Féerique `#14b8a6`). Orc roux/rouge (`#c2410c`).
+
+### 13. Positionnement des Bretelles et Harnais
+- Toute sangle/harnais doit impérativement avoir ses extrémités à fleur d'épaule et ancrées sur la ceinture sans dépasser dans le vide.
+
 ## Project Overview
 
 Erudizz est une application de quiz interactifs construite avec Vanilla JavaScript ES6 modules et Tailwind CSS. Elle dispose d'un thème sombre violet/orange, d'un suivi des joueurs via localStorage, d'un historique des quiz et de plusieurs modes de jeu (normal/spoiler).

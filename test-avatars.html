@@ -357,6 +357,48 @@
 
     </main>
 
+    <!-- ================= SECTION TROPHÉES & NOUVEAUX SKINS RPG ================= -->
+    <section class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border-t-4 border-t-amber-400">
+      
+      <!-- En-tête de la section Trophées -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/15 pb-5">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-400 flex items-center justify-center text-slate-900 font-extrabold text-xl shadow-lg">
+              <i class="bi bi-trophy-fill"></i>
+            </span>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Nouveaux Trophées & Skins RPG</h2>
+                <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[8px] font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30 leading-none">
+                  <span class="w-1 h-1 rounded-full bg-amber-400"></span> New
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-white/80">
+                Chaque trophée débloque une <b class="text-accent-300">Espèce</b>, une <b class="text-accent-300">Classe</b>, une <b class="text-accent-300">Tenue exclusive</b> et des teintes uniques.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Indicateur de progression des Trophées -->
+        <div class="flex items-center gap-2 bg-black/30 px-3.5 py-2 rounded-xl border border-white/10 self-start md:self-auto">
+          <i class="bi bi-award text-amber-400 text-lg"></i>
+          <span id="trophies-progress-badge" class="text-xs font-bold text-white/90">2 / 6 disponibles</span>
+        </div>
+      </div>
+
+      <!-- Onglets des 6 Trophées -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5" id="trophies-tabs-container">
+        <!-- Rendu dynamique -->
+      </div>
+
+      <!-- Détail et Démonstrateur du Trophée Sélectionné -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-black/25 border border-white/15 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" id="trophy-details-card">
+        <!-- Rendu dynamique -->
+      </div>
+    </section>
+
     <!-- Zone d'explication de la méthode -->
     <footer class="glass-panel rounded-2xl p-6 text-center text-xs text-white/70 space-y-2">
       <p class="font-bold text-white text-sm">
@@ -391,11 +433,15 @@
     import {
       SKIN_COLORS,
       HAIR_COLORS,
+      ALL_HAIR_COLORS,
       EYE_COLORS,
       BOY_STYLES,
       GIRL_STYLES,
       BOY_OUTFITS,
       GIRL_OUTFITS,
+      RPG_TROPHIES,
+      RPG_OUTFITS,
+      RPG_STYLES,
       buildCustomAvatarSvg
     } from './js/modules/ui/avatars.js';
 
@@ -403,15 +449,22 @@
     let currentZoomAvatar = null;
     let currentBoyStyle = 1;
     let currentBoyOutfit = 1;
+
+    let currentGirlStyle = 1;
+    let currentGirlOutfit = 1;
+
     let currentBoyHair = '#5a2d0c';
     let currentBoyEye = 'brown';
     let currentBoySkin = 'light';
 
-    let currentGirlStyle = 1;
-    let currentGirlOutfit = 1;
     let currentGirlHair = '#8a3c08';
     let currentGirlEye = 'amber';
     let currentGirlSkin = 'light';
+
+    // État du démonstrateur de Trophées RPG
+    let currentTrophyId = 'elf';
+    let currentTrophyGender = 'boy';
+    let currentTrophyStyle = 3;
 
     function buildAvatar(gender, styleId, outfitId, hairColor, eyeColor, skinColor, mode) {
       return buildCustomAvatarSvg({
@@ -543,6 +596,7 @@
       }
 
       renderSwatches();
+      renderTrophiesSection();
     }
 
     function renderSwatches() {
@@ -609,40 +663,282 @@
       }
     }
 
+    // Gestion de l'affichage de la section Trophées RPG
+    function renderTrophiesSection() {
+      const unlockedCount = RPG_TROPHIES.filter(t => !t.status || t.status !== 'locked').length;
+      const progressBadge = document.getElementById('trophies-progress-badge');
+      if (progressBadge) {
+        progressBadge.textContent = `${unlockedCount} / ${RPG_TROPHIES.length} disponibles`;
+      }
+
+      // 1. Rendu des onglets Trophées
+      const tabsContainer = document.getElementById('trophies-tabs-container');
+      if (tabsContainer) {
+        tabsContainer.innerHTML = RPG_TROPHIES.map(trophy => {
+          const isActive = trophy.id === currentTrophyId;
+          const isLocked = trophy.status === 'locked';
+          const isNew = trophy.badge === 'Nouveau';
+
+          return `
+            <button onclick="window.selectTrophy('${trophy.id}')" 
+              class="relative rounded-2xl p-3 text-left transition-all border flex flex-col justify-between min-h-[105px] ${
+                isActive 
+                  ? 'bg-amber-500/20 border-amber-400 shadow-lg shadow-amber-500/25 ring-2 ring-amber-400/40' 
+                  : isLocked 
+                    ? 'bg-white/5 border-white/10 opacity-60 hover:opacity-80' 
+                    : 'bg-white/10 border-white/15 hover:bg-white/15'
+              }">
+              
+              <div class="flex items-start justify-between gap-1 w-full">
+                <span class="text-[11px] font-black uppercase tracking-wider flex items-center gap-1.5 ${isActive ? 'text-amber-300' : 'text-white/60'}">
+                  Trophée ${trophy.number}
+                  <span class="text-[8px] font-mono font-bold px-1 py-0.5 rounded bg-black/40 text-amber-300/90 border border-white/10 leading-none">#${trophy.id}</span>
+                </span>
+                ${isNew ? `
+                  <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30 leading-none">
+                    <span class="w-1 h-1 rounded-full bg-amber-400"></span>New
+                  </span>
+                ` : isLocked ? `
+                  <span class="px-1.5 py-0.5 rounded text-[8px] font-bold bg-white/10 text-white/50 leading-none">
+                    <i class="bi bi-lock-fill text-[8px]"></i>
+                  </span>
+                ` : ''}
+              </div>
+
+              <div>
+                <div class="font-bold text-xs sm:text-sm text-white line-clamp-1">${trophy.title}</div>
+                <div class="text-[10px] text-white/70 line-clamp-1 flex items-center gap-1">
+                  <span>${trophy.speciesName}</span> • <span>${trophy.className}</span>
+                </div>
+              </div>
+            </button>
+          `;
+        }).join('');
+      }
+
+      // 2. Rendu des détails du trophée actif
+      const trophy = RPG_TROPHIES.find(t => t.id === currentTrophyId) || RPG_TROPHIES[0];
+      const detailsContainer = document.getElementById('trophy-details-card');
+      if (!detailsContainer) return;
+
+      const isBoy = currentTrophyGender === 'boy';
+      const preset = isBoy ? trophy.boyPreset : trophy.girlPreset;
+      const cutName = (preset && preset.styleKey && RPG_STYLES[preset.styleKey]) ? RPG_STYLES[preset.styleKey].name : 'Coupe exclusive';
+      const isNew = Boolean(trophy && trophy.badge === 'Nouveau');
+      
+      const svgCode = buildCustomAvatarSvg({
+        type: currentTrophyGender,
+        styleKey: preset ? preset.styleKey : null,
+        outfitKey: preset ? preset.outfitKey : 'elf_ranger',
+        species: preset ? preset.species : 'elf',
+        skinColor: preset ? preset.skinColor : 'pale',
+        hairColor: preset ? preset.hairColor : '#14b8a6',
+        eyeColor: preset ? preset.eyeColor : 'emerald',
+        mode: currentViewMode
+      });
+
+      detailsContainer.innerHTML = `
+        <!-- Colonne Gauche : Grand Aperçu Visuel de l'Avatar Récompense -->
+        <div class="lg:col-span-5 flex flex-col items-center gap-4">
+          
+          <!-- Boîte d'aperçu avec Pastille "Nouveau" -->
+          <div class="relative w-64 h-80 rounded-2xl bg-black/40 border-2 border-amber-400/50 flex items-center justify-center p-4 shadow-2xl group hover:border-amber-400 transition-all">
+            
+            ${isNew ? `
+            <!-- Pastille "New" discrète en coin supérieur gauche -->
+            <div class="absolute top-2.5 left-2.5 px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider bg-black/60 text-amber-300 border border-amber-400/30 flex items-center gap-1 z-20 backdrop-blur-sm leading-none">
+              <span class="w-1 h-1 rounded-full bg-amber-400"></span> New
+            </div>
+            ` : ''}
+
+            <div id="trophy-avatar-preview" onclick="window.openTrophyZoom()" class="w-full h-full flex items-center justify-center cursor-pointer transition-transform duration-300 group-hover:scale-105" title="Cliquer pour zoomer">
+              ${svgCode}
+            </div>
+
+            <button onclick="window.openTrophyZoom()" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/60 hover:bg-black/90 text-white/90 text-[11px] font-bold flex items-center gap-1 border border-white/20 backdrop-blur-sm shadow transition-all">
+              <i class="bi bi-zoom-in"></i> Inspecter
+            </button>
+          </div>
+
+          <!-- Contrôles du Trophée (Genre & Coupe Signature) -->
+          <div class="w-full max-w-xs space-y-2.5">
+            <!-- Toggle Genre Garçon / Fille -->
+            <div class="flex items-center justify-center gap-2 bg-black/30 p-1 rounded-xl border border-white/10">
+              <button onclick="window.setTrophyGender('boy')" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${isBoy ? 'bg-primary-500 text-white shadow-md' : 'text-white/70 hover:text-white'}">
+                <i class="bi bi-gender-male"></i> Garçon (${trophy.speciesName})
+              </button>
+              <button onclick="window.setTrophyGender('girl')" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${!isBoy ? 'bg-accent-500 text-white shadow-md' : 'text-white/70 hover:text-white'}">
+                <i class="bi bi-gender-female"></i> Fille (${trophy.speciesName})
+              </button>
+            </div>
+
+            <!-- Coupe signature exclusive du trophée -->
+            <div class="p-2.5 rounded-xl bg-white/10 border border-white/15 flex items-center justify-between text-xs">
+              <span class="text-white/70 font-bold flex items-center gap-1.5">
+                <i class="bi bi-scissors text-amber-400"></i> Coupe signature :
+              </span>
+              <span class="font-bold text-amber-300">
+                ${cutName}
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Colonne Droite : Légendes de l'Espèce, Classe et Récompenses Débloquées -->
+        <div class="lg:col-span-7 space-y-5">
+          
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-1.5">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-400/15 text-amber-300 border border-amber-400/30 leading-none">
+                Trophée #${trophy.number}
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-black/50 text-amber-300/90 border border-amber-400/25 flex items-center gap-1 leading-none">
+                <i class="bi bi-tag-fill text-[9px]"></i> ID : <b class="text-white">${isBoy ? (preset?.id || trophy.id + '_b') : (preset?.id || trophy.id + '_g')}</b> <span class="text-white/40">(${trophy.id})</span>
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-white">${trophy.title}</h3>
+            </div>
+            <p class="text-sm text-white/80">${trophy.description}</p>
+          </div>
+
+          <!-- LÉGENDES PRINCIPALES : ESPÈCE & CLASSE -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            
+            <!-- Légende Espèce -->
+            <div class="p-3.5 rounded-2xl bg-emerald-950/40 border-2 border-emerald-400/40 space-y-1.5 shadow-lg">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-black uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                  <i class="bi bi-feather"></i> Espèce Débloquée
+                </span>
+                <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-emerald-400/15 text-emerald-300 border border-emerald-400/25 leading-none">
+                  Modulaire
+                </span>
+              </div>
+              <div class="text-xl font-extrabold text-white flex items-center gap-2">
+                <span>${trophy.species === 'orc' ? '🪓' : '🌿'}</span> ${trophy.speciesName}
+              </div>
+              <p class="text-xs text-emerald-100/80 leading-relaxed">
+                ${trophy.species === 'orc' 
+                  ? "Peau vert olive, oreilles trapues à anneau d'or, bouche droite et crocs inférieurs acérés."
+                  : "Oreilles effilées sylvestres, morphologie agile et connexion intime avec les forêts ancestrales."}
+              </p>
+            </div>
+
+            <!-- Légende Classe -->
+            <div class="p-3.5 rounded-2xl bg-amber-950/40 border-2 border-amber-400/40 space-y-1.5 shadow-lg">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-black uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                  <i class="bi bi-shield-shaded"></i> Classe Débloquée
+                </span>
+                <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-amber-400/15 text-amber-300 border border-amber-400/25 leading-none">
+                  Équipement
+                </span>
+              </div>
+              <div class="text-xl font-extrabold text-white flex items-center gap-2">
+                <span>${trophy.species === 'orc' ? '⚔️' : '🗡️'}</span> ${trophy.className}
+              </div>
+              <p class="text-xs text-amber-100/80 leading-relaxed">
+                ${trophy.species === 'orc'
+                  ? "Harnais barbare riveté, col de fourrure de loup, pagne clouté et hache de guerre en pierre taillée."
+                  : "Tunique d'éclaireur en lin vert sauge, plastron en cuir ouvragé, diadème rehaussé et double dague elfique."}
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Pack Complet des Récompenses et Composants SVG Débloqués -->
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+            <h4 class="text-xs font-black uppercase tracking-wider text-accent-300 flex items-center gap-1.5">
+              <i class="bi bi-gift-fill text-amber-400"></i> Détail des nouveautés fournies avec ce trophée :
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-white/90">
+              ${trophy.rewards.map(reward => `
+                <div class="flex items-start gap-2 bg-black/20 p-2 rounded-xl border border-white/5">
+                  <i class="bi ${reward.icon} text-amber-400 mt-0.5"></i>
+                  <span>${reward.label}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    window.selectTrophy = (id) => {
+      const target = RPG_TROPHIES.find(t => t.id === id);
+      if (!target) return;
+      currentTrophyId = id;
+      renderTrophiesSection();
+    };
+
+    window.setTrophyGender = (gender) => {
+      currentTrophyGender = gender;
+      renderTrophiesSection();
+    };
+
+    window.openTrophyZoom = () => {
+      const trophy = RPG_TROPHIES.find(t => t.id === currentTrophyId) || RPG_TROPHIES[0];
+      const isBoy = currentTrophyGender === 'boy';
+      const preset = isBoy ? trophy.boyPreset : trophy.girlPreset;
+      const cutName = (preset && preset.styleKey && RPG_STYLES[preset.styleKey]) ? RPG_STYLES[preset.styleKey].name : 'Coupe exclusive';
+
+      document.getElementById('zoom-modal-title').textContent = `🏆 ${trophy.title} (${trophy.speciesName} - ${trophy.className}) [${isBoy ? 'Garçon' : 'Fille'}] - ${cutName}`;
+      document.getElementById('zoom-modal-content').innerHTML = buildCustomAvatarSvg({
+        type: currentTrophyGender,
+        styleKey: preset ? preset.styleKey : null,
+        outfitKey: preset ? preset.outfitKey : 'elf_ranger',
+        species: preset ? preset.species : 'elf',
+        skinColor: preset ? preset.skinColor : 'pale',
+        hairColor: preset ? preset.hairColor : '#14b8a6',
+        eyeColor: preset ? preset.eyeColor : 'emerald',
+        mode: currentViewMode
+      });
+
+      const modal = document.getElementById('zoom-modal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    };
+
     // Fonctions exposées sur window pour les onclick
     window.setBoySkin = (id, name) => {
       currentBoySkin = id;
-      document.getElementById('boy-skin-color-label').textContent = name;
+      const el = document.getElementById('boy-skin-color-label');
+      if (el) el.textContent = name;
       updatePreviews();
     };
 
     window.setBoyHair = (hex, name) => {
       currentBoyHair = hex;
-      document.getElementById('boy-hair-color-label').textContent = `${name} (${hex})`;
+      const el = document.getElementById('boy-hair-color-label');
+      if (el) el.textContent = `${name} (${hex})`;
       updatePreviews();
     };
 
     window.setBoyEye = (id, name) => {
       currentBoyEye = id;
-      document.getElementById('boy-eye-color-label').textContent = name;
+      const el = document.getElementById('boy-eye-color-label');
+      if (el) el.textContent = name;
       updatePreviews();
     };
 
     window.setGirlSkin = (id, name) => {
       currentGirlSkin = id;
-      document.getElementById('girl-skin-color-label').textContent = name;
+      const el = document.getElementById('girl-skin-color-label');
+      if (el) el.textContent = name;
       updatePreviews();
     };
 
     window.setGirlHair = (hex, name) => {
       currentGirlHair = hex;
-      document.getElementById('girl-hair-color-label').textContent = `${name} (${hex})`;
+      const el = document.getElementById('girl-hair-color-label');
+      if (el) el.textContent = `${name} (${hex})`;
       updatePreviews();
     };
 
     window.setGirlEye = (id, name) => {
       currentGirlEye = id;
-      document.getElementById('girl-eye-color-label').textContent = name;
+      const el = document.getElementById('girl-eye-color-label');
+      if (el) el.textContent = name;
       updatePreviews();
     };
 

@@ -73,8 +73,8 @@ class PlayerManager {
             const currentConfig = this.getAvatarConfig();
             if (currentConfig.type !== avatarId) {
                 currentConfig.type = avatarId;
-                currentConfig.hairColor = avatarId === 'boy' ? '#5a2d0c' : '#8a3c08';
-                currentConfig.eyeColor = avatarId === 'boy' ? 'brown' : 'amber';
+                if (!currentConfig.hairColor) currentConfig.hairColor = avatarId === 'boy' ? '#5a2d0c' : '#8a3c08';
+                if (!currentConfig.eyeColor) currentConfig.eyeColor = 'brown';
                 localStorage.setItem('playerAvatarConfig', JSON.stringify(currentConfig));
             }
             return true;
