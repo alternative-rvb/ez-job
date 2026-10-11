@@ -27,6 +27,7 @@ export const ALL_HAIR_COLORS = [
     { id: 'elf-violet', name: 'Violet Clair Féerique', hex: '#a855f7', isTrophyReward: true },
     { id: 'orc-ginger', name: 'Roux Ardent Barbare', hex: '#c2410c', isTrophyReward: true },
     { id: 'orc-crimson', name: 'Rouge Barbare Sauvage', hex: '#b91c1c', isTrophyReward: true },
+    { id: 'paladin-gold', name: 'Or Solaire', hex: '#facc15', isTrophyReward: true },
     { id: 'silver', name: 'Blanc Argenté', hex: '#c5cbd4', isTrophyReward: true },
     { id: 'blue-night', name: 'Bleu Nuit', hex: '#1e3a5f', isTrophyReward: true },
     { id: 'ruby', name: 'Rouge Grenat', hex: '#6e1313', isTrophyReward: true },
@@ -55,7 +56,8 @@ export const ALL_EYE_COLORS = [
     { id: 'emerald', name: 'Vert Émeraude', dark: '#065f46', light: '#10b981', isTrophyReward: true },
     { id: 'amethyst', name: 'Violet Améthyste', dark: '#581c87', light: '#a855f7', isTrophyReward: true },
     { id: 'ruby', name: 'Rouge Rubis', dark: '#881337', light: '#f43f5e', isTrophyReward: true },
-    { id: 'gold', name: 'Or Flamboyant', dark: '#78350f', light: '#f59e0b', isTrophyReward: true }
+    { id: 'gold', name: 'Or Flamboyant', dark: '#78350f', light: '#f59e0b', isTrophyReward: true },
+    { id: 'sky', name: 'Azur Céleste', dark: '#0c4a6e', light: '#38bdf8', isTrophyReward: true }
 ];
 
 // Palette active pour la personnalisation des avatars de base
@@ -79,7 +81,8 @@ export const BASE_SKIN_COLORS = [
 // Catalogue complet des carnations (incluant peaux fantastiques des trophées)
 export const ALL_SKIN_COLORS = [
     ...BASE_SKIN_COLORS,
-    { id: 'orc-green', name: 'Vert Olive (Orc)', base: '#659b5e', shadow: '#46723e', mouth: '#1b4218', isTrophyReward: true } // Vert sous-bois sombre
+    { id: 'orc-green', name: 'Vert Olive (Orc)', base: '#659b5e', shadow: '#46723e', mouth: '#1b4218', isTrophyReward: true }, // Vert sous-bois sombre
+    { id: 'sun-bronze', name: 'Bronze Solaire (Paladin)', base: '#c68652', shadow: '#a0663a', mouth: '#5a240a', isTrophyReward: true } // Bronze chaud, contraste avec l'Or Solaire
 ];
 
 // Palette active pour la personnalisation des avatars de base
@@ -107,39 +110,50 @@ export function getSkinMouthColor(skin = { base: '#ffd4a3', shadow: '#f0be8d' })
 export function getSpeciesEars(species = 'human', skin = { base: '#ffd4a3', shadow: '#f0be8d' }, gender = 'boy') {
     if (species === 'elf') {
         return `
-            <g id="${gender}-ears-elf">
-                <!-- Oreille gauche elfe : même géométrie anatomique que l'orc, effilée et élégante -->
-                <path d="M 24 35 Q 18 31 13.5 31.5 Q 16.5 41 22.5 43.5 Z" fill="${skin.base}"/>
-                <path d="M 23 35.5 Q 18 33 15 33.5 Q 17 39.5 21.5 41.5 Z" fill="${skin.shadow}"/>
-                <!-- Oreille droite elfe : même géométrie anatomique que l'orc, effilée et élégante -->
-                <path d="M 76 35 Q 82 31 86.5 31.5 Q 83.5 41 77.5 43.5 Z" fill="${skin.base}"/>
-                <path d="M 77 35.5 Q 82 33 85 33.5 Q 83 39.5 78.5 41.5 Z" fill="${skin.shadow}"/>
+            <!-- NOTE Oreilles descendues de 50 % de leur hauteur (12) et rapprochées de 25 % de leur largeur (2.6) -->
+            <g id="${gender}-ears-elf" transform="translate(0 6)">
+                <g transform="translate(2.6 0)">
+                    <!-- Oreille gauche elfe : même géométrie anatomique que l'orc, effilée et élégante -->
+                    <path d="M 24 35 Q 18 31 13.5 31.5 Q 16.5 41 22.5 43.5 Z" fill="${skin.base}"/>
+                    <path d="M 23 35.5 Q 18 33 15 33.5 Q 17 39.5 21.5 41.5 Z" fill="${skin.shadow}"/>
+                </g>
+                <g transform="translate(-2.6 0)">
+                    <!-- Oreille droite elfe : même géométrie anatomique que l'orc, effilée et élégante -->
+                    <path d="M 76 35 Q 82 31 86.5 31.5 Q 83.5 41 77.5 43.5 Z" fill="${skin.base}"/>
+                    <path d="M 77 35.5 Q 82 33 85 33.5 Q 83 39.5 78.5 41.5 Z" fill="${skin.shadow}"/>
+                </g>
             </g>
         `;
     }
     if (species === 'orc') {
         return `
-            <g id="${gender}-ears-orc">
-                <!-- Oreille gauche orc robuste rapprochée avec anneau doré -->
-                <path d="M 24 35 Q 18 32 14.5 33 Q 17 41 22.5 44 Z" fill="${skin.base}"/>
-                <path d="M 23 36 Q 18 34 16 35 Q 18 40 21.5 42 Z" fill="${skin.shadow}"/>
-                <!-- Anneau d'or oreille gauche -->
-                <ellipse cx="15.8" cy="34" rx="1.6" ry="2.0" fill="none" stroke="#fbbf24" stroke-width="1.1"/>
-                <!-- Oreille droite orc robuste rapprochée avec anneau doré -->
-                <path d="M 76 35 Q 82 32 85.5 33 Q 83 41 77.5 44 Z" fill="${skin.base}"/>
-                <path d="M 77 36 Q 82 34 84 35 Q 82 40 78.5 42 Z" fill="${skin.shadow}"/>
-                <!-- Anneau d'or oreille droite -->
-                <ellipse cx="84.2" cy="34" rx="1.6" ry="2.0" fill="none" stroke="#fbbf24" stroke-width="1.1"/>
+            <!-- NOTE Oreilles descendues de 50 % de leur hauteur (11) et rapprochées de 25 % de leur largeur (2.4), anneaux compris -->
+            <g id="${gender}-ears-orc" transform="translate(0 5.5)">
+                <g transform="translate(2.4 0)">
+                    <!-- Oreille gauche orc robuste rapprochée avec anneau doré -->
+                    <path d="M 24 35 Q 18 32 14.5 33 Q 17 41 22.5 44 Z" fill="${skin.base}"/>
+                    <path d="M 23 36 Q 18 34 16 35 Q 18 40 21.5 42 Z" fill="${skin.shadow}"/>
+                    <!-- Anneau d'or oreille gauche : cercle ouvert à 80 %, fuseau, ouverture à cheval sur le rebord (centre 17.10, 40.22, angle -36°) -->
+                    <path d="M 18.9,40.22 L 18.85,40.4 L 18.77,40.58 L 18.69,40.74 L 18.59,40.88 L 18.47,41.02 L 18.36,41.13 L 18.23,41.23 L 18.08,41.31 L 17.94,41.38 L 17.8,41.43 L 17.65,41.47 L 17.51,41.49 L 17.38,41.5 L 17.24,41.49 L 17.1,41.47 L 16.97,41.45 L 16.84,41.41 L 16.73,41.36 L 16.63,41.3 L 16.52,41.23 L 16.42,41.16 L 16.33,41.07 L 16.24,40.98 L 16.17,40.89 L 16.11,40.8 L 16.05,40.69 L 16,40.58 L 15.96,40.46 L 15.92,40.33 L 15.9,40.22 L 15.89,40.1 L 15.89,39.97 L 15.91,39.83 L 15.93,39.7 L 15.97,39.56 L 16.02,39.43 L 16.08,39.31 L 16.16,39.18 L 16.26,39.06 L 16.36,38.95 L 16.49,38.84 L 16.62,38.74 L 16.77,38.67 L 16.93,38.6 L 17.1,38.55 L 17.27,38.52 L 17.47,38.5 L 17.66,38.51 L 17.66,38.51 L 17.48,38.42 L 17.29,38.35 L 17.1,38.3 L 16.9,38.27 L 16.68,38.26 L 16.47,38.27 L 16.25,38.32 L 16.03,38.39 L 15.83,38.48 L 15.64,38.58 L 15.45,38.73 L 15.27,38.89 L 15.12,39.08 L 14.98,39.29 L 14.88,39.5 L 14.8,39.71 L 14.73,39.96 L 14.7,40.22 L 14.7,40.48 L 14.73,40.74 L 14.79,40.97 L 14.86,41.2 L 14.98,41.44 L 15.12,41.66 L 15.29,41.86 L 15.48,42.04 L 15.67,42.19 L 15.87,42.31 L 16.11,42.42 L 16.36,42.5 L 16.61,42.55 L 16.87,42.57 L 17.1,42.55 L 17.33,42.52 L 17.57,42.46 L 17.8,42.37 L 18.01,42.25 L 18.21,42.11 L 18.37,41.96 L 18.51,41.8 L 18.65,41.62 L 18.76,41.42 L 18.84,41.22 L 18.9,41.01 L 18.93,40.81 L 18.94,40.62 L 18.93,40.41 L 18.9,40.22 L 18.9,40.22 Z" fill="#fbbf24"/>
+                </g>
+                <g transform="translate(-2.4 0)">
+                    <!-- Oreille droite orc robuste rapprochée avec anneau doré -->
+                    <path d="M 76 35 Q 82 32 85.5 33 Q 83 41 77.5 44 Z" fill="${skin.base}"/>
+                    <path d="M 77 36 Q 82 34 84 35 Q 82 40 78.5 42 Z" fill="${skin.shadow}"/>
+                    <!-- Anneau d'or oreille droite : cercle ouvert à 80 %, fuseau, ouverture à cheval sur le rebord (centre 82.90, 40.22, angle -144°) -->
+                    <path d="M 82.34,38.51 L 82.53,38.5 L 82.73,38.52 L 82.9,38.55 L 83.07,38.6 L 83.23,38.67 L 83.38,38.74 L 83.51,38.84 L 83.64,38.95 L 83.74,39.06 L 83.84,39.18 L 83.92,39.31 L 83.98,39.43 L 84.03,39.56 L 84.07,39.7 L 84.09,39.83 L 84.11,39.97 L 84.11,40.1 L 84.1,40.22 L 84.08,40.33 L 84.04,40.46 L 84,40.58 L 83.95,40.69 L 83.89,40.8 L 83.83,40.89 L 83.76,40.98 L 83.67,41.07 L 83.58,41.16 L 83.48,41.23 L 83.37,41.3 L 83.27,41.36 L 83.16,41.41 L 83.03,41.45 L 82.9,41.47 L 82.76,41.49 L 82.62,41.5 L 82.49,41.49 L 82.35,41.47 L 82.2,41.43 L 82.06,41.38 L 81.92,41.31 L 81.77,41.23 L 81.64,41.13 L 81.53,41.02 L 81.41,40.88 L 81.31,40.74 L 81.23,40.58 L 81.15,40.4 L 81.1,40.22 L 81.1,40.22 L 81.07,40.41 L 81.06,40.62 L 81.07,40.81 L 81.1,41.01 L 81.16,41.22 L 81.24,41.42 L 81.35,41.62 L 81.49,41.8 L 81.63,41.96 L 81.79,42.11 L 81.99,42.25 L 82.2,42.37 L 82.43,42.46 L 82.67,42.52 L 82.9,42.55 L 83.13,42.57 L 83.39,42.55 L 83.64,42.5 L 83.89,42.42 L 84.13,42.31 L 84.33,42.19 L 84.52,42.04 L 84.71,41.86 L 84.88,41.66 L 85.02,41.44 L 85.14,41.2 L 85.21,40.97 L 85.27,40.74 L 85.3,40.48 L 85.3,40.22 L 85.27,39.96 L 85.2,39.71 L 85.12,39.5 L 85.02,39.29 L 84.88,39.08 L 84.73,38.89 L 84.55,38.73 L 84.36,38.58 L 84.17,38.48 L 83.97,38.39 L 83.75,38.32 L 83.53,38.27 L 83.32,38.26 L 83.1,38.27 L 82.9,38.3 L 82.71,38.35 L 82.52,38.42 L 82.34,38.51 L 82.34,38.51 Z" fill="#fbbf24"/>
+                </g>
             </g>
         `;
     }
     // Oreilles humaines par défaut
     return `
-        <g id="${gender}-ears-full">
-            <circle cx="21" cy="38" r="4.8" fill="${skin.base}"/>
-            <circle cx="21" cy="38" r="2.8" fill="${skin.shadow}"/>
-            <circle cx="79" cy="38" r="4.8" fill="${skin.base}"/>
-            <circle cx="79" cy="38" r="2.8" fill="${skin.shadow}"/>
+        <!-- NOTE Oreilles descendues de 50 % de leur hauteur (9.6) et rapprochées de 25 % de leur largeur (x 21 -> 23.4) -->
+        <g id="${gender}-ears-full" transform="translate(0 4.8)">
+            <circle cx="23.4" cy="38" r="4.8" fill="${skin.base}"/>
+            <circle cx="23.4" cy="38" r="2.8" fill="${skin.shadow}"/>
+            <circle cx="76.6" cy="38" r="4.8" fill="${skin.base}"/>
+            <circle cx="76.6" cy="38" r="2.8" fill="${skin.shadow}"/>
         </g>
     `;
 }
@@ -172,22 +186,26 @@ export const BOY_BASE = {
         </g>`,
     belt: `
         <g id="boy-belt">
-            <rect x="37" y="82.5" width="26" height="4.5" rx="1" fill="#1f2937"/>
-            <rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#ffb733" stroke="#1f2937" stroke-width="0.8"/>
-            <rect x="36" y="82.5" width="4.5" height="7" rx="1.2" fill="#489e96" stroke="#1b4d49" stroke-width="0.8"/>
-            <circle cx="38.2" cy="86" r="0.7" fill="#ffb733"/>
+            <path d="M 37.4,84.75 L 38.88,85.62 L 40.39,86.43 L 41.93,87.16 L 43.5,87.79 L 45.09,88.3 L 46.72,88.68 L 48.35,88.91 L 50,88.99 L 51.65,88.91 L 53.28,88.68 L 54.91,88.3 L 56.5,87.79 L 58.07,87.16 L 59.61,86.43 L 61.12,85.62 L 62.6,84.75 L 62.6,84.75 L 60.93,84.45 L 59.29,84.12 L 57.68,83.8 L 56.1,83.51 L 54.54,83.26 L 53.02,83.07 L 51.5,82.95 L 50,82.91 L 48.5,82.95 L 46.98,83.07 L 45.46,83.26 L 43.9,83.51 L 42.32,83.8 L 40.71,84.12 L 39.07,84.45 L 37.4,84.75 L 37.4,84.75 Z" fill="#1f2937"/>
+            <g transform="translate(0 1.2)"><rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#ffb733" stroke="#1f2937" stroke-width="0.8"/></g>
+            <g transform="translate(0 0.16)"><rect x="36" y="82.5" width="4.5" height="7" rx="1.2" fill="#489e96" stroke="#1b4d49" stroke-width="0.8"/></g>
+            <g transform="translate(0 0.15)"><circle cx="38.2" cy="86" r="0.7" fill="#ffb733"/></g>
         </g>`,
     arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="boy-arms">
             <path d="M32 64 C24 71, 23 78, 29 84 C32 84, 34 81, 35 77 Z" fill="#489e96"/>
             <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="${skin.base}"/>
+            <!-- NOTE Séparations des doigts en fuseau -->
+            <path d="M 28,84.3 L 27.81,84.61 L 27.65,84.94 L 27.53,85.28 L 27.48,85.63 L 27.48,85.98 L 27.55,86.33 L 27.66,86.67 L 27.8,87 L 27.8,87 L 27.91,86.66 L 28,86.33 L 28.08,86 L 28.12,85.67 L 28.13,85.35 L 28.1,85.01 L 28.05,84.66 L 28,84.3 L 28,84.3 Z M 30,84.3 L 29.95,84.66 L 29.9,85.01 L 29.87,85.35 L 29.88,85.67 L 29.92,86 L 30,86.33 L 30.09,86.66 L 30.2,87 L 30.2,87 L 30.34,86.67 L 30.45,86.33 L 30.52,85.98 L 30.52,85.63 L 30.47,85.28 L 30.35,84.94 L 30.19,84.61 L 30,84.3 L 30,84.3 Z" fill="${skin.shadow}"/>
             <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#489e96"/>
             <ellipse cx="77" cy="79" rx="3.8" ry="3.5" fill="${skin.base}"/>
+            <!-- NOTE Séparations des doigts en fuseau -->
+            <path d="M 76,79.3 L 75.81,79.61 L 75.65,79.94 L 75.53,80.28 L 75.48,80.63 L 75.48,80.98 L 75.55,81.33 L 75.66,81.67 L 75.8,82 L 75.8,82 L 75.91,81.66 L 76,81.33 L 76.08,81 L 76.12,80.67 L 76.13,80.35 L 76.1,80.01 L 76.05,79.66 L 76,79.3 L 76,79.3 Z M 78,79.3 L 77.95,79.66 L 77.9,80.01 L 77.87,80.35 L 77.88,80.67 L 77.92,81 L 78,81.33 L 78.09,81.66 L 78.2,82 L 78.2,82 L 78.34,81.67 L 78.45,81.33 L 78.52,80.98 L 78.52,80.63 L 78.47,80.28 L 78.35,79.94 L 78.19,79.61 L 78,79.3 L 78,79.3 Z" fill="${skin.shadow}"/>
         </g>`,
-    headBase: (withBand = true, skin = { base: '#ffd4a3', shadow: '#f0be8d' }, species = 'human') => `
+    headBase: (withBand = true, skin = { base: '#ffd4a3', shadow: '#f0be8d' }, species = 'human', showCollar = species === 'human') => `
         <g id="boy-head-base-full">
             <rect x="46" y="58" width="8" height="4" fill="${skin.base}"/>
-            <path d="M42 60 L50 62 L58 60 Z" fill="${species === 'human' ? '#ff9d00' : skin.shadow}"/>
+            ${showCollar ? '<path d="M42 60 L50 62 L58 60 Z" fill="#ff9d00"/>' : ''}
             ${getSpeciesEars(species, skin, 'boy')}
             <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="${skin.base}"/>
             ${withBand ? `
@@ -258,10 +276,19 @@ export const BOY_STYLES = {
             <g id="boy-hair-back-full" transform="translate(50, 0) scale(0.85, 1) translate(-50, 0)">
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <path d="M 18,44 C 12,34 8,26 10,20 C 12,14 6,10 12,4 C 16,-2 24,-6 30,-4 C 34,-12 44,-14 50,-10 C 56,-14 66,-12 70,-4 C 76,-6 84,-2 88,4 C 94,10 88,14 90,20 C 92,26 88,34 82,44 C 78,34 76,28 74,22 C 66,12 34,12 26,22 C 24,28 22,34 18,44 Z" fill="${color}"/>
+                <!-- NOTE Ombre : mèches latérales près du visage, à l'abri de la lumière venant du haut -->
+                <path d="M 18,44 C 12,34 8,26 10,20 C 15,27 21,26 26,22 C 24,28 22,34 18,44 Z" fill="#000000" opacity="0.2"/>
+                <path d="M 82,44 C 88,34 92,26 90,20 C 85,27 79,26 74,22 C 76,28 78,34 82,44 Z" fill="#000000" opacity="0.2"/>
             </g>`,
         getHairFront: (color) => `
             <g id="boy-hair-front-full">
                 <path d="M 20,32 C 21,24 24,14 34,8 C 44,4 56,4 66,8 C 76,14 79,24 80,32 C 78,35 76,33 74,27 C 72,34 66,35 62,28 C 58,35 52,36 48,27 C 44,35 38,34 34,27 C 30,34 26,35 24,28 C 22,34 20,34 20,32 Z" fill="${color}"/>
+                <!-- NOTE Ombres : séparations de mèches en plume, du creux de la frange vers le crâne -->
+                <path d="M 24.88,28.19 L 25.11,26.92 L 25.36,25.84 L 25.72,24.59 L 26.09,23.53 L 26.6,22.3 L 27.08,21.26 L 27.62,20.22 L 28.34,19.04 L 29.01,18.02 L 29.72,17 L 29.72,17 L 28.83,17.87 L 28,18.78 L 27.12,19.89 L 26.4,20.86 L 25.74,21.85 L 25.05,23.05 L 24.51,24.11 L 23.96,25.37 L 23.53,26.48 L 23.12,27.81 Q 23.73,29.23 24.88,28.19 Z" fill="#000000" opacity="0.16"/>
+                <path d="M 34.89,27.14 L 35,26.07 L 35.12,25.14 L 35.32,24.05 L 35.51,23.11 L 35.79,22.01 L 36.06,21.05 L 36.42,19.93 L 36.76,18.97 L 37.13,17.99 L 37.52,17 L 37.52,17 L 36.93,17.89 L 36.38,18.78 L 35.86,19.69 L 35.32,20.76 L 34.88,21.68 L 34.42,22.77 L 34.06,23.7 L 33.69,24.8 L 33.4,25.74 L 33.11,26.86 Q 33.8,28.24 34.89,27.14 Z" fill="#000000" opacity="0.16"/>
+                <path d="M 48.9,27.02 L 48.84,26.08 L 48.79,24.99 L 48.73,24.05 L 48.69,22.96 L 48.64,22.02 L 48.6,21.08 L 48.56,19.99 L 48.52,19.04 L 48.49,17.94 L 48.44,17 L 48.44,17 L 48.27,17.93 L 48.1,19.02 L 47.96,19.95 L 47.81,21.04 L 47.68,21.98 L 47.55,22.92 L 47.43,24.01 L 47.31,24.95 L 47.2,26.04 L 47.1,26.98 Q 47.97,28.26 48.9,27.02 Z" fill="#000000" opacity="0.16"/>
+                <path d="M 62.9,27.91 L 62.69,26.78 L 62.45,25.68 L 62.19,24.59 L 61.87,23.35 L 61.55,22.31 L 61.16,21.13 L 60.79,20.14 L 60.33,19.01 L 59.9,18.07 L 59.36,17 L 59.36,17 L 59.68,18.14 L 59.93,19.14 L 60.2,20.31 L 60.4,21.33 L 60.61,22.53 L 60.76,23.58 L 60.91,24.82 L 61,25.89 L 61.06,26.98 L 61.1,28.09 Q 62.13,29.25 62.9,27.91 Z" fill="#000000" opacity="0.16"/>
+                <path d="M 74.88,26.79 L 74.49,25.67 L 74.03,24.56 L 73.5,23.46 L 72.99,22.53 L 72.34,21.46 L 71.71,20.55 L 71.04,19.65 L 70.32,18.75 L 69.55,17.87 L 68.72,17 L 68.72,17 L 69.37,18.01 L 69.98,19 L 70.53,19.98 L 71.04,20.95 L 71.49,21.92 L 71.96,23.03 L 72.3,23.98 L 72.65,25.07 L 72.92,26.14 L 73.12,27.21 Q 74.29,28.23 74.88,26.79 Z" fill="#000000" opacity="0.16"/>
             </g>`
     },
     2: {
@@ -362,9 +389,9 @@ export const GIRL_BASE = {
     body: `
         <g id="girl-body">
             <path d="M38 82 C38 82, 44 83.5, 50 83.5 C56 83.5, 62 82, 62 82 C70 85, 76 89, 76 91.5 C60 94, 40 94, 24 91.5 C24 89, 30 85, 38 82 Z" fill="#236762"/>
-            <path d="M40 83 C40 85, 38 88, 37 92" stroke="#133835" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M50 83.5 L50 93.5" stroke="#133835" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M60 83 C60 85, 62 88, 63 92" stroke="#133835" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 40,83 L 39.68,83.86 L 39.24,84.67 L 38.74,85.59 L 38.32,86.35 L 37.93,87.2 L 37.58,88.14 L 37.3,89.16 L 37.14,90.07 L 37.04,91.02 L 37,92 L 37,92 L 37.46,91.14 L 37.92,90.33 L 38.36,89.55 L 38.82,88.63 L 39.22,87.74 L 39.55,86.87 L 39.79,86.01 L 40.02,84.94 L 40.1,83.95 L 40,83 L 40,83 Z" fill="#133835"/>
+            <path d="M 50,83.5 L 49.78,84.44 L 49.59,85.53 L 49.43,86.47 L 49.33,87.56 L 49.3,88.5 L 49.33,89.44 L 49.43,90.53 L 49.59,91.47 L 49.78,92.56 L 50,93.5 L 50,93.5 L 50.22,92.56 L 50.41,91.47 L 50.57,90.53 L 50.67,89.44 L 50.7,88.5 L 50.67,87.56 L 50.57,86.47 L 50.41,85.53 L 50.22,84.44 L 50,83.5 L 50,83.5 Z" fill="#133835"/>
+            <path d="M 60,83 L 59.9,83.95 L 59.98,84.94 L 60.21,86.01 L 60.45,86.87 L 60.78,87.74 L 61.18,88.63 L 61.64,89.55 L 62.08,90.33 L 62.54,91.14 L 63,92 L 63,92 L 62.96,91.02 L 62.86,90.07 L 62.7,89.16 L 62.42,88.14 L 62.07,87.2 L 61.68,86.35 L 61.26,85.59 L 60.76,84.67 L 60.32,83.86 L 60,83 L 60,83 Z" fill="#133835"/>
             <path d="M 31,65 C 31,62 34,61.5 38,61.5 L 62,61.5 C 66,61.5 69,62 69,65 L 62.5,82 L 37.5,82 Z" fill="#ff9d00"/>
             <path d="M44 60 L50 71 L56 60 Z" fill="#ffffff"/>
             <circle cx="50" cy="66" r="2.5" fill="#489e96"/>
@@ -375,17 +402,21 @@ export const GIRL_BASE = {
         </g>`,
     belt: `
         <g id="girl-belt">
-            <rect x="37" y="80.5" width="26" height="4" rx="1" fill="#1f2937"/>
-            <rect x="47" y="79.5" width="6" height="6" rx="1.2" fill="#ffb733" stroke="#1f2937" stroke-width="0.8"/>
-            <rect x="58.5" y="80.5" width="3.5" height="5.5" rx="1.2" fill="#489e96" stroke="#1b4d49" stroke-width="0.8"/>
-            <circle cx="60.2" cy="83.2" r="0.7" fill="#ffffff"/>
+            <path d="M 36.65,82.5 L 38.24,83.3 L 39.85,84.05 L 41.49,84.72 L 43.15,85.3 L 44.84,85.77 L 46.55,86.12 L 48.27,86.33 L 50,86.4 L 51.73,86.33 L 53.45,86.12 L 55.16,85.77 L 56.85,85.3 L 58.51,84.72 L 60.15,84.05 L 61.76,83.3 L 63.35,82.5 L 63.35,82.5 L 61.6,82.26 L 59.87,82 L 58.18,81.74 L 56.5,81.5 L 54.86,81.29 L 53.23,81.13 L 51.61,81.03 L 50,81 L 48.39,81.03 L 46.77,81.13 L 45.14,81.29 L 43.5,81.5 L 41.82,81.74 L 40.13,82 L 38.4,82.26 L 36.65,82.5 L 36.65,82.5 Z" fill="#1f2937"/>
+            <g transform="translate(0 1.2)"><rect x="47" y="79.5" width="6" height="6" rx="1.2" fill="#ffb733" stroke="#1f2937" stroke-width="0.8"/></g>
+            <g transform="translate(0 0.49)"><rect x="58.5" y="80.5" width="3.5" height="5.5" rx="1.2" fill="#489e96" stroke="#1b4d49" stroke-width="0.8"/></g>
+            <g transform="translate(0 0.5)"><circle cx="60.2" cy="83.2" r="0.7" fill="#ffffff"/></g>
         </g>`,
     arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
         <g id="girl-arms">
             <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="#ff9d00"/>
             <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
+            <!-- NOTE Séparations des doigts en fuseau -->
+            <path d="M 26,81.8 L 25.81,82.09 L 25.65,82.39 L 25.53,82.7 L 25.48,83.02 L 25.48,83.35 L 25.55,83.67 L 25.66,83.99 L 25.8,84.3 L 25.8,84.3 L 25.91,83.98 L 26,83.67 L 26.08,83.37 L 26.12,83.08 L 26.13,82.77 L 26.1,82.46 L 26.05,82.14 L 26,81.8 L 26,81.8 Z M 28,81.8 L 27.95,82.14 L 27.9,82.46 L 27.87,82.77 L 27.88,83.08 L 27.92,83.37 L 28,83.67 L 28.09,83.98 L 28.2,84.3 L 28.2,84.3 L 28.34,83.99 L 28.45,83.67 L 28.52,83.35 L 28.52,83.02 L 28.47,82.7 L 28.35,82.39 L 28.19,82.09 L 28,81.8 L 28,81.8 Z" fill="${skin.shadow}"/>
             <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="#ff9d00"/>
             <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
+            <!-- NOTE Séparations des doigts en fuseau -->
+            <path d="M 75,75.8 L 74.81,76.09 L 74.65,76.39 L 74.53,76.7 L 74.48,77.02 L 74.48,77.35 L 74.55,77.67 L 74.66,77.99 L 74.8,78.3 L 74.8,78.3 L 74.91,77.98 L 75,77.67 L 75.08,77.37 L 75.12,77.08 L 75.13,76.77 L 75.1,76.46 L 75.05,76.14 L 75,75.8 L 75,75.8 Z M 77,75.8 L 76.95,76.14 L 76.9,76.46 L 76.87,76.77 L 76.88,77.08 L 76.92,77.37 L 77,77.67 L 77.09,77.98 L 77.2,78.3 L 77.2,78.3 L 77.34,77.99 L 77.45,77.67 L 77.52,77.35 L 77.52,77.02 L 77.47,76.7 L 77.35,76.39 L 77.19,76.09 L 77,75.8 L 77,75.8 Z" fill="${skin.shadow}"/>
         </g>`,
     headBase: (withTiara = false, skin = { base: '#ffd4a3', shadow: '#f0be8d' }, species = 'human') => `
         <g id="girl-head-base-full">
@@ -393,7 +424,7 @@ export const GIRL_BASE = {
             ${getSpeciesEars(species, skin, 'girl')}
             <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="${skin.base}"/>
             ${withTiara ? `
-            <path d="M22 23 C33 16, 67 16, 78 23 L79 27 C68 20, 32 20, 21 27 Z" fill="#489e96"/>
+            <path d="M 21.5,25 L 24.71,24.01 L 28.53,23.3 L 31.99,22.99 L 35.71,22.78 L 39.64,22.66 L 42.7,22.67 L 46.85,22.64 L 50,22.65 L 53.15,22.64 L 57.3,22.67 L 60.36,22.66 L 64.29,22.78 L 68.01,22.99 L 71.47,23.3 L 75.29,24.01 L 78.5,25 L 78.5,25 L 75.72,22.96 L 72.07,21.16 L 68.66,19.83 L 64.89,18.73 L 60.84,17.86 L 57.67,17.33 L 53.31,16.95 L 50,16.85 L 46.69,16.95 L 42.33,17.33 L 39.16,17.86 L 35.11,18.73 L 31.34,19.83 L 27.93,21.16 L 24.28,22.96 L 21.5,25 L 21.5,25 Z" fill="#489e96"/>
             <circle cx="28" cy="22" r="3.5" fill="#ff9d00"/>
             <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>` : ''}
         </g>`,
@@ -637,7 +668,7 @@ export const BOY_OUTFITS = {
                 <!-- Jambe gauche losange bouffant -->
                 <polygon points="38,85 49,85 52,94 48,103 40,103 31,94" fill="#18181b"/>
                 <polygon points="38,87 47,87 49,94 46,102 41,102 34,94" fill="#27272a"/>
-                <line x1="41" y1="87" x2="44" y2="102" stroke="#09090b" stroke-width="0.8"/>
+                <path d="M 41,87 L 41.19,88.91 L 41.4,90.82 L 41.67,92.72 L 42.01,94.6 L 42.42,96.47 L 42.9,98.32 L 43.44,100.16 L 44,102 L 44,102 L 43.81,100.09 L 43.6,98.18 L 43.33,96.28 L 42.99,94.4 L 42.58,92.53 L 42.1,90.68 L 41.56,88.84 L 41,87 L 41,87 Z" fill="#09090b"/>
                 <!-- Bandages mollet gauche -->
                 <rect x="40" y="103" width="8" height="3" fill="#3f3f46"/>
                 <line x1="40" y1="104.5" x2="48" y2="104.5" stroke="#71717a" stroke-width="0.8"/>
@@ -648,7 +679,7 @@ export const BOY_OUTFITS = {
                 <!-- Jambe droite losange bouffant -->
                 <polygon points="51,85 62,85 69,94 60,103 52,103 48,94" fill="#18181b"/>
                 <polygon points="53,87 62,87 66,94 59,102 54,102 51,94" fill="#27272a"/>
-                <line x1="59" y1="87" x2="56" y2="102" stroke="#09090b" stroke-width="0.8"/>
+                <path d="M 59,87 L 58.44,88.84 L 57.9,90.68 L 57.42,92.53 L 57.01,94.4 L 56.67,96.28 L 56.4,98.18 L 56.19,100.09 L 56,102 L 56,102 L 56.56,100.16 L 57.1,98.32 L 57.58,96.47 L 57.99,94.6 L 58.33,92.72 L 58.6,90.82 L 58.81,88.91 L 59,87 L 59,87 Z" fill="#09090b"/>
                 <!-- Bandages mollet droit -->
                 <rect x="52" y="103" width="8" height="3" fill="#3f3f46"/>
                 <line x1="52" y1="104.5" x2="60" y2="104.5" stroke="#71717a" stroke-width="0.8"/>
@@ -670,12 +701,12 @@ export const BOY_OUTFITS = {
         belt: `
             <g id="boy-belt-ninja">
                 <!-- Ceinture shinobi avec pan flottant sur le côté -->
-                <rect x="36" y="81.5" width="28" height="5" rx="1" fill="#18181b"/>
-                <line x1="36" y1="84" x2="64" y2="84" stroke="#b91c1c" stroke-width="1.8"/>
-                <circle cx="50" cy="84" r="1.8" fill="#fbbf24"/>
+                <path d="M 36.25,84 L 37.87,84.93 L 39.52,85.81 L 41.2,86.6 L 42.92,87.28 L 44.66,87.83 L 46.43,88.24 L 48.21,88.49 L 50,88.58 L 51.79,88.49 L 53.57,88.24 L 55.34,87.83 L 57.08,87.28 L 58.8,86.6 L 60.48,85.81 L 62.13,84.93 L 63.75,84 L 63.75,84 L 61.93,83.63 L 60.14,83.24 L 58.39,82.87 L 56.67,82.52 L 54.97,82.23 L 53.3,82.01 L 51.65,81.87 L 50,81.83 L 48.35,81.87 L 46.7,82.01 L 45.03,82.23 L 43.33,82.52 L 41.61,82.87 L 39.86,83.24 L 38.07,83.63 L 36.25,84 L 36.25,84 Z" fill="#18181b"/>
+                <path d="M 36.25,84 L 37.93,84.51 L 39.63,84.98 L 41.33,85.39 L 43.05,85.75 L 44.78,86.03 L 46.51,86.23 L 48.26,86.36 L 50,86.4 L 51.74,86.36 L 53.49,86.23 L 55.22,86.03 L 56.95,85.75 L 58.67,85.39 L 60.37,84.98 L 62.07,84.51 L 63.75,84 L 63.75,84 L 62,84.05 L 60.25,84.07 L 58.52,84.07 L 56.8,84.05 L 55.09,84.04 L 53.39,84.02 L 51.69,84 L 50,84 L 48.31,84 L 46.61,84.02 L 44.91,84.04 L 43.2,84.05 L 41.48,84.07 L 39.75,84.07 L 38,84.05 L 36.25,84 L 36.25,84 Z" fill="#b91c1c"/>
+                <g transform="translate(0 1.2)"><circle cx="50" cy="84" r="1.8" fill="#fbbf24"/></g>
                 <!-- Pan de tissu flottant noir et rouge -->
-                <path d="M 39,84 L 35,98 L 39,96 L 41,84 Z" fill="#b91c1c"/>
-                <path d="M 40,84 L 37,97 L 40,95 L 42,84 Z" fill="#09090b"/>
+                <g transform="translate(0 0.29)"><path d="M 39,84 L 35,98 L 39,96 L 41,84 Z" fill="#b91c1c"/></g>
+                <g transform="translate(0 0.5)"><path d="M 40,84 L 37,97 L 40,95 L 42,84 Z" fill="#09090b"/></g>
             </g>`,
         arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="boy-arms-ninja">
@@ -683,25 +714,30 @@ export const BOY_OUTFITS = {
                 <path d="M32 64 C23 71, 22 79, 28 85 C31 85, 33 81, 35 77 Z" fill="#09090b"/>
                 <rect x="25" y="73" width="7" height="8" rx="1" fill="#27272a" stroke="#09090b" stroke-width="0.6" transform="rotate(-15 28 77)"/>
                 <ellipse cx="28" cy="85" rx="3.8" ry="3.5" fill="${skin.base}"/>
+                <!-- NOTE Séparations des doigts en fuseau -->
+                <path d="M 27,85.3 L 26.81,85.61 L 26.65,85.94 L 26.53,86.28 L 26.48,86.63 L 26.48,86.98 L 26.55,87.33 L 26.66,87.67 L 26.8,88 L 26.8,88 L 26.91,87.66 L 27,87.33 L 27.08,87 L 27.12,86.67 L 27.13,86.35 L 27.1,86.01 L 27.05,85.66 L 27,85.3 L 27,85.3 Z M 29,85.3 L 28.95,85.66 L 28.9,86.01 L 28.87,86.35 L 28.88,86.67 L 28.92,87 L 29,87.33 L 29.09,87.66 L 29.2,88 L 29.2,88 L 29.34,87.67 L 29.45,87.33 L 29.52,86.98 L 29.52,86.63 L 29.47,86.28 L 29.35,85.94 L 29.19,85.61 L 29,85.3 L 29,85.3 Z" fill="${skin.shadow}"/>
                 <path d="M68 64 C77 69, 78 74, 76 81 C73 83, 70 80, 66 76 Z" fill="#09090b"/>
                 <rect x="68" y="70" width="7" height="8" rx="1" fill="#27272a" stroke="#09090b" stroke-width="0.6" transform="rotate(15 71 74)"/>
-                <ellipse cx="76" cy="81" rx="3.8" ry="3.5" fill="${skin.base}"/>
+                <!-- NOTE Main droite dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
             </g>`,
         headAccessory: "",
-        handItem: `
+        handItem: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="boy-hand-ninjato">
-                <!-- Ninjato : Épée fine droite de ninja remontée légèrement (axe 100% aligné) -->
-                <!-- Poignée droite tressée sombre -->
-                <line x1="77.8" y1="73" x2="74.2" y2="85" stroke="#09090b" stroke-width="2.8" stroke-linecap="round"/>
-                <!-- Pommeau doré aligné à l'extrémité de la poignée -->
-                <circle cx="73.8" cy="85.8" r="1.8" fill="#fbbf24" stroke="#78350f" stroke-width="0.5"/>
-                <!-- Tsuba carrée dorée perpendiculaire à la lame -->
-                <rect x="75" y="71.8" width="5.6" height="2.2" rx="0.5" fill="#fbbf24" stroke="#78350f" stroke-width="0.5" transform="rotate(16.7 77.8 73)"/>
-                <!-- Lame droite fine en acier miroir remontée -->
-                <line x1="77.8" y1="73" x2="89.8" y2="33" stroke="#cbd5e1" stroke-width="2.2" stroke-linecap="square"/>
-                <line x1="78.1" y1="73" x2="90.1" y2="33" stroke="#ffffff" stroke-width="1" stroke-linecap="square"/>
-                <!-- Pointe biseautée rasoir du ninjato -->
-                <polygon points="88.6,34.5 91,31.5 89.3,30.5" fill="#ffffff"/>
+                <!-- Ninjato modélisé sur l'axe X=0, poignée centrée sur la main droite (75.4, 81) -->
+                <g id="boy-ninjato" transform="translate(75.4, 81) rotate(16.7)">
+                    <!-- Lame droite en acier miroir et pointe biseautée -->
+                    <rect x="-1.1" y="-48.5" width="2.2" height="39" fill="#cbd5e1"/>
+                    <rect x="-0.2" y="-48.5" width="1" height="39" fill="#ffffff"/>
+                    <polygon points="-1.1,-48.5 1.1,-48.5 0,-51.8" fill="#ffffff"/>
+                    <!-- Tsuba carrée dorée -->
+                    <rect x="-2.8" y="-9.6" width="5.6" height="2.2" rx="0.5" fill="#fbbf24" stroke="#78350f" stroke-width="0.5"/>
+                    <!-- Poignée tressée sombre et pommeau doré -->
+                    <rect x="-1.4" y="-7.4" width="2.8" height="11.6" rx="1.4" fill="#09090b"/>
+                    <circle cx="0" cy="4.9" r="1.8" fill="#fbbf24" stroke="#78350f" stroke-width="0.5"/>
+                    <!-- Main refermée sur la poignée (origine du groupe) -->
+                    <ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                    <path d="M -1.6,-1 L -1.28,-0.88 L -0.95,-0.77 L -0.62,-0.7 L -0.3,-0.67 L 0.03,-0.7 L 0.35,-0.77 L 0.68,-0.88 L 1,-1 L 1,-1 L 0.68,-1.12 L 0.35,-1.23 L 0.03,-1.3 L -0.3,-1.32 L -0.62,-1.3 L -0.95,-1.23 L -1.28,-1.12 L -1.6,-1 L -1.6,-1 Z M -1.6,1 L -1.28,1.12 L -0.95,1.23 L -0.62,1.3 L -0.3,1.33 L 0.03,1.3 L 0.35,1.23 L 0.68,1.12 L 1,1 L 1,1 L 0.68,0.88 L 0.35,0.77 L 0.03,0.7 L -0.3,0.68 L -0.62,0.7 L -0.95,0.77 L -1.28,0.88 L -1.6,1 L -1.6,1 Z" fill="${skin.shadow}"/>
+                </g>
             </g>`
     },
     3: {
@@ -728,38 +764,44 @@ export const BOY_OUTFITS = {
                 <path d="M 44,61.5 L 50,73 L 56,61.5 Z" fill="#fbbf24"/>
                 <circle cx="50" cy="74" r="3.5" fill="#38bdf8" stroke="#ffffff" stroke-width="0.8"/>
                 <circle cx="50" cy="74" r="1.5" fill="#ffffff"/>
-                <line x1="50" y1="77.5" x2="50" y2="85" stroke="#fbbf24" stroke-width="1.5"/>
+                <path d="M 50,77.5 L 49.69,78.44 L 49.43,79.38 L 49.26,80.31 L 49.2,81.25 L 49.26,82.19 L 49.43,83.13 L 49.69,84.06 L 50,85 L 50,85 L 50.31,84.06 L 50.57,83.13 L 50.74,82.19 L 50.8,81.25 L 50.74,80.31 L 50.57,79.38 L 50.31,78.44 L 50,77.5 L 50,77.5 Z" fill="#fbbf24"/>
             </g>`,
         belt: `
             <g id="boy-belt-mage">
-                <rect x="36" y="82.5" width="28" height="4.5" rx="1" fill="#fbbf24"/>
-                <circle cx="50" cy="84.8" r="2.5" fill="#818cf8" stroke="#ffffff" stroke-width="0.6"/>
-                <rect x="58" y="83" width="5" height="6.5" rx="1.2" fill="#2e1065" stroke="#fbbf24" stroke-width="0.8"/>
+                <path d="M 35.95,84.75 L 37.62,85.62 L 39.31,86.43 L 41.04,87.16 L 42.79,87.79 L 44.57,88.3 L 46.37,88.68 L 48.18,88.91 L 50,88.99 L 51.82,88.91 L 53.63,88.68 L 55.43,88.3 L 57.21,87.79 L 58.96,87.16 L 60.69,86.43 L 62.38,85.62 L 64.05,84.75 L 64.05,84.75 L 62.21,84.44 L 60.39,84.12 L 58.6,83.8 L 56.84,83.51 L 55.11,83.26 L 53.39,83.07 L 51.69,82.95 L 50,82.91 L 48.31,82.95 L 46.61,83.07 L 44.89,83.26 L 43.16,83.51 L 41.4,83.8 L 39.61,84.12 L 37.79,84.44 L 35.95,84.75 L 35.95,84.75 Z" fill="#fbbf24"/>
+                <g transform="translate(0 1.2)"><circle cx="50" cy="84.8" r="2.5" fill="#818cf8" stroke="#ffffff" stroke-width="0.6"/></g>
+                <g transform="translate(0 0.53)"><rect x="58" y="83" width="5" height="6.5" rx="1.2" fill="#2e1065" stroke="#fbbf24" stroke-width="0.8"/></g>
             </g>`,
         arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="boy-arms-mage">
                 <path d="M32 64 C23 71, 20 78, 25 84 C28 84, 32 80, 35 77 Z" fill="#4c1d95"/>
                 <path d="M22 82 L26 84 L27 82 Z" fill="#fbbf24"/>
-                <ellipse cx="27" cy="84" rx="3.8" ry="3.5" fill="${skin.base}"/>
+                <!-- NOTE Main gauche dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
                 <path d="M68 64 C77 69, 80 75, 78 81 C75 83, 72 80, 66 76 Z" fill="#4c1d95"/>
                 <path d="M75 79 L79 81 L80 79 Z" fill="#fbbf24"/>
                 <ellipse cx="77" cy="80" rx="3.8" ry="3.5" fill="${skin.base}"/>
+                <!-- NOTE Séparations des doigts en fuseau -->
+                <path d="M 76,80.3 L 75.81,80.61 L 75.65,80.94 L 75.53,81.28 L 75.48,81.63 L 75.48,81.98 L 75.55,82.33 L 75.66,82.67 L 75.8,83 L 75.8,83 L 75.91,82.66 L 76,82.33 L 76.08,82 L 76.12,81.67 L 76.13,81.35 L 76.1,81.01 L 76.05,80.66 L 76,80.3 L 76,80.3 Z M 78,80.3 L 77.95,80.66 L 77.9,81.01 L 77.87,81.35 L 77.88,81.67 L 77.92,82 L 78,82.33 L 78.09,82.66 L 78.2,83 L 78.2,83 L 78.34,82.67 L 78.45,82.33 L 78.52,81.98 L 78.52,81.63 L 78.47,81.28 L 78.35,80.94 L 78.19,80.61 L 78,80.3 L 78,80.3 Z" fill="${skin.shadow}"/>
             </g>`,
         headAccessory: `
             <g id="boy-head-mage">
                 <!-- Bandeau magique orné d'un cristal azur -->
-                <path d="M22 23 C33 16, 67 16, 78 23 L79 27 C68 20, 32 20, 21 27 Z" fill="#fbbf24"/>
+                <path d="M 21.5,25 L 24.71,24.01 L 28.53,23.3 L 31.99,22.99 L 35.71,22.78 L 39.64,22.66 L 42.7,22.67 L 46.85,22.64 L 50,22.65 L 53.15,22.64 L 57.3,22.67 L 60.36,22.66 L 64.29,22.78 L 68.01,22.99 L 71.47,23.3 L 75.29,24.01 L 78.5,25 L 78.5,25 L 75.72,22.96 L 72.07,21.16 L 68.66,19.83 L 64.89,18.73 L 60.84,17.86 L 57.67,17.33 L 53.31,16.95 L 50,16.85 L 46.69,16.95 L 42.33,17.33 L 39.16,17.86 L 35.11,18.73 L 31.34,19.83 L 27.93,21.16 L 24.28,22.96 L 21.5,25 L 21.5,25 Z" fill="#fbbf24"/>
                 <circle cx="50" cy="20" r="4" fill="#38bdf8" stroke="#ffffff" stroke-width="1"/>
                 <circle cx="49" cy="19" r="1.3" fill="#ffffff"/>
             </g>`,
-        handItem: `
+        handItem: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="boy-hand-staff">
-                <!-- Grand sceptre magique vertical avec orbe flottante -->
-                <line x1="26" y1="36" x2="28" y2="105" stroke="#d97706" stroke-width="2.5" stroke-linecap="round"/>
-                <circle cx="26" cy="32" r="7" fill="#818cf8" opacity="0.4"/>
-                <circle cx="26" cy="32" r="5" fill="#c084fc" stroke="#fbbf24" stroke-width="1.2"/>
-                <circle cx="24.5" cy="30.5" r="1.8" fill="#ffffff"/>
-                <path d="M 21,34 C 21,25 31,25 31,34" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round"/>
+                <!-- Sceptre magique modélisé sur l'axe X=0, hampe centrée sur la main gauche (27.4, 84) -->
+                <g id="boy-mage-staff" transform="translate(27.4, 84) rotate(-1.66)">
+                    <rect x="-1.25" y="-48" width="2.5" height="69" rx="1.25" fill="#d97706"/>
+                    <circle cx="0" cy="-52" r="7" fill="#818cf8" opacity="0.4"/>
+                    <circle cx="0" cy="-52" r="5" fill="#c084fc" stroke="#fbbf24" stroke-width="1.2"/>
+                    <circle cx="-1.5" cy="-53.5" r="1.8" fill="#ffffff"/>
+                    <!-- Main refermée sur la poignée (origine du groupe) -->
+                    <ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                    <path d="M -1.6,-1 L -1.28,-0.88 L -0.95,-0.77 L -0.62,-0.7 L -0.3,-0.67 L 0.03,-0.7 L 0.35,-0.77 L 0.68,-0.88 L 1,-1 L 1,-1 L 0.68,-1.12 L 0.35,-1.23 L 0.03,-1.3 L -0.3,-1.32 L -0.62,-1.3 L -0.95,-1.23 L -1.28,-1.12 L -1.6,-1 L -1.6,-1 Z M -1.6,1 L -1.28,1.12 L -0.95,1.23 L -0.62,1.3 L -0.3,1.33 L 0.03,1.3 L 0.35,1.23 L 0.68,1.12 L 1,1 L 1,1 L 0.68,0.88 L 0.35,0.77 L 0.03,0.7 L -0.3,0.68 L -0.62,0.7 L -0.95,0.77 L -1.28,0.88 L -1.6,1 L -1.6,1 Z" fill="${skin.shadow}"/>
+                </g>
             </g>`
     },
     4: {
@@ -772,58 +814,57 @@ export const BOY_OUTFITS = {
                 <polygon points="51,85 61,85 59,106 52,106" fill="#14532d"/>
                 <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113.5 C50 115, 39 115, 39 113.5 Z" fill="#92400e"/>
                 <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113.5 C61 115, 50 115, 50 113.5 Z" fill="#92400e"/>
-                <line x1="41" y1="108" x2="48" y2="108" stroke="#fbbf24" stroke-width="1"/>
-                <line x1="52" y1="108" x2="59" y2="108" stroke="#fbbf24" stroke-width="1"/>
+                <path d="M 41,108 L 41.88,108.23 L 42.75,108.42 L 43.63,108.55 L 44.5,108.6 L 45.38,108.55 L 46.25,108.42 L 47.13,108.23 L 48,108 L 48,108 L 47.13,107.77 L 46.25,107.58 L 45.38,107.45 L 44.5,107.4 L 43.63,107.45 L 42.75,107.58 L 41.88,107.77 L 41,108 L 41,108 Z" fill="#fbbf24"/>
+                <path d="M 52,108 L 52.88,108.23 L 53.75,108.42 L 54.63,108.55 L 55.5,108.6 L 56.38,108.55 L 57.25,108.42 L 58.13,108.23 L 59,108 L 59,108 L 58.13,107.77 L 57.25,107.58 L 56.38,107.45 L 55.5,107.4 L 54.63,107.45 L 53.75,107.58 L 52.88,107.77 L 52,108 L 52,108 Z" fill="#fbbf24"/>
             </g>`,
         body: `
             <g id="boy-body-archer">
                 <path d="M 31,65 C 31,62 34,61.5 38,61.5 L 62,61.5 C 66,61.5 69,62 69,65 L 62.5,85 L 37.5,85 Z" fill="#16a34a"/>
                 <path d="M 39,63 L 61,63 L 57,85 L 43,85 Z" fill="#78350f"/>
-                <line x1="50" y1="63" x2="50" y2="85" stroke="#fbbf24" stroke-width="1" stroke-dasharray="2 2"/>
+                <path d="M 50,63 L 49.77,63.3 L 49.58,63.6 L 49.45,63.9 L 49.4,64.2 L 49.45,64.5 L 49.58,64.8 L 49.77,65.1 L 50,65.4 L 50,65.4 L 50.23,65.1 L 50.42,64.8 L 50.55,64.5 L 50.6,64.2 L 50.55,63.9 L 50.42,63.6 L 50.23,63.3 L 50,63 L 50,63 Z M 50,67 L 49.77,67.3 L 49.58,67.6 L 49.45,67.9 L 49.4,68.2 L 49.45,68.5 L 49.58,68.8 L 49.77,69.1 L 50,69.4 L 50,69.4 L 50.23,69.1 L 50.42,68.8 L 50.55,68.5 L 50.6,68.2 L 50.55,67.9 L 50.42,67.6 L 50.23,67.3 L 50,67 L 50,67 Z M 50,71 L 49.77,71.3 L 49.58,71.6 L 49.45,71.9 L 49.4,72.2 L 49.45,72.5 L 49.58,72.8 L 49.77,73.1 L 50,73.4 L 50,73.4 L 50.23,73.1 L 50.42,72.8 L 50.55,72.5 L 50.6,72.2 L 50.55,71.9 L 50.42,71.6 L 50.23,71.3 L 50,71 L 50,71 Z M 50,75 L 49.77,75.3 L 49.58,75.6 L 49.45,75.9 L 49.4,76.2 L 49.45,76.5 L 49.58,76.8 L 49.77,77.1 L 50,77.4 L 50,77.4 L 50.23,77.1 L 50.42,76.8 L 50.55,76.5 L 50.6,76.2 L 50.55,75.9 L 50.42,75.6 L 50.23,75.3 L 50,75 L 50,75 Z M 50,79 L 49.77,79.3 L 49.58,79.6 L 49.45,79.9 L 49.4,80.2 L 49.45,80.5 L 49.58,80.8 L 49.77,81.1 L 50,81.4 L 50,81.4 L 50.23,81.1 L 50.42,80.8 L 50.55,80.5 L 50.6,80.2 L 50.55,79.9 L 50.42,79.6 L 50.23,79.3 L 50,79 L 50,79 Z M 50,83 L 49.77,83.3 L 49.58,83.6 L 49.45,83.9 L 49.4,84.2 L 49.45,84.5 L 49.58,84.8 L 49.77,85.1 L 50,85.4 L 50,85.4 L 50.23,85.1 L 50.42,84.8 L 50.55,84.5 L 50.6,84.2 L 50.55,83.9 L 50.42,83.6 L 50.23,83.3 L 50,83 L 50,83 Z" fill="#fbbf24"/>
                 <path d="M 44,60 L 50,67 L 56,60 Z" fill="#fef08a"/>
             </g>`,
         belt: `
             <g id="boy-belt-archer">
-                <rect x="37" y="82.5" width="26" height="4.5" rx="1" fill="#451a03"/>
-                <rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#fbbf24" stroke="#451a03" stroke-width="0.8"/>
+                <path d="M 37.45,84.75 L 38.92,85.62 L 40.42,86.43 L 41.96,87.16 L 43.52,87.79 L 45.11,88.3 L 46.73,88.68 L 48.36,88.91 L 50,88.99 L 51.64,88.91 L 53.27,88.68 L 54.89,88.3 L 56.48,87.79 L 58.04,87.16 L 59.58,86.43 L 61.08,85.62 L 62.55,84.75 L 62.55,84.75 L 60.88,84.45 L 59.25,84.12 L 57.64,83.8 L 56.07,83.51 L 54.53,83.26 L 53,83.07 L 51.5,82.95 L 50,82.91 L 48.5,82.95 L 47,83.07 L 45.47,83.26 L 43.93,83.51 L 42.36,83.8 L 40.75,84.12 L 39.12,84.45 L 37.45,84.75 L 37.45,84.75 Z" fill="#451a03"/>
+                <g transform="translate(0 1.2)"><rect x="46" y="81.5" width="8" height="6.5" rx="1.5" fill="#fbbf24" stroke="#451a03" stroke-width="0.8"/></g>
             </g>`,
         arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="boy-arms-archer">
                 <path d="M32 64 C24 71, 23 78, 29 84 C32 84, 34 81, 35 77 Z" fill="#16a34a"/>
                 <rect x="25" y="77" width="7" height="6" rx="1.2" fill="#78350f" transform="rotate(-20 28 80)"/>
-                <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="${skin.base}"/>
+                <!-- NOTE Main gauche dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
                 <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#16a34a"/>
-                <ellipse cx="77" cy="79" rx="3.8" ry="3.5" fill="${skin.base}"/>
+                <!-- NOTE Main droite dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
             </g>`,
         headAccessory: "",
-        handItem: `
+        handItem: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="boy-hand-archer-equipment">
-                <!-- Flèche tenue dans la main droite à (29, 84) inclinée à 45° -->
-                <g id="boy-hand-arrow" transform="rotate(45 29 84)">
-                    <!-- Pointe de flèche en fer biseautée -->
-                    <polygon points="29,48 32,56 26,56" fill="#cbd5e1" stroke="#475569" stroke-width="0.7"/>
-                    <line x1="29" y1="48" x2="29" y2="56" stroke="#ffffff" stroke-width="0.8"/>
-                    <!-- Bague dorée sous la pointe -->
-                    <rect x="27.5" y="56" width="3" height="2" rx="0.5" fill="#fbbf24"/>
-                    <!-- Hampe en bois d'if traversant la main à (29, 84) -->
-                    <line x1="29" y1="56" x2="29" y2="94" stroke="#78350f" stroke-width="1.8" stroke-linecap="round"/>
-                    <line x1="29" y1="56" x2="29" y2="94" stroke="#d97706" stroke-width="0.8" stroke-linecap="round"/>
-                    <!-- Empennage à plumes d'archer vertes et or sous la main -->
-                    <polygon points="29,87 33.5,90 33.5,94 29,92" fill="#15803d"/>
-                    <polygon points="29,87 24.5,90 24.5,94 29,92" fill="#15803d"/>
-                    <polygon points="29,89 32,91 32,93 29,92" fill="#fbbf24"/>
-                    <polygon points="29,89 26,91 26,93 29,92" fill="#fbbf24"/>
-                    <circle cx="29" cy="94" r="0.9" fill="#78350f"/>
+                <!-- Flèche modélisée sur l'axe X=0, tenue dans la main gauche (29, 84) inclinée à 45° -->
+                <g id="boy-hand-arrow" transform="translate(29, 84) rotate(45)">
+                    <polygon points="0,-36 3,-28 -3,-28" fill="#cbd5e1" stroke="#475569" stroke-width="0.7"/>
+                    <path d="M 0,-35 L -0.2,-33.8 L -0.35,-32.7 L -0.4,-31.5 L -0.35,-30.3 L -0.2,-29.2 L 0,-28 L 0,-28 L 0.2,-29.2 L 0.35,-30.3 L 0.4,-31.5 L 0.35,-32.7 L 0.2,-33.8 L 0,-35 L 0,-35 Z" fill="#ffffff"/>
+                    <rect x="-1.5" y="-28" width="3" height="2" rx="0.5" fill="#fbbf24"/>
+                    <rect x="-0.9" y="-26" width="1.8" height="36" rx="0.9" fill="#78350f"/>
+                    <rect x="-0.4" y="-26" width="0.8" height="36" rx="0.4" fill="#d97706"/>
+                    <polygon points="0,3 4.5,6 4.5,10 0,8" fill="#15803d"/>
+                    <polygon points="0,3 -4.5,6 -4.5,10 0,8" fill="#15803d"/>
+                    <polygon points="0,5 3,7 3,9 0,8" fill="#fbbf24"/>
+                    <polygon points="0,5 -3,7 -3,9 0,8" fill="#fbbf24"/>
+                    <circle cx="0" cy="10" r="0.9" fill="#78350f"/>
+                    <!-- Main refermée sur la poignée (origine du groupe) -->
+                    <ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                    <path d="M -1.6,-1 L -1.28,-0.88 L -0.95,-0.77 L -0.62,-0.7 L -0.3,-0.67 L 0.03,-0.7 L 0.35,-0.77 L 0.68,-0.88 L 1,-1 L 1,-1 L 0.68,-1.12 L 0.35,-1.23 L 0.03,-1.3 L -0.3,-1.32 L -0.62,-1.3 L -0.95,-1.23 L -1.28,-1.12 L -1.6,-1 L -1.6,-1 Z M -1.6,1 L -1.28,1.12 L -0.95,1.23 L -0.62,1.3 L -0.3,1.33 L 0.03,1.3 L 0.35,1.23 L 0.68,1.12 L 1,1 L 1,1 L 0.68,0.88 L 0.35,0.77 L 0.03,0.7 L -0.3,0.68 L -0.62,0.7 L -0.95,0.77 L -1.28,0.88 L -1.6,1 L -1.6,1 Z" fill="${skin.shadow}"/>
                 </g>
-                <!-- Arc long d'archer tenu dans l'autre main à (77, 79) -->
-                <g id="boy-hand-bow">
-                    <!-- Corde tendue vers le personnage (côté intérieur à x=65) -->
-                    <line x1="65" y1="53" x2="65" y2="105" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
-                    <!-- Bois d'if courbé vers l'extérieur passant exactement dans la main à (77, 79) -->
-                    <path d="M 65,53 Q 89,79 65,105" fill="none" stroke="#78350f" stroke-width="2.8" stroke-linecap="round"/>
-                    <path d="M 65,53 Q 90,79 65,105" fill="none" stroke="#d97706" stroke-width="1.3" stroke-linecap="round"/>
-                    <!-- Poignée en cuir placée directement sur le bois et dans la main (77, 79) -->
-                    <rect x="74.5" y="75" width="5" height="8" rx="1.2" fill="#fbbf24" stroke="#78350f" stroke-width="0.6"/>
+                <!-- Arc long modélisé autour de sa poignée, tenu dans la main droite (77, 79) -->
+                <g id="boy-hand-bow" transform="translate(77, 79)">
+                    <line x1="-12" y1="-26" x2="-12" y2="26" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    <path d="M -12,-26 Q 12,0 -12,26" fill="none" stroke="#78350f" stroke-width="2.8" stroke-linecap="round"/>
+                    <path d="M -12,-26 Q 13,0 -12,26" fill="none" stroke="#d97706" stroke-width="1.3" stroke-linecap="round"/>
+                    <rect x="-2.5" y="-5" width="5" height="10" rx="1.2" fill="#fbbf24" stroke="#78350f" stroke-width="0.6"/>
+                    <!-- Main refermée sur la poignée (origine du groupe) -->
+                    <ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                    <path d="M -1.6,-1 L -1.28,-0.88 L -0.95,-0.77 L -0.62,-0.7 L -0.3,-0.67 L 0.03,-0.7 L 0.35,-0.77 L 0.68,-0.88 L 1,-1 L 1,-1 L 0.68,-1.12 L 0.35,-1.23 L 0.03,-1.3 L -0.3,-1.32 L -0.62,-1.3 L -0.95,-1.23 L -1.28,-1.12 L -1.6,-1 L -1.6,-1 Z M -1.6,1 L -1.28,1.12 L -0.95,1.23 L -0.62,1.3 L -0.3,1.33 L 0.03,1.3 L 0.35,1.23 L 0.68,1.12 L 1,1 L 1,1 L 0.68,0.88 L 0.35,0.77 L 0.03,0.7 L -0.3,0.68 L -0.62,0.7 L -0.95,0.77 L -1.28,0.88 L -1.6,1 L -1.6,1 Z" fill="${skin.shadow}"/>
                 </g>
             </g>`
     }
@@ -850,14 +891,14 @@ export const GIRL_OUTFITS = {
                 <!-- Jambières et pantalon d'armure de chevalière (SANS JUPE) -->
                 <polygon points="39,82 49,82 48,106 41,106" fill="#1e293b"/>
                 <polygon points="40,84 48.5,84 48,95 41,95" fill="#94a3b8"/>
-                <line x1="41" y1="95" x2="48" y2="95" stroke="#fbbf24" stroke-width="1"/>
+                <path d="M 41,95 L 41.88,95.23 L 42.75,95.42 L 43.63,95.55 L 44.5,95.6 L 45.38,95.55 L 46.25,95.42 L 47.13,95.23 L 48,95 L 48,95 L 47.13,94.77 L 46.25,94.58 L 45.38,94.45 L 44.5,94.4 L 43.63,94.45 L 42.75,94.58 L 41.88,94.77 L 41,95 L 41,95 Z" fill="#fbbf24"/>
                 <polygon points="40,97 48.5,97 48,106 41,106" fill="#64748b"/>
                 <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#334155"/>
                 <rect x="42.5" y="107" width="4" height="2" rx="0.8" fill="#fbbf24"/>
                 
                 <polygon points="51,82 61,82 59,106 52,106" fill="#1e293b"/>
                 <polygon points="51.5,84 60,84 59,95 52,95" fill="#94a3b8"/>
-                <line x1="52" y1="95" x2="59.5" y2="95" stroke="#fbbf24" stroke-width="1"/>
+                <path d="M 52,95 L 52.94,95.23 L 53.88,95.42 L 54.81,95.55 L 55.75,95.6 L 56.69,95.55 L 57.63,95.42 L 58.56,95.23 L 59.5,95 L 59.5,95 L 58.56,94.77 L 57.63,94.58 L 56.69,94.45 L 55.75,94.4 L 54.81,94.45 L 53.88,94.58 L 52.94,94.77 L 52,95 L 52,95 Z" fill="#fbbf24"/>
                 <polygon points="51.5,97 60,97 59,106 52,106" fill="#64748b"/>
                 <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#334155"/>
                 <rect x="53.5" y="107" width="4" height="2" rx="0.8" fill="#fbbf24"/>
@@ -873,9 +914,9 @@ export const GIRL_OUTFITS = {
             </g>`,
         belt: `
             <g id="girl-belt-warrior">
-                <rect x="36" y="80.5" width="28" height="4.5" rx="1" fill="#1e293b"/>
-                <rect x="46.5" y="79.5" width="7" height="6.5" rx="1.2" fill="#fbbf24" stroke="#78350f" stroke-width="0.8"/>
-                <circle cx="50" cy="82.8" r="1.5" fill="#ef4444"/>
+                <path d="M 39.05,82.75 L 40.31,83.61 L 41.6,84.42 L 42.93,85.15 L 44.29,85.79 L 45.69,86.3 L 47.11,86.68 L 48.55,86.91 L 50,86.99 L 51.45,86.91 L 52.89,86.68 L 54.31,86.3 L 55.71,85.79 L 57.07,85.15 L 58.4,84.42 L 59.69,83.61 L 60.95,82.75 L 60.95,82.75 L 59.47,82.45 L 58.02,82.13 L 56.61,81.81 L 55.24,81.51 L 53.9,81.26 L 52.58,81.07 L 51.29,80.95 L 50,80.91 L 48.71,80.95 L 47.42,81.07 L 46.1,81.26 L 44.76,81.51 L 43.39,81.81 L 41.98,82.13 L 40.53,82.45 L 39.05,82.75 L 39.05,82.75 Z" fill="#1e293b"/>
+                <g transform="translate(0 1.2)"><rect x="46.5" y="79.5" width="7" height="6.5" rx="1.2" fill="#fbbf24" stroke="#78350f" stroke-width="0.8"/></g>
+                <g transform="translate(0 1.2)"><circle cx="50" cy="82.8" r="1.5" fill="#ef4444"/></g>
             </g>`,
         arms: `
             <g id="girl-arms-warrior">
@@ -885,10 +926,10 @@ export const GIRL_OUTFITS = {
                 <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="#cbd5e1"/>
                 <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="#64748b"/>
                 <circle cx="69" cy="65" r="4" fill="#fbbf24" stroke="#b45309" stroke-width="0.8"/>
-                <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="#cbd5e1"/>
+                <!-- NOTE Main droite dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
             </g>`,
         headAccessory: "",
-        handItem: `
+        handItem: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="girl-hand-warrior-equipment">
                 <!-- Grand Bouclier / Écu d'acier et d'or dans la main droite à (27, 81.5) -->
                 <g id="girl-shield">
@@ -907,23 +948,24 @@ export const GIRL_OUTFITS = {
                     <circle cx="25" cy="58" r="1.1" fill="#78350f"/>
                     <circle cx="25" cy="99" r="1.1" fill="#78350f"/>
                 </g>
-                <!-- Épée courte mais épaisse (Glaive de guerrière) tenue dans l'autre main à (76, 75.5) -->
-                <g id="girl-sword">
-                    <!-- Pommeau doré serti d'un rubis -->
-                    <circle cx="76" cy="85.5" r="2.8" fill="#fbbf24" stroke="#78350f" stroke-width="0.8"/>
-                    <circle cx="76" cy="85.5" r="1.4" fill="#ef4444"/>
-                    <!-- Poignée en cuir & fil d'or passant sous la main -->
-                    <line x1="76" y1="85.5" x2="76" y2="72" stroke="#78350f" stroke-width="3.8" stroke-linecap="round"/>
-                    <line x1="76" y1="85.5" x2="76" y2="72" stroke="#fbbf24" stroke-width="1" stroke-dasharray="2 2"/>
-                    <!-- Garde dorée massive sculptée -->
-                    <polygon points="66,73 86,73 84,69 68,69" fill="#fbbf24" stroke="#b45309" stroke-width="0.8"/>
-                    <circle cx="76" cy="71" r="2.2" fill="#ef4444" stroke="#ffffff" stroke-width="0.5"/>
-                    <!-- Lame courte mais très épaisse (14px de large) bicolore avec pointe acérée -->
-                    <polygon points="69,69 69,45 76,36 76,69" fill="#94a3b8" stroke="#334155" stroke-width="0.8"/>
-                    <polygon points="76,69 76,36 83,45 83,69" fill="#cbd5e1" stroke="#334155" stroke-width="0.8"/>
-                    <!-- Ligne de biseau et éclat lumineux -->
-                    <line x1="76" y1="69" x2="76" y2="36" stroke="#ffffff" stroke-width="1.3"/>
-                    <polygon points="69,45 76,36 83,45" fill="#ffffff" opacity="0.6"/>
+                <!-- Glaive modélisé sur l'axe X=0, poignée centrée sur le gantelet droit (76, 75.5) -->
+                <g id="girl-sword" transform="translate(76, 75.5)">
+                    <!-- Lame courte et épaisse bicolore, pointe acérée -->
+                    <polygon points="-7,-9 -7,-33 0,-42 0,-9" fill="#94a3b8" stroke="#334155" stroke-width="0.8"/>
+                    <polygon points="0,-9 0,-42 7,-33 7,-9" fill="#cbd5e1" stroke="#334155" stroke-width="0.8"/>
+                    <path d="M 0,-10 L 0.22,-12.91 L 0.41,-16.3 L 0.57,-19.2 L 0.67,-22.59 L 0.7,-25.5 L 0.67,-28.41 L 0.57,-31.8 L 0.41,-34.7 L 0.22,-38.09 L 0,-41 L 0,-41 L -0.22,-38.09 L -0.41,-34.7 L -0.57,-31.8 L -0.67,-28.41 L -0.7,-25.5 L -0.67,-22.59 L -0.57,-19.2 L -0.41,-16.3 L -0.22,-12.91 L 0,-10 L 0,-10 Z" fill="#ffffff"/>
+                    <polygon points="-7,-33 0,-42 7,-33" fill="#ffffff" opacity="0.6"/>
+                    <!-- Garde dorée massive et rubis -->
+                    <polygon points="-10,-5 10,-5 8,-9 -8,-9" fill="#fbbf24" stroke="#b45309" stroke-width="0.8"/>
+                    <circle cx="0" cy="-7" r="2.2" fill="#ef4444" stroke="#ffffff" stroke-width="0.5"/>
+                    <!-- Poignée en cuir à fil d'or et pommeau au rubis -->
+                    <rect x="-1.9" y="-5" width="3.8" height="12.5" rx="1.9" fill="#78350f"/>
+                    <path d="M 0,-4.5 L -0.22,-4.16 L -0.39,-3.84 L -0.45,-3.5 L -0.39,-3.16 L -0.22,-2.84 L 0,-2.5 L 0,-2.5 L 0.22,-2.84 L 0.39,-3.16 L 0.45,-3.5 L 0.39,-3.84 L 0.22,-4.16 L 0,-4.5 L 0,-4.5 Z M 0,-0.5 L -0.22,-0.16 L -0.39,0.16 L -0.45,0.5 L -0.39,0.84 L -0.22,1.16 L 0,1.5 L 0,1.5 L 0.22,1.16 L 0.39,0.84 L 0.45,0.5 L 0.39,0.16 L 0.22,-0.16 L 0,-0.5 L 0,-0.5 Z M 0,3.5 L -0.22,3.84 L -0.39,4.16 L -0.45,4.5 L -0.39,4.84 L -0.22,5.16 L 0,5.5 L 0,5.5 L 0.22,5.16 L 0.39,4.84 L 0.45,4.5 L 0.39,4.16 L 0.22,3.84 L 0,3.5 L 0,3.5 Z" fill="#fbbf24"/>
+                    <circle cx="0" cy="7.5" r="2.8" fill="#fbbf24" stroke="#78350f" stroke-width="0.8"/>
+                    <circle cx="0" cy="7.5" r="1.4" fill="#ef4444"/>
+                    <!-- Main refermée sur la poignée (origine du groupe) -->
+                    <ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="#cbd5e1" stroke="#64748b" stroke-width="0.5"/>
+                    <path d="M -1.6,-1 L -1.28,-0.88 L -0.95,-0.77 L -0.62,-0.7 L -0.3,-0.67 L 0.03,-0.7 L 0.35,-0.77 L 0.68,-0.88 L 1,-1 L 1,-1 L 0.68,-1.12 L 0.35,-1.23 L 0.03,-1.3 L -0.3,-1.32 L -0.62,-1.3 L -0.95,-1.23 L -1.28,-1.12 L -1.6,-1 L -1.6,-1 Z M -1.6,1 L -1.28,1.12 L -0.95,1.23 L -0.62,1.3 L -0.3,1.33 L 0.03,1.3 L 0.35,1.23 L 0.68,1.12 L 1,1 L 1,1 L 0.68,0.88 L 0.35,0.77 L 0.03,0.7 L -0.3,0.68 L -0.62,0.7 L -0.95,0.77 L -1.28,0.88 L -1.6,1 L -1.6,1 Z" fill="#64748b"/>
                 </g>
             </g>`
     },
@@ -939,15 +981,15 @@ export const GIRL_OUTFITS = {
                 <path d="M 36,82 L 44,82 L 40,110 C 34,112 28,111 26,110 C 27,103 33,92 36,82 Z" fill="#2e1065"/>
                 <path d="M 64,82 L 56,82 L 60,110 C 66,112 72,111 74,110 C 73,103 67,92 64,82 Z" fill="#2e1065"/>
                 <!-- Lignes de plis et drapé -->
-                <path d="M 45,82 C 44,92 42,102 39,110" stroke="#1e1b4b" stroke-width="1"/>
-                <path d="M 55,82 C 56,92 58,102 61,110" stroke="#1e1b4b" stroke-width="1"/>
-                <line x1="50" y1="82" x2="50" y2="111" stroke="#4c1d95" stroke-width="1"/>
+                <path d="M 45,82 L 44.67,83.86 L 44.26,86.18 L 43.9,88.02 L 43.53,89.86 L 43.08,92.14 L 42.71,93.95 L 42.26,96.18 L 41.89,97.95 L 41.43,100.13 L 41.07,101.86 L 40.58,103.97 L 40.08,106.03 L 39.56,108.05 L 39,110 L 39,110 L 39.81,108.13 L 40.58,106.19 L 41.3,104.17 L 41.97,102.09 L 42.48,100.39 L 43.03,98.21 L 43.43,96.43 L 43.86,94.16 L 44.15,92.32 L 44.45,90 L 44.64,88.13 L 44.78,86.25 L 44.93,83.89 L 45,82 L 45,82 Z" fill="#1e1b4b"/>
+                <path d="M 55,82 L 55.07,83.89 L 55.22,86.25 L 55.36,88.13 L 55.55,90 L 55.85,92.32 L 56.14,94.16 L 56.57,96.43 L 56.97,98.21 L 57.52,100.39 L 58.03,102.09 L 58.7,104.17 L 59.42,106.19 L 60.19,108.13 L 61,110 L 61,110 L 60.44,108.05 L 59.92,106.03 L 59.42,103.97 L 58.93,101.86 L 58.57,100.13 L 58.11,97.95 L 57.74,96.18 L 57.29,93.95 L 56.92,92.14 L 56.47,89.86 L 56.1,88.02 L 55.74,86.18 L 55.33,83.86 L 55,82 L 55,82 Z" fill="#1e1b4b"/>
+                <path d="M 50,82 L 49.87,84.27 L 49.74,86.08 L 49.63,88.34 L 49.53,90.16 L 49.46,92.42 L 49.42,94.23 L 49.4,96.5 L 49.42,98.77 L 49.46,100.58 L 49.53,102.84 L 49.63,104.66 L 49.74,106.92 L 49.87,108.73 L 50,111 L 50,111 L 50.13,108.73 L 50.26,106.92 L 50.37,104.66 L 50.47,102.84 L 50.54,100.58 L 50.58,98.77 L 50.6,96.5 L 50.58,94.23 L 50.54,92.42 L 50.47,90.16 L 50.37,88.34 L 50.26,86.08 L 50.13,84.27 L 50,82 L 50,82 Z" fill="#4c1d95"/>
                 <!-- Motifs d'étoiles dorées brodées sur la robe -->
                 <circle cx="50" cy="94" r="1.2" fill="#fbbf24"/>
                 <circle cx="43" cy="103" r="0.9" fill="#e9d5ff"/>
                 <circle cx="57" cy="103" r="0.9" fill="#e9d5ff"/>
                 <!-- Ourlet doré ondulé au bas de la robe -->
-                <path d="M 26,110 C 34,112 42,109 50,111 C 58,109 66,112 74,110" stroke="#fbbf24" stroke-width="1.3" fill="none"/>
+                <path d="M 26,110 L 28.23,110.56 L 30.86,110.93 L 33.13,111.08 L 35.77,111.1 L 38.04,111.06 L 40.28,111.01 L 42.88,110.99 L 45.09,111.08 L 47.64,111.34 L 50.19,111.78 L 52.36,111.34 L 54.91,111.08 L 57.12,110.99 L 59.72,111.01 L 61.96,111.06 L 64.23,111.1 L 66.87,111.08 L 69.14,110.93 L 71.77,110.56 L 74,110 L 74,110 L 71.73,110.32 L 69.11,110.44 L 66.88,110.36 L 64.27,110.16 L 62.04,109.94 L 59.78,109.72 L 57.13,109.57 L 54.84,109.56 L 52.14,109.78 L 49.81,110.22 L 47.86,109.78 L 45.16,109.56 L 42.87,109.57 L 40.22,109.72 L 37.96,109.94 L 35.73,110.16 L 33.12,110.36 L 30.89,110.44 L 28.27,110.32 L 26,110 L 26,110 Z" fill="#fbbf24"/>
                 <!-- Bouts de bottines pointues peeking sous la robe -->
                 <path d="M 37,110 L 44,110 L 45,114.5 C 45,115.5 35,115.5 34,113.5 Z" fill="#1e1b4b"/>
                 <rect x="38" y="111" width="3.5" height="2" rx="0.6" fill="#fbbf24"/>
@@ -967,46 +1009,53 @@ export const GIRL_OUTFITS = {
             </g>`,
         belt: `
             <g id="girl-belt-witch">
-                <rect x="37" y="80.5" width="26" height="4.5" rx="1" fill="#7e22ce"/>
+                <path d="M 35.45,82.75 L 37.18,83.62 L 38.94,84.43 L 40.73,85.16 L 42.55,85.79 L 44.39,86.3 L 46.25,86.68 L 48.12,86.91 L 50,86.99 L 51.88,86.91 L 53.75,86.68 L 55.61,86.3 L 57.45,85.79 L 59.27,85.16 L 61.06,84.43 L 62.82,83.62 L 64.55,82.75 L 64.55,82.75 L 62.65,82.44 L 60.77,82.12 L 58.92,81.8 L 57.1,81.51 L 55.3,81.26 L 53.52,81.07 L 51.76,80.95 L 50,80.91 L 48.24,80.95 L 46.48,81.07 L 44.7,81.26 L 42.9,81.51 L 41.08,81.8 L 39.23,82.12 L 37.35,82.44 L 35.45,82.75 L 35.45,82.75 Z" fill="#7e22ce"/>
                 <!-- Boucle en croissant de lune or -->
-                <circle cx="50" cy="82.5" r="3.2" fill="#fbbf24"/>
-                <circle cx="51.5" cy="81.5" r="2.8" fill="#7e22ce"/>
+                <g transform="translate(0 1.2)"><circle cx="50" cy="82.5" r="3.2" fill="#fbbf24"/></g>
+                <g transform="translate(0 1.19)"><circle cx="51.5" cy="81.5" r="2.8" fill="#7e22ce"/></g>
             </g>`,
         arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="girl-arms-witch">
                 <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="#6b21a8"/>
                 <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
+                <!-- NOTE Séparations des doigts en fuseau -->
+                <path d="M 26,81.8 L 25.81,82.09 L 25.65,82.39 L 25.53,82.7 L 25.48,83.02 L 25.48,83.35 L 25.55,83.67 L 25.66,83.99 L 25.8,84.3 L 25.8,84.3 L 25.91,83.98 L 26,83.67 L 26.08,83.37 L 26.12,83.08 L 26.13,82.77 L 26.1,82.46 L 26.05,82.14 L 26,81.8 L 26,81.8 Z M 28,81.8 L 27.95,82.14 L 27.9,82.46 L 27.87,82.77 L 27.88,83.08 L 27.92,83.37 L 28,83.67 L 28.09,83.98 L 28.2,84.3 L 28.2,84.3 L 28.34,83.99 L 28.45,83.67 L 28.52,83.35 L 28.52,83.02 L 28.47,82.7 L 28.35,82.39 L 28.19,82.09 L 28,81.8 L 28,81.8 Z" fill="${skin.shadow}"/>
                 <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="#6b21a8"/>
-                <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
+                <!-- NOTE Main droite dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
             </g>`,
         headAccessory: `
             <g id="girl-head-witch">
-                <!-- Grand chapeau pointu de sorcière (CALOTTE PLUS HAUTE Y=-33) -->
-                <path d="M 20,18 Q 36,-32 86,-33 Q 62,-4 76,16 Z" fill="#1e1b4b"/>
-                <path d="M 23,18 Q 38,-29 82,-30 Q 63,-5 74,16 Z" fill="#2e1065"/>
-                <!-- Très large bord du chapeau (rx=50) qui coiffe le front à l'avant-plan -->
-                <ellipse cx="50" cy="19" rx="50" ry="13.5" fill="#1e1b4b" transform="rotate(-6 50 19)"/>
-                <ellipse cx="50" cy="19" rx="46" ry="9.5" fill="#3b0764" transform="rotate(-6 50 19)"/>
-                <!-- Ruban violet vibrant courbé vers le BAS (perspective naturelle) -->
-                <path d="M 26,16 Q 50,26 74,17 L 73,22 Q 50,31 27,21 Z" fill="#9333ea"/>
+                <!-- Très large bord du chapeau qui coiffe le front, dessiné en premier, contour en fuseau (devant plus épais que l'arrière) -->
+                <g id="witch-hat-brim" transform="rotate(-6 48 20)">
+                    <ellipse cx="48" cy="20" rx="48" ry="11.5" fill="#3b0764"/>
+                    <path d="M 0,20 L 0.4,18.67 L 1.27,17.57 L 2.36,16.69 L 3.57,15.95 L 4.85,15.33 L 6.11,14.81 L 7.39,14.35 L 8.81,13.9 L 10.09,13.55 L 11.46,13.2 L 12.88,12.88 L 14.23,12.6 L 15.64,12.33 L 16.96,12.11 L 18.48,11.86 L 19.9,11.66 L 21.18,11.49 L 22.66,11.31 L 23.99,11.16 L 25.51,11 L 26.9,10.87 L 28.32,10.75 L 29.58,10.65 L 31.04,10.55 L 32.51,10.45 L 33.81,10.38 L 35.29,10.3 L 36.79,10.23 L 38.12,10.18 L 39.46,10.13 L 41.01,10.09 L 42.37,10.06 L 43.73,10.03 L 45.09,10.02 L 46.65,10 L 48,10 L 49.35,10 L 50.91,10.02 L 52.27,10.03 L 53.63,10.06 L 54.99,10.09 L 56.54,10.13 L 57.88,10.18 L 59.21,10.23 L 60.71,10.3 L 62.19,10.38 L 63.49,10.45 L 64.96,10.55 L 66.42,10.65 L 67.68,10.75 L 69.1,10.87 L 70.49,11 L 72.01,11.16 L 73.34,11.31 L 74.82,11.49 L 76.1,11.66 L 77.52,11.86 L 79.04,12.11 L 80.36,12.33 L 81.77,12.6 L 83.12,12.88 L 84.54,13.2 L 85.91,13.55 L 87.19,13.9 L 88.61,14.35 L 89.89,14.81 L 91.15,15.33 L 92.43,15.95 L 93.64,16.69 L 94.73,17.57 L 95.6,18.67 L 96,20 L 96,20 L 95.72,18.61 L 94.92,17.39 L 93.88,16.37 L 92.7,15.51 L 91.44,14.75 L 90.2,14.1 L 88.93,13.51 L 87.53,12.93 L 86.25,12.45 L 84.89,11.98 L 83.47,11.54 L 82.12,11.14 L 80.71,10.76 L 79.38,10.42 L 77.85,10.07 L 76.43,9.76 L 75.14,9.49 L 73.66,9.21 L 72.32,8.97 L 70.78,8.72 L 69.38,8.51 L 67.95,8.31 L 66.68,8.14 L 65.2,7.96 L 63.71,7.8 L 62.4,7.67 L 60.89,7.53 L 59.37,7.42 L 58.03,7.32 L 56.67,7.24 L 55.1,7.16 L 53.72,7.11 L 52.34,7.06 L 50.95,7.03 L 49.37,7.01 L 48,7 L 46.63,7.01 L 45.05,7.03 L 43.66,7.06 L 42.28,7.11 L 40.9,7.16 L 39.33,7.24 L 37.97,7.32 L 36.63,7.42 L 35.11,7.53 L 33.6,7.67 L 32.29,7.8 L 30.8,7.96 L 29.32,8.14 L 28.05,8.31 L 26.62,8.51 L 25.22,8.72 L 23.68,8.97 L 22.34,9.21 L 20.86,9.49 L 19.57,9.76 L 18.15,10.07 L 16.62,10.42 L 15.29,10.76 L 13.88,11.14 L 12.53,11.54 L 11.11,11.98 L 9.75,12.45 L 8.47,12.93 L 7.07,13.51 L 5.8,14.1 L 4.56,14.75 L 3.3,15.51 L 2.12,16.37 L 1.08,17.39 L 0.28,18.61 L 0,20 L 0,20 Z" fill="#1e1b4b"/>
+                    <path d="M 96,20 L 95.58,21.32 L 94.7,22.4 L 93.6,23.25 L 92.38,23.96 L 91.09,24.56 L 89.83,25.05 L 88.54,25.48 L 87.13,25.9 L 85.84,26.23 L 84.47,26.55 L 83.05,26.86 L 81.7,27.11 L 80.29,27.35 L 78.97,27.56 L 77.45,27.78 L 76.04,27.96 L 74.75,28.11 L 73.28,28.27 L 71.95,28.4 L 70.43,28.54 L 69.05,28.66 L 67.63,28.76 L 66.37,28.84 L 64.92,28.93 L 63.45,29.02 L 62.15,29.08 L 60.67,29.15 L 59.18,29.21 L 57.85,29.25 L 56.52,29.29 L 54.97,29.33 L 53.62,29.35 L 52.26,29.37 L 50.9,29.39 L 49.35,29.4 L 48,29.4 L 46.65,29.4 L 45.1,29.39 L 43.74,29.37 L 42.38,29.35 L 41.03,29.33 L 39.48,29.29 L 38.15,29.25 L 36.82,29.21 L 35.33,29.15 L 33.85,29.08 L 32.55,29.02 L 31.08,28.93 L 29.63,28.84 L 28.37,28.76 L 26.95,28.66 L 25.57,28.54 L 24.05,28.4 L 22.72,28.27 L 21.25,28.11 L 19.96,27.96 L 18.55,27.78 L 17.03,27.56 L 15.71,27.35 L 14.3,27.11 L 12.95,26.86 L 11.53,26.55 L 10.16,26.23 L 8.87,25.9 L 7.46,25.48 L 6.17,25.05 L 4.91,24.56 L 3.62,23.96 L 2.4,23.25 L 1.3,22.4 L 0.42,21.32 L 0,20 L 0,20 L 0.26,21.4 L 1.04,22.65 L 2.07,23.69 L 3.25,24.58 L 4.5,25.37 L 5.74,26.05 L 7.01,26.66 L 8.41,27.26 L 9.68,27.77 L 11.04,28.26 L 12.46,28.73 L 13.81,29.15 L 15.22,29.56 L 16.55,29.92 L 18.08,30.29 L 19.5,30.62 L 20.79,30.91 L 22.28,31.21 L 23.62,31.47 L 25.16,31.74 L 26.56,31.97 L 28,32.18 L 29.27,32.37 L 30.75,32.56 L 32.25,32.73 L 33.56,32.88 L 35.07,33.02 L 36.6,33.15 L 37.94,33.25 L 39.31,33.34 L 40.88,33.42 L 42.26,33.49 L 43.65,33.53 L 45.04,33.57 L 46.62,33.59 L 48,33.6 L 49.38,33.59 L 50.96,33.57 L 52.35,33.53 L 53.74,33.49 L 55.12,33.42 L 56.69,33.34 L 58.06,33.25 L 59.4,33.15 L 60.93,33.02 L 62.44,32.88 L 63.75,32.73 L 65.25,32.56 L 66.73,32.37 L 68,32.18 L 69.44,31.97 L 70.84,31.74 L 72.38,31.47 L 73.72,31.21 L 75.21,30.91 L 76.5,30.62 L 77.92,30.29 L 79.45,29.92 L 80.78,29.56 L 82.19,29.15 L 83.54,28.73 L 84.96,28.26 L 86.32,27.77 L 87.59,27.26 L 88.99,26.66 L 90.26,26.05 L 91.5,25.37 L 92.75,24.58 L 93.93,23.69 L 94.96,22.65 L 95.74,21.4 L 96,20 L 96,20 Z" fill="#1e1b4b"/>
+                </g>
+                <!-- Grand chapeau pointu de sorcière (CALOTTE PLUS HAUTE Y=-33), au premier plan devant le bord -->
+                <path d="M 20,18 Q 36,-32 86,-33 Q 62,-4 76,16 Q 48,26 20,18 Z" fill="#2e1065"/>
+                <!-- Flancs du cône en fuseau, effilés jusqu'à la pointe -->
+                <path d="M 20,18 L 22.44,12.06 L 25.12,6.54 L 28.71,0.17 L 31.87,-4.45 L 36.05,-9.72 L 40.57,-14.42 L 44.42,-17.77 L 49.55,-21.51 L 55.05,-24.74 L 60.97,-27.46 L 67.32,-29.67 L 72.72,-31.11 L 79.91,-32.35 L 86,-33 L 86,-33 L 79.85,-33.02 L 72.5,-32.39 L 66.86,-31.48 L 60.16,-29.66 L 53.86,-27.17 L 47.97,-23.98 L 42.53,-20.11 L 38.53,-16.52 L 33.98,-11.45 L 29.93,-5.76 L 27.09,-0.76 L 23.94,5.99 L 21.82,11.82 L 20,18 L 20,18 Z M 86,-33 L 83.61,-30.48 L 80.74,-27.09 L 78.19,-23.73 L 76.44,-21.25 L 74.04,-17.08 L 72.48,-13.79 L 71.27,-10.52 L 70.26,-6.5 L 69.78,-2.58 L 69.89,1.97 L 70.58,5.6 L 71.78,9.04 L 73.79,12.96 L 76,16 L 76,16 L 74.3,12.68 L 72.84,8.67 L 72.17,5.28 L 71.92,1.84 L 72.12,-2.38 L 72.74,-6 L 73.75,-9.74 L 74.83,-12.85 L 76.15,-16.06 L 78.2,-20.23 L 79.56,-22.86 L 81.66,-26.44 L 84.06,-30.12 L 86,-33 L 86,-33 Z" fill="#1e1b4b"/>
+                <!-- Ruban violet à la base du cône, d'un coin à l'autre, courbé vers le bas comme le bord -->
+                <path d="M 20.5,18 L 23.81,19.41 L 27.16,20.67 L 30.56,21.78 L 34,22.71 L 37.49,23.43 L 41,23.93 L 44.54,24.2 L 48.08,24.22 L 51.63,24.01 L 55.15,23.55 L 58.65,22.85 L 62.11,21.94 L 65.53,20.83 L 68.9,19.54 L 72.22,18.09 L 75.5,16.5 L 75.5,16.5 L 71.9,16.92 L 68.35,17.23 L 64.84,17.45 L 61.39,17.62 L 57.97,17.74 L 54.6,17.84 L 51.25,17.94 L 47.92,18.03 L 44.59,18.12 L 41.25,18.21 L 37.89,18.29 L 34.5,18.35 L 31.07,18.38 L 27.59,18.34 L 24.07,18.22 L 20.5,18 L 20.5,18 Z" fill="#9333ea"/>
                 <!-- Vrai croissant de lune doré étincelant -->
                 <path d="M 51,17 A 4.5,4.5 0 1 0 53,25 A 3.6,3.6 0 1 1 51,17 Z" fill="#fbbf24" stroke="#d97706" stroke-width="0.5"/>
                 <circle cx="49" cy="20" r="0.8" fill="#ffffff"/>
             </g>`,
-        handItem: `
+        handItem: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="girl-hand-witch-staff">
-                <!-- Grand bâton de sorcière vertical (hampe ébène passant exactement dans la main à x=76, y=75.5) -->
-                <line x1="76" y1="34" x2="76" y2="108" stroke="#2e1065" stroke-width="3" stroke-linecap="round"/>
-                <line x1="76" y1="34" x2="76" y2="108" stroke="#fbbf24" stroke-width="0.8" stroke-dasharray="3 3"/>
-                <!-- Sommet magique épuré -->
-                <!-- Halo d'énergie violette -->
-                <circle cx="76" cy="26" r="9" fill="#c084fc" opacity="0.35"/>
-                <!-- Grande orbe améthyste éclatante -->
-                <circle cx="76" cy="26" r="6.5" fill="#9333ea" stroke="#fbbf24" stroke-width="1.2"/>
-                <circle cx="74" cy="23.5" r="2.2" fill="#ffffff"/>
-                <circle cx="77.5" cy="27.5" r="1.2" fill="#e9d5ff"/>
-                <!-- Bague dorée sous l'orbe -->
-                <rect x="73.5" y="32.5" width="5" height="2.5" rx="0.6" fill="#fbbf24" stroke="#78350f" stroke-width="0.5"/>
+                <!-- Bâton de sorcière modélisé sur l'axe X=0, hampe centrée sur la main droite (76, 75.5) -->
+                <g id="girl-witch-staff" transform="translate(76, 75.5)">
+                    <rect x="-1.5" y="-41.5" width="3" height="74" rx="1.5" fill="#2e1065"/>
+                    <path d="M 0,-40 L -0.2,-39.48 L -0.35,-39.02 L -0.4,-38.5 L -0.35,-37.98 L -0.2,-37.52 L 0,-37 L 0,-37 L 0.2,-37.52 L 0.35,-37.98 L 0.4,-38.5 L 0.35,-39.02 L 0.2,-39.48 L 0,-40 L 0,-40 Z M 0,-34 L -0.2,-33.48 L -0.35,-33.02 L -0.4,-32.5 L -0.35,-31.98 L -0.2,-31.52 L 0,-31 L 0,-31 L 0.2,-31.52 L 0.35,-31.98 L 0.4,-32.5 L 0.35,-33.02 L 0.2,-33.48 L 0,-34 L 0,-34 Z M 0,-28 L -0.2,-27.48 L -0.35,-27.02 L -0.4,-26.5 L -0.35,-25.98 L -0.2,-25.52 L 0,-25 L 0,-25 L 0.2,-25.52 L 0.35,-25.98 L 0.4,-26.5 L 0.35,-27.02 L 0.2,-27.48 L 0,-28 L 0,-28 Z M 0,-22 L -0.2,-21.48 L -0.35,-21.02 L -0.4,-20.5 L -0.35,-19.98 L -0.2,-19.52 L 0,-19 L 0,-19 L 0.2,-19.52 L 0.35,-19.98 L 0.4,-20.5 L 0.35,-21.02 L 0.2,-21.48 L 0,-22 L 0,-22 Z M 0,-16 L -0.2,-15.48 L -0.35,-15.02 L -0.4,-14.5 L -0.35,-13.98 L -0.2,-13.52 L 0,-13 L 0,-13 L 0.2,-13.52 L 0.35,-13.98 L 0.4,-14.5 L 0.35,-15.02 L 0.2,-15.48 L 0,-16 L 0,-16 Z M 0,-10 L -0.2,-9.48 L -0.35,-9.02 L -0.4,-8.5 L -0.35,-7.98 L -0.2,-7.52 L 0,-7 L 0,-7 L 0.2,-7.52 L 0.35,-7.98 L 0.4,-8.5 L 0.35,-9.02 L 0.2,-9.48 L 0,-10 L 0,-10 Z M 0,-4 L -0.2,-3.48 L -0.35,-3.02 L -0.4,-2.5 L -0.35,-1.98 L -0.2,-1.52 L 0,-1 L 0,-1 L 0.2,-1.52 L 0.35,-1.98 L 0.4,-2.5 L 0.35,-3.02 L 0.2,-3.48 L 0,-4 L 0,-4 Z M 0,2 L -0.2,2.52 L -0.35,2.98 L -0.4,3.5 L -0.35,4.02 L -0.2,4.48 L 0,5 L 0,5 L 0.2,4.48 L 0.35,4.02 L 0.4,3.5 L 0.35,2.98 L 0.2,2.52 L 0,2 L 0,2 Z M 0,8 L -0.2,8.52 L -0.35,8.98 L -0.4,9.5 L -0.35,10.02 L -0.2,10.48 L 0,11 L 0,11 L 0.2,10.48 L 0.35,10.02 L 0.4,9.5 L 0.35,8.98 L 0.2,8.52 L 0,8 L 0,8 Z M 0,14 L -0.2,14.52 L -0.35,14.98 L -0.4,15.5 L -0.35,16.02 L -0.2,16.48 L 0,17 L 0,17 L 0.2,16.48 L 0.35,16.02 L 0.4,15.5 L 0.35,14.98 L 0.2,14.52 L 0,14 L 0,14 Z M 0,20 L -0.2,20.52 L -0.35,20.98 L -0.4,21.5 L -0.35,22.02 L -0.2,22.48 L 0,23 L 0,23 L 0.2,22.48 L 0.35,22.02 L 0.4,21.5 L 0.35,20.98 L 0.2,20.52 L 0,20 L 0,20 Z M 0,26 L -0.2,26.52 L -0.35,26.98 L -0.4,27.5 L -0.35,28.02 L -0.2,28.48 L 0,29 L 0,29 L 0.2,28.48 L 0.35,28.02 L 0.4,27.5 L 0.35,26.98 L 0.2,26.52 L 0,26 L 0,26 Z" fill="#fbbf24"/>
+                    <circle cx="0" cy="-49.5" r="9" fill="#c084fc" opacity="0.35"/>
+                    <circle cx="0" cy="-49.5" r="6.5" fill="#9333ea" stroke="#fbbf24" stroke-width="1.2"/>
+                    <circle cx="-2" cy="-52" r="2.2" fill="#ffffff"/>
+                    <circle cx="1.5" cy="-48" r="1.2" fill="#e9d5ff"/>
+                    <rect x="-2.5" y="-43" width="5" height="2.5" rx="0.6" fill="#fbbf24" stroke="#78350f" stroke-width="0.5"/>
+                    <!-- Main refermée sur la poignée (origine du groupe) -->
+                    <ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                    <path d="M -1.6,-1 L -1.28,-0.88 L -0.95,-0.77 L -0.62,-0.7 L -0.3,-0.67 L 0.03,-0.7 L 0.35,-0.77 L 0.68,-0.88 L 1,-1 L 1,-1 L 0.68,-1.12 L 0.35,-1.23 L 0.03,-1.3 L -0.3,-1.32 L -0.62,-1.3 L -0.95,-1.23 L -1.28,-1.12 L -1.6,-1 L -1.6,-1 Z M -1.6,1 L -1.28,1.12 L -0.95,1.23 L -0.62,1.3 L -0.3,1.33 L 0.03,1.3 L 0.35,1.23 L 0.68,1.12 L 1,1 L 1,1 L 0.68,0.88 L 0.35,0.77 L 0.03,0.7 L -0.3,0.68 L -0.62,0.7 L -0.95,0.77 L -1.28,0.88 L -1.6,1 L -1.6,1 Z" fill="${skin.shadow}"/>
+                </g>
             </g>`
     },
     4: {
@@ -1018,9 +1067,9 @@ export const GIRL_OUTFITS = {
                 <!-- Short d'archère aventurière & bottines de marche -->
                 <!-- Short vert émeraude sombre -->
                 <polygon points="38,82 49.5,82 49,93 37.5,93" fill="#047857"/>
-                <line x1="37.5" y1="93" x2="49" y2="93" stroke="#064e3b" stroke-width="1"/>
+                <path d="M 37.5,93 L 38.94,93.23 L 40.38,93.42 L 41.81,93.55 L 43.25,93.6 L 44.69,93.55 L 46.13,93.42 L 47.56,93.23 L 49,93 L 49,93 L 47.56,92.77 L 46.13,92.58 L 44.69,92.45 L 43.25,92.4 L 41.81,92.45 L 40.38,92.58 L 38.94,92.77 L 37.5,93 L 37.5,93 Z" fill="#064e3b"/>
                 <polygon points="50.5,82 62,82 62.5,93 51,93" fill="#047857"/>
-                <line x1="51" y1="93" x2="62.5" y2="93" stroke="#064e3b" stroke-width="1"/>
+                <path d="M 51,93 L 52.44,93.23 L 53.88,93.42 L 55.31,93.55 L 56.75,93.6 L 58.19,93.55 L 59.63,93.42 L 61.06,93.23 L 62.5,93 L 62.5,93 L 61.06,92.77 L 59.63,92.58 L 58.19,92.45 L 56.75,92.4 L 55.31,92.45 L 53.88,92.58 L 52.44,92.77 L 51,93 L 51,93 Z" fill="#064e3b"/>
                 
                 <!-- Jambes nues -->
                 <polygon points="39,93 48.5,93 48,104 41,104" fill="${skin.base}"/>
@@ -1045,49 +1094,48 @@ export const GIRL_OUTFITS = {
             </g>`,
         belt: `
             <g id="girl-belt-archer">
-                <rect x="37" y="80.5" width="26" height="4" rx="1" fill="#78350f"/>
-                <circle cx="50" cy="82.5" r="2.5" fill="#fbbf24"/>
+                <path d="M 38,82.5 L 39.41,83.3 L 40.85,84.05 L 42.31,84.72 L 43.81,85.3 L 45.33,85.77 L 46.88,86.12 L 48.43,86.33 L 50,86.4 L 51.57,86.33 L 53.12,86.12 L 54.67,85.77 L 56.19,85.3 L 57.69,84.72 L 59.15,84.05 L 60.59,83.3 L 62,82.5 L 62,82.5 L 60.41,82.26 L 58.85,82 L 57.31,81.74 L 55.81,81.5 L 54.33,81.29 L 52.88,81.13 L 51.43,81.03 L 50,81 L 48.57,81.03 L 47.12,81.13 L 45.67,81.29 L 44.19,81.5 L 42.69,81.74 L 41.15,82 L 39.59,82.26 L 38,82.5 L 38,82.5 Z" fill="#78350f"/>
+                <g transform="translate(0 1.2)"><circle cx="50" cy="82.5" r="2.5" fill="#fbbf24"/></g>
             </g>`,
         arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="girl-arms-archer">
                 <!-- Bras nus sans manches avec protège-poignets en cuir -->
                 <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="${skin.base}"/>
                 <rect x="25" y="74" width="6.5" height="6.5" rx="1.2" fill="#78350f" stroke="#fbbf24" stroke-width="0.5" transform="rotate(-15 28 77)"/>
-                <ellipse cx="27" cy="81.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
+                <!-- NOTE Main gauche dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
                 <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="${skin.base}"/>
                 <rect x="68" y="69" width="6.5" height="6" rx="1.2" fill="#78350f" stroke="#fbbf24" stroke-width="0.5" transform="rotate(15 71 72)"/>
-                <ellipse cx="76" cy="75.5" rx="3.6" ry="3.3" fill="${skin.base}"/>
+                <!-- NOTE Main droite dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
             </g>`,
         headAccessory: "",
-        handItem: `
+        handItem: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
             <g id="girl-hand-archer-equipment">
-                <!-- Flèche elfique tenue dans la main droite à (27, 81.5) inclinée à 45° -->
-                <g id="girl-hand-arrow" transform="rotate(45 27 81.5)">
-                    <!-- Pointe elfique étincelante -->
-                    <polygon points="27,45 30.5,53 23.5,53" fill="#e2e8f0" stroke="#334155" stroke-width="0.7"/>
-                    <line x1="27" y1="45" x2="27" y2="53" stroke="#ffffff" stroke-width="0.9"/>
-                    <!-- Bague dorée sous la pointe -->
-                    <rect x="25.5" y="53" width="3" height="2" rx="0.5" fill="#fbbf24"/>
-                    <!-- Hampe en bois d'if traversant la main à (27, 81.5) -->
-                    <line x1="27" y1="53" x2="27" y2="91" stroke="#854d0e" stroke-width="1.6" stroke-linecap="round"/>
-                    <line x1="27" y1="53" x2="27" y2="91" stroke="#fbbf24" stroke-width="0.7" stroke-linecap="round"/>
-                    <!-- Empennage à plumes elfiques émeraude et or sous la main -->
-                    <polygon points="27,85 31.5,88 31.5,92 27,90" fill="#10b981"/>
-                    <polygon points="27,85 22.5,88 22.5,92 27,90" fill="#10b981"/>
-                    <polygon points="27,87 30,89 30,91 27,90" fill="#fbbf24"/>
-                    <polygon points="27,87 24,89 24,91 27,90" fill="#fbbf24"/>
-                    <circle cx="27" cy="92" r="0.8" fill="#78350f"/>
+                <!-- Flèche elfique modélisée sur l'axe X=0, tenue dans la main gauche (27, 81.5) inclinée à 45° -->
+                <g id="girl-hand-arrow" transform="translate(27, 81.5) rotate(45)">
+                    <polygon points="0,-36.5 3.5,-28.5 -3.5,-28.5" fill="#e2e8f0" stroke="#334155" stroke-width="0.7"/>
+                    <path d="M 0,-35.5 L -0.22,-34.3 L -0.39,-33.2 L -0.45,-32 L -0.39,-30.8 L -0.22,-29.7 L 0,-28.5 L 0,-28.5 L 0.22,-29.7 L 0.39,-30.8 L 0.45,-32 L 0.39,-33.2 L 0.22,-34.3 L 0,-35.5 L 0,-35.5 Z" fill="#ffffff"/>
+                    <rect x="-1.5" y="-28.5" width="3" height="2" rx="0.5" fill="#fbbf24"/>
+                    <rect x="-0.8" y="-26.5" width="1.6" height="36" rx="0.8" fill="#854d0e"/>
+                    <rect x="-0.35" y="-26.5" width="0.7" height="36" rx="0.35" fill="#fbbf24"/>
+                    <polygon points="0,3.5 4.5,6.5 4.5,10.5 0,8.5" fill="#10b981"/>
+                    <polygon points="0,3.5 -4.5,6.5 -4.5,10.5 0,8.5" fill="#10b981"/>
+                    <polygon points="0,5.5 3,7.5 3,9.5 0,8.5" fill="#fbbf24"/>
+                    <polygon points="0,5.5 -3,7.5 -3,9.5 0,8.5" fill="#fbbf24"/>
+                    <circle cx="0" cy="10.5" r="0.8" fill="#78350f"/>
+                    <!-- Main refermée sur la poignée (origine du groupe) -->
+                    <ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                    <path d="M -1.6,-1 L -1.28,-0.88 L -0.95,-0.77 L -0.62,-0.7 L -0.3,-0.67 L 0.03,-0.7 L 0.35,-0.77 L 0.68,-0.88 L 1,-1 L 1,-1 L 0.68,-1.12 L 0.35,-1.23 L 0.03,-1.3 L -0.3,-1.32 L -0.62,-1.3 L -0.95,-1.23 L -1.28,-1.12 L -1.6,-1 L -1.6,-1 Z M -1.6,1 L -1.28,1.12 L -0.95,1.23 L -0.62,1.3 L -0.3,1.33 L 0.03,1.3 L 0.35,1.23 L 0.68,1.12 L 1,1 L 1,1 L 0.68,0.88 L 0.35,0.77 L 0.03,0.7 L -0.3,0.68 L -0.62,0.7 L -0.95,0.77 L -1.28,0.88 L -1.6,1 L -1.6,1 Z" fill="${skin.shadow}"/>
                 </g>
-                <!-- Arc elfique tenu dans l'autre main à (76, 75.5) -->
-                <g id="girl-hand-bow">
-                    <!-- Corde tendue vers le personnage (côté intérieur à x=64) -->
-                    <line x1="64" y1="49.5" x2="64" y2="101.5" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
-                    <!-- Bois elfique courbé vers l'extérieur passant exactement dans la main à (76, 75.5) -->
-                    <path d="M 64,49.5 Q 88,75.5 64,101.5" fill="none" stroke="#a16207" stroke-width="2.6" stroke-linecap="round"/>
-                    <path d="M 64,49.5 Q 89,75.5 64,101.5" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>
-                    <!-- Poignée et ornementation émeraude placées directement sur le bois et dans la main (76, 75.5) -->
-                    <rect x="73.8" y="72" width="4.4" height="7" rx="1" fill="#78350f" stroke="#fbbf24" stroke-width="0.6"/>
-                    <circle cx="76" cy="75.5" r="2.2" fill="#10b981" stroke="#fbbf24" stroke-width="0.6"/>
+                <!-- Arc elfique modélisé autour de sa poignée, tenu dans la main droite (76, 75.5) -->
+                <g id="girl-hand-bow" transform="translate(76, 75.5)">
+                    <line x1="-12" y1="-26" x2="-12" y2="26" stroke="#ffffff" stroke-width="0.8" opacity="0.9"/>
+                    <path d="M -12,-26 Q 12,0 -12,26" fill="none" stroke="#a16207" stroke-width="2.6" stroke-linecap="round"/>
+                    <path d="M -12,-26 Q 13,0 -12,26" fill="none" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>
+                    <rect x="-2.2" y="-5" width="4.4" height="10" rx="1" fill="#78350f" stroke="#fbbf24" stroke-width="0.6"/>
+                    <circle cx="0" cy="-6.2" r="1.6" fill="#10b981" stroke="#fbbf24" stroke-width="0.5"/>
+                    <!-- Main refermée sur la poignée (origine du groupe) -->
+                    <ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                    <path d="M -1.6,-1 L -1.28,-0.88 L -0.95,-0.77 L -0.62,-0.7 L -0.3,-0.67 L 0.03,-0.7 L 0.35,-0.77 L 0.68,-0.88 L 1,-1 L 1,-1 L 0.68,-1.12 L 0.35,-1.23 L 0.03,-1.3 L -0.3,-1.32 L -0.62,-1.3 L -0.95,-1.23 L -1.28,-1.12 L -1.6,-1 L -1.6,-1 Z M -1.6,1 L -1.28,1.12 L -0.95,1.23 L -0.62,1.3 L -0.3,1.33 L 0.03,1.3 L 0.35,1.23 L 0.68,1.12 L 1,1 L 1,1 L 0.68,0.88 L 0.35,0.77 L 0.03,0.7 L -0.3,0.68 L -0.62,0.7 L -0.95,0.77 L -1.28,0.88 L -1.6,1 L -1.6,1 Z" fill="${skin.shadow}"/>
                 </g>
             </g>`
     }
@@ -1161,12 +1209,12 @@ export const OUTFIT_ELF_RANGER = {
             <!-- Plastron en cuir ouvragé souple -->
             <path d="M 36,63 L 64,63 L 60,82 L 40,82 Z" fill="#78350f"/>
             <!-- Bordure dorée du plastron -->
-            <path d="M 36,63 L 40,82 L 60,82 L 64,63" fill="none" stroke="#f59e0b" stroke-width="0.7"/>
+            <path d="M 36,63 L 36.33,65.41 L 36.69,67.82 L 37.09,70.21 L 37.56,72.59 L 38.09,74.96 L 38.69,77.32 L 39.33,79.66 L 40,82 L 40,82 L 39.67,79.59 L 39.31,77.18 L 38.91,74.79 L 38.44,72.41 L 37.91,70.04 L 37.31,67.68 L 36.67,65.34 L 36,63 L 36,63 Z M 40,82 L 42.5,82.17 L 45,82.32 L 47.5,82.42 L 50,82.45 L 52.5,82.42 L 55,82.32 L 57.5,82.17 L 60,82 L 60,82 L 57.5,81.83 L 55,81.68 L 52.5,81.58 L 50,81.55 L 47.5,81.58 L 45,81.68 L 42.5,81.83 L 40,82 L 40,82 Z M 60,82 L 60.67,79.66 L 61.31,77.32 L 61.91,74.96 L 62.44,72.59 L 62.91,70.21 L 63.31,67.82 L 63.67,65.41 L 64,63 L 64,63 L 63.33,65.34 L 62.69,67.68 L 62.09,70.04 L 61.56,72.41 L 61.09,74.79 L 60.69,77.18 L 60.33,79.59 L 60,82 L 60,82 Z" fill="#f59e0b"/>
             <!-- Lacets dorés du plastron -->
-            <line x1="47" y1="65" x2="53" y2="67" stroke="#fbbf24" stroke-width="1"/>
-            <line x1="53" y1="67" x2="47" y2="70" stroke="#fbbf24" stroke-width="1"/>
-            <line x1="47" y1="73" x2="53" y2="75" stroke="#fbbf24" stroke-width="1"/>
-            <line x1="53" y1="75" x2="47" y2="78" stroke="#fbbf24" stroke-width="1"/>
+            <path d="M 47,65 L 47.67,65.49 L 48.35,65.94 L 49.06,66.32 L 49.79,66.62 L 50.56,66.82 L 51.35,66.94 L 52.17,66.99 L 53,67 L 53,67 L 52.33,66.51 L 51.65,66.06 L 50.94,65.68 L 50.21,65.38 L 49.44,65.18 L 48.65,65.06 L 47.83,65.01 L 47,65 L 47,65 Z" fill="#fbbf24"/>
+            <path d="M 53,67 L 52.14,67.15 L 51.29,67.34 L 50.48,67.59 L 49.71,67.92 L 48.98,68.34 L 48.29,68.84 L 47.64,69.4 L 47,70 L 47,70 L 47.86,69.85 L 48.71,69.66 L 49.52,69.41 L 50.29,69.08 L 51.02,68.66 L 51.71,68.16 L 52.36,67.6 L 53,67 L 53,67 Z" fill="#fbbf24"/>
+            <path d="M 47,73 L 47.67,73.49 L 48.35,73.94 L 49.06,74.32 L 49.79,74.62 L 50.56,74.82 L 51.35,74.94 L 52.17,74.99 L 53,75 L 53,75 L 52.33,74.51 L 51.65,74.06 L 50.94,73.68 L 50.21,73.38 L 49.44,73.18 L 48.65,73.06 L 47.83,73.01 L 47,73 L 47,73 Z" fill="#fbbf24"/>
+            <path d="M 53,75 L 52.14,75.15 L 51.29,75.34 L 50.48,75.59 L 49.71,75.92 L 48.98,76.34 L 48.29,76.84 L 47.64,77.4 L 47,78 L 47,78 L 47.86,77.85 L 48.71,77.66 L 49.52,77.41 L 50.29,77.08 L 51.02,76.66 L 51.71,76.16 L 52.36,75.6 L 53,75 L 53,75 Z" fill="#fbbf24"/>
             <!-- Col montant émeraude et feuille dorée -->
             <path d="M44 60.5 L50 67 L56 60.5 Z" fill="#10b981"/>
             <path d="M48 60.5 L50 64 L52 60.5 Z" fill="#f59e0b"/>
@@ -1174,31 +1222,31 @@ export const OUTFIT_ELF_RANGER = {
     belt: `
         <g id="outfit-elf-belt">
             <!-- Ceinture cuir patiné à boucle feuille elfique -->
-            <rect x="36" y="82" width="28" height="5" rx="1.2" fill="#451a03"/>
-            <path d="M 46,84.5 C 47,81 53,81 54,84.5 C 53,88 47,88 46,84.5 Z" fill="#f59e0b" stroke="#361702" stroke-width="0.6"/>
-            <circle cx="50" cy="84.5" r="1.5" fill="#10b981"/>
+            <path d="M 36.1,84.5 L 37.74,85.43 L 39.41,86.31 L 41.11,87.1 L 42.84,87.78 L 44.61,88.33 L 46.39,88.74 L 48.19,88.99 L 50,89.08 L 51.81,88.99 L 53.61,88.74 L 55.39,88.33 L 57.16,87.78 L 58.89,87.1 L 60.59,86.31 L 62.26,85.43 L 63.9,84.5 L 63.9,84.5 L 62.06,84.13 L 60.26,83.74 L 58.49,83.37 L 56.74,83.02 L 55.03,82.73 L 53.34,82.51 L 51.67,82.37 L 50,82.33 L 48.33,82.37 L 46.66,82.51 L 44.97,82.73 L 43.26,83.02 L 41.51,83.37 L 39.74,83.74 L 37.94,84.13 L 36.1,84.5 L 36.1,84.5 Z" fill="#451a03"/>
+            <g transform="translate(0 1.2)"><path d="M 46,84.5 C 47,81 53,81 54,84.5 C 53,88 47,88 46,84.5 Z" fill="#f59e0b" stroke="#361702" stroke-width="0.6"/></g>
+            <g transform="translate(0 1.2)"><circle cx="50" cy="84.5" r="1.5" fill="#10b981"/></g>
             <!-- Sacoche d'herboriste avec fiole magique suspendue -->
-            <rect x="36" y="83" width="5" height="7" rx="1.2" fill="#6d3811" stroke="#361702" stroke-width="0.7"/>
-            <circle cx="38.5" cy="86" r="0.8" fill="#fbbf24"/>
+            <g transform="translate(0 0.38)"><rect x="36" y="83" width="5" height="7" rx="1.2" fill="#6d3811" stroke="#361702" stroke-width="0.7"/></g>
+            <g transform="translate(0 0.38)"><circle cx="38.5" cy="86" r="0.8" fill="#fbbf24"/></g>
             <!-- Petite fiole en verre vert -->
-            <ellipse cx="61" cy="87" rx="2" ry="3" fill="#34d399" opacity="0.85" stroke="#065f46" stroke-width="0.5"/>
-            <rect x="60" y="83.5" width="2" height="1.5" rx="0.4" fill="#d97706"/>
+            <g transform="translate(0 0.45)"><ellipse cx="61" cy="87" rx="2" ry="3" fill="#34d399" opacity="0.85" stroke="#065f46" stroke-width="0.5"/></g>
+            <g transform="translate(0 0.45)"><rect x="60" y="83.5" width="2" height="1.5" rx="0.4" fill="#d97706"/></g>
         </g>`,
     arms: (skin) => `
         <g id="outfit-elf-arms">
             <!-- Bras gauche avec manche verte et brassard en cuir -->
             <path d="M32 64 C24 70, 23 77, 28 83 C31 83, 33 80, 35 76 Z" fill="#1b5e52"/>
             <path d="M26 73 C24 76, 25 80, 29 82 C31 81, 32 78, 32 75 Z" fill="#78350f" stroke="#fbbf24" stroke-width="0.6"/>
-            <ellipse cx="29" cy="84" rx="3.6" ry="3.3" fill="${skin.base}"/>
+            <!-- NOTE Main gauche dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
             <!-- Bras droit avec manche verte et brassard en cuir -->
             <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#1b5e52"/>
             <path d="M72 69 C75 72, 75 76, 73 78 C70 78, 68 75, 68 72 Z" fill="#78350f" stroke="#fbbf24" stroke-width="0.6"/>
-            <ellipse cx="76" cy="78" rx="3.6" ry="3.3" fill="${skin.base}"/>
+            <!-- NOTE Main droite dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
         </g>`,
     headAccessory: `
         <g id="outfit-elf-head-accessory">
             <!-- Diadème frontal elfique rehaussé avec gemme émeraude -->
-            <path d="M 28,26 Q 50,21 72,26" fill="none" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M 28,26 L 31.52,25.7 L 34.32,25.61 L 37.78,25.47 L 40.52,25.46 L 43.92,25.41 L 46.63,25.41 L 50,25.4 L 53.37,25.41 L 56.08,25.41 L 59.48,25.46 L 62.22,25.47 L 65.68,25.61 L 68.48,25.7 L 72,26 L 72,26 L 68.64,24.86 L 65.95,23.98 L 62.53,23.12 L 59.77,22.5 L 56.3,21.99 L 53.5,21.71 L 50,21.6 L 46.5,21.71 L 43.7,21.99 L 40.23,22.5 L 37.47,23.12 L 34.05,23.98 L 31.36,24.86 L 28,26 L 28,26 Z" fill="#f59e0b"/>
             <path d="M 45,23 L 50,18 L 55,23 Z" fill="#f59e0b"/>
             <circle cx="50" cy="20.5" r="2.2" fill="#10b981" stroke="#065f46" stroke-width="0.5"/>
             <circle cx="49.3" cy="19.8" r="0.7" fill="#ffffff"/>
@@ -1209,18 +1257,18 @@ export const OUTFIT_ELF_RANGER = {
             <g id="elf-dagger-left" transform="translate(29, 84) rotate(22)">
                 ${ELF_DAGGER_MODEL}
                 <!-- Doigts de la main gauche refermés sur la poignée -->
-                <ellipse cx="0" cy="-3.5" rx="2.5" ry="3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
-                <line x1="-1.6" y1="-4.6" x2="1" y2="-4.6" stroke="${skin.shadow}" stroke-width="0.5"/>
-                <line x1="-1.6" y1="-2.6" x2="1" y2="-2.6" stroke="${skin.shadow}" stroke-width="0.5"/>
+                <ellipse cx="0" cy="-3.5" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                <path d="M -1.6,-4.6 L -1.28,-4.48 L -0.95,-4.37 L -0.62,-4.3 L -0.3,-4.27 L 0.03,-4.3 L 0.35,-4.37 L 0.68,-4.48 L 1,-4.6 L 1,-4.6 L 0.68,-4.72 L 0.35,-4.83 L 0.03,-4.9 L -0.3,-4.92 L -0.62,-4.9 L -0.95,-4.83 L -1.28,-4.72 L -1.6,-4.6 L -1.6,-4.6 Z" fill="${skin.shadow}"/>
+                <path d="M -1.6,-2.6 L -1.28,-2.48 L -0.95,-2.37 L -0.62,-2.3 L -0.3,-2.27 L 0.03,-2.3 L 0.35,-2.37 L 0.68,-2.48 L 1,-2.6 L 1,-2.6 L 0.68,-2.72 L 0.35,-2.83 L 0.03,-2.9 L -0.3,-2.92 L -0.62,-2.9 L -0.95,-2.83 L -1.28,-2.72 L -1.6,-2.6 L -1.6,-2.6 Z" fill="${skin.shadow}"/>
             </g>
 
             <!-- Dague elfique droite (main droite à 76, 78 en garde haute vers le haut-droite) -->
             <g id="elf-dagger-right" transform="translate(76, 78) rotate(-152)">
                 ${ELF_DAGGER_MODEL}
                 <!-- Doigts de la main droite refermés sur la poignée -->
-                <ellipse cx="0" cy="-3.5" rx="2.5" ry="3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
-                <line x1="-1.6" y1="-4.6" x2="1" y2="-4.6" stroke="${skin.shadow}" stroke-width="0.5"/>
-                <line x1="-1.6" y1="-2.6" x2="1" y2="-2.6" stroke="${skin.shadow}" stroke-width="0.5"/>
+                <ellipse cx="0" cy="-3.5" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                <path d="M -1.6,-4.6 L -1.28,-4.48 L -0.95,-4.37 L -0.62,-4.3 L -0.3,-4.27 L 0.03,-4.3 L 0.35,-4.37 L 0.68,-4.48 L 1,-4.6 L 1,-4.6 L 0.68,-4.72 L 0.35,-4.83 L 0.03,-4.9 L -0.3,-4.92 L -0.62,-4.9 L -0.95,-4.83 L -1.28,-4.72 L -1.6,-4.6 L -1.6,-4.6 Z" fill="${skin.shadow}"/>
+                <path d="M -1.6,-2.6 L -1.28,-2.48 L -0.95,-2.37 L -0.62,-2.3 L -0.3,-2.27 L 0.03,-2.3 L 0.35,-2.37 L 0.68,-2.48 L 1,-2.6 L 1,-2.6 L 0.68,-2.72 L 0.35,-2.83 L 0.03,-2.9 L -0.3,-2.92 L -0.62,-2.9 L -0.95,-2.83 L -1.28,-2.72 L -1.6,-2.6 L -1.6,-2.6 Z" fill="${skin.shadow}"/>
             </g>
         </g>`
 };
@@ -1234,8 +1282,8 @@ export const OUTFIT_ORC_BERSERKER = {
         <g id="outfit-orc-back">
             <!-- Col et cape de fourrure de bête sauvage -->
             <path d="M 28,64 C 18,74 15,92 18,106 C 28,110 38,104 50,108 C 62,104 72,110 82,106 C 85,92 82,74 72,64 Z" fill="#381c0c"/>
-            <path d="M 24,70 L 19,82 L 27,80 L 21,94 L 30,90 L 25,104 L 34,98" stroke="#542b13" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M 76,70 L 81,82 L 73,80 L 79,94 L 70,90 L 75,104 L 66,98" stroke="#542b13" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M 24,70 L 23.09,71.38 L 22.23,72.78 L 21.44,74.22 L 20.76,75.69 L 20.19,77.22 L 19.73,78.78 L 19.34,80.38 L 19,82 L 19,82 L 19.91,80.62 L 20.77,79.22 L 21.56,77.78 L 22.24,76.31 L 22.81,74.78 L 23.27,73.22 L 23.66,71.62 L 24,70 L 24,70 Z M 19,82 L 20.07,82.05 L 21.14,82.05 L 22.18,81.97 L 23.19,81.78 L 24.18,81.47 L 25.14,81.05 L 26.07,80.55 L 27,80 L 27,80 L 25.93,79.95 L 24.86,79.95 L 23.82,80.03 L 22.81,80.22 L 21.82,80.53 L 20.86,80.95 L 19.93,81.45 L 19,82 L 19,82 Z M 27,80 L 25.97,81.63 L 24.98,83.28 L 24.07,84.96 L 23.26,86.68 L 22.57,88.46 L 21.98,90.28 L 21.47,92.13 L 21,94 L 21,94 L 22.03,92.37 L 23.02,90.72 L 23.93,89.04 L 24.74,87.32 L 25.43,85.54 L 26.02,83.72 L 26.53,81.87 L 27,80 L 27,80 Z M 21,94 L 22.25,93.78 L 23.48,93.52 L 24.68,93.18 L 25.82,92.73 L 26.93,92.18 L 27.98,91.52 L 29,90.78 L 30,90 L 30,90 L 28.75,90.22 L 27.52,90.48 L 26.32,90.82 L 25.18,91.27 L 24.07,91.82 L 23.02,92.48 L 22,93.22 L 21,94 L 21,94 Z M 30,90 L 29.09,91.65 L 28.22,93.31 L 27.43,95 L 26.75,96.73 L 26.18,98.5 L 25.72,100.31 L 25.34,102.15 L 25,104 L 25,104 L 25.91,102.35 L 26.78,100.69 L 27.57,99 L 28.25,97.27 L 28.82,95.5 L 29.28,93.69 L 29.66,91.85 L 30,90 L 30,90 Z M 25,104 L 26.29,103.5 L 27.56,102.97 L 28.78,102.36 L 29.94,101.67 L 31.03,100.86 L 32.06,99.97 L 33.04,99 L 34,98 L 34,98 L 32.71,98.5 L 31.44,99.03 L 30.22,99.64 L 29.06,100.33 L 27.97,101.14 L 26.94,102.03 L 25.96,103 L 25,104 L 25,104 Z" fill="#542b13"/>
+            <path d="M 76,70 L 76.34,71.62 L 76.73,73.22 L 77.19,74.78 L 77.76,76.31 L 78.44,77.78 L 79.23,79.22 L 80.09,80.62 L 81,82 L 81,82 L 80.66,80.38 L 80.27,78.78 L 79.81,77.22 L 79.24,75.69 L 78.56,74.22 L 77.77,72.78 L 76.91,71.38 L 76,70 L 76,70 Z M 81,82 L 80.07,81.45 L 79.14,80.95 L 78.18,80.53 L 77.19,80.22 L 76.18,80.03 L 75.14,79.95 L 74.07,79.95 L 73,80 L 73,80 L 73.93,80.55 L 74.86,81.05 L 75.82,81.47 L 76.81,81.78 L 77.82,81.97 L 78.86,82.05 L 79.93,82.05 L 81,82 L 81,82 Z M 73,80 L 73.47,81.87 L 73.98,83.72 L 74.57,85.54 L 75.26,87.32 L 76.07,89.04 L 76.98,90.72 L 77.97,92.37 L 79,94 L 79,94 L 78.53,92.13 L 78.02,90.28 L 77.43,88.46 L 76.74,86.68 L 75.93,84.96 L 75.02,83.28 L 74.03,81.63 L 73,80 L 73,80 Z M 79,94 L 78,93.22 L 76.98,92.48 L 75.93,91.82 L 74.82,91.27 L 73.68,90.82 L 72.48,90.48 L 71.25,90.22 L 70,90 L 70,90 L 71,90.78 L 72.02,91.52 L 73.07,92.18 L 74.18,92.73 L 75.32,93.18 L 76.52,93.52 L 77.75,93.78 L 79,94 L 79,94 Z M 70,90 L 70.34,91.85 L 70.72,93.69 L 71.18,95.5 L 71.75,97.27 L 72.43,99 L 73.22,100.69 L 74.09,102.35 L 75,104 L 75,104 L 74.66,102.15 L 74.28,100.31 L 73.82,98.5 L 73.25,96.73 L 72.57,95 L 71.78,93.31 L 70.91,91.65 L 70,90 L 70,90 Z M 75,104 L 74.04,103 L 73.06,102.03 L 72.03,101.14 L 70.94,100.33 L 69.78,99.64 L 68.56,99.03 L 67.29,98.5 L 66,98 L 66,98 L 66.96,99 L 67.94,99.97 L 68.97,100.86 L 70.06,101.67 L 71.22,102.36 L 72.44,102.97 L 73.71,103.5 L 75,104 L 75,104 Z" fill="#542b13"/>
         </g>`,
     legs: (skin) => `
         <g id="outfit-orc-legs">
@@ -1277,18 +1325,18 @@ export const OUTFIT_ORC_BERSERKER = {
     belt: `
         <g id="outfit-orc-belt">
             <!-- Large ceinture barbare cloutée avec pagne en fourrure -->
-            <rect x="35" y="81.5" width="30" height="6.5" rx="1.5" fill="#292524"/>
+            <path d="M 36.2,84.75 L 37.8,85.88 L 39.43,86.94 L 41.11,87.91 L 42.83,88.74 L 44.59,89.42 L 46.37,89.93 L 48.18,90.24 L 50,90.34 L 51.82,90.24 L 53.63,89.93 L 55.41,89.42 L 57.17,88.74 L 58.89,87.91 L 60.57,86.94 L 62.2,85.88 L 63.8,84.75 L 63.8,84.75 L 61.95,84.18 L 60.13,83.61 L 58.36,83.06 L 56.63,82.56 L 54.94,82.14 L 53.27,81.82 L 51.63,81.63 L 50,81.56 L 48.37,81.63 L 46.73,81.82 L 45.06,82.14 L 43.37,82.56 L 41.64,83.06 L 39.87,83.61 L 38.05,84.18 L 36.2,84.75 L 36.2,84.75 Z" fill="#292524"/>
             <!-- Rivets en fer forgé -->
-            <circle cx="38" cy="84.8" r="1" fill="#94a3b8"/>
-            <circle cx="42" cy="84.8" r="1" fill="#94a3b8"/>
-            <circle cx="58" cy="84.8" r="1" fill="#94a3b8"/>
-            <circle cx="62" cy="84.8" r="1" fill="#94a3b8"/>
+            <g transform="translate(0 0.29)"><circle cx="38" cy="84.8" r="1" fill="#94a3b8"/></g>
+            <g transform="translate(0 0.8)"><circle cx="42" cy="84.8" r="1" fill="#94a3b8"/></g>
+            <g transform="translate(0 0.8)"><circle cx="58" cy="84.8" r="1" fill="#94a3b8"/></g>
+            <g transform="translate(0 0.29)"><circle cx="62" cy="84.8" r="1" fill="#94a3b8"/></g>
             <!-- Boucle de ceinture tête de fauve / os -->
-            <rect x="46" y="81" width="8" height="7.5" rx="1.5" fill="#fef08a" stroke="#78350f" stroke-width="0.8"/>
-            <polygon points="48,84 52,84 50,87" fill="#78350f"/>
+            <g transform="translate(0 1.2)"><rect x="46" y="81" width="8" height="7.5" rx="1.5" fill="#fef08a" stroke="#78350f" stroke-width="0.8"/></g>
+            <g transform="translate(0 1.2)"><polygon points="48,84 52,84 50,87" fill="#78350f"/></g>
             <!-- Pagne en lambeaux de cuir et fourrure -->
-            <polygon points="44,88 56,88 53,95 47,95" fill="#451a03"/>
-            <polygon points="46,88 54,88 50,94" fill="#542b13"/>
+            <g transform="translate(0 1.2)"><polygon points="44,88 56,88 53,95 47,95" fill="#451a03"/></g>
+            <g transform="translate(0 1.2)"><polygon points="46,88 54,88 50,94" fill="#542b13"/></g>
         </g>`,
     arms: (skin) => `
         <g id="outfit-orc-arms">
@@ -1297,18 +1345,20 @@ export const OUTFIT_ORC_BERSERKER = {
             <rect x="25" y="73" width="7" height="8" rx="1.2" fill="#292524" stroke="#451a03" stroke-width="0.6" transform="rotate(-15 28 77)"/>
             <polygon points="23,76 25,74 25,78" fill="#e2e8f0" stroke="#475569" stroke-width="0.5"/>
             <polygon points="29,81 31,79 31,83" fill="#e2e8f0" stroke="#475569" stroke-width="0.5"/>
-            <ellipse cx="29" cy="84" rx="3.8" ry="3.5" fill="${skin.base}"/>
+            <!-- NOTE Main gauche dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
 
             <!-- Bras orc droit avec brassard clouté -->
             <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="${skin.base}"/>
             <rect x="68" y="70" width="7" height="7.5" rx="1.2" fill="#292524" stroke="#451a03" stroke-width="0.6" transform="rotate(15 71 74)"/>
             <polygon points="76,72 74,70 74,74" fill="#e2e8f0" stroke="#475569" stroke-width="0.5"/>
             <ellipse cx="76" cy="78" rx="3.8" ry="3.5" fill="${skin.base}"/>
+            <!-- NOTE Séparations des doigts en fuseau -->
+            <path d="M 75,78.3 L 74.81,78.61 L 74.65,78.94 L 74.53,79.28 L 74.48,79.63 L 74.48,79.98 L 74.55,80.33 L 74.66,80.67 L 74.8,81 L 74.8,81 L 74.91,80.66 L 75,80.33 L 75.08,80 L 75.12,79.67 L 75.13,79.35 L 75.1,79.01 L 75.05,78.66 L 75,78.3 L 75,78.3 Z M 77,78.3 L 76.95,78.66 L 76.9,79.01 L 76.87,79.35 L 76.88,79.67 L 76.92,80 L 77,80.33 L 77.09,80.66 L 77.2,81 L 77.2,81 L 77.34,80.67 L 77.45,80.33 L 77.52,79.98 L 77.52,79.63 L 77.47,79.28 L 77.35,78.94 L 77.19,78.61 L 77,78.3 L 77,78.3 Z" fill="${skin.shadow}"/>
         </g>`,
     headAccessory: `
         <g id="outfit-orc-head-accessory">
             <!-- Diadème / Bandeau de guerre en cuir barbare rehaussé sur le haut du front -->
-            <path d="M 26,17 Q 50,12 74,17" fill="none" stroke="#451a03" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M 26,17 L 29.83,16.76 L 32.89,16.74 L 36.66,16.65 L 39.66,16.69 L 43.37,16.68 L 46.32,16.7 L 50,16.7 L 53.68,16.7 L 56.63,16.68 L 60.34,16.69 L 63.34,16.65 L 67.11,16.74 L 70.17,16.76 L 74,17 L 74,17 L 70.33,15.8 L 67.39,14.85 L 63.66,13.93 L 60.66,13.27 L 56.87,12.72 L 53.82,12.42 L 50,12.3 L 46.18,12.42 L 43.13,12.72 L 39.34,13.27 L 36.34,13.93 L 32.61,14.85 L 29.67,15.8 L 26,17 L 26,17 Z" fill="#451a03"/>
             <!-- Pointe de diadème barbare frontale -->
             <path d="M 45,14 L 50,9 L 55,14 Z" fill="#78350f" stroke="#451a03" stroke-width="0.5"/>
             <!-- Corne courte barbare gauche rehaussée -->
@@ -1365,11 +1415,16 @@ export const OUTFIT_ORC_BERSERKER = {
             <polygon points="23,46 26.5,47.5 26.5,52 23,52" fill="#64748b"/>
 
             <!-- Ligatures barbares : lanières de cuir et tendons rouges croisés fixant la pierre au manche -->
-            <path d="M 18,42 L 25,56" stroke="#b91c1c" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M 18,42 L 25,56" stroke="#78350f" stroke-width="1.4" stroke-linecap="round"/>
-            <path d="M 25,42 L 18,56" stroke="#b91c1c" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M 25,42 L 18,56" stroke="#78350f" stroke-width="1.4" stroke-linecap="round"/>
-            <circle cx="21.5" cy="49" r="1.6" fill="#450a0a" stroke="#78350f" stroke-width="0.5"/>
+            <!-- NOTE Croix centrée sur le manche (x=22.17 à y=49) et tournée de son inclinaison (-9.46°) -->
+            <g id="orc-axe-lashing" transform="translate(22.17, 49) rotate(-9.46)">
+                <!-- Tours de lanière au ras des bords haut et bas de la pierre -->
+                <path d="M -2.4,-5.2 L 2.4,-5.6 M -2.4,5.6 L 2.4,5.2" stroke="#b91c1c" stroke-width="1.9" stroke-linecap="round"/>
+                <path d="M -2.4,-5.2 L 2.4,-5.6 M -2.4,5.6 L 2.4,5.2" stroke="#78350f" stroke-width="0.9" stroke-linecap="round"/>
+                <!-- Croix contenue dans la hauteur de la pierre, entre les deux tours -->
+                <path d="M -2.2,-4.2 L 2.2,4.2 M 2.2,-4.2 L -2.2,4.2" stroke="#b91c1c" stroke-width="1.9" stroke-linecap="round"/>
+                <path d="M -2.2,-4.2 L 2.2,4.2 M 2.2,-4.2 L -2.2,4.2" stroke="#78350f" stroke-width="0.9" stroke-linecap="round"/>
+                <circle cx="0" cy="0" r="1.1" fill="#450a0a" stroke="#78350f" stroke-width="0.4"/>
+            </g>
 
             <!-- Lanières rouges sur la poignée -->
             <line x1="24" y1="75" x2="27" y2="77" stroke="#b91c1c" stroke-width="1.3"/>
@@ -1379,8 +1434,8 @@ export const OUTFIT_ORC_BERSERKER = {
 
             <!-- Doigts orcs refermés sur la poignée de la hache -->
             <ellipse cx="28.5" cy="84" rx="3.6" ry="3.8" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.6"/>
-            <line x1="26" y1="82.5" x2="30" y2="82.5" stroke="${skin.shadow}" stroke-width="0.6"/>
-            <line x1="26.5" y1="85.5" x2="30.5" y2="85.5" stroke="${skin.shadow}" stroke-width="0.6"/>
+            <path d="M 26,82.5 L 26.5,82.62 L 27,82.73 L 27.5,82.8 L 28,82.83 L 28.5,82.8 L 29,82.73 L 29.5,82.62 L 30,82.5 L 30,82.5 L 29.5,82.38 L 29,82.27 L 28.5,82.2 L 28,82.18 L 27.5,82.2 L 27,82.27 L 26.5,82.38 L 26,82.5 L 26,82.5 Z" fill="${skin.shadow}"/>
+            <path d="M 26.5,85.5 L 27,85.62 L 27.5,85.73 L 28,85.8 L 28.5,85.83 L 29,85.8 L 29.5,85.73 L 30,85.62 L 30.5,85.5 L 30.5,85.5 L 30,85.38 L 29.5,85.27 L 29,85.2 L 28.5,85.18 L 28,85.2 L 27.5,85.27 L 27,85.38 L 26.5,85.5 L 26.5,85.5 Z" fill="${skin.shadow}"/>
         </g>`
 };
 
@@ -1447,7 +1502,7 @@ export const RPG_STYLES = {
                 <!-- Volume de base du crâne arrière -->
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <!-- Grande chevelure longue elfique en cascade dans le dos -->
-                <path d="M 16,36 C 10,22 14,8 24,0 C 34,-6 66,-6 76,0 C 86,8 90,22 84,36 C 92,52 90,72 84,88 C 80,78 77,68 75,56 C 69,72 63,90 50,92 C 37,90 31,72 25,56 C 23,68 20,78 16,88 C 10,72 8,52 16,36 Z" fill="${color}"/>
+                <path d="M 16,36 C 10,22 14,8 24,0 C 34,-6 66,-6 76,0 C 86,8 90,22 84,36 C 91,48 89,62 85,72 C 80,66 77,62 75,56 C 69,72 63,90 50,92 C 37,90 31,72 25,56 C 23,62 20,66 15,72 C 11,62 9,48 16,36 Z" fill="${color}"/>
                 <!-- Mèches dorsales superposées plus fines et effilées -->
                 <path d="M 26,44 C 21,58 23,74 29,88 C 32,76 32,62 31,48 Z" fill="${color}" opacity="0.95"/>
                 <path d="M 74,44 C 79,58 77,74 71,88 C 68,76 68,62 69,48 Z" fill="${color}" opacity="0.95"/>
@@ -1485,6 +1540,8 @@ export const RPG_STYLES = {
                 <path d="M 26,32 C 24,42 25,50 27,56 C 28,50 28,42 27,34 Z" fill="${color}" opacity="0.85"/>
                 <path d="M 78,34 C 81,42 80,52 77,60 C 75,54 75,44 76,36 Z" fill="${color}"/>
                 <path d="M 74,32 C 76,42 75,50 73,56 C 72,50 72,42 73,34 Z" fill="${color}" opacity="0.85"/>
+                <!-- Reflet du sommet, identique au garçon elfe -->
+                <path d="M 42,4 C 46,-2 50,-2 54,4 C 52,1 48,1 42,4 Z" fill="#ffffff" opacity="0.3"/>
             </g>`
     },
 
@@ -1574,15 +1631,15 @@ export const RPG_STYLES = {
                          C 10,22 14,8 24,0 
                          C 34,-6 66,-6 76,0 
                          C 86,8 90,22 84,36 
-                         C 94,54 92,72 86,88 
-                         C 80,78 78,66 76,54 
+                         C 94,50 97,60 99,68 
+                         C 88,67 80,62 76,54 
                          C 72,72 66,88 50,90 
                          C 34,88 28,72 24,54 
-                         C 22,66 20,78 14,88 
-                         C 8,72 6,54 16,36 Z" fill="${color}"/>
+                         C 20,62 12,67 1,68 
+                         C 3,60 6,50 16,36 Z" fill="${color}"/>
                 <!-- Mèches latérales sauvages supplémentaires en blocs obtus larges -->
-                <path d="M 14,48 C 6,60 10,74 17,86 C 20,76 22,64 22,52 Z" fill="${color}"/>
-                <path d="M 86,48 C 94,60 90,74 83,86 C 80,76 78,64 78,52 Z" fill="${color}"/>
+                <path d="M 14,48 C 6,56 4,68 5,78 C 14,72 21,62 22,52 Z" fill="${color}"/>
+                <path d="M 86,48 C 94,56 96,68 95,78 C 86,72 79,62 78,52 Z" fill="${color}"/>
                 <!-- Mèches sauvages avant retombant sur les épaules en blocs obtus souples -->
                 <path d="M 22,42 C 16,52 15,66 20,78 C 24,76 26,68 26,58 C 27,50 25,44 22,42 Z" fill="${color}" opacity="0.85"/>
                 <path d="M 78,42 C 84,52 85,66 80,78 C 76,76 74,68 74,58 C 73,50 75,44 78,42 Z" fill="${color}" opacity="0.85"/>
@@ -1607,13 +1664,232 @@ export const RPG_STYLES = {
                 <path d="M 23,34 C 20,44 22,54 25,62 C 26,52 26,42 25,34 Z" fill="${color}"/>
                 <path d="M 77,34 C 80,44 78,54 75,62 C 74,52 74,42 75,34 Z" fill="${color}"/>
             </g>`
+    },
+    // Coupe Trophée 3 Garçon : coupe courte noble avec mèche héroïque balayée
+    paladin_boy: {
+        id: 'paladin_boy',
+        name: 'Chevalier Solaire (Court à mèche héroïque)',
+        withBand: false,
+        getHairBack: (color) => `
+            <g id="hair-back-paladin-boy">
+                <ellipse cx="50" cy="26" rx="35" ry="30" fill="${color}"/>
+                <!-- Nuque courte en blocs arrondis -->
+                <path d="M 18,34 C 12,22 16,8 26,0 C 36,-6 64,-6 74,0 C 84,8 88,22 82,34 C 85,42 82,50 76,54 C 72,49 66,51 60,53 C 56,50 44,50 40,53 C 34,51 28,49 24,54 C 18,50 15,42 18,34 Z" fill="${color}"/>
+            </g>`,
+        getHairFront: (color) => `
+            <g id="hair-front-paladin-boy">
+                <!-- Calotte et frange en mèches pointues balayées vers la gauche -->
+                <path d="M 20,30 
+                         C 22,14 34,4 50,4 
+                         C 66,4 78,14 80,30 
+                         C 80,38 79,44 77,48 
+                         C 75,42 75,35 74,29 
+                         C 73,31 71,33 68,34 
+                         C 66,30 64,28 62,27 
+                         C 61,31 59,34 56,36 
+                         C 54,31 52,29 49,28 
+                         C 48,32 46,34 43,35 
+                         C 42,31 40,29 37,28 
+                         C 35,31 33,33 30,33 
+                         C 29,31 28,30 27,30 
+                         C 26,36 25,42 23,48 
+                         C 21,42 20,36 20,30 Z" fill="${color}"/>
+                <!-- Mèches de tempes -->
+                <path d="M 22,34 C 19,42 20,48 23,54 C 25,48 25,42 24,36 Z" fill="${color}"/>
+                <path d="M 78,34 C 81,42 80,48 77,54 C 75,48 75,42 76,36 Z" fill="${color}"/>
+                <!-- Reflet solaire -->
+                <path d="M 40,9 C 48,5 58,6 64,10 C 57,9 49,9 40,13 Z" fill="#ffffff" opacity="0.35"/>
+            </g>`
+    },
+
+    // Coupe Trophée 3 Fille : chevelure longue en blocs arrondis et frange balayée
+    paladin_girl: {
+        id: 'paladin_girl',
+        name: 'Chevalière Solaire (Longue à frange balayée)',
+        withTiara: false,
+        getHairBack: (color) => `
+            <g id="hair-back-paladin-girl">
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
+                <!-- Chevelure longue en fuseau, lobes arrondis -->
+                <path d="M 16,36 C 10,22 14,8 24,0 C 34,-6 66,-6 76,0 C 86,8 90,22 84,36 C 90,50 89,64 84,74 C 79,70 77,63 75,56 C 71,68 63,82 50,84 C 37,82 29,68 25,56 C 23,63 21,70 16,74 C 11,64 10,50 16,36 Z" fill="${color}"/>
+                <!-- Mèches d'épaule en blocs elliptiques -->
+                <path d="M 22,42 C 16,52 17,66 23,78 C 27,72 28,62 27,52 Z" fill="${color}"/>
+                <path d="M 78,42 C 84,52 83,66 77,78 C 73,72 72,62 73,52 Z" fill="${color}"/>
+                <path d="M 40,52 C 38,64 42,76 47,86 C 49,76 48,64 45,54 Z" fill="${color}" opacity="0.9"/>
+                <path d="M 60,52 C 62,64 58,76 53,86 C 51,76 52,64 55,54 Z" fill="${color}" opacity="0.9"/>
+            </g>`,
+        getHairFront: (color) => `
+            <g id="hair-front-paladin-girl">
+                <!-- Calotte et longue frange en mèches pointues balayées vers la gauche -->
+                <path d="M 20,30 
+                         C 22,14 34,4 50,4 
+                         C 66,4 78,14 80,30 
+                         C 80,38 78,48 76,56 
+                         C 74,48 74,38 75,28 
+                         C 73,31 70,34 66,35 
+                         C 64,31 62,28 60,26 
+                         C 58,31 55,35 50,37 
+                         C 48,32 46,29 44,27 
+                         C 42,31 39,34 35,35 
+                         C 33,32 32,30 31,28 
+                         C 29,30 28,31 26,31 
+                         C 26,40 26,48 24,56 
+                         C 22,48 20,38 20,30 Z" fill="${color}"/>
+                <!-- Mèches de tempes longues -->
+                <path d="M 22,34 C 19,42 20,52 23,60 C 25,54 25,44 24,36 Z" fill="${color}"/>
+                <path d="M 78,34 C 81,42 80,52 77,60 C 75,54 75,44 76,36 Z" fill="${color}"/>
+                <!-- Reflet solaire -->
+                <path d="M 38,10 C 46,6 56,7 62,11 C 55,10 47,10 38,14 Z" fill="#ffffff" opacity="0.35"/>
+            </g>`
     }
+};
+
+// Épée longue du paladin, modélisée sur l'axe X=0 (poignée vers +Y, lame vers -Y)
+const PALADIN_SWORD_MODEL = `
+    <!-- Pommeau solaire -->
+    <circle cx="0" cy="6.2" r="1.6" fill="#fbbf24" stroke="#b45309" stroke-width="0.4"/>
+    <!-- Fusée gainée de cuir -->
+    <rect x="-1" y="0" width="2" height="5" rx="0.5" fill="#78350f"/>
+    <!-- Quillons droits dorés -->
+    <rect x="-5" y="-1.4" width="10" height="1.8" rx="0.8" fill="#fbbf24" stroke="#b45309" stroke-width="0.4"/>
+    <!-- Lame d'acier : deux pans pour le relief, gouttière centrale -->
+    <path d="M 0,-1.4 L -1.7,-1.4 L -1.7,-26 L 0,-30 Z" fill="#cbd5e1"/>
+    <path d="M 0,-1.4 L 1.7,-1.4 L 1.7,-26 L 0,-30 Z" fill="#f1f5f9"/>
+    <path d="M 0,-2.5 L 0.11,-4.56 L 0.21,-6.97 L 0.28,-9.03 L 0.33,-11.44 L 0.35,-13.5 L 0.33,-15.56 L 0.28,-17.97 L 0.21,-20.03 L 0.11,-22.44 L 0,-24.5 L 0,-24.5 L -0.11,-22.44 L -0.21,-20.03 L -0.28,-17.97 L -0.33,-15.56 L -0.35,-13.5 L -0.33,-11.44 L -0.28,-9.03 L -0.21,-6.97 L -0.11,-4.56 L 0,-2.5 L 0,-2.5 Z" fill="#94a3b8"/>
+`;
+
+// Bouclier solaire du paladin, modélisé symétrique sur l'axe X=0 (pointe vers +Y)
+const PALADIN_SHIELD_MODEL = `
+    <path d="M -9.5,0 L 9.5,0 C 9.5,11 6,18 0,23 C -6,18 -9.5,11 -9.5,0 Z" fill="#fbbf24"/>
+    <path d="M -7.8,1.6 L 7.8,1.6 C 7.8,10.5 5,16.5 0,20.6 C -5,16.5 -7.8,10.5 -7.8,1.6 Z" fill="#f8fafc"/>
+    <!-- Soleil d'or au centre -->
+    <polygon points="3.4,9.9 6,9 3.4,8.1" fill="#ea580c"/>
+            <polygon points="1.77,12.04 4.24,13.24 3.04,10.77" fill="#ea580c"/>
+            <polygon points="-0.9,12.4 0,15 0.9,12.4" fill="#ea580c"/>
+            <polygon points="-3.04,10.77 -4.24,13.24 -1.77,12.04" fill="#ea580c"/>
+            <polygon points="-3.4,8.1 -6,9 -3.4,9.9" fill="#ea580c"/>
+            <polygon points="-1.77,5.96 -4.24,4.76 -3.04,7.23" fill="#ea580c"/>
+            <polygon points="0.9,5.6 0,3 -0.9,5.6" fill="#ea580c"/>
+            <polygon points="3.04,7.23 4.24,4.76 1.77,5.96" fill="#ea580c"/>
+    <circle cx="0" cy="9" r="3.2" fill="#fde047" stroke="#b45309" stroke-width="0.5"/>
+    <circle cx="-0.9" cy="8.1" r="0.9" fill="#ffffff" opacity="0.8"/>
+`;
+
+export const OUTFIT_PALADIN_LIGHT = {
+    id: 'paladin_light',
+    name: 'Paladin de Lumière (Humain)',
+    badge: 'Trophée 3',
+    // Cape ardoise (nettement plus sombre que l'armure acier #cbd5e1) à liseré or
+    backEquipment: `
+        <g id="outfit-paladin-back">
+            <path d="M 33,65 C 25,76 21,96 25,110 C 35,113 42,109 50,111 C 58,109 65,113 75,110 C 79,96 75,76 67,65 Z" fill="#334155"/>
+            <path d="M 36,68 C 29,80 27,98 30,107 C 39,110 45,106 50,108 C 55,106 61,110 70,107 C 73,98 71,80 64,68 Z" fill="#1e293b" opacity="0.6"/>
+            <!-- Liseré or de l'ourlet -->
+            <path d="M 25,110 L 27.26,110.72 L 29.88,111.27 L 32.4,111.56 L 34.83,111.65 L 37.55,111.58 L 40.18,111.42 L 42.72,111.29 L 44.85,111.27 L 47.31,111.43 L 49.78,111.87 L 52.69,111.43 L 55.15,111.27 L 57.28,111.29 L 59.82,111.42 L 62.45,111.58 L 65.17,111.65 L 67.6,111.56 L 70.12,111.27 L 72.74,110.72 L 75,110 L 75,110 L 72.68,110.44 L 70.06,110.72 L 67.58,110.74 L 65.22,110.6 L 62.56,110.31 L 59.96,109.97 L 57.38,109.69 L 55.15,109.56 L 52.5,109.66 L 50.22,110.13 L 47.5,109.66 L 44.85,109.56 L 42.62,109.69 L 40.04,109.97 L 37.44,110.31 L 34.78,110.6 L 32.42,110.74 L 29.94,110.72 L 27.32,110.44 L 25,110 L 25,110 Z" fill="#fbbf24"/>
+        </g>`,
+    legs: (skin) => `
+        <g id="outfit-paladin-legs">
+            <!-- Cuissards en cotte de mailles -->
+            <polygon points="39,85 49,85 48,97 41,97" fill="#94a3b8"/>
+            <polygon points="51,85 61,85 59,97 52,97" fill="#94a3b8"/>
+            <!-- Jambières d'acier et genouillères -->
+            <polygon points="40,97 48.5,97 48,106 41,106" fill="#cbd5e1"/>
+            <polygon points="51.5,97 60,97 59,106 52,106" fill="#cbd5e1"/>
+            <ellipse cx="44.5" cy="97.5" rx="4.3" ry="2.4" fill="#e2e8f0"/>
+            <ellipse cx="55.5" cy="97.5" rx="4.3" ry="2.4" fill="#e2e8f0"/>
+            <circle cx="44.5" cy="97.5" r="0.9" fill="#fbbf24"/>
+            <circle cx="55.5" cy="97.5" r="0.9" fill="#fbbf24"/>
+            <!-- Solerets d'acier -->
+            <path d="M39.5 106 C39.5 104, 49.5 104, 49.5 106 L50 113 C50 115, 39 115, 39 113 Z" fill="#94a3b8"/>
+            <path d="M38.5 112 L50.5 112 L50 114 L39 114 Z" fill="#475569"/>
+            <path d="M50.5 106 C50.5 104, 60.5 104, 60.5 106 L61 113 C61 115, 50 115, 50 113 Z" fill="#94a3b8"/>
+            <path d="M49.5 112 L61.5 112 L61 114 L50 114 Z" fill="#475569"/>
+            <path d="M 40,107.5 L 41.13,107.73 L 42.25,107.92 L 43.38,108.05 L 44.5,108.1 L 45.63,108.05 L 46.75,107.92 L 47.88,107.73 L 49,107.5 L 49,107.5 L 47.88,107.27 L 46.75,107.08 L 45.63,106.95 L 44.5,106.9 L 43.38,106.95 L 42.25,107.08 L 41.13,107.27 L 40,107.5 L 40,107.5 Z" fill="#fbbf24"/>
+            <path d="M 51,107.5 L 52.13,107.73 L 53.25,107.92 L 54.38,108.05 L 55.5,108.1 L 56.63,108.05 L 57.75,107.92 L 58.88,107.73 L 60,107.5 L 60,107.5 L 58.88,107.27 L 57.75,107.08 L 56.63,106.95 L 55.5,106.9 L 54.38,106.95 L 53.25,107.08 L 52.13,107.27 L 51,107.5 L 51,107.5 Z" fill="#fbbf24"/>
+        </g>`,
+    body: `
+        <g id="outfit-paladin-body">
+            <!-- Cuirasse d'acier -->
+            <path d="M 31,65 C 31,62 34,61.5 38,61.5 L 62,61.5 C 66,61.5 69,62 69,65 L 63.5,86 L 36.5,86 Z" fill="#cbd5e1"/>
+            <path d="M 34,64 C 35,63 37,62.5 40,62.5 L 42,62.5 L 41,80 L 37.5,80 Z" fill="#f1f5f9" opacity="0.7"/>
+            <!-- Tabard blanc à liserés or -->
+            <path d="M 42,62 L 58,62 L 57,86 L 43,86 Z" fill="#f8fafc"/>
+            <path d="M 42,62 L 41.88,65.01 L 41.79,68.02 L 41.77,71.03 L 41.85,74.03 L 42.02,77.03 L 42.29,80.02 L 42.63,83.01 L 43,86 L 43,86 L 43.12,82.99 L 43.21,79.98 L 43.23,76.97 L 43.15,73.97 L 42.98,70.97 L 42.71,67.98 L 42.37,64.99 L 42,62 L 42,62 Z" fill="#fbbf24"/>
+            <path d="M 58,62 L 57.63,64.99 L 57.29,67.98 L 57.02,70.97 L 56.85,73.97 L 56.77,76.97 L 56.79,79.98 L 56.88,82.99 L 57,86 L 57,86 L 57.37,83.01 L 57.71,80.02 L 57.98,77.03 L 58.15,74.03 L 58.23,71.03 L 58.21,68.02 L 58.12,65.01 L 58,62 L 58,62 Z" fill="#fbbf24"/>
+            <!-- Soleil d'or brodé -->
+            <polygon points="53,72.8 55.2,72 53,71.2" fill="#ea580c"/>
+            <polygon points="51.56,74.69 53.68,75.68 52.69,73.56" fill="#ea580c"/>
+            <polygon points="49.2,75 50,77.2 50.8,75" fill="#ea580c"/>
+            <polygon points="47.31,73.56 46.32,75.68 48.44,74.69" fill="#ea580c"/>
+            <polygon points="47,71.2 44.8,72 47,72.8" fill="#ea580c"/>
+            <polygon points="48.44,69.31 46.32,68.32 47.31,70.44" fill="#ea580c"/>
+            <polygon points="50.8,69 50,66.8 49.2,69" fill="#ea580c"/>
+            <polygon points="52.69,70.44 53.68,68.32 51.56,69.31" fill="#ea580c"/>
+            <circle cx="50" cy="72" r="2.8" fill="#fde047" stroke="#b45309" stroke-width="0.5"/>
+            <!-- Gorgerin d'acier -->
+            <path d="M 43,60.5 L 50,64.5 L 57,60.5 L 57,62.5 L 50,66.5 L 43,62.5 Z" fill="#94a3b8"/>
+        </g>`,
+    belt: `
+        <g id="outfit-paladin-belt">
+            <!-- Ceinture de cuir ajustée à la taille, boucle solaire centrée sur la courbe -->
+            <path d="M 36.1,84.5 L 37.74,85.43 L 39.41,86.31 L 41.11,87.1 L 42.84,87.78 L 44.61,88.33 L 46.39,88.74 L 48.19,88.99 L 50,89.08 L 51.81,88.99 L 53.61,88.74 L 55.39,88.33 L 57.16,87.78 L 58.89,87.1 L 60.59,86.31 L 62.26,85.43 L 63.9,84.5 L 63.9,84.5 L 62.06,84.13 L 60.26,83.74 L 58.49,83.37 L 56.74,83.02 L 55.03,82.73 L 53.34,82.51 L 51.67,82.37 L 50,82.33 L 48.33,82.37 L 46.66,82.51 L 44.97,82.73 L 43.26,83.02 L 41.51,83.37 L 39.74,83.74 L 37.94,84.13 L 36.1,84.5 L 36.1,84.5 Z" fill="#78350f"/>
+            <g transform="translate(0 1.2)"><circle cx="50" cy="84.5" r="2.4" fill="#fbbf24" stroke="#b45309" stroke-width="0.5"/></g>
+            <g transform="translate(0 1.2)"><circle cx="50" cy="84.5" r="0.9" fill="#fef9c3"/></g>
+        </g>`,
+    arms: (skin) => `
+        <g id="outfit-paladin-arms">
+            <!-- Bras gauche : maille, canon d'avant-bras et main -->
+            <path d="M32 64 C24 70, 23 77, 28 83 C31 83, 33 80, 35 76 Z" fill="#94a3b8"/>
+            <path d="M26 73 C24 76, 25 80, 29 82 C31 81, 32 78, 32 75 Z" fill="#cbd5e1"/>
+            <ellipse cx="29" cy="84" rx="3.6" ry="3.3" fill="${skin.base}"/>
+            <!-- NOTE Séparations des doigts en fuseau -->
+            <path d="M 28,84.3 L 27.81,84.59 L 27.65,84.89 L 27.53,85.2 L 27.48,85.52 L 27.48,85.85 L 27.55,86.17 L 27.66,86.49 L 27.8,86.8 L 27.8,86.8 L 27.91,86.48 L 28,86.17 L 28.08,85.87 L 28.12,85.58 L 28.13,85.27 L 28.1,84.96 L 28.05,84.64 L 28,84.3 L 28,84.3 Z M 30,84.3 L 29.95,84.64 L 29.9,84.96 L 29.87,85.27 L 29.88,85.58 L 29.92,85.87 L 30,86.17 L 30.09,86.48 L 30.2,86.8 L 30.2,86.8 L 30.34,86.49 L 30.45,86.17 L 30.52,85.85 L 30.52,85.52 L 30.47,85.2 L 30.35,84.89 L 30.19,84.59 L 30,84.3 L 30,84.3 Z" fill="${skin.shadow}"/>
+            <!-- Bras droit -->
+            <path d="M68 64 C76 69, 78 72, 76 79 C73 81, 70 79, 66 75 Z" fill="#94a3b8"/>
+            <path d="M72 69 C75 72, 75 76, 73 78 C70 78, 68 75, 68 72 Z" fill="#cbd5e1"/>
+            <!-- NOTE Main droite dessinée une seule fois, dans handItem, refermée au premier plan sur la poignée -->
+            <!-- Épaulières bombées à liseré or -->
+            <path d="M 25,68 C 24,62 30,58.5 37,61 C 39,62.5 38.5,65.5 36.5,67 C 33,69.5 28,70 25,68 Z" fill="#e2e8f0"/>
+            <path d="M 25,68 L 25.97,68.75 L 27.13,69.33 L 28.42,69.7 L 29.61,69.85 L 31.03,69.79 L 32.25,69.55 L 33.43,69.12 L 34.55,68.54 L 35.58,67.82 L 36.5,67 L 36.5,67 L 35.38,67.48 L 34.24,67.84 L 33.1,68.12 L 31.98,68.34 L 30.87,68.5 L 29.6,68.62 L 28.53,68.66 L 27.31,68.59 L 26.13,68.38 L 25,68 L 25,68 Z" fill="#fbbf24"/>
+            <path d="M 75,68 C 76,62 70,58.5 63,61 C 61,62.5 61.5,65.5 63.5,67 C 67,69.5 72,70 75,68 Z" fill="#e2e8f0"/>
+            <path d="M 75,68 L 73.87,68.38 L 72.69,68.59 L 71.47,68.66 L 70.4,68.62 L 69.13,68.5 L 68.02,68.34 L 66.9,68.12 L 65.76,67.84 L 64.62,67.48 L 63.5,67 L 63.5,67 L 64.42,67.82 L 65.45,68.54 L 66.57,69.12 L 67.75,69.55 L 68.97,69.79 L 70.39,69.85 L 71.58,69.7 L 72.87,69.33 L 74.03,68.75 L 75,68 L 75,68 Z" fill="#fbbf24"/>
+        </g>`,
+    headAccessory: `
+        <g id="outfit-paladin-head-accessory">
+            <!-- Diadème ardoise (teinte de la cape) en fuseau, épais au front, fin aux tempes, contraste avec la chevelure Or Solaire -->
+            <path d="M 28,26 L 31.52,25.7 L 34.32,25.61 L 37.78,25.47 L 40.52,25.46 L 43.92,25.41 L 46.63,25.41 L 50,25.4 L 53.37,25.41 L 56.08,25.41 L 59.48,25.46 L 62.22,25.47 L 65.68,25.61 L 68.48,25.7 L 72,26 L 72,26 L 68.64,24.86 L 65.95,23.98 L 62.53,23.12 L 59.77,22.5 L 56.3,21.99 L 53.5,21.71 L 50,21.6 L 46.5,21.71 L 43.7,21.99 L 40.23,22.5 L 37.47,23.12 L 34.05,23.98 L 31.36,24.86 L 28,26 L 28,26 Z" fill="#475569"/>
+            <polygon points="52.4,21.25 54.6,20.5 52.4,19.75" fill="#ea580c"/>
+            <polygon points="51.17,22.73 53.25,23.75 52.23,21.67" fill="#ea580c"/>
+            <polygon points="49.25,22.9 50,25.1 50.75,22.9" fill="#ea580c"/>
+            <polygon points="47.77,21.67 46.75,23.75 48.83,22.73" fill="#ea580c"/>
+            <polygon points="47.6,19.75 45.4,20.5 47.6,21.25" fill="#ea580c"/>
+            <polygon points="48.83,18.27 46.75,17.25 47.77,19.33" fill="#ea580c"/>
+            <polygon points="50.75,18.1 50,15.9 49.25,18.1" fill="#ea580c"/>
+            <polygon points="52.23,19.33 53.25,17.25 51.17,18.27" fill="#ea580c"/>
+            <circle cx="50" cy="20.5" r="2.4" fill="#fde047" stroke="#b45309" stroke-width="0.5"/>
+            <circle cx="49.3" cy="19.8" r="0.7" fill="#ffffff"/>
+        </g>`,
+    handItem: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
+        <g id="outfit-paladin-hand-items">
+            <!-- Épée longue tenue droite dans la main droite (76, 79) -->
+            <g id="paladin-sword" transform="translate(76, 79) rotate(12)">
+                ${PALADIN_SWORD_MODEL}
+                <ellipse cx="0" cy="2.5" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>
+                <path d="M -1.6,1.5 L -1.28,1.62 L -0.95,1.73 L -0.62,1.8 L -0.3,1.83 L 0.03,1.8 L 0.35,1.73 L 0.68,1.62 L 1,1.5 L 1,1.5 L 0.68,1.38 L 0.35,1.27 L 0.03,1.2 L -0.3,1.18 L -0.62,1.2 L -0.95,1.27 L -1.28,1.38 L -1.6,1.5 L -1.6,1.5 Z" fill="${skin.shadow}"/>
+                <path d="M -1.6,3.5 L -1.28,3.62 L -0.95,3.73 L -0.62,3.8 L -0.3,3.83 L 0.03,3.8 L 0.35,3.73 L 0.68,3.62 L 1,3.5 L 1,3.5 L 0.68,3.38 L 0.35,3.27 L 0.03,3.2 L -0.3,3.18 L -0.62,3.2 L -0.95,3.27 L -1.28,3.38 L -1.6,3.5 L -1.6,3.5 Z" fill="${skin.shadow}"/>
+            </g>
+            <!-- Bouclier solaire au bras gauche (main en 29, 84) -->
+            <g id="paladin-shield" transform="translate(25, 72) rotate(-6)">
+                ${PALADIN_SHIELD_MODEL}
+            </g>
+        </g>`
 };
 
 // Registre des tenues RPG
 export const RPG_OUTFITS = {
     elf_ranger: OUTFIT_ELF_RANGER,
-    orc_berserker: OUTFIT_ORC_BERSERKER
+    orc_berserker: OUTFIT_ORC_BERSERKER,
+    paladin_light: OUTFIT_PALADIN_LIGHT
 };
 
 // Registre des Trophées RPG (Nouveau système de récompenses avec IDs courts pour chaque personnage)
@@ -1628,6 +1904,17 @@ export const RPG_TROPHIES = [
         speciesName: 'Elfe',
         className: 'Rôdeur Sylvestre',
         badge: 'Nouveau',
+        // ANCHOR Invocation : rareté de la carte (taux de tirage) et éléments ajoutés à l'atelier une fois gagnée
+        rarity: 'rare',
+        unlocks: {
+            species: 'elf',
+            skins: [],
+            hairs: ['#14b8a6', '#38bdf8', '#a855f7'],
+            eyes: ['emerald'],
+            styles: { boy: 'elf_boy', girl: 'elf_girl' },
+            outfit: 'elf_ranger',
+            label: 'Elfe'
+        },
         tagline: 'Maître rôdeur aux dagues jumelles et sens aiguisés',
         description: "Premier trophée d'élite : débloque la lignée des Elfes, leur coupe signature, leurs dagues jumelles et la panoplie sylvestre.",
         rewards: [
@@ -1671,6 +1958,17 @@ export const RPG_TROPHIES = [
         speciesName: 'Orc',
         className: 'Berserker',
         badge: 'Nouveau',
+        // ANCHOR Invocation : rareté de la carte (taux de tirage) et éléments ajoutés à l'atelier une fois gagnée
+        rarity: 'épique',
+        unlocks: {
+            species: 'orc',
+            skins: ['orc-green'],
+            hairs: ['#c2410c', '#b91c1c'],
+            eyes: [],
+            styles: { boy: 'orc_beast', girl: 'orc_girl' },
+            outfit: 'orc_berserker',
+            label: 'Orc'
+        },
         tagline: 'Guerrier indomptable aux crocs acérés et hache massive',
         description: "Deuxième trophée d'élite : débloque la robuste espèce des Orcs, leur chevelure hirsute en pics, bouche droite de guerre et puissante panoplie de Berserker.",
         rewards: [
@@ -1713,16 +2011,50 @@ export const RPG_TROPHIES = [
         species: 'human',
         speciesName: 'Humain',
         className: 'Paladin de Lumière',
-        badge: 'À venir',
-        status: 'locked',
+        badge: 'Nouveau',
+        // ANCHOR Invocation : rareté de la carte (taux de tirage) et éléments ajoutés à l'atelier une fois gagnée
+        rarity: 'légendaire',
+        unlocks: {
+            species: null,
+            skins: ['sun-bronze'],
+            hairs: ['#facc15'],
+            eyes: ['sky'],
+            styles: { boy: 'paladin_boy', girl: 'paladin_girl' },
+            outfit: 'paladin_light',
+            label: 'Paladin'
+        },
         tagline: 'Chevalier en armure de plaques scintillante',
-        description: 'Troisième trophée : débloque l’armure de plates étincelante, bouclier doré et heaume solaire.',
+        description: "Troisième trophée : débloque l'armure de plates étincelante, le bouclier solaire, l'épée longue et le diadème du Paladin.",
         rewards: [
-            { icon: 'bi-feather', label: 'Espèce : Humain' },
-            { icon: 'bi-shield-shaded', label: 'Classe : Paladin' }
+            { icon: 'bi-feather', label: 'Espèce : Humain (Peau Bronze Solaire)' },
+            { icon: 'bi-shield-shaded', label: 'Classe : Paladin de Lumière' },
+            { icon: 'bi-scissors', label: 'Coupes exclusives : Court à mèche héroïque (G) / Longue à frange balayée (F)' },
+            { icon: 'bi-slash-square', label: 'Armes : Épée longue & Bouclier solaire' },
+            { icon: 'bi-person-bounding-box', label: 'Tenue : Armure de plates, tabard au soleil d\'or, cape ardoise & diadème solaire' },
+            { icon: 'bi-palette', label: 'Teintes débloquées : Peau Bronze Solaire, Cheveux Or Solaire & Yeux Azur Céleste' }
         ],
-        boyPreset: { id: 'pal_b', type: 'boy', species: 'human' },
-        girlPreset: { id: 'pal_g', type: 'girl', species: 'human' }
+        boyPreset: {
+            id: 'pal_b',
+            type: 'boy',
+            styleKey: 'paladin_boy',
+            styleId: 1,
+            outfitKey: 'paladin_light',
+            species: 'human',
+            skinColor: 'sun-bronze',
+            hairColor: '#facc15', // Or Solaire (contraste franc avec la peau bronze)
+            eyeColor: 'sky'
+        },
+        girlPreset: {
+            id: 'pal_g',
+            type: 'girl',
+            styleKey: 'paladin_girl',
+            styleId: 1,
+            outfitKey: 'paladin_light',
+            species: 'human',
+            skinColor: 'sun-bronze',
+            hairColor: '#facc15', // Or Solaire (identique, parité stricte)
+            eyeColor: 'sky'
+        }
     },
     {
         id: 'kitsune',
@@ -1876,7 +2208,8 @@ export function buildCustomAvatarSvg({
     // hériter des accessoires de base (bandeaux sportifs, diadèmes classiques, élastiques d'écolier)
     const isNewCharacter = species !== 'human' || Boolean(outfitKey) || Boolean(customOutfit) || Boolean(styleKey);
     const showBaseBand = !isNewCharacter && (isBoy ? Boolean(style.withBand) : Boolean(style.withTiara));
-    const headBase = isBoy ? base.headBase(showBaseBand, effectiveSkin, species) : base.headBase(showBaseBand, effectiveSkin, species);
+    // NOTE Le triangle de col orange appartient à la tenue de base : jamais sur un personnage de trophée
+    const headBase = isBoy ? base.headBase(showBaseBand, effectiveSkin, species, !isNewCharacter) : base.headBase(showBaseBand, effectiveSkin, species);
     const faceFeatures = base.faceFeatures(effectiveEye, effectiveSkin, species, effectiveHairColor);
     const eyebrows = base.eyebrows ? base.eyebrows(effectiveHairColor, 0.85) : '';
 

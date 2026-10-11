@@ -647,10 +647,10 @@
         <div class="rounded-xl p-5" style="background:#f4eadd;border:1.5px solid #dcc9b0">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm mb-1" style="color:#b46e28">Points Totaux</p>
+              <p class="text-sm mb-1" style="color:#b46e28">Gemmes</p>
               <p class="text-3xl font-bold text-yellow-500" id="total-points">0</p>
             </div>
-            <i class="bi bi-star-fill text-yellow-400 text-3xl opacity-50"></i>
+            <i class="bi bi-gem text-yellow-400 text-3xl opacity-50"></i>
           </div>
         </div>
 
@@ -665,32 +665,14 @@
         </div>
       </div>
 
-      <!-- Section Débloquer Code Secret -->
-      <div class="rounded-xl p-6 mb-8" style="background:#f4eadd;border:1.5px solid #dcc9b0">
-        <h2 class="text-xl font-bold mb-1 flex items-center gap-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">
-          <i class="bi bi-lock-fill" style="color:#66bcb4"></i>
-          Débloquer un Trophée
-        </h2>
-        <p class="text-sm mb-4" style="color:#b46e28">Entre le code secret d'un trophée (coûte 5 points)</p>
-
-        <div class="flex gap-2">
-          <input type="text" id="secret-code-input" placeholder="Entrez le code secret..." maxlength="20"
-            class="flex-1 px-4 py-3 rounded-xl uppercase focus:outline-none transition-all"
-            style="background:white;border:1.5px solid #dcc9b0;color:#7c4004;font-weight:600" />
-          <button id="use-code-btn" class="btn-base btn-primary px-5" aria-label="Utiliser le code">
-            <i class="bi bi-unlock" aria-hidden="true"></i>
-          </button>
-        </div>
-
-        <!-- Message d'erreur/succès -->
-        <div id="code-message" class="hidden mt-3 p-3 rounded-lg text-sm"></div>
-      </div>
+      <!-- Arbre d'invocation : tirage aléatoire des skins (rendu par trophies-manager.js) -->
+      <div id="summon-panel" class="rounded-xl p-4 sm:p-5 mb-6" style="background:#f4eadd;border:1.5px solid #dcc9b0"></div>
 
       <!-- Collection de Trophées -->
       <div>
         <h2 class="text-xl font-bold mb-6 flex items-center gap-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">
           <i class="bi bi-collection-fill text-yellow-400"></i>
-          Collection de Trophées
+          Ma collection
         </h2>
 
         <div id="trophies-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-6">

@@ -990,3 +990,65 @@ h1, h2, h3, .font-display {
   height: clamp(24px, 8cqw, 34px);
   font-size: clamp(11px, 3.6cqw, 15px);
 }
+
+/* ANCHOR Arbre d'invocation (trophies-manager.js) : fruits qui scintillent, arbre qui tremble, fruit qui tombe */
+.summon-tree-fruit {
+  animation: summon-fruit-glow 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes summon-fruit-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.15); }
+}
+
+.summon-tree-sparkle {
+  animation: summon-sparkle 2.2s ease-in-out infinite;
+}
+
+@keyframes summon-sparkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.summon-tree.is-summoning .summon-tree-canopy {
+  animation: summon-tree-shake 0.18s ease-in-out 5;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+@keyframes summon-tree-shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+.summon-tree.is-summoning .summon-falling-fruit {
+  animation: summon-fruit-fall 0.8s cubic-bezier(0.5, 0, 0.75, 0) 0.85s forwards;
+}
+
+@keyframes summon-fruit-fall {
+  0% { opacity: 0; transform: translateY(0) scale(0.6); }
+  20% { opacity: 1; transform: translateY(0) scale(1.2); }
+  100% { opacity: 1; transform: translateY(58px) scale(1); }
+}
+
+.summon-reveal-card {
+  animation: summon-card-reveal 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+@keyframes summon-card-reveal {
+  0% { transform: perspective(1000px) rotateY(90deg) scale(0.7); opacity: 0; }
+  100% { transform: perspective(1000px) rotateY(0deg) scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .summon-tree-fruit,
+  .summon-tree-sparkle,
+  .summon-tree.is-summoning .summon-tree-canopy,
+  .summon-tree.is-summoning .summon-falling-fruit,
+  .summon-reveal-card {
+    animation: none;
+  }
+}

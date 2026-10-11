@@ -566,6 +566,15 @@ window.addScore = (points = 10) => {
     return updated;
 };
 
+// NOTE Dev uniquement : vide le localStorage du site (gemmes, skins, avatar, historique...) puis recharge la page
+window.resetStorage = ({ keepName = false } = {}) => {
+    const playerName = localStorage.getItem('playerName');
+    localStorage.clear();
+    if (keepName && playerName) localStorage.setItem('playerName', playerName);
+    console.log(`🧹 localStorage vidé${keepName ? ' (prénom conservé)' : ''}, rechargement...`);
+    location.reload();
+};
+
 // Initialiser l'application quand le DOM est prêt
 document.addEventListener('DOMContentLoaded', () => {
     const app = new QuizApp();

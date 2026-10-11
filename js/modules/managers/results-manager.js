@@ -7,7 +7,7 @@ import { domManager } from '../ui/dom.js';
 import { launchConfetti } from '../core/utils.js';
 import { CONFIG } from '../core/config.js';
 import { playerManager } from '../core/player.js';
-import { rewardsManager } from './rewards-manager.js';
+import { rewardsManager, SUMMON_COST } from './rewards-manager.js';
 import { T } from '../core/theme.js';
 import { shareQuizResult } from '../core/share.js';
 
@@ -114,26 +114,26 @@ export class ResultsManager {
                             <div class="flex flex-wrap gap-4">
                                 <div class="text-center">
                                     <p class="text-2xl font-bold text-yellow-500">${rewardsResult.totalPoints}</p>
-                                    <p class="text-xs" style="color:#b46e28">Points totaux</p>
+                                    <p class="text-xs" style="color:#b46e28">Gemmes</p>
                                 </div>
-                                ${rewardsResult.canBuySecretCode ? `
+                                ${rewardsResult.canSummon ? `
                                     <div class="text-center">
-                                        <p class="text-2xl">🔓</p>
-                                        <p class="text-xs text-green-600 font-semibold">Code dispo !</p>
+                                        <p class="text-2xl">🌳</p>
+                                        <p class="text-xs text-green-600 font-semibold">Invocation dispo !</p>
                                     </div>
                                 ` : `
                                     <div class="text-center">
-                                        <p class="text-2xl font-bold" style="color:#b46e28">${5 - rewardsResult.totalPoints}</p>
-                                        <p class="text-xs" style="color:#b46e28">Points restants</p>
+                                        <p class="text-2xl font-bold" style="color:#b46e28">${Math.max(0, SUMMON_COST - rewardsResult.totalPoints)}</p>
+                                        <p class="text-xs" style="color:#b46e28">Gemmes avant une invocation</p>
                                     </div>
                                 `}
                             </div>
                         </div>
                     </div>
-                    ${rewardsResult.canBuySecretCode ? `
+                    ${rewardsResult.canSummon ? `
                         <div class="mt-4">
                             <button id="btnShowTrophies" class="btn-base btn-primary w-full justify-center">
-                                <i class="bi bi-key-fill"></i>Débloquer un trophée
+                                <i class="bi bi-stars"></i>Invoquer un skin
                             </button>
                         </div>
                     ` : ''}
@@ -255,7 +255,7 @@ export class ResultsManager {
         const emojis = ['<i class="bi bi-trophy-fill text-yellow-400"></i>', '<i class="bi bi-star-fill text-yellow-400"></i>', `<i class="bi bi-star-fill" style="color:${T.hexSecondary}"></i>`, `<i class="bi bi-star-fill" style="color:${T.hexPrimaryLight}"></i>`, '<i class="bi bi-trophy-fill text-green-400"></i>'];
         const emoji = emojis[Math.min(points - 1, emojis.length - 1)] || '<i class="bi bi-star-fill text-yellow-400"></i>';
 
-        return `${emoji} ${difficultyLabel} : +${points} point${points > 1 ? 's' : ''} !`;
+        return `${emoji} ${difficultyLabel} : +${points} gemme${points > 1 ? 's' : ''} !`;
     }
 
     renderDetails(questions) {

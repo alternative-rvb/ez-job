@@ -82,6 +82,7 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
 - **Même géométrie robuste et rapprochée** : base d'attache au crâne à $x=24$ et $x=76$, s'arrêtant à $x=13.5$ et $x=86.5$ (ne jamais écarter jusqu'à $x=11$).
 - **Tracé Bézier quadratique (`Q`) propre** : deux aplats imbriqués (`fill="${skin.base}"` et `fill="${skin.shadow}"`) **SANS contour/stroke** disgracieux.
 - **Lobe et orientation** : lobe descendant vers la mâchoire (`y=43.5 - 44`). Pour l'Elfe, la pointe reste effilée et orientée vers le haut et l'extérieur (`y=31.5`), jamais tombante molle vers le bas.
+- **Hauteur des oreilles (toutes espèces)** : chaque groupe d'oreilles de `getSpeciesEars()` est descendu de 50 % de sa hauteur par un `transform="translate(0 d)"` (humain 4.8, elfe 6, orc 5.5, anneaux compris), et chaque oreille est rapprochée du visage de 25 % de sa largeur (humain : centres à x=23.4 et x=76.6 ; elfe 2.6 et orc 2.4 par `translate(±d 0)` sur chaque côté). Les coordonnées ci-dessus restent celles du dessin avant ces décalages ; une nouvelle espèce applique la même règle.
 
 ### 8. Anatomie et Armes Orc & Barbare
 - **Dents inférieures orc** : écartées aux canines (gap $12.8\text{px}$, $x=42.2$ et $x=57.8$), légèrement plus petites ($4.5\text{px}$ de haut), avec **pointes arrondies** (courbe Bézier lisse, pas de triangles coupants) et **STRICTEMENT SANS CONTOUR / STROKE** (aplat ivoire pur `fill="#fffbeb"` sans contour pour un rendu propre et intégré).
@@ -90,6 +91,8 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
 
 ### 9. Alignement des Armes Vectorielles
 - Toute arme (dagues elfiques, épées, bâtons) doit être construite avec son axe central **rigoureusement colinéaire à $X=0$** (pommeau, garde, quillons, lame et pointe alignés), puis positionnée par transformation `<g transform="translate(x, y) rotate(angle)">`. Ne jamais créer d'angle brisé visuel.
+- **Prise en main (tous les personnages, base comme trophées)** : l'origine du groupe de l'arme est le point de prise, placé **au milieu de la poignée** et sur le centre de la main du bras. La main qui serre est dessinée **dans le groupe de l'arme, après elle, donc au premier plan**, et elle est **la seule main** de ce côté : l'ellipse de main du bras correspondant est supprimée de `arms` (commentaire `NOTE Main ... dessinée une seule fois, dans handItem`) pour ne jamais dupliquer la main. Une main cachée derrière un bouclier, sans poignée, reste dans `arms`. Forme : `<ellipse cx="0" cy="0" rx="3.2" ry="3.3" fill="${skin.base}" stroke="${skin.shadow}" stroke-width="0.5"/>` plus deux séparations de doigts en fuseau en travers de la poignée (gantelet : mêmes formes aux couleurs du métal). `handItem` devient alors une fonction `(skin) =>`.
+- **Groupes sans orphelins** : tout ce qui appartient à une arme (lame, garde, poignée, pommeau, ornements, ligatures, main qui serre) vit dans **un seul groupe** porteur de l'unique `translate`/`rotate`. Un sous-élément incliné (ex. ligature croisée de la hache orc) a son propre sous-groupe centré sur l'axe du manche et tourné de son inclinaison. Jamais de coordonnée absolue à côté d'un groupe transformé : déplacer le groupe doit tout emporter.
 - **Elfe** : équipé de sa double dague ciselée, aucun carquois au dos.
 
 ### 10. Design d'Interface & Badges ("Nouveau")

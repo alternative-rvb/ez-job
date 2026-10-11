@@ -14,6 +14,8 @@
 | `setScore(pts)` | Définit le score exact (0 à 100) et met à jour la carte | `setScore(60);` |
 | `resetScore()` | Réinitialise le score à `0 pt` et replace l'avatar au départ | `resetScore();` |
 | `showSkeleton(ms)` | Déclenche l'effet squelette fidèle (défaut `2500ms`, `0` = infini) | `showSkeleton(3000);` |
+| `resetStorage()` | Vide tout le localStorage du site (gemmes, skins gagnés, avatar, prénom, historique) puis recharge la page | `resetStorage();` |
+| `resetStorage({ keepName: true })` | Même chose en conservant le prénom du joueur | `resetStorage({ keepName: true });` |
 
 ---
 
@@ -41,16 +43,19 @@
 ## 4. Persistance & Stockage Local
 
 - **Clé `localStorage`** : `'erudizz_rewards'`
-- **Reset manuel complet** :
+- **Autres clés** : `playerName`, `playerAvatar`, `playerAvatarConfig` (avatar, espèce, coupe et tenue de skin), `playerResults`, `defaultTimeLimit`.
+- **Reset des gemmes et des skins seulement** :
   ```javascript
   localStorage.removeItem('erudizz_rewards');
   location.reload();
   ```
+- **Reset complet** : `resetStorage();` (défini dans `js/app.js`).
 
 ---
 
 ## 5. Checklist avant Mise en Production
 
 - [ ] Supprimer les déclarations `window.setScore`, `window.addScore`, `window.resetScore`, `window.showSkeleton` dans `js/modules/ui/roadmap.js`.
+- [ ] Supprimer `window.setScore`, `window.addScore` et `window.resetStorage` dans `js/app.js`.
 - [ ] Retirer l'événement de clic test `+15 pts` sur `#roadmap-score-badge`.
 - [ ] Supprimer ou archiver ce guide développeur.

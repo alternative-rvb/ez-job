@@ -212,7 +212,16 @@ import { T } from '../core/theme.js';
 | `question-manager.js` | Lettre A/B/C/D fond `#66bcb4`, timer badge, barre progression turquoise, bouton valider brun |
 | `results-manager.js` | % score `#66bcb4`, barre progress turquoise dégradé, cartes `#f4eadd` |
 | `history-manager.js` | Stats cards `#f4eadd`, chiffres `#66bcb4`, résultats beige |
-| `trophies-manager.js` | Cartes `#eaddcc`, overlay badge code `rgba(234,221,204,0.85)` |
+| `trophies-manager.js` | Arbre d'invocation SVG (feuillage turquoise `#2f7d74` à `#66bcb4`, tronc brun `#8a4b14`), fruits et lueur de révélation par rareté (rare turquoise `rgb(102,188,180)`, épique violet `rgb(147,51,234)`, légendaire or `rgb(250,204,21)`), cartes 9/16 sur turquoise `T.hexPrimary`, bouton Appliquer orange `T.secondaryA(0.75)`, squelette `#eaddcc`. Animations `summon-*` dans `styles/main.css`, coupées par `prefers-reduced-motion` |
+
+### `js/modules/ui/avatar-modal.js` - atelier avatar
+
+| Elément | Style |
+| --- | --- |
+| Pastille « Nouveau » d'une teinte | Point ambre `bg-amber-400` de 10 px cerclé `ring-primary-900`, en haut à droite de la pastille de couleur |
+| Pastille « Nouveau » d'une miniature (espèce, tenue, coupe) | Micro-chip `text-[8px] px-1.5 py-0.5`, fond `bg-amber-400/80` flouté, bordure fine `border-amber-200/70` |
+| Micro-chip « Nouveau » de section | `text-[8px]`, fond `bg-amber-400/25`, texte `text-amber-300`, bordure `border-amber-400/40` |
+| Aperçu | Collant en haut du défilement (fond `bg-primary-900/95` flouté), en ligne avec Corps/Tête sur mobile |
 
 ### Autres fichiers
 

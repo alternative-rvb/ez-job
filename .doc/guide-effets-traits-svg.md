@@ -93,6 +93,31 @@ Usage avatar : mèche ondulée, ruban, drapé de cape, tout trait qui doit avoir
 - **Étranglement** du sablier : « centre plus fin » ou « plus marqué ».
 - **Angle de plume** du calligraphique : « plein sur les montées » ou « plume à 30° ».
 
+## Règles déjà appliquées aux avatars
+
+Ces éléments sont en **fuseau** sur tous les avatars, et toute nouvelle tenue suit la même règle sans qu'il faille la redemander.
+
+#### Coutures, plis, liserés et ourlets
+
+Un trait fin qui s'effile aux deux bouts, à peine plus large que l'ancien trait (environ 1.2 fois). Les zigzags, comme la fourrure de la cape de l'Orc ou les lacets croisés du plastron de l'elfe, se découpent en un fuseau par segment pour garder des pointes nettes dans les angles. Une couture piquée (pointillés) devient une suite de petits fuseaux, un par point, comme sur le torse de l'archer.
+
+#### Diadèmes, bandeaux et rubans de chapeau
+
+Le fuseau donne la profondeur : épais au centre du front, il s'affine vers les tempes comme s'il passait derrière la tête. On joue sur l'épaisseur : environ 2 fois l'ancien trait pour un diadème fin (elfe 3.8, Orc 4.4), et 1.2 fois l'épaisseur de la bande pour un bandeau plein (mage 5.8, ruban du chapeau de la sorcière 6.2).
+
+#### Ceintures
+
+Même principe que les diadèmes : la bande est légèrement incurvée vers le bas pour suivre le tour de taille, épaisse sous la boucle et fine sur les hanches. Son épaisseur au centre vaut 1.35 fois la hauteur de l'ancienne ceinture.
+
+Deux ajustements sont obligatoires :
+
+- **Largeur ajustée à la taille** : les pointes tombent exactement sur les bords de la silhouette de la tenue, mesurés à la hauteur de la ceinture. Chaque tenue a sa propre largeur (de 22 pour la guerrière à 29 pour la sorcière), jamais une largeur commune : trop large, la ceinture dépasse comme des ailes ; trop étroite, elle flotte sur le ventre.
+- **Éléments centrés verticalement** : boucle, gemme, rivets, sacoche ou pagne qui reposent sur la ceinture suivent sa courbe. Au centre, ils descendent de 1.2 ; vers les hanches, de moins en moins.
+
+#### Boucles d'oreille et anneaux
+
+Un anneau est un cercle **ouvert** sur environ 80 % du tour, tracé en fuseau : épais en bas, il s'affine en pointe aux deux bords de l'ouverture. L'ouverture se pose à cheval sur le rebord de l'oreille : les deux pointes reposent sur l'oreille et l'anneau pend à l'extérieur, ce qui donne l'impression qu'il la traverse. Le même principe sert pour un anneau de nez, un maillon de chaîne ou un piercing. Seul le placement se règle au cas par cas : il suffit de demander, par exemple, « un anneau d'oreille en or sur l'elfe, ouverture vers l'arrière ».
+
 ## Exemples de demandes
 
 - « Applique **plume** aux paupières supérieures. »

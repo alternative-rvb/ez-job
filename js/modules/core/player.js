@@ -28,7 +28,8 @@ class PlayerManager {
                         outfitId: parseInt(config.outfitId) || 1,
                         hairColor: config.hairColor || (config.type === 'boy' ? '#5a2d0c' : '#8a3c08'),
                         eyeColor: config.eyeColor || (config.type === 'boy' ? 'brown' : 'amber'),
-                        skinColor: config.skinColor || 'light'
+                        skinColor: config.skinColor || 'light',
+                        ...this.cleanSkinKeys(config)
                     };
                 }
             } catch (e) {
@@ -47,6 +48,16 @@ class PlayerManager {
         };
     }
 
+    // ANCHOR Éléments de skin de trophée (espèce, coupe et tenue exclusives), conservés seulement s'ils sont renseignés
+    cleanSkinKeys(config) {
+        const keys = {};
+        const isKey = v => typeof v === 'string' && /^[a-z_]+$/.test(v);
+        if (isKey(config.species) && config.species !== 'human') keys.species = config.species;
+        if (isKey(config.styleKey)) keys.styleKey = config.styleKey;
+        if (isKey(config.outfitKey)) keys.outfitKey = config.outfitKey;
+        return keys;
+    }
+
     // Sauvegarder la configuration personnalisée de l'avatar
     setAvatarConfig(config) {
         if (!config || !['boy', 'girl'].includes(config.type)) return false;
@@ -56,7 +67,8 @@ class PlayerManager {
             outfitId: parseInt(config.outfitId) || 1,
             hairColor: config.hairColor || (config.type === 'boy' ? '#5a2d0c' : '#8a3c08'),
             eyeColor: config.eyeColor || (config.type === 'boy' ? 'brown' : 'amber'),
-            skinColor: config.skinColor || 'light'
+            skinColor: config.skinColor || 'light',
+            ...this.cleanSkinKeys(config)
         };
         this.playerAvatar = cleanConfig.type;
         localStorage.setItem('playerAvatar', cleanConfig.type);
@@ -73,6 +85,8 @@ class PlayerManager {
             const currentConfig = this.getAvatarConfig();
             if (currentConfig.type !== avatarId) {
                 currentConfig.type = avatarId;
+                // NOTE Les coupes de trophée sont propres à un genre : on revient à la coupe de base
+                delete currentConfig.styleKey;
                 if (!currentConfig.hairColor) currentConfig.hairColor = avatarId === 'boy' ? '#5a2d0c' : '#8a3c08';
                 if (!currentConfig.eyeColor) currentConfig.eyeColor = 'brown';
                 localStorage.setItem('playerAvatarConfig', JSON.stringify(currentConfig));
