@@ -748,10 +748,13 @@ export class QuestionManager {
                 break;
         }
 
-        // NOTE Tête de l'avatar : relevée et souriante si bonne réponse, baissée sinon
+        // NOTE Tête de l'avatar : relevée et souriante si bonne réponse, baissée et bouche inversée sinon, avec une bulle de BD Vrai / Faux
         const mood = type === 'success' ? 'up' : (type === 'neutral' ? null : 'down');
         const headSection = mood
-            ? `<div class="avatar-reaction avatar-reaction-${mood} mb-4" aria-hidden="true">${renderAvatarHeadSvg()}</div>`
+            ? `<div class="avatar-reaction-wrap mb-4" aria-hidden="true">
+                    <div class="avatar-reaction avatar-reaction-${mood}">${renderAvatarHeadSvg(null, mood === 'down' ? 'sad' : null)}</div>
+                    <div class="avatar-bubble avatar-bubble-${mood}">${mood === 'up' ? 'Vrai !' : 'Faux !'}</div>
+                </div>`
             : `<div class="text-7xl mb-6">${icon}</div>`;
         const nextArrow = quizState.isInfiniteTime()
             ? `<button type="button" class="feedback-next-btn mt-2 w-14 h-14 rounded-full text-white text-2xl shadow-lg active:scale-95 transition-transform" style="background:${T.gradientMain}" aria-label="Question suivante"><i class="bi bi-arrow-right"></i></button>`

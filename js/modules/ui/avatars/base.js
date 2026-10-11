@@ -132,6 +132,12 @@ const mixHex = (a, b, t) => {
     return '#' + [0, 2, 4].map(i => Math.round(c(a, i) * (1 - t) + c(b, i) * t).toString(16).padStart(2, '0')).join('');
 };
 
+// ANCHOR Bouche principale souriante ; `inverted` la retourne en bouche triste (même tracé, miroir vertical autour de y=52)
+export function getSmileMouth(mouthColor, inverted = false) {
+    const path = `<path d="M 44.33,51.61 L 45.34,52.38 L 46.33,52.99 L 47.3,53.43 L 48.23,53.73 L 49.13,53.87 L 50,53.89 L 50.87,53.87 L 51.77,53.73 L 52.7,53.43 L 53.67,52.99 L 54.66,52.38 L 55.67,51.61 Q 55.85,50.07 54.33,50.39 L 53.67,51.3 L 53,52.07 L 52.3,52.69 L 51.56,53.16 L 50.8,53.48 L 50,53.62 L 49.2,53.48 L 48.44,53.16 L 47.7,52.69 L 47,52.07 L 46.33,51.3 L 45.67,50.39 Q 44.15,50.07 44.33,51.61 Z" fill="${mouthColor}"/>`;
+    return inverted ? `<g id="mouth-sad" transform="matrix(1 0 0 -1 0 104)">${path}</g>` : path;
+}
+
 // ANCHOR Bouche fille complète (dessin de Nicolas) : lèvre supérieure en arc de Cupidon (deux moitiés), ouverture sombre en lentille, lèvre inférieure pleine
 // NOTE Tracés repris de l'export SVG retouché, avec leurs matrices ; lèvres à la couleur de bouche issue de la peau, élargies de 30 % et affinées de 22 % autour de la ligne des lèvres (50, 52.4)
 export function getFullLipsMouth(mouthColor) {
@@ -251,7 +257,7 @@ export const BOY_BASE = {
             <rect x="45" y="19" width="10" height="6" rx="1.5" fill="#ff9d00"/>
             <circle cx="50" cy="22" r="1.5" fill="#ffffff"/>` : ''}
         </g>`,
-    faceFeatures: (eye = { dark: '#542c0e', light: '#8c4e1e' }, skin = SKIN_DEFAULT, species = 'human', hairColor = '#5a2d0c') => {
+    faceFeatures: (eye = { dark: '#542c0e', light: '#8c4e1e' }, skin = SKIN_DEFAULT, species = 'human', hairColor = '#5a2d0c', styleKey = null, mood = null) => {
         // NOTE Cils et paupières : le Revenant a le blanc de l'œil noir, ils passent en noir pour rester visibles
         const lashColor = species === 'undead' ? '#0a0a0a' : hairColor;
         const mouthColor = getSkinMouthColor(skin);
@@ -304,7 +310,7 @@ export const BOY_BASE = {
             <path d="M 52.1,52.9 C 52.1,54.9 52.6,56.1 53,56.1 C 53.4,56.1 53.9,54.9 53.9,52.9 Z" fill="#fffbeb"/><ellipse cx="52.8" cy="54.3" rx="0.2" ry="0.7" fill="#ffffff" opacity="0.8"/>` : ''}` : `
             <!-- Bouche souriante basée sur la couleur de peau mais beaucoup plus foncée -->
             <!-- NOTE Trait à largeur variable profil sablier (épais aux commissures, étranglé au centre), généré depuis Q 45,51 50,56.5 55,51 -->
-            <path d="M 44.33,51.61 L 45.34,52.38 L 46.33,52.99 L 47.3,53.43 L 48.23,53.73 L 49.13,53.87 L 50,53.89 L 50.87,53.87 L 51.77,53.73 L 52.7,53.43 L 53.67,52.99 L 54.66,52.38 L 55.67,51.61 Q 55.85,50.07 54.33,50.39 L 53.67,51.3 L 53,52.07 L 52.3,52.69 L 51.56,53.16 L 50.8,53.48 L 50,53.62 L 49.2,53.48 L 48.44,53.16 L 47.7,52.69 L 47,52.07 L 46.33,51.3 L 45.67,50.39 Q 44.15,50.07 44.33,51.61 Z" fill="${mouthColor}"/>`}
+            ${getSmileMouth(mouthColor, mood === 'sad')}`}
         </g>`;
     },
     eyebrows: (color = '#5a2d0c', opacity = 0.85) => `
@@ -467,7 +473,7 @@ export const GIRL_BASE = {
             <circle cx="28" cy="22" r="3.5" fill="#ff9d00"/>
             <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>` : ''}
         </g>`,
-    faceFeatures: (eye = { dark: '#6d2e05', light: '#b45309' }, skin = SKIN_DEFAULT, species = 'human', hairColor = '#5a2d0c', styleKey = null) => {
+    faceFeatures: (eye = { dark: '#6d2e05', light: '#b45309' }, skin = SKIN_DEFAULT, species = 'human', hairColor = '#5a2d0c', styleKey = null, mood = null) => {
         const lashColor = species === 'undead' ? '#0a0a0a' : hairColor;
         const mouthColor = getSkinMouthColor(skin);
         return `
@@ -532,11 +538,11 @@ export const GIRL_BASE = {
             <path d="M 53.35,52.2 C 53.35,53.5 53.65,54.1 54.05,54.1 C 54.45,54.1 54.75,53.5 54.75,52.2 Z" fill="#fffbeb"/><ellipse cx="53.85" cy="53" rx="0.18" ry="0.5" fill="#ffffff" opacity="0.8"/>
             <path d="${fuseau('M 45,51.2 C 46.05,53.15 48.85,53.38 50,51.4', 1.29, 10)} ${fuseau('M 50,51.4 C 51.15,53.38 53.95,53.15 55,51.2', 1.29, 10)}" fill="${mouthColor}"/>` : styleKey === 'scholar_girl' ? `
             <!-- Mage Érudite : bouche fille complète, lèvres rosées dérivées de la peau (plus claires que la couleur de bouche) -->
-            ${getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.45))}` : species === 'elf' ? `
+            ${mood === 'sad' ? getSmileMouth(mouthColor, true) : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.45))}` : species === 'elf' ? `
             <!-- Elfe : bouche fille complète, lèvres rosées dérivées de la peau -->
-            ${getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.38))}` : (species === 'undead' || species === 'shadow') ? `
+            ${mood === 'sad' ? getSmileMouth(mouthColor, true) : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.38))}` : (species === 'undead' || species === 'shadow') ? `
             <!-- Nécromancienne et Sorcière Shadow : bouche fille complète (lèvres pleines) -->
-            ${getFullLipsMouth(mouthColor)}` : (species === 'shadow' || species === 'vampire') ? `
+            ${mood === 'sad' ? getSmileMouth(mouthColor, true) : getFullLipsMouth(mouthColor)}` : (species === 'shadow' || species === 'vampire') ? `
             <!-- Bouche droite, sans sourire (Ombre garçon et Vampire) : fuseau horizontal de la couleur de bouche -->
             <path d="${sablier('M 46,52.6 C 48.7,52.6 51.3,52.6 54,52.6', 1.5)}" fill="${mouthColor}"/>
             ${species === 'vampire' ? `<!-- Canines supérieures de vampire : deux crocs ivoire arrondis, sans contour, sous la lèvre -->
@@ -544,7 +550,7 @@ export const GIRL_BASE = {
             <path d="M 52.1,52.9 C 52.1,54.9 52.6,56.1 53,56.1 C 53.4,56.1 53.9,54.9 53.9,52.9 Z" fill="#fffbeb"/><ellipse cx="52.8" cy="54.3" rx="0.2" ry="0.7" fill="#ffffff" opacity="0.8"/>` : ''}` : `
             <!-- Bouche souriante basée sur la couleur de peau mais beaucoup plus foncée -->
             <!-- NOTE Trait à largeur variable profil sablier (épais aux commissures, étranglé au centre), généré depuis Q 45,51 50,56.5 55,51 -->
-            <path d="M 44.33,51.61 L 45.34,52.38 L 46.33,52.99 L 47.3,53.43 L 48.23,53.73 L 49.13,53.87 L 50,53.89 L 50.87,53.87 L 51.77,53.73 L 52.7,53.43 L 53.67,52.99 L 54.66,52.38 L 55.67,51.61 Q 55.85,50.07 54.33,50.39 L 53.67,51.3 L 53,52.07 L 52.3,52.69 L 51.56,53.16 L 50.8,53.48 L 50,53.62 L 49.2,53.48 L 48.44,53.16 L 47.7,52.69 L 47,52.07 L 46.33,51.3 L 45.67,50.39 Q 44.15,50.07 44.33,51.61 Z" fill="${mouthColor}"/>`}
+            ${getSmileMouth(mouthColor, mood === 'sad')}`}
         </g>`;
     },
     eyebrows: (color = '#8a3c08', opacity = 0.85) => `

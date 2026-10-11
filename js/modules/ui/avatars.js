@@ -80,6 +80,7 @@ export const AVATAR_SHORT_IDS = {
  * @param {string} options.eyeColor - ID ou objet de couleur des yeux
  * @param {string} options.skinColor - ID ou objet de couleur de peau
  * @param {'full'|'head'} options.mode - Vue corps complet ou portrait tête seule
+ * @param {'sad'|null} options.mood - 'sad' inverse la bouche principale (les bouches fille complètes deviennent la bouche principale inversée)
  * @param {boolean} options.layers - Export éditeur : chaque couche dans un calque nommé (Inkscape, Figma, Illustrator)
  * @returns {string} SVG complet
  */
@@ -95,7 +96,8 @@ export function buildCustomAvatarSvg({
     eyeColor = null,
     skinColor = 'light',
     mode = 'full',
-    layers = false
+    layers = false,
+    mood = null
 } = {}) {
     const isBoy = type === 'boy';
     const base = isBoy ? BOY_BASE : GIRL_BASE;
@@ -146,7 +148,7 @@ export function buildCustomAvatarSvg({
     const showBaseBand = !isNewCharacter && (isBoy ? Boolean(style.withBand) : Boolean(style.withTiara));
     // NOTE Le triangle de col orange appartient à la tenue de base : jamais sur un personnage de trophée
     const headBase = isBoy ? base.headBase(showBaseBand, effectiveSkin, species, !isNewCharacter) : base.headBase(showBaseBand, effectiveSkin, species);
-    const faceFeatures = base.faceFeatures(effectiveEye, effectiveSkin, species, effectiveHairColor, styleKey);
+    const faceFeatures = base.faceFeatures(effectiveEye, effectiveSkin, species, effectiveHairColor, styleKey, mood);
     const eyebrows = base.eyebrows ? base.eyebrows(effectiveHairColor, 0.85) : '';
 
     // NOTE Traits d'espèce qui suivent la couleur des cheveux, quelle que soit la tenue
@@ -353,23 +355,23 @@ export function renderAvatarSvg(avatarConfigOrId = null) {
 /**
  * Rend le SVG portrait (tête seule) de l'avatar du joueur (personnalisé ou par ID court)
  */
-export function renderAvatarHeadSvg(avatarConfigOrId = null) {
+export function renderAvatarHeadSvg(avatarConfigOrId = null, mood = null) {
     if (typeof avatarConfigOrId === 'object' && avatarConfigOrId !== null) {
-        return buildCustomAvatarSvg({ ...avatarConfigOrId, mode: 'head' });
+        return buildCustomAvatarSvg({ ...avatarConfigOrId, mode: 'head', mood });
     }
     if (typeof avatarConfigOrId === 'string') {
         const preset = getAvatarPresetById(avatarConfigOrId);
         if (preset) {
-            return buildCustomAvatarSvg({ ...preset, mode: 'head' });
+            return buildCustomAvatarSvg({ ...preset, mode: 'head', mood });
         }
         if (avatarConfigOrId === 'boy' || avatarConfigOrId === 'girl') {
             const saved = playerManager ? playerManager.getAvatarConfig() : null;
             if (saved && saved.type === avatarConfigOrId) {
-                return buildCustomAvatarSvg({ ...saved, mode: 'head' });
+                return buildCustomAvatarSvg({ ...saved, mode: 'head', mood });
             }
-            return buildCustomAvatarSvg({ type: avatarConfigOrId, styleId: 1, mode: 'head' });
+            return buildCustomAvatarSvg({ type: avatarConfigOrId, styleId: 1, mode: 'head', mood });
         }
     }
     const config = playerManager ? playerManager.getAvatarConfig() : { type: 'boy', styleId: 1 };
-    return buildCustomAvatarSvg({ ...config, mode: 'head' });
+    return buildCustomAvatarSvg({ ...config, mode: 'head', mood });
 }

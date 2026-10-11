@@ -186,27 +186,60 @@ export class RoadmapManager {
                 <div class="relative p-1.5 sm:p-2 md:p-3 flex-1 flex flex-col justify-center">
                     <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[190px] max-h-[260px] rounded-xl overflow-hidden shadow-inner border border-amber-800/15 skeleton-shimmer-subtle">
                         <svg viewBox="-20 -38 560 320" class="w-full h-full skeleton-svg-pulse" preserveAspectRatio="none">
-                            <!-- Arrière-plan collines et montagnes fantômes -->
-                            <path d="M-20 200 Q 120 160, 260 210 T 540 180 L 540 320 L -20 320 Z" fill="#dfcfbd" opacity="0.4"/>
-                            <path d="M220 250 L 360 80 L 460 250 Z" fill="#d5c2ae" opacity="0.5"/>
-                            <path d="M380 250 L 455 35 L 535 240 Z" fill="#ccb8a2" opacity="0.6"/>
-                            <!-- Silhouette Citadelle Sommet -->
-                            <rect x="430" y="8" width="50" height="28" rx="2" fill="#bc9f82" opacity="0.7"/>
-                            <polygon points="425,12 455,-12 485,12" fill="#bc9f82" opacity="0.8"/>
-                            <!-- Tracé courbe en S fantôme -->
-                            <path d="M 25 245 C 50 245, 70 238, 90 225 C 120 205, 140 195, 175 198 C 210 202, 235 220, 260 224 C 290 228, 315 210, 335 185 C 355 160, 365 130, 385 105 C 400 85, 420 62, 455 48" 
-                                  fill="none" stroke="#bc9f82" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 8" opacity="0.6"/>
-                            <!-- 7 Jalons Checkpoints fantômes -->
-                            <circle cx="25" cy="231" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="95" cy="208" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="160" cy="184" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="230" cy="204" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="335" cy="171" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="410" cy="74" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="455" cy="34" r="9" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <!-- Avatar fantôme au départ -->
-                            <rect x="36" y="195" width="22" height="28" rx="4" fill="#bc9f82" opacity="0.6"/>
-                            <rect x="20" y="172" width="55" height="16" rx="8" fill="#ffffff" opacity="0.8"/>
+                            <!-- Ciel : soleil fantôme -->
+                            <circle cx="62" cy="10" r="26" fill="#d9c7b0" opacity="0.45"/>
+                            <circle cx="62" cy="10" r="15" fill="#cdb79b" opacity="0.7"/>
+                            <ellipse cx="140" cy="24" rx="24" ry="9" fill="#ffffff" opacity="0.6"/>
+                            <ellipse cx="318" cy="-6" rx="28" ry="9" fill="#ffffff" opacity="0.5"/>
+                            <!-- Montagnes lointaines et montagne de la Citadelle -->
+                            <path d="M 120 180 L 196 94 Q 200 89 204 94 L 280 180 Z" fill="#d5c2ae" opacity="0.5"/>
+                            <path d="M 220 180 L 316 69.6 Q 320 64 324 69.6 L 420 180 Z" fill="#cdb9a3" opacity="0.6"/>
+                            <path d="M 250 260 L 409 71 Q 413 65 420 64 L 460 64 Q 466 65 469 72 L 550 260 Z" fill="#bfa78d" opacity="0.7"/>
+                            <path d="M 448 64 L 460 64 Q 466 65 469 72 L 550 260 L 478 260 L 470 220 L 474 180 L 463 140 L 466 104 L 455 80 Z" fill="#ab9179" opacity="0.5"/>
+                            <!-- Collines étagées -->
+                            <path d="M -40 175 Q 120 135 250 170 T 580 155 L 580 320 L -40 320 Z" fill="#dfcfbd" opacity="0.5"/>
+                            <path d="M -40 205 Q 150 155 310 195 T 580 185 L 580 320 L -40 320 Z" fill="#d5c2ae" opacity="0.55"/>
+                            <path d="M -40 235 Q 180 205 350 230 T 580 220 L 580 320 L -40 320 Z" fill="#ccb8a2" opacity="0.6"/>
+                            <!-- Lac alpin -->
+                            <path d="M 243 204 C 268 189, 336 187, 387 197 C 403 208, 392 228, 350 231.5 C 294 235.5, 253 225, 243 204 Z" fill="#c4ad94" opacity="0.7"/>
+                            <!-- Forêt : bosquets -->
+                            <circle cx="78" cy="162" r="8" fill="#bc9f82" opacity="0.55"/>
+                            <circle cx="96" cy="168" r="8" fill="#bc9f82" opacity="0.6"/>
+                            <circle cx="112" cy="172" r="8" fill="#bc9f82" opacity="0.6"/>
+                            <circle cx="150" cy="178" r="8" fill="#bc9f82" opacity="0.55"/>
+                            <circle cx="170" cy="184" r="8" fill="#bc9f82" opacity="0.6"/>
+                            <!-- Village : trois maisons et un puits -->
+                            <rect x="-12" y="190" width="22" height="16" rx="1" fill="#bc9f82" opacity="0.7"/>
+                            <polygon points="-15,191 -1,180 13,191" fill="#a98c6e" opacity="0.8"/>
+                            <rect x="6" y="212" width="26" height="18" rx="1" fill="#bc9f82" opacity="0.75"/>
+                            <polygon points="3,213 19,200 35,213" fill="#a98c6e" opacity="0.85"/>
+                            <rect x="-30" y="192" width="14" height="12" rx="1" fill="#bc9f82" opacity="0.55"/>
+                            <circle cx="84" cy="236" r="5" fill="#a98c6e" opacity="0.6"/>
+                            <!-- Porte de pierre -->
+                            <rect x="283" y="163" width="5.5" height="22" rx="1" fill="#a98c6e" opacity="0.75"/>
+                            <rect x="301.5" y="163" width="5.5" height="22" rx="1" fill="#a98c6e" opacity="0.75"/>
+                            <rect x="281" y="159" width="28" height="6.5" rx="2" fill="#bc9f82" opacity="0.8"/>
+                            <!-- Citadelle au sommet -->
+                            <rect x="418" y="14" width="14" height="38" rx="1" fill="#bc9f82" opacity="0.75"/>
+                            <rect x="448" y="14" width="14" height="38" rx="1" fill="#bc9f82" opacity="0.75"/>
+                            <rect x="426" y="26" width="28" height="26" rx="1" fill="#bc9f82" opacity="0.8"/>
+                            <polygon points="415,16 425,-6 435,16" fill="#a98c6e" opacity="0.85"/>
+                            <polygon points="445,16 455,-6 465,16" fill="#a98c6e" opacity="0.85"/>
+                            <polygon points="428,28 440,6 452,28" fill="#a98c6e" opacity="0.85"/>
+                            <!-- Sentier en lacets fantôme -->
+                            <path d="M 45 222 C 80 222, 100 205, 130 205 C 160 205, 180 206, 210 205 C 240 202, 265 188, 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64"
+                                  fill="none" stroke="#bc9f82" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 8" opacity="0.7"/>
+                            <!-- 7 jalons fantômes -->
+                            <circle cx="50" cy="222" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="120" cy="205" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="205" cy="205" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="290" cy="186" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="395" cy="168" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="430" cy="112" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="440" cy="66" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <!-- Pion du joueur et bulle de dialogue -->
+                            <rect x="38" y="192" width="22" height="28" rx="6" fill="#bc9f82" opacity="0.7"/>
+                            <rect x="18" y="168" width="62" height="18" rx="9" fill="#ffffff" opacity="0.85"/>
                         </svg>
                     </div>
                 </div>
