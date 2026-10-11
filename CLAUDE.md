@@ -71,14 +71,18 @@ The application follows a clean modular architecture with separation of concerns
 
 ```plaintext
 job-ez/
-├── index.html                # Main HTML (605 lines, simplifié)
+├── index.html                # Main HTML
+├── test-avatars.html         # Laboratoire de test des avatars SVG (dev, exclu du déploiement)
+├── privacy.html / mentions-legales.html
 ├── sw.js                     # Service Worker PWA (offline support)
+├── api.py                    # Générateur de js/data/index.json
 ├── styles/
-│   ├── main.css             # CSS externalisé (animations, trophées, modales)
+│   ├── main.css             # CSS externalisé + variables de thème (:root)
 │   └── time-selector.css    # CSS pour le sélecteur de temps
 ├── scripts/
 │   ├── validate-quiz.js     # Script de validation des quiz
 │   └── update-version.js    # Script automatique de mise à jour de version
+├── resumes/                  # Pages HTML de résumé (summaryUrl des quiz)
 ├── js/
 │   ├── app.js                    # Main entry point, bootstraps QuizApp
 │   ├── modules/
@@ -87,10 +91,16 @@ job-ez/
 │   │   │   ├── state.js         # Centralized state management (QuizState class)
 │   │   │   ├── player.js        # Player data & localStorage persistence
 │   │   │   ├── version.js       # Version management & cache-busting
+│   │   │   ├── theme.js         # Lecture des variables CSS, objet T
+│   │   │   ├── share.js         # Partage des résultats (Web Share API + modale de repli)
+│   │   │   ├── subject-icons.js # Icônes SVG inline des matières
 │   │   │   ├── category-colors.js # Category color mappings
 │   │   │   └── utils.js         # Shared utilities (confetti, JSON loading, array shuffle)
 │   │   ├── ui/
-│   │   │   └── dom.js           # DOM manipulation (DOMManager class)
+│   │   │   ├── dom.js           # DOM manipulation (DOMManager class)
+│   │   │   ├── avatars.js       # Génération des avatars SVG
+│   │   │   ├── avatar-modal.js  # Atelier de personnalisation d'avatar
+│   │   │   └── roadmap.js       # Roadmap de progression (points)
 │   │   └── managers/            # Business logic managers
 │   │       ├── quiz-selector.js  # Quiz selection and filtering
 │   │       ├── question-manager.js # Question display and timer logic
@@ -103,23 +113,17 @@ job-ez/
 │       ├── trophies.json        # Trophy definitions
 │       └── *.json               # Individual quiz files
 ├── images/
-│   ├── quiz/                    # Quiz-specific images (11 dossiers)
-│   │   ├── animaux/
-│   │   ├── jules-ferry-ecole/
-│   │   ├── la-terre/
-│   │   ├── le-petit-nicolas/
-│   │   ├── le-petrole-et-l-energie/
-│   │   ├── spongebob/
-│   │   ├── systeme-solaire/
-│   │   ├── unites-mesure/
-│   │   └── white-tiger/
+│   ├── quiz/                    # Quiz-specific images (un dossier par quiz)
 │   └── trophies/
 │       └── characters/         # Centralized trophy character images
 │           ├── spongebob/      # SpongeBob characters (10 trophées)
 │           ├── les-sisters/    # Les Sisters characters (2 trophées)
 │           └── spy-x-family/   # Spy × Family characters (23 trophées)
-└── .doc/                        # Internal documentation (optional)
-    └── quiz-format-specification.md
+└── .doc/                        # Documentation interne (charte, specs, sources des logos)
+    ├── charte-graphique.md
+    ├── quiz-format-specification.md
+    ├── guide-technique-avatars-svg.md
+    └── logos/CamiLudik/         # Fichiers sources des logos (non servis)
 ```
 
 ### Key Design Patterns
@@ -782,7 +786,7 @@ La PWA utilise plusieurs niveaux de cache qui peuvent empêcher de voir les modi
     - Retourne le cache immédiatement pour un chargement ultra-rapide
     - Met à jour le cache en arrière-plan
     - Meilleur compromis vitesse/fraîcheur pour la liste des quiz
-  - Version actuelle : `job-ez-v1.0.2`
+  - Version actuelle : alignée sur `package.json` (voir `CACHE_VERSION` dans `sw.js`)
 
 - **localStorage** : Données utilisateur (nom du joueur, historique, résultats)
   - Clés : `playerName`, `playerResults`

@@ -13,17 +13,12 @@ import { shareQuizResult } from '../core/share.js';
 
 export class ResultsManager {
     constructor(onRestart, onBackToHome, onShowTrophies) {
-        console.log('📦 ResultsManager constructor called');
-        console.log('onRestart:', onRestart);
-        console.log('onBackToHome:', onBackToHome);
         this.onRestart = onRestart;
         this.onBackToHome = onBackToHome;
         this.onShowTrophies = onShowTrophies;
     }
 
     show() {
-        console.log('🎯 ResultsManager.show() called');
-        console.log('Quiz state:', quizState);
         
         // Calculer le nombre de questions qui comptent pour le score
         // Inclut les QCM et les questions à saisie de texte
@@ -35,7 +30,6 @@ export class ResultsManager {
         const score = quizState.score || 0;
         const percentage = totalScorable > 0 ? Math.round((score / totalScorable) * 100) : 0;
         
-        console.log(`📊 Score: ${score}/${totalScorable} = ${percentage}%`);
 
         // Calculer et ajouter les points de récompense (en tenant compte du temps limite choisi)
         const rewardsResult = rewardsManager.addPoints(percentage, quizState.currentQuiz?.title, quizState.currentTimeLimit);
@@ -169,11 +163,9 @@ export class ResultsManager {
         `;
         
         domManager.setContent('results-container', resultsHTML);
-        console.log('✅ Results HTML set in DOM');
         
         // Afficher le conteneur de résultats et masquer les autres
         domManager.showResults();
-        console.log('✅ Results container shown via domManager');
         
         // Lancer confetti si 100%
         if (percentage === 100) {
@@ -183,25 +175,16 @@ export class ResultsManager {
         // Ajouter les écouteurs d'événements après un court délai pour assurer que le DOM est mis à jour
         const self = this; // Capturer 'this' pour éviter les problèmes de contexte
         setTimeout(() => {
-            console.log('⏱️ Timeout callback - attaching event listeners');
-            console.log('self:', self);
-            console.log('self.onRestart:', self.onRestart);
-            console.log('self.onBackToHome:', self.onBackToHome);
             
             const btnShare = document.getElementById('btnShare');
             const btnRetry = document.getElementById('btnRetry');
             const btnHome = document.getElementById('btnHome');
             const btnShowTrophies = document.getElementById('btnShowTrophies');
             
-            console.log('btnShare:', btnShare);
-            console.log('btnRetry:', btnRetry);
-            console.log('btnHome:', btnHome);
-            console.log('btnShowTrophies:', btnShowTrophies);
             
             if (btnShare) {
                 btnShare.addEventListener('click', async (e) => {
                     e.preventDefault();
-                    console.log('📤 Share clicked');
                     await shareQuizResult({
                         title: quizTitle,
                         score: score,
@@ -215,10 +198,7 @@ export class ResultsManager {
             if (btnRetry) {
                 btnRetry.addEventListener('click', (e) => {
                     e.preventDefault();
-                    console.log('🔄 Retry clicked');
-                    console.log('self.onRestart:', self.onRestart);
                     if (self.onRestart) {
-                        console.log('✅ Calling onRestart');
                         self.onRestart();
                     } else {
                         console.error('❌ onRestart not defined');
@@ -231,10 +211,7 @@ export class ResultsManager {
             if (btnHome) {
                 btnHome.addEventListener('click', (e) => {
                     e.preventDefault();
-                    console.log('🏠 Home clicked');
-                    console.log('self.onBackToHome:', self.onBackToHome);
                     if (self.onBackToHome) {
-                        console.log('✅ Calling onBackToHome');
                         self.onBackToHome();
                     } else {
                         console.error('❌ onBackToHome not defined');
@@ -247,9 +224,7 @@ export class ResultsManager {
             if (btnShowTrophies) {
                 btnShowTrophies.addEventListener('click', (e) => {
                     e.preventDefault();
-                    console.log('🏆 Show Trophies clicked');
                     if (self.onShowTrophies) {
-                        console.log('✅ Calling onShowTrophies');
                         self.onShowTrophies();
                     } else {
                         console.error('❌ onShowTrophies not defined');

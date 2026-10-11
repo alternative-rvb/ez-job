@@ -8,8 +8,7 @@
     "generate-index": "python3 api.py generate-index",
     "bump-version": "npm version patch --no-git-tag-version && node -e \"const fs=require('fs');const v=require('./package.json').version;fs.writeFileSync('.version',v);\"",
     "update-version": "node scripts/update-version.js",
-    "validate": "node scripts/validate-quiz.js",
-    "validate-all": "node scripts/validate-quiz.js"
+    "validate": "node scripts/validate-quiz.js"
   },
   "keywords": [
     "quiz",

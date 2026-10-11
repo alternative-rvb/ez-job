@@ -30,8 +30,6 @@ class QuizApp {
     }
 
     async init() {
-        console.log('Quiz App loaded');
-
         // Initialiser les couleurs des catégories
         await initializeCategoryColors();
 
@@ -43,13 +41,11 @@ class QuizApp {
 
         // Vérifier si le joueur a déjà un nom
         if (playerManager.playerName) {
-            console.log(`👤 Bienvenue ${playerManager.playerName}`);
             this.showQuizSelection();
         } else {
             this.showPlayerNameScreen();
         }
 
-        console.log('Quiz App initialisée');
     }
 
     showPlayerNameScreen() {
@@ -519,7 +515,6 @@ class QuizApp {
             
             // Récupérer le dernier quiz (premier de la liste, supposé être triée par date)
             const latestQuiz = this.availableQuizzes[0];
-            console.log('🚀 Starting latest quiz:', latestQuiz.id);
             
             // Démarrer le quiz
             this.startQuiz(latestQuiz);
@@ -529,7 +524,6 @@ class QuizApp {
     }
 
     restartQuiz() {
-        console.log('🔄 App.restartQuiz() called');
         if (quizState.currentQuiz) {
             // Redémarrer avec le même temps que le dernier essai
             this.startQuiz(quizState.currentQuiz, quizState.currentTimeLimit);
@@ -537,7 +531,6 @@ class QuizApp {
     }
 
     async backToHome() {
-        console.log('🏠 App.backToHome() called');
         quizState.reset();
         
         // Afficher la sélection des quiz

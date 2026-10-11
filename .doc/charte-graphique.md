@@ -14,7 +14,7 @@
 | Favicon | `images/camiludik-favicon.svg` | Caméléon seul (sans texte) |
 | Favicon PNG | `images/camiludik-favicon.png` | Même motif en PNG |
 | Nom | - | **CamiLudik** |
-| Sources logos | `images/logos/CamiLudik/` | Originaux SVG et PNG (couleur + NB) |
+| Sources logos | `.doc/logos/CamiLudik/` | Originaux SVG et PNG (couleur + NB) |
 
 ## 2. Palette de couleurs
 

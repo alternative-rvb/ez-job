@@ -61,7 +61,6 @@ class PlayerManager {
         this.playerAvatar = cleanConfig.type;
         localStorage.setItem('playerAvatar', cleanConfig.type);
         localStorage.setItem('playerAvatarConfig', JSON.stringify(cleanConfig));
-        console.log('✨ Avatar personnalisé sauvegardé:', cleanConfig);
         return true;
     }
 
@@ -78,7 +77,6 @@ class PlayerManager {
                 currentConfig.eyeColor = avatarId === 'boy' ? 'brown' : 'amber';
                 localStorage.setItem('playerAvatarConfig', JSON.stringify(currentConfig));
             }
-            console.log(`🎭 Avatar sélectionné: ${avatarId}`);
             return true;
         }
         return false;
@@ -98,7 +96,6 @@ class PlayerManager {
         }
         this.playerName = cleanName;
         localStorage.setItem('playerName', cleanName);
-        console.log(`👤 Joueur: ${cleanName}`);
         return true;
     }
 
@@ -113,7 +110,6 @@ class PlayerManager {
         if ([5, 10, 15, 20].includes(timeLimit)) {
             this.defaultTimeLimit = timeLimit;
             localStorage.setItem('defaultTimeLimit', timeLimit.toString());
-            console.log(`⏱️ Temps par défaut: ${timeLimit}s`);
         }
     }
 
@@ -142,7 +138,6 @@ class PlayerManager {
 
         this.results.push(result);
         localStorage.setItem('playerResults', JSON.stringify(this.results));
-        console.log(`📊 Résultat sauvegardé:`, result);
         return result;
     }
 
@@ -186,7 +181,6 @@ class PlayerManager {
         localStorage.removeItem('playerResults');
         this.playerName = null;
         this.results = [];
-        console.log('🗑️  Données du joueur réinitialisées');
     }
 
     // Formater une date

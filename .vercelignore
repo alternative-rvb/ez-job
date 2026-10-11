@@ -8,3 +8,7 @@ node_modules/
 .vercel/
 *.log
 .DS_Store
+test-avatars.html
+.doc/
+.tmp/
+.claude/

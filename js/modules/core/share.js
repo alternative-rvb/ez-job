@@ -171,12 +171,10 @@ export async function shareQuizResult({ title, score, totalQuestions, percentage
                 text: `${shareText}\n`,
                 url: shareUrl
             });
-            console.log('✅ Partage natif réussi');
             return true;
         } catch (error) {
             // Si l'utilisateur a annulé le partage (AbortError), ne pas afficher d'erreur
             if (error.name === 'AbortError') {
-                console.log('ℹ️ Partage annulé par l\'utilisateur');
                 return false;
             }
             console.warn('⚠️ Échec du partage natif, bascule vers la modale de repli:', error);

@@ -52,7 +52,6 @@ export async function initializeCategoryColors() {
       const colorIndex = index % COLOR_PALETTE.length;
       categoryColorMap[category] = COLOR_PALETTE[colorIndex];
     });
-    console.log('✅ Couleurs des catégories initialisées');
     return categoryColorMap;
   }
   return null;

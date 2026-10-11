@@ -22,33 +22,22 @@ class AppConfig {
     // Méthode pour mettre à jour les catégories disponibles
     setAvailableCategories(categories) {
         this.availableCategories = categories || [];
-        console.log('📦 Catégories disponibles mises à jour:', this.availableCategories);
     }
 
     // Méthode pour mettre à jour les niveaux scolaires disponibles
     setAvailableLevels(levels) {
         this.availableLevels = levels || [];
-        console.log('🎓 Niveaux disponibles mis à jour:', this.availableLevels);
     }
 
     // Méthode pour mettre à jour les matières disponibles
     setAvailableSubjects(subjects) {
         this.availableSubjects = subjects || [];
-        console.log('📚 Matières disponibles mises à jour:', this.availableSubjects);
     }
 
     // Méthode pour mettre à jour le filtre de catégories (utile pour la version privée)
     setCategoryFilter(categories) {
         this.categoryFilter = categories;
-        console.log('🔍 Filtre de catégories mis à jour:', this.categoryFilter);
     }
 }
 
 export const CONFIG = new AppConfig();
-
-console.log('🔍 CONFIG DEBUG:', {
-    pathname: window.location.pathname,
-    isPrivate: CONFIG.isPrivate,
-    categoryFilter: CONFIG.categoryFilter,
-    showResponse: CONFIG.showResponse
-});

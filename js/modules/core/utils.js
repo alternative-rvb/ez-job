@@ -29,47 +29,6 @@ export function shuffleArray(array) {
 }
 
 /**
- * Charge les questions depuis un fichier JSON
- * @param {string} url - URL du fichier JSON
- * @returns {Promise<Array>} - Promesse contenant les questions
- */
-export async function loadQuestions(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Erreur de chargement: ${response.status}`);
-        }
-        const questions = await response.json();
-        
-        // Mélanger les réponses pour chaque question à choix multiples
-        return questions.map(question => {
-            if (question.choices && question.choices.length > 0) {
-                // Créer un tableau avec les réponses et leurs indices originaux
-                const choicesWithIndex = question.choices.map((choice, index) => ({
-                    choice,
-                    originalIndex: index,
-                    isCorrect: choice === question.correctAnswer
-                }));
-                
-                // Mélanger les réponses
-                const shuffledChoices = shuffleArray(choicesWithIndex);
-                
-                // Reconstruire la question avec les réponses mélangées
-                return {
-                    ...question,
-                    choices: shuffledChoices.map(item => item.choice),
-                    correctAnswer: question.correctAnswer // La bonne réponse reste la même
-                };
-            }
-            return question; // Retourner la question inchangée si pas de choix multiples
-        });
-    } catch (error) {
-        console.error('Erreur lors du chargement des questions:', error);
-        throw error;
-    }
-}
-
-/**
  * Charge les données d'un quiz (configuration + questions) depuis un fichier JSON
  * @param {string} url - URL du fichier JSON
  * @returns {Promise<Object>} - Promesse contenant {config, questions}
@@ -159,7 +118,6 @@ export async function loadAvailableQuizzes() {
             CONFIG.setAvailableCategories(categories);
             CONFIG.setAvailableLevels(indexData.levels || []);
             CONFIG.setAvailableSubjects(indexData.subjects || []);
-            console.log(`📋 Quiz chargés depuis l'index (${quizIds.length} quiz disponibles)`);
         } else {
             throw new Error('Fichier d\'index non trouvé');
         }
@@ -200,6 +158,5 @@ export async function loadAvailableQuizzes() {
         return dateB - dateA; // Décroissant (plus récents en premier)
     });
 
-    console.log(`✅ ${availableQuizzes.length} quiz chargés avec succès`);
     return availableQuizzes;
 }
