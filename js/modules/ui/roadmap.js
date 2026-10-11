@@ -351,6 +351,29 @@ export class RoadmapManager {
                             </g>
 
                             <!-- Montagnes en arrière-plan harmonieuses et étagées -->
+                            <!-- Chaîne de montagnes très lointaine (teintes délavées proches du ciel et groupe semi-transparent pour la perspective atmosphérique) -->
+                            <!-- NOTE: même construction que les chaînes de devant, base à y=190 masquée par les collines -->
+                            <g id="decor-far-mountains" opacity="0.6">
+                                <!-- NOTE: les deux sommets de gauche, encore plus lointains, sont davantage estompés -->
+                                <g opacity="0.55">
+                                    <path d="M -95 190 L -14 122 Q -10 117 -6 122 L 75 190 Z" fill="#d3e7f1"/>
+                                    <path d="M -10 118 Q -8 118 -6 122 L 75 190 L 5.3 190 L -1.5 168.4 L 3.6 146.8 L -4 132.4 Z" fill="#c6deeb"/>
+                                    <path d="M -27 132.4 L -14 122 Q -10 117 -6 122 L 7 132.4 L 1.3 128.4 L -4.3 135.4 L -10 128.4 L -15.7 135.4 L -21.3 128.4 Z" fill="#edf6fa"/>
+                                    <path d="M 15 190 L 91 108 Q 95 103 99 108 L 175 190 Z" fill="#d3e7f1"/>
+                                    <path d="M 95 104 Q 97 104 99 108 L 175 190 L 109.4 190 L 103 164.2 L 107.8 138.4 L 100.6 121.2 Z" fill="#c6deeb"/>
+                                    <path d="M 79 121.2 L 91 108 Q 95 103 99 108 L 111 121.2 L 105.7 117.2 L 100.3 124.2 L 95 117.2 L 89.7 124.2 L 84.3 117.2 Z" fill="#edf6fa"/>
+                                </g>
+                                <path d="M 190 190 L 261 100 Q 265 95 269 100 L 340 190 Z" fill="#d3e7f1"/>
+                                <path d="M 265 96 Q 267 96 269 100 L 340 190 L 278.5 190 L 272.5 161.8 L 277 133.6 L 270.2 114.8 Z" fill="#c6deeb"/>
+                                <path d="M 250 114.8 L 261 100 Q 265 95 269 100 L 280 114.8 L 275 110.8 L 270 117.8 L 265 110.8 L 260 117.8 L 255 110.8 Z" fill="#edf6fa"/>
+                                <path d="M 300 190 L 381 86 Q 385 81 389 86 L 470 190 Z" fill="#d3e7f1"/>
+                                <path d="M 385 82 Q 387 82 389 86 L 470 190 L 400.3 190 L 393.5 157.6 L 398.6 125.2 L 390.9 103.6 Z" fill="#c6deeb"/>
+                                <path d="M 368 103.6 L 381 86 Q 385 81 389 86 L 402 103.6 L 396.3 99.6 L 390.7 106.6 L 385 99.6 L 379.3 106.6 L 373.7 99.6 Z" fill="#edf6fa"/>
+                                <path d="M 450 190 L 526 102 Q 530 97 534 102 L 610 190 Z" fill="#d3e7f1"/>
+                                <path d="M 530 98 Q 532 98 534 102 L 610 190 L 544.4 190 L 538 162.4 L 542.8 134.8 L 535.6 116.4 Z" fill="#c6deeb"/>
+                                <path d="M 514 116.4 L 526 102 Q 530 97 534 102 L 546 116.4 L 540.7 112.4 L 535.3 119.4 L 530 112.4 L 524.7 119.4 L 519.3 112.4 Z" fill="#edf6fa"/>
+                            </g>
+
                             <!-- Chaîne de montagnes lointaines (Gris-bleu pastel avec névés nets) -->
                             <!-- NOTE: même construction que la montagne de la Citadelle (sommet arrondi, arête ombrée, neige dentelée), en teintes plus claires pour la profondeur -->
                             <path d="M 120 180 L 196 94 Q 200 89 204 94 L 280 180 Z" fill="#b3d0e4"/>
