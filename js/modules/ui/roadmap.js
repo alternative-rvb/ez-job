@@ -323,11 +323,16 @@ export class RoadmapManager {
 
                             <!-- Montagnes en arrière-plan harmonieuses et étagées -->
                             <!-- Chaîne de montagnes lointaines (Gris-bleu pastel avec névés nets) -->
-                            <polygon points="120,180 200,90 280,180" fill="#a8c5dd" opacity="0.6"/>
-                            <polygon points="185,105 200,90 215,105" fill="#ffffff" opacity="0.85"/>
-                            
-                            <polygon points="220,180 320,65 420,180" fill="#93b6d3" opacity="0.75"/>
-                            <polygon points="300,90 320,65 340,90" fill="#ffffff" opacity="0.95"/>
+                            <!-- NOTE: même construction que la montagne de la Citadelle (sommet arrondi, arête ombrée, neige dentelée), en teintes plus claires pour la profondeur -->
+                            <path d="M 120 180 L 196 94 Q 200 89 204 94 L 280 180 Z" fill="#b3d0e4"/>
+                            <path d="M 200 90 Q 202 90 204 94 L 280 180 L 214 180 L 208 156 L 211 130 L 204 108 Z" fill="#9dbdd6"/>
+                            <path d="M 180.4 112 L 196 94 Q 200 89 204 94 L 219.6 112 L 214 108 L 209 116 L 204 108 L 198 115 L 192 107 L 186 113 Z" fill="#f7fbfd"/>
+                            <path d="M 200 90 Q 202 90 204 94 L 219.6 112 L 214 108 L 209 116 L 204 108 Z" fill="#dde9f2"/>
+
+                            <path d="M 220 180 L 316 69.6 Q 320 64 324 69.6 L 420 180 Z" fill="#9dbdd8"/>
+                            <path d="M 320 65 Q 322 65 324 69.6 L 420 180 L 340 180 L 332 150 L 336 118 L 327 92 Z" fill="#83a6c4"/>
+                            <path d="M 293.9 95 L 316 69.6 Q 320 64 324 69.6 L 346.1 95 L 340 91 L 334 100 L 327 92 L 320 99 L 313 90 L 306 98 L 300 91 Z" fill="#ffffff" opacity="0.95"/>
+                            <path d="M 320 65 Q 322 65 324 69.6 L 346.1 95 L 340 91 L 334 100 L 327 92 Z" fill="#dbe7f0" opacity="0.95"/>
                             
                             <!-- Montagne majestueuse de la Citadelle (Pente naturelle continue sans rebord & névé sommital) -->
                             <path d="M 250 260 L 409 71 Q 413 65 420 64 L 460 64 Q 466 65 469 72 L 550 260 Z" fill="#7599b5"/>
