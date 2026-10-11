@@ -80,7 +80,7 @@ export const AVATAR_SHORT_IDS = {
  * @param {string} options.eyeColor - ID ou objet de couleur des yeux
  * @param {string} options.skinColor - ID ou objet de couleur de peau
  * @param {'full'|'head'} options.mode - Vue corps complet ou portrait tête seule
- * @param {'sad'|null} options.mood - 'sad' inverse la bouche principale (les bouches fille complètes deviennent la bouche principale inversée)
+ * @param {'happy'|'sad'|null} options.mood - force la bouche principale pour tous les personnages : 'happy' sourit, 'sad' la retourne ; null garde la bouche propre à chaque personnage
  * @param {boolean} options.layers - Export éditeur : chaque couche dans un calque nommé (Inkscape, Figma, Illustrator)
  * @returns {string} SVG complet
  */

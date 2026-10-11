@@ -287,13 +287,13 @@ export const BOY_BASE = {
 
             ${species === 'cat' ? '<path d="M 48.3,46.8 L 51.7,46.8 Q 50,49 50,49 Q 50,49 48.3,46.8 Z" fill="#f472b6"/>' : `<polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>`}
 
-            ${mood === 'sad' && species !== 'orc' ? getSmileMouth(mouthColor, true) : species === 'orc' ? `
+            ${mood && species !== 'orc' ? getSmileMouth(mouthColor, mood === 'sad') : species === 'orc' ? `
             <!-- Peintures de guerre rouges tribales sous les yeux -->
             <polygon points="29,45 38,47 37,49 28,47" fill="#b91c1c" opacity="0.85"/>
             <polygon points="71,45 62,47 63,49 72,47" fill="#b91c1c" opacity="0.85"/>
             <!-- Bouche orc droite et plus large basée sur la couleur de peau mais beaucoup plus foncée -->
             <!-- NOTE Trait à largeur variable profil sablier, généré depuis la droite 41,52 vers 59,52 -->
-            ${mood === 'sad' ? getSmileMouth(mouthColor, true) : `
+            ${mood ? getSmileMouth(mouthColor, mood === 'sad') : `
             <path d="${sablier('M 41,52 C 47,52 53,52 59,52', 2.2)}" fill="${mouthColor}"/>
             <path d="M 40.5,53.5 L 41.5,52 L 58.5,52 L 59.5,53.5" stroke="${mouthColor}" stroke-width="1.6" fill="none" stroke-linecap="round"/>
             <!-- Crocs inférieurs orc : écartés aux canines, légèrement plus petits et avec pointes arrondies SANS contour -->
@@ -522,13 +522,13 @@ export const GIRL_BASE = {
 
             ${species === 'cat' ? '<path d="M 48.3,46.8 L 51.7,46.8 Q 50,49 50,49 Q 50,49 48.3,46.8 Z" fill="#f472b6"/>' : `<polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>`}
 
-            ${mood === 'sad' && species !== 'orc' ? getSmileMouth(mouthColor, true) : species === 'orc' ? `
+            ${mood && species !== 'orc' ? getSmileMouth(mouthColor, mood === 'sad') : species === 'orc' ? `
             <!-- Peintures de guerre rouges tribales sous les yeux -->
             <polygon points="29,45 38,47 37,49 28,47" fill="#b91c1c" opacity="0.85"/>
             <polygon points="71,45 62,47 63,49 72,47" fill="#b91c1c" opacity="0.85"/>
             <!-- Bouche orc droite et plus large basée sur la couleur de peau mais beaucoup plus foncée -->
             <!-- NOTE Trait à largeur variable profil sablier, généré depuis la droite 41,52 vers 59,52 -->
-            ${mood === 'sad' ? getSmileMouth(mouthColor, true) : `
+            ${mood ? getSmileMouth(mouthColor, mood === 'sad') : `
             <path d="${sablier('M 41,52 C 47,52 53,52 59,52', 2.2)}" fill="${mouthColor}"/>
             <path d="M 40.5,53.5 L 41.5,52 L 58.5,52 L 59.5,53.5" stroke="${mouthColor}" stroke-width="1.6" fill="none" stroke-linecap="round"/>
             <!-- Crocs inférieurs orc : écartés aux canines, légèrement plus petits et avec pointes arrondies SANS contour -->
@@ -540,11 +540,11 @@ export const GIRL_BASE = {
             <path d="M 53.35,52.2 C 53.35,53.5 53.65,54.1 54.05,54.1 C 54.45,54.1 54.75,53.5 54.75,52.2 Z" fill="#fffbeb"/><ellipse cx="53.85" cy="53" rx="0.18" ry="0.5" fill="#ffffff" opacity="0.8"/>
             <path d="${fuseau('M 45,51.2 C 46.05,53.15 48.85,53.38 50,51.4', 1.29, 10)} ${fuseau('M 50,51.4 C 51.15,53.38 53.95,53.15 55,51.2', 1.29, 10)}" fill="${mouthColor}"/>` : styleKey === 'scholar_girl' ? `
             <!-- Mage Érudite : bouche fille complète, lèvres rosées dérivées de la peau (plus claires que la couleur de bouche) -->
-            ${mood === 'sad' ? getSmileMouth(mouthColor, true) : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.45))}` : species === 'elf' ? `
+            ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.45))}` : species === 'elf' ? `
             <!-- Elfe : bouche fille complète, lèvres rosées dérivées de la peau -->
-            ${mood === 'sad' ? getSmileMouth(mouthColor, true) : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.38))}` : (species === 'undead' || species === 'shadow') ? `
+            ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.38))}` : (species === 'undead' || species === 'shadow') ? `
             <!-- Nécromancienne et Sorcière Shadow : bouche fille complète (lèvres pleines) -->
-            ${mood === 'sad' ? getSmileMouth(mouthColor, true) : getFullLipsMouth(mouthColor)}` : (species === 'shadow' || species === 'vampire') ? `
+            ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mouthColor)}` : (species === 'shadow' || species === 'vampire') ? `
             <!-- Bouche droite, sans sourire (Ombre garçon et Vampire) : fuseau horizontal de la couleur de bouche -->
             <path d="${sablier('M 46,52.6 C 48.7,52.6 51.3,52.6 54,52.6', 1.5)}" fill="${mouthColor}"/>
             ${species === 'vampire' ? `<!-- Canines supérieures de vampire : deux crocs ivoire arrondis, sans contour, sous la lèvre -->

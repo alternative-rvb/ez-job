@@ -748,11 +748,11 @@ export class QuestionManager {
                 break;
         }
 
-        // NOTE Tête de l'avatar : relevée et souriante si bonne réponse, baissée et bouche inversée sinon, avec une bulle de BD Vrai / Faux
+        // NOTE Tête de l'avatar : relevée et sourire forcé si bonne réponse, baissée et bouche inversée sinon, avec une bulle de BD Vrai / Faux
         const mood = type === 'success' ? 'up' : (type === 'neutral' ? null : 'down');
         const headSection = mood
             ? `<div class="avatar-reaction-wrap mb-4" aria-hidden="true">
-                    <div class="avatar-reaction avatar-reaction-${mood}">${renderAvatarHeadSvg(null, mood === 'down' ? 'sad' : null)}</div>
+                    <div class="avatar-reaction avatar-reaction-${mood}">${renderAvatarHeadSvg(null, mood === 'down' ? 'sad' : 'happy')}</div>
                     <div class="avatar-bubble avatar-bubble-${mood}">${mood === 'up' ? 'Vrai !' : 'Faux !'}</div>
                 </div>`
             : `<div class="text-7xl mb-6">${icon}</div>`;
