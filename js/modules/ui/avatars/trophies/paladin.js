@@ -191,13 +191,8 @@ export const PALADIN_STYLES = {
         getHairBack: (color) => `
             <g id="hair-back-paladin-girl">
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <!-- Chevelure longue en fuseau, lobes arrondis -->
-                <path d="M 16,36 C 10,22 14,8 24,0 C 34,-6 66,-6 76,0 C 86,8 90,22 84,36 C 90,50 89,64 84,74 C 79,70 77,63 75,56 C 71,68 63,82 50,84 C 37,82 29,68 25,56 C 23,63 21,70 16,74 C 11,64 10,50 16,36 Z" fill="${color}"/>
-                <!-- Mèches d'épaule en blocs elliptiques -->
-                <path d="M 22,42 C 16,52 17,66 23,78 C 27,72 28,62 27,52 Z" fill="${color}"/>
-                <path d="M 78,42 C 84,52 83,66 77,78 C 73,72 72,62 73,52 Z" fill="${color}"/>
-                <path d="M 40,52 C 38,64 42,76 47,86 C 49,76 48,64 45,54 Z" fill="${color}" opacity="0.9"/>
-                <path d="M 60,52 C 62,64 58,76 53,86 C 51,76 52,64 55,54 Z" fill="${color}" opacity="0.9"/>
+                <!-- Chevelure longue et droite : côtés verticaux jusqu'aux omoplates, bas presque plat aux coins arrondis -->
+                <path d="M 16,36 C 10,22 14,8 24,0 C 34,-6 66,-6 76,0 C 86,8 90,22 84,36 L 83,78 C 83,82.5 79,85 74,85 L 26,85 C 21,85 17,82.5 17,78 Z" fill="${color}"/>
             </g>`,
         getHairFront: (color) => `
             <g id="hair-front-paladin-girl">

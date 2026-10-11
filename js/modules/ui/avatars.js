@@ -167,11 +167,12 @@ export function buildCustomAvatarSvg({
         ['sourcils', 'Sourcils', eyebrows],
         ['accessoire-tete', 'Accessoire de tête', renderPart(outfit.headAccessory, effectiveHairColor, type)]
     ];
+    // NOTE Les cheveux arrière sont au fond, derrière la cape : une cape recouvre les mèches qui retombent dans le dos
     const fullLayers = [
+        headLayers[0],
         ['equipement-dos', 'Équipement dos (cape)', renderPart(outfit.backEquipment)],
         ['queue-chat', 'Queue de chat', catTail],
         ['ombre-sol', 'Ombre au sol', base.shadow],
-        headLayers[0],
         ['jambes', 'Jambes', renderPart(outfit.legs)],
         ['corps', 'Corps (tenue)', renderPart(outfit.body)],
         ['ceinture', 'Ceinture', renderPart(outfit.belt)],
