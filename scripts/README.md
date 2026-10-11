@@ -4,6 +4,17 @@ Ce dossier contient les scripts utilitaires pour le développement de Job-EZ.
 
 ## Scripts disponibles
 
+### Outils avatars (`avatar-*.mjs`)
+
+Scripts Node (sans dépendance, `rsvg-convert` requis pour l'aperçu) pour travailler sur les avatars SVG. Détail dans `.claude/skills/avatars-svg/SKILL.md`.
+
+| Script | Rôle |
+| --- | --- |
+| `avatar-preview.mjs <elf\|orc\|paladin\|cat\|shadow\|base>` | Planche PNG garçon et fille, corps et portrait. Options : `--zoom visage\|mains\|ceinture\|queue\|x,y,l,h`, `--teintes`, `--un fille:portrait`, `--taille px`, `--style n --outfit n`, `--sortie f.png`, `--svg` |
+| `avatar-check.mjs` (`npm run avatars:check`) | Compare le code au dernier commit : éléments perdus, rendu cassé (`undefined`, `NaN`), `--geometrie` pour l'écart |
+| `avatar-snapshot.mjs <sortie.json>` | Instantané des 308 avatars (bases, tenues et coupes RPG, espèces, trophées) |
+| `avatar-compare.mjs <avant.json> <apres.json> [tolérance]` | Écart géométrique maximal entre deux instantanés |
+
 ### `update-version.js`
 
 **Script automatique de mise à jour de version** pour gérer le cache PWA.

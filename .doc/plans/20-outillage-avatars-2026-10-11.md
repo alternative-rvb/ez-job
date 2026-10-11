@@ -1,5 +1,7 @@
 Tickets 20 à 25 (backlog `.doc/backlog.csv`)
 
+> État au 2026-10-11 en fin de session : ticket 21 (script d'aperçu `scripts/avatar-preview.mjs`) et ticket 23 (découpage dans `js/modules/ui/avatars/`) terminés ; ticket 20 (`avatar-kit.js`) avancé, voir sa ligne du backlog pour le reste ; outils ajoutés : `avatar-snapshot.mjs`, `avatar-compare.mjs`, `npm run avatars:check`. Les chemins `js/modules/ui/avatars.js` cités plus bas désignent désormais le point d'entrée ; le code des trophées est dans `avatars/trophies/<id>.js`.
+
 # Outillage de création des avatars SVG
 
 Plan d'exécution destiné à un agent qui reprend le travail sans l'historique de la conversation. Il décrit le constat, les six chantiers, leur ordre, et les règles à respecter.

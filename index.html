@@ -633,51 +633,49 @@
 
     <!-- Page d'historique des trophées -->
     <div id="trophies-screen" class="hidden py-2 sm:py-4 md:py-6">
-      <div class="text-center mb-6 sm:mb-8">
-        <button id="btn-back-from-trophies" class="mb-4 btn-base btn-secondary">
-          <i class="bi bi-arrow-left"></i>Retour
+      <div class="max-w-5xl mx-auto">
+      <!-- En-tête : retour et titre sur une ligne -->
+      <div class="flex items-center gap-3 mb-4">
+        <button id="btn-back-from-trophies" class="btn-base btn-secondary flex-shrink-0">
+          <i class="bi bi-arrow-left"></i><span class="hidden sm:inline">Retour</span>
         </button>
-        <h1 class="text-3xl sm:text-4xl font-bold mb-2 flex items-center justify-center gap-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">
-          <i class="bi bi-trophy text-yellow-400 text-3xl sm:text-4xl"></i>Mes Trophées
+        <h1 class="text-2xl sm:text-3xl font-bold flex items-center gap-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">
+          <i class="bi bi-trophy text-yellow-400"></i>Mes Trophées
         </h1>
       </div>
 
-      <!-- Statistiques -->
-      <div class="grid grid-cols-2 gap-4 mb-8 max-w-md mx-auto">
-        <div class="rounded-xl p-5" style="background:#f4eadd;border:1.5px solid #dcc9b0">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-sm mb-1" style="color:#b46e28">Gemmes</p>
-              <p class="text-3xl font-bold text-yellow-500" id="total-points">0</p>
-            </div>
-            <i class="bi bi-gem text-yellow-400 text-3xl opacity-50"></i>
+      <!-- Barre d'état : gemmes et progression de la collection -->
+      <div class="rounded-xl px-4 py-3 mb-4 flex items-center gap-4" style="background:#f4eadd;border:1.5px solid #dcc9b0">
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <i class="bi bi-gem text-yellow-400 text-2xl"></i>
+          <div class="leading-tight">
+            <p class="text-2xl font-bold text-yellow-500" id="total-points">0</p>
+            <p class="text-[11px]" style="color:#b46e28">gemmes</p>
           </div>
         </div>
-
-        <div class="rounded-xl p-5" style="background:#f4eadd;border:1.5px solid #dcc9b0">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-sm mb-1" style="color:#b46e28">Débloqués</p>
-              <p class="text-3xl font-bold text-green-500" id="unlocked-count">0</p>
-            </div>
-            <i class="bi bi-trophy-fill text-green-400 text-3xl opacity-50"></i>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline justify-between mb-1">
+            <p class="text-xs font-semibold" style="color:#b46e28">Collection</p>
+            <p class="text-sm font-bold text-green-600"><span id="unlocked-count">0/0</span> skins</p>
           </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#eaddcc"><div id="unlocked-bar" class="h-full rounded-full transition-all duration-500" style="width:0%;background:#22c55e"></div></div>
         </div>
       </div>
 
       <!-- Arbre d'invocation : tirage aléatoire des skins (rendu par trophies-manager.js) -->
-      <div id="summon-panel" class="rounded-xl p-4 sm:p-5 mb-6" style="background:#f4eadd;border:1.5px solid #dcc9b0"></div>
+      <div id="summon-panel" class="rounded-2xl p-4 sm:p-6 mb-8" style="background:linear-gradient(135deg,#f4eadd 0%,#e6f1ee 100%);border:1.5px solid #cfe3de"></div>
 
       <!-- Collection de Trophées -->
       <div>
-        <h2 class="text-xl font-bold mb-6 flex items-center gap-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">
+        <h2 class="text-xl font-bold mb-4 flex items-center gap-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">
           <i class="bi bi-collection-fill text-yellow-400"></i>
           Ma collection
         </h2>
 
-        <div id="trophies-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-6">
+        <div id="trophies-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-5 justify-items-stretch">
           <!-- Cartes de trophées générées dynamiquement -->
         </div>
+      </div>
       </div>
     </div>
   </main>

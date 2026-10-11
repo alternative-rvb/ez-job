@@ -240,7 +240,7 @@ L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclus
    Tout changement de tracé SVG ou d'attribut configurable doit être immédiatement reporté sur :
    - [index.html](file:///home/nicolas/projets/_github/ez-job/index.html) et [js/app.js](file:///home/nicolas/projets/_github/ez-job/js/app.js) (écran d'accueil et sélection initiale)
    - [test-avatars.html](file:///home/nicolas/projets/_github/ez-job/test-avatars.html) (laboratoire de test et modale zoom)
-   - [js/modules/ui/avatars.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatars.js) (`headSvg`, `svg`, `buildCustomAvatarSvg`, palettes)
+   - [js/modules/ui/avatars.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatars.js) (`headSvg`, `svg`, `buildCustomAvatarSvg`, registres) et ses modules [avatars/base.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatars/base.js) (palettes, bases, coupes et tenues de base) et `avatars/trophies/<id>.js` (un fichier par trophée)
    - [js/modules/ui/avatar-modal.js](file:///home/nicolas/projets/_github/ez-job/js/modules/ui/avatar-modal.js) (options et prévisualisations de l'atelier)
    - [js/modules/core/player.js](file:///home/nicolas/projets/_github/ez-job/js/modules/core/player.js) (persistance du profil et des configs)
    - [.doc/guide-technique-avatars-svg.md](file:///home/nicolas/projets/_github/ez-job/.doc/guide-technique-avatars-svg.md) (spécification technique)

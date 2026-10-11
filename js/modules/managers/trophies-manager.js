@@ -6,7 +6,7 @@ import { rewardsManager, SUMMON_COST, SUMMON_REFUND, SUMMON_RATES } from './rewa
 import { domManager } from '../ui/dom.js';
 import { T } from '../core/theme.js';
 import { playerManager } from '../core/player.js';
-import { RPG_TROPHIES, buildCustomAvatarSvg } from '../ui/avatars.js';
+import { RPG_TROPHIES, MANNEQUIN_BOY, MANNEQUIN_GIRL, buildCustomAvatarSvg } from '../ui/avatars.js';
 import { avatarCustomizerModal } from '../ui/avatar-modal.js';
 
 // ANCHOR Couleur de lueur du fruit d'invocation par rareté (bordures et badges rarity-* / badge-* dans main.css)
@@ -51,7 +51,11 @@ export class TrophiesManager {
 
     updateStats() {
         document.getElementById('total-points').textContent = rewardsManager.getTotalPoints();
-        document.getElementById('unlocked-count').textContent = `${rewardsManager.getUnlockedSkins().length}/${rewardsManager.getSummonPool().length}`;
+        const owned = rewardsManager.getUnlockedSkins().length;
+        const total = rewardsManager.getSummonPool().length;
+        document.getElementById('unlocked-count').textContent = `${owned}/${total}`;
+        const bar = document.getElementById('unlocked-bar');
+        if (bar) bar.style.width = `${total ? Math.round(owned / total * 100) : 0}%`;
     }
 
     getRarity(skin) {
@@ -175,23 +179,45 @@ export class TrophiesManager {
         const missing = Math.max(0, SUMMON_COST - rewardsManager.getTotalPoints());
         const pity = rewardsManager.getPityRemaining();
 
+        const gems = rewardsManager.getTotalPoints();
+        const progress = Math.min(100, Math.round(gems / SUMMON_COST * 100));
+
         panel.innerHTML = `
-            <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
-                <div id="summon-tree" class="summon-tree w-40 h-44 sm:w-52 sm:h-56 flex-shrink-0">${this.renderTreeSvg()}</div>
-                <div class="flex-1 w-full text-center sm:text-left">
-                    <h2 class="text-lg sm:text-xl font-bold mb-1 flex items-center justify-center sm:justify-start gap-2" style="color:${T.hexTextPrimary};font-family:'Baloo 2',sans-serif">
-                        <i class="bi bi-stars" style="color:${T.hexPrimary}"></i>Arbre d'invocation
-                    </h2>
-                    <p class="text-sm mb-3" style="color:#b46e28">Offre ${SUMMON_COST} gemmes à l'arbre : un fruit magique tombe et révèle un skin. Un doublon te rend ${SUMMON_REFUND} gemmes.</p>
-                    <div class="flex flex-wrap justify-center sm:justify-start gap-1.5 mb-3">
-                        ${SUMMON_RATES.map(r => `<span class="inline-flex items-center gap-1 badge-${r.rarity} rounded-full text-[11px] font-bold px-2 py-0.5"><i class="bi bi-star-fill"></i>${r.label} ${r.rate} %</span>`).join('')}
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                <div id="summon-tree" class="summon-tree w-44 h-48 sm:w-56 sm:h-60 md:w-64 md:h-[17rem] flex-shrink-0">${this.renderTreeSvg()}</div>
+                <div class="flex-1 w-full min-w-0">
+                    <div class="flex flex-wrap items-center justify-center md:justify-between gap-x-3 gap-y-1.5 mb-1.5">
+                        <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2" style="color:${T.hexTextPrimary};font-family:'Baloo 2',sans-serif">
+                            <i class="bi bi-stars" style="color:${T.hexPrimary}"></i>Arbre d'invocation
+                        </h2>
+                        <span class="inline-flex items-center gap-1 rounded-full text-[11px] font-bold px-2.5 py-1" style="background:${RARITY_GLOW['légendaire']}22;color:#a16207;border:1px solid ${RARITY_GLOW['légendaire']}77">
+                            <i class="bi bi-star-fill"></i>Légendaire garanti dans ${pity} invocation${pity > 1 ? 's' : ''} au plus
+                        </span>
                     </div>
-                    <button id="btn-summon" class="btn-base btn-primary w-full sm:w-auto justify-center px-6 ${canSummon ? '' : 'opacity-60 cursor-not-allowed'}" ${canSummon ? '' : 'disabled'}>
-                        <i class="bi bi-gem"></i>Invoquer · ${SUMMON_COST} gemmes
-                    </button>
-                    <p class="text-[11px] mt-2" style="color:#b46e28">
-                        ${canSummon ? '' : `Encore ${missing} gemme${missing > 1 ? 's' : ''} à gagner dans les quiz. `}Légendaire garanti dans ${pity} invocation${pity > 1 ? 's' : ''} au plus.
-                    </p>
+                    <p class="text-sm mb-4 text-center md:text-left" style="color:#b46e28">Offre ${SUMMON_COST} gemmes à l'arbre : un fruit magique tombe et révèle un skin. Un doublon te rend ${SUMMON_REFUND} gemmes.</p>
+
+                    <!-- Taux de tirage : une barre segmentée par rareté -->
+                    <div class="mb-4">
+                        <div class="flex h-2.5 rounded-full overflow-hidden gap-0.5" role="img" aria-label="Taux de tirage par rareté">
+                            ${SUMMON_RATES.map(r => `<div style="width:${r.rate}%;background:${RARITY_GLOW[r.rarity]}"></div>`).join('')}
+                        </div>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1 mt-1.5">
+                            ${SUMMON_RATES.map(r => `<span class="inline-flex items-center gap-1.5 text-[11px] font-semibold" style="color:${T.hexTextPrimary}"><span class="inline-block w-2 h-2 rounded-full" style="background:${RARITY_GLOW[r.rarity]}"></span>${r.label} ${r.rate} %</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+                        <button id="btn-summon" class="btn-base btn-primary justify-center px-8 py-3 text-base flex-shrink-0 ${canSummon ? '' : 'opacity-50 cursor-not-allowed'}" ${canSummon ? '' : 'disabled'}>
+                            <i class="bi bi-gem"></i>Invoquer · ${SUMMON_COST} gemmes
+                        </button>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-baseline justify-between text-[11px] font-semibold mb-1" style="color:#b46e28">
+                                <span><i class="bi bi-gem text-yellow-500"></i> ${canSummon ? `${gems} gemmes` : `${gems} / ${SUMMON_COST}`}</span>
+                                <span>${canSummon ? 'Prêt à invoquer' : `Encore ${missing} gemme${missing > 1 ? 's' : ''} à gagner dans les quiz`}</span>
+                            </div>
+                            <div class="h-1.5 rounded-full overflow-hidden" style="background:#eaddcc"><div class="h-full rounded-full" style="width:${progress}%;background:${canSummon ? '#22c55e' : '#facc15'}"></div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Message d'erreur/succès -->
@@ -242,7 +268,7 @@ export class TrophiesManager {
             <p class="summon-reveal-title text-xl sm:text-2xl font-black text-white text-center" style="font-family:'Baloo 2',sans-serif;text-shadow:0 0 18px ${RARITY_GLOW[rarity]}">
                 ${isNew ? `Nouveau skin ${label} !` : `Déjà obtenu : +${refund} gemmes rendues`}
             </p>
-            <div class="summon-reveal-card trophy-card-pokemon trophy-unlocked rounded-xl overflow-hidden border-2 rarity-${rarity} relative shadow-2xl" style="aspect-ratio: 9/16; height: min(62vh, 520px); max-width: 86vw; background-color:${T.hexPrimary};box-shadow:0 0 40px ${RARITY_GLOW[rarity]}">
+            <div class="summon-reveal-card trophy-card-pokemon trophy-unlocked rounded-xl overflow-hidden border-2 rarity-${rarity} relative shadow-2xl" style="aspect-ratio: 9/16; height: min(62vh, 520px); max-width: 86vw; background-color:${T.bgSecondary};box-shadow:0 0 40px ${RARITY_GLOW[rarity]}">
                 <div class="absolute inset-x-0 top-0 bottom-[30%] px-4 pt-6 flex items-center justify-center pointer-events-none">${avatarSvg}</div>
                 ${this.renderCardFace(skin)}
             </div>
@@ -305,7 +331,11 @@ export class TrophiesManager {
     renderTrophies() {
         const container = document.getElementById('trophies-container');
         if (!container) return;
-        const won = rewardsManager.getSummonPool().filter(skin => rewardsManager.isSkinUnlocked(skin.id));
+        const pool = rewardsManager.getSummonPool();
+        // NOTE Les plus rares en premier, puis par numéro de trophée
+        const order = ['légendaire', 'épique', 'rare'];
+        const won = pool.filter(skin => rewardsManager.isSkinUnlocked(skin.id))
+            .sort((a, b) => order.indexOf(a.rarity) - order.indexOf(b.rarity) || a.number - b.number);
 
         if (won.length === 0) {
             container.innerHTML = `
@@ -313,7 +343,7 @@ export class TrophiesManager {
                     <i class="bi bi-tree-fill text-2xl block mb-2" style="color:${T.hexPrimary}"></i>
                     Ta collection est vide pour l'instant : invoque ton premier skin avec l'arbre !
                 </p>
-            `;
+            ` + this.renderEmptySlots(pool);
             return;
         }
 
@@ -321,19 +351,37 @@ export class TrophiesManager {
             const { rarity } = this.getRarity(skin);
             const avatarSvg = buildCustomAvatarSvg({ ...this.getPlayerPreset(skin), mode: 'full' });
             return `
-                <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 rarity-${rarity} trophy-unlocked relative" style="aspect-ratio: 9/16; background-color:${T.hexPrimary}">
+                <div class="trophy-card-pokemon rounded-xl overflow-hidden border-2 rarity-${rarity} trophy-unlocked relative" style="aspect-ratio: 9/16; background-color:${T.bgSecondary}">
                     ${rewardsManager.isNewItem(`card:${skin.id}`) ? '<span class="absolute top-2 right-2 z-10 text-[8px] font-black px-1.5 py-0.5 rounded-full bg-rose-500/85 text-white border border-white/70 backdrop-blur-sm animate-pulse">Nouveau</span>' : ''}
                     <div class="absolute inset-x-0 top-0 bottom-[34%] px-3 pt-2 flex items-center justify-center pointer-events-none">${avatarSvg}</div>
                     ${this.renderCardFace(skin, { zoomable: true })}
                 </div>
             `;
-        }).join('');
+        }).join('') + this.renderEmptySlots(pool.filter(skin => !rewardsManager.isSkinUnlocked(skin.id)));
 
         // Ajouter l'effet 3D sur les cartes débloquées
         this.add3DEffect();
 
         // Empêcher le clic long sur les cartes
         this.preventLongPress();
+    }
+
+    /**
+     * Cases vides des skins pas encore gagnés : mannequin neutre grisé, numéro du trophée, clic vers l'arbre
+     */
+    renderEmptySlots(missing) {
+        if (!missing.length) return '';
+        const mannequin = playerManager.getAvatarConfig().type === 'girl' ? MANNEQUIN_GIRL : MANNEQUIN_BOY;
+        const svg = buildCustomAvatarSvg({ ...mannequin, mode: 'full' });
+        return missing.map(skin => `
+            <button class="trophy-empty-slot rounded-xl border-2 border-dashed relative overflow-hidden transition hover:scale-[1.02]" style="aspect-ratio: 9/16; border-color:${T.primaryA(0.45)}; background-color:${T.bgSecondary}" data-slot-number="${skin.number}" title="À découvrir avec l'arbre d'invocation">
+                <div class="absolute inset-x-0 top-0 bottom-[30%] px-3 pt-2 flex items-center justify-center pointer-events-none" style="opacity:0.6;filter:saturate(0)">${svg}</div>
+                <div class="absolute inset-x-0 bottom-0 pb-3 pt-8 text-center flex flex-col items-center gap-0.5" style="color:${T.hexTextPrimary}">
+                    <i class="bi bi-question-circle-fill text-xl" style="color:${T.hexPrimary}"></i>
+                    <span class="font-bold text-sm">Trophée ${skin.number}</span>
+                    <span class="text-[11px]" style="color:#b46e28">À découvrir</span>
+                </div>
+            </button>`).join('');
     }
 
     add3DEffect() {
@@ -489,6 +537,8 @@ export class TrophiesManager {
                 this.applySkin(applyBtn.dataset.skinId);
             }
 
+            if (e.target.closest('.trophy-empty-slot')) document.getElementById('summon-panel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
             if (e.target.closest('#btn-open-customizer-from-trophies')) avatarCustomizerModal.open();
         });
 
@@ -513,10 +563,11 @@ export class TrophiesManager {
         modal.id = 'trophy-modal';
         modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4';
         modal.innerHTML = `
-            <div class="trophy-card-pokemon-modal trophy-card-pokemon trophy-unlocked rounded-xl overflow-hidden border-2 rarity-${rarity} relative shadow-2xl" style="aspect-ratio: 9/16; height: 80vh; max-width: 90vw; background-color:${T.hexPrimary}">
+            <div class="trophy-card-pokemon-modal trophy-card-pokemon trophy-unlocked rounded-xl overflow-hidden border-2 rarity-${rarity} relative shadow-2xl" style="aspect-ratio: 9/16; height: 80vh; max-width: 90vw; background-color:${T.bgSecondary}">
                 <!-- Bouton fermer -->
-                <button class="absolute top-4 right-4 z-[200] w-10 h-10 rounded-full bg-black/70 hover:bg-black/90 text-white flex items-center justify-center transition" id="close-trophy-modal">
-                    <i class="bi bi-x-lg text-xl"></i>
+                <!-- NOTE Croix discrète : petite, translucide, zone de toucher élargie par ::before -->
+                <button class="absolute top-2.5 right-2.5 z-[200] w-6 h-6 rounded-full bg-black/25 hover:bg-black/50 text-white/70 hover:text-white backdrop-blur-sm flex items-center justify-center transition before:content-[''] before:absolute before:-inset-2.5" id="close-trophy-modal" aria-label="Fermer">
+                    <i class="bi bi-x text-base leading-none"></i>
                 </button>
 
                 <!-- Avatar du skin -->

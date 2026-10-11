@@ -906,7 +906,17 @@ if (typeof window !== 'undefined') {
         console.log(`⭐ [DEV] Score : +${pts} pts (Total : ${next} pts)`);
         return next;
     };
-    window.resetScore = () => {
+    // NOTE resetScore() remet le score à 0 ; resetScore({ trophees: true }) vide aussi les skins gagnés, la garantie d'invocation
+    // et l'avatar personnalisé (le skin appliqué ne doit pas survivre à sa suppression), puis recharge la page
+    window.resetScore = ({ trophees = false } = {}) => {
+        if (trophees) {
+            rewardsManager.resetRewards();
+            localStorage.removeItem('playerAvatarConfig');
+            localStorage.removeItem('playerAvatar');
+            console.log('🔄 [DEV] Score, trophées et avatar réinitialisés, rechargement...');
+            location.reload();
+            return 0;
+        }
         rewardsManager.setTotalPoints(0);
         roadmapManager.render();
         console.log(`🔄 [DEV] Score réinitialisé à 0 pt`);

@@ -132,6 +132,9 @@
             <button onclick="openZoomModal('boy')" class="mt-2 px-3 py-1 rounded-xl bg-primary-600/80 hover:bg-primary-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all hover:scale-105 border border-white/20">
               <i class="bi bi-zoom-in"></i> Zoomer / Inspecter
             </button>
+            <button onclick="exportBaseSvg('boy')" class="mt-1.5 px-3 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 text-xs font-bold flex items-center gap-1.5 border border-white/20 transition-all" title="Télécharger le SVG avec un calque par couche">
+              <i class="bi bi-download"></i> Exporter SVG
+            </button>
           </div>
           <div class="space-y-3 text-xs sm:text-sm text-white/80 max-w-xs">
             <div class="font-bold text-accent-400 flex items-center gap-1.5">
@@ -254,6 +257,9 @@
             </div>
             <button onclick="openZoomModal('girl')" class="mt-2 px-3 py-1 rounded-xl bg-accent-600/80 hover:bg-accent-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all hover:scale-105 border border-white/20">
               <i class="bi bi-zoom-in"></i> Zoomer / Inspecter
+            </button>
+            <button onclick="exportBaseSvg('girl')" class="mt-1.5 px-3 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 text-xs font-bold flex items-center gap-1.5 border border-white/20 transition-all" title="Télécharger le SVG avec un calque par couche">
+              <i class="bi bi-download"></i> Exporter SVG
             </button>
           </div>
           <div class="space-y-3 text-xs sm:text-sm text-white/80 max-w-xs">
@@ -389,14 +395,33 @@
         </div>
       </div>
 
-      <!-- Onglets des 6 Trophées -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5" id="trophies-tabs-container">
+      <!-- Onglets des Trophées -->
+      <div class="flex flex-wrap gap-2" id="trophies-tabs-container">
         <!-- Rendu dynamique -->
       </div>
 
       <!-- Détail et Démonstrateur du Trophée Sélectionné -->
       <div class="p-6 sm:p-8 rounded-3xl bg-black/25 border border-white/15 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" id="trophy-details-card">
         <!-- Rendu dynamique -->
+      </div>
+    </section>
+
+
+    <!-- ================= SECTION MANNEQUIN NEUTRE (gabarit des futurs trophées) ================= -->
+    <section class="glass-panel rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xl border-t-4 border-t-slate-400">
+      <div>
+        <h2 class="text-xl font-bold text-white flex items-center gap-2"><i class="bi bi-person-standing"></i> Mannequin neutre</h2>
+        <p class="text-xs text-white/70 mt-1">Tête nue, corps nu, gris neutre : gabarit commun des futurs trophées. Exportez son SVG par calques, dessinez dessus la tenue, la coupe ou le trait d'espèce, puis renvoyez le fichier.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        <div class="flex flex-col items-center gap-2">
+          <div id="mannequin-boy-preview" class="w-40 h-52 flex items-center justify-center"></div>
+          <button onclick="exportMannequinSvg('boy')" class="px-3 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 text-xs font-bold flex items-center gap-1.5 border border-white/20"><i class="bi bi-download"></i> Exporter SVG garçon</button>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div id="mannequin-girl-preview" class="w-40 h-52 flex items-center justify-center"></div>
+          <button onclick="exportMannequinSvg('girl')" class="px-3 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 text-xs font-bold flex items-center gap-1.5 border border-white/20"><i class="bi bi-download"></i> Exporter SVG fille</button>
+        </div>
       </div>
     </section>
 
@@ -443,6 +468,8 @@
       RPG_TROPHIES,
       RPG_OUTFITS,
       RPG_STYLES,
+      MANNEQUIN_BOY,
+      MANNEQUIN_GIRL,
       buildCustomAvatarSvg
     } from './js/modules/ui/avatars.js';
 
@@ -678,40 +705,17 @@
         tabsContainer.innerHTML = RPG_TROPHIES.map(trophy => {
           const isActive = trophy.id === currentTrophyId;
           const isLocked = trophy.status === 'locked';
-          const isNew = trophy.badge === 'Nouveau';
-
+          // NOTE Bouton simple : numéro et espèce seulement, les détails sont déjà dans la fiche du trophée
           return `
-            <button onclick="window.selectTrophy('${trophy.id}')" 
-              class="relative rounded-2xl p-3 text-left transition-all border flex flex-col justify-between min-h-[105px] ${
-                isActive 
-                  ? 'bg-amber-500/20 border-amber-400 shadow-lg shadow-amber-500/25 ring-2 ring-amber-400/40' 
-                  : isLocked 
-                    ? 'bg-white/5 border-white/10 opacity-60 hover:opacity-80' 
-                    : 'bg-white/10 border-white/15 hover:bg-white/15'
+            <button onclick="window.selectTrophy('${trophy.id}')"
+              class="px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all border flex items-center gap-1.5 ${
+                isActive
+                  ? 'bg-amber-500/20 border-amber-400 text-amber-200 ring-2 ring-amber-400/40'
+                  : isLocked
+                    ? 'bg-white/5 border-white/10 text-white/50 hover:text-white/70'
+                    : 'bg-white/10 border-white/15 text-white/85 hover:bg-white/15'
               }">
-              
-              <div class="flex items-start justify-between gap-1 w-full">
-                <span class="text-[11px] font-black uppercase tracking-wider flex items-center gap-1.5 ${isActive ? 'text-amber-300' : 'text-white/60'}">
-                  Trophée ${trophy.number}
-                  <span class="text-[8px] font-mono font-bold px-1 py-0.5 rounded bg-black/40 text-amber-300/90 border border-white/10 leading-none">#${trophy.id}</span>
-                </span>
-                ${isNew ? `
-                  <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30 leading-none">
-                    <span class="w-1 h-1 rounded-full bg-amber-400"></span>New
-                  </span>
-                ` : isLocked ? `
-                  <span class="px-1.5 py-0.5 rounded text-[8px] font-bold bg-white/10 text-white/50 leading-none">
-                    <i class="bi bi-lock-fill text-[8px]"></i>
-                  </span>
-                ` : ''}
-              </div>
-
-              <div>
-                <div class="font-bold text-xs sm:text-sm text-white line-clamp-1">${trophy.title}</div>
-                <div class="text-[10px] text-white/70 line-clamp-1 flex items-center gap-1">
-                  <span>${trophy.speciesName}</span> • <span>${trophy.className}</span>
-                </div>
-              </div>
+              <span class="opacity-70">${trophy.number}.</span>${trophy.speciesName}${isLocked ? ' <i class="bi bi-lock-fill text-[10px]"></i>' : ''}
             </button>
           `;
         }).join('');
@@ -732,7 +736,11 @@
         orc: { speciesIcon: '🪓', classIcon: '⚔️', species: "Peau vert olive, oreilles trapues à anneau d'or, bouche droite et crocs inférieurs acérés.", classText: "Harnais barbare riveté, col de fourrure de loup, pagne clouté et hache de guerre en pierre taillée." },
         paladin: { speciesIcon: '☀️', classIcon: '🛡️', species: "Humain à la peau bronze solaire, chevelure or solaire et regard azur céleste.", classText: "Armure de plates, tabard au soleil d'or, cape ardoise, épée longue et bouclier solaire." },
         cat: { speciesIcon: '🐾', classIcon: '🗝️', species: "Oreilles de chat sur le crâne, bouche en ω avec petit croc et queue épaisse tigrée, à la couleur des cheveux.", classText: "Cuir sombre de voleuse, foulard violet nuit, grelot doré, emblème patte et pattes de chat griffues." },
-        shadow: { speciesIcon: '🔮', classIcon: '🪄', species: "Oreilles d'elfe pointues, cornes d'ébène en S et carnation Lilas Mystique.", classText: "Robe de sorcière en velours pourpre, cape nuit d'ébène, tiare lunaire et sceptre d'arcanes." }
+        shadow: { speciesIcon: '🔮', classIcon: '🪄', species: "Oreilles d'elfe pointues, cornes d'ébène en S et carnation Lilas Mystique.", classText: "Robe de sorcière en velours pourpre, cape nuit d'ébène, tiare lunaire et sceptre d'arcanes." },
+        vampire: { speciesIcon: '🦇', classIcon: '🗡️', species: "Teint de lune, canines supérieures apparentes, regard rubis et bouche droite sans sourire.", classText: "Redingote de velours rouge sang, jabot de dentelle, cape pourpre sang très sombre et rapière argentée au pommeau rubis." },
+        necromancer: { speciesIcon: '💀', classIcon: '🔥', species: "Teint gris de revenant, regard vert spectral, bouche droite et cheveux blanc os.", classText: "Robe à capuche vert de gris, cordon d'os à tête de mort, cape de deuil, flamme verte spectrale et faux au cordon de crânes." },
+        fairy: { speciesIcon: '🧚', classIcon: '🌸', species: "Oreilles pointues, ailes d'insecte translucides, peau crème féerique, cheveux orchidée et yeux lilas.", classText: "Haut de feuilles sans manches, short, souliers de feuille, couronne de fleurs et bâton fleuri." },
+        scholar: { speciesIcon: '👓', classIcon: '📖', species: "Humain studieux aux lunettes de vue rondes et aux cheveux ondulés châtain clair.", classText: "Robe d'érudit bleu encre, cape bleu nuit, bandoulière avec fioles de potion et grimoire à la hanche." }
       };
       const legend = LEGENDS[trophy.id] || LEGENDS.elf;
       
@@ -767,6 +775,9 @@
 
             <button onclick="window.openTrophyZoom()" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/60 hover:bg-black/90 text-white/90 text-[11px] font-bold flex items-center gap-1 border border-white/20 backdrop-blur-sm shadow transition-all">
               <i class="bi bi-zoom-in"></i> Inspecter
+            </button>
+            <button onclick="window.exportTrophySvg()" class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/60 hover:bg-black/90 text-white/90 text-[11px] font-bold flex items-center gap-1 border border-white/20 backdrop-blur-sm shadow transition-all" title="Télécharger le SVG avec un calque par couche">
+              <i class="bi bi-download"></i> SVG
             </button>
           </div>
 
@@ -878,6 +889,57 @@
       renderTrophiesSection();
     };
 
+    // ANCHOR Export SVG calqué : un fichier par personnage, un calque nommé par couche (Inkscape, Figma, Illustrator)
+    function downloadSvg(svg, filename) {
+      const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+      const a = Object.assign(document.createElement('a'), { href: url, download: filename });
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    window.exportBaseSvg = (gender) => {
+      const isBoy = gender === 'boy';
+      downloadSvg(buildCustomAvatarSvg({
+        type: gender,
+        styleId: isBoy ? currentBoyStyle : currentGirlStyle,
+        outfitId: isBoy ? currentBoyOutfit : currentGirlOutfit,
+        hairColor: isBoy ? currentBoyHair : currentGirlHair,
+        eyeColor: isBoy ? currentBoyEye : currentGirlEye,
+        skinColor: isBoy ? currentBoySkin : currentGirlSkin,
+        mode: currentViewMode,
+        layers: true
+      }), `avatar-${gender}-style${isBoy ? currentBoyStyle : currentGirlStyle}-${currentViewMode}.svg`);
+    };
+
+    window.exportTrophySvg = () => {
+      const trophy = RPG_TROPHIES.find(t => t.id === currentTrophyId) || RPG_TROPHIES[0];
+      const preset = currentTrophyGender === 'boy' ? trophy.boyPreset : trophy.girlPreset;
+      downloadSvg(buildCustomAvatarSvg({
+        type: currentTrophyGender,
+        styleKey: preset ? preset.styleKey : null,
+        outfitKey: preset ? preset.outfitKey : 'elf_ranger',
+        species: preset ? preset.species : 'elf',
+        skinColor: preset ? preset.skinColor : 'pale',
+        hairColor: preset ? preset.hairColor : '#14b8a6',
+        eyeColor: preset ? preset.eyeColor : 'emerald',
+        mode: currentViewMode,
+        layers: true
+      }), `trophee-${trophy.id}-${currentTrophyGender}-${currentViewMode}.svg`);
+    };
+
+
+    // ANCHOR Mannequin neutre : aperçu et export SVG par calques (gabarit des futurs trophées)
+    function renderMannequins() {
+      document.getElementById('mannequin-boy-preview').innerHTML = buildCustomAvatarSvg({ ...MANNEQUIN_BOY, mode: currentViewMode });
+      document.getElementById('mannequin-girl-preview').innerHTML = buildCustomAvatarSvg({ ...MANNEQUIN_GIRL, mode: currentViewMode });
+    }
+    window.exportMannequinSvg = (gender) => {
+      downloadSvg(buildCustomAvatarSvg({ ...(gender === 'boy' ? MANNEQUIN_BOY : MANNEQUIN_GIRL), mode: currentViewMode, layers: true }), `mannequin-${gender}-${currentViewMode}.svg`);
+    };
+    renderMannequins();
+
     window.setTrophyGender = (gender) => {
       currentTrophyGender = gender;
       renderTrophiesSection();
@@ -979,6 +1041,7 @@
         : "px-2.5 py-1 text-xs rounded-lg font-bold bg-white/10 text-white/80 hover:bg-white/20";
       
       updatePreviews();
+      renderMannequins();
     };
 
     // Modale de zoom simple

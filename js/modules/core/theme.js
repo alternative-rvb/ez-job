@@ -15,6 +15,7 @@ const p   = v('--color-primary');       // "90, 69, 148"
 const pl  = v('--color-primary-light'); // "139, 114, 212"
 const pd  = v('--color-primary-dark');  // "74, 53, 128"
 const sec = v('--color-secondary');     // "239, 130, 24"
+const bg2 = v('--color-bg-secondary');  // "244, 234, 221"
 const bg3 = v('--color-bg-tertiary');   // "70, 54, 115"
 const err = v('--color-error');         // "239, 68, 68"
 const alr = v('--color-timer-alert');   // "234, 179, 8"
@@ -25,6 +26,7 @@ export const T = {
     primaryLight:  `rgb(${pl})`,
     primaryDark:   `rgb(${pd})`,
     secondary:     `rgb(${sec})`,
+    bgSecondary:   `rgb(${bg2})`,
 
     // Couleurs hex (pour style color=)
     hexPrimary:      '#66bcb4',

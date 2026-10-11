@@ -32,7 +32,7 @@ Un bout qui garde de l'épaisseur reçoit automatiquement un arrondi (équivalen
 
 ## Générateur
 
-Script sans dépendance : [../scripts/tapered-path.mjs](../scripts/tapered-path.mjs).
+Le calcul vit dans `js/modules/ui/avatar-kit.js` (`fuseau`, `plume`, `comete`, `sablier`, `calligraphique`, mis en cache) : dans le code des avatars, écrire `d="${fuseau('M ... C ...', largeur, échantillons)}"` avec la ligne centrale, jamais une suite de points `L` précalculée. Ligne de commande pour tester une forme : [../scripts/tapered-path.mjs](../scripts/tapered-path.mjs) (réexporte le module).
 
 ```bash
 # Un segment : 3 points pour Q, 4 points pour C
@@ -58,7 +58,7 @@ Réglages :
 
 ## Où cela s'appliquerait dans le code actuel
 
-Inventaire au 2026-10-11 dans `js/modules/ui/avatars.js` : 178 `stroke-width`, tous uniformes. Candidats, par contexte :
+Inventaire au 2026-10-11 dans le code des avatars (depuis découpé dans `js/modules/ui/avatars/`) : 178 `stroke-width`, tous uniformes. Depuis le ticket 20, 103 tracés précalculés sur 119 sont migrés en appels `fuseau(...)` ou `plume(...)`. Candidats, par contexte :
 
 | Contexte | Tracé actuel | Profil conseillé | Points d'attention |
 |---|---|---|---|

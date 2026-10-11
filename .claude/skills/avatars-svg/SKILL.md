@@ -1,11 +1,21 @@
 ---
 name: avatars-svg
-description: Création et retouche des avatars SVG Chibi Manga d'Erudizz et des trophées skins (elf, orc, paladin, cat, shadow, vampire). À utiliser dès qu'il faut créer ou modifier une coupe de cheveux, une tenue, une espèce, une teinte de peau/yeux/cheveux, un preset de trophée dans js/modules/ui/avatars.js, ou travailler dans le lab test-avatars.html.
+description: Création et retouche des avatars SVG Chibi Manga d'Erudizz et des trophées skins (elf, orc, paladin, cat, shadow, vampire, necromancer). À utiliser dès qu'il faut créer ou modifier une coupe de cheveux, une tenue, une espèce, une teinte de peau/yeux/cheveux, un preset de trophée dans js/modules/ui/avatars.js, ou travailler dans le lab test-avatars.html.
 ---
 
 # Avatars SVG et trophées skins
 
-Un avatar est un SVG généré à la volée par `buildCustomAvatarSvg()` dans `js/modules/ui/avatars.js`, à partir d'une configuration :
+Un avatar est un SVG généré à la volée par `buildCustomAvatarSvg()` dans `js/modules/ui/avatars.js`, à partir d'une configuration.
+
+#### Organisation du code (depuis le ticket 23)
+
+- `js/modules/ui/avatars.js` : point d'entrée à l'API inchangée (réexports), registres `RPG_STYLES`, `RPG_OUTFITS`, `RPG_TROPHIES` assemblés, `AVATAR_SHORT_IDS`, `buildCustomAvatarSvg`, `AVATARS`, rendus par identifiant.
+- `js/modules/ui/avatars/base.js` : palettes `BASE_*` et `ALL_*`, `getSpeciesEars`, `BOY_BASE`, `GIRL_BASE`, coupes et tenues de base.
+- `js/modules/ui/avatars/trophies/<id>.js` (elf, orc, paladin, cat, shadow, vampire, necromancer) : tenue `OUTFIT_*`, coupes `<ID>_STYLES`, fiche `<ID>_TROPHY` et traits d'espèce propres (oreilles et queue du chat, cornes de shadow). **Ne lire que le fichier du trophée concerné.**
+- `js/modules/ui/avatar-kit.js` : traits à largeur variable et utilitaires de dessin.
+- `js/modules/ui/avatars/mannequin.js` : **mannequin neutre** (tête nue, corps nu, gris `#dcdcdc`, clés `mannequin_boy`, `mannequin_girl`, `mannequin`, presets `MANNEQUIN_BOY` et `MANNEQUIN_GIRL`), gabarit de départ de chaque futur trophée : mêmes ancrages que tous les personnages. Section « Mannequin neutre » du lab avec export SVG par calques ; `node scripts/avatar-preview.mjs mannequin`. Jamais tiré ni débloqué (hors `RPG_TROPHIES`).
+
+Configuration d'un avatar :
 
 ```js
 { type: 'boy'|'girl', styleId | styleKey, outfitId | outfitKey, species, hairColor, eyeColor, skinColor, mode: 'full'|'head' }
@@ -61,21 +71,30 @@ En mode `head`, seuls 3, 8, 9, 10, 11 et 12 sont rendus. ViewBox réels : `0 -34
 | Traits de visage d'espèce | `getSpeciesEars()` et `faceFeatures` de BOY_BASE et GIRL_BASE | branche `species === '<espece>'` |
 | Couleurs de carte | `AVATARS.<id>` (`color`, `accent`) et `AVATAR_SHORT_IDS` | |
 
-Les modèles de code de chaque objet sont dans [references/modeles-trophee.md](references/modeles-trophee.md).
+Un trophée vit dans son fichier `avatars/trophies/<id>.js` ; l'ajouter aux imports et aux registres de `avatars.js`. Les modèles de code de chaque objet sont dans [references/modeles-trophee.md](references/modeles-trophee.md).
 
 ## Recette : créer ou finaliser un trophée skin
 
-1. **Fiche** : partir de l'entrée existante dans `RPG_TROPHIES` (les trophées 3 à 6 sont des squelettes `status: 'locked'`). Définir espèce, classe, palette (tenue principale, cape plus foncée de la même famille, peau, yeux, cheveux contrastés).
+1. **Fiche** : partir de l'entrée existante dans `RPG_TROPHIES` (plus aucun squelette : les six trophées sont faits ; un nouveau trophée part du modèle de `avatars/trophies/vampire.js`). Définir espèce, classe, palette (tenue principale, cape plus foncée de la même famille, peau, yeux, cheveux contrastés).
 2. **Teintes** : ajouter dans les catalogues `ALL_*` uniquement les teintes nouvelles, avec `isTrophyReward: true`. Ne jamais toucher aux `BASE_*`.
 3. **Espèce** : si l'espèce a des oreilles ou des dents propres, ajouter la branche dans `getSpeciesEars()` et dans `faceFeatures` (garçon ET fille). Si l'espèce est `human`, ne rien ajouter.
 4. **Coupes** : créer `<id>_boy` et `<id>_girl` dans `RPG_STYLES`, en blocs larges, avec `hairBack` partant de l'ellipse universelle `cx=50 cy=26 rx=35 ry=31`.
 5. **Tenue** : créer `OUTFIT_<NOM>` avec ses 8 emplacements (laisser `""` ceux qui sont inutiles), l'enregistrer dans `RPG_OUTFITS`. Armes construites sur l'axe `X=0`, origine au milieu de la poignée, placées par un seul `<g transform="translate(main) rotate(a)">` qui contient aussi la main qui serre, dessinée en dernier (premier plan). Voir AGENTS.md règle 9 « Prise en main » et « Groupes sans orphelins ». Modèles de référence : `PALADIN_SWORD_MODEL`, `boy-ninjato`, `girl-sword`.
 6. **Presets** : compléter `boyPreset` et `girlPreset` (`styleKey`, `outfitKey`, `species`, `skinColor`, `hairColor`, `eyeColor`, mêmes teintes pour les deux), la liste `rewards`, puis retirer `status: 'locked'` et passer `badge` à `'Nouveau'`.
-7. **Vérifier** : `node --check js/modules/ui/avatars.js`, puis contrôle visuel dans le lab.
+7. **Vérifier** : `node --check` sur les fichiers modifiés, `npm run avatars:check` (aucun élément perdu par rapport à HEAD, aucun `undefined` ou `NaN` rendu), puis `node scripts/avatar-preview.mjs <id>` pour le contrôle visuel, puis le lab.
+
+## Aperçu en une commande : scripts/avatar-preview.mjs
+
+- `node scripts/avatar-preview.mjs <elf|orc|paladin|cat|shadow|base> [--zoom visage|mains|ceinture|queue|x,y,l,h] [--teintes] [--style n --outfit n] [--sortie f.png] [--svg]` écrit une planche PNG (garçon et fille, corps entier et portrait, fond crème) et affiche son chemin ; il suffit ensuite de lire l'image. `--zoom` recadre en gros plan, `--teintes` ajoute quatre couleurs de cheveux et une peau foncée, `base` prend les personnages de départ.
+- `npm run avatars:check` compare le code au dernier commit : clés de coupes, tenues, trophées et exports toujours présents, identifiants de groupes toujours rendus, aucun `undefined`, `NaN` ou `[object` dans un SVG (`--geometrie` ajoute l'écart géométrique). À lancer après toute modification de structure.
+- `--un fille:portrait --taille 160` produit une image minimale (un personnage, un plan) pour un contrôle rapide.
+- Avant une refonte du code : `node scripts/avatar-snapshot.mjs avant.json`, modifier, `node scripts/avatar-snapshot.mjs apres.json`, puis `node scripts/avatar-compare.mjs avant.json apres.json` (écart géométrique maximal toléré 0.3, structure identique). 300 avatars couverts (bases, tenues et coupes RPG croisées, espèces, trophées).
+- Les traits à largeur variable se calculent au rendu avec `js/modules/ui/avatar-kit.js` (`fuseau`, `plume`, `comete`, `sablier`, `calligraphique`, `openRing`, `crescent`, `rimHighlight`, `mirror`, `gripHand`, `fitBand`, `beltOnWaist`, `SKIN_DEFAULT`) : écrire `d="${fuseau('M ... C ...', largeur, échantillons)}"` avec la ligne centrale, jamais une suite de points `L` précalculée. `scripts/tapered-path.mjs` et `open-ring.mjs` du skill en sont la ligne de commande.
 
 ## Lab de test : test-avatars.html
 
 - Servir le projet (`npm run dev`) puis ouvrir `http://localhost:8000/test-avatars.html`. C'est l'utilisateur qui valide visuellement : présenter le résultat et attendre son retour, sans commit.
+- **Export SVG** : les boutons « Exporter SVG » (bases garçon et fille) et « SVG » (trophées) téléchargent le personnage affiché en un fichier avec un calque nommé par couche (`inkscape:groupmode="layer"`, ouvrable dans Inkscape, Figma, Illustrator), via l'option `layers: true` de `buildCustomAvatarSvg`. Nicolas peut ainsi corriger un tracé et le renvoyer.
 - La section « Nouveaux Trophées & Skins RPG » lit directement `RPG_TROPHIES`, `RPG_STYLES` et `RPG_OUTFITS` : un trophée bien déclaré y apparaît sans toucher au HTML.
 - Tester systématiquement : garçon et fille, corps entier et tête seule, zoom, et au moins une carnation claire et une foncée quand la peau est réglable.
 - Avant de rendre la main : vérifier la portée des variables dans les templates (une `${variable}` hors de portée provoque un `ReferenceError` qui casse tout le lab).
@@ -90,14 +109,20 @@ Volume en croissants (une teinte par couche, ombre à l'opposé de la lumière, 
 
 **Cheveux** : ombre et lumière sont retirées de toutes les coupes pour le moment. Nicolas exportera un SVG de référence ; attendre cet exemple avant tout nouvel essai (ticket 16). Essais déjà refusés : croissants pleins (trop marqués), reflets en anneau, reflets en bord de boucle trop épais ; seule piste approuvée à reprendre : « quelques traits seulement ».
 
+## Capuche, bouches et SVG retouchés (trophée 7, Nécromancien)
+
+- **Capuche** : jamais un seul aplat sur la tête. Partie arrière = double ovale dans `hairBack` (derrière le visage, retombe en col sur les épaules) ; partie avant = deux joues en fuseau qui descendent vers les yeux et une pointe de front, dans `headAccessory`, par-dessus la frange. Mèches longues d'un personnage par-dessus les joues : `headAccessory` en fonction `(skin, hairColor, type)`.
+- **Types de bouche** : sourire de base, bouche droite `sablier`, ω du chat (ne pas la remplacer) et bouche fille complète (`getFullLipsMouth`, dessin de Nicolas : arc de Cupidon, ouverture en lentille, lèvre inférieure pleine). Couleur de lèvres toujours `mouthColor`.
+- **Yeux à blanc noir** (Revenant) : contour, cils et paupières passent en noir via `lashColor`, sinon `multiply` avec un blanc os les rend invisibles.
+- **Workflow avec SVG retouché** : Nicolas dépose son export Affinity dans `.tmp/`. Comparer à l'export du lab (`diff`), reprendre ses tracés avec leurs matrices, ne pas corriger sans lui sa géométrie, ne pas y toucher pendant qu'il dessine, et traiter l'export garçon comme base de la fille (ids `boy-...`, cils et mèches de la fille à vérifier).
+
 ## État actuel et limites connues
 
-- Trophées terminés : `elf` (1), `orc` (2), `paladin` (3, humain : peau `sun-bronze`, cheveux Or Solaire `#facc15`, yeux `sky`) et `cat` (4, voleuse féline légendaire : cheveux Violet Félin `#7c3aed` et Lilas Félin `#a78bfa`, yeux `gold`). Squelettes à concevoir : `shadow`, `vampire`.
-- Traits d'espèce qui suivent la couleur des cheveux (oreilles de chat `getCatEars`, queue `getCatTail`) : couches posées par `buildCustomAvatarSvg`, juste avant `hairFront` pour les oreilles et juste après `backEquipment` pour la queue, quelle que soit la tenue.
+- Trophées terminés, avec leur rareté d'invocation : `elf` (1, rare), `orc` (2, légendaire), `paladin` (3, rare : humain, peau `sun-bronze`, cheveux Or Solaire `#facc15`, yeux `sky`), `cat` (4, légendaire : cheveux Violet Félin `#7c3aed` et Lilas Félin `#a78bfa`, yeux `gold`) et `shadow` (5, épique : peau Lilas Mystique, cheveux Noir Abyssal `#1e1435`, yeux `amethyst`). `vampire` (6, épique : Noble Duelliste, peau Pâleur Nocturne bleutée très claire `#e6edf8`, cheveux Noir Carmin `#2a0a12`, yeux `ruby`, redingote rouge sang, rapière argentée, canines apparentes, bouche droite). Les six premiers trophées sont terminés. `necromancer` (7, légendaire : teint `undead-grey`, cheveux Blanc Os, yeux noirs à pupille verte, capuche en deux parties, flamme verte, faux) est fait, avec bouche fille complète pour la fille.
+- Traits d'espèce qui suivent la couleur des cheveux : oreilles de chat `getCatEars` (juste avant `hairFront`) et queue `getCatTail` (juste après `backEquipment`, plus sombre que les cheveux). Les cornes de `shadow` (`getShadowHorns`, tracé plume) sont dessinées par-dessus la frange pour que leur base arrondie reste visible.
 - Un trophée humain passe `isNewCharacter` à vrai (via `styleKey`/`outfitKey`) : le bandeau, le diadème et le triangle de col orange de la tenue de base sont masqués automatiquement.
-- Accessoire de tête sur une chevelure de même famille de couleur (diadème or sur cheveux dorés) : il disparaît. Choisir une teinte contrastée (ardoise `#475569`, teinte de la cape, pour le paladin ; l'acier clair `#e2e8f0` se fondait encore dans l'Or Solaire).
-- `player.js` (`setAvatarConfig`/`getAvatarConfig`) ne sauvegarde ni `styleKey`, ni `outfitKey`, ni `species` : un skin de trophée ne peut pas encore être porté par le joueur.
-- `avatar-modal.js` ne propose que les palettes et coupes de base, sans lien avec les trophées débloqués.
-- La page trophées (`trophies-manager.js`, `rewards-manager.js`, `js/data/trophies.json`) gère encore des trophées images.
-
-Ces trois derniers points relèvent du ticket backlog « Trophées : Page trophées basée sur les skins d'avatar ».
+- Accessoire de tête sur une chevelure de même famille de couleur : il disparaît. Contraste obligatoire : le diadème du paladin est en métal gris clair `#cbd5e1` (l'acier `#e2e8f0` se fondait dans l'Or Solaire). **Les diadèmes de métal n'ont pas de contour** (seules les gemmes gardent un fin liseré).
+- Le cou de tous les personnages est en `skin.shadow` (plus sombre que le visage), jamais en `skin.base`.
+- Le joueur peut porter un skin : `player.js` persiste `species`, `styleKey` et `outfitKey` (`cleanSkinKeys`) et l'atelier (`avatar-modal.js`) propose espèces, teintes, coupes et tenues débloquées, avec pastilles « Nouveau ».
+- La page trophées est un gacha : gemmes, arbre d'invocation animé, tirage par rareté (Rare 60, Épique 30, Légendaire 10), garantie au 10e tirage, doublon remboursé 5 gemmes (`rewards-manager.js`, `trophies-manager.js`). `js/data/trophies.json` n'est plus la source des cartes.
+- Hors du chemin habituel : `resetScore({ trophees: true })` en console remet à zéro skins, gemmes et avatar (voir `.doc/guide-dev-fonctions.md`).

@@ -13,6 +13,7 @@
 | `addScore(pts)` | Ajoute des points (défaut `+10`) et anime l'avatar | `addScore(15);` |
 | `setScore(pts)` | Définit le score exact (0 à 100) et met à jour la carte | `setScore(60);` |
 | `resetScore()` | Réinitialise le score à `0 pt` et replace l'avatar au départ | `resetScore();` |
+| `resetScore({ trophees: true })` | Remet aussi à zéro les trophées et skins gagnés, la garantie d'invocation et l'avatar personnalisé, puis recharge la page (le prénom et l'historique sont conservés) | `resetScore({ trophees: true });` |
 | `showSkeleton(ms)` | Déclenche l'effet squelette fidèle (défaut `2500ms`, `0` = infini) | `showSkeleton(3000);` |
 | `resetStorage()` | Vide tout le localStorage du site (gemmes, skins gagnés, avatar, prénom, historique) puis recharge la page | `resetStorage();` |
 | `resetStorage({ keepName: true })` | Même chose en conservant le prénom du joueur | `resetStorage({ keepName: true });` |

@@ -212,7 +212,7 @@ import { T } from '../core/theme.js';
 | `question-manager.js` | Lettre A/B/C/D fond `#66bcb4`, timer badge, barre progression turquoise, bouton valider brun |
 | `results-manager.js` | % score `#66bcb4`, barre progress turquoise dégradé, cartes `#f4eadd` |
 | `history-manager.js` | Stats cards `#f4eadd`, chiffres `#66bcb4`, résultats beige |
-| `trophies-manager.js` | Arbre d'invocation SVG (feuillage turquoise `#2f7d74` à `#66bcb4`, tronc brun `#8a4b14`), fruits et lueur de révélation par rareté (rare turquoise `rgb(102,188,180)`, épique violet `rgb(147,51,234)`, légendaire or `rgb(250,204,21)`), cartes 9/16 sur turquoise `T.hexPrimary`, bouton Appliquer orange `T.secondaryA(0.75)`, squelette `#eaddcc`. Animations `summon-*` dans `styles/main.css`, coupées par `prefers-reduced-motion` |
+| `trophies-manager.js` | Carte Arbre d'invocation (barre de taux segmentée aux couleurs de rareté, pastille légendaire garanti, jauge de gemmes vers le coût ; arbre SVG : feuillage turquoise `#2f7d74` à `#66bcb4`, tronc brun `#8a4b14`), fruits et lueur de révélation par rareté (rare turquoise `rgb(102,188,180)`, épique violet `rgb(147,51,234)`, légendaire or `rgb(250,204,21)`), cartes 9/16 sur fond neutre crème `T.bgSecondary` (`#f4eadd`), boutons icônes discrets zoom et appliquer (`T.secondaryA(0.75)`, 28 à 34 px) sur la miniature et la modale, description masquée sous 210 px de large, squelette `#eaddcc`. Animations `summon-*` dans `styles/main.css`, coupées par `prefers-reduced-motion` |
 
 ### `js/modules/ui/avatar-modal.js` - atelier avatar
 
@@ -222,6 +222,22 @@ import { T } from '../core/theme.js';
 | Pastille « Nouveau » d'une miniature (espèce, tenue, coupe) | Micro-chip `text-[8px] px-1.5 py-0.5`, fond `bg-amber-400/80` flouté, bordure fine `border-amber-200/70` |
 | Micro-chip « Nouveau » de section | `text-[8px]`, fond `bg-amber-400/25`, texte `text-amber-300`, bordure `border-amber-400/40` |
 | Aperçu | Collant en haut du défilement (fond `bg-primary-900/95` flouté), en ligne avec Corps/Tête sur mobile |
+
+### Avatars et trophées (`js/modules/ui/avatars/`)
+
+| Élément | Style |
+| --- | --- |
+| Cou de tous les personnages | `skin.shadow` (teinte de peau un peu plus sombre que le visage) |
+| Diadème du paladin et ceinture du paladin | Métal gris clair `#cbd5e1`, sans contour |
+| Diadème de Shadow | Argent `#94a3b8` et `#cbd5e1`, sans contour, croissant `#e2e8f0`, améthystes `#7e22ce` / `#c084fc` |
+| Cornes de Shadow | Ébène `#130e24`, nervure violette `#7c3aed` (60 %) et reflet `#c084fc`, tracé plume |
+| Bandeau de l'orc | Cuir `#451a03`, crâne d'os `#fef3c7` contour `#78350f`, orbites `#1c0a02`, sans cornes ni gemme |
+| Ceinture de l'orc | Rivets ronds `#94a3b8` (boucle réduite à un rivet), bras nus |
+| Queue du chat | Couleur des cheveux assombrie d'une couche noire à 22 % |
+| Vampire | Redingote `#991b1b`, cape `#450a0a` (doublure `#2c0606`), jabot `#f8fafc`, rapière `#cbd5e1`, pommeau `#dc2626`, peau `#e6edf8` (ombre `#bccbe4`), cheveux `#2a0a12` |
+| Nécromancien | Robe `#2f4a43`, capuche avant `#2f4a43` et arrière `#0e1a17`, cape `#0e1a17`, cordon d'os `#d6d3c4`, flamme `#22c55e` / `#86efac`, peau `#aebbb4` (ombre `#85948d`), cheveux `#e7e5d8`, œil noir `#0a0a0a`, pupille `#4ade80` |
+| Case vide de la collection | Carte 9/16 en pointillés turquoise (`T.primaryA(0.45)`) sur fond crème, mannequin neutre grisé à 60 %, pastille « ? », « Trophée N » et « À découvrir » ; un clic ramène à l'arbre |
+| Raretés d'invocation | Rare turquoise, épique violet `rgb(147,51,234)`, légendaire doré (voir `trophies-manager.js`) |
 
 ### Autres fichiers
 

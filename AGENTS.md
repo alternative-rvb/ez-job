@@ -60,7 +60,7 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
 ### 4. Parité Garçon / Fille & Accessoires
 - Pour chaque personnage / trophée, le garçon et la fille partagent **exactement les mêmes couleurs** (peau, yeux, cheveux).
 - Les nouveaux personnages RPG ne doivent **jamais hériter des accessoires d'écolier de base** (élastiques turquoise/orange `#489e96`/`#ff9d00`, serre-tête écolier).
-- Chaque personnage dispose d'un **ID court standardisé** (`boy`, `girl`, `elf`, `orc`, `paladin`, `cat`, `shadow`, `vampire`).
+- Chaque personnage dispose d'un **ID court standardisé** (`boy`, `girl`, `elf`, `orc`, `paladin`, `cat`, `shadow`, `vampire`, `necromancer`).
 
 ### 5. Règle absolue pour la Bouche (Teinte peau mais BEAUCOUP plus foncée)
 - Pour **TOUS les personnages** (garçons, filles, espèces fantastiques et trophées), la couleur de la bouche (`mouthColor`) est **impérativement basée sur la couleur de la peau (`skin`), mais dans une teinte BEAUCOUP PLUS FONCÉE** (dérivée via `getSkinMouthColor(skin)` ou champ `mouth` de la palette de peau).
@@ -86,15 +86,16 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
 
 ### 7 bis. Espèce Chat (trophée 4, `cat`)
 - **Oreilles de chat sur le crâne** (`getCatEars`), à la couleur des cheveux, intérieur rose `#f9a8d4`, touffes de poils en plume ; dessinées juste avant `hairFront` pour que la frange recouvre leur base. **Aucune oreille humaine** sur les côtés (`getSpeciesEars` renvoie vide).
-- **Queue** (`getCatTail`) : panache simple, fine à la hanche puis évasée, bout arrondi, sans touffe ; rayures tigrées en fuseau, couleur des cheveux, dessinée juste après `backEquipment`. Oreilles et queue suivent la couleur des cheveux quelle que soit la tenue.
+- **Queue** (`getCatTail`) : panache simple, fine à la hanche puis évasée, bout arrondi, sans touffe ; rayures tigrées en fuseau, couleur des cheveux, dessinée juste après `backEquipment`. Oreilles et queue suivent la couleur des cheveux quelle que soit la tenue. Elle est assombrie d'une couche noire (22 %) pour rester plus sombre que les cheveux.
 - **Yeux** : pupilles verticales fendues (`ellipse rx 0.85 ry 3.3`) réservées à l'espèce chat.
 - **Bouche en ω** : deux arcs fuseau de la couleur de bouche, nez rose triangulaire. **Croc** façon dents orc (aplat ivoire `#fffbeb` arrondi, sans contour, petit reflet), petit (environ 1.4 x 1.9), pointe vers le bas, **glissé derrière la lèvre sur le côté**.
-- **Griffes** : une griffe modèle en plume dupliquée trois fois par translation, même courbure, recourbées vers le corps.
+- **Griffes** : une griffe modèle en plume dupliquée trois fois par translation, même courbure, recourbées vers le corps, plus une quatrième griffe plus courte au pouce, côté corps, recourbée vers l'intérieur. Aucun emblème de patte sur le haut de la tenue.
 
 ### 8. Anatomie et Armes Orc & Barbare
 - **Dents inférieures orc** : écartées aux canines (gap $12.8\text{px}$, $x=42.2$ et $x=57.8$), légèrement plus petites ($4.5\text{px}$ de haut), avec **pointes arrondies** (courbe Bézier lisse, pas de triangles coupants) et **STRICTEMENT SANS CONTOUR / STROKE** (aplat ivoire pur `fill="#fffbeb"` sans contour pour un rendu propre et intégré).
-- **Hache en pierre taillée** : fer taillé en facettes minérales, tranchant en croissant orienté vers l'AVANT/EXTÉRIEUR (gauche), talon plat à droite, ligature croisée barbare en cuir/cordelette rouge.
+- **Hache en pierre taillée** : fer taillé en facettes minérales, tranchant en croissant orienté vers l'AVANT/EXTÉRIEUR (gauche), talon plat à droite, ligature enroulée : cuir serré autour du manche sous le fer, tours de cordelette rouge en biais, nœud et deux brins pendants, plus deux petits tours de cuir sur la poignée de part et d'autre de la main.
 - **Fille Orc** : crinière sauvage longue jusqu'à $y=90$ dans le même style barbare que le garçon.
+- **Bras nus et bandeau** : l'orc ne porte aucun brassard (carnation verte jusqu'aux mains). Son bandeau de guerre en cuir porte un crâne d'os au centre, sans cornes ni gemme. La boucle de ceinture est réduite à un rivet rond `#94a3b8` comme ses voisins.
 
 ### 9. Alignement des Armes Vectorielles
 - Toute arme (dagues elfiques, épées, bâtons) doit être construite avec son axe central **rigoureusement colinéaire à $X=0$** (pommeau, garde, quillons, lame et pointe alignés), puis positionnée par transformation `<g transform="translate(x, y) rotate(angle)">`. Ne jamais créer d'angle brisé visuel.
@@ -110,6 +111,7 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
 - **Interdiction absolue d'exécuter `git commit`** sans instruction explicite de l'utilisateur. L'utilisateur valide et teste en direct sur `http://localhost:8000/test-avatars.html`.
 - Toujours vérifier la portée des variables dans les templates JS pour prévenir tout `ReferenceError`.
 - Valider la syntaxe des scripts avec `node -c` avant toute restitution.
+- Après toute modification de structure d'avatar : `npm run avatars:check` (compare à HEAD, signale les éléments perdus). Aperçu : `node scripts/avatar-preview.mjs <trophée|base>`. Le code est découpé par trophée dans `js/modules/ui/avatars/` (lire seulement le fichier concerné).
 
 ### 12. Spécificités des Coupes et Teintes Elfe & Orc
 - **Elfe Garçon** : Mèches arrière courtes s'arrêtant proprement à la nuque et au sommet des épaules ($y \approx 60-64$), évitant la cascade longue de la fille.
@@ -123,6 +125,24 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
 - **Interdictions formelles :**
   - Interdiction de laisser flotter des coins de polygones dans le vide en dehors du corps ou coupés en ligne droite déconnectée de la pente de l'épaule.
   - Interdiction de faire déborder les extrémités inférieures au-delà de la largeur de taille/bassin (`x = 36.5..63.5`). Les sangles doivent s'ancrer impeccablement sur la ceinture.
+
+### 14. Trophées 3 à 5 et règles transversales
+- **Cou** : tous les personnages ont le cou en `skin.shadow`, jamais en `skin.base`.
+- **Diadèmes de métal sans contour** : aucun `stroke` sur le bandeau, les pointes et les volutes ; seules les gemmes gardent un fin liseré. Paladin : diadème et ceinture en métal gris clair `#cbd5e1`, boucle solaire dorée.
+- **Shadow (épique)** : cornes en S tracées en plume (base épaisse arrondie, effilement continu), dessinées par-dessus la frange ; diadème d'argent avec croissant de lune et améthyste ; manches pagode évasées dont la main sort du revers.
+- **Vampire (trophée 6, épique)** : espèce `vampire` (oreilles pointues, canines supérieures ivoire sans contour), teint `vampire-pale`, cheveux Noir Carmin `#2a0a12`, yeux `ruby`, redingote rouge sang `#991b1b` sous une cape `#450a0a`, jabot blanc, manchettes de dentelle, rapière argentée tenue dans la main droite (arme sur l'axe X=0, main dans le groupe).
+- **Nécromancien (trophée 7, légendaire)** : espèce `undead` (oreilles humaines), teint `undead-grey` `#aebbb4`, cheveux Blanc Os `#e7e5d8`, robe `#2f4a43`, cape `#0e1a17`, cordon d'os, flamme verte dans la main gauche, faux sur l'axe X=0 tenue main droite. Yeux : blanc noir `#0a0a0a`, iris vert sombre, pupille vert flamme `#4ade80` (teinte `revenant-green`), cils et paupières en noir (le blanc os des cheveux disparaîtrait avec `multiply`). Dessins repris des SVG retouchés par Nicolas.
+- **Contour de l'œil du Revenant** : exception à la règle 2, contour presque noir `#0a0a0a` épais (1.8) autour du blanc d'œil noir ; toutes les autres espèces gardent `skin.shadow` (0.8).
+- **Capuche en deux parties** (modèle pour toute capuche) : la partie arrière est un double ovale sombre `#0e1a17` dans le calque `hairBack` (derrière la tête) ; la partie avant `#2f4a43`, dans `headAccessory`, se compose de deux joues qui descendent vers les yeux et d'une pointe de front, par-dessus la frange `hairFront` (blanc os, bords en dents). La fille a en plus de longues mèches effilées dessinées par-dessus les joues, uniquement pour `type === 'girl'` : `headAccessory` peut être une fonction `(skin, hairColor, type)`.
+- **Types de bouche** : sourire de base (sablier courbe), bouche droite en sablier (orc, Shadow, Vampire, Nécromancien garçon), bouche en ω avec croc (chat, à conserver telle quelle) et **bouche fille complète** (`getFullLipsMouth(mouthColor)` dans `avatars/base.js` : lèvre supérieure en arc de Cupidon en deux moitiés, ouverture sombre en lentille, lèvre inférieure pleine), réservée aux filles Elfe (lèvres rosées dérivées de la peau), Shadow, Nécromancienne et Mage Érudite (lèvres rosées comme l'elfe, choisie par la clé de coupe `scholar_girl`, passée en 5e argument de `faceFeatures`). Lèvres toujours en `mouthColor` dérivée de la peau.
+- **SVG retouchés par Nicolas** (`.tmp/*.svg`, export Affinity du lab) : les intégrer tels quels avec leurs `matrix(...)`, couleurs `rgb()` converties en hex, en ne remplaçant que ce qui a changé (`diff`). Ne rien retoucher pendant qu'il dessine.
+- **Fée des Fleurs (trophée 8, rare)** : espèce `fairy` (oreilles pointues elfe), teint `fairy-cream` `#ffe6d5`, cheveux Orchidée `#d946ef`, yeux `fairy-lilac`, haut de feuilles sans manches et short (coupe de l'archer), ailes d'insecte translucides en `backEquipment` (demi-aile gauche, droite par `mirror()`), couronne de fleurs en `headAccessory`, coiffures reprises des SVG de Nicolas (garçon : épi ébouriffé ; fille : chignon haut à mèches hérissées avec ruban vert, mèches hérissées dans `hairBack`, ruban et fleurs de tempe dans `hairFront`), bâton fleuri sur l'axe X=0 tenu main droite.
+- **Mage Érudit (trophée 9, épique)** : humain (teint par défaut), cheveux Châtain Clair `#b07d4b`, robe `#2f4fa0` (aucune cape), écharpe bleu nuit `#172554` en `headAccessory` (le cou est dessiné après le corps), bottines bleu marine `#1e3a8a`, lunettes de vue rondes (monture `#3b2412`, rayon 9.3) dans `headAccessory` par-dessus la frange, bandoulière de cuir (de l'épaule gauche jusqu'à l'anse du grimoire à la hanche droite) portant un grimoire pendu comme un sac à main (tranche arrière vers le bas) à la hanche droite, et deux fioles de potion à la ceinture, côté gauche, le tout dans le calque `belt`; coupes ondulées (garçon mi-long, fille aux épaules).
+- **Bouche droite** : Shadow, Vampire et le Nécromancien garçon ne sourient pas (fuseau horizontal `sablier`), comme l'orc mais plus étroite.
+- **Raretés d'invocation** : elfe rare, orc légendaire, paladin rare, chat légendaire, Shadow, Vampire et Mage Érudit épiques, Nécromancien légendaire, Fée rare, Mage Érudit épique (champ `rarity` de chaque entrée de `RPG_TROPHIES`).
+- **Mannequin neutre** (`avatars/mannequin.js`) : gabarit nu et gris des futurs trophées, hors registre des trophées ; ne jamais l'ajouter à `RPG_TROPHIES`.
+- **Chaînes SVG** : dans un ternaire, toute chaîne contenant `${...}` doit être un gabarit à accents graves, pas des apostrophes (le nez noir de tous les personnages venait d'un `'...${skin.shadow}...'`).
+- **Organisation du code** : un fichier par trophée dans `js/modules/ui/avatars/trophies/<id>.js`, bases dans `avatars/base.js`, traits à largeur variable dans `js/modules/ui/avatar-kit.js` (`fuseau()`, `plume()`, etc. : jamais de suites de points `L` précalculées).
 
 ### Documentation détaillée
 Voir le guide complet dans [.doc/guide-technique-avatars-svg.md](.doc/guide-technique-avatars-svg.md). La méthode de création des trophées skins (socle réutilisable, apports d'un trophée, recette, lab) est dans [.claude/skills/avatars-svg/SKILL.md](.claude/skills/avatars-svg/SKILL.md).
@@ -139,7 +159,7 @@ Les scripts sont dans `package.json` (`npm run dev`, `build`, `generate-index`, 
 - L'index des quiz se génère avec `python3 api.py generate-index` (appelé par `npm run generate-index`).
 - Valider un quiz précis : `node scripts/validate-quiz.js path/to/quiz.json`.
 - Versionner : toujours `npm run update-version` (met à jour `package.json`, `sw.js`, `js/modules/core/version.js` et `.version`), jamais `bump-version` seul.
-- `test-avatars.html` est le laboratoire de test des avatars (dev, exclu du déploiement).
+- `test-avatars.html` est le laboratoire de test des avatars (dev, exclu du déploiement). `npm run avatars:check` contrôle qu'aucun élément d'avatar n'a été perdu (voir `scripts/README.md`).
 
 ## Quiz : format et règles de rédaction
 

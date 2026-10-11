@@ -1,6 +1,6 @@
 # Modèles de code d'un trophée skin
 
-Modèles tirés des trophées `elf` et `orc` de `js/modules/ui/avatars.js`. Remplacer `<id>`, `<NOM>` et les valeurs entre chevrons.
+Modèles tirés des trophées `elf` et `orc` (`js/modules/ui/avatars/trophies/elf.js` et `orc.js`). Remplacer `<id>`, `<NOM>` et les valeurs entre chevrons.
 
 ## Teintes débloquées (catalogues `ALL_*`)
 
