@@ -321,6 +321,42 @@ export class RoadmapManager {
                                 </linearGradient>
                             </defs>
 
+                            <!-- Décor : Soleil et nuages (flat design, derrière les montagnes) -->
+                            <g id="decor-sky">
+                                <circle cx="62" cy="10" r="30" fill="#fff3c4" opacity="0.45"/>
+                                <circle cx="62" cy="10" r="22" fill="#ffe082" opacity="0.6"/>
+                                <circle cx="62" cy="10" r="15" fill="#ffd54f"/>
+                                <path d="M 62 -5 A 15 15 0 0 1 62 25 Z" fill="#ffca28"/>
+                                <g transform="translate(140, 22) scale(1)" opacity="0.95">
+                                    <circle cx="0" cy="0" r="9" fill="#ffffff"/>
+                                    <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
+                                    <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
+                                    <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
+                                    <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                </g>
+                                <g transform="translate(290, -8) scale(0.8)" opacity="0.9">
+                                    <circle cx="0" cy="0" r="9" fill="#ffffff"/>
+                                    <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
+                                    <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
+                                    <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
+                                    <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                </g>
+                                <g transform="translate(215, 52) scale(0.55)" opacity="0.75">
+                                    <circle cx="0" cy="0" r="9" fill="#ffffff"/>
+                                    <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
+                                    <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
+                                    <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
+                                    <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                </g>
+                                <g transform="translate(20, 62) scale(0.6)" opacity="0.8">
+                                    <circle cx="0" cy="0" r="9" fill="#ffffff"/>
+                                    <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
+                                    <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
+                                    <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
+                                    <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                </g>
+                            </g>
+
                             <!-- Montagnes en arrière-plan harmonieuses et étagées -->
                             <!-- Chaîne de montagnes lointaines (Gris-bleu pastel avec névés nets) -->
                             <!-- NOTE: même construction que la montagne de la Citadelle (sommet arrondi, arête ombrée, neige dentelée), en teintes plus claires pour la profondeur -->
@@ -353,20 +389,43 @@ export class RoadmapManager {
                             <path d="M -40 205 Q 150 155 310 195 T 580 185 L 580 320 L -40 320 Z" fill="#599965"/>
                             <path d="M -40 235 Q 180 205 350 230 T 580 220 L 580 320 L -40 320 Z" fill="#4a8757"/>
 
-                            <!-- Décor : Grand Lac Alpin au pied de la montagne -->
+                            <!-- Décor : Lac alpin (flat design : rive claire, eau en deux profondeurs, reflets en traits arrondis) -->
                             <g id="decor-lake">
-                                <!-- Berges du lac -->
-                                <path d="M 245 204 C 270 190, 335 188, 385 198 C 400 208, 390 226, 350 230 C 295 234, 255 224, 245 204 Z" fill="#447d53" opacity="0.6"/>
-                                <!-- Nappe d'eau du lac avec reflets azur -->
-                                <path d="M 248 206 C 272 193, 332 191, 380 200 C 394 209, 384 223, 347 227 C 298 231, 258 221, 248 206 Z" fill="#38a3d1" stroke="#257ca3" stroke-width="1"/>
-                                <!-- Miroir d'eau & reflets scintillants -->
-                                <ellipse cx="315" cy="210" rx="40" ry="6.5" fill="#5fc1e6" opacity="0.65"/>
-                                <ellipse cx="300" cy="215" rx="24" ry="3" fill="#9de2fa" opacity="0.8"/>
-                                <line x1="330" y1="208" x2="355" y2="208" stroke="#ffffff" stroke-width="0.8" opacity="0.75" stroke-linecap="round"/>
-                                <!-- Végétation aquatique / roseaux au bord de l'eau -->
-                                <circle cx="258" cy="208" r="1.5" fill="#20502e"/>
-                                <circle cx="262" cy="210" r="1.2" fill="#20502e"/>
-                                <circle cx="368" cy="220" r="1.5" fill="#20502e"/>
+                                <!-- Rive -->
+                                <path d="M 243 204 C 268 189, 336 187, 387 197 C 403 208, 392 228, 350 231.5 C 294 235.5, 253 225, 243 204 Z" fill="#7fb97a"/>
+                                <!-- Eau -->
+                                <path d="M 248 206 C 272 193, 332 191, 380 200 C 394 209, 384 223, 347 227 C 298 231, 258 221, 248 206 Z" fill="#4fb3e0"/>
+                                <path d="M 263 207.5 C 284 198, 330 197, 368 203.5 C 379 210, 370 219.5, 342 222 C 302 225.5, 271 218, 263 207.5 Z" fill="#3a9fd0"/>
+                                <!-- Bande claire le long de la rive du fond -->
+                                <path d="M 256 202 C 280 194.5, 330 193, 374 199.5 C 336 196.5, 286 197.5, 256 202 Z" fill="#8fd6f2"/>
+                                <!-- Reflets -->
+                                <g stroke="#ffffff" stroke-linecap="round" opacity="0.7">
+                                    <line x1="276" y1="212" x2="292" y2="212" stroke-width="1.4"/>
+                                    <line x1="297" y1="212" x2="301" y2="212" stroke-width="1.4"/>
+                                    <line x1="318" y1="217.5" x2="340" y2="217.5" stroke-width="1.2"/>
+                                    <line x1="345" y1="206" x2="362" y2="206" stroke-width="1"/>
+                                </g>
+                                <!-- Nénuphars -->
+                                <path d="M 360 214 L 363 213 A 3 3 0 1 1 362.6 215.6 Z" fill="#5aa65e"/>
+                                <circle cx="359" cy="213.2" r="1" fill="#f48fb1"/>
+                                <path d="M 270 215 L 272.3 214.4 A 2.4 2.4 0 1 1 272 216.4 Z" fill="#5aa65e"/>
+                                <!-- Roseaux -->
+                                <g>
+                                    <line x1="253" y1="212" x2="252.5" y2="202" stroke="#3f7f4c" stroke-width="0.8" stroke-linecap="round"/>
+                                    <ellipse cx="252.5" cy="203.6" rx="0.9" ry="2" fill="#8d6e63"/>
+                                    <line x1="256.5" y1="213" x2="257.5" y2="199.5" stroke="#3f7f4c" stroke-width="0.8" stroke-linecap="round"/>
+                                    <ellipse cx="257.5" cy="201.1" rx="0.9" ry="2" fill="#8d6e63"/>
+                                    <line x1="260" y1="212.5" x2="261.5" y2="203.5" stroke="#3f7f4c" stroke-width="0.8" stroke-linecap="round"/>
+                                    <ellipse cx="261.5" cy="205.1" rx="0.9" ry="2" fill="#8d6e63"/>
+                                    <line x1="383" y1="221" x2="382.5" y2="212" stroke="#3f7f4c" stroke-width="0.8" stroke-linecap="round"/>
+                                    <ellipse cx="382.5" cy="213.6" rx="0.9" ry="2" fill="#8d6e63"/>
+                                    <line x1="386.5" y1="219" x2="387.5" y2="209" stroke="#3f7f4c" stroke-width="0.8" stroke-linecap="round"/>
+                                    <ellipse cx="387.5" cy="210.6" rx="0.9" ry="2" fill="#8d6e63"/>
+                                </g>
+                                <!-- Galets -->
+                                <ellipse cx="392" cy="214" rx="2.6" ry="1.5" fill="#b0bec5"/>
+                                <ellipse cx="395.5" cy="216" rx="1.8" ry="1.1" fill="#90a4ae"/>
+                                <ellipse cx="250" cy="216.5" rx="2" ry="1.2" fill="#b0bec5"/>
                             </g>
 
                             <!-- Décor : Forêt enchantée (flat design, deux rangs pour la profondeur) -->
