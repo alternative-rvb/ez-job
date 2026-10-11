@@ -574,13 +574,14 @@ class AvatarCustomizerModal {
         container.innerHTML = items.map(item => {
             const isSelected = item.key ? this.state.styleKey === item.key : (!this.state.styleKey && this.state.styleId === item.id);
             const isNew = item.key && rewardsManager.isNewItem(`style:${item.key}`);
+            // NOTE L'arrière de la capuche du Nécromancien fait partie de la coupe mais pas des cheveux : on le retire de la miniature
             const thumbSvg = buildCustomAvatarSvg(this.avatarOptions({
                 styleId: item.id || this.state.styleId,
                 styleKey: item.key,
                 outfitId: 1, // Aperçu de coupe au naturel sans couvre-chef
                 outfitKey: null,
                 mode: 'head'
-            }));
+            })).replace(/<g id="necro-hood-back"[^>]*>\s*<g[^>]*>.*?<\/g>\s*<ellipse[^>]*\/>\s*<\/g>/s, '');
 
             return `
                 <button type="button" data-style-id="${item.id || ''}" data-style-key="${item.key || ''}" class="style-thumb-btn relative flex flex-col items-center justify-center p-1 rounded-xl border transition-all text-center cursor-pointer ${
