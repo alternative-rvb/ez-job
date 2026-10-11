@@ -28,6 +28,8 @@ export const ALL_HAIR_COLORS = [
     { id: 'orc-ginger', name: 'Roux Ardent Barbare', hex: '#c2410c', isTrophyReward: true },
     { id: 'orc-crimson', name: 'Rouge Barbare Sauvage', hex: '#b91c1c', isTrophyReward: true },
     { id: 'paladin-gold', name: 'Or Solaire', hex: '#facc15', isTrophyReward: true },
+    { id: 'cat-violet', name: 'Violet Félin', hex: '#7c3aed', isTrophyReward: true },
+    { id: 'cat-lilac', name: 'Lilas Félin', hex: '#a78bfa', isTrophyReward: true },
     { id: 'silver', name: 'Blanc Argenté', hex: '#c5cbd4', isTrophyReward: true },
     { id: 'blue-night', name: 'Bleu Nuit', hex: '#1e3a5f', isTrophyReward: true },
     { id: 'ruby', name: 'Rouge Grenat', hex: '#6e1313', isTrophyReward: true },
@@ -57,7 +59,8 @@ export const ALL_EYE_COLORS = [
     { id: 'amethyst', name: 'Violet Améthyste', dark: '#581c87', light: '#a855f7', isTrophyReward: true },
     { id: 'ruby', name: 'Rouge Rubis', dark: '#881337', light: '#f43f5e', isTrophyReward: true },
     { id: 'gold', name: 'Or Flamboyant', dark: '#78350f', light: '#f59e0b', isTrophyReward: true },
-    { id: 'sky', name: 'Azur Céleste', dark: '#0c4a6e', light: '#38bdf8', isTrophyReward: true }
+    { id: 'sky', name: 'Azur Céleste', dark: '#0c4a6e', light: '#38bdf8', isTrophyReward: true },
+    { id: 'cat-rose', name: 'Rose Félin', dark: '#9d174d', light: '#f472b6', isTrophyReward: true }
 ];
 
 // Palette active pour la personnalisation des avatars de base
@@ -106,6 +109,36 @@ export function getSkinMouthColor(skin = { base: '#ffd4a3', shadow: '#f0be8d' })
     return '#9c4933';
 }
 
+
+// ANCHOR Oreilles de chat sur le crâne (espèce cat) : couleur des cheveux, intérieur rose, touffes de poils en plume
+// NOTE Dessinées juste avant hairFront : la frange recouvre leur base
+export function getCatEars(hairColor = '#7c3aed') {
+    return `
+        <g id="cat-ears">
+            <path d="M 23,10 C 20,1 18.5,-8 20,-16 C 27,-13 33,-8 39,-2 Z" fill="${hairColor}"/>
+            <path d="M 25.2,6.5 C 23.4,0 22.6,-6 23.4,-11 C 27.6,-8.6 31.4,-5.6 35,-1.8 Z" fill="#f9a8d4"/>
+            <path d="M 25.95,4.96 L 25.84,4.05 L 25.77,3.16 L 25.74,2.28 L 25.77,1.28 L 25.84,0.43 L 25.98,-0.54 L 26.14,-1.36 L 26.39,-2.3 L 26.64,-3.09 L 27,-4 L 27,-4 L 26.54,-3.13 L 26.19,-2.37 L 25.85,-1.44 L 25.6,-0.63 L 25.36,0.35 L 25.21,1.22 L 25.09,2.25 L 25.03,3.16 L 25.02,4.09 L 25.05,5.04 Q 25.56,5.63 25.95,4.96 Z M 27.9,4.05 L 27.97,3.33 L 28.08,2.63 L 28.22,1.95 L 28.39,1.3 L 28.65,0.56 L 28.9,-0.04 L 29.25,-0.72 L 29.64,-1.37 L 30.02,-1.9 L 30.5,-2.5 L 30.5,-2.5 L 29.94,-1.97 L 29.49,-1.48 L 29.02,-0.86 L 28.59,-0.21 L 28.26,0.39 L 27.92,1.12 L 27.66,1.79 L 27.44,2.48 L 27.25,3.2 L 27.1,3.95 Q 27.43,4.56 27.9,4.05 Z" fill="${hairColor}"/>
+            <path d="M 77,10 C 80,1 81.5,-8 80,-16 C 73,-13 67,-8 61,-2 Z" fill="${hairColor}"/>
+            <path d="M 74.8,6.5 C 76.6,0 77.4,-6 76.6,-11 C 72.4,-8.6 68.6,-5.6 65,-1.8 Z" fill="#f9a8d4"/>
+            <path d="M 74.05,4.96 L 74.16,4.05 L 74.23,3.16 L 74.26,2.28 L 74.23,1.28 L 74.16,0.43 L 74.02,-0.54 L 73.86,-1.36 L 73.61,-2.3 L 73.36,-3.09 L 73,-4 L 73,-4 L 73.46,-3.13 L 73.81,-2.37 L 74.15,-1.44 L 74.4,-0.63 L 74.64,0.35 L 74.79,1.22 L 74.91,2.25 L 74.97,3.16 L 74.98,4.09 L 74.95,5.04 Q 74.44,5.63 74.05,4.96 Z M 72.1,4.05 L 72.03,3.33 L 71.92,2.63 L 71.78,1.95 L 71.61,1.3 L 71.35,0.56 L 71.1,-0.04 L 70.75,-0.72 L 70.36,-1.37 L 69.98,-1.9 L 69.5,-2.5 L 69.5,-2.5 L 70.06,-1.97 L 70.51,-1.48 L 70.98,-0.86 L 71.41,-0.21 L 71.74,0.39 L 72.08,1.12 L 72.34,1.79 L 72.56,2.48 L 72.75,3.2 L 72.9,3.95 Q 72.57,4.56 72.1,4.05 Z" fill="${hairColor}"/>
+        </g>
+    `;
+}
+
+// ANCHOR Queue de chat en panache simple (espèce cat) : courte, fine à la hanche puis évasée, bout arrondi,
+// couleur des cheveux, rayures tigrées en fuseau, ombre discrète dessous et reflet dessus, dessinée derrière le corps
+export function getCatTail(hairColor = '#7c3aed') {
+    return `
+        <g id="cat-tail">
+            <path d="M 57,93 C 66,96 75,94 80,89 C 86,84 91,77 90,69 C 89.4,62 84,58.5 79,60 C 75,61.5 73.6,65 73.5,69 C 73,75 70.5,80.5 66,84 C 63,86.5 60,88 57,88.5 Z" fill="${hairColor}"/>
+            <path d="M 60,93.6 L 62.76,94.22 L 65.96,94.53 L 69.12,94.39 L 71.79,93.92 L 74.8,92.9 L 77.66,91.41 L 79.97,89.75 L 82.12,87.78 L 84.12,85.52 L 86,83 L 86,83 L 83.68,85.09 L 81.35,86.89 L 79.03,88.44 L 76.71,89.76 L 74.01,91.06 L 71.26,92.09 L 68.84,92.8 L 65.9,93.35 L 62.8,93.61 L 60,93.6 L 60,93.6 Z" fill="#000000" opacity="0.15"/>
+            <!-- Rayures tigrées en fuseau -->
+            <path d="M 66.5,85.5 L 66.68,86.39 L 66.77,87.14 L 66.89,87.99 L 67,88.83 L 67.11,89.54 L 67.27,90.38 L 67.44,91.13 L 67.63,91.91 L 67.82,92.73 L 68,93.6 L 68,93.6 L 68.32,92.76 L 68.57,91.92 L 68.73,91.07 L 68.78,90.23 L 68.69,89.26 L 68.48,88.47 L 68.12,87.6 L 67.65,86.79 L 67.13,86.17 L 66.5,85.5 L 66.5,85.5 Z M 74.5,79 L 74.92,80.05 L 75.32,81.11 L 75.65,82.03 L 76.1,83.07 L 76.53,83.96 L 77.09,84.99 L 77.63,85.87 L 78.23,86.76 L 78.86,87.66 L 79.5,88.6 L 79.5,88.6 L 79.38,87.46 L 79.2,86.35 L 78.96,85.28 L 78.63,84.26 L 78.13,83.14 L 77.6,82.25 L 76.9,81.28 L 76.21,80.54 L 75.37,79.74 L 74.5,79 L 74.5,79 Z M 79.5,70.5 L 80.4,71.16 L 81.37,71.75 L 82.24,72.22 L 83.33,72.63 L 84.31,72.89 L 85.5,73.06 L 86.55,73.08 L 87.62,72.99 L 88.71,72.83 L 89.8,72.6 L 89.8,72.6 L 88.74,72.27 L 87.72,71.94 L 86.73,71.63 L 85.77,71.37 L 84.66,71.12 L 83.72,70.97 L 82.64,70.82 L 81.69,70.75 L 80.6,70.63 L 79.5,70.5 L 79.5,70.5 Z" fill="#000000" opacity="0.22"/>
+            <path d="M 75.5,66 L 76.07,65.35 L 76.65,64.78 L 77.22,64.28 L 77.86,63.76 L 78.5,63.28 L 79.06,62.89 L 79.75,62.46 L 80.5,62.05 L 81.21,61.71 L 82,61.4 L 82,61.4 L 81.14,61.31 L 80.3,61.32 L 79.35,61.49 L 78.46,61.81 L 77.75,62.22 L 77.03,62.84 L 76.42,63.59 L 76.03,64.34 L 75.72,65.14 L 75.5,66 L 75.5,66 Z" fill="#ffffff" opacity="0.25"/>
+        </g>
+    `;
+}
+
 // Générateur des oreilles selon l'espèce (Humain, Elfe, Orc, etc.)
 export function getSpeciesEars(species = 'human', skin = { base: '#ffd4a3', shadow: '#f0be8d' }, gender = 'boy') {
     if (species === 'elf') {
@@ -146,6 +179,8 @@ export function getSpeciesEars(species = 'human', skin = { base: '#ffd4a3', shad
             </g>
         `;
     }
+    // NOTE Le chat n'a pas d'oreilles sur les côtés : ses oreilles sont sur le crâne (getCatEars)
+    if (species === 'cat') return '';
     // Oreilles humaines par défaut
     return `
         <!-- NOTE Oreilles descendues de 50 % de leur hauteur (9.6) et rapprochées de 25 % de leur largeur (x 21 -> 23.4) -->
@@ -221,7 +256,7 @@ export const BOY_BASE = {
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="${skin.shadow}" stroke-width="0.8"/>
             <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="${eye.dark}"/>
             <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="${eye.light}"/>
-            <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
+            ${species === 'cat' ? '<ellipse cx="37.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : '<circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>'}
             <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
             <circle cx="39.5" cy="43.5" r="0.9" fill="#ffffff"/>
 
@@ -229,7 +264,7 @@ export const BOY_BASE = {
             <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="${skin.shadow}" stroke-width="0.8"/>
             <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="${eye.dark}"/>
             <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="${eye.light}"/>
-            <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
+            ${species === 'cat' ? '<ellipse cx="62.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : '<circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>'}
             <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
             <circle cx="64.5" cy="43.5" r="0.9" fill="#ffffff"/>
 
@@ -239,7 +274,7 @@ export const BOY_BASE = {
                 <path d="M56 38 Q63 34 70 38" fill="none" stroke="${hairColor}" stroke-width="2.2" stroke-linecap="round"/>
             </g>
 
-            <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>
+            ${species === 'cat' ? '<path d="M 48.3,46.8 L 51.7,46.8 Q 50,49 50,49 Q 50,49 48.3,46.8 Z" fill="#f472b6"/>' : '<polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>'}
 
             ${species === 'orc' ? `
             <!-- Peintures de guerre rouges tribales sous les yeux -->
@@ -253,7 +288,10 @@ export const BOY_BASE = {
             <path d="M 42.2,52.5 C 42.2,49.5 42.8,48 43.6,48 C 44.4,48 45.0,49.5 45.0,52.5 Z" fill="#fffbeb"/>
             <ellipse cx="43.2" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>
             <path d="M 55.0,52.5 C 55.0,49.5 55.6,48 56.4,48 C 57.2,48 57.8,49.5 57.8,52.5 Z" fill="#fffbeb"/>
-            <ellipse cx="56.8" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>` : `
+            <ellipse cx="56.8" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>` : species === 'cat' ? `
+            <!-- Bouche de chat en ω : petit croc ivoire arrondi façon orc (sans contour, pointe vers le bas) sur le côté droit, glissé derrière la lèvre, puis deux arcs fuseau de la couleur de bouche -->
+            <path d="M 53.35,52.2 C 53.35,53.5 53.65,54.1 54.05,54.1 C 54.45,54.1 54.75,53.5 54.75,52.2 Z" fill="#fffbeb"/><ellipse cx="53.85" cy="53" rx="0.18" ry="0.5" fill="#ffffff" opacity="0.8"/>
+            <path d="M 45,51.2 L 45.24,51.8 L 45.61,52.41 L 46.05,52.91 L 46.67,53.31 L 47.37,53.49 L 48.19,53.4 L 48.83,53.07 L 49.37,52.55 L 49.75,51.97 L 50,51.4 L 50,51.4 L 49.47,51.69 L 48.91,51.95 L 48.36,52.13 L 47.91,52.2 L 47.47,52.2 L 47.08,52.14 L 46.61,52.02 L 46.11,51.83 L 45.54,51.53 L 45,51.2 L 45,51.2 Z M 50,51.4 L 50.25,51.97 L 50.63,52.55 L 51.17,53.07 L 51.81,53.4 L 52.63,53.49 L 53.33,53.31 L 53.95,52.91 L 54.39,52.41 L 54.76,51.8 L 55,51.2 L 55,51.2 L 54.46,51.53 L 53.89,51.83 L 53.39,52.02 L 52.92,52.14 L 52.53,52.2 L 52.09,52.2 L 51.64,52.13 L 51.09,51.95 L 50.53,51.69 L 50,51.4 L 50,51.4 Z" fill="${mouthColor}"/>` : `
             <!-- Bouche souriante basée sur la couleur de peau mais beaucoup plus foncée -->
             <!-- NOTE Trait à largeur variable profil sablier (épais aux commissures, étranglé au centre), généré depuis Q 45,51 50,56.5 55,51 -->
             <path d="M 44.33,51.61 L 45.34,52.38 L 46.33,52.99 L 47.3,53.43 L 48.23,53.73 L 49.13,53.87 L 50,53.89 L 50.87,53.87 L 51.77,53.73 L 52.7,53.43 L 53.67,52.99 L 54.66,52.38 L 55.67,51.61 Q 55.85,50.07 54.33,50.39 L 53.67,51.3 L 53,52.07 L 52.3,52.69 L 51.56,53.16 L 50.8,53.48 L 50,53.62 L 49.2,53.48 L 48.44,53.16 L 47.7,52.69 L 47,52.07 L 46.33,51.3 L 45.67,50.39 Q 44.15,50.07 44.33,51.61 Z" fill="${mouthColor}"/>`}
@@ -276,19 +314,10 @@ export const BOY_STYLES = {
             <g id="boy-hair-back-full" transform="translate(50, 0) scale(0.85, 1) translate(-50, 0)">
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
                 <path d="M 18,44 C 12,34 8,26 10,20 C 12,14 6,10 12,4 C 16,-2 24,-6 30,-4 C 34,-12 44,-14 50,-10 C 56,-14 66,-12 70,-4 C 76,-6 84,-2 88,4 C 94,10 88,14 90,20 C 92,26 88,34 82,44 C 78,34 76,28 74,22 C 66,12 34,12 26,22 C 24,28 22,34 18,44 Z" fill="${color}"/>
-                <!-- NOTE Ombre : mèches latérales près du visage, à l'abri de la lumière venant du haut -->
-                <path d="M 18,44 C 12,34 8,26 10,20 C 15,27 21,26 26,22 C 24,28 22,34 18,44 Z" fill="#000000" opacity="0.2"/>
-                <path d="M 82,44 C 88,34 92,26 90,20 C 85,27 79,26 74,22 C 76,28 78,34 82,44 Z" fill="#000000" opacity="0.2"/>
             </g>`,
         getHairFront: (color) => `
             <g id="boy-hair-front-full">
                 <path d="M 20,32 C 21,24 24,14 34,8 C 44,4 56,4 66,8 C 76,14 79,24 80,32 C 78,35 76,33 74,27 C 72,34 66,35 62,28 C 58,35 52,36 48,27 C 44,35 38,34 34,27 C 30,34 26,35 24,28 C 22,34 20,34 20,32 Z" fill="${color}"/>
-                <!-- NOTE Ombres : séparations de mèches en plume, du creux de la frange vers le crâne -->
-                <path d="M 24.88,28.19 L 25.11,26.92 L 25.36,25.84 L 25.72,24.59 L 26.09,23.53 L 26.6,22.3 L 27.08,21.26 L 27.62,20.22 L 28.34,19.04 L 29.01,18.02 L 29.72,17 L 29.72,17 L 28.83,17.87 L 28,18.78 L 27.12,19.89 L 26.4,20.86 L 25.74,21.85 L 25.05,23.05 L 24.51,24.11 L 23.96,25.37 L 23.53,26.48 L 23.12,27.81 Q 23.73,29.23 24.88,28.19 Z" fill="#000000" opacity="0.16"/>
-                <path d="M 34.89,27.14 L 35,26.07 L 35.12,25.14 L 35.32,24.05 L 35.51,23.11 L 35.79,22.01 L 36.06,21.05 L 36.42,19.93 L 36.76,18.97 L 37.13,17.99 L 37.52,17 L 37.52,17 L 36.93,17.89 L 36.38,18.78 L 35.86,19.69 L 35.32,20.76 L 34.88,21.68 L 34.42,22.77 L 34.06,23.7 L 33.69,24.8 L 33.4,25.74 L 33.11,26.86 Q 33.8,28.24 34.89,27.14 Z" fill="#000000" opacity="0.16"/>
-                <path d="M 48.9,27.02 L 48.84,26.08 L 48.79,24.99 L 48.73,24.05 L 48.69,22.96 L 48.64,22.02 L 48.6,21.08 L 48.56,19.99 L 48.52,19.04 L 48.49,17.94 L 48.44,17 L 48.44,17 L 48.27,17.93 L 48.1,19.02 L 47.96,19.95 L 47.81,21.04 L 47.68,21.98 L 47.55,22.92 L 47.43,24.01 L 47.31,24.95 L 47.2,26.04 L 47.1,26.98 Q 47.97,28.26 48.9,27.02 Z" fill="#000000" opacity="0.16"/>
-                <path d="M 62.9,27.91 L 62.69,26.78 L 62.45,25.68 L 62.19,24.59 L 61.87,23.35 L 61.55,22.31 L 61.16,21.13 L 60.79,20.14 L 60.33,19.01 L 59.9,18.07 L 59.36,17 L 59.36,17 L 59.68,18.14 L 59.93,19.14 L 60.2,20.31 L 60.4,21.33 L 60.61,22.53 L 60.76,23.58 L 60.91,24.82 L 61,25.89 L 61.06,26.98 L 61.1,28.09 Q 62.13,29.25 62.9,27.91 Z" fill="#000000" opacity="0.16"/>
-                <path d="M 74.88,26.79 L 74.49,25.67 L 74.03,24.56 L 73.5,23.46 L 72.99,22.53 L 72.34,21.46 L 71.71,20.55 L 71.04,19.65 L 70.32,18.75 L 69.55,17.87 L 68.72,17 L 68.72,17 L 69.37,18.01 L 69.98,19 L 70.53,19.98 L 71.04,20.95 L 71.49,21.92 L 71.96,23.03 L 72.3,23.98 L 72.65,25.07 L 72.92,26.14 L 73.12,27.21 Q 74.29,28.23 74.88,26.79 Z" fill="#000000" opacity="0.16"/>
             </g>`
     },
     2: {
@@ -436,7 +465,7 @@ export const GIRL_BASE = {
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="${skin.shadow}" stroke-width="0.8"/>
             <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="${eye.dark}"/>
             <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="${eye.light}"/>
-            <circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>
+            ${species === 'cat' ? '<ellipse cx="37.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : '<circle cx="37.5" cy="41.5" r="2.2" fill="#241103"/>'}
             <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
             <circle cx="39.5" cy="43.5" r="1" fill="#ffffff"/>
 
@@ -444,7 +473,7 @@ export const GIRL_BASE = {
             <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="${skin.shadow}" stroke-width="0.8"/>
             <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="${eye.dark}"/>
             <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="${eye.light}"/>
-            <circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>
+            ${species === 'cat' ? '<ellipse cx="62.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : '<circle cx="62.5" cy="41.5" r="2.2" fill="#241103"/>'}
             <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
             <circle cx="64.5" cy="43.5" r="1" fill="#ffffff"/>
 
@@ -473,7 +502,7 @@ export const GIRL_BASE = {
                 <polygon points="61.0,47.0 60.2,48.2 59.5,46.5" fill="${hairColor}"/>
             </g>
 
-            <polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>
+            ${species === 'cat' ? '<path d="M 48.3,46.8 L 51.7,46.8 Q 50,49 50,49 Q 50,49 48.3,46.8 Z" fill="#f472b6"/>' : '<polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>'}
 
             ${species === 'orc' ? `
             <!-- Peintures de guerre rouges tribales sous les yeux -->
@@ -487,7 +516,10 @@ export const GIRL_BASE = {
             <path d="M 42.2,52.5 C 42.2,49.5 42.8,48 43.6,48 C 44.4,48 45.0,49.5 45.0,52.5 Z" fill="#fffbeb"/>
             <ellipse cx="43.2" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>
             <path d="M 55.0,52.5 C 55.0,49.5 55.6,48 56.4,48 C 57.2,48 57.8,49.5 57.8,52.5 Z" fill="#fffbeb"/>
-            <ellipse cx="56.8" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>` : `
+            <ellipse cx="56.8" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>` : species === 'cat' ? `
+            <!-- Bouche de chat en ω : petit croc ivoire arrondi façon orc (sans contour, pointe vers le bas) sur le côté droit, glissé derrière la lèvre, puis deux arcs fuseau de la couleur de bouche -->
+            <path d="M 53.35,52.2 C 53.35,53.5 53.65,54.1 54.05,54.1 C 54.45,54.1 54.75,53.5 54.75,52.2 Z" fill="#fffbeb"/><ellipse cx="53.85" cy="53" rx="0.18" ry="0.5" fill="#ffffff" opacity="0.8"/>
+            <path d="M 45,51.2 L 45.24,51.8 L 45.61,52.41 L 46.05,52.91 L 46.67,53.31 L 47.37,53.49 L 48.19,53.4 L 48.83,53.07 L 49.37,52.55 L 49.75,51.97 L 50,51.4 L 50,51.4 L 49.47,51.69 L 48.91,51.95 L 48.36,52.13 L 47.91,52.2 L 47.47,52.2 L 47.08,52.14 L 46.61,52.02 L 46.11,51.83 L 45.54,51.53 L 45,51.2 L 45,51.2 Z M 50,51.4 L 50.25,51.97 L 50.63,52.55 L 51.17,53.07 L 51.81,53.4 L 52.63,53.49 L 53.33,53.31 L 53.95,52.91 L 54.39,52.41 L 54.76,51.8 L 55,51.2 L 55,51.2 L 54.46,51.53 L 53.89,51.83 L 53.39,52.02 L 52.92,52.14 L 52.53,52.2 L 52.09,52.2 L 51.64,52.13 L 51.09,51.95 L 50.53,51.69 L 50,51.4 L 50,51.4 Z" fill="${mouthColor}"/>` : `
             <!-- Bouche souriante basée sur la couleur de peau mais beaucoup plus foncée -->
             <!-- NOTE Trait à largeur variable profil sablier (épais aux commissures, étranglé au centre), généré depuis Q 45,51 50,56.5 55,51 -->
             <path d="M 44.33,51.61 L 45.34,52.38 L 46.33,52.99 L 47.3,53.43 L 48.23,53.73 L 49.13,53.87 L 50,53.89 L 50.87,53.87 L 51.77,53.73 L 52.7,53.43 L 53.67,52.99 L 54.66,52.38 L 55.67,51.61 Q 55.85,50.07 54.33,50.39 L 53.67,51.3 L 53,52.07 L 52.3,52.69 L 51.56,53.16 L 50.8,53.48 L 50,53.62 L 49.2,53.48 L 48.44,53.16 L 47.7,52.69 L 47,52.07 L 46.33,51.3 L 45.67,50.39 Q 44.15,50.07 44.33,51.61 Z" fill="${mouthColor}"/>`}
@@ -1741,6 +1773,52 @@ export const RPG_STYLES = {
                 <!-- Reflet solaire -->
                 <path d="M 38,10 C 46,6 56,7 62,11 C 55,10 47,10 38,14 Z" fill="#ffffff" opacity="0.35"/>
             </g>`
+    },
+
+    // Coupe Trophée 4 Garçon : ébouriffée en mèches pointues balayées vers la droite
+    cat_boy: {
+        id: 'cat_boy',
+        name: 'Félin Ébouriffé (Court en mèches pointues)',
+        withBand: false,
+        getHairBack: (color) => `
+            <g id="hair-back-cat-boy">
+                <ellipse cx="50" cy="26" rx="35" ry="30" fill="${color}"/>
+                <!-- Piques ébouriffées en arc autour du crâne : 8 blocs larges, pointes obtuses arrondies, longueur et inclinaison alternées -->
+                <path d="M 24.85,40.18 Q 14.25,39.99 5.36,31.16 Q 4.22,30.12 5.11,28.88 Q 11.03,24.59 20.63,20.68 Z M 20.08,27.95 Q 11.16,22.84 9,17.76 Q 8.3,16.48 9.57,15.7 Q 16.59,7.94 27.2,9.1 Z M 22.69,15.24 Q 17.64,6.46 19.47,-4.12 Q 19.75,-5.64 21.36,-5.63 Q 30.39,-4.25 39.4,1.68 Z M 32.03,5.18 Q 32.11,-5.1 34.28,-9.24 Q 35.03,-10.56 36.48,-9.98 Q 49.02,-8.99 54.2,0.26 Z M 45.8,0.26 Q 50.98,-8.99 62.99,-13.26 Q 64.5,-13.86 65.37,-12.53 Q 67.89,-5.1 67.97,5.18 Z M 60.6,1.68 Q 69.61,-4.25 76.16,-3.73 Q 77.71,-3.82 77.95,-2.36 Q 82.36,6.46 77.31,15.24 Z M 72.8,9.1 Q 83.41,7.94 93.72,16.27 Q 94.97,17.18 94.24,18.51 Q 88.84,22.84 79.92,27.95 Z M 79.37,20.68 Q 88.97,24.59 91.9,28.67 Q 92.79,29.82 91.67,30.78 Q 85.75,39.99 75.15,40.18 Z" fill="${color}"/>
+                <!-- Nuque courte en pointes obtuses -->
+                <path d="M 18,34 C 12,22 16,8 26,0 C 36,-6 64,-6 74,0 C 84,8 88,22 82,34 C 86,40 85,48 80,53 C 77,49 74,48 71,50 C 70,47 67,46 64,47 L 36,47 C 33,46 30,47 29,50 C 26,48 23,49 20,53 C 15,48 14,40 18,34 Z" fill="${color}"/>
+            </g>`,
+        getHairFront: (color) => `
+            <g id="hair-front-cat-boy">
+                <!-- Calotte et frange en mèches pointues balayées vers la droite -->
+                <path d="M 80,30 C 78,14 66,4 50,4 C 34,4 22,14 20,30 C 20,38 21,44 23,48 C 25,42 25,35 26,29 C 27,31 29,33 32,34 C 34,30 36,28 38,27 C 39,31 41,34 44,36 C 46,31 48,29 51,28 C 52,32 54,34 57,35 C 58,31 60,29 63,28 C 65,31 67,33 70,33 C 71,31 72,30 73,30 C 74,36 75,42 77,48 C 79,42 80,36 80,30 Z" fill="${color}"/>
+                <!-- Mèches de tempes -->
+                <path d="M 22,34 C 19,42 20,48 23,54 C 25,48 25,42 24,36 Z" fill="${color}"/>
+                <path d="M 78,34 C 81,42 80,48 77,54 C 75,48 75,42 76,36 Z" fill="${color}"/>
+            </g>`
+    },
+
+    // Coupe Trophée 4 Fille : carré félin aux pointes obtuses, frange balayée vers la droite
+    cat_girl: {
+        id: 'cat_girl',
+        name: 'Carré Félin (Frange balayée)',
+        withTiara: false,
+        getHairBack: (color) => `
+            <g id="hair-back-cat-girl">
+                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
+                <!-- Piques ébouriffées en arc autour du crâne : 8 blocs larges, pointes obtuses arrondies, longueur et inclinaison alternées -->
+                <path d="M 24.85,40.18 Q 14.25,39.99 5.36,31.16 Q 4.22,30.12 5.11,28.88 Q 11.03,24.59 20.63,20.68 Z M 20.08,27.95 Q 11.16,22.84 9,17.76 Q 8.3,16.48 9.57,15.7 Q 16.59,7.94 27.2,9.1 Z M 22.69,15.24 Q 17.64,6.46 19.47,-4.12 Q 19.75,-5.64 21.36,-5.63 Q 30.39,-4.25 39.4,1.68 Z M 32.03,5.18 Q 32.11,-5.1 34.28,-9.24 Q 35.03,-10.56 36.48,-9.98 Q 49.02,-8.99 54.2,0.26 Z M 45.8,0.26 Q 50.98,-8.99 62.99,-13.26 Q 64.5,-13.86 65.37,-12.53 Q 67.89,-5.1 67.97,5.18 Z M 60.6,1.68 Q 69.61,-4.25 76.16,-3.73 Q 77.71,-3.82 77.95,-2.36 Q 82.36,6.46 77.31,15.24 Z M 72.8,9.1 Q 83.41,7.94 93.72,16.27 Q 94.97,17.18 94.24,18.51 Q 88.84,22.84 79.92,27.95 Z M 79.37,20.68 Q 88.97,24.59 91.9,28.67 Q 92.79,29.82 91.67,30.78 Q 85.75,39.99 75.15,40.18 Z" fill="${color}"/>
+                <!-- Silhouette en fuseau : côtés bombés aux joues puis effilés en pointe, mèche centrale descendant derrière la nuque -->
+                <path d="M 16,36 C 10,22 14,8 24,0 C 34,-6 66,-6 76,0 C 86,8 90,22 84,36 C 90,48 90,62 82,77 C 79,70 77,62 76,55 C 72,61 68,64 64,65 C 60,70 55,75 50,79 C 45,75 40,70 36,65 C 32,64 28,61 24,55 C 23,62 21,70 18,77 C 10,62 10,48 16,36 Z" fill="${color}"/>
+            </g>`,
+        getHairFront: (color) => `
+            <g id="hair-front-cat-girl">
+                <!-- Calotte et longue frange en mèches pointues balayées vers la droite -->
+                <path d="M 80,30 C 78,14 66,4 50,4 C 34,4 22,14 20,30 C 20,38 22,48 24,56 C 26,48 26,38 25,28 C 27,31 30,34 34,35 C 36,31 38,28 40,26 C 42,31 45,35 50,37 C 52,32 54,29 56,27 C 58,31 61,34 65,35 C 67,32 68,30 69,28 C 71,30 72,31 74,31 C 74,40 74,48 76,56 C 78,48 80,38 80,30 Z" fill="${color}"/>
+                <!-- Mèches de tempes longues et pointues -->
+                <path d="M 22,34 C 18,44 19,54 24,62 C 26,54 26,44 24,36 Z" fill="${color}"/>
+                <path d="M 78,34 C 82,44 81,54 76,62 C 74,54 74,44 76,36 Z" fill="${color}"/>
+            </g>`
     }
 };
 
@@ -1885,11 +1963,92 @@ export const OUTFIT_PALADIN_LIGHT = {
         </g>`
 };
 
+
+// ANCHOR Tenue du trophée 4 : voleuse féline, base archère en cuir sombre, accents lilas, pattes griffues
+export const OUTFIT_CAT_THIEF = {
+    id: 'cat_thief',
+    name: 'Voleuse Féline (Chat)',
+    badge: 'Trophée 4',
+    // NOTE Pas de cape : la queue de chat est un trait d'espèce (getCatTail), dessinée derrière le corps
+    backEquipment: '',
+    legs: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
+        <g id="outfit-cat-legs">
+            <!-- Short de cuir noir -->
+            <polygon points="38,82 49.5,82 49,93 37.5,93" fill="#18181b"/>
+            <polygon points="50.5,82 62,82 62.5,93 51,93" fill="#18181b"/>
+            <path d="M 38.5,92 L 39.42,92.27 L 40.51,92.52 L 41.45,92.7 L 42.55,92.81 L 43.5,92.85 L 44.45,92.81 L 45.55,92.7 L 46.49,92.52 L 47.58,92.27 L 48.5,92 L 48.5,92 L 47.54,92 L 46.44,92 L 45.51,91.97 L 44.42,91.96 L 43.5,91.95 L 42.58,91.96 L 41.49,91.97 L 40.56,92 L 39.46,92 L 38.5,92 L 38.5,92 Z M 51.5,92 L 52.42,92.27 L 53.51,92.52 L 54.45,92.7 L 55.55,92.81 L 56.5,92.85 L 57.45,92.81 L 58.55,92.7 L 59.49,92.52 L 60.58,92.27 L 61.5,92 L 61.5,92 L 60.54,92 L 59.44,92 L 58.51,91.97 L 57.42,91.96 L 56.5,91.95 L 55.58,91.96 L 54.49,91.97 L 53.56,92 L 52.46,92 L 51.5,92 L 51.5,92 Z" fill="#a78bfa"/>
+            <!-- Jambes nues -->
+            <polygon points="39,93 48.5,93 48,104 41,104" fill="${skin.base}"/>
+            <polygon points="51.5,93 61,93 59,104 52,104" fill="${skin.base}"/>
+            <!-- Bottines souples de voleuse à revers lilas -->
+            <path d="M39.5 104 C39.5 102, 49.5 102, 49.5 104 L50 113 C50 115, 39 115, 39 113 Z" fill="#27272a"/>
+            <rect x="39" y="103" width="10.5" height="3" rx="0.8" fill="#3f3f46"/>
+            <path d="M 39.5,104.5 L 40.41,104.84 L 41.49,105.15 L 42.43,105.36 L 43.54,105.51 L 44.5,105.55 L 45.46,105.51 L 46.57,105.36 L 47.51,105.15 L 48.59,104.84 L 49.5,104.5 L 49.5,104.5 L 48.54,104.53 L 47.43,104.56 L 46.5,104.56 L 45.42,104.56 L 44.5,104.55 L 43.58,104.56 L 42.5,104.56 L 41.57,104.56 L 40.46,104.53 L 39.5,104.5 L 39.5,104.5 Z" fill="#a78bfa"/>
+            <path d="M50.5 104 C50.5 102, 60.5 102, 60.5 104 L61 113 C61 115, 50 115, 50 113 Z" fill="#27272a"/>
+            <rect x="50.5" y="103" width="10.5" height="3" rx="0.8" fill="#3f3f46"/>
+            <path d="M 51,104.5 L 51.91,104.84 L 52.99,105.15 L 53.93,105.36 L 55.04,105.51 L 56,105.55 L 56.96,105.51 L 58.07,105.36 L 59.01,105.15 L 60.09,104.84 L 61,104.5 L 61,104.5 L 60.04,104.53 L 58.93,104.56 L 58,104.56 L 56.92,104.56 L 56,104.55 L 55.08,104.56 L 54,104.56 L 53.07,104.56 L 51.96,104.53 L 51,104.5 L 51,104.5 Z" fill="#a78bfa"/>
+        </g>`,
+    body: `
+        <g id="outfit-cat-body">
+            <!-- Haut de cuir sans manches anthracite -->
+            <path d="M 33,65 C 33,62 36,61.5 39,61.5 L 61,61.5 C 64,61.5 67,62 67,65 L 62.5,82 L 37.5,82 Z" fill="#27272a"/>
+            <!-- Coutures latérales en fuseau -->
+            <path d="M 39,64 L 38.8,65.5 L 38.63,67.25 L 38.52,68.75 L 38.48,70.51 L 38.5,72.02 L 38.59,73.52 L 38.77,75.28 L 38.99,76.77 L 39.29,78.52 L 39.6,80 L 39.6,80 L 39.56,78.48 L 39.51,76.73 L 39.49,75.22 L 39.45,73.48 L 39.4,71.98 L 39.33,70.49 L 39.25,68.75 L 39.16,67.25 L 39.08,65.5 L 39,64 L 39,64 Z M 61,64 L 60.92,65.5 L 60.84,67.25 L 60.75,68.75 L 60.67,70.49 L 60.6,71.98 L 60.55,73.48 L 60.51,75.22 L 60.49,76.73 L 60.44,78.48 L 60.4,80 L 60.4,80 L 60.71,78.52 L 61.01,76.77 L 61.23,75.28 L 61.41,73.52 L 61.5,72.02 L 61.52,70.51 L 61.48,68.75 L 61.37,67.25 L 61.2,65.5 L 61,64 L 61,64 Z" fill="#52525b"/>
+            <!-- Emblème patte de chat lilas -->
+            <ellipse cx="50" cy="73.2" rx="2.1" ry="1.7" fill="#a78bfa"/><ellipse cx="47.80" cy="70.60" rx="0.75" ry="0.95" fill="#a78bfa"/><ellipse cx="49.20" cy="69.40" rx="0.75" ry="0.95" fill="#a78bfa"/><ellipse cx="50.80" cy="69.40" rx="0.75" ry="0.95" fill="#a78bfa"/><ellipse cx="52.20" cy="70.60" rx="0.75" ry="0.95" fill="#a78bfa"/>
+            <!-- Foulard de voleuse violet nuit et grelot doré -->
+            <path d="M 41,61 C 44,64.5 56,64.5 59,61 L 57,60 C 54,62.5 46,62.5 43,60 Z" fill="#4c1d95"/>
+            <path d="M 42.5,61.4 L 43.87,62.06 L 45.25,62.6 L 46.9,63.05 L 48.32,63.3 L 50,63.4 L 51.68,63.3 L 53.1,63.05 L 54.75,62.6 L 56.13,62.06 L 57.5,61.4 L 57.5,61.4 L 56.05,61.83 L 54.63,62.15 L 52.99,62.42 L 51.61,62.54 L 50,62.6 L 48.39,62.54 L 47.01,62.42 L 45.37,62.15 L 43.95,61.83 L 42.5,61.4 L 42.5,61.4 Z" fill="#6d28d9"/>
+            <circle cx="50" cy="65" r="1.9" fill="#fbbf24" stroke="#b45309" stroke-width="0.4"/>
+            <path d="M 48.6,65.4 L 48.84,65.56 L 49.14,65.71 L 49.4,65.81 L 49.68,65.88 L 50,65.9 L 50.32,65.88 L 50.6,65.81 L 50.86,65.71 L 51.16,65.56 L 51.4,65.4 L 51.4,65.4 L 51.12,65.41 L 50.8,65.42 L 50.54,65.41 L 50.29,65.4 L 50,65.4 L 49.71,65.4 L 49.46,65.41 L 49.2,65.42 L 48.88,65.41 L 48.6,65.4 L 48.6,65.4 Z" fill="#78350f"/>
+            <circle cx="49.4" cy="64.4" r="0.5" fill="#ffffff" opacity="0.8"/>
+        </g>`,
+    belt: `
+        <g id="outfit-cat-belt">
+            <!-- Ceinture ajustée à la taille mesurée (38 à 62), boucle et sacoche recentrées sur sa courbe -->
+            <path d="M 38,82.5 L 40.15,83.53 L 42.73,84.46 L 44.99,85.13 L 47.68,85.58 L 50,85.73 L 52.32,85.58 L 55.01,85.13 L 57.27,84.46 L 59.85,83.53 L 62,82.5 L 62,82.5 L 59.65,82.29 L 56.98,82.09 L 54.74,81.87 L 52.18,81.73 L 50,81.68 L 47.82,81.73 L 45.26,81.87 L 43.02,82.09 L 40.35,82.29 L 38,82.5 L 38,82.5 Z" fill="#3f2a1d"/>
+            <g transform="translate(0 1.2)"><rect x="48.4" y="81.2" width="3.2" height="2.6" rx="0.6" fill="#d4d4d8" stroke="#52525b" stroke-width="0.4"/></g>
+            <g transform="translate(0 0.79)"><rect x="55.2" y="82" width="3.8" height="4.2" rx="0.8" fill="#4a3426"/><path d="M 55.4,83.2 L 55.69,83.39 L 56.05,83.57 L 56.37,83.69 L 56.71,83.77 L 57.1,83.8 L 57.49,83.77 L 57.83,83.69 L 58.15,83.57 L 58.51,83.39 L 58.8,83.2 L 58.8,83.2 L 58.46,83.21 L 58.07,83.22 L 57.76,83.21 L 57.45,83.2 L 57.1,83.2 L 56.75,83.2 L 56.44,83.21 L 56.13,83.22 L 55.74,83.21 L 55.4,83.2 L 55.4,83.2 Z" fill="#a78bfa"/></g>
+        </g>`,
+    arms: (skin = { base: '#ffd4a3', shadow: '#f0be8d' }) => `
+        <g id="outfit-cat-arms">
+            <!-- Bras nus ; brassards de cuir noir calés sur les avant-bras -->
+            <path d="M33 63 C26 67.5, 24 74.5, 27 81.5 C30 81.5, 32.5 77.5, 35 73.5 Z" fill="${skin.base}"/>
+            <!-- Brassard gauche épousant les bords de l'avant-bras au poignet, liseré lilas en fuseau sur le haut -->
+            <path d="M 25.64,73.32 L 25.49,75.11 L 25.54,76.96 L 25.8,79.05 L 26.62,81.2 L 27.24,81.84 L 28.22,81.65 L 29.17,81.22 L 30.06,80.57 L 30.89,79.75 Z" fill="#18181b"/>
+            <path d="M 25.64,73.32 L 26.03,74.08 L 26.44,74.82 L 26.86,75.53 L 27.31,76.2 L 27.79,76.84 L 28.39,77.53 L 28.92,78.07 L 29.57,78.67 L 30.23,79.23 L 30.89,79.75 L 30.89,79.75 L 30.41,79.06 L 29.92,78.36 L 29.41,77.65 L 28.97,77.04 L 28.41,76.33 L 27.91,75.73 L 27.38,75.14 L 26.81,74.54 L 26.23,73.94 L 25.64,73.32 L 25.64,73.32 Z" fill="#a78bfa"/>
+            <path d="M67 63 C74 66.5, 76 70.5, 75 75.5 C72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="${skin.base}"/>
+            <!-- Brassard droit épousant les bords de l'avant-bras au poignet, liseré lilas en fuseau sur le haut -->
+            <path d="M 74.37,68.96 L 74.98,70.35 L 75.36,71.83 L 75.56,73.51 L 75.3,75.46 L 75.02,75.92 L 74.02,76.42 L 73.02,76.6 L 72.03,76.5 L 71.03,76.15 Z" fill="#18181b"/>
+            <path d="M 74.37,68.96 L 73.94,69.67 L 73.53,70.37 L 73.13,71.06 L 72.77,71.74 L 72.44,72.41 L 72.1,73.2 L 71.84,73.87 L 71.55,74.64 L 71.29,75.4 L 71.03,76.15 L 71.03,76.15 L 71.5,75.52 L 71.97,74.86 L 72.42,74.16 L 72.78,73.53 L 73.17,72.75 L 73.46,72.05 L 73.73,71.32 L 73.96,70.55 L 74.17,69.77 L 74.37,68.96 L 74.37,68.96 Z" fill="#a78bfa"/>
+            <!-- NOTE Mains remplacées par les pattes griffues, dessinées une seule fois dans handItem -->
+        </g>`,
+    headAccessory: '',
+    handItem: `
+        <g id="outfit-cat-paws">
+                <!-- Patte de chat griffue gauche : gant de velours, trois griffes en plume identiques, recourbées vers le corps -->
+                <g id="cat-paw-gauche" transform="translate(27.6, 83.6)">
+                    <path d="M -3.39,1.68 L -3.39,2.68 L -3.3,3.62 L -3.14,4.52 L -2.9,5.37 L -2.55,6.3 L -2.16,7.03 L -1.62,7.81 L -1,8.52 L -0.29,9.14 L 0.4,9.6 L 0.4,9.6 L -0.11,8.97 L -0.63,8.23 L -1.05,7.46 L -1.36,6.66 L -1.54,5.96 L -1.67,5.11 L -1.7,4.35 L -1.67,3.57 L -1.57,2.76 L -1.41,1.92 Q -2.23,0.41 -3.39,1.68 Z M -0.99,2.48 L -0.99,3.48 L -0.9,4.42 L -0.74,5.32 L -0.5,6.17 L -0.15,7.1 L 0.24,7.83 L 0.78,8.61 L 1.4,9.32 L 2.11,9.94 L 2.8,10.4 L 2.8,10.4 L 2.29,9.77 L 1.77,9.03 L 1.35,8.26 L 1.04,7.46 L 0.86,6.76 L 0.73,5.91 L 0.7,5.15 L 0.73,4.37 L 0.83,3.56 L 0.99,2.72 Q 0.17,1.21 -0.99,2.48 Z M 1.41,1.68 L 1.41,2.68 L 1.5,3.62 L 1.66,4.52 L 1.9,5.37 L 2.25,6.3 L 2.64,7.03 L 3.18,7.81 L 3.8,8.52 L 4.51,9.14 L 5.2,9.6 L 5.2,9.6 L 4.69,8.97 L 4.17,8.23 L 3.75,7.46 L 3.44,6.66 L 3.26,5.96 L 3.13,5.11 L 3.1,4.35 L 3.13,3.57 L 3.23,2.76 L 3.39,1.92 Q 2.57,0.41 1.41,1.68 Z" fill="#f4f4f5" stroke="#3f3f46" stroke-width="0.35" stroke-linejoin="round"/>
+                    <circle cx="0" cy="0" r="3.7" fill="#27272a"/>
+                    <path d="M -1.3,-3.4 L -1.38,-3.06 L -1.45,-2.73 L -1.5,-2.4 L -1.54,-2.02 L -1.55,-1.7 L -1.54,-1.39 L -1.5,-1.03 L -1.44,-0.66 L -1.37,-0.36 L -1.3,0 L -1.3,0 L -1.19,-0.35 L -1.09,-0.65 L -1.01,-1.01 L -0.97,-1.38 L -0.95,-1.7 L -0.97,-2.03 L -1.02,-2.41 L -1.09,-2.74 L -1.19,-3.07 L -1.3,-3.4 L -1.3,-3.4 Z M 1.3,-3.4 L 1.19,-3.07 L 1.09,-2.74 L 1.02,-2.41 L 0.97,-2.03 L 0.95,-1.7 L 0.97,-1.38 L 1.01,-1.01 L 1.09,-0.65 L 1.19,-0.35 L 1.3,0 L 1.3,0 L 1.37,-0.36 L 1.44,-0.66 L 1.5,-1.03 L 1.54,-1.39 L 1.55,-1.7 L 1.54,-2.02 L 1.5,-2.4 L 1.45,-2.73 L 1.38,-3.06 L 1.3,-3.4 L 1.3,-3.4 Z" fill="#52525b"/>
+                    <circle cx="-1.2" cy="-1.3" r="0.9" fill="#ffffff" opacity="0.18"/>
+                </g>
+                <!-- Patte de chat griffue droite : gant de velours, trois griffes en plume identiques, recourbées vers le corps -->
+                <g id="cat-paw-droite" transform="translate(74.6, 78)">
+                    <path d="M 3.39,1.68 L 3.39,2.68 L 3.3,3.62 L 3.14,4.52 L 2.9,5.37 L 2.55,6.3 L 2.16,7.03 L 1.62,7.81 L 1,8.52 L 0.29,9.14 L -0.4,9.6 L -0.4,9.6 L 0.11,8.97 L 0.63,8.23 L 1.05,7.46 L 1.36,6.66 L 1.54,5.96 L 1.67,5.11 L 1.7,4.35 L 1.67,3.57 L 1.57,2.76 L 1.41,1.92 Q 2.23,0.41 3.39,1.68 Z M 0.99,2.48 L 0.99,3.48 L 0.9,4.42 L 0.74,5.32 L 0.5,6.17 L 0.15,7.1 L -0.24,7.83 L -0.78,8.61 L -1.4,9.32 L -2.11,9.94 L -2.8,10.4 L -2.8,10.4 L -2.29,9.77 L -1.77,9.03 L -1.35,8.26 L -1.04,7.46 L -0.86,6.76 L -0.73,5.91 L -0.7,5.15 L -0.73,4.37 L -0.83,3.56 L -0.99,2.72 Q -0.17,1.21 0.99,2.48 Z M -1.41,1.68 L -1.41,2.68 L -1.5,3.62 L -1.66,4.52 L -1.9,5.37 L -2.25,6.3 L -2.64,7.03 L -3.18,7.81 L -3.8,8.52 L -4.51,9.14 L -5.2,9.6 L -5.2,9.6 L -4.69,8.97 L -4.17,8.23 L -3.75,7.46 L -3.44,6.66 L -3.26,5.96 L -3.13,5.11 L -3.1,4.35 L -3.13,3.57 L -3.23,2.76 L -3.39,1.92 Q -2.57,0.41 -1.41,1.68 Z" fill="#f4f4f5" stroke="#3f3f46" stroke-width="0.35" stroke-linejoin="round"/>
+                    <circle cx="0" cy="0" r="3.7" fill="#27272a"/>
+                    <path d="M -1.3,-3.4 L -1.38,-3.06 L -1.45,-2.73 L -1.5,-2.4 L -1.54,-2.02 L -1.55,-1.7 L -1.54,-1.39 L -1.5,-1.03 L -1.44,-0.66 L -1.37,-0.36 L -1.3,0 L -1.3,0 L -1.19,-0.35 L -1.09,-0.65 L -1.01,-1.01 L -0.97,-1.38 L -0.95,-1.7 L -0.97,-2.03 L -1.02,-2.41 L -1.09,-2.74 L -1.19,-3.07 L -1.3,-3.4 L -1.3,-3.4 Z M 1.3,-3.4 L 1.19,-3.07 L 1.09,-2.74 L 1.02,-2.41 L 0.97,-2.03 L 0.95,-1.7 L 0.97,-1.38 L 1.01,-1.01 L 1.09,-0.65 L 1.19,-0.35 L 1.3,0 L 1.3,0 L 1.37,-0.36 L 1.44,-0.66 L 1.5,-1.03 L 1.54,-1.39 L 1.55,-1.7 L 1.54,-2.02 L 1.5,-2.4 L 1.45,-2.73 L 1.38,-3.06 L 1.3,-3.4 L 1.3,-3.4 Z" fill="#52525b"/>
+                    <circle cx="-1.2" cy="-1.3" r="0.9" fill="#ffffff" opacity="0.18"/>
+                </g>
+        </g>`
+};
+
 // Registre des tenues RPG
 export const RPG_OUTFITS = {
     elf_ranger: OUTFIT_ELF_RANGER,
     orc_berserker: OUTFIT_ORC_BERSERKER,
-    paladin_light: OUTFIT_PALADIN_LIGHT
+    paladin_light: OUTFIT_PALADIN_LIGHT,
+    cat_thief: OUTFIT_CAT_THIEF
 };
 
 // Registre des Trophées RPG (Nouveau système de récompenses avec IDs courts pour chaque personnage)
@@ -2057,24 +2216,58 @@ export const RPG_TROPHIES = [
         }
     },
     {
-        id: 'kitsune',
-        shortId: 'kitsune',
-        legacyId: 'trophy_beast_monk',
+        id: 'cat',
+        shortId: 'cat',
+        legacyId: 'trophy_cat_thief',
         number: 4,
-        title: 'La Voie Céleste',
-        species: 'beast',
-        speciesName: 'Kitsune / Mi-Humain',
-        className: 'Moine Céleste',
-        badge: 'À venir',
-        status: 'locked',
-        tagline: 'Disciple spirituel aux oreilles animales',
-        description: 'Quatrième trophée : débloque les oreilles animales et les kimonos de prière shinto.',
+        title: 'La Griffe de Velours',
+        species: 'cat',
+        speciesName: 'Félin',
+        className: 'Voleuse Féline',
+        badge: 'Nouveau',
+        // ANCHOR Invocation : rareté de la carte (taux de tirage) et éléments ajoutés à l'atelier une fois gagnée
+        rarity: 'légendaire',
+        unlocks: {
+            species: 'cat',
+            skins: [],
+            hairs: ['#7c3aed', '#a78bfa'],
+            eyes: ['cat-rose'],
+            styles: { boy: 'cat_boy', girl: 'cat_girl' },
+            outfit: 'cat_thief',
+            label: 'Chat'
+        },
+        tagline: 'Voleuse agile aux oreilles de chat et aux griffes de velours',
+        description: "Quatrième trophée : débloque l'espèce féline (oreilles de chat, bouche en ω, queue touffue), les pattes griffues et la tenue de voleuse.",
         rewards: [
-            { icon: 'bi-feather', label: 'Espèce : Kitsune (Oreilles animales)' },
-            { icon: 'bi-shield-shaded', label: 'Classe : Moine Céleste' }
+            { icon: 'bi-feather', label: 'Espèce : Félin (Oreilles de chat, bouche en ω & queue épaisse)' },
+            { icon: 'bi-shield-shaded', label: 'Classe : Voleuse Féline' },
+            { icon: 'bi-scissors', label: 'Coupes exclusives : Félin ébouriffé (G) / Carré félin (F)' },
+            { icon: 'bi-slash-square', label: 'Armes : Pattes de chat griffues' },
+            { icon: 'bi-person-bounding-box', label: 'Tenue : Cuir sombre de voleuse, foulard violet nuit & grelot doré' },
+            { icon: 'bi-palette', label: 'Teintes débloquées : Cheveux Violet Félin & Lilas Félin, Yeux Rose Félin aux pupilles fendues' }
         ],
-        boyPreset: { id: 'kit_b', type: 'boy', species: 'beast' },
-        girlPreset: { id: 'kit_g', type: 'girl', species: 'beast' }
+        boyPreset: {
+            id: 'cat_b',
+            type: 'boy',
+            styleKey: 'cat_boy',
+            styleId: 1,
+            outfitKey: 'cat_thief',
+            species: 'cat',
+            skinColor: 'light',
+            hairColor: '#7c3aed', // Violet Félin (contraste franc avec la peau pêche)
+            eyeColor: 'cat-rose'
+        },
+        girlPreset: {
+            id: 'cat_g',
+            type: 'girl',
+            styleKey: 'cat_girl',
+            styleId: 1,
+            outfitKey: 'cat_thief',
+            species: 'cat',
+            skinColor: 'light',
+            hairColor: '#7c3aed', // Violet Félin (identique, parité stricte)
+            eyeColor: 'cat-rose'
+        }
     },
     {
         id: 'shadow',
@@ -2127,7 +2320,7 @@ export const AVATAR_SHORT_IDS = {
     elf: { id: 'elf', name: 'Elfe Rôdeur Sylvestre', type: 'trophy', number: 1, boyId: 'elf_b', girlId: 'elf_g' },
     orc: { id: 'orc', name: 'Orc Berserker', type: 'trophy', number: 2, boyId: 'orc_b', girlId: 'orc_g' },
     paladin: { id: 'paladin', name: 'Humain Paladin Solaire', type: 'trophy', number: 3, boyId: 'pal_b', girlId: 'pal_g' },
-    kitsune: { id: 'kitsune', name: 'Kitsune Moine Céleste', type: 'trophy', number: 4, boyId: 'kit_b', girlId: 'kit_g' },
+    cat: { id: 'cat', name: 'Félin Voleuse', type: 'trophy', number: 4, boyId: 'cat_b', girlId: 'cat_g' },
     shadow: { id: 'shadow', name: 'Ombre Mage Noir', type: 'trophy', number: 5, boyId: 'shd_b', girlId: 'shd_g' },
     vampire: { id: 'vampire', name: 'Vampire Noble Duelliste', type: 'trophy', number: 6, boyId: 'vmp_b', girlId: 'vmp_g' }
 };
@@ -2213,6 +2406,9 @@ export function buildCustomAvatarSvg({
     const faceFeatures = base.faceFeatures(effectiveEye, effectiveSkin, species, effectiveHairColor);
     const eyebrows = base.eyebrows ? base.eyebrows(effectiveHairColor, 0.85) : '';
 
+    // NOTE Traits d'espèce qui suivent la couleur des cheveux, quelle que soit la tenue
+    const catEars = species === 'cat' ? getCatEars(effectiveHairColor) : '';
+    const catTail = species === 'cat' ? getCatTail(effectiveHairColor) : '';
     const renderPart = (part) => (typeof part === 'function' ? part(effectiveSkin) : (part || ''));
 
     if (mode === 'head') {
@@ -2221,6 +2417,7 @@ export function buildCustomAvatarSvg({
                 ${hairBack}
                 ${headBase}
                 ${faceFeatures}
+                ${catEars}
                 ${hairFront}
                 ${eyebrows}
                 ${renderPart(outfit.headAccessory)}
@@ -2231,6 +2428,7 @@ export function buildCustomAvatarSvg({
     return `
         <svg viewBox="0 -34 100 156" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
             ${renderPart(outfit.backEquipment)}
+            ${catTail}
             ${base.shadow}
             ${hairBack}
             ${renderPart(outfit.legs)}
@@ -2239,6 +2437,7 @@ export function buildCustomAvatarSvg({
             ${renderPart(outfit.arms)}
             ${headBase}
             ${faceFeatures}
+            ${catEars}
             ${hairFront}
             ${eyebrows}
             ${renderPart(outfit.headAccessory)}
@@ -2301,12 +2500,12 @@ export const AVATARS = {
         get svg() { return renderAvatarSvg('paladin'); },
         get headSvg() { return renderAvatarHeadSvg('paladin'); }
     },
-    kitsune: {
-        id: 'kitsune',
+    cat: {
+        id: 'cat',
         color: '#ea580c',
         accent: '#fef08a',
-        get svg() { return renderAvatarSvg('kitsune'); },
-        get headSvg() { return renderAvatarHeadSvg('kitsune'); }
+        get svg() { return renderAvatarSvg('cat'); },
+        get headSvg() { return renderAvatarHeadSvg('cat'); }
     },
     shadow: {
         id: 'shadow',

@@ -264,7 +264,7 @@ L'atelier d'avatar et le moteur de rendu vectoriel supportent une palette inclus
 11. **Harmonie et Couleurs Partagées Garçon / Fille & Accessoires** :
     - Pour un même palier ou un même avatar de trophée, les versions Garçon et Fille **partagent rigoureusement les mêmes teintes** (cheveux, yeux, peau).
     - Les nouveaux personnages RPG ne doivent **jamais hériter des accessoires d'écolier de base** (élastiques turquoise/orange `#489e96`/`#ff9d00`, serre-tête écolier).
-    - Chaque avatar dispose d'un **ID court standardisé** (`boy`, `girl`, `elf`, `orc`, `paladin`, `kitsune`, `shadow`, `vampire`).
+    - Chaque avatar dispose d'un **ID court standardisé** (`boy`, `girl`, `elf`, `orc`, `paladin`, `cat`, `shadow`, `vampire`).
 
 12. **Règle absolue pour la Bouche (`mouthColor`)** :
     - Pour tous les personnages, la couleur de la commissure/lèvre est **impérativement basée sur la couleur de la peau (`skin`), mais dans une teinte BEAUCOUP PLUS FONCÉE**.

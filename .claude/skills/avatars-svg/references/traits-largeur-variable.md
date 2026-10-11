@@ -101,6 +101,40 @@ node .claude/skills/avatars-svg/scripts/open-ring.mjs 15.8 34 1.6 2 20 -90 1.3
 3. Recentrer chaque élément posé dessus avec le `dy` de la table. Centre horizontal d'un `rect` : `x + width / 2` (attention à ne pas lire `stroke-width` à la place de `width`).
 4. Contrôler en rendu zoomé : pointes au ras de la silhouette, boucle au milieu de la bande.
 
+## Techniques de forme et de volume (validées sur l'arbre d'invocation et le trophée chat)
+
+Ces méthodes complètent les traits à largeur variable. Elles ont été mises au point dans `js/modules/managers/trophies-manager.js` (`renderTreeSvg`) et sur le trophée 4 (`cat`) de `js/modules/ui/avatars.js`.
+
+#### Volume en croissants, lumière en haut à gauche
+
+- Une couche de masses rondes garde **une seule teinte** : on n'éclaircit pas cercle par cercle, l'empilement de teintes différentes donne des boules posées les unes sur les autres.
+- Chaque masse reçoit son **ombre en croissant à l'opposé de la lumière** (bas droite, angles -25° à 145°), dessinée juste après elle pour que les masses suivantes la recouvrent naturellement.
+- Masses d'arrière-plan : **croissant plus clair au-dessus** (angles -160° à -20°) et **croissant d'ombre en dessous** (20° à 160°), sur une base plus sombre que la couche avant.
+- Croissant : arc extérieur sur le cercle, retour par un arc de rayon 1.35 r (`A r r 0 0 1` puis `A 1.35r 1.35r 0 0 0`). La commande `A` est acceptée ici : le générateur fuseau ne la lit pas, mais ce tracé est un aplat simple.
+- Reflets : **arcs fins en fuseau posés en retrait du bord** (1.4 à 1.8), qui suivent la courbure du cercle, jamais une tache libre. Épaisseur 1 à 1.4 au maximum, opacité 0.4 ; 0.2 pour les reflets secondaires.
+- Profondeur : une ou deux grosses masses dessinées en dernier, au premier plan ; seuls les éléments à montrer (fruits) passent encore devant.
+- Couleurs indépendantes de la teinte (cheveux réglables) : croissants en noir ou blanc translucides plutôt qu'en hex fixe.
+
+#### Ombre au bout d'une mèche pointue
+
+Ne jamais approcher une mèche pointue par un cercle : l'ombre déborde sur le front. Reprendre **exactement la courbe du bas de la mèche** dans le tracé de la frange (`M p0 C c1 c2 p3`), puis revenir par la même courbe remontée de 3 à 3.5 (`C c2' c1' p0` avec `c' = c - (0, 3.4)`). L'ombre reste toujours dans la mèche.
+
+#### Éléments répétés identiques (griffes)
+
+Dessiner **un seul modèle** (griffe en profil `plume`, épaisse à la base cachée sous le gant) et le **dupliquer par simple translation** le long du support : toutes les copies gardent la même courbure et le même sens (recourbées vers le corps). La patte opposée s'obtient par symétrie `x -> -x` dans le repère du groupe.
+
+#### Épouser un membre (brassard, manchette, bande)
+
+Pas de rectangle tourné posé à côté du bras : **échantillonner les deux courbes de Bézier du bras** (bord extérieur et bord intérieur) sur la plage du poignet, relier les points en polygone, puis le gonfler de 0.35 depuis son centre pour qu'il recouvre la peau. Le liseré suit le bord haut de ce polygone (fuseau 0.8).
+
+#### Piques ou mèches disposées en arc
+
+Générer les blocs sur deux ellipses centrées sur le crâne (50, 26) : **base large sur l'ellipse intérieure** (rx 30, ry 26), **pointe obtuse légèrement arrondie sur l'ellipse extérieure** (rx 42 à 45), flancs bombés par des points de contrôle intermédiaires. Alterner longueur et inclinaison (décalage de quelques degrés) pour l'effet ébouriffé. Huit blocs larges sur l'arc de la tempe gauche à la tempe droite ; douze blocs fins donnent des épines, à éviter (règle des blocs larges).
+
+#### Racines et branches
+
+Profil `plume` (épais côté tronc, effilé au bout), **même couleur que le tronc**. Les branches apparentes partent du haut du tronc, passent devant la masse sombre du feuillage et restent courtes : les touffes avant les recouvrent.
+
 ## Piège : tracé ouvert sans `fill="none"`
 
 Un `<path>` courbe sans attribut `fill` est rempli en **noir** par défaut (lentille entre la courbe et sa corde), même s'il n'a qu'un `stroke`. Tout trait filaire doit porter `fill="none"` ; un trait converti par cette technique porte au contraire `fill="<couleur>"` et aucun `stroke`. Les cas présents (plis de jupe de base et de robe sorcière) ont disparu avec le passage en fuseau.

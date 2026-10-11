@@ -60,7 +60,7 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
 ### 4. Parité Garçon / Fille & Accessoires
 - Pour chaque personnage / trophée, le garçon et la fille partagent **exactement les mêmes couleurs** (peau, yeux, cheveux).
 - Les nouveaux personnages RPG ne doivent **jamais hériter des accessoires d'écolier de base** (élastiques turquoise/orange `#489e96`/`#ff9d00`, serre-tête écolier).
-- Chaque personnage dispose d'un **ID court standardisé** (`boy`, `girl`, `elf`, `orc`, `paladin`, `kitsune`, `shadow`, `vampire`).
+- Chaque personnage dispose d'un **ID court standardisé** (`boy`, `girl`, `elf`, `orc`, `paladin`, `cat`, `shadow`, `vampire`).
 
 ### 5. Règle absolue pour la Bouche (Teinte peau mais BEAUCOUP plus foncée)
 - Pour **TOUS les personnages** (garçons, filles, espèces fantastiques et trophées), la couleur de la bouche (`mouthColor`) est **impérativement basée sur la couleur de la peau (`skin`), mais dans une teinte BEAUCOUP PLUS FONCÉE** (dérivée via `getSkinMouthColor(skin)` ou champ `mouth` de la palette de peau).
@@ -83,6 +83,13 @@ Ces règles sont absolues pour la génération et l'édition des avatars dans ce
 - **Tracé Bézier quadratique (`Q`) propre** : deux aplats imbriqués (`fill="${skin.base}"` et `fill="${skin.shadow}"`) **SANS contour/stroke** disgracieux.
 - **Lobe et orientation** : lobe descendant vers la mâchoire (`y=43.5 - 44`). Pour l'Elfe, la pointe reste effilée et orientée vers le haut et l'extérieur (`y=31.5`), jamais tombante molle vers le bas.
 - **Hauteur des oreilles (toutes espèces)** : chaque groupe d'oreilles de `getSpeciesEars()` est descendu de 50 % de sa hauteur par un `transform="translate(0 d)"` (humain 4.8, elfe 6, orc 5.5, anneaux compris), et chaque oreille est rapprochée du visage de 25 % de sa largeur (humain : centres à x=23.4 et x=76.6 ; elfe 2.6 et orc 2.4 par `translate(±d 0)` sur chaque côté). Les coordonnées ci-dessus restent celles du dessin avant ces décalages ; une nouvelle espèce applique la même règle.
+
+### 7 bis. Espèce Chat (trophée 4, `cat`)
+- **Oreilles de chat sur le crâne** (`getCatEars`), à la couleur des cheveux, intérieur rose `#f9a8d4`, touffes de poils en plume ; dessinées juste avant `hairFront` pour que la frange recouvre leur base. **Aucune oreille humaine** sur les côtés (`getSpeciesEars` renvoie vide).
+- **Queue** (`getCatTail`) : panache simple, fine à la hanche puis évasée, bout arrondi, sans touffe ; rayures tigrées en fuseau, couleur des cheveux, dessinée juste après `backEquipment`. Oreilles et queue suivent la couleur des cheveux quelle que soit la tenue.
+- **Yeux** : pupilles verticales fendues (`ellipse rx 0.85 ry 3.3`) réservées à l'espèce chat.
+- **Bouche en ω** : deux arcs fuseau de la couleur de bouche, nez rose triangulaire. **Croc** façon dents orc (aplat ivoire `#fffbeb` arrondi, sans contour, petit reflet), petit (environ 1.4 x 1.9), pointe vers le bas, **glissé derrière la lèvre sur le côté**.
+- **Griffes** : une griffe modèle en plume dupliquée trois fois par translation, même courbure, recourbées vers le corps.
 
 ### 8. Anatomie et Armes Orc & Barbare
 - **Dents inférieures orc** : écartées aux canines (gap $12.8\text{px}$, $x=42.2$ et $x=57.8$), légèrement plus petites ($4.5\text{px}$ de haut), avec **pointes arrondies** (courbe Bézier lisse, pas de triangles coupants) et **STRICTEMENT SANS CONTOUR / STROKE** (aplat ivoire pur `fill="#fffbeb"` sans contour pour un rendu propre et intégré).

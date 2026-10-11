@@ -726,6 +726,14 @@
       const preset = isBoy ? trophy.boyPreset : trophy.girlPreset;
       const cutName = (preset && preset.styleKey && RPG_STYLES[preset.styleKey]) ? RPG_STYLES[preset.styleKey].name : 'Coupe exclusive';
       const isNew = Boolean(trophy && trophy.badge === 'Nouveau');
+      // NOTE Légendes Espèce et Classe propres à chaque trophée (repli sur l'elfe)
+      const LEGENDS = {
+        elf: { speciesIcon: '🌿', classIcon: '🗡️', species: "Oreilles effilées sylvestres, morphologie agile et connexion intime avec les forêts ancestrales.", classText: "Tunique d'éclaireur en lin vert sauge, plastron en cuir ouvragé, diadème rehaussé et double dague elfique." },
+        orc: { speciesIcon: '🪓', classIcon: '⚔️', species: "Peau vert olive, oreilles trapues à anneau d'or, bouche droite et crocs inférieurs acérés.", classText: "Harnais barbare riveté, col de fourrure de loup, pagne clouté et hache de guerre en pierre taillée." },
+        paladin: { speciesIcon: '☀️', classIcon: '🛡️', species: "Humain à la peau bronze solaire, chevelure or solaire et regard azur céleste.", classText: "Armure de plates, tabard au soleil d'or, cape ardoise, épée longue et bouclier solaire." },
+        cat: { speciesIcon: '🐾', classIcon: '🗝️', species: "Oreilles de chat sur le crâne, bouche en ω avec petit croc et queue épaisse tigrée, à la couleur des cheveux.", classText: "Cuir sombre de voleuse, foulard violet nuit, grelot doré, emblème patte et pattes de chat griffues." }
+      };
+      const legend = LEGENDS[trophy.id] || LEGENDS.elf;
       
       const svgCode = buildCustomAvatarSvg({
         type: currentTrophyGender,
@@ -816,12 +824,10 @@
                 </span>
               </div>
               <div class="text-xl font-extrabold text-white flex items-center gap-2">
-                <span>${trophy.species === 'orc' ? '🪓' : '🌿'}</span> ${trophy.speciesName}
+                <span>${legend.speciesIcon}</span> ${trophy.speciesName}
               </div>
               <p class="text-xs text-emerald-100/80 leading-relaxed">
-                ${trophy.species === 'orc' 
-                  ? "Peau vert olive, oreilles trapues à anneau d'or, bouche droite et crocs inférieurs acérés."
-                  : "Oreilles effilées sylvestres, morphologie agile et connexion intime avec les forêts ancestrales."}
+                ${legend.species}
               </p>
             </div>
 
@@ -836,12 +842,10 @@
                 </span>
               </div>
               <div class="text-xl font-extrabold text-white flex items-center gap-2">
-                <span>${trophy.species === 'orc' ? '⚔️' : '🗡️'}</span> ${trophy.className}
+                <span>${legend.classIcon}</span> ${trophy.className}
               </div>
               <p class="text-xs text-amber-100/80 leading-relaxed">
-                ${trophy.species === 'orc'
-                  ? "Harnais barbare riveté, col de fourrure de loup, pagne clouté et hache de guerre en pierre taillée."
-                  : "Tunique d'éclaireur en lin vert sauge, plastron en cuir ouvragé, diadème rehaussé et double dague elfique."}
+                ${legend.classText}
               </p>
             </div>
 

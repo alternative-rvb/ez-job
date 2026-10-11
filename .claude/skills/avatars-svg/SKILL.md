@@ -1,6 +1,6 @@
 ---
 name: avatars-svg
-description: Création et retouche des avatars SVG Chibi Manga d'Erudizz et des trophées skins (elf, orc, paladin, kitsune, shadow, vampire). À utiliser dès qu'il faut créer ou modifier une coupe de cheveux, une tenue, une espèce, une teinte de peau/yeux/cheveux, un preset de trophée dans js/modules/ui/avatars.js, ou travailler dans le lab test-avatars.html.
+description: Création et retouche des avatars SVG Chibi Manga d'Erudizz et des trophées skins (elf, orc, paladin, cat, shadow, vampire). À utiliser dès qu'il faut créer ou modifier une coupe de cheveux, une tenue, une espèce, une teinte de peau/yeux/cheveux, un preset de trophée dans js/modules/ui/avatars.js, ou travailler dans le lab test-avatars.html.
 ---
 
 # Avatars SVG et trophées skins
@@ -84,9 +84,16 @@ Les modèles de code de chaque objet sont dans [references/modeles-trophee.md](r
 
 Pour des traits effilés façon encre manga (paupières, bouche, reflets et séparations de mèches, plis et coutures de vêtements), on remplace un `stroke-width` uniforme par un tracé fermé rempli, calculé par décalage normal selon un profil. **Ne l'appliquer que sur demande explicite de l'utilisateur, élément par élément**, sauf une règle déjà actée : les coutures, plis, liserés et ourlets de vêtement, ainsi que les diadèmes, bandeaux, rubans de chapeau et ceintures (profondeur : épais au centre, fins sur les côtés), se dessinent toujours en `fuseau`, coutures piquées et lacets compris, comme les séparations de doigts de toutes les mains (largeur 0.65, ombre de peau). Une ceinture est ajustée à la largeur mesurée de la taille et ses éléments sont recentrés sur sa courbe. Largeurs de référence dans la table d'inventaire de la référence ci-dessous. Il cite l'effet par son nom : `fuseau`, `plume`, `comete`, `sablier` ou `calligraphique`. Anneaux ouverts (boucles d'oreille, maillons) : `scripts/open-ring.mjs`. Méthode, générateur `scripts/tapered-path.mjs` et inventaire des candidats dans le code : [references/traits-largeur-variable.md](references/traits-largeur-variable.md).
 
+## Techniques de forme et de volume
+
+Volume en croissants (une teinte par couche, ombre à l'opposé de la lumière, reflets en fuseau sur le bord), ombre au bout d'une mèche pointue tirée de sa propre courbe, éléments répétés par duplication d'un modèle, brassard qui épouse les courbes du bras, piques en arc, racines et branches en plume : [references/traits-largeur-variable.md](references/traits-largeur-variable.md), section « Techniques de forme et de volume ».
+
+**Cheveux** : ombre et lumière sont retirées de toutes les coupes pour le moment. Nicolas exportera un SVG de référence ; attendre cet exemple avant tout nouvel essai (ticket 16). Essais déjà refusés : croissants pleins (trop marqués), reflets en anneau, reflets en bord de boucle trop épais ; seule piste approuvée à reprendre : « quelques traits seulement ».
+
 ## État actuel et limites connues
 
-- Trophées terminés : `elf` (1), `orc` (2) et `paladin` (3, humain : peau `sun-bronze`, cheveux Or Solaire `#facc15`, yeux `sky`). Squelettes à concevoir : `kitsune`, `shadow`, `vampire`.
+- Trophées terminés : `elf` (1), `orc` (2), `paladin` (3, humain : peau `sun-bronze`, cheveux Or Solaire `#facc15`, yeux `sky`) et `cat` (4, voleuse féline légendaire : cheveux Violet Félin `#7c3aed` et Lilas Félin `#a78bfa`, yeux `gold`). Squelettes à concevoir : `shadow`, `vampire`.
+- Traits d'espèce qui suivent la couleur des cheveux (oreilles de chat `getCatEars`, queue `getCatTail`) : couches posées par `buildCustomAvatarSvg`, juste avant `hairFront` pour les oreilles et juste après `backEquipment` pour la queue, quelle que soit la tenue.
 - Un trophée humain passe `isNewCharacter` à vrai (via `styleKey`/`outfitKey`) : le bandeau, le diadème et le triangle de col orange de la tenue de base sont masqués automatiquement.
 - Accessoire de tête sur une chevelure de même famille de couleur (diadème or sur cheveux dorés) : il disparaît. Choisir une teinte contrastée (ardoise `#475569`, teinte de la cape, pour le paladin ; l'acier clair `#e2e8f0` se fondait encore dans l'Or Solaire).
 - `player.js` (`setAvatarConfig`/`getAvatarConfig`) ne sauvegarde ni `styleKey`, ni `outfitKey`, ni `species` : un skin de trophée ne peut pas encore être porté par le joueur.

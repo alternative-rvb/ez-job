@@ -118,6 +118,11 @@ Deux ajustements sont obligatoires :
 
 Un anneau est un cercle **ouvert** sur environ 80 % du tour, tracé en fuseau : épais en bas, il s'affine en pointe aux deux bords de l'ouverture. L'ouverture se pose à cheval sur le rebord de l'oreille : les deux pointes reposent sur l'oreille et l'anneau pend à l'extérieur, ce qui donne l'impression qu'il la traverse. Le même principe sert pour un anneau de nez, un maillon de chaîne ou un piercing. Seul le placement se règle au cas par cas : il suffit de demander, par exemple, « un anneau d'oreille en or sur l'elfe, ouverture vers l'arrière ».
 
+#### Griffes, racines et branches
+
+- Griffes du chat : profil plume, une griffe modèle dupliquée trois fois, recourbées vers le corps.
+- Racines et branches de l'arbre d'invocation : profil plume, de la même couleur que le tronc.
+
 ## Exemples de demandes
 
 - « Applique **plume** aux paupières supérieures. »
