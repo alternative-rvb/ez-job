@@ -507,15 +507,8 @@ export class RoadmapManager {
 
                             <!-- Décor : Village de départ (flat design : aplats sans contours, volumes en deux tons) -->
                             <g id="decor-village">
-                                <!-- Terre battue sous le village : contour ondulé qui suit la pente, touffes d'herbe en lisière -->
+                                <!-- Terre battue sous le village (une seule teinte, celle du sentier) : contour ondulé qui suit la pente, touffes d'herbe en lisière -->
                                 <path d="M -20 207 C -14 201, -4 200, 6 203.5 C 14 206, 22 207.5, 31 208.5 C 42 209.5, 55 212, 65 216.5 C 74 220.5, 79 227, 73 232 C 67 237, 54 238.5, 41 237.5 C 30 236.8, 19 238.8, 8 236.5 C -2 234.5, -14 233.5, -19 228 C -23 223, -24 212, -20 207 Z" fill="#dcc08f"/>
-                                <path d="M -12 213 C -6 208, 4 208, 12 210.5 C 22 213.5, 36 213, 48 216 C 58 218.5, 67 222, 66 227.5 C 65 232, 52 233.5, 40 232.8 C 28 232, 16 233.5, 6 231.5 C -4 229.5, -13 227, -14 221 C -15 217, -14.5 215, -12 213 Z" fill="#e8d2a8"/>
-                                <g fill="#cdb07c">
-                                    <ellipse cx="34" cy="226" rx="1.5" ry="0.7"/>
-                                    <ellipse cx="46" cy="229.5" rx="1.3" ry="0.6"/>
-                                    <ellipse cx="54" cy="224" rx="1.4" ry="0.7"/>
-                                    <ellipse cx="-4" cy="222" rx="1.3" ry="0.6"/>
-                                </g>
                                 <g fill="#599965">
                                     <path d="M 66 233.5 L 67.5 229.5 L 69 233 L 70.5 230 L 71.5 233.5 Z"/>
                                     <path d="M 22 238.5 L 23.3 235 L 24.6 238 L 26 235.3 L 27 238.6 Z"/>
