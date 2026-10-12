@@ -814,6 +814,48 @@ h1, h2, h3, .font-display {
   }
 }
 
+/* ===== Animation Soleil Rayonnant Fantasy Map ===== */
+.sun-rays {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sun-rays-spin 28s linear infinite;
+}
+
+@keyframes sun-rays-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sun-glow-outer {
+  animation: sun-glow-pulse-outer 4.5s ease-in-out infinite;
+}
+
+.sun-glow-inner {
+  animation: sun-glow-pulse-inner 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes sun-glow-pulse-outer {
+  0%, 100% {
+    opacity: 0.28;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes sun-glow-pulse-inner {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
 /* ===== Sélecteur de Temps Modal ===== */
 
 #time-selector-modal {
