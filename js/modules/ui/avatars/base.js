@@ -310,7 +310,7 @@ export const BOY_BASE = {
                 <path d="${fuseau('M 49.6,50.6 C 46.8,50.5 44,50.9 41.8,50.1', 0.9, 10)} ${fuseau('M 50.4,50.6 C 53.2,50.5 56,50.9 58.2,50.1', 0.9, 10)}" fill="${mixHex(hairColor, '#000000', 0.25)}"/>
             </g>` : ''}
 
-            ${mood && species !== 'orc' ? getSmileMouth(mouthColor, mood === 'sad') : species === 'orc' ? `
+            ${styleKey === 'pirate_boy' ? '' : mood && species !== 'orc' ? getSmileMouth(mouthColor, mood === 'sad') : species === 'orc' ? `
             <!-- Peintures de guerre rouges tribales sous les yeux -->
             <polygon points="29,45 38,47 37,49 28,47" fill="#b91c1c" opacity="0.85"/>
             <polygon points="71,45 62,47 63,49 72,47" fill="#b91c1c" opacity="0.85"/>
@@ -571,9 +571,8 @@ export const GIRL_BASE = {
             <path d="M 55.0,52.5 C 55.0,49.5 55.6,48 56.4,48 C 57.2,48 57.8,49.5 57.8,52.5 Z" fill="#fffbeb"/>
             <ellipse cx="56.8" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>`}` : species === 'cat' ? `
             <!-- Bouche de chat en ω : petit croc ivoire arrondi façon orc (sans contour, pointe vers le bas) sur le côté droit, glissé derrière la lèvre, puis deux arcs fuseau de la couleur de bouche -->
-            <path d="M 53.35,52.2 C 53.35,53.5 53.65,54.1 54.05,54.1 C 54.45,54.1 54.75,53.5 54.75,52.2 Z" fill="#fffbeb"/><ellipse cx="53.85" cy="53" rx="0.18" ry="0.5" fill="#ffffff" opacity="0.8"/>
-            <path d="${fuseau('M 45,51.2 C 46.05,53.15 48.85,53.38 50,51.4', 1.29, 10)} ${fuseau('M 50,51.4 C 51.15,53.38 53.95,53.15 55,51.2', 1.29, 10)}" fill="${mouthColor}"/>` : (styleKey === 'pirate_girl' || species === 'dragon') ? `
-            <!-- Corsaire fille & Drakéide : bouche fille complète, lèvres affirmées -->
+            <path d="${fuseau('M 45,51.2 C 46.05,53.15 48.85,53.38 50,51.4', 1.29, 10)} ${fuseau('M 50,51.4 C 51.15,53.38 53.95,53.15 55,51.2', 1.29, 10)}" fill="${mouthColor}"/>` : species === 'dragon' ? `
+            <!-- Drakéide : bouche fille complète, lèvres affirmées -->
             ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.4))}` : styleKey === 'scholar_girl' ? `
             <!-- Mage Érudite : bouche fille complète, lèvres rosées dérivées de la peau (plus claires que la couleur de bouche) -->
             ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.45))}` : species === 'elf' ? `

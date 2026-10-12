@@ -5,25 +5,35 @@
 
 import { fuseau, plume, gripHand, fitBand, SKIN_DEFAULT } from '../../avatar-kit.js';
 
-// ANCHOR Cornes draconiques (espèce dragon / drakéide) : puissantes cornes en arrière/haut avec reflets d'obsidienne et d'or
+// ANCHOR Cornes draconiques (espèce dragon / drakéide) : cornes en S ascendantes en fuseau & plume dans l'esprit de Shadow, obsidienne et flammes rubis/or
 export function getDragonHorns() {
     return `
         <g id="dragon-horns">
-            <!-- Corne gauche : base robuste, courbure ascendante puis arrière, anneaux de corne et pointe effilée -->
-            <circle cx="26" cy="18" r="4.8" fill="#18181b"/>
-            <path d="${plume('M 26,18 C 21,12 16,3 12,-7 C 10,-16 13,-23 18,-30', 5.6, 18)}" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
-            <path d="${plume('M 25,16 C 20,11 16,3 13,-6 C 11,-14 14,-22 18,-29', 3.2, 16)}" fill="#7f1d1d" opacity="0.8"/>
-            <path d="${fuseau('M 24,14 C 19,8 16,0 14,-8 C 13,-16 15,-23 18,-29', 1.2, 14)}" fill="#f59e0b"/>
-            <!-- Stries de corne gauche en fuseau -->
-            <path d="${fuseau('M 21,11 C 23,12 26,14 28,15', 1.1, 8)} ${fuseau('M 17,2 C 19,3 22,5 24,6', 1, 8)} ${fuseau('M 13,-6 C 15,-5 18,-3 20,-2', 0.9, 8)} ${fuseau('M 12,-15 C 14,-14 16,-12 18,-11', 0.8, 8)}" fill="#f59e0b"/>
+            <!-- Corne gauche : base plantée dans le crâne, grande corne ascendante effilée en plume et traits en fuseau de feu -->
+            <circle cx="25.5" cy="16.5" r="5.2" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
+            <!-- Ergot secondaire inférieur gauche -->
+            <path d="${plume('M 26,17.5 C 22,20 18,21.5 13.5,21', 3.2, 12)}" fill="#18181b" stroke="#09090b" stroke-width="0.7"/>
+            <path d="${fuseau('M 25,17.8 C 21.5,19.8 18,21 14.5,20.8', 1.2, 10)}" fill="#f59e0b"/>
+            <!-- Corps principal de la grande corne gauche en plume -->
+            <path d="${plume('M 25.5,16.5 C 19,10 13,2 10.5,-6 C 8.5,-14 13,-22 22,-28.5', 6.2, 22)}" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
+            <circle cx="25.5" cy="16.5" r="4.6" fill="#18181b"/>
+            <!-- Traits intérieurs de flamme draconique dans l'esprit de Shadow (plume & fuseau dégradés) -->
+            <path d="${plume('M 25.5,15.5 C 19.5,9.5 14,2 11.5,-6 C 9.5,-13 13.5,-21 21.5,-27.5', 3.8, 18)}" fill="#b91c1c" opacity="0.85"/>
+            <path d="${fuseau('M 24.5,14 C 19,8 14.5,2 12.5,-5 C 11,-12 14,-19 21,-26', 1.8, 16)}" fill="#f59e0b"/>
+            <path d="${fuseau('M 23.5,11 C 18.5,6 15,1 13.5,-4 C 12,-9 14.5,-16 20,-23', 0.9, 14)}" fill="#fef08a"/>
 
-            <!-- Corne droite : symétrie avec reflets -->
-            <circle cx="74" cy="18" r="4.8" fill="#18181b"/>
-            <path d="${plume('M 74,18 C 79,12 84,3 88,-7 C 90,-16 87,-23 82,-30', 5.6, 18)}" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
-            <path d="${plume('M 75,16 C 80,11 84,3 87,-6 C 89,-14 86,-22 82,-29', 3.2, 16)}" fill="#7f1d1d" opacity="0.8"/>
-            <path d="${fuseau('M 76,14 C 81,8 84,0 86,-8 C 87,-16 85,-23 82,-29', 1.2, 14)}" fill="#f59e0b"/>
-            <!-- Stries de corne droite en fuseau -->
-            <path d="${fuseau('M 79,11 C 77,12 74,14 72,15', 1.1, 8)} ${fuseau('M 83,2 C 81,3 78,5 76,6', 1, 8)} ${fuseau('M 87,-6 C 85,-5 82,-3 80,-2', 0.9, 8)} ${fuseau('M 88,-15 C 86,-14 84,-12 82,-11', 0.8, 8)}" fill="#f59e0b"/>
+            <!-- Corne droite : symétrie avec reflets draconiques or et rubis -->
+            <circle cx="74.5" cy="16.5" r="5.2" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
+            <!-- Ergot secondaire inférieur droit -->
+            <path d="${plume('M 74,17.5 C 78,20 82,21.5 86.5,21', 3.2, 12)}" fill="#18181b" stroke="#09090b" stroke-width="0.7"/>
+            <path d="${fuseau('M 75,17.8 C 78.5,19.8 82,21 85.5,20.8', 1.2, 10)}" fill="#f59e0b"/>
+            <!-- Corps principal de la grande corne droite en plume -->
+            <path d="${plume('M 74.5,16.5 C 81,10 87,2 89.5,-6 C 91.5,-14 87,-22 78,-28.5', 6.2, 22)}" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
+            <circle cx="74.5" cy="16.5" r="4.6" fill="#18181b"/>
+            <!-- Traits intérieurs de flamme draconique dans l'esprit de Shadow -->
+            <path d="${plume('M 74.5,15.5 C 80.5,9.5 86,2 88.5,-6 C 90.5,-13 86.5,-21 78.5,-27.5', 3.8, 18)}" fill="#b91c1c" opacity="0.85"/>
+            <path d="${fuseau('M 75.5,14 C 81,8 85.5,2 87.5,-5 C 89,-12 86,-19 79,-26', 1.8, 16)}" fill="#f59e0b"/>
+            <path d="${fuseau('M 76.5,11 C 81.5,6 85,1 86.5,-4 C 88,-9 85.5,-16 80,-23', 0.9, 14)}" fill="#fef08a"/>
         </g>
     `;
 }

@@ -236,8 +236,8 @@ import { T } from '../core/theme.js';
 | Queue du chat | Couleur des cheveux assombrie d'une couche noire à 22 % |
 | Vampire | Redingote `#991b1b`, cape `#450a0a` (doublure `#2c0606`), jabot `#f8fafc`, rapière `#cbd5e1`, pommeau `#dc2626`, peau `#e6edf8` (ombre `#bccbe4`), cheveux `#2a0a12` |
 | Nécromancien | Robe `#2f4a43`, capuche avant `#2f4a43` et arrière `#0e1a17`, cape `#0e1a17`, cordon d'os `#d6d3c4`, flamme `#22c55e` / `#86efac`, peau `#aebbb4` (ombre `#85948d`), cheveux `#e7e5d8`, œil noir `#0a0a0a`, pupille `#4ade80` |
-| Pirate | Veste d'officier marine `#1e3a5f`, manteau dorsal `#091e36`, tricorne `#0f243f` à galon or `#fbbf24`, plume écarlate `#dc2626`, sabre d'abordage `#cbd5e1`, écharpe de taille `#991b1b`, moustache exclusive garçon |
-| Chevalier Dragon | Cuirasse d'écailles rubis `#881337`, plastron d'acier sombre `#1e293b`, cape écarlate très sombre `#380808`, lance de dragonnier, cornes draconiques d'obsidienne `#18181b` et or `#f59e0b`, yeux ardents fendus |
+| Pirate | Veste d'officier marine `#1e3a5f`, manteau dorsal `#091e36`, tricorne `#0f243f` à galon or `#fbbf24`, plume écarlate `#dc2626`, sabre d'abordage `#cbd5e1`, écharpe de taille `#991b1b`, moustache de corsaire exclusive garçon (sans bouche sous-jacente) |
+| Chevalier Dragon | Cuirasse d'écailles rubis `#881337`, plastron d'acier sombre `#1e293b`, cape écarlate très sombre `#380808`, lance de dragonnier, cornes draconiques en plume et fuseau dans l'esprit de Shadow (obsidienne `#18181b`, flammes rubis `#b91c1c`, reflets or `#f59e0b` et cœur `#fef08a`), yeux ardents fendus |
 | Case vide de la collection | Carte 9/16 en pointillés turquoise (`T.primaryA(0.45)`) sur fond crème, mannequin neutre grisé à 60 %, pastille « ? », « Trophée N » et « À découvrir » ; un clic ramène à l'arbre |
 | Raretés d'invocation | Rare turquoise, épique violet `rgb(147,51,234)`, légendaire doré (voir `trophies-manager.js`) |
 
