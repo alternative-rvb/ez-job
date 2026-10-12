@@ -205,8 +205,8 @@ export class QuizSelector {
 
                         <p class="text-xs mb-2 line-clamp-2" style="color:#6b3603">${quiz.description}</p>
 
-                        <!-- Badge niveau + matière (ou catégorie si pas de niveau) -->
-                        <div class="flex flex-wrap gap-1 mb-2">
+                        <!-- Badge niveau + matière (ou catégorie si pas de niveau) et tag -->
+                        <div class="flex flex-wrap items-center gap-1 mb-2.5 sm:mb-3">
                             ${quiz.level ? `
                             <span class="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap" style="background:#fef3c7;color:#92400e;border:1px solid #fde68a">
                                 ${quiz.level}
@@ -221,20 +221,18 @@ export class QuizSelector {
                                 ${subjectIcon ? `<span style="color:${subjectStyle.dot};display:inline-flex;width:12px;height:12px;flex-shrink:0" aria-hidden="true">${subjectIcon}</span>` : `<span style="color:${subjectStyle.dot};font-size:0.6rem" aria-hidden="true">&#11044;</span>`}${quiz.subject}
                             </span>
                             ` : ''}
+                            ${(() => {
+                                const excluded = new Set([quiz.subject, quiz.level, quiz.category].filter(Boolean));
+                                const firstTag = quiz.tag && quiz.tag.find(t => !excluded.has(t));
+                                return firstTag ? `
+                                <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap font-medium" style="background:#f4eadd;color:#6b3603;border:1px solid #d8c4ad">
+                                    <i class="bi bi-tag mr-0.5"></i>${firstTag}
+                                </span>` : '';
+                            })()}
                         </div>
 
-                        <!-- Premier tag non redondant avec niveau/matière/catégorie -->
-                        ${(() => {
-                            const excluded = new Set([quiz.subject, quiz.level, quiz.category].filter(Boolean));
-                            const firstTag = quiz.tag && quiz.tag.find(t => !excluded.has(t));
-                            return firstTag ? `
-                            <span class="text-xs px-2 py-0.5 rounded-full whitespace-nowrap self-start font-medium" style="background:#f4eadd;color:#6b3603;border:1px solid #d8c4ad">
-                                <i class="bi bi-tag mr-0.5"></i>${firstTag}
-                            </span>` : '';
-                        })()}
-
                         <!-- Infos bas -->
-                        <div class="flex items-center justify-between mt-auto pt-2" style="border-top:1px solid #d8c4ad">
+                        <div class="flex items-center justify-between mt-auto pt-2 sm:pt-2.5" style="border-top:1px solid #d8c4ad">
                             <div class="flex items-center gap-2 text-xs font-medium" style="color:#6b3603">
                                 <span><i class="bi bi-clock mr-0.5"></i>~${Math.ceil(quiz.questionCount * (CONFIG.timeLimit || 10) / 60)}m</span>
                                 <span style="color:#9e621d;letter-spacing:-1px">${getDifficultyIcons(quiz.difficulty)}</span>

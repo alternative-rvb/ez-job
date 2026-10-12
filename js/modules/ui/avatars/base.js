@@ -42,7 +42,9 @@ export const ALL_HAIR_COLORS = [
     { id: 'vampire-carmin', name: 'Noir Carmin', hex: '#2a0a12', isTrophyReward: true },
     { id: 'necro-bone', name: 'Blanc Os', hex: '#e7e5d8', isTrophyReward: true },
     { id: 'fairy-orchid', name: 'Orchidée', hex: '#d946ef', isTrophyReward: true },
-    { id: 'scholar-chestnut', name: 'Châtain Clair', hex: '#b07d4b', isTrophyReward: true }
+    { id: 'scholar-chestnut', name: 'Châtain Clair', hex: '#b07d4b', isTrophyReward: true },
+    { id: 'pirate-chestnut', name: 'Brun Corsaire', hex: '#3b2219', isTrophyReward: true },
+    { id: 'dragon-crimson', name: 'Rouge Braise Draconique', hex: '#b91c1c', isTrophyReward: true }
 ];
 
 // Palette active pour la personnalisation des avatars de base
@@ -70,7 +72,9 @@ export const ALL_EYE_COLORS = [
     { id: 'sky', name: 'Azur Céleste', dark: '#0c4a6e', light: '#38bdf8', isTrophyReward: true },
     { id: 'cat-rose', name: 'Rose Félin', dark: '#9d174d', light: '#f472b6', isTrophyReward: true },
     { id: 'fairy-lilac', name: 'Lilas Féerique', dark: '#5b21b6', light: '#c4b5fd', isTrophyReward: true },
-    { id: 'revenant-green', name: 'Vert Spectral', dark: '#052e16', light: '#15803d', isTrophyReward: true }
+    { id: 'revenant-green', name: 'Vert Spectral', dark: '#052e16', light: '#15803d', isTrophyReward: true },
+    { id: 'lagoon-blue', name: 'Bleu Lagon', dark: '#0e7490', light: '#06b6d4', isTrophyReward: true },
+    { id: 'dragon-fire', name: 'Feu Draconique', dark: '#7f1d1d', light: '#ea580c', isTrophyReward: true }
 ];
 
 // Palette active pour la personnalisation des avatars de base
@@ -101,6 +105,7 @@ export const ALL_SKIN_COLORS = [
     { id: 'vampire-pale', name: 'Pâleur Nocturne (Vampire)', base: '#e6edf8', shadow: '#bccbe4', mouth: '#7f1d1d', isTrophyReward: true }, // Teint de lune
     { id: 'undead-grey', name: 'Gris Revenant (Nécromancien)', base: '#aebbb4', shadow: '#85948d', mouth: '#2f3a35', isTrophyReward: true } // Teint grisâtre de revenant
     ,{ id: 'fairy-cream', name: 'Crème Féerique', base: '#ffe6d5', shadow: '#f2c3a6', mouth: '#9f4a3a', isTrophyReward: true } // Teint crème rosé de fée
+    ,{ id: 'dragon-amber', name: 'Ambre Draconique (Drakéide)', base: '#f5d5b8', shadow: '#d69d6c', mouth: '#7f2812', isTrophyReward: true } // Teint chaud ambré de dragonnier
 ];
 
 // Palette active pour la personnalisation des avatars de base
@@ -151,7 +156,7 @@ export function getFullLipsMouth(mouthColor) {
 
 // Générateur des oreilles selon l'espèce (Humain, Elfe, Orc, etc.)
 export function getSpeciesEars(species = 'human', skin = SKIN_DEFAULT, gender = 'boy') {
-    if (species === 'elf' || species === 'shadow' || species === 'vampire' || species === 'fairy') {
+    if (species === 'elf' || species === 'shadow' || species === 'vampire' || species === 'fairy' || species === 'dragon') {
         return `
             <!-- NOTE Oreilles descendues de 50 % de leur hauteur (12) et rapprochées de 25 % de leur largeur (2.6) -->
             <g id="${gender}-ears-elf" transform="translate(0 6)">
@@ -267,7 +272,7 @@ export const BOY_BASE = {
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="${species === 'undead' ? '#0a0a0a' : skin.shadow}" stroke-width="${species === 'undead' ? 1.8 : 0.8}"/>
             <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="${eye.dark}"/>
             <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="${eye.light}"/>
-            ${species === 'cat' ? '<ellipse cx="37.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : `<circle cx="37.5" cy="41.5" r="2.2" fill="${species === 'undead' ? '#4ade80' : '#241103'}"/>`}
+            ${species === 'cat' || species === 'dragon' ? '<ellipse cx="37.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : `<circle cx="37.5" cy="41.5" r="2.2" fill="${species === 'undead' ? '#4ade80' : '#241103'}"/>`}
             <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
             <circle cx="39.5" cy="43.5" r="0.9" fill="#ffffff"/>
 
@@ -275,7 +280,7 @@ export const BOY_BASE = {
             <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="${species === 'undead' ? '#0a0a0a' : skin.shadow}" stroke-width="${species === 'undead' ? 1.8 : 0.8}"/>
             <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="${eye.dark}"/>
             <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="${eye.light}"/>
-            ${species === 'cat' ? '<ellipse cx="62.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : `<circle cx="62.5" cy="41.5" r="2.2" fill="${species === 'undead' ? '#4ade80' : '#241103'}"/>`}
+            ${species === 'cat' || species === 'dragon' ? '<ellipse cx="62.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : `<circle cx="62.5" cy="41.5" r="2.2" fill="${species === 'undead' ? '#4ade80' : '#241103'}"/>`}
             <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
             <circle cx="64.5" cy="43.5" r="0.9" fill="#ffffff"/>
 
@@ -286,6 +291,24 @@ export const BOY_BASE = {
             </g>
 
             ${species === 'cat' ? '<path d="M 48.3,46.8 L 51.7,46.8 Q 50,49 50,49 Q 50,49 48.3,46.8 Z" fill="#f472b6"/>' : `<polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>`}
+
+            ${species === 'dragon' ? `
+            <!-- Écailles draconiques délicates sur les tempes / pommettes, couleur d'ombre de carnation -->
+            <g id="boy-dragon-scales" opacity="0.65">
+                <polygon points="26,44 28,42 30,44 28,46" fill="${skin.shadow}"/>
+                <polygon points="24,47 26,45 28,47 26,49" fill="${skin.shadow}"/>
+                <polygon points="28,49 30,47 32,49 30,51" fill="${skin.shadow}"/>
+                <polygon points="74,44 72,42 70,44 72,46" fill="${skin.shadow}"/>
+                <polygon points="76,47 74,45 72,47 74,49" fill="${skin.shadow}"/>
+                <polygon points="72,49 70,47 68,49 70,51" fill="${skin.shadow}"/>
+            </g>` : ''}
+
+            ${styleKey === 'pirate_boy' ? `
+            <!-- Moustache de corsaire : deux ailes effilées recourbées aux extrémités vers le haut, couleur des cheveux -->
+            <g id="boy-pirate-mustache">
+                <path d="${fuseau('M 49.5,50.2 C 46.5,49.8 43,50.4 40.8,49.2', 1.6, 12)} ${fuseau('M 50.5,50.2 C 53.5,49.8 57,50.4 59.2,49.2', 1.6, 12)}" fill="${hairColor}"/>
+                <path d="${fuseau('M 49.6,50.6 C 46.8,50.5 44,50.9 41.8,50.1', 0.9, 10)} ${fuseau('M 50.4,50.6 C 53.2,50.5 56,50.9 58.2,50.1', 0.9, 10)}" fill="${mixHex(hairColor, '#000000', 0.25)}"/>
+            </g>` : ''}
 
             ${mood && species !== 'orc' ? getSmileMouth(mouthColor, mood === 'sad') : species === 'orc' ? `
             <!-- Peintures de guerre rouges tribales sous les yeux -->
@@ -483,7 +506,7 @@ export const GIRL_BASE = {
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="none" stroke="${species === 'undead' ? '#0a0a0a' : skin.shadow}" stroke-width="${species === 'undead' ? 1.8 : 0.8}"/>
             <ellipse cx="37.5" cy="41.5" rx="4.2" ry="4.8" fill="${eye.dark}"/>
             <ellipse cx="37.5" cy="42.5" rx="3.5" ry="3.5" fill="${eye.light}"/>
-            ${species === 'cat' ? '<ellipse cx="37.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : `<circle cx="37.5" cy="41.5" r="2.2" fill="${species === 'undead' ? '#4ade80' : '#241103'}"/>`}
+            ${species === 'cat' || species === 'dragon' ? '<ellipse cx="37.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : `<circle cx="37.5" cy="41.5" r="2.2" fill="${species === 'undead' ? '#4ade80' : '#241103'}"/>`}
             <circle cx="35.5" cy="39" r="1.8" fill="#ffffff"/>
             <circle cx="39.5" cy="43.5" r="1" fill="#ffffff"/>
 
@@ -491,7 +514,7 @@ export const GIRL_BASE = {
             <ellipse cx="63" cy="41" rx="6.5" ry="5.5" fill="none" stroke="${species === 'undead' ? '#0a0a0a' : skin.shadow}" stroke-width="${species === 'undead' ? 1.8 : 0.8}"/>
             <ellipse cx="62.5" cy="41.5" rx="4.2" ry="4.8" fill="${eye.dark}"/>
             <ellipse cx="62.5" cy="42.5" rx="3.5" ry="3.5" fill="${eye.light}"/>
-            ${species === 'cat' ? '<ellipse cx="62.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : `<circle cx="62.5" cy="41.5" r="2.2" fill="${species === 'undead' ? '#4ade80' : '#241103'}"/>`}
+            ${species === 'cat' || species === 'dragon' ? '<ellipse cx="62.5" cy="41.8" rx="0.85" ry="3.3" fill="#241103"/>' : `<circle cx="62.5" cy="41.5" r="2.2" fill="${species === 'undead' ? '#4ade80' : '#241103'}"/>`}
             <circle cx="60.5" cy="39" r="1.8" fill="#ffffff"/>
             <circle cx="64.5" cy="43.5" r="1" fill="#ffffff"/>
 
@@ -522,6 +545,17 @@ export const GIRL_BASE = {
 
             ${species === 'cat' ? '<path d="M 48.3,46.8 L 51.7,46.8 Q 50,49 50,49 Q 50,49 48.3,46.8 Z" fill="#f472b6"/>' : `<polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>`}
 
+            ${species === 'dragon' ? `
+            <!-- Écailles draconiques délicates sur les tempes / pommettes, couleur d'ombre de carnation -->
+            <g id="girl-dragon-scales" opacity="0.65">
+                <polygon points="26,44 28,42 30,44 28,46" fill="${skin.shadow}"/>
+                <polygon points="24,47 26,45 28,47 26,49" fill="${skin.shadow}"/>
+                <polygon points="28,49 30,47 32,49 30,51" fill="${skin.shadow}"/>
+                <polygon points="74,44 72,42 70,44 72,46" fill="${skin.shadow}"/>
+                <polygon points="76,47 74,45 72,47 74,49" fill="${skin.shadow}"/>
+                <polygon points="72,49 70,47 68,49 70,51" fill="${skin.shadow}"/>
+            </g>` : ''}
+
             ${mood && species !== 'orc' ? getSmileMouth(mouthColor, mood === 'sad') : species === 'orc' ? `
             <!-- Peintures de guerre rouges tribales sous les yeux -->
             <polygon points="29,45 38,47 37,49 28,47" fill="#b91c1c" opacity="0.85"/>
@@ -538,7 +572,9 @@ export const GIRL_BASE = {
             <ellipse cx="56.8" cy="50" rx="0.4" ry="1.2" fill="#ffffff" opacity="0.8"/>`}` : species === 'cat' ? `
             <!-- Bouche de chat en ω : petit croc ivoire arrondi façon orc (sans contour, pointe vers le bas) sur le côté droit, glissé derrière la lèvre, puis deux arcs fuseau de la couleur de bouche -->
             <path d="M 53.35,52.2 C 53.35,53.5 53.65,54.1 54.05,54.1 C 54.45,54.1 54.75,53.5 54.75,52.2 Z" fill="#fffbeb"/><ellipse cx="53.85" cy="53" rx="0.18" ry="0.5" fill="#ffffff" opacity="0.8"/>
-            <path d="${fuseau('M 45,51.2 C 46.05,53.15 48.85,53.38 50,51.4', 1.29, 10)} ${fuseau('M 50,51.4 C 51.15,53.38 53.95,53.15 55,51.2', 1.29, 10)}" fill="${mouthColor}"/>` : styleKey === 'scholar_girl' ? `
+            <path d="${fuseau('M 45,51.2 C 46.05,53.15 48.85,53.38 50,51.4', 1.29, 10)} ${fuseau('M 50,51.4 C 51.15,53.38 53.95,53.15 55,51.2', 1.29, 10)}" fill="${mouthColor}"/>` : (styleKey === 'pirate_girl' || species === 'dragon') ? `
+            <!-- Corsaire fille & Drakéide : bouche fille complète, lèvres affirmées -->
+            ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.4))}` : styleKey === 'scholar_girl' ? `
             <!-- Mage Érudite : bouche fille complète, lèvres rosées dérivées de la peau (plus claires que la couleur de bouche) -->
             ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.45))}` : species === 'elf' ? `
             <!-- Elfe : bouche fille complète, lèvres rosées dérivées de la peau -->
