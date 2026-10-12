@@ -18,82 +18,82 @@
       "id": 1,
       "question": "Qu'est-ce qu'un DTO (Data Transfer Object) en PHP ?",
       "choices": [
-        "Un objet contenant uniquement de la logique métier",
-        "Un objet simple pour transférer des données entre couches sans logique métier",
-        "Une entité Doctrine mappée directement sur une table",
-        "Une classe abstraite servant de base à plusieurs entités"
+        "Un objet qui regroupe toute la logique métier d'un module",
+        "Une entité Doctrine liée directement à une table de la base",
+        "Une classe abstraite qui sert de base à plusieurs entités",
+        "Un objet simple qui transporte des données, sans logique métier"
       ],
-      "correctAnswer": "Un objet simple pour transférer des données entre couches sans logique métier",
+      "correctAnswer": "Un objet simple qui transporte des données, sans logique métier",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 2,
       "question": "Que signifie une variable 'promoted' en PHP 8+ ?",
       "choices": [
-        "Une variable globale",
-        "Une variable déclarée et assignée directement dans le constructeur",
-        "Une variable statique",
-        "Une variable protégée"
+        "Une variable globale accessible depuis tout le script PHP",
+        "Une variable statique partagée par toutes les instances",
+        "Une propriété déclarée directement dans la signature du constructeur",
+        "Une variable protégée héritée de la classe parente"
       ],
-      "correctAnswer": "Une variable déclarée et assignée directement dans le constructeur",
+      "correctAnswer": "Une propriété déclarée directement dans la signature du constructeur",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 3,
       "question": "Dans la Clean Architecture, quelle est la règle fondamentale concernant les dépendances ?",
       "choices": [
-        "Les dépendances pointent vers l'extérieur",
-        "Les dépendances pointent vers l'intérieur (vers la logique métier)",
-        "Il n'y a pas de règle sur les dépendances",
-        "Les dépendances sont bidirectionnelles"
+        "Les dépendances pointent vers l'extérieur, vers l'infrastructure",
+        "Les dépendances pointent vers l'intérieur, vers la logique métier",
+        "Les dépendances sont bidirectionnelles entre toutes les couches",
+        "Les dépendances vont de la base de données vers l'interface"
       ],
-      "correctAnswer": "Les dépendances pointent vers l'intérieur (vers la logique métier)",
+      "correctAnswer": "Les dépendances pointent vers l'intérieur, vers la logique métier",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 4,
       "question": "Que fait l'opérateur `??` en PHP ?",
       "choices": [
-        "Concaténation de chaînes",
-        "Opérateur null coalescing - retourne la valeur de droite si celle de gauche est null",
-        "Comparaison stricte",
-        "Opérateur ternaire"
+        "Le null coalescing : renvoie la droite si la gauche est null",
+        "La concaténation de deux chaînes avec conversion de type",
+        "La comparaison stricte de deux valeurs et de leurs types",
+        "L'opérateur ternaire qui évalue une condition booléenne"
       ],
-      "correctAnswer": "Opérateur null coalescing - retourne la valeur de droite si celle de gauche est null",
+      "correctAnswer": "Le null coalescing : renvoie la droite si la gauche est null",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 5,
       "question": "Qu'est-ce qu'une fonction variadic en PHP ?",
       "choices": [
-        "Une fonction récursive",
-        "Une fonction acceptant un nombre variable d'arguments avec ...$args",
-        "Une fonction anonyme",
-        "Une fonction statique"
+        "Une fonction qui s'appelle elle-même jusqu'à une condition d'arrêt",
+        "Une fonction sans nom, passée en paramètre à une autre",
+        "Une fonction rattachée à la classe plutôt qu'à l'instance",
+        "Une fonction qui accepte un nombre variable d'arguments avec ...$args"
       ],
-      "correctAnswer": "Une fonction acceptant un nombre variable d'arguments avec ...$args",
+      "correctAnswer": "Une fonction qui accepte un nombre variable d'arguments avec ...$args",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 6,
       "question": "Quelle est la différence principale entre une classe abstraite et un trait en PHP ?",
       "choices": [
-        "Une classe abstraite peut être instanciée, un trait non",
-        "Un trait permet la réutilisation de code dans plusieurs classes, une classe abstraite sert de modèle pour l'héritage",
-        "Il n'y a pas de différence",
-        "Un trait est plus performant"
+        "Une classe abstraite peut être instanciée, un trait ne le peut pas",
+        "Un trait s'hérite avec extends, une classe abstraite s'importe avec use",
+        "Un trait réutilise du code dans plusieurs classes, la classe abstraite sert de modèle",
+        "Un trait est toujours plus rapide qu'une classe abstraite à l'exécution"
       ],
-      "correctAnswer": "Un trait permet la réutilisation de code dans plusieurs classes, une classe abstraite sert de modèle pour l'héritage",
+      "correctAnswer": "Un trait réutilise du code dans plusieurs classes, la classe abstraite sert de modèle",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 7,
       "question": "Dans Symfony, quelle est la priorité de chargement des fichiers d'environnement ?",
       "choices": [
-        ".env puis .env.local",
+        ".env > .env.prod > .env.local > .env.prod.local",
         ".env.prod.local > .env.local > .env.prod > .env",
-        ".env.local puis .env",
-        "Tous sont chargés en même temps"
+        ".env.local > .env > .env.prod.local > .env.prod",
+        "Tous les fichiers sont fusionnés sans ordre de priorité"
       ],
       "correctAnswer": ".env.prod.local > .env.local > .env.prod > .env",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg"
@@ -102,46 +102,46 @@
       "id": 8,
       "question": "Quelle est la différence entre `var`, `let` et `const` en JavaScript ?",
       "choices": [
-        "Aucune différence, ce sont des synonymes",
-        "var a une portée fonction avec hoisting, let/const ont une portée bloc, const est immutable",
-        "let est pour les nombres, const pour les chaînes, var pour les objets",
-        "var est obsolète, let et const sont identiques"
+        "var a une portée de fonction, let et const une portée de bloc",
+        "var a une portée de bloc, let et const une portée de fonction",
+        "let est réservé aux nombres, const aux chaînes et var aux objets",
+        "var, let et const sont strictement équivalents en tout point"
       ],
-      "correctAnswer": "var a une portée fonction avec hoisting, let/const ont une portée bloc, const est immutable",
+      "correctAnswer": "var a une portée de fonction, let et const une portée de bloc",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": 9,
       "question": "Qu'est-ce qu'une Promise en JavaScript ?",
       "choices": [
-        "Une fonction synchrone",
-        "Un objet représentant l'état d'une opération asynchrone (pending, fulfilled, rejected)",
-        "Un type de variable",
-        "Une méthode pour manipuler le DOM"
+        "Une fonction qui bloque le programme jusqu'à la fin d'une tâche",
+        "Un type de variable qui garantit une valeur toujours définie",
+        "Une méthode du DOM qui attend un clic de l'utilisateur",
+        "Un objet qui représente le résultat futur d'une opération asynchrone"
       ],
-      "correctAnswer": "Un objet représentant l'état d'une opération asynchrone (pending, fulfilled, rejected)",
+      "correctAnswer": "Un objet qui représente le résultat futur d'une opération asynchrone",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": 10,
       "question": "Quelle est la différence entre INNER JOIN et LEFT JOIN ?",
       "choices": [
-        "Aucune différence",
-        "INNER JOIN retourne les lignes présentes dans les deux tables, LEFT JOIN retourne toutes les lignes de la table gauche",
-        "LEFT JOIN est plus rapide",
-        "INNER JOIN inclut les valeurs NULL"
+        "INNER JOIN garde toute la table de gauche, LEFT JOIN seulement les lignes communes",
+        "INNER JOIN garde toutes les lignes des deux tables, sans correspondance",
+        "INNER JOIN garde les lignes communes, LEFT JOIN toute la table de gauche",
+        "LEFT JOIN supprime les valeurs NULL, INNER JOIN les conserve"
       ],
-      "correctAnswer": "INNER JOIN retourne les lignes présentes dans les deux tables, LEFT JOIN retourne toutes les lignes de la table gauche",
+      "correctAnswer": "INNER JOIN garde les lignes communes, LEFT JOIN toute la table de gauche",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
     },
     {
       "id": 11,
       "question": "Comment filtrer des résultats après un GROUP BY en SQL ?",
       "choices": [
-        "Utiliser WHERE",
+        "Utiliser WHERE après le GROUP BY",
         "Utiliser HAVING",
-        "Utiliser FILTER",
-        "Utiliser LIMIT"
+        "Utiliser DISTINCT sur la colonne regroupée",
+        "Utiliser LIMIT avec la valeur du groupe"
       ],
       "correctAnswer": "Utiliser HAVING",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
@@ -150,178 +150,178 @@
       "id": 12,
       "question": "Quelle est la différence entre DELETE et TRUNCATE ?",
       "choices": [
-        "DELETE supprime des lignes spécifiques avec WHERE, TRUNCATE vide toute la table plus rapidement",
-        "TRUNCATE est plus lent",
-        "DELETE est irréversible, TRUNCATE non",
-        "Il n'y a pas de différence"
+        "DELETE supprime des lignes ciblées, TRUNCATE vide toute la table",
+        "TRUNCATE accepte une clause WHERE, alors que DELETE n'en accepte pas",
+        "DELETE supprime la structure de la table, TRUNCATE seulement les lignes",
+        "DELETE et TRUNCATE sont identiques, seul le nom diffère"
       ],
-      "correctAnswer": "DELETE supprime des lignes spécifiques avec WHERE, TRUNCATE vide toute la table plus rapidement",
+      "correctAnswer": "DELETE supprime des lignes ciblées, TRUNCATE vide toute la table",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
     },
     {
       "id": 13,
       "question": "Quelle est la différence entre PUT et PATCH dans une API REST ?",
       "choices": [
-        "PUT modifie partiellement, PATCH remplace entièrement",
-        "PUT remplace entièrement la ressource, PATCH ne modifie que les champs spécifiés",
-        "Il n'y a pas de différence",
-        "PATCH est plus sécurisé"
+        "PUT modifie partiellement la ressource, PATCH la remplace entièrement",
+        "PUT crée toujours une ressource, PATCH la supprime",
+        "PUT et PATCH sont interchangeables, PATCH est seulement plus récent",
+        "PUT remplace entièrement la ressource, PATCH ne modifie que les champs envoyés"
       ],
-      "correctAnswer": "PUT remplace entièrement la ressource, PATCH ne modifie que les champs spécifiés",
+      "correctAnswer": "PUT remplace entièrement la ressource, PATCH ne modifie que les champs envoyés",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": 14,
       "question": "Qu'est-ce que Docker Compose ?",
       "choices": [
-        "Un éditeur de code",
-        "Un outil orchestrant plusieurs conteneurs Docker via un fichier YAML",
-        "Une base de données",
-        "Un serveur web"
+        "Un éditeur de code intégré directement aux conteneurs",
+        "Un moteur de base de données qui tourne dans un conteneur",
+        "Un outil qui lance plusieurs conteneurs depuis un fichier YAML",
+        "Un serveur web qui remplace Nginx et Apache en production"
       ],
-      "correctAnswer": "Un outil orchestrant plusieurs conteneurs Docker via un fichier YAML",
+      "correctAnswer": "Un outil qui lance plusieurs conteneurs depuis un fichier YAML",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
     },
     {
       "id": 15,
       "question": "Quelle est la différence entre une Image et un Container Docker ?",
       "choices": [
-        "Image est l'instance d'exécution, Container est le modèle",
-        "Image est un modèle read-only, Container est une instance d'exécution d'une image",
-        "Il n'y a pas de différence",
-        "Container est plus léger qu'Image"
+        "L'image est l'instance en cours d'exécution, le conteneur son modèle",
+        "L'image est un modèle en lecture seule, le conteneur son instance en cours",
+        "L'image est un fichier de sauvegarde, le conteneur une base de données",
+        "L'image et le conteneur désignent exactement la même chose"
       ],
-      "correctAnswer": "Image est un modèle read-only, Container est une instance d'exécution d'une image",
+      "correctAnswer": "L'image est un modèle en lecture seule, le conteneur son instance en cours",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
     },
     {
       "id": 16,
       "question": "Qu'est-ce qu'un rebase en Git ?",
       "choices": [
-        "Supprimer un commit",
-        "Réappliquer les commits d'une branche sur une autre base, créant un historique linéaire",
-        "Fusionner deux branches",
-        "Créer une nouvelle branche"
+        "Réappliquer les commits sur une autre base pour un historique linéaire",
+        "Fusionner deux branches en créant un commit de merge explicite",
+        "Annuler le dernier commit en gardant les modifications locales",
+        "Copier une branche distante vers une nouvelle branche locale"
       ],
-      "correctAnswer": "Réappliquer les commits d'une branche sur une autre base, créant un historique linéaire",
+      "correctAnswer": "Réappliquer les commits sur une autre base pour un historique linéaire",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
     },
     {
       "id": 17,
       "question": "À quoi sert `git commit --fixup` ?",
       "choices": [
-        "Corriger le dernier commit",
-        "Créer un commit destiné à être fusionné avec un commit précédent lors d'un rebase interactif",
-        "Annuler un commit",
-        "Changer l'auteur d'un commit"
+        "Corriger le message du dernier commit même déjà poussé",
+        "Annuler un commit en créant un nouveau commit inverse",
+        "Changer l'auteur et la date d'un commit existant",
+        "Créer un commit à fusionner plus tard avec un commit précédent par rebase"
       ],
-      "correctAnswer": "Créer un commit destiné à être fusionné avec un commit précédent lors d'un rebase interactif",
+      "correctAnswer": "Créer un commit à fusionner plus tard avec un commit précédent par rebase",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
     },
     {
       "id": 18,
       "question": "Qu'est-ce qu'un analyseur de code statique ?",
       "choices": [
-        "Un outil qui exécute le code pour trouver des erreurs",
-        "Un outil analysant le code sans l'exécuter (PHPStan, Psalm) pour détecter erreurs et améliorations",
-        "Un outil qui formate automatiquement le code selon des règles de style",
+        "Un outil qui exécute le code pour trouver des erreurs à l'exécution",
+        "Un outil qui reformate le code selon des règles de style",
+        "Un outil qui analyse le code sans l'exécuter, comme PHPStan ou Psalm",
         "Un outil qui mesure la couverture de tests d'un projet"
       ],
-      "correctAnswer": "Un outil analysant le code sans l'exécuter (PHPStan, Psalm) pour détecter erreurs et améliorations",
+      "correctAnswer": "Un outil qui analyse le code sans l'exécuter, comme PHPStan ou Psalm",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 19,
       "question": "Comment harmoniser deux implémentations similaires (PayPal, Stripe) en PHP ?",
       "choices": [
-        "Copier-coller le code",
-        "Créer une interface commune, implémenter pour chaque service, utiliser le pattern Strategy ou Factory",
-        "Utiliser une seule implémentation",
-        "Les traiter séparément sans abstraction"
+        "Copier le code de l'un vers l'autre puis adapter les noms",
+        "Une interface commune, une implémentation par service, un pattern Strategy",
+        "Garder une seule implémentation et supprimer l'autre service",
+        "Traiter chaque service séparément avec des conditions if/else"
       ],
-      "correctAnswer": "Créer une interface commune, implémenter pour chaque service, utiliser le pattern Strategy ou Factory",
+      "correctAnswer": "Une interface commune, une implémentation par service, un pattern Strategy",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 20,
       "question": "Qu'est-ce que l'autoloading en PHP ?",
       "choices": [
-        "Chargement automatique des pages web",
-        "Chargement automatique des classes PHP sans avoir à les inclure manuellement, utilise les namespaces et PSR-4",
-        "Rechargement automatique de la page",
-        "Sauvegarde automatique des fichiers"
+        "Le chargement automatique des classes sans include, via PSR-4",
+        "Le chargement automatique des pages dans le navigateur web",
+        "Le rechargement de la page à chaque modification du code",
+        "La sauvegarde automatique des fichiers PHP sur le serveur"
       ],
-      "correctAnswer": "Chargement automatique des classes PHP sans avoir à les inclure manuellement, utilise les namespaces et PSR-4",
+      "correctAnswer": "Le chargement automatique des classes sans include, via PSR-4",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 21,
       "question": "Expliquez le principe de l'injection de dépendance",
       "choices": [
-        "Injecter du code malveillant",
-        "Pattern où les dépendances d'une classe sont fournies de l'extérieur plutôt que créées en interne",
-        "Créer des objets dans la classe",
-        "Utiliser des variables globales"
+        "La classe crée elle-même tous les objets dont elle a besoin",
+        "Les dépendances sont stockées dans des variables globales",
+        "On copie le code des dépendances directement dans la classe",
+        "Les dépendances d'une classe lui sont fournies de l'extérieur"
       ],
-      "correctAnswer": "Pattern où les dépendances d'une classe sont fournies de l'extérieur plutôt que créées en interne",
+      "correctAnswer": "Les dépendances d'une classe lui sont fournies de l'extérieur",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 22,
       "question": "Qu'est-ce que l'early return et pourquoi l'utiliser ?",
       "choices": [
-        "Retourner false rapidement",
-        "Pratique consistant à retourner tôt dans une fonction pour éviter l'imbrication excessive et améliorer la lisibilité",
-        "Optimisation des performances",
-        "Gestion des erreurs"
+        "Retourner false dès que possible, quel que soit le contexte",
+        "Une optimisation qui accélère nettement l'exécution du code",
+        "Retourner tôt pour limiter l'imbrication et améliorer la lisibilité",
+        "Une technique de gestion des erreurs avec des exceptions"
       ],
-      "correctAnswer": "Pratique consistant à retourner tôt dans une fonction pour éviter l'imbrication excessive et améliorer la lisibilité",
+      "correctAnswer": "Retourner tôt pour limiter l'imbrication et améliorer la lisibilité",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 23,
       "question": "Décrivez votre approche pour déboguer une requête SQL lente",
       "choices": [
-        "Redémarrer la base de données",
-        "Utiliser EXPLAIN, analyser les index, profiler, optimiser les JOIN, limiter les résultats",
-        "Augmenter la RAM du serveur",
-        "Changer de SGBD"
+        "Redémarrer la base de données pour vider tous les caches",
+        "EXPLAIN, vérification des index, profilage, optimisation des JOIN",
+        "Augmenter la RAM du serveur sans analyser la requête",
+        "Migrer vers un autre SGBD réputé plus rapide"
       ],
-      "correctAnswer": "Utiliser EXPLAIN, analyser les index, profiler, optimiser les JOIN, limiter les résultats",
+      "correctAnswer": "EXPLAIN, vérification des index, profilage, optimisation des JOIN",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
     },
     {
       "id": 24,
       "question": "Quelles sont les principales limites de l'API REST ?",
       "choices": [
-        "Trop sécurisé",
-        "Over/under-fetching, multiple requêtes, pas de subscription temps réel, cache complexe",
-        "Trop simple à utiliser",
-        "Manque de documentation"
+        "Over/under-fetching, requêtes multiples, pas de temps réel natif",
+        "Un niveau de sécurité trop élevé pour les clients mobiles",
+        "Une complexité trop faible pour des besoins métier réels",
+        "L'absence totale de standard pour décrire les ressources"
       ],
-      "correctAnswer": "Over/under-fetching, multiple requêtes, pas de subscription temps réel, cache complexe",
+      "correctAnswer": "Over/under-fetching, requêtes multiples, pas de temps réel natif",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": 25,
       "question": "Comment sécuriser une API REST ?",
       "choices": [
-        "Pas besoin de sécurité",
-        "Authentification (JWT/OAuth), HTTPS, validation des entrées, rate limiting, CORS configuré",
-        "Utiliser HTTP simple",
-        "Cacher l'URL"
+        "Masquer l'URL de l'API et ne jamais la documenter",
+        "Utiliser HTTP simple pour éviter la surcharge du chiffrement",
+        "Compter sur le pare-feu seul, sans authentification",
+        "JWT ou OAuth, HTTPS, validation des entrées, rate limiting"
       ],
-      "correctAnswer": "Authentification (JWT/OAuth), HTTPS, validation des entrées, rate limiting, CORS configuré",
+      "correctAnswer": "JWT ou OAuth, HTTPS, validation des entrées, rate limiting",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": 26,
       "question": "Qu'est-ce qu'un mock dans les tests unitaires ?",
       "choices": [
-        "Un test cassé",
+        "Un test qui échoue volontairement pour vérifier le framework",
+        "Un framework de test comme PHPUnit ou Jest",
         "Un objet simulé qui remplace une dépendance pour tester en isolation",
-        "Un framework de test",
-        "Une méthode de test"
+        "Une méthode qui lance tous les tests d'une classe"
       ],
       "correctAnswer": "Un objet simulé qui remplace une dépendance pour tester en isolation",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
@@ -330,168 +330,168 @@
       "id": 27,
       "question": "Expliquez le pattern Repository",
       "choices": [
-        "Pattern pour créer des objets",
-        "Pattern encapsulant la logique d'accès aux données, interface entre la couche métier et la persistance",
-        "Pattern pour observer des événements",
-        "Pattern pour la validation"
+        "Un pattern qui crée des objets complexes étape par étape",
+        "Un pattern qui encapsule l'accès aux données, entre métier et persistance",
+        "Un pattern qui notifie des objets quand un événement survient",
+        "Un pattern qui valide les données saisies dans un formulaire"
       ],
-      "correctAnswer": "Pattern encapsulant la logique d'accès aux données, interface entre la couche métier et la persistance",
+      "correctAnswer": "Un pattern qui encapsule l'accès aux données, entre métier et persistance",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 28,
       "question": "Comment optimiser les performances d'une application web ?",
       "choices": [
-        "Ajouter plus de serveurs uniquement",
-        "Cache (Redis/Memcached), CDN, lazy loading, minification, compression Gzip, requêtes optimisées",
-        "Utiliser plus de JavaScript",
-        "Réduire la qualité des images"
+        "Cache Redis, CDN, lazy loading, minification, requêtes optimisées",
+        "Ajouter des serveurs sans jamais toucher au code",
+        "Ajouter davantage de JavaScript côté client",
+        "Supprimer tous les index pour accélérer les écritures"
       ],
-      "correctAnswer": "Cache (Redis/Memcached), CDN, lazy loading, minification, compression Gzip, requêtes optimisées",
+      "correctAnswer": "Cache Redis, CDN, lazy loading, minification, requêtes optimisées",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": 29,
       "question": "Qu'est-ce que `git bisect` et dans quel contexte l'utiliser ?",
       "choices": [
-        "Diviser un fichier en deux",
-        "Recherche dichotomique pour trouver le commit qui a introduit un bug",
-        "Fusionner deux branches",
-        "Créer deux branches parallèles"
+        "Une commande qui coupe un fichier volumineux en deux parties",
+        "Une commande qui fusionne deux branches en parallèle",
+        "Une commande qui crée deux branches depuis un même commit",
+        "Une recherche dichotomique du commit qui a introduit un bug"
       ],
-      "correctAnswer": "Recherche dichotomique pour trouver le commit qui a introduit un bug",
+      "correctAnswer": "Une recherche dichotomique du commit qui a introduit un bug",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
     },
     {
       "id": 30,
       "question": "À quoi servent les volumes Docker ?",
       "choices": [
-        "À augmenter la RAM",
-        "Stockage persistant des données en dehors du cycle de vie du conteneur",
-        "À accélérer le conteneur",
-        "À sécuriser le conteneur"
+        "Une extension de la mémoire RAM allouée au conteneur",
+        "Un cache qui accélère le démarrage du conteneur",
+        "Un stockage persistant, indépendant du cycle de vie du conteneur",
+        "Un chiffrement des échanges réseau du conteneur"
       ],
-      "correctAnswer": "Stockage persistant des données en dehors du cycle de vie du conteneur",
+      "correctAnswer": "Un stockage persistant, indépendant du cycle de vie du conteneur",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
     },
     {
       "id": 31,
       "question": "Décrivez votre approche pour maintenir une application legacy",
       "choices": [
-        "Tout réécrire immédiatement",
-        "Tests de régression, refactoring progressif, documentation, isolation des modules, migration incrémentale",
-        "Ne rien toucher",
-        "Abandonner le projet"
+        "Réécrire l'application entière d'un seul coup en une version",
+        "Tests de régression, refactoring progressif, migration incrémentale",
+        "Ne plus toucher au code pour éviter toute régression",
+        "Remplacer d'abord le framework puis écrire les tests"
       ],
-      "correctAnswer": "Tests de régression, refactoring progressif, documentation, isolation des modules, migration incrémentale",
+      "correctAnswer": "Tests de régression, refactoring progressif, migration incrémentale",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 32,
       "question": "Qu'est-ce que le responsive design et comment l'implémenter ?",
       "choices": [
-        "Design qui répond rapidement",
-        "Adaptation de l'affichage aux différents écrans via media queries CSS, grilles flexibles, images adaptatives",
-        "Design avec beaucoup de couleurs",
-        "Design minimaliste"
+        "Adapter l'affichage aux écrans avec media queries et grilles flexibles",
+        "Un design dont les animations répondent rapidement au clic",
+        "Un design qui utilise une très large palette de couleurs",
+        "Un design minimaliste limité à une seule colonne fixe"
       ],
-      "correctAnswer": "Adaptation de l'affichage aux différents écrans via media queries CSS, grilles flexibles, images adaptatives",
+      "correctAnswer": "Adapter l'affichage aux écrans avec media queries et grilles flexibles",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
     },
     {
       "id": 33,
       "question": "Expliquez la différence entre jQuery et JavaScript natif",
       "choices": [
-        "jQuery est plus rapide",
-        "jQuery simplifie la manipulation DOM et AJAX, JavaScript natif est plus performant sans dépendance",
-        "Il n'y a pas de différence",
-        "JavaScript natif est obsolète"
+        "jQuery est plus rapide que le JavaScript natif dans tous les cas",
+        "jQuery et JavaScript natif sont identiques, seule la syntaxe change",
+        "Le JavaScript natif est obsolète et ne gère plus le DOM",
+        "jQuery simplifie le DOM et l'AJAX, le natif évite une dépendance"
       ],
-      "correctAnswer": "jQuery simplifie la manipulation DOM et AJAX, JavaScript natif est plus performant sans dépendance",
+      "correctAnswer": "jQuery simplifie le DOM et l'AJAX, le natif évite une dépendance",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": 34,
       "question": "Comment gérer la priorité entre plusieurs tâches urgentes ?",
       "choices": [
-        "Faire tout en même temps",
-        "Évaluer impact business, estimer effort, communiquer avec stakeholders, prioriser selon matrice urgence/importance",
-        "Choisir au hasard",
-        "Déléguer sans réfléchir"
+        "Tout traiter en même temps pour ne frustrer personne",
+        "Commencer par la tâche la plus rapide, sans en discuter",
+        "Évaluer l'impact, estimer l'effort, prioriser urgence/importance",
+        "Déléguer toutes les tâches urgentes sans aucun suivi"
       ],
-      "correctAnswer": "Évaluer impact business, estimer effort, communiquer avec stakeholders, prioriser selon matrice urgence/importance",
+      "correctAnswer": "Évaluer l'impact, estimer l'effort, prioriser urgence/importance",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": 35,
       "question": "Qu'est-ce que un index en base de données et quand l'utiliser ?",
       "choices": [
-        "Un numéro de ligne",
-        "Une structure optimisant les recherches, à utiliser sur les colonnes fréquemment utilisées dans WHERE, JOIN, ORDER BY",
-        "Une sauvegarde de table",
-        "Une contrainte de validation"
+        "Un numéro de ligne attribué automatiquement à chaque enregistrement",
+        "Une structure qui accélère les recherches sur WHERE, JOIN et ORDER BY",
+        "Une copie de sauvegarde complète de la table",
+        "Une contrainte qui valide le format d'une colonne"
       ],
-      "correctAnswer": "Une structure optimisant les recherches, à utiliser sur les colonnes fréquemment utilisées dans WHERE, JOIN, ORDER BY",
+      "correctAnswer": "Une structure qui accélère les recherches sur WHERE, JOIN et ORDER BY",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
     },
     {
       "id": 36,
       "question": "Expliquez votre démarche face à une erreur 500 en production",
       "choices": [
-        "Paniquer et tout redémarrer",
-        "Consulter logs serveur, identifier la stack trace, reproduire en staging, corriger, déployer, monitorer",
-        "Ignorer l'erreur",
-        "Blâmer l'utilisateur"
+        "Lire les logs et la stack trace, reproduire en staging, corriger",
+        "Redémarrer le serveur et attendre que l'erreur disparaisse",
+        "Désactiver les logs pour ne plus voir l'erreur affichée",
+        "Demander à l'utilisateur de réessayer un peu plus tard"
       ],
-      "correctAnswer": "Consulter logs serveur, identifier la stack trace, reproduire en staging, corriger, déployer, monitorer",
+      "correctAnswer": "Lire les logs et la stack trace, reproduire en staging, corriger",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 37,
       "question": "À quoi servent les migrations de base de données (Doctrine, Laravel...) ?",
       "choices": [
-        "À sauvegarder les données avant une mise à jour",
-        "À versionner et appliquer de façon reproductible les changements de schéma de la base",
-        "À migrer d'un SGBD vers un autre automatiquement",
-        "À synchroniser les données entre environnements"
+        "Sauvegarder toutes les données avant chaque mise à jour",
+        "Migrer automatiquement d'un SGBD vers un autre système",
+        "Synchroniser les données entre tous les environnements",
+        "Versionner les changements de schéma et les appliquer de façon reproductible"
       ],
-      "correctAnswer": "À versionner et appliquer de façon reproductible les changements de schéma de la base",
+      "correctAnswer": "Versionner les changements de schéma et les appliquer de façon reproductible",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
     },
     {
       "id": 38,
       "question": "Comment cibler une implémentation particulière d'un service en Symfony ?",
       "choices": [
-        "Utiliser des variables globales",
-        "Configuration Symfony, tags de service, alias, ou injection par nom de service spécifique",
-        "Modifier le code source",
-        "Utiliser des commentaires"
+        "Variables globales lues directement dans le constructeur",
+        "Modification du code source du composant tiers installé",
+        "Alias de service, tags ou injection par nom de service précis",
+        "Annotations de commentaires dans la classe cible"
       ],
-      "correctAnswer": "Configuration Symfony, tags de service, alias, ou injection par nom de service spécifique",
+      "correctAnswer": "Alias de service, tags ou injection par nom de service précis",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg"
     },
     {
       "id": 39,
       "question": "Décrivez les principaux Design Patterns que vous utilisez",
       "choices": [
-        "Aucun, c'est inutile",
-        "Singleton, Factory, Observer, Repository, Strategy, Dependency Injection, Adapter",
-        "Seulement MVC",
-        "Copier-coller du code"
+        "Aucun pattern, car chaque projet est trop différent des autres",
+        "Factory, Strategy, Observer, Repository, Adapter et injection de dépendances",
+        "Uniquement MVC, qui couvre à lui seul tous les besoins",
+        "Un seul pattern appliqué partout : le Singleton du projet"
       ],
-      "correctAnswer": "Singleton, Factory, Observer, Repository, Strategy, Dependency Injection, Adapter",
+      "correctAnswer": "Factory, Strategy, Observer, Repository, Adapter et injection de dépendances",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
     },
     {
       "id": 40,
       "question": "À quoi servent les networks Docker ?",
       "choices": [
-        "À accélérer les conteneurs",
-        "Permettent la communication entre conteneurs de manière isolée et sécurisée",
-        "À sauvegarder les données",
-        "À monitorer les performances"
+        "Permettre aux conteneurs de communiquer entre eux de façon isolée",
+        "Accélérer les conteneurs en réservant de la bande passante",
+        "Sauvegarder les données des conteneurs",
+        "Surveiller les performances des conteneurs"
       ],
-      "correctAnswer": "Permettent la communication entre conteneurs de manière isolée et sécurisée",
+      "correctAnswer": "Permettre aux conteneurs de communiquer entre eux de façon isolée",
       "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
     }
   ]

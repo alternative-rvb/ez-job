@@ -1,0 +1,139 @@
+{
+  "config": {
+    "title": "IA Niveau 1 : c'est quoi l'IA ?",
+    "description": "Les bases pour comprendre l'intelligence artificielle et les assistants comme ChatGPT ou Claude",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 10,
+    "category": "IA",
+    "createdAt": "2026-10-12",
+    "tag": [
+      "IA",
+      "Culture numérique",
+      "Débutant"
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Que signifie le sigle IA ?",
+      "choices": [
+        "Internet Avancé",
+        "Intelligence Artificielle",
+        "Information Automatique",
+        "Ingénierie Appliquée"
+      ],
+      "correctAnswer": "Intelligence Artificielle",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Que peut faire une IA générative comme ChatGPT ou Claude ?",
+      "choices": [
+        "Produire du texte, résumer, traduire, expliquer",
+        "Réparer un ordinateur à distance sans aucun accès",
+        "Prédire le futur avec certitude",
+        "Remplacer un médecin"
+      ],
+      "correctAnswer": "Produire du texte, résumer, traduire, expliquer",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Lequel de ces outils est un assistant IA conversationnel ?",
+      "choices": [
+        "Excel",
+        "ChatGPT",
+        "Paint",
+        "Calculatrice"
+      ],
+      "correctAnswer": "ChatGPT",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Comment s'appelle le texte que vous écrivez pour demander quelque chose à une IA ?",
+      "choices": [
+        "Un prompt",
+        "Un pixel",
+        "Un mot de passe",
+        "Un cookie"
+      ],
+      "correctAnswer": "Un prompt",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Une IA comprend-elle les choses comme un être humain ?",
+      "choices": [
+        "Oui, exactement comme nous",
+        "Non, elle repère des motifs dans les textes sur lesquels elle a appris",
+        "Oui, mais seulement le matin",
+        "Non, elle ne sait traiter que des chiffres"
+      ],
+      "correctAnswer": "Non, elle repère des motifs dans les textes sur lesquels elle a appris",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Une IA peut-elle générer des images à partir d'une description ?",
+      "choices": [
+        "Non, jamais",
+        "Oui, certains outils le font",
+        "Oui, mais uniquement en noir et blanc",
+        "Seulement avec une imprimante"
+      ],
+      "correctAnswer": "Oui, certains outils le font",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Une IA peut-elle se tromper ?",
+      "choices": [
+        "Non, jamais",
+        "Oui, ses réponses peuvent contenir des erreurs",
+        "Seulement quand internet est coupé",
+        "Seulement en anglais"
+      ],
+      "correctAnswer": "Oui, ses réponses peuvent contenir des erreurs",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Pour quelle tâche l'IA est-elle un bon coup de main ?",
+      "choices": [
+        "Reformuler un email ou trouver des idées",
+        "Signer un contrat à votre place",
+        "Décider seule d'un traitement médical",
+        "Voter à votre place"
+      ],
+      "correctAnswer": "Reformuler un email ou trouver des idées",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Qui est responsable d'un texte produit par une IA et publié sous votre nom ?",
+      "choices": [
+        "L'IA",
+        "Personne",
+        "Vous",
+        "Le fabricant de l'ordinateur"
+      ],
+      "correctAnswer": "Vous",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Quelle attitude adopter face à une réponse d'IA ?",
+      "choices": [
+        "La relire et la vérifier si elle est importante",
+        "La croire sans réfléchir",
+        "L'ignorer systématiquement",
+        "La copier sans la lire"
+      ],
+      "correctAnswer": "La relire et la vérifier si elle est importante",
+      "imageUrl": null
+    }
+  ]
+}

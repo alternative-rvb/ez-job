@@ -1,0 +1,139 @@
+{
+  "config": {
+    "title": "IA Niveau 1 : les bons réflexes avec l'IA",
+    "description": "Utiliser l'IA au quotidien en protégeant ses données et en gardant son esprit critique",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 10,
+    "category": "IA",
+    "createdAt": "2026-10-12",
+    "tag": [
+      "IA",
+      "Bonnes pratiques",
+      "Débutant"
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle information ne faut-il pas écrire dans un assistant IA grand public ?",
+      "choices": [
+        "Un mot de passe ou un numéro de carte bancaire",
+        "Une recette de cuisine",
+        "Une question de grammaire",
+        "Une idée de cadeau"
+      ],
+      "correctAnswer": "Un mot de passe ou un numéro de carte bancaire",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Que faire avant de partager un document avec une IA ?",
+      "choices": [
+        "Retirer les noms et données personnelles",
+        "Rien du tout",
+        "Ajouter votre adresse",
+        "Le renommer en majuscules"
+      ],
+      "correctAnswer": "Retirer les noms et données personnelles",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Une IA vous donne une date ou un chiffre précis. Que faire ?",
+      "choices": [
+        "Le vérifier si c'est important",
+        "Le recopier directement dans un rapport",
+        "L'apprendre par cœur",
+        "L'envoyer à tout le monde"
+      ],
+      "correctAnswer": "Le vérifier si c'est important",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Que faire si l'IA répond « je ne sais pas » ?",
+      "choices": [
+        "C'est une réponse honnête, il vaut mieux chercher ailleurs",
+        "Insister jusqu'à ce qu'elle invente",
+        "Ne plus jamais l'utiliser",
+        "Éteindre l'écran"
+      ],
+      "correctAnswer": "C'est une réponse honnête, il vaut mieux chercher ailleurs",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Utiliser l'IA pour tricher à un examen est-il une bonne idée ?",
+      "choices": [
+        "Oui, personne ne s'en rend compte",
+        "Non, c'est interdit et cela empêche d'apprendre",
+        "Oui, si on change quelques mots",
+        "Oui, le jeudi"
+      ],
+      "correctAnswer": "Non, c'est interdit et cela empêche d'apprendre",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Pour quoi l'IA est-elle utile quand on apprend ?",
+      "choices": [
+        "Expliquer une notion avec des mots simples",
+        "Passer l'examen à notre place",
+        "Remplacer tous les cours",
+        "Choisir notre métier à notre place"
+      ],
+      "correctAnswer": "Expliquer une notion avec des mots simples",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Une image réaliste vue en ligne peut-elle avoir été créée par une IA ?",
+      "choices": [
+        "Non, c'est impossible",
+        "Oui, il faut garder un esprit critique",
+        "Oui, mais seulement les dessins",
+        "Non, seulement les vidéos"
+      ],
+      "correctAnswer": "Oui, il faut garder un esprit critique",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Pour un sujet de santé ou de droit, que faut-il faire ?",
+      "choices": [
+        "Consulter aussi un professionnel",
+        "Suivre uniquement l'IA",
+        "Demander à un voisin au hasard",
+        "Ne rien faire"
+      ],
+      "correctAnswer": "Consulter aussi un professionnel",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Peut-on utiliser un texte écrit par l'IA tel quel dans un travail professionnel ?",
+      "choices": [
+        "Oui, toujours",
+        "Il vaut mieux le relire, le corriger et l'adapter",
+        "Oui, mais sans le lire",
+        "Non, il est protégé par un mot de passe"
+      ],
+      "correctAnswer": "Il vaut mieux le relire, le corriger et l'adapter",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Quel est le bon état d'esprit avec l'IA ?",
+      "choices": [
+        "Un assistant utile, mais qu'il faut contrôler",
+        "Un expert qui a toujours raison",
+        "Un adversaire",
+        "Un ordinateur sans importance"
+      ],
+      "correctAnswer": "Un assistant utile, mais qu'il faut contrôler",
+      "imageUrl": null
+    }
+  ]
+}

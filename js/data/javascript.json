@@ -52,14 +52,14 @@
     },
     {
       "id": 4,
-      "question": "Comment déclare-t-on une variable en JavaScript ?",
+      "question": "Quel mot-clé moderne permet de déclarer une variable modifiable en JavaScript ?",
       "choices": [
-        "var",
+        "let",
         "variable",
         "v",
         "declare"
       ],
-      "correctAnswer": "var",
+      "correctAnswer": "let",
       "imageUrl": "https://oracle-devrel.github.io/devo-image-repository/seo-thumbnails/JavaScript---Thumbnail-1200-x-630.jpg"
     },
     {
@@ -124,14 +124,14 @@
     },
     {
       "id": 10,
-      "question": "Quelle méthode est utilisée pour obtenir la longueur d'une chaîne de caractères en JavaScript ?",
+      "question": "Quelle propriété permet d'obtenir la longueur d'une chaîne de caractères en JavaScript ?",
       "choices": [
-        "length()",
+        "length",
         "getSize()",
         "count()",
         "size()"
       ],
-      "correctAnswer": "length()",
+      "correctAnswer": "length",
       "imageUrl": "https://oracle-devrel.github.io/devo-image-repository/seo-thumbnails/JavaScript---Thumbnail-1200-x-630.jpg"
     },
     {

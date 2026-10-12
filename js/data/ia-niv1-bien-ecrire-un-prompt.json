@@ -1,0 +1,139 @@
+{
+  "config": {
+    "title": "IA Niveau 1 : bien écrire un prompt",
+    "description": "Les réflexes simples pour obtenir de meilleures réponses d'une IA",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 10,
+    "category": "IA",
+    "createdAt": "2026-10-12",
+    "tag": [
+      "IA",
+      "Prompt",
+      "Débutant"
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce qu'un prompt ?",
+      "choices": [
+        "La consigne ou la question donnée à l'IA",
+        "Un virus informatique",
+        "Le nom d'un ordinateur",
+        "Une sauvegarde de fichier"
+      ],
+      "correctAnswer": "La consigne ou la question donnée à l'IA",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Quelle demande donnera probablement le meilleur résultat ?",
+      "choices": [
+        "Écris un truc",
+        "Aide-moi",
+        "Écris un email de 5 lignes, poli, pour reporter un rendez-vous à jeudi",
+        "Mail rdv"
+      ],
+      "correctAnswer": "Écris un email de 5 lignes, poli, pour reporter un rendez-vous à jeudi",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Pourquoi donner du contexte à l'IA ?",
+      "choices": [
+        "Pour qu'elle comprenne mieux ce que vous voulez",
+        "Pour qu'elle réponde plus lentement",
+        "Pour faire joli",
+        "Ce n'est jamais utile"
+      ],
+      "correctAnswer": "Pour qu'elle comprenne mieux ce que vous voulez",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Que peut-on préciser pour cadrer la réponse ?",
+      "choices": [
+        "Le ton, la longueur et le public visé",
+        "La couleur du clavier",
+        "La marque de l'ordinateur",
+        "L'heure qu'il est"
+      ],
+      "correctAnswer": "Le ton, la longueur et le public visé",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Que faire si la première réponse ne convient pas ?",
+      "choices": [
+        "Abandonner tout de suite",
+        "Reformuler ou demander des corrections précises",
+        "Recommencer sans rien changer en espérant mieux",
+        "Changer d'ordinateur"
+      ],
+      "correctAnswer": "Reformuler ou demander des corrections précises",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Que signifie « donner un rôle » à l'IA ?",
+      "choices": [
+        "Lui demander de répondre en tant que professeur, conseiller, etc.",
+        "Lui donner un salaire",
+        "L'installer sur un autre appareil",
+        "Lui retirer ses fonctions"
+      ],
+      "correctAnswer": "Lui demander de répondre en tant que professeur, conseiller, etc.",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Que peut-on ajouter pour obtenir un format précis ?",
+      "choices": [
+        "Présente la réponse sous forme de liste ou de tableau",
+        "Réponds sans lettres",
+        "Utilise uniquement des emojis",
+        "Ne réponds pas"
+      ],
+      "correctAnswer": "Présente la réponse sous forme de liste ou de tableau",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Un exemple dans le prompt sert à quoi ?",
+      "choices": [
+        "À montrer le résultat attendu à l'IA",
+        "À ralentir l'IA",
+        "À bloquer la réponse",
+        "À effacer la conversation"
+      ],
+      "correctAnswer": "À montrer le résultat attendu à l'IA",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Faut-il être poli avec l'IA pour qu'elle réponde ?",
+      "choices": [
+        "Oui, sinon elle refuse",
+        "Non, ce qui compte est la clarté de la demande",
+        "Oui, au moins trois formules de politesse",
+        "Non, il faut écrire en majuscules"
+      ],
+      "correctAnswer": "Non, ce qui compte est la clarté de la demande",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Quelle demande est la plus claire ?",
+      "choices": [
+        "Résume ce texte en 3 phrases simples pour un élève de CM2",
+        "Résume",
+        "Fais quelque chose avec ce texte",
+        "Texte résumé vite"
+      ],
+      "correctAnswer": "Résume ce texte en 3 phrases simples pour un élève de CM2",
+      "imageUrl": null
+    }
+  ]
+}

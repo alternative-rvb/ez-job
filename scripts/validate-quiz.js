@@ -28,7 +28,8 @@ const VALID_CATEGORIES = [
   'Divertissement',
   'Coaching',
   'Éducation',
-  'Culture Générale'
+  'Culture Générale',
+  'IA'
 ];
 
 // Formats d'images supportés
