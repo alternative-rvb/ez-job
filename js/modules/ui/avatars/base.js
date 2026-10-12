@@ -4,7 +4,7 @@
  * ainsi que le choix dynamique des couleurs de cheveux et des yeux.
  */
 
-import { fuseau, sablier, gripHand, SKIN_DEFAULT } from '../avatar-kit.js';
+import { fuseau, plume, sablier, gripHand, SKIN_DEFAULT } from '../avatar-kit.js';
 import { fairyGirlFrontHair } from './trophies/fairy.js';
 
 
@@ -132,7 +132,7 @@ export function getSkinMouthColor(skin = SKIN_DEFAULT) {
 
 
 // NOTE Mélange de deux couleurs hex (part de b entre 0 et 1), pour des teintes dérivées de la peau
-const mixHex = (a, b, t) => {
+export const mixHex = (a, b, t) => {
     const c = (h, i) => parseInt(String(h).replace('#', '').substring(i, i + 2), 16);
     return '#' + [0, 2, 4].map(i => Math.round(c(a, i) * (1 - t) + c(b, i) * t).toString(16).padStart(2, '0')).join('');
 };
@@ -304,13 +304,20 @@ export const BOY_BASE = {
             </g>` : ''}
 
             ${styleKey === 'pirate_boy' ? `
-            <!-- Moustache de corsaire : deux ailes effilées recourbées aux extrémités vers le haut, couleur des cheveux -->
+            <!-- Bouche souriante de corsaire et moustache harmonieuse suivant la même courbe -->
+            <!-- 1. Tracé de la bouche souriante en sablier, épousant le sourire de corsaire -->
+            <path d="${sablier('M 44.2,53.2 Q 50,57.4 55.8,53.2', 1.6)}" fill="${mouthColor}"/>
+            <!-- 2. Mouche / impériale de corsaire sous la lèvre inférieure (style Jack Sparrow) -->
+            <path d="${fuseau('M 50,58.2 Q 50,59.3 50,60.4', 1.2, 8)}" fill="${hairColor}"/>
+            <!-- 3. Moustache de corsaire : suit exactement la même courbure que le sourire juste au-dessus de la lèvre, avec pointes effilées recourbées -->
             <g id="boy-pirate-mustache">
-                <path d="${fuseau('M 49.5,50.2 C 46.5,49.8 43,50.4 40.8,49.2', 1.6, 12)} ${fuseau('M 50.5,50.2 C 53.5,49.8 57,50.4 59.2,49.2', 1.6, 12)}" fill="${hairColor}"/>
-                <path d="${fuseau('M 49.6,50.6 C 46.8,50.5 44,50.9 41.8,50.1', 0.9, 10)} ${fuseau('M 50.4,50.6 C 53.2,50.5 56,50.9 58.2,50.1', 0.9, 10)}" fill="${mixHex(hairColor, '#000000', 0.25)}"/>
-            </g>` : ''}
-
-            ${styleKey === 'pirate_boy' ? '' : mood && species !== 'orc' ? getSmileMouth(mouthColor, mood === 'sad') : species === 'orc' ? `
+                <!-- Ailes de moustache en plume partant du centre (49.6, 50.2) vers les pointes, suivant en parallèle la courbure du sourire -->
+                <path d="${plume('M 49.7,50.2 Q 45,52.2 38.8,49.2', 2.2, 14)} ${plume('M 50.3,50.2 Q 55,52.2 61.2,49.2', 2.2, 14)}" fill="${hairColor}"/>
+                <!-- Liseré de profondeur / volume en fuseau sur le bord inférieur de la moustache -->
+                <path d="${fuseau('M 49.4,50.8 Q 45.2,52.6 40,50', 1.0, 10)} ${fuseau('M 50.6,50.8 Q 54.8,52.6 60,50', 1.0, 10)}" fill="${mixHex(hairColor, '#000000', 0.35)}"/>
+                <!-- Fin effilement supérieur remontant en pointe fine de corsaire -->
+                <path d="${fuseau('M 41.5,50.4 Q 38.5,49.4 37,47.2', 0.8, 8)} ${fuseau('M 58.5,50.4 Q 61.5,49.4 63,47.2', 0.8, 8)}" fill="${hairColor}"/>
+            </g>` : mood && species !== 'orc' ? getSmileMouth(mouthColor, mood === 'sad') : species === 'orc' ? `
             <!-- Peintures de guerre rouges tribales sous les yeux -->
             <polygon points="29,45 38,47 37,49 28,47" fill="#b91c1c" opacity="0.85"/>
             <polygon points="71,45 62,47 63,49 72,47" fill="#b91c1c" opacity="0.85"/>

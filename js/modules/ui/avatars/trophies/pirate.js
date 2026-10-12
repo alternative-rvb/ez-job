@@ -4,6 +4,7 @@
  */
 
 import { fuseau, plume, gripHand, fitBand, SKIN_DEFAULT } from '../../avatar-kit.js';
+import { mixHex } from '../base.js';
 
 // ANCHOR Sabre d'abordage (cimeterre / rapière de corsaire), modélisé sur l'axe X=0, origine au milieu de la poignée
 const PIRATE_SABER_MODEL = `
@@ -102,23 +103,36 @@ export const OUTFIT_PIRATE_CORSAIR = {
         </g>`,
     headAccessory: `
         <g id="outfit-pirate-tricorne">
-            <!-- Calotte supérieure du tricorne recouvrant le sommet du crâne -->
-            <path d="M 23,24 C 22,0 35,-6 50,-6 C 65,-6 78,0 77,24 Z" fill="#071221"/>
-            <!-- Ailes relevées arrière du tricorne -->
-            <path d="M 12,22 C 14,7 28,0 50,0 C 72,0 86,7 88,22 C 80,14 66,10 50,10 C 34,10 20,14 12,22 Z" fill="#0b1b30"/>
-            <path d="${fuseau('M 12,22 C 28,2 72,2 88,22', 1.4, 16)}" fill="#d97706"/>
-            <!-- Rebord avant relevé en tricorne avec pointe centrale -->
-            <path d="M 14,24 C 24,13 38,17 50,21 C 62,17 76,13 86,24 C 80,28 67,25 50,25 C 33,25 20,28 14,24 Z" fill="#0f243f"/>
-            <!-- Galon doré prestigieux sur le rebord avant -->
-            <path d="${fuseau('M 14,24 C 24,13 38,17 50,21 C 62,17 76,13 86,24', 2.2, 16)}" fill="#fbbf24"/>
-            <path d="${fuseau('M 17,24.5 C 26,14.5 39,18 50,22 C 61,18 74,14.5 83,24.5', 1, 14)}" fill="#fef08a"/>
-            <!-- Médaillon d'or et rubis au centre du tricorne -->
-            <circle cx="50" cy="21" r="2.8" fill="#fbbf24"/>
-            <circle cx="50" cy="21" r="1.5" fill="#dc2626"/>
-            <circle cx="49.3" cy="20.3" r="0.6" fill="#fef08a"/>
-            <!-- Grande plume écarlate de corsaire flottant sur le côté -->
-            <path d="${plume('M 50,19 C 40,11 28,5 14,3', 4.2, 16)}" fill="#dc2626"/>
-            <path d="${fuseau('M 48,18.5 C 39,11 28,5 14,3', 1, 14)}" fill="#fef08a"/>
+            <!-- Calotte centrale supérieure du tricorne recouvrant le sommet du crâne (y = -18 à 14) -->
+            <path d="M 22,14 C 21,-6 32,-18 50,-18 C 68,-18 79,-6 78,14 Z" fill="#071221"/>
+            <path d="M 25,12 C 24,-4 33,-15 50,-15 C 67,-15 76,-4 75,12 Z" fill="#0b1b30"/>
+            <!-- Ailes latérales du tricorne déployées très larges (largeur 94, de x=3 à x=97) -->
+            <!-- Aile arrière/gauche évasée et relevée -->
+            <path d="M 3,-2 C 12,-12 28,-18 50,-18 C 72,-18 88,-12 97,-2 C 86,5 72,0 50,0 C 28,0 14,5 3,-2 Z" fill="#081426"/>
+            <!-- Grande aile gauche repliée vers le haut -->
+            <path d="M 3,-2 C 1,6 10,14 50,14 C 34,14 18,6 16,-8 Z" fill="#0c2038"/>
+            <path d="${fuseau('M 16,-8 C 5,-2 2,5 8,14', 2.0, 14)}" fill="#fbbf24"/>
+            <!-- Grande aile droite repliée vers le haut -->
+            <path d="M 97,-2 C 99,6 90,14 50,14 C 66,14 82,6 84,-8 Z" fill="#0c2038"/>
+            <path d="${fuseau('M 84,-8 C 95,-2 98,5 92,14', 2.0, 14)}" fill="#fbbf24"/>
+            <!-- Revers avant triangulaire relevé en tricorne avec pointe centrale majestueuse -->
+            <path d="M 6,14 C 22,14 36,9 50,3 C 64,9 78,14 94,14 C 74,18 26,18 6,14 Z" fill="#0f243f"/>
+            <!-- Galon doré prestigieux sur le grand rebord avant évasé -->
+            <path d="${fuseau('M 6,14 C 22,14 36,9 50,3 C 64,9 78,14 94,14', 2.4, 20)}" fill="#fbbf24"/>
+            <path d="${fuseau('M 9,14 C 25,13.8 37,9.5 50,3.8 C 63,9.5 75,13.8 91,14', 1.1, 18)}" fill="#fef08a"/>
+            <!-- Médaillon d'or et joyau rubis au centre de la pointe avant -->
+            <circle cx="50" cy="3.8" r="3.2" fill="#fbbf24"/>
+            <circle cx="50" cy="3.8" r="1.8" fill="#dc2626"/>
+            <circle cx="49.2" cy="3" r="0.7" fill="#fef08a"/>
+            <!-- Grande plume écarlate de corsaire déployée depuis l'aile gauche -->
+            <path d="${plume('M 36,5 C 25,-3 16,-9 4,-16', 5.2, 18)}" fill="#dc2626"/>
+            <path d="${fuseau('M 34,4.5 C 24,-3 16,-9 4,-16', 1.2, 16)}" fill="#fef08a"/>
+            <!-- Foulard / bandana carmin noué sous le tricorne façon Jack Sparrow (courbure souple et plis) -->
+            <path d="${fuseau('M 21,21.5 Q 50,17 79,21.5', 4.8, 16)}" fill="#991b1b"/>
+            <path d="${fuseau('M 22,22 Q 50,17.8 78,22', 1.4, 14)}" fill="#dc2626"/>
+            <!-- Nœud et pans pendants du bandana sur la tempe gauche -->
+            <path d="M 21,21 L 15,34 L 18.5,33 L 22,24 Z" fill="#7f1d1d"/>
+            <path d="M 22,22 L 17.5,31 L 20.5,30.5 L 23,25 Z" fill="#dc2626"/>
         </g>`,
     handItem: (skin = SKIN_DEFAULT) => `
         <g id="outfit-pirate-saber">
@@ -131,42 +145,83 @@ export const OUTFIT_PIRATE_CORSAIR = {
         </g>`
 };
 
-// SECTION Coupes de cheveux exclusives du Pirate (garçon et fille)
+// SECTION Coupes de cheveux exclusives du Pirate : Dreadlocks / Locks comme Jack Sparrow
 export const PIRATE_STYLES = {
     pirate_boy: {
         id: 'pirate_boy',
-        name: 'Marin d\'Abordage (Garçon)',
+        name: 'Locks de Corsaire (Jack Sparrow)',
         withBand: false,
         getHairBack: (color) => `
             <g id="hair-back-pirate-boy">
-                <!-- ANCHOR Socle universel : ne pas descendre sous y=57 -->
+                <!-- ANCHOR Socle universel -->
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <!-- Mèches mi-longues décoiffées par les embruns -->
-                <path d="M 17,46 C 12,36 8,24 11,16 C 14,8 10,4 17,-2 C 23,-8 33,-10 39,-8 C 43,-16 53,-18 59,-14 C 67,-18 77,-14 81,-6 C 89,-6 95,2 93,12 C 97,20 93,32 85,46 C 80,35 76,27 72,21 C 64,11 36,11 28,21 C 24,27 21,35 17,46 Z" fill="${color}"/>
+                <!-- Cascade de dreadlocks épaisses (locks) de flibustier tombant sur les épaules -->
+                <!-- Côté gauche : 3 dreadlocks bien distinctes avec bagues d'os et d'argent -->
+                <path d="M 18,38 C 13,47 9,58 11,70 C 12,76 15,77 17,72 C 19,62 21,50 25,40 Z" fill="${color}"/>
+                <path d="M 23,40 C 19,51 16,64 17,76 C 18,84 21,87 23,85 C 26,79 27,66 28,49 Z" fill="${color}"/>
+                <path d="M 28,46 C 25,55 24,66 26,76 C 27,80 30,80 31,76 C 33,66 33,55 33,47 Z" fill="${color}"/>
+                <!-- Anneaux / bagues de dreadlocks de corsaire gauche -->
+                <rect x="15" y="62" width="6" height="3.8" rx="1.2" fill="#fef3c7" stroke="#b45309" stroke-width="0.5"/>
+                <rect x="16.5" y="75" width="5.8" height="3.5" rx="1" fill="#cbd5e1" stroke="#475569" stroke-width="0.5"/>
+                <!-- Côté droit : 3 dreadlocks avec anneau doré -->
+                <path d="M 82,38 C 87,47 91,58 89,70 C 88,76 85,77 83,72 C 81,62 79,50 75,40 Z" fill="${color}"/>
+                <path d="M 77,40 C 81,51 84,64 83,76 C 82,84 79,87 77,85 C 74,79 73,66 72,49 Z" fill="${color}"/>
+                <path d="M 72,46 C 75,55 76,66 74,76 C 73,80 70,80 69,76 C 67,66 67,55 67,47 Z" fill="${color}"/>
+                <!-- Anneau doré sur la dreadlock droite -->
+                <rect x="79" y="67" width="6" height="3.8" rx="1.2" fill="#fbbf24" stroke="#92400e" stroke-width="0.5"/>
+                <!-- Stries de torsion cordelées des dreadlocks -->
+                <path d="${fuseau('M 17,48 C 16,58 15,68 17,74', 0.9, 10)} ${fuseau('M 24,48 C 23,60 22,72 23,82', 0.9, 10)}" fill="${mixHex(color, '#000000', 0.3)}"/>
+                <path d="${fuseau('M 83,48 C 84,58 85,68 83,74', 0.9, 10)} ${fuseau('M 76,48 C 77,60 78,72 77,82', 0.9, 10)}" fill="${mixHex(color, '#000000', 0.3)}"/>
             </g>`,
         getHairFront: (color) => `
             <g id="hair-front-pirate-boy">
-                <!-- Mèches libres sur le front et tempes dégagées pour le tricorne -->
-                <path d="M 21,28 C 24,18 36,10 50,6 C 64,10 76,18 79,28 C 76,33 74,31 71,25 C 68,32 63,33 60,26 C 56,33 50,34 46,25 C 42,33 36,32 33,25 C 29,32 25,33 23,26 C 21,31 20,30 21,28 Z" fill="${color}"/>
+                <!-- Frange de locks texturées sous le bandana découvrant les sourcils -->
+                <path d="M 21,25 C 24,19 36,16 50,15 C 64,16 76,19 79,25 C 76,29 73,27 71,22 C 68,28 63,29 60,23 C 56,29 50,30 46,22 C 42,29 36,28 33,22 C 29,28 25,29 23,23 Z" fill="${color}"/>
+                <!-- Dreadlock avant gauche tombant le long de la joue -->
+                <path d="M 23,24 C 20,35 18,48 19,60 C 20,64 22.5,64 23.5,59 C 24.5,49 25.5,36 26.5,25 Z" fill="${color}"/>
+                <!-- Le chapelet de perles emblématique de Jack Sparrow sur la lock gauche -->
+                <circle cx="19.8" cy="43" r="2.2" fill="#06b6d4" stroke="#0891b2" stroke-width="0.5"/>
+                <circle cx="19.2" cy="42.4" r="0.8" fill="#ffffff"/>
+                <circle cx="19.4" cy="48" r="2.0" fill="#fef3c7" stroke="#d97706" stroke-width="0.5"/>
+                <circle cx="19.2" cy="52.8" r="1.8" fill="#dc2626" stroke="#991b1b" stroke-width="0.5"/>
+                <!-- Médaille argentée de corsaire au bout de la mèche -->
+                <circle cx="19" cy="58.5" r="2.6" fill="#cbd5e1" stroke="#475569" stroke-width="0.6"/>
+                <circle cx="18.3" cy="57.8" r="0.9" fill="#ffffff"/>
+                <!-- Dreadlock avant droite tombant le long de la tempe avec bague bronze -->
+                <path d="M 77,24 C 80,35 82,48 81,60 C 80,64 77.5,64 76.5,59 C 75.5,49 74.5,36 73.5,25 Z" fill="${color}"/>
+                <rect x="77.2" y="44" width="5.2" height="3.2" rx="1" fill="#d97706" stroke="#78350f" stroke-width="0.5"/>
             </g>`
     },
     pirate_girl: {
         id: 'pirate_girl',
-        name: 'Capitaine Aventurière (Fille)',
+        name: 'Capitaine aux Locks (Fille)',
         withTiara: false,
         getHairBack: (color) => `
             <g id="hair-back-pirate-girl">
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <!-- Longue crinière ondulée tombant sur les épaules -->
-                <path d="M 16,48 C 11,38 7,26 10,18 C 13,10 9,6 16,0 C 22,-6 32,-8 38,-6 C 42,-14 52,-16 58,-12 C 66,-16 76,-12 80,-4 C 88,-4 94,4 92,14 C 96,22 92,34 84,48 C 81,64 78,78 74,88 C 70,82 72,70 71,60 C 64,20 36,20 29,60 C 28,70 30,82 26,88 C 22,78 19,64 16,48 Z" fill="${color}"/>
+                <!-- Longue cascade de dreadlocks sculptées jusqu'au buste (y=88) -->
+                <path d="M 18,44 C 13,52 8,66 11,78 C 12,84 15,86 17,80 C 20,70 22,54 26,44 Z" fill="${color}"/>
+                <path d="M 24,42 C 19,54 15,70 17,84 C 18,90 22,92 24,88 C 27,80 29,66 30,48 Z" fill="${color}"/>
+                <path d="M 29,46 C 26,56 24,70 27,82 C 28,87 32,87 33,81 C 34,70 35,56 35,46 Z" fill="${color}"/>
+                <!-- Perles et bagues sur les dreadlocks de la fille -->
+                <rect x="15" y="66" width="5.8" height="3.5" rx="1.2" fill="#06b6d4" stroke="#0891b2" stroke-width="0.5"/>
+                <rect x="16.5" y="80" width="5.4" height="3.2" rx="1" fill="#fef3c7" stroke="#b45309" stroke-width="0.5"/>
+                <!-- Côté droit locks longues -->
+                <path d="M 82,44 C 87,52 92,66 89,78 C 88,84 85,86 83,80 C 80,70 78,54 74,44 Z" fill="${color}"/>
+                <path d="M 76,42 C 81,54 85,70 83,84 C 82,90 78,92 76,88 C 73,80 71,66 70,48 Z" fill="${color}"/>
+                <path d="M 71,46 C 74,56 76,70 73,82 C 72,87 68,87 67,81 C 66,70 65,56 65,46 Z" fill="${color}"/>
+                <rect x="79.2" y="70" width="5.8" height="3.5" rx="1.2" fill="#fbbf24" stroke="#92400e" stroke-width="0.5"/>
             </g>`,
         getHairFront: (color) => `
             <g id="hair-front-pirate-girl">
-                <!-- Mèches de visage aventureuses avec longue mèche tombante sur le côté -->
-                <path d="M 20,30 C 22,18 35,8 50,6 C 65,8 78,18 80,30 C 76,34 74,30 72,24 C 69,32 64,34 60,26 C 55,34 49,35 45,26 C 40,34 35,33 31,25 C 28,32 24,33 22,27 Z" fill="${color}"/>
-                <!-- Mèche longue et élégante encadrant la tempe gauche -->
-                <path d="${fuseau('M 22,30 C 18,42 17,54 20,66', 2.2, 14)}" fill="${color}"/>
-                <path d="${fuseau('M 78,30 C 82,42 83,54 80,66', 2.2, 14)}" fill="${color}"/>
+                <!-- Mèches de visage aventureuses sous le bandana -->
+                <path d="M 20,28 C 23,20 35,16 50,15 C 65,16 77,20 80,28 C 76,32 73,29 71,24 C 68,30 63,31 60,24 C 55,31 49,32 45,24 C 40,31 35,30 31,23 C 27,29 23,30 21,25 Z" fill="${color}"/>
+                <!-- Locks avant encadrant le visage avec perles turquoise et ruban -->
+                <path d="${fuseau('M 22,28 C 17,42 16,56 19,70', 2.6, 16)}" fill="${color}"/>
+                <circle cx="18" cy="50" r="1.8" fill="#06b6d4"/>
+                <circle cx="17.6" cy="56" r="1.6" fill="#fef3c7"/>
+                <path d="${fuseau('M 78,28 C 83,42 84,56 81,70', 2.6, 16)}" fill="${color}"/>
+                <circle cx="82" cy="52" r="1.8" fill="#fbbf24"/>
             </g>`
     }
 };
