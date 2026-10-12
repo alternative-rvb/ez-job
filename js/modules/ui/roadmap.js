@@ -117,10 +117,10 @@ export class RoadmapManager {
 
         // NOTE: la carte est en preserveAspectRatio="none" ; on compense l'étirement horizontal pour garder un texte non déformé
         const box = svg.getBoundingClientRect();
-        const k = box.width && box.height ? (box.height / 320) / (box.width / 560) : 1;
+        const k = box.width && box.height ? (box.height / 328) / (box.width / 560) : 1;
         bubble.setAttribute('transform', `scale(${k}, 1)`);
 
-        const width = Math.max(80, textEl.getComputedTextLength() + 32);
+        const width = Math.max(90, textEl.getComputedTextLength() + 34);
         const markerX = marker.transform.baseVal.consolidate()?.matrix.e ?? 0;
 
         // NOTE: bornes horizontales du viewBox (-20 → 540) avec une petite marge
@@ -180,7 +180,7 @@ export class RoadmapManager {
                 <!-- Carte Fantasy Squelette Fidèle (SVG Shimmer) -->
                 <div class="relative p-1.5 sm:p-2 md:p-3 flex-1 flex flex-col justify-center">
                     <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[190px] max-h-[260px] rounded-xl overflow-hidden shadow-inner border border-amber-800/15 skeleton-shimmer-subtle">
-                        <svg viewBox="-20 -38 560 320" class="w-full h-full skeleton-svg-pulse" preserveAspectRatio="none">
+                        <svg viewBox="-20 -46 560 328" class="w-full h-full skeleton-svg-pulse" preserveAspectRatio="none">
                             <!-- Ciel : soleil fantôme -->
                             <circle cx="62" cy="10" r="26" fill="#d9c7b0" opacity="0.45"/>
                             <circle cx="62" cy="10" r="15" fill="#cdb79b" opacity="0.7"/>
@@ -225,16 +225,16 @@ export class RoadmapManager {
                             <path d="M 45 222 C 80 222, 100 205, 130 205 C 160 205, 180 206, 210 205 C 240 202, 265 188, 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64"
                                   fill="none" stroke="#bc9f82" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 8" opacity="0.7"/>
                             <!-- 7 jalons fantômes -->
-                            <circle cx="50" cy="222" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="120" cy="205" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="205" cy="205" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="290" cy="186" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="395" cy="168" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="430" cy="112" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
-                            <circle cx="440" cy="66" r="8" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="50" cy="222" r="11" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="120" cy="205" r="11" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="205" cy="205" r="11" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="290" cy="186" r="11" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="395" cy="168" r="11" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="430" cy="112" r="11" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
+                            <circle cx="440" cy="66" r="11" fill="#dfcfbd" stroke="#bc9f82" stroke-width="2"/>
                             <!-- Pion du joueur et bulle de dialogue -->
-                            <rect x="38" y="192" width="22" height="28" rx="6" fill="#bc9f82" opacity="0.7"/>
-                            <rect x="18" y="168" width="62" height="18" rx="9" fill="#ffffff" opacity="0.85"/>
+                            <rect x="36" y="180" width="30" height="38" rx="8" fill="#bc9f82" opacity="0.7"/>
+                            <rect x="16" y="152" width="70" height="22" rx="11" fill="#ffffff" opacity="0.85"/>
                         </svg>
                     </div>
                 </div>
@@ -334,7 +334,7 @@ export class RoadmapManager {
                     <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[190px] max-h-[260px] rounded-xl overflow-hidden shadow-inner border border-amber-800/15" style="background: linear-gradient(180deg, #dcf0f9 0%, #b8e2f2 35%, #9dd5aa 65%, #76be88 100%);">
                         
                         <!-- SVG Carte Fantasy -->
-                        <svg id="fantasy-map-svg" viewBox="-20 -38 560 320" class="w-full h-full" preserveAspectRatio="none">
+                        <svg id="fantasy-map-svg" viewBox="-20 -46 560 328" class="w-full h-full" preserveAspectRatio="none">
                             <defs>
                                 <filter id="pin-shadow" x="-20%" y="-20%" width="140%" height="140%">
                                     <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.25"/>
@@ -685,17 +685,17 @@ export class RoadmapManager {
                             <g id="player-avatar-marker">
                                 <!-- Bulle de dialogue Manga agrandie et bien lisible -->
                                 <g id="avatar-speech-bubble" transform="translate(0, 0)">
-                                    <rect id="avatar-speech-rect" x="-70" y="-79" width="140" height="36" rx="18" fill="#ffffff" stroke="#7c4004" stroke-width="1.4" filter="url(#pin-shadow)"/>
-                                    <!-- Pointe dirigée vers le haut de la tête -->
-                                    <polygon points="-6,-43.7 6,-43.7 0,-36" fill="#ffffff"/>
-                                    <path d="M-6 -43 L0 -36 L6 -43" stroke="#7c4004" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
-                                    <text id="avatar-speech-text" x="0" y="-61" fill="#7c4004" font-size="17" font-weight="700" text-anchor="middle" dominant-baseline="central" font-family="'Baloo 2', 'Almarai', sans-serif">
+                                    <rect id="avatar-speech-rect" x="-75" y="-96" width="150" height="36" rx="18" fill="#ffffff" stroke="#7c4004" stroke-width="1.4" filter="url(#pin-shadow)"/>
+                                    <!-- Pointe dirigée vers le haut de la tête de l'avatar -->
+                                    <polygon points="-6,-60 6,-60 0,-52" fill="#ffffff"/>
+                                    <path d="M-6 -60 L0 -52 L6 -60" stroke="#7c4004" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
+                                    <text id="avatar-speech-text" x="0" y="-78" fill="#7c4004" font-size="17" font-weight="700" text-anchor="middle" dominant-baseline="central" font-family="'Baloo 2', 'Almarai', sans-serif">
                                         ${this.getSpeechBubbleText(totalPoints)}
                                     </text>
                                 </g>
                                 
-                                <!-- Conteneur de l'avatar Chibi debout -->
-                                <foreignObject x="-16" y="-36" width="32" height="38">
+                                <!-- Conteneur de l'avatar Chibi debout agrandi -->
+                                <foreignObject x="-23" y="-52" width="46" height="54">
                                     <div id="avatar-character-wrapper" class="w-full h-full flex items-center justify-center">
                                         ${avatarData.svg}
                                     </div>
@@ -767,15 +767,17 @@ export class RoadmapManager {
             const isUnlocked = totalPoints >= m.points;
 
             const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            g.setAttribute('transform', `translate(${pt.x}, ${pt.y - 14})`);
+            g.setAttribute('transform', `translate(${pt.x}, ${pt.y - 17})`);
             g.setAttribute('class', 'cursor-pointer milestone-node group');
             g.setAttribute('data-milestone-id', m.id);
 
+            const fontSize = m.points >= 100 && !isUnlocked ? 8.5 : 10.5;
+
             g.innerHTML = `
-                <circle cx="0" cy="0" r="16" fill="transparent" pointer-events="all"/>
-                <line x1="0" y1="0" x2="0" y2="14" stroke="#7c4004" stroke-width="1.8" stroke-linecap="round" pointer-events="none"/>
-                <circle cx="0" cy="0" r="8.5" fill="${isUnlocked ? '#ff9d00' : '#e8d8c8'}" stroke="#ffffff" stroke-width="2" pointer-events="none"/>
-                <text x="0" y="3.2" font-size="6.5" font-weight="900" fill="${isUnlocked ? '#5c2800' : '#7c4004'}" text-anchor="middle" font-family="'Nunito', sans-serif" pointer-events="none">
+                <circle cx="0" cy="0" r="18" fill="transparent" pointer-events="all"/>
+                <line x1="0" y1="0" x2="0" y2="17" stroke="#7c4004" stroke-width="2" stroke-linecap="round" pointer-events="none"/>
+                <circle cx="0" cy="0" r="12" fill="${isUnlocked ? '#ff9d00' : '#f4e9dc'}" stroke="#ffffff" stroke-width="2.2" filter="url(#pin-shadow)" pointer-events="none"/>
+                <text x="0" y="0.5" font-size="${fontSize}" font-weight="900" fill="${isUnlocked ? '#5c2800' : '#7c4004'}" text-anchor="middle" dominant-baseline="central" font-family="'Nunito', 'Baloo 2', sans-serif" pointer-events="none">
                     ${isUnlocked ? '✓' : m.points}
                 </text>
             `;
@@ -792,7 +794,7 @@ export class RoadmapManager {
         // Si le joueur est tout au début (0 pt)
         if (targetProgress <= 0.025) {
             const pt = trail.getPointAtLength(startProgress * totalLength);
-            marker.setAttribute('transform', `translate(${pt.x + 21}, ${pt.y})`);
+            marker.setAttribute('transform', `translate(${pt.x + 26}, ${pt.y})`);
             if (avatarBody) {
                 avatarBody.classList.remove('avatar-walking');
                 avatarBody.classList.add('avatar-idle');
@@ -827,14 +829,14 @@ export class RoadmapManager {
 
             const pt = trail.getPointAtLength(currentDist);
 
-            marker.setAttribute('transform', `translate(${pt.x + 21}, ${pt.y})`);
+            marker.setAttribute('transform', `translate(${pt.x + 26}, ${pt.y})`);
 
             if (t < 1) {
                 requestAnimationFrame(animateWalk);
             } else {
                 // Fin du trajet : pose finale et ouverture de la bulle
                 const finalPt = trail.getPointAtLength(targetProgress * totalLength);
-                marker.setAttribute('transform', `translate(${finalPt.x + 21}, ${finalPt.y})`);
+                marker.setAttribute('transform', `translate(${finalPt.x + 26}, ${finalPt.y})`);
                 if (avatarBody) {
                     avatarBody.classList.remove('avatar-walking');
                     avatarBody.classList.add('avatar-idle');

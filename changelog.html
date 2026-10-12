@@ -101,6 +101,39 @@
     <!-- Liste des versions -->
     <div class="space-y-6" id="changelog-list">
 
+      <!-- Version 1.0.139 -->
+      <article class="bg-white/90 backdrop-blur rounded-2xl p-6 shadow-md border border-amber-900/10 relative overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-amber-900/10">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-full bg-accent-100 border border-accent-300 text-accent-700 font-mono text-sm font-bold">
+              v1.0.139
+            </span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-semibold">
+              Actuelle
+            </span>
+          </div>
+          <time class="text-xs text-[#7c4004]/70 flex items-center gap-1.5">
+            <i class="bi bi-calendar3"></i> 12 octobre 2026
+          </time>
+        </div>
+
+        <ul class="space-y-3 text-sm text-[#7c4004]/90">
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-stars text-accent-500 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-[#7c4004] font-semibold">Carte d'aventure</strong> : Agrandissement de l'avatar en marche et augmentation de la taille des chiffres de graduation des paliers pour une meilleure visibilité.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-palette-fill text-accent-500 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-[#7c4004] font-semibold">Pied de page</strong> : Modernisation des liens et mentions avec une typographie aérée et des séparateurs discrets.
+            </div>
+          </li>
+        </ul>
+      </article>
+
+
       <!-- Version 1.0.138 -->
       <article class="bg-white/90 backdrop-blur rounded-2xl p-6 shadow-md border border-amber-900/10 relative overflow-hidden">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-amber-900/10">
@@ -108,9 +141,7 @@
             <span class="px-3 py-1 rounded-full bg-accent-100 border border-accent-300 text-accent-700 font-mono text-sm font-bold">
               v1.0.138
             </span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-semibold">
-              Actuelle
-            </span>
+            
           </div>
           <time class="text-xs text-[#7c4004]/70 flex items-center gap-1.5">
             <i class="bi bi-calendar3"></i> 12 octobre 2026
@@ -264,11 +295,13 @@
   <!-- Footer -->
   <footer class="bg-primary-500 py-6 mt-12 text-white">
     <div class="container mx-auto px-4 text-center">
-      <p class="text-white/80 text-sm">
-        <a href="privacy.html" class="underline underline-offset-2 hover:text-accent-300 transition-colors">Politique de confidentialité</a> |
-        <a href="mentions-legales.html" class="underline underline-offset-2 hover:text-accent-300 transition-colors">Mentions légales</a> |
-        <a href="https://alternative-rvb.com/" class="underline underline-offset-2 hover:text-accent-300 transition-colors">© 2025 Alternative RVB</a>
-      </p>
+      <div class="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-4 gap-y-1.5 text-sm text-white/85">
+        <a href="privacy.html" class="hover:text-white hover:underline underline-offset-4 transition-colors">Politique de confidentialité</a>
+        <span class="text-white/35 text-xs select-none">•</span>
+        <a href="mentions-legales.html" class="hover:text-white hover:underline underline-offset-4 transition-colors">Mentions légales</a>
+        <span class="text-white/35 text-xs select-none">•</span>
+        <a href="https://alternative-rvb.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white hover:underline underline-offset-4 transition-colors">© 2025 Alternative RVB</a>
+      </div>
     </div>
   </footer>
 </body>
