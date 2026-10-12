@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CamiLudik - Laboratoire des Avatars & Coupes SVG</title>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
   <link rel="icon" href="/images/camiludik-favicon.svg" type="image/svg+xml">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/styles/main.css">
   
   <script>
     tailwind.config = {
@@ -74,38 +77,82 @@
   </style>
 </head>
 
-<body class="p-4 sm:p-6 lg:p-8">
-  <div class="max-w-7xl mx-auto space-y-8">
-    
-    <!-- Header -->
-    <header class="glass-panel rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xl">
-      <div class="flex items-center gap-4">
-        <a href="/" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-white text-xl">
-          <i class="bi bi-arrow-left"></i>
-        </a>
-        <div>
-          <h1 class="text-3xl font-extrabold text-white flex items-center gap-2">
-            <img src="/images/camiludik-favicon.svg" alt="CamiLudik" class="w-9 h-9"> Laboratoire des Avatars SVG
-          </h1>
-          <p class="text-white/80 text-sm">
-            Testeur visuel des coupes de cheveux Chibi Manga, tenues BÊTA & inspection des calques
-          </p>
+<body class="min-h-screen flex flex-col justify-between">
+  <!-- Header CamiLudik standard -->
+  <header class="bg-primary-500 shadow-md">
+    <nav class="container mx-auto px-4 py-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <a href="/" class="flex items-center space-x-2 hover:opacity-85 transition-opacity">
+            <img src="images/camiludik-logo.svg" alt="CamiLudik logo" class="h-10 sm:h-12" />
+          </a>
+        </div>
+        <div class="flex items-center space-x-3">
+          <a href="/" class="btn-base btn-secondary flex items-center gap-2 text-sm shadow-sm">
+            <i class="bi bi-house"></i>
+            <span>Retour à l'accueil</span>
+          </a>
+          <a href="/changelog.html" class="btn-base btn-secondary flex items-center gap-2 text-sm shadow-sm">
+            <i class="bi bi-journal-text"></i>
+            <span>Changelog</span>
+          </a>
+          <div class="hidden sm:flex items-center space-x-3 border-l border-primary-400 pl-4">
+            <a href="https://github.com/alternative-rvb" class="hover:text-accent-500 transition-colors" aria-label="GitHub">
+              <i class="bi bi-github text-lg"></i>
+            </a>
+          </div>
         </div>
       </div>
-      
-      <!-- Contrôles globaux -->
-      <div class="flex flex-wrap items-center gap-3">
-        <div class="flex items-center gap-2 bg-black/20 px-3 py-1.5 rounded-xl border border-white/10">
-          <span class="text-xs font-semibold text-white/70">Vue :</span>
+    </nav>
+  </header>
+
+  <div class="max-w-7xl mx-auto w-full p-4 sm:p-6 lg:p-8 space-y-6 flex-1">
+    
+    <!-- Barre de navigation supérieure : Fil d'Ariane + Bouton Retour + Contrôles du lab -->
+    <div class="flex flex-wrap items-center justify-between gap-3 p-2.5 sm:p-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-amber-900/10 shadow-sm text-[#7c4004]">
+      <div class="flex items-center gap-2.5">
+        <a href="/" class="btn-base btn-secondary text-xs sm:text-sm py-1.5 px-3 flex items-center gap-1.5 flex-shrink-0 shadow-xs" title="Retour à l'accueil">
+          <i class="bi bi-arrow-left text-base"></i>
+          <span>Retour</span>
+        </a>
+        <span class="text-amber-900/25">|</span>
+        <nav aria-label="Fil d'Ariane" class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#7c4004]">
+          <a href="/" class="hover:text-primary-600 transition-colors flex items-center gap-1">
+            <i class="bi bi-house"></i>
+            <span>Accueil</span>
+          </a>
+          <i class="bi bi-chevron-right text-[10px] text-amber-900/40"></i>
+          <span class="text-primary-700 font-bold">Laboratoire des Avatars SVG</span>
+        </nav>
+      </div>
+
+      <!-- Contrôles globaux du lab -->
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1.5 bg-amber-900/5 px-2.5 py-1 rounded-xl border border-amber-900/10">
+          <span class="text-xs font-bold text-[#7c4004]/75">Vue :</span>
           <button id="view-full-btn" onclick="setViewMode('full')" class="px-2.5 py-1 text-xs rounded-lg font-bold bg-accent-500 text-white shadow">Corps Entier</button>
-          <button id="view-head-btn" onclick="setViewMode('head')" class="px-2.5 py-1 text-xs rounded-lg font-bold bg-white/10 text-white/80 hover:bg-white/20">Tête Seule</button>
+          <button id="view-head-btn" onclick="setViewMode('head')" class="px-2.5 py-1 text-xs rounded-lg font-bold bg-white text-[#7c4004] hover:bg-amber-100/50 border border-amber-900/15">Tête Seule</button>
         </div>
 
-        <a href="/.doc/guide-technique-avatars-svg.md" target="_blank" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold flex items-center gap-1 border border-white/15">
-          <i class="bi bi-file-earmark-text"></i> Guide Tech
+        <a href="/.doc/guide-technique-avatars-svg.md" target="_blank" class="btn-base btn-secondary text-xs py-1.5 px-3 flex items-center gap-1.5 shadow-xs">
+          <i class="bi bi-file-earmark-text"></i>
+          <span>Guide Tech</span>
         </a>
       </div>
-    </header>
+    </div>
+
+    <!-- Titre du Laboratoire -->
+    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex items-center justify-between shadow-md">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2" style="font-family:'Baloo 2',sans-serif">
+          <img src="/images/camiludik-favicon.svg" alt="CamiLudik" class="w-8 h-8">
+          <span>Laboratoire des Avatars SVG</span>
+        </h1>
+        <p class="text-white/80 text-xs sm:text-sm mt-1">
+          Testeur visuel des coupes de cheveux Chibi Manga, tenues BÊTA & inspection des calques
+        </p>
+      </div>
+    </div>
 
     <!-- Zone principale : Comparateur Garçon / Fille -->
     <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -1034,11 +1081,11 @@
       currentViewMode = mode;
       document.getElementById('view-full-btn').className = mode === 'full' 
         ? "px-2.5 py-1 text-xs rounded-lg font-bold bg-accent-500 text-white shadow"
-        : "px-2.5 py-1 text-xs rounded-lg font-bold bg-white/10 text-white/80 hover:bg-white/20";
+        : "px-2.5 py-1 text-xs rounded-lg font-bold bg-white text-[#7c4004] hover:bg-amber-100/50 border border-amber-900/15";
       
       document.getElementById('view-head-btn').className = mode === 'head' 
         ? "px-2.5 py-1 text-xs rounded-lg font-bold bg-accent-500 text-white shadow"
-        : "px-2.5 py-1 text-xs rounded-lg font-bold bg-white/10 text-white/80 hover:bg-white/20";
+        : "px-2.5 py-1 text-xs rounded-lg font-bold bg-white text-[#7c4004] hover:bg-amber-100/50 border border-amber-900/15";
       
       updatePreviews();
       renderMannequins();

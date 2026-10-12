@@ -1,5 +1,6 @@
-# Allow all robots to crawl and index the site
+# Allow all robots to crawl and index the site, disallow dev lab
 User-agent: *
+Disallow: /test-avatars.html
 Allow: /
 
 # Sitemap location
@@ -10,9 +11,11 @@ Crawl-delay: 1
 
 # Specific rules for search engines
 User-agent: Googlebot
+Disallow: /test-avatars.html
 Allow: /
 Crawl-delay: 0
 
 User-agent: Bingbot
+Disallow: /test-avatars.html
 Allow: /
 Crawl-delay: 1

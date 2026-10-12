@@ -93,9 +93,17 @@ class DOMManager {
         this.elements.mobileMenu?.classList.toggle('hidden');
     }
 
-    updateQuizTitle(title) {
+    updateQuizTitle(title, category = '') {
         if (this.elements.quizTitle) {
             this.elements.quizTitle.textContent = title;
+        }
+        const breadcrumbTitle = document.getElementById('quiz-breadcrumb-title');
+        if (breadcrumbTitle) {
+            breadcrumbTitle.textContent = title;
+        }
+        const breadcrumbCat = document.getElementById('quiz-breadcrumb-category');
+        if (breadcrumbCat) {
+            breadcrumbCat.textContent = category || 'Quiz';
         }
     }
 

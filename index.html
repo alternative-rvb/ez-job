@@ -740,30 +740,54 @@
     </div>
 
     <!-- Interface de quiz (cachée au démarrage) -->
-    <div id="quiz-container" class="hidden py-2 sm:py-4 md:py-6">
-      <div id="quiz-header" class="text-center mb-4">
-        <button id="back-to-selection" class="mb-4 btn-base btn-secondary">
-          <i class="bi bi-arrow-left"></i>Retour à la sélection
-        </button>
-        <h2 id="quiz-title" class="text-2xl font-bold mb-2"></h2>
-        <div class="flex justify-center items-center space-x-4 text-sm text-gray-400">
-          <div class="flex flex-col items-center space-y-1">
-            <span id="question-counter">Question 1/10</span>
-            <div class="w-32 h-2 bg-gray-700 rounded-full overflow-hidden" style="background-color:#eaddcc">
-              <div id="progress-bar"
-                class="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transition-all duration-500 ease-out"
-                style="width: 10%"></div>
-            </div>
+    <div id="quiz-container" class="hidden py-2 sm:py-4 md:py-6 max-w-4xl mx-auto">
+      <!-- Barre de navigation supérieure : Fil d'Ariane + Bouton Retour + Chrono/Score -->
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-6 p-2.5 sm:p-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-amber-900/10 shadow-sm">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <button id="back-to-selection" class="btn-base btn-secondary text-xs sm:text-sm py-1.5 px-3 flex items-center gap-1.5 flex-shrink-0 shadow-xs" title="Retour aux quiz">
+            <i class="bi bi-arrow-left text-base"></i>
+            <span>Retour</span>
+          </button>
+          <span class="text-amber-900/25">|</span>
+          <nav aria-label="Fil d'Ariane" class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#7c4004] min-w-0">
+            <a href="/" class="hover:text-primary-600 transition-colors flex items-center gap-1 flex-shrink-0">
+              <i class="bi bi-house"></i>
+              <span class="hidden sm:inline">Accueil</span>
+            </a>
+            <i class="bi bi-chevron-right text-[10px] text-amber-900/40 flex-shrink-0"></i>
+            <span id="quiz-breadcrumb-category" class="text-[#7c4004]/70 truncate max-w-[90px] sm:max-w-[140px]">Quiz</span>
+            <i class="bi bi-chevron-right text-[10px] text-amber-900/40 flex-shrink-0"></i>
+            <span id="quiz-breadcrumb-title" class="text-primary-700 font-bold truncate max-w-[120px] sm:max-w-[220px]">Questionnaire</span>
+          </nav>
+        </div>
+
+        <!-- Indicateurs Timer & Score -->
+        <div class="flex items-center gap-2.5 text-xs sm:text-sm font-bold ml-auto flex-shrink-0">
+          <div class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary-100 text-primary-800 border border-primary-200">
+            <i class="bi bi-star-fill text-accent-500"></i>
+            <span id="score-display">Score: 0</span>
           </div>
-          <span id="score-display">Score: 0</span>
-          <div class="flex items-center">
-            <i class="bi bi-clock mr-1"></i>
+          <div class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-100 text-amber-900 border border-amber-200">
+            <i class="bi bi-clock-fill text-amber-600"></i>
             <span id="timer-display">10</span>s
           </div>
         </div>
       </div>
 
-      <div id="quiz-content" class="bg-primary-500 rounded-xl p-3 sm:p-4 shadow-lg">
+      <!-- En-tête du quiz : Titre + Progression -->
+      <div id="quiz-header" class="text-center mb-5 sm:mb-6">
+        <h2 id="quiz-title" class="text-2xl sm:text-3xl font-extrabold mb-3" style="color:#7c4004;font-family:'Baloo 2',sans-serif"></h2>
+        <div class="max-w-md mx-auto flex items-center justify-center gap-3">
+          <span id="question-counter" class="text-xs sm:text-sm font-bold text-[#7c4004]/80 whitespace-nowrap">Question 1/10</span>
+          <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background-color:#eaddcc">
+            <div id="progress-bar"
+              class="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transition-all duration-500 ease-out"
+              style="width: 10%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="quiz-content" class="bg-primary-500 rounded-2xl p-4 sm:p-6 shadow-xl border-4 border-white/30">
         <!-- Le contenu du quiz sera généré dynamiquement -->
       </div>
     </div>
@@ -774,12 +798,29 @@
     </div>
 
     <!-- Page d'historique des résultats -->
-    <div id="history-screen" class="hidden py-2 sm:py-4 md:py-6">
-      <div class="text-center mb-6 sm:mb-8">
-        <button id="btn-back-from-history" class="mb-4 btn-base btn-secondary">
-          <i class="bi bi-arrow-left"></i>Retour
+    <div id="history-screen" class="hidden py-2 sm:py-4 md:py-6 max-w-4xl mx-auto">
+      <!-- Barre de navigation supérieure : Fil d'Ariane + Bouton Retour -->
+      <div class="flex items-center gap-2.5 mb-5 p-2.5 sm:p-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-amber-900/10 shadow-sm">
+        <button id="btn-back-from-history" class="btn-base btn-secondary text-xs sm:text-sm py-1.5 px-3 flex items-center gap-1.5 flex-shrink-0 shadow-xs" title="Retour à l'accueil">
+          <i class="bi bi-arrow-left text-base"></i>
+          <span>Retour</span>
         </button>
-        <h1 class="text-3xl sm:text-4xl font-bold mb-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Historique</h1>
+        <span class="text-amber-900/25">|</span>
+        <nav aria-label="Fil d'Ariane" class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#7c4004]">
+          <a href="/" class="hover:text-primary-600 transition-colors flex items-center gap-1">
+            <i class="bi bi-house"></i>
+            <span>Accueil</span>
+          </a>
+          <i class="bi bi-chevron-right text-[10px] text-amber-900/40"></i>
+          <span class="text-primary-700 font-bold">Mon Historique</span>
+        </nav>
+      </div>
+
+      <div class="mb-6 sm:mb-8">
+        <h1 class="text-2xl sm:text-3xl font-extrabold flex items-center gap-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">
+          <i class="bi bi-clock-history text-accent-500"></i>Historique de mes parties
+        </h1>
+        <p class="text-xs sm:text-sm text-[#7c4004]/70 mt-1">Retrouve tes scores précédents et mesure tes progrès !</p>
         <div id="history-stats" class="mt-4 sm:mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           <!-- Les statistiques seront générées dynamiquement -->
         </div>
@@ -793,14 +834,29 @@
     <!-- Page d'historique des trophées -->
     <div id="trophies-screen" class="hidden py-2 sm:py-4 md:py-6">
       <div class="max-w-5xl mx-auto">
-      <!-- En-tête : retour et titre sur une ligne -->
-      <div class="flex items-center gap-3 mb-4">
-        <button id="btn-back-from-trophies" class="btn-base btn-secondary flex-shrink-0">
-          <i class="bi bi-arrow-left"></i><span class="hidden sm:inline">Retour</span>
+      <!-- Barre de navigation supérieure : Fil d'Ariane + Bouton Retour -->
+      <div class="flex items-center gap-2.5 mb-5 p-2.5 sm:p-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-amber-900/10 shadow-sm">
+        <button id="btn-back-from-trophies" class="btn-base btn-secondary text-xs sm:text-sm py-1.5 px-3 flex items-center gap-1.5 flex-shrink-0 shadow-xs" title="Retour à l'accueil">
+          <i class="bi bi-arrow-left text-base"></i>
+          <span>Retour</span>
         </button>
-        <h1 class="text-2xl sm:text-3xl font-bold flex items-center gap-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">
-          <i class="bi bi-trophy text-yellow-400"></i>Mes Trophées
+        <span class="text-amber-900/25">|</span>
+        <nav aria-label="Fil d'Ariane" class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#7c4004]">
+          <a href="/" class="hover:text-primary-600 transition-colors flex items-center gap-1">
+            <i class="bi bi-house"></i>
+            <span>Accueil</span>
+          </a>
+          <i class="bi bi-chevron-right text-[10px] text-amber-900/40"></i>
+          <span class="text-primary-700 font-bold">Mes Trophées</span>
+        </nav>
+      </div>
+
+      <!-- En-tête : titre de la collection -->
+      <div class="mb-4">
+        <h1 class="text-2xl sm:text-3xl font-extrabold flex items-center gap-2" style="color:#7c4004;font-family:'Baloo 2',sans-serif">
+          <i class="bi bi-trophy-fill text-yellow-500"></i>Ma Galerie de Trophées
         </h1>
+        <p class="text-xs sm:text-sm text-[#7c4004]/70 mt-1">Collectionne tous les skins et débloque les personnages légendaires !</p>
       </div>
 
       <!-- Barre d'état : gemmes et progression de la collection -->
@@ -844,12 +900,19 @@
     <div class="container mx-auto px-4 text-center">
       <p class="text-white/80">
         <a href="privacy.html" class="text-white underline underline-offset-2 hover:text-accent-400 transition-colors">Politique de confidentialité</a> |
-        <a href="mentions-legales.html" class="text-white underline underline-offset-2 hover:text-accent-400 transition-colors">Mentions légales</a> |
-        <a href="test-avatars.html" class="text-white underline underline-offset-2 hover:text-accent-400 transition-colors">🧪 Labo Avatars</a> |
+        <a href="mentions-legales.html" class="text-white underline underline-offset-2 hover:text-accent-400 transition-colors">Mentions légales</a><span id="footer-lab-link" class="hidden"> | <a href="test-avatars.html" class="text-white underline underline-offset-2 hover:text-accent-400 transition-colors"><i class="bi bi-eyedropper text-accent-300 mr-1"></i>Labo Avatars</a></span> |
         <a href="https://alternative-rvb.com/" class="text-white underline underline-offset-2 hover:text-accent-400 transition-colors">© 2025 Alternative RVB</a>
       </p>
       <p class="text-white/70 text-sm mt-2">
         Design & identité visuelle par <a href="https://www.linkedin.com/in/chlo%C3%A9-martin-9612483ab/" target="_blank" rel="noopener noreferrer" class="text-white underline underline-offset-2 hover:text-accent-400 transition-colors">Chloé Martin</a>
+      </p>
+      <p class="text-white/85 text-xs mt-3 flex items-center justify-center gap-2">
+        <span>CamiLudik</span>
+        <a href="changelog.html" id="footer-version-link" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 hover:bg-white/30 text-white font-mono text-[11px] font-semibold border border-white/40 transition-colors" title="Consulter les notes de version">
+          <i class="bi bi-tag-fill text-[10px] text-accent-300"></i>
+          <span id="footer-version-text">v1.0.138</span>
+          <span class="text-white/80 font-sans font-normal">(notes de version)</span>
+        </a>
       </p>
     </div>
   </footer>

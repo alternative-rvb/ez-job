@@ -18,6 +18,7 @@ import { roadmapManager } from './modules/ui/roadmap.js';
 import { shuffleArray, loadQuizData, getDifficultyIcons } from './modules/core/utils.js';
 import { initializeCategoryColors, getCategoryColors } from './modules/core/category-colors.js';
 import { SKIN_COLORS, buildCustomAvatarSvg } from './modules/ui/avatars.js';
+import { APP_VERSION } from './modules/core/version.js';
 
 class QuizApp {
     constructor() {
@@ -39,13 +40,24 @@ class QuizApp {
             return;
         }
 
+        // Mettre à jour la version dans le footer
+        const versionEl = document.getElementById('footer-version-text');
+        if (versionEl) {
+            versionEl.textContent = `v${APP_VERSION}`;
+        }
+
+        // Initialiser la visibilité du lien Laboratoire dans le footer
+        const labLinkEl = document.getElementById('footer-lab-link');
+        if (labLinkEl && localStorage.getItem('showLabLink') === 'true') {
+            labLinkEl.classList.remove('hidden');
+        }
+
         // Vérifier si le joueur a déjà un nom
         if (playerManager.playerName) {
             this.showQuizSelection();
         } else {
             this.showPlayerNameScreen();
         }
-
     }
 
     showPlayerNameScreen() {
@@ -318,6 +330,14 @@ class QuizApp {
         if (backButton) {
             backButton.addEventListener('click', () => this.backToHome());
         }
+
+        // Navigation fluide au clic sur le fil d'Ariane (Accueil)
+        document.querySelectorAll('nav[aria-label="Fil d\'Ariane"] a[href="/"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.backToHome();
+            });
+        });
     }
 
     setupGameOptions() {
@@ -475,7 +495,7 @@ class QuizApp {
 
             // Afficher le message de chargement
             domManager.showQuizInterface();
-            domManager.updateQuizTitle(selectedQuiz.title);
+            domManager.updateQuizTitle(selectedQuiz.title, selectedQuiz.category || 'Quiz');
             this.questionManager.showLoadingMessage();
 
             // Charger les données du quiz (config + questions)
@@ -554,7 +574,7 @@ class QuizApp {
 window.setScore = (points) => {
     rewardsManager.setTotalPoints(points);
     roadmapManager.render();
-    console.log(`⭐ Score mis à jour : ${points} pts`);
+    console.log(`[Points] Score mis à jour : ${points} pts`);
     return points;
 };
 
@@ -562,8 +582,30 @@ window.addScore = (points = 10) => {
     const current = rewardsManager.getTotalPoints();
     const updated = rewardsManager.setTotalPoints(current + points);
     roadmapManager.render();
-    console.log(`⭐ Score augmenté de +${points} pts (Nouveau total : ${updated} pts)`);
+    console.log(`[Points] Score augmenté de +${points} pts (Nouveau total : ${updated} pts)`);
     return updated;
+};
+
+// NOTE Dev uniquement : gestion de la visibilité du lien Laboratoire dans le footer
+window.enableLab = () => {
+    localStorage.setItem('showLabLink', 'true');
+    const el = document.getElementById('footer-lab-link');
+    if (el) el.classList.remove('hidden');
+    console.log('[Lab] Lien du Laboratoire activé dans le footer (test-avatars.html)');
+    return 'Laboratoire activé dans le footer.';
+};
+
+window.disableLab = () => {
+    localStorage.removeItem('showLabLink');
+    const el = document.getElementById('footer-lab-link');
+    if (el) el.classList.add('hidden');
+    console.log('[Lab] Lien du Laboratoire masqué du footer.');
+    return 'Laboratoire masqué du footer.';
+};
+
+window.toggleLab = () => {
+    const isShown = localStorage.getItem('showLabLink') === 'true';
+    return isShown ? window.disableLab() : window.enableLab();
 };
 
 // NOTE Dev uniquement : vide le localStorage du site (gemmes, skins, avatar, historique...) puis recharge la page
@@ -571,7 +613,7 @@ window.resetStorage = ({ keepName = false } = {}) => {
     const playerName = localStorage.getItem('playerName');
     localStorage.clear();
     if (keepName && playerName) localStorage.setItem('playerName', playerName);
-    console.log(`🧹 localStorage vidé${keepName ? ' (prénom conservé)' : ''}, rechargement...`);
+    console.log(`[Storage] localStorage vidé${keepName ? ' (prénom conservé)' : ''}, rechargement...`);
     location.reload();
 };
 

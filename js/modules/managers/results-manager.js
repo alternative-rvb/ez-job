@@ -10,6 +10,7 @@ import { playerManager } from '../core/player.js';
 import { rewardsManager, SUMMON_COST } from './rewards-manager.js';
 import { T } from '../core/theme.js';
 import { shareQuizResult, buildDetailsText } from '../core/share.js';
+import { renderTreeSvg } from '../ui/tree-svg.js';
 
 export class ResultsManager {
     constructor(onRestart, onBackToHome, onShowTrophies) {
@@ -72,11 +73,30 @@ export class ResultsManager {
         const quizTitle = quizState.currentQuiz?.title || 'Quiz';
         
         const resultsHTML = `
-            <div class="py-8">
+            <div class="py-4 sm:py-6 max-w-4xl mx-auto">
+                <!-- Barre de navigation supérieure : Fil d'Ariane + Bouton Accueil -->
+                <div class="flex items-center gap-2.5 mb-6 p-2.5 sm:p-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-amber-900/10 shadow-sm">
+                    <button id="btnTopHome" class="btn-base btn-secondary text-xs sm:text-sm py-1.5 px-3 flex items-center gap-1.5 flex-shrink-0 shadow-xs" title="Retour à l'accueil">
+                        <i class="bi bi-arrow-left text-base"></i>
+                        <span>Accueil</span>
+                    </button>
+                    <span class="text-amber-900/25">|</span>
+                    <nav aria-label="Fil d'Ariane" class="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#7c4004] min-w-0 truncate">
+                        <a href="/" class="hover:text-primary-600 transition-colors flex items-center gap-1 flex-shrink-0">
+                            <i class="bi bi-house"></i>
+                            <span class="hidden sm:inline">Accueil</span>
+                        </a>
+                        <i class="bi bi-chevron-right text-[10px] text-amber-900/40 flex-shrink-0"></i>
+                        <span class="text-[#7c4004]/70 truncate max-w-[120px] sm:max-w-[200px]">${quizTitle}</span>
+                        <i class="bi bi-chevron-right text-[10px] text-amber-900/40 flex-shrink-0"></i>
+                        <span class="text-primary-700 font-bold flex-shrink-0">Résultats</span>
+                    </nav>
+                </div>
+
                 <!-- Header -->
                 <div class="text-center mb-6">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-1" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Résultats</h1>
-                    <p style="color:#b46e28">${quizTitle}</p>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-1" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Résultats du Quiz</h1>
+                    <p class="text-sm sm:text-base font-semibold" style="color:#b46e28">${quizTitle}</p>
                 </div>
 
                 <!-- Score Card -->
@@ -117,8 +137,8 @@ export class ResultsManager {
                                     <p class="text-xs" style="color:#b46e28">Gemmes</p>
                                 </div>
                                 ${rewardsResult.canSummon ? `
-                                    <div class="text-center">
-                                        <p class="text-2xl">🌳</p>
+                                    <div class="text-center flex flex-col items-center">
+                                        <div class="w-8 h-9 mb-1 pointer-events-none drop-shadow-xs">${renderTreeSvg()}</div>
                                         <p class="text-xs text-green-600 font-semibold">Invocation dispo !</p>
                                     </div>
                                 ` : `
@@ -220,6 +240,16 @@ export class ResultsManager {
                 });
             } else {
                 console.error('❌ btnHome element not found');
+            }
+
+            const btnTopHome = document.getElementById('btnTopHome');
+            if (btnTopHome) {
+                btnTopHome.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (self.onBackToHome) {
+                        self.onBackToHome();
+                    }
+                });
             }
 
             if (btnShowTrophies) {
