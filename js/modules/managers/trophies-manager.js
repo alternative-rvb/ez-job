@@ -67,9 +67,11 @@ export class TrophiesManager {
 
         const nextTrophyEl = document.getElementById('next-trophy-progress');
         if (nextTrophyEl) {
-            nextTrophyEl.textContent = nextTrophy
-                ? `${nextTrophy.unlockThreshold - this.successCount}`
-                : '🏆';
+            if (nextTrophy) {
+                nextTrophyEl.textContent = `${nextTrophy.unlockThreshold - this.successCount}`;
+            } else {
+                nextTrophyEl.innerHTML = '<i class="bi bi-trophy-fill text-yellow-400"></i>';
+            }
         }
     }
 

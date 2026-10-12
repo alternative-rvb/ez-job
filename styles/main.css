@@ -24,13 +24,13 @@
   --color-text-primary:  204, 196, 227; /* Texte principal   #CCC4E3 */
   --color-text-secondary: 155, 146, 176;/* Texte secondaire  #9b92b0 */
 
-  /* Couleurs de feedback (sémantiques — à ne pas changer) */
-  --color-success: 34, 197, 94;         /* Vert  — bonne réponse */
-  --color-error:   239, 68, 68;         /* Rouge — mauvaise réponse */
-  --color-warning: 251, 191, 36;        /* Jaune — avertissement */
+  /* Couleurs de feedback (sémantiques - à ne pas changer) */
+  --color-success: 34, 197, 94;         /* Vert  - bonne réponse */
+  --color-error:   239, 68, 68;         /* Rouge - mauvaise réponse */
+  --color-warning: 251, 191, 36;        /* Jaune - avertissement */
   --color-info:    90, 69, 148;         /* Violet info */
 
-  /* Couleurs timer urgence (sémantiques — à ne pas changer) */
+  /* Couleurs timer urgence (sémantiques - à ne pas changer) */
   --color-timer-urgent:  239, 68, 68;   /* Rouge  ≤5s */
   --color-timer-alert:   234, 179, 8;   /* Jaune  ≤8s */
 
@@ -68,12 +68,12 @@ body, html {
   font-family: 'Heebo', ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Couleur de texte principale Erudizz — remplace #ffffff */
+/* Couleur de texte principale Erudizz : remplace #ffffff */
 .text-white {
   color: #CCC4E3 !important;
 }
 
-/* Couleur de texte secondaire Erudizz — remplace gray-400 (#9ca3af) */
+/* Couleur de texte secondaire Erudizz : remplace gray-400 (#9ca3af) */
 .text-gray-400 {
   color: #9b92b0 !important;
 }
@@ -696,7 +696,6 @@ body, html {
 
 #hero-start-quiz-btn:active {
   transform: translateY(0);
-}
 }
 
 /* ===== Sélecteur de Temps Modal ===== */

@@ -23,6 +23,7 @@ class PlayerManager {
         }
         this.playerName = cleanName;
         localStorage.setItem('playerName', cleanName);
+        localStorage.removeItem('playerSkippedName');
         console.log(`👤 Joueur: ${cleanName}`);
         return true;
     }
@@ -114,6 +115,7 @@ class PlayerManager {
     reset() {
         localStorage.removeItem('playerName');
         localStorage.removeItem('playerResults');
+        localStorage.removeItem('playerSkippedName');
         this.playerName = null;
         this.results = [];
         console.log('🗑️  Données du joueur réinitialisées');

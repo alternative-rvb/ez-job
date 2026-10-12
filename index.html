@@ -173,8 +173,8 @@
           
           <!-- Boutons utilisateur (affichés après chargement) -->
           <div id="nav-user-buttons" class="flex items-center gap-3">
-            <button id="nav-player-btn" class="btn-base btn-secondary whitespace-nowrap hidden">
-              <i class="bi bi-person"></i><span id="nav-player-name"></span>
+            <button id="nav-player-btn" class="btn-base btn-secondary whitespace-nowrap hidden" title="Gérer votre profil">
+              <i class="bi bi-person"></i><span id="nav-player-name">Mon profil</span>
             </button>
             <button id="nav-history-btn" class="btn-base btn-primary whitespace-nowrap hidden">
               <i class="bi bi-clock-history"></i>Historique
@@ -210,8 +210,8 @@
           <i class="bi bi-house"></i>Home
         </a>
         <div id="mobile-user-buttons" class="border-t border-gray-700 mt-4 pt-4 space-y-2">
-          <button id="mobile-player-btn" class="w-full btn-base btn-secondary whitespace-nowrap hidden justify-start">
-            <i class="bi bi-person"></i><span id="mobile-player-name"></span>
+          <button id="mobile-player-btn" class="w-full btn-base btn-secondary whitespace-nowrap hidden justify-start" title="Gérer votre profil">
+            <i class="bi bi-person"></i><span id="mobile-player-name">Mon profil</span>
           </button>
           <button id="mobile-history-btn" class="w-full btn-base btn-primary whitespace-nowrap hidden justify-start">
             <i class="bi bi-clock-history"></i>Historique
@@ -226,32 +226,61 @@
 
   <!-- Contenu principal -->
   <main class="container mx-auto px-6 py-12 min-h-screen">
-    <!-- Page de saisie du nom du joueur -->
-    <div id="player-name-screen" class="max-w-md mx-auto flex items-center justify-center min-h-[70vh]">
-      <div class="bg-gray-800 rounded-2xl p-8 shadow-2xl w-full">
-        <div class="text-center mb-8">
-          <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-accent-500 bg-clip-text text-white">
-            Erudizz
-          </h1>
-          <p class="text-gray-400 text-lg">Quel est votre nom ?</p>
+    <!-- Modal de saisie / modification du nom du joueur (non bloquant à l'entrée) -->
+    <div id="player-name-screen" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div class="bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-2xl w-full max-w-md border border-gray-700 relative">
+        <button id="close-player-modal" type="button" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors" aria-label="Fermer">
+          <i class="bi bi-x-lg text-lg"></i>
+        </button>
+
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-primary-500/20 border border-primary-500/40 flex items-center justify-center text-accent-500 text-2xl">
+            <i class="bi bi-person-circle"></i>
+          </div>
+          <h2 id="player-modal-title" class="text-2xl font-bold mb-1 text-white">
+            Votre profil
+          </h2>
+          <p id="player-modal-subtitle" class="text-gray-400 text-sm">Comment souhaitez-vous qu'on vous appelle ?</p>
+        </div>
+
+        <!-- Note rassurante : Pas de base de données -->
+        <div class="flex items-start gap-2.5 p-3 bg-gray-700/50 border border-gray-600/40 rounded-xl text-gray-300 text-xs mb-5">
+          <i class="bi bi-shield-check text-accent-500 text-base flex-shrink-0 mt-0.5"></i>
+          <p class="leading-relaxed">
+            <strong class="text-white">Pas de base de données</strong> : vos données (prénom, scores, progression) vous appartiennent et restent 100% sur votre appareil (stockage local).
+          </p>
         </div>
 
         <form id="player-name-form" class="space-y-4">
           <div>
-            <input type="text" id="player-name-input" placeholder="Entrez votre nom..."
+            <label for="player-name-input" class="block text-xs font-medium text-gray-300 mb-1.5">Votre prénom ou pseudo</label>
+            <input type="text" id="player-name-input" placeholder="Ex: Alex, Sophie..."
               class="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border-2 border-primary-500/40 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/30 focus:outline-none transition-colors"
               maxlength="30" autocomplete="off" />
           </div>
-          <button type="submit"
-            class="w-full px-6 py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg hover:opacity-90 transition-opacity font-bold text-lg">
-            <i class="bi bi-arrow-right mr-2"></i>Commencer
-          </button>
+          <div class="flex flex-col gap-2 pt-2">
+            <button type="submit"
+              class="w-full px-6 py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-lg hover:opacity-90 transition-opacity font-bold text-base shadow-lg">
+              <i class="bi bi-check-lg mr-2"></i>Enregistrer
+            </button>
+            <button id="skip-player-modal" type="button"
+              class="w-full px-4 py-2.5 bg-gray-700/60 hover:bg-gray-700 text-gray-300 hover:text-white rounded-lg transition-colors text-sm font-medium">
+              Continuer sans prénom
+            </button>
+          </div>
         </form>
+
+        <!-- Option Réinitialiser (visible seulement si des données existent) -->
+        <div id="player-reset-section" class="mt-6 pt-4 border-t border-gray-700/60 text-center hidden">
+          <button id="btn-reset-player-data" type="button" class="text-xs text-red-400 hover:text-red-300 hover:underline inline-flex items-center gap-1">
+            <i class="bi bi-trash"></i>Réinitialiser mes résultats et trophées
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- Page de sélection des quiz -->
-    <div id="quiz-selection" class="hidden py-8">
+    <div id="quiz-selection" class="py-8">
       <!-- Section Hero - 2 Colonnes -->
       <div class="mb-12">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12">
@@ -265,13 +294,13 @@
             
             <div class="mb-8">
               <p class="text-2xl md:text-3xl font-bold text-white mb-3">De 0 à 100% Pro</p>
-              <p class="text-gray-300 text-base md:text-lg mb-6">Plateforme d'entraînement et de coaching en développement web.<br>Progressez à votre rythme avec nos quiz interactifs et gagnez des points!</p>
+              <p class="text-gray-300 text-base md:text-lg mb-6">Plateforme d'entraînement et de coaching en développement web.<br>Progressez à votre rythme avec nos quiz interactifs et gagnez des points !</p>
             </div>
 
             <!-- Boutons CTA Principaux -->
             <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8">
-              <button id="btn-change-player" class="btn-base btn-secondary whitespace-nowrap order-2 sm:order-1">
-                <i class="bi bi-person"></i><span id="player-name-display"></span>
+              <button id="btn-change-player" class="btn-base btn-secondary whitespace-nowrap order-2 sm:order-1" title="Gérer votre profil">
+                <i class="bi bi-person"></i><span id="player-name-display">Mon profil</span>
               </button>
               <button id="btn-show-history" class="btn-base btn-primary whitespace-nowrap order-3 sm:order-2">
                 <i class="bi bi-clock-history"></i>Historique
@@ -562,6 +591,10 @@
   <!-- Footer -->
   <footer class="bg-gray-800 py-6 mt-12">
     <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-400 text-xs mb-3 flex items-center justify-center gap-1.5 opacity-80">
+        <i class="bi bi-shield-check text-accent-500"></i>
+        <span>Pas de base de données · Vos données restent 100% sur votre appareil (stockage local)</span>
+      </p>
       <p class="text-gray-400">
         <a href="privacy.html" class="text-primary-400 underline underline-offset-2 hover:text-accent-500 transition-colors">Politique de confidentialité</a> |
         <a href="mentions-legales.html" class="text-primary-400 underline underline-offset-2 hover:text-accent-500 transition-colors">Mentions légales</a> |

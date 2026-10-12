@@ -38,56 +38,164 @@ class QuizApp {
             return;
         }
 
-        // Vérifier si le joueur a déjà un nom
-        if (playerManager.playerName) {
-            console.log(`👤 Bienvenue ${playerManager.playerName}`);
-            this.showQuizSelection();
-        } else {
-            this.showPlayerNameScreen();
-        }
+        // Toujours afficher directement la sélection des quiz pour faire découvrir la plateforme
+        await this.showQuizSelection();
 
         console.log('Quiz App initialisée');
     }
 
-    showPlayerNameScreen() {
-        const screen = document.getElementById('player-name-screen');
+    showPlayerModal(onComplete = null) {
+        const modal = document.getElementById('player-name-screen');
         const form = document.getElementById('player-name-form');
         const input = document.getElementById('player-name-input');
+        const closeBtn = document.getElementById('close-player-modal');
+        const skipBtn = document.getElementById('skip-player-modal');
+        const resetSection = document.getElementById('player-reset-section');
+        const resetBtn = document.getElementById('btn-reset-player-data');
+        const title = document.getElementById('player-modal-title');
+        const subtitle = document.getElementById('player-modal-subtitle');
 
-        if (screen) {
-            screen.classList.remove('hidden');
+        if (!modal) return;
+
+        // Pré-remplir avec le nom actuel s'il existe
+        if (input) {
+            input.value = playerManager.playerName || '';
         }
 
+        // Adapter les textes selon si un joueur a déjà un prénom
+        if (playerManager.playerName) {
+            if (title) title.textContent = 'Modifier votre profil';
+            if (subtitle) subtitle.textContent = 'Changez votre prénom ou gérez vos données locales.';
+            if (skipBtn) skipBtn.textContent = 'Annuler';
+            if (resetSection) resetSection.classList.remove('hidden');
+        } else {
+            if (title) title.textContent = 'Bienvenue sur Erudizz !';
+            if (subtitle) subtitle.textContent = 'Comment souhaitez-vous qu\'on vous appelle ?';
+            if (skipBtn) skipBtn.textContent = 'Continuer sans prénom';
+            if (resetSection) resetSection.classList.add('hidden');
+        }
+
+        modal.classList.remove('hidden');
+        if (input) {
+            setTimeout(() => input.focus(), 100);
+        }
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+        };
+
+        // Fermeture sur clic croix
+        if (closeBtn) {
+            closeBtn.onclick = () => {
+                closeModal();
+                if (onComplete) onComplete(false);
+            };
+        }
+
+        // Fermeture au clic sur le backdrop
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                closeModal();
+                if (onComplete) onComplete(false);
+            }
+        };
+
+        // Bouton continuer sans prénom / annuler
+        if (skipBtn) {
+            skipBtn.onclick = () => {
+                if (!playerManager.playerName) {
+                    localStorage.setItem('playerSkippedName', 'true');
+                }
+                closeModal();
+                if (onComplete) onComplete(true);
+            };
+        }
+
+        // Soumission du formulaire
         if (form) {
-            form.addEventListener('submit', (e) => {
+            form.onsubmit = (e) => {
                 e.preventDefault();
-                const name = input.value.trim();
+                const name = input ? input.value.trim() : '';
                 if (name.length > 0) {
                     playerManager.setPlayerName(name);
-                    this.showQuizSelection();
+                    this.updatePlayerDisplay();
+                    closeModal();
+                    if (onComplete) onComplete(true);
                 } else {
-                    input.focus();
+                    input?.focus();
                 }
-            });
-            input.focus();
+            };
+        }
+
+        // Bouton réinitialiser mes données
+        if (resetBtn) {
+            resetBtn.onclick = () => {
+                if (confirm('Voulez-vous vraiment effacer votre prénom, votre historique de quiz et vos trophées ? Cette action est irréversible.')) {
+                    playerManager.reset();
+                    location.reload();
+                }
+            };
         }
     }
 
+    // Méthode conservée pour rétrocompatibilité
+    showPlayerNameScreen() {
+        this.showPlayerModal();
+    }
+
+    updatePlayerDisplay() {
+        const name = playerManager.playerName;
+        const displayName = name ? name : 'Mon profil';
+
+        // Affichage dans la carte Hero
+        const playerDisplay = document.getElementById('player-name-display');
+        if (playerDisplay) {
+            playerDisplay.textContent = displayName;
+        }
+
+        // Affichage dans le header desktop
+        const navPlayerBtn = document.getElementById('nav-player-btn');
+        const navPlayerName = document.getElementById('nav-player-name');
+        if (navPlayerBtn) {
+            navPlayerBtn.classList.remove('hidden');
+        }
+        if (navPlayerName) {
+            navPlayerName.textContent = displayName;
+        }
+
+        // Affichage dans le menu mobile
+        const mobilePlayerBtn = document.getElementById('mobile-player-btn');
+        const mobilePlayerName = document.getElementById('mobile-player-name');
+        if (mobilePlayerBtn) {
+            mobilePlayerBtn.classList.remove('hidden');
+        }
+        if (mobilePlayerName) {
+            mobilePlayerName.textContent = displayName;
+        }
+
+        // Boutons navigation desktop et mobile
+        const navHistoryBtn = document.getElementById('nav-history-btn');
+        const navTrophiesBtn = document.getElementById('nav-trophies-btn');
+        const mobileHistoryBtn = document.getElementById('mobile-history-btn');
+        const mobileTrophiesBtn = document.getElementById('mobile-trophies-btn');
+        if (navHistoryBtn) navHistoryBtn.classList.remove('hidden');
+        if (navTrophiesBtn) navTrophiesBtn.classList.remove('hidden');
+        if (mobileHistoryBtn) mobileHistoryBtn.classList.remove('hidden');
+        if (mobileTrophiesBtn) mobileTrophiesBtn.classList.remove('hidden');
+    }
+
     async showQuizSelection() {
-        // Masquer l'écran de saisie du nom
+        // Masquer l'écran / modale de saisie du nom
         const nameScreen = document.getElementById('player-name-screen');
         if (nameScreen) {
             nameScreen.classList.add('hidden');
         }
 
-        // Afficher le nom du joueur
-        const playerDisplay = document.getElementById('player-name-display');
-        if (playerDisplay) {
-            playerDisplay.textContent = playerManager.playerName;
-        }
+        // Mettre à jour l'affichage du joueur
+        this.updatePlayerDisplay();
 
         // Initialiser les modules
-        this.quizSelector = new QuizSelector((quiz, selectedTime) => this.startQuiz(quiz, selectedTime));
+        this.quizSelector = new QuizSelector((quiz, selectedTime) => this.handleQuizSelect(quiz, selectedTime));
         this.questionManager = new QuestionManager(() => this.showResults());
         this.resultsManager = new ResultsManager(
             () => this.restartQuiz(),
@@ -116,6 +224,20 @@ class QuizApp {
         this.setupHistoryButtons();
     }
 
+    handleQuizSelect(quiz, selectedTime) {
+        // Si le joueur n'a pas encore de prénom et ne l'a pas explicitement passé,
+        // on lui propose de personnaliser son profil avant de lancer le quiz
+        if (!playerManager.playerName && !localStorage.getItem('playerSkippedName')) {
+            this.showPlayerModal((shouldProceed) => {
+                if (shouldProceed) {
+                    this.startQuiz(quiz, selectedTime);
+                }
+            });
+        } else {
+            this.startQuiz(quiz, selectedTime);
+        }
+    }
+
     setupHistoryButtons() {
         // ===== Boutons de la section Hero =====
         
@@ -135,12 +257,11 @@ class QuizApp {
             });
         }
 
-        // Bouton changer de joueur (hero)
+        // Bouton changer de joueur / profil (hero)
         const btnChangePlayer = document.getElementById('btn-change-player');
         if (btnChangePlayer) {
             btnChangePlayer.addEventListener('click', () => {
-                playerManager.reset();
-                location.reload();
+                this.showPlayerModal();
             });
         }
 
@@ -149,19 +270,14 @@ class QuizApp {
         // Bouton joueur (nav)
         const navPlayerBtn = document.getElementById('nav-player-btn');
         if (navPlayerBtn) {
-            navPlayerBtn.textContent = `${playerManager.playerName}`;
-            navPlayerBtn.innerHTML = `<i class="bi bi-person"></i><span>${playerManager.playerName}</span>`;
-            navPlayerBtn.classList.remove('hidden');
             navPlayerBtn.addEventListener('click', () => {
-                playerManager.reset();
-                location.reload();
+                this.showPlayerModal();
             });
         }
 
         // Bouton historique (nav)
         const navHistoryBtn = document.getElementById('nav-history-btn');
         if (navHistoryBtn) {
-            navHistoryBtn.classList.remove('hidden');
             navHistoryBtn.addEventListener('click', () => {
                 this.historyManager.show();
             });
@@ -170,7 +286,6 @@ class QuizApp {
         // Bouton trophées (nav)
         const navTrophiesBtn = document.getElementById('nav-trophies-btn');
         if (navTrophiesBtn) {
-            navTrophiesBtn.classList.remove('hidden');
             navTrophiesBtn.addEventListener('click', () => {
                 this.trophiesManager.show();
             });
@@ -181,31 +296,27 @@ class QuizApp {
         // Bouton joueur (mobile)
         const mobilePlayerBtn = document.getElementById('mobile-player-btn');
         if (mobilePlayerBtn) {
-            mobilePlayerBtn.innerHTML = `<i class="bi bi-person"></i><span>${playerManager.playerName}</span>`;
-            mobilePlayerBtn.classList.remove('hidden');
             mobilePlayerBtn.addEventListener('click', () => {
-                playerManager.reset();
-                location.reload();
+                this.showPlayerModal();
+                document.getElementById('mobile-menu')?.classList.add('hidden');
             });
         }
 
         // Bouton historique (mobile)
         const mobileHistoryBtn = document.getElementById('mobile-history-btn');
         if (mobileHistoryBtn) {
-            mobileHistoryBtn.classList.remove('hidden');
             mobileHistoryBtn.addEventListener('click', () => {
                 this.historyManager.show();
-                document.getElementById('mobile-menu').classList.add('hidden');
+                document.getElementById('mobile-menu')?.classList.add('hidden');
             });
         }
 
         // Bouton trophées (mobile)
         const mobileTrophiesBtn = document.getElementById('mobile-trophies-btn');
         if (mobileTrophiesBtn) {
-            mobileTrophiesBtn.classList.remove('hidden');
             mobileTrophiesBtn.addEventListener('click', () => {
                 this.trophiesManager.show();
-                document.getElementById('mobile-menu').classList.add('hidden');
+                document.getElementById('mobile-menu')?.classList.add('hidden');
             });
         }
     }

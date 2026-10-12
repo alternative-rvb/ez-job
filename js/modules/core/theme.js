@@ -1,5 +1,5 @@
 /**
- * Module de thème — expose les couleurs de la charte pour usage dans le JS.
+ * Module de thème : expose les couleurs de la charte pour usage dans le JS.
  * Pour changer le thème : modifier uniquement styles/main.css (:root).
  *
  * Usage dans les managers :

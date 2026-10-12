@@ -398,7 +398,7 @@ export class QuestionManager {
                 }
                 // Utiliser 'timeout' si la réponse est vide (temps écoulé), sinon 'error'
                 const feedbackType = (!userAnswer || userAnswer === '') ? 'timeout' : 'error';
-                const feedbackMessage = (!userAnswer || userAnswer === '') ? 'Temps écoulé ! ⏰' : 'Mauvaise réponse 😔';
+                const feedbackMessage = (!userAnswer || userAnswer === '') ? 'Temps écoulé !' : 'Mauvaise réponse';
                 this.showFeedbackMessage(feedbackMessage, feedbackType, question, null, userAnswer);
             }
 
@@ -454,11 +454,11 @@ export class QuestionManager {
                 this.showFeedbackMessage('Bonne réponse !', 'success', question, answerIndex);
             } else if (answerIndex === -1) {
                 quizState.recordAnswerCorrectness(false);
-                this.showFeedbackMessage('Temps écoulé ! ⏰', 'timeout', question, correctAnswerIndex);
+                this.showFeedbackMessage('Temps écoulé !', 'timeout', question, correctAnswerIndex);
             } else {
                 quizState.recordAnswerCorrectness(false);
                 // Afficher la bonne réponse si showResponse est activé
-                this.showFeedbackMessage('Mauvaise réponse 😔', 'error', CONFIG.showResponse ? question : (quizState.currentQuiz?.spoilerMode ? question : null), correctAnswerIndex);
+                this.showFeedbackMessage('Mauvaise réponse', 'error', CONFIG.showResponse ? question : (quizState.currentQuiz?.spoilerMode ? question : null), correctAnswerIndex);
             }
             
             domManager.updateQuizStats(
