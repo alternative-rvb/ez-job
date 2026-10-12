@@ -116,20 +116,21 @@ export class TrophiesManager {
                         `}
 
                         <!-- Dégradé transparent vers noir en bas -->
-                        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-10 pb-3 px-3 space-y-2">
-                            <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${THEME_LABELS[trophy.theme] || trophy.theme}</p>
-                            <div class="flex items-center justify-between pt-2 border-t border-gray-700/50">
-                                <span class="inline-block px-2 py-1 ${badgeClass} rounded-md text-xs font-bold">
-                                    <i class="bi bi-star-fill"></i>
-                                    <span class="hidden sm:inline ml-1">${rarityLabel}</span>
+                        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/85 to-transparent pt-10 pb-3 px-3 space-y-1.5">
+                            <div class="flex items-center justify-between text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
+                                <span>${THEME_LABELS[trophy.theme] || trophy.theme}</span>
+                                ${isUnlocked ? '' : `<span class="text-accent-400 font-bold normal-case text-xs">${remaining > 0 ? `Encore ${remaining}` : 'Bientôt'}</span>`}
+                            </div>
+                            <div class="flex items-center justify-between pt-1.5 border-t border-gray-700/60">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 ${badgeClass} rounded-full text-[11px] font-bold whitespace-nowrap leading-none shadow-sm">
+                                    <i class="bi bi-star-fill text-[10px]"></i>
+                                    <span>${rarityLabel}</span>
                                 </span>
                                 ${isUnlocked ? `
-                                    <button class="trophy-zoom-btn inline-flex items-center justify-center w-7 h-7 rounded-md bg-gray-600/30 hover:bg-gray-600/50 text-gray-300 hover:text-white transition transform hover:scale-110" title="Agrandir" data-trophy-id="${trophy.id}">
-                                        <i class="bi bi-zoom-in text-sm"></i>
+                                    <button class="trophy-zoom-btn inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-700/60 hover:bg-gray-600 text-gray-300 hover:text-white transition transform hover:scale-110 flex-shrink-0" title="Agrandir" data-trophy-id="${trophy.id}">
+                                        <i class="bi bi-zoom-in text-xs"></i>
                                     </button>
-                                ` : `
-                                    <span class="text-xs text-gray-400 font-semibold">${remaining > 0 ? `Encore ${remaining}` : 'Bientôt'}</span>
-                                `}
+                                ` : ''}
                             </div>
                         </div>
                     </div>
@@ -336,9 +337,9 @@ export class TrophiesManager {
                 <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-3 px-3 space-y-2">
                     <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${THEME_LABELS[trophy.theme] || trophy.theme}</p>
                     <div class="flex items-center justify-between pt-2 border-t border-gray-700/50">
-                        <span class="inline-block px-2 py-1 ${badgeClass} rounded-full text-xs font-bold">
-                            <i class="bi bi-star-fill"></i>
-                            <span class="hidden sm:inline ml-1">${rarityLabel}</span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 ${badgeClass} rounded-full text-xs font-bold whitespace-nowrap shadow-sm">
+                            <i class="bi bi-star-fill text-[11px]"></i>
+                            <span>${rarityLabel}</span>
                         </span>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ import { playerManager } from '../core/player.js';
 import { getNewlyUnlocked, getNextTrophy } from './trophy-progress.js';
 import { addCacheBuster } from '../core/version.js';
 import { T } from '../core/theme.js';
+import { notificationManager } from './notification-manager.js';
 
 const THEME_LABELS = {
     'debut': 'Début',
@@ -173,6 +174,26 @@ export class ResultsManager {
         // Lancer confetti si 100%
         if (percentage === 100) {
             launchConfetti();
+        }
+
+        // Notification de réussite du quiz (score >= 80%)
+        if (percentage >= 80) {
+            setTimeout(() => {
+                notificationManager.showQuizSuccess(quizTitle, score, percentage);
+            }, 300);
+        }
+
+        // Notification pour chaque trophée nouvellement débloqué
+        if (newlyUnlocked && newlyUnlocked.length > 0) {
+            newlyUnlocked.forEach((trophy, idx) => {
+                setTimeout(() => {
+                    notificationManager.showTrophySuccess(trophy, () => {
+                        if (self.onShowTrophies) {
+                            self.onShowTrophies();
+                        }
+                    });
+                }, (percentage >= 80 ? 1200 : 300) + (idx * 1000));
+            });
         }
         
         // Ajouter les écouteurs d'événements après un court délai pour assurer que le DOM est mis à jour
