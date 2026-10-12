@@ -17,8 +17,6 @@
 | `showSkeleton(ms)` | Déclenche l'effet squelette fidèle (défaut `2500ms`, `0` = infini) | `showSkeleton(3000);` |
 | `resetStorage()` | Vide tout le localStorage du site (gemmes, skins gagnés, avatar, prénom, historique) puis recharge la page | `resetStorage();` |
 | `resetStorage({ keepName: true })` | Même chose en conservant le prénom du joueur | `resetStorage({ keepName: true });` |
-| `showAtelier()` | Réactive l'atelier d'avatar, masqué par défaut : le crayon sur l'avatar de la carte, le lien « Modifier mon avatar » et le bouton « Ouvrir l'atelier » du message des trophées réapparaissent. L'état est mémorisé (`atelierEnabled`) | `showAtelier();` |
-| `hideAtelier()` | Masque à nouveau l'atelier d'avatar | `hideAtelier();` |
 
 ---
 
@@ -46,7 +44,7 @@
 ## 4. Persistance & Stockage Local
 
 - **Clé `localStorage`** : `'erudizz_rewards'`
-- **Autres clés** : `playerName`, `playerAvatar`, `playerAvatarConfig` (avatar, espèce, coupe et tenue de skin), `playerResults`, `defaultTimeLimit` (`0` = temps infini), `atelierEnabled` (`'true'` quand l'atelier d'avatar est réactivé).
+- **Autres clés** : `playerName`, `playerAvatar`, `playerAvatarConfig` (avatar, espèce, coupe et tenue de skin), `playerResults`, `defaultTimeLimit` (`0` = temps infini).
 - **Reset des gemmes et des skins seulement** :
   ```javascript
   localStorage.removeItem('erudizz_rewards');
@@ -61,5 +59,4 @@
 - [ ] Supprimer les déclarations `window.setScore`, `window.addScore`, `window.resetScore`, `window.showSkeleton` dans `js/modules/ui/roadmap.js`.
 - [ ] Supprimer `window.setScore`, `window.addScore` et `window.resetStorage` dans `js/app.js`.
 - [ ] Retirer l'événement de clic test `+15 pts` sur `#roadmap-score-badge`.
-- [ ] Décider du sort de l'atelier d'avatar : le garder masqué (`showAtelier()` et `hideAtelier()` dans `js/modules/ui/roadmap.js`, interrupteur dans `js/modules/core/feature-flags.js`) ou le réactiver pour tous en passant `isAtelierEnabled()` à `true`.
 - [ ] Supprimer ou archiver ce guide développeur.

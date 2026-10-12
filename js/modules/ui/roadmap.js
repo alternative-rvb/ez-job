@@ -9,7 +9,6 @@ import { playerManager } from '../core/player.js';
 import { AVATARS, renderAvatarSvg, renderAvatarHeadSvg } from './avatars.js';
 import { avatarCustomizerModal } from './avatar-modal.js';
 import { getCharacterId, getMapLine } from '../core/dialogues.js';
-import { isAtelierEnabled, setAtelierEnabled } from '../core/feature-flags.js';
 
 export class RoadmapManager {
     constructor() {
@@ -272,7 +271,6 @@ export class RoadmapManager {
         const container = document.getElementById(this.containerId);
         if (!container) return;
 
-        const atelierOn = isAtelierEnabled();
         const totalPoints = rewardsManager.getTotalPoints() || 0;
         const rankInfo = this.getPlayerRank(totalPoints);
         const currentAvatarId = playerManager.playerAvatar || 'boy';
@@ -294,13 +292,13 @@ export class RoadmapManager {
                 <div class="p-3 sm:p-4 md:p-5 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
                     <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
                         <!-- Avatar interactif (Portrait Tête) -->
-                        <div class="relative group flex-shrink-0 ${atelierOn ? 'cursor-pointer' : ''}" ${atelierOn ? 'id="roadmap-avatar-toggle" title="Cliquer pour personnaliser ton avatar"' : ''}>
+                        <div class="relative group flex-shrink-0 cursor-pointer" id="roadmap-avatar-toggle" title="Cliquer pour personnaliser ton avatar">
                             <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl ring-2 ring-primary-500 shadow-md bg-amber-100/90 overflow-hidden flex items-center justify-center transition-transform transform group-hover:scale-105 p-0.5">
                                 ${avatarData.headSvg || avatarData.svg}
                             </div>
-                            ${atelierOn ? `<span class="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent-500 text-white flex items-center justify-center text-[8px] sm:text-[9px] shadow" title="Personnaliser">
+                            <span class="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent-500 text-white flex items-center justify-center text-[8px] sm:text-[9px] shadow" title="Personnaliser">
                                 <i class="bi bi-pencil-fill"></i>
-                            </span>` : ''}
+                            </span>
                         </div>
 
                         <div class="min-w-0">
@@ -322,10 +320,10 @@ export class RoadmapManager {
                             <span class="text-[10px] sm:text-[11px] font-semibold text-amber-800">pts</span>
                             <span class="text-[9px] sm:text-[10px] text-accent-600 ml-0.5 opacity-70 group-hover/score:opacity-100">+15</span>
                         </button>
-                        ${atelierOn ? `<button id="open-avatar-customizer-btn" class="text-[11px] sm:text-xs font-semibold text-primary-700 hover:text-primary-900 hover:underline flex items-center gap-1 transition whitespace-nowrap cursor-pointer" title="Personnaliser ton avatar">
+                        <button id="open-avatar-customizer-btn" class="text-[11px] sm:text-xs font-semibold text-primary-700 hover:text-primary-900 hover:underline flex items-center gap-1 transition whitespace-nowrap cursor-pointer" title="Personnaliser ton avatar">
                             <i class="bi bi-palette-fill text-accent-600"></i>
                             <span>Modifier mon avatar</span>
-                        </button>` : ''}
+                        </button>
                     </div>
                 </div>
 
@@ -949,20 +947,6 @@ export class RoadmapManager {
 }
 
 export const roadmapManager = new RoadmapManager();
-
-// ANCHOR Réactivation de l'atelier d'avatar, masqué par défaut : showAtelier() / hideAtelier() dans la console
-if (typeof window !== 'undefined') {
-    window.showAtelier = () => {
-        setAtelierEnabled(true);
-        roadmapManager.render();
-        console.log('🎨 Atelier d\'avatar activé (hideAtelier() pour le masquer)');
-    };
-    window.hideAtelier = () => {
-        setAtelierEnabled(false);
-        roadmapManager.render();
-        console.log('🎨 Atelier d\'avatar masqué (showAtelier() pour le réactiver)');
-    };
-}
 
 // =============================================================================
 // OUTILS DE DÉVELOPPEMENT & TESTS PROVISOIRES (À EXCLURE DE PRODUCTION)

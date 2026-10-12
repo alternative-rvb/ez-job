@@ -46,12 +46,6 @@ class QuizApp {
             versionEl.textContent = `v${APP_VERSION}`;
         }
 
-        // Initialiser la visibilité du lien Laboratoire dans le footer
-        const labLinkEl = document.getElementById('footer-lab-link');
-        if (labLinkEl && localStorage.getItem('showLabLink') === 'true') {
-            labLinkEl.classList.remove('hidden');
-        }
-
         // Vérifier si le joueur a déjà un nom
         if (playerManager.playerName) {
             this.showQuizSelection();
@@ -584,28 +578,6 @@ window.addScore = (points = 10) => {
     roadmapManager.render();
     console.log(`[Points] Score augmenté de +${points} pts (Nouveau total : ${updated} pts)`);
     return updated;
-};
-
-// NOTE Dev uniquement : gestion de la visibilité du lien Laboratoire dans le footer
-window.enableLab = () => {
-    localStorage.setItem('showLabLink', 'true');
-    const el = document.getElementById('footer-lab-link');
-    if (el) el.classList.remove('hidden');
-    console.log('[Lab] Lien du Laboratoire activé dans le footer (test-avatars.html)');
-    return 'Laboratoire activé dans le footer.';
-};
-
-window.disableLab = () => {
-    localStorage.removeItem('showLabLink');
-    const el = document.getElementById('footer-lab-link');
-    if (el) el.classList.add('hidden');
-    console.log('[Lab] Lien du Laboratoire masqué du footer.');
-    return 'Laboratoire masqué du footer.';
-};
-
-window.toggleLab = () => {
-    const isShown = localStorage.getItem('showLabLink') === 'true';
-    return isShown ? window.disableLab() : window.enableLab();
 };
 
 // NOTE Dev uniquement : vide le localStorage du site (gemmes, skins, avatar, historique...) puis recharge la page

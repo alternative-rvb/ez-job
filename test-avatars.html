@@ -75,9 +75,24 @@
       box-shadow: 0 0 20px rgba(255, 157, 0, 0.3);
     }
   </style>
+
+  <!-- ANCHOR Porte d'entrée du laboratoire (accès /lab) : le code du lab ne s'exécute qu'après saisie du mot de passe.
+       NOTE Protection côté navigateur uniquement (site statique) : elle écarte les curieux, pas un attaquant déterminé.
+       Pour changer le mot de passe : printf '%s' 'nouveau-mot-de-passe' | sha256sum, puis coller l'empreinte dans LAB_PASSWORD_SHA256. -->
+  <style>
+    body.lab-locked > *:not(#lab-gate):not(script) { display: none !important; }
+    #lab-gate { display: none; }
+    body.lab-locked #lab-gate { display: flex; }
+  </style>
 </head>
 
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between lab-locked">
+  <form id="lab-gate" class="min-h-screen items-center justify-center flex-col gap-3 p-6">
+    <h1 class="text-2xl font-bold">Accès réservé</h1>
+    <input id="lab-password" type="password" autocomplete="current-password" placeholder="Mot de passe" class="px-4 py-2 rounded-xl text-gray-900 w-64" required>
+    <button type="submit" class="px-4 py-2 rounded-xl bg-accent-500 hover:bg-accent-600 font-bold">Entrer</button>
+    <p id="lab-gate-error" class="text-red-300 text-sm hidden">Mot de passe incorrect.</p>
+  </form>
   <!-- Header CamiLudik standard -->
   <header class="bg-primary-500 shadow-md">
     <nav class="container mx-auto px-4 py-3">
@@ -502,7 +517,7 @@
   </div>
 
   <!-- Script des définitions de styles SVG & interactivité -->
-  <script type="module">
+  <script type="text/plain" id="lab-main">
     import {
       SKIN_COLORS,
       HAIR_COLORS,
@@ -1121,9 +1136,45 @@
     });
 
     // Initialisation au chargement
-    document.addEventListener('DOMContentLoaded', () => {
-      updatePreviews();
-    });
+    // NOTE Le script est exécuté après la saisie du mot de passe : le DOM est déjà chargé
+    updatePreviews();
+  </script>
+
+  <script>
+    // ANCHOR Vérification du mot de passe puis exécution du script du lab
+    (function () {
+      const LAB_PASSWORD_SHA256 = 'b111b938083f9d4494ef0814e65bc6eea66890d382bd609ab4abe633a9fd3c14';
+      const SESSION_KEY = 'labUnlocked';
+
+      async function sha256(text) {
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+
+      function unlock() {
+        document.body.classList.remove('lab-locked');
+        const src = document.getElementById('lab-main').textContent;
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.textContent = src;
+        document.body.appendChild(script);
+      }
+
+      let unlocked = false;
+      try { unlocked = sessionStorage.getItem(SESSION_KEY) === LAB_PASSWORD_SHA256 && LAB_PASSWORD_SHA256 !== 'A_REMPLIR'; } catch (e) {}
+      if (unlocked) { unlock(); return; }
+
+      document.getElementById('lab-gate').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const hash = await sha256(document.getElementById('lab-password').value);
+        if (hash === LAB_PASSWORD_SHA256) {
+          try { sessionStorage.setItem(SESSION_KEY, hash); } catch (err) {}
+          unlock();
+        } else {
+          document.getElementById('lab-gate-error').classList.remove('hidden');
+        }
+      });
+    })();
   </script>
 </body>
 

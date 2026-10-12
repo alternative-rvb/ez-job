@@ -48,6 +48,10 @@
   ],
   "rewrites": [
     {
+      "source": "/lab",
+      "destination": "/test-avatars.html"
+    },
+    {
       "source": "/:path*",
       "destination": "/index.html"
     }

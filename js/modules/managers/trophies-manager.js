@@ -8,7 +8,6 @@ import { T } from '../core/theme.js';
 import { playerManager } from '../core/player.js';
 import { RPG_TROPHIES, MANNEQUIN_BOY, MANNEQUIN_GIRL, buildCustomAvatarSvg } from '../ui/avatars.js';
 import { avatarCustomizerModal } from '../ui/avatar-modal.js';
-import { isAtelierEnabled } from '../core/feature-flags.js';
 import { renderTreeSvg } from '../ui/tree-svg.js';
 
 export { renderTreeSvg };
@@ -84,7 +83,7 @@ export class TrophiesManager {
         // NOTE Les pastilles des teintes, coupe et tenue restent jusqu'à leur sélection dans l'atelier
         rewardsManager.markItemSeen(`card:${skin.id}`);
         window.dispatchEvent(new CustomEvent('avatar-updated', { detail: { ...preset, playerName: playerManager.playerName } }));
-        this.showMessage(`<i class="bi bi-check-circle-fill text-green-400"></i> Skin « ${skin.title} » appliqué à ton avatar !${isAtelierEnabled() ? ' <button id="btn-open-customizer-from-trophies" class="ml-1 underline font-bold">Ouvrir l\'atelier</button>' : ''}`, 'success');
+        this.showMessage(`<i class="bi bi-check-circle-fill text-green-400"></i> Skin « ${skin.title} » appliqué à ton avatar ! <button id="btn-open-customizer-from-trophies" class="ml-1 underline font-bold">Ouvrir l\'atelier</button>`, 'success');
         this.renderTrophies();
     }
 
@@ -461,7 +460,7 @@ export class TrophiesManager {
 
             if (e.target.closest('.trophy-empty-slot')) document.getElementById('summon-panel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-            if (isAtelierEnabled() && e.target.closest('#btn-open-customizer-from-trophies')) avatarCustomizerModal.open();
+            if (e.target.closest('#btn-open-customizer-from-trophies')) avatarCustomizerModal.open();
         });
 
         document.getElementById('btn-back-from-trophies')?.addEventListener('click', () => {
