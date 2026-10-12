@@ -345,57 +345,67 @@ export class RoadmapManager {
 
                             <!-- Décor : Soleil et nuages (flat design, derrière les montagnes) -->
                             <g id="decor-sky">
-                                <!-- Soleil Flat épuré et rayonnant (aplat franc, sans 3D ni dégradé) -->
+                                <!-- Soleil discret avec halo qui scintille (sans rayon) -->
                                 <g id="decor-sun" transform="translate(62, 10)">
-                                    <!-- Halo flat doux rayonnant -->
-                                    <circle cx="0" cy="0" r="26" class="sun-glow" fill="#ffe082" opacity="0.45">
-                                        <animate attributeName="r" values="24;28;24" dur="3.6s" repeatCount="indefinite"/>
-                                        <animate attributeName="opacity" values="0.32;0.58;0.32" dur="3.6s" repeatCount="indefinite"/>
+                                    <!-- Halo doux scintillant -->
+                                    <circle cx="0" cy="0" r="28" class="sun-halo" fill="#fffbeb" opacity="0.32">
+                                        <animate attributeName="r" values="25;30;25" dur="3.6s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.22;0.52;0.22" dur="3.6s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="0" cy="0" r="20" class="sun-halo-inner" fill="#fef9c3" opacity="0.45">
+                                        <animate attributeName="r" values="18;22;18" dur="2.6s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.3;0.65;0.3" dur="2.6s" repeatCount="indefinite"/>
                                     </circle>
 
-                                    <!-- 8 rayons simples flat en rotation lente et continue -->
-                                    <g class="sun-rays" stroke="#f6ad28" stroke-width="2.4" stroke-linecap="round">
-                                        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="24s" repeatCount="indefinite"/>
-                                        <line x1="0" y1="-20" x2="0" y2="-27"/>
-                                        <line x1="0" y1="20" x2="0" y2="27"/>
-                                        <line x1="-20" y1="0" x2="-27" y2="0"/>
-                                        <line x1="20" y1="0" x2="27" y2="0"/>
-                                        <line x1="-14" y1="-14" x2="-19" y2="-19"/>
-                                        <line x1="14" y1="-14" x2="19" y2="-19"/>
-                                        <line x1="-14" y1="14" x2="-19" y2="19"/>
-                                        <line x1="14" y1="14" x2="19" y2="19"/>
-                                    </g>
+                                    <!-- Disque solaire flat uni (jaune pastel doux et discret) -->
+                                    <circle cx="0" cy="0" r="14" fill="#fef08a"/>
+                                </g>
 
-                                    <!-- Disque solaire flat uni (jaune éclatant sans 3D ni dégradé) -->
-                                    <circle cx="0" cy="0" r="15" fill="#ffd54f"/>
-                                </g>
-                                <g transform="translate(140, 22) scale(1)" opacity="0.95">
-                                    <circle cx="0" cy="0" r="9" fill="#ffffff"/>
-                                    <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
-                                    <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
-                                    <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
-                                    <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
-                                </g>
-                                <g transform="translate(290, -8) scale(0.8)" opacity="0.9">
-                                    <circle cx="0" cy="0" r="9" fill="#ffffff"/>
-                                    <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
-                                    <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
-                                    <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
-                                    <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
-                                </g>
-                                <g transform="translate(215, 52) scale(0.55)" opacity="0.75">
-                                    <circle cx="0" cy="0" r="9" fill="#ffffff"/>
-                                    <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
-                                    <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
-                                    <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
-                                    <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
-                                </g>
-                                <g transform="translate(20, 62) scale(0.6)" opacity="0.8">
-                                    <circle cx="0" cy="0" r="9" fill="#ffffff"/>
-                                    <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
-                                    <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
-                                    <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
-                                    <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                <!-- Nuages qui défilent très très lentement en boucle infinie continue -->
+                                <g id="decor-clouds" class="decor-clouds">
+                                    <g class="clouds-track">
+                                        <animateTransform attributeName="transform" type="translate" from="0 0" to="560 0" dur="95s" repeatCount="indefinite"/>
+                                        <!-- Motif principal des nuages -->
+                                        <g id="clouds-pattern">
+                                            <g transform="translate(20, 62) scale(0.6)" opacity="0.8">
+                                                <circle cx="0" cy="0" r="9" fill="#ffffff"/>
+                                                <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
+                                                <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
+                                                <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
+                                                <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                            </g>
+                                            <g transform="translate(140, 22) scale(1)" opacity="0.95">
+                                                <circle cx="0" cy="0" r="9" fill="#ffffff"/>
+                                                <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
+                                                <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
+                                                <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
+                                                <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                            </g>
+                                            <g transform="translate(215, 52) scale(0.55)" opacity="0.75">
+                                                <circle cx="0" cy="0" r="9" fill="#ffffff"/>
+                                                <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
+                                                <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
+                                                <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
+                                                <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                            </g>
+                                            <g transform="translate(290, -8) scale(0.8)" opacity="0.9">
+                                                <circle cx="0" cy="0" r="9" fill="#ffffff"/>
+                                                <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
+                                                <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
+                                                <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
+                                                <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                            </g>
+                                            <g transform="translate(440, 18) scale(0.65)" opacity="0.82">
+                                                <circle cx="0" cy="0" r="9" fill="#ffffff"/>
+                                                <circle cx="12" cy="-5" r="11" fill="#ffffff"/>
+                                                <circle cx="25" cy="-1" r="8" fill="#ffffff"/>
+                                                <rect x="-9" y="0" width="42" height="8" rx="4" fill="#ffffff"/>
+                                                <rect x="-6" y="5" width="36" height="3" rx="1.5" fill="#e3f0f7"/>
+                                            </g>
+                                        </g>
+                                        <!-- Copie décalée de -560px pour assurer la boucle sans coupure -->
+                                        <use href="#clouds-pattern" x="-560" y="0"/>
+                                    </g>
                                 </g>
                             </g>
 

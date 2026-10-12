@@ -814,32 +814,59 @@ h1, h2, h3, .font-display {
   }
 }
 
-/* ===== Animation Soleil Rayonnant Flat ===== */
-.sun-rays {
+/* ===== Animation Soleil Scintillant & Nuages Défilants ===== */
+.sun-halo {
   transform-box: fill-box;
   transform-origin: center;
-  animation: sun-rays-spin 24s linear infinite;
+  animation: sun-sparkle 3.6s ease-in-out infinite;
 }
 
-@keyframes sun-rays-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sun-halo-inner {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sun-sparkle-inner 2.6s ease-in-out infinite alternate;
 }
 
-.sun-glow {
-  animation: sun-glow-pulse 3.6s ease-in-out infinite;
-}
-
-@keyframes sun-glow-pulse {
+@keyframes sun-sparkle {
   0%, 100% {
-    opacity: 0.35;
+    opacity: 0.22;
+    transform: scale(0.95);
+  }
+  25% {
+    opacity: 0.52;
+    transform: scale(1.06);
   }
   50% {
-    opacity: 0.6;
+    opacity: 0.3;
+    transform: scale(0.98);
+  }
+  75% {
+    opacity: 0.58;
+    transform: scale(1.07);
+  }
+}
+
+@keyframes sun-sparkle-inner {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08);
+  }
+}
+
+.clouds-track {
+  animation: clouds-drift 95s linear infinite;
+}
+
+@keyframes clouds-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(560px);
   }
 }
 
