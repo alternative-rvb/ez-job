@@ -15,6 +15,7 @@ import { HistoryManager } from './modules/managers/history-manager.js';
 import { TrophiesManager } from './modules/managers/trophies-manager.js';
 import { shuffleArray, loadQuizData, getDifficultyIcons } from './modules/core/utils.js';
 import { initializeCategoryColors, getCategoryColors } from './modules/core/category-colors.js';
+import { APP_VERSION } from './modules/core/version.js';
 
 class QuizApp {
     constructor() {
@@ -40,6 +41,12 @@ class QuizApp {
 
         // Toujours afficher directement la sélection des quiz pour faire découvrir la plateforme
         await this.showQuizSelection();
+
+        // Mettre à jour la version dans le footer
+        const versionEl = document.getElementById('footer-version-text');
+        if (versionEl) {
+            versionEl.textContent = `v${APP_VERSION}`;
+        }
 
         console.log('Quiz App initialisée');
     }

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes de version (Changelog) - Erudizz</title>
+  <meta name="description" content="Historique des versions et nouveautés de l'application Erudizz.">
+  <link rel="icon" href="/images/erudizz-favicon.svg" type="image/svg+xml">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- Umami Analytics -->
+  <script defer src="https://analytics.alternative-rvb.cloud/script.js" data-website-id="f7e23881-2942-4fce-a749-b62981eec010"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col justify-between">
+  <!-- Header -->
+  <header class="bg-gray-800 shadow-lg">
+    <nav class="container mx-auto px-4 py-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <a href="/" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+            <img src="images/erudizz-logo.svg" alt="Erudizz logo" class="h-12" />
+          </a>
+        </div>
+        <div class="flex items-center space-x-3">
+          <a href="/" class="btn-base btn-secondary flex items-center gap-2 text-sm">
+            <i class="bi bi-house"></i>
+            <span>Retour à l'accueil</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="container mx-auto px-4 py-8 max-w-4xl flex-1">
+    <div class="text-center mb-10">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-primary-500/20 text-primary-300 border border-primary-500/30 mb-3">
+        <i class="bi bi-journal-text text-accent-400"></i> Historique des mises à jour
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+        Notes de version
+      </h1>
+      <p class="text-gray-400 text-sm sm:text-base mt-2 max-w-xl mx-auto">
+        Découvrez l'ensemble des améliorations, nouvelles fonctionnalités et corrections apportées à Erudizz.
+      </p>
+    </div>
+
+    <!-- Liste des versions -->
+    <div class="space-y-6" id="changelog-list">
+
+      <!-- Version 1.0.40 -->
+      <article class="bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-700/70 relative overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-700">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-full bg-accent-500/20 border border-accent-500/40 text-accent-400 font-mono text-sm font-bold">
+              v1.0.40
+            </span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-semibold">
+              Actuelle
+            </span>
+          </div>
+          <time class="text-xs text-gray-400 flex items-center gap-1.5">
+            <i class="bi bi-calendar3"></i> 12 octobre 2026
+          </time>
+        </div>
+
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-stars text-accent-400 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-white font-semibold">Mise à jour</strong> : Ajout des notes de version dans le footer et automatisation du workflow
+            </div>
+          </li>
+        </ul>
+      </article>
+
+
+      <!-- Version 1.0.39 -->
+      <article class="bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-700/70 relative overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-700">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-full bg-accent-500/20 border border-accent-500/40 text-accent-400 font-mono text-sm font-bold">
+              v1.0.39
+            </span>
+            
+          </div>
+          <time class="text-xs text-gray-400 flex items-center gap-1.5">
+            <i class="bi bi-calendar3"></i> 12 octobre 2026
+          </time>
+        </div>
+
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-trophy-fill text-yellow-400 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-white font-semibold">Refonte des badges de trophées</strong> : nouvelle disposition sur deux lignes distinctes pour éliminer tout retour à la ligne inesthétique et styles glassmorphism modernisés.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-bell-fill text-accent-400 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-white font-semibold">Notifications push et toasts de succès</strong> : système complet de notifications in-app et Web Push natives avec vibrations haptiques mobiles lors de la réussite d'un quiz et de l'obtention d'un trophée.
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Version 1.0.38 -->
+      <article class="bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-700/70 relative overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-700">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-full bg-primary-500/20 border border-primary-500/40 text-primary-300 font-mono text-sm font-bold">
+              v1.0.38
+            </span>
+          </div>
+          <time class="text-xs text-gray-400 flex items-center gap-1.5">
+            <i class="bi bi-calendar3"></i> 12 octobre 2026
+          </time>
+        </div>
+
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-door-open-fill text-primary-400 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-white font-semibold">Accès direct aux quiz</strong> : suppression du formulaire bloquant au premier lancement, les visiteurs accèdent directement au contenu.
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-shield-lock-fill text-emerald-400 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-white font-semibold">Modale de profil & réassurance</strong> : consultation et modification du profil avec rappel clair que le site ne stocke rien sur serveur (zéro base de données, 100% en local).
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-type-strikethrough text-purple-400 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-white font-semibold">Typographie & icônes</strong> : remplacement des émojis par des icônes vectorielles Bootstrap et suppression des cadratins.
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Version 1.0.37 -->
+      <article class="bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-700/70 relative overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-700">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-full bg-primary-500/20 border border-primary-500/40 text-primary-300 font-mono text-sm font-bold">
+              v1.0.37
+            </span>
+          </div>
+          <time class="text-xs text-gray-400 flex items-center gap-1.5">
+            <i class="bi bi-calendar3"></i> 12 octobre 2026
+          </time>
+        </div>
+
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-cpu-fill text-accent-400 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-white font-semibold">Nouveaux quiz IA (Niveau 1)</strong> : ajout de 3 modules interactifs (C'est quoi l'IA, Bien prompter, Bons réflexes).
+            </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-pencil-square text-primary-400 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-white font-semibold">Corrections de contenu</strong> : révision orthographique et validation des questions des quiz existants.
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Version 1.0.36 -->
+      <article class="bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-700/70 relative overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-700">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-full bg-gray-700 border border-gray-600 text-gray-300 font-mono text-sm font-bold">
+              v1.0.36
+            </span>
+          </div>
+          <time class="text-xs text-gray-400 flex items-center gap-1.5">
+            <i class="bi bi-calendar3"></i> 11 octobre 2026
+          </time>
+        </div>
+
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2.5">
+            <i class="bi bi-palette-fill text-purple-400 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-white font-semibold">Harmonisation graphique</strong> : alignement des images de secours sur la palette officielle de la charte.
+            </div>
+          </li>
+        </ul>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-6 mt-12 border-t border-gray-700/60">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-400 text-xs mb-3 flex items-center justify-center gap-1.5 opacity-80">
+        <i class="bi bi-shield-check text-accent-500"></i>
+        <span>Pas de base de données · Vos données restent 100% sur votre appareil (stockage local)</span>
+      </p>
+      <p class="text-gray-400">
+        <a href="privacy.html" class="text-primary-400 underline underline-offset-2 hover:text-accent-500 transition-colors">Politique de confidentialité</a> |
+        <a href="mentions-legales.html" class="text-primary-400 underline underline-offset-2 hover:text-accent-500 transition-colors">Mentions légales</a> |
+        <a href="https://alternative-rvb.com/" class="text-primary-400 underline underline-offset-2 hover:text-accent-500 transition-colors">© 2025 Alternative RVB</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
