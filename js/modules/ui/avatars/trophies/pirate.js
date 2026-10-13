@@ -221,15 +221,15 @@ export const PIRATE_TROPHY = {
     legacyId: 'trophy_pirate_corsair',
     number: 10,
     title: 'Le Corsaire des Mers',
-    species: 'human',
-    speciesName: 'Humain',
+    species: 'pirate',
+    speciesName: 'Corsaire',
     className: 'Corsaire',
     badge: 'Nouveau',
     tagline: 'Cap sur l\'aventure et les trésors des Sept Mers !',
     description: 'Débloque la tenue de Corsaire des Sept Mers, le grand tricorne brodé d\'or, le sabre d\'abordage et la moustache exclusive de flibustier.',
     rarity: 'épique',
     unlocks: {
-        species: 'human',
+        species: 'pirate',
         skins: [],
         hairs: ['#3b2219'],
         eyes: ['lagoon-blue'],
@@ -238,7 +238,7 @@ export const PIRATE_TROPHY = {
         label: 'Corsaire des Mers'
     },
     rewards: [
-        { icon: 'bi-person-badge', label: 'Espèce : Humain' },
+        { icon: 'bi-person-badge', label: 'Espèce : Corsaire' },
         { icon: 'bi-compass', label: 'Classe : Corsaire des Mers' },
         { icon: 'bi-scissors', label: 'Coupes exclusives : Marin d\'Abordage (G) / Capitaine (F)' },
         { icon: 'bi-slash-square', label: 'Arme : Sabre d\'abordage ouvragé' },
@@ -251,7 +251,7 @@ export const PIRATE_TROPHY = {
         styleKey: 'pirate_boy',
         styleId: 1,
         outfitKey: 'pirate_corsair',
-        species: 'human',
+        species: 'pirate',
         skinColor: 'sun-bronze',
         hairColor: '#3b2219',
         eyeColor: 'lagoon-blue'
@@ -262,7 +262,7 @@ export const PIRATE_TROPHY = {
         styleKey: 'pirate_girl',
         styleId: 1,
         outfitKey: 'pirate_corsair',
-        species: 'human',
+        species: 'pirate',
         skinColor: 'sun-bronze',
         hairColor: '#3b2219',
         eyeColor: 'lagoon-blue'

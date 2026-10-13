@@ -342,7 +342,7 @@ export const BOY_BASE = {
                 <polygon points="72,49 70,47 68,49 70,51" fill="${skin.shadow}"/>
             </g>` : ''}
 
-            ${styleKey === 'pirate_boy' ? `
+            ${species === 'pirate' || styleKey === 'pirate_boy' ? `
             <!-- Bouche souriante de corsaire et élégante moustache harmonieuse épousant la même courbure -->
             <!-- 1. Sourire de base, aplati de 40 % autour de son point bas (y=53.9) pour que les coins remontent moins haut -->
             <g transform="translate(0 21.56) scale(1 0.6)">${getSmileMouth(mouthColor, mood === 'sad')}</g>
