@@ -21,7 +21,7 @@ Une application web moderne de quiz interactifs développée avec JavaScript ES6
 ### Options de Jeu Personnalisables
 
 - **Sélection du temps** : 5, 10, 15 ou 20 secondes par question
-- **Mode Spoiler** : Réponses cachées, révélation automatique à la fin du temps
+- **Mode Automatique (révision)** : Réponses cachées, bonne réponse révélée à la fin du temps
 - **Temps estimé** mis à jour dynamiquement sur les cartes de quiz
 - **Configuration persistante** pendant la session
 
@@ -102,7 +102,7 @@ Ouvrez votre navigateur sur `http://localhost:8000`
 
 - **Réponses cachées** : Les boutons de réponse ne sont pas visibles
 - **Réflexion pure** : Concentrez-vous sur la question sans distraction
-- **Révélation automatique** : La bonne réponse apparaît quand le temps est écoulé
+- **Révision automatique** : La bonne réponse apparaît quand le temps est écoulé
 - **Même système de score** : Les points sont attribués normalement
 
 ### Résultats

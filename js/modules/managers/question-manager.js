@@ -134,7 +134,7 @@ export class QuestionManager {
                     ${CONFIG.freeMode ? `
                         <div class="text-center py-4 px-6 rounded-lg mb-4 md:col-span-2" style="background:${T.primaryA(0.2)};border:2px solid ${T.primaryA(0.5)}">
                             <i class="bi bi-lightbulb text-2xl mb-2" style="color:${T.hexPrimaryLight}"></i>
-                            <p class="font-medium" style="color:${T.hexPrimaryLight}">Mode Libre activé</p>
+                            <p class="font-medium" style="color:${T.hexPrimaryLight}">Mode Automatique activé</p>
                             <p class="text-sm" style="color:${T.hexPrimary}">Les réponses sont cachées. Réfléchissez bien !</p>
                         </div>
                     ` : ''}
@@ -453,7 +453,7 @@ export class QuestionManager {
 
             const answerButtons = document.querySelectorAll('.answer-btn');
 
-            // En mode libre, révéler automatiquement la bonne réponse
+            // En mode automatique (révision), révéler automatiquement la bonne réponse
             if (CONFIG.freeMode && answerIndex === -1) {
                 this.revealCorrectAnswer(question);
                 return;

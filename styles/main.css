@@ -725,6 +725,44 @@ h1, h2, h3, .font-display {
   box-shadow: 0 2px 8px rgba(53, 131, 124, 0.35);
 }
 
+/* Rangées de filtres : défilement horizontal au doigt sur mobile, retour à la ligne centré dès sm */
+.filter-row {
+  display: flex;
+  gap: 0.375rem;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  margin: 0 -0.75rem;
+  padding: 0.25rem 0.75rem 0.5rem;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-row::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-row > .btn-category {
+  flex-shrink: 0;
+  white-space: nowrap;
+  scroll-snap-align: start;
+  min-height: 2.25rem;
+}
+
+@media (min-width: 640px) {
+  .filter-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: visible;
+    margin: 0;
+    padding: 0;
+  }
+
+  .filter-row > .btn-category {
+    min-height: 0;
+  }
+}
+
 .subject-filter {
   border-color: var(--subject-accent, rgb(53, 131, 124));
   color: var(--subject-accent, rgb(46, 120, 113));

@@ -9,7 +9,7 @@ const isPrivate = window.location.pathname.includes('/private');
 class AppConfig {
     constructor() {
         this.timeLimit = 10;        // Temps par question en secondes
-        this.freeMode = false;      // Mode libre activé par défaut
+        this.freeMode = false;      // Mode automatique (révision), désactivé par défaut
         this.questionsPath = '/js/data/';  // Chemin absolu depuis la racine
         this.showResponse = true;   // Afficher la bonne réponse en cas de mauvaise réponse
         this.categoryFilter = null;  // null = toutes les catégories
