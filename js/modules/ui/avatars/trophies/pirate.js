@@ -3,7 +3,7 @@
  * Module du trophée : tenue, coupes de cheveux, sabre d'abordage, tricorne et entrée du registre RPG_TROPHIES.
  */
 
-import { fuseau, plume, gripHand, fitBand, SKIN_DEFAULT } from '../../avatar-kit.js';
+import { fuseau, plume, gripHand, fitBand, hairBase, SKIN_DEFAULT } from '../../avatar-kit.js';
 import { mixHex } from '../base.js';
 
 // ANCHOR Sabre d'abordage (cimeterre / rapière de corsaire), modélisé sur l'axe X=0, origine au milieu de la poignée
@@ -145,7 +145,13 @@ export const OUTFIT_PIRATE_CORSAIR = {
         </g>`
 };
 
-// SECTION Coupes de cheveux exclusives du Pirate : Dreadlocks / Locks comme Jack Sparrow
+// SECTION Coupes de cheveux exclusives du Pirate : locks en fuseau qui suivent les courbes de l'ellipse arrière
+// ANCHOR Une lock : fuseau qui suit la courbe de l'ellipse et filet d'ombre fin
+const pirateLock = (color, d, width) => `
+    <path d="${fuseau(d, width, 16)}" fill="${color}"/>
+    <path d="${fuseau(d, width * 0.2, 12)}" fill="${mixHex(color, '#000000', 0.32)}"/>
+`;
+
 export const PIRATE_STYLES = {
     pirate_boy: {
         id: 'pirate_boy',
@@ -153,31 +159,21 @@ export const PIRATE_STYLES = {
         withBand: false,
         getHairBack: (color) => `
             <g id="hair-back-pirate-boy">
-                <!-- ANCHOR Socle universel -->
-                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <!-- Cascade de dreadlocks épaisses (locks) de flibustier tombant sur les épaules -->
-                <!-- Côté gauche : 3 dreadlocks sculptées pures -->
-                <path d="M 18,38 C 13,47 9,58 11,70 C 12,76 15,77 17,72 C 19,62 21,50 25,40 Z" fill="${color}"/>
-                <path d="M 23,40 C 19,51 16,64 17,76 C 18,84 21,87 23,85 C 26,79 27,66 28,49 Z" fill="${color}"/>
-                <path d="M 28,46 C 25,55 24,66 26,76 C 27,80 30,80 31,76 C 33,66 33,55 33,47 Z" fill="${color}"/>
-                <!-- Côté droit : 3 dreadlocks sculptées pures -->
-                <path d="M 82,38 C 87,47 91,58 89,70 C 88,76 85,77 83,72 C 81,62 79,50 75,40 Z" fill="${color}"/>
-                <path d="M 77,40 C 81,51 84,64 83,76 C 82,84 79,87 77,85 C 74,79 73,66 72,49 Z" fill="${color}"/>
-                <path d="M 72,46 C 75,55 76,66 74,76 C 73,80 70,80 69,76 C 67,66 67,55 67,47 Z" fill="${color}"/>
-                <!-- Stries de torsion cordelées des dreadlocks -->
-                <path d="${fuseau('M 17,48 C 16,58 15,68 17,74', 0.9, 10)} ${fuseau('M 24,48 C 23,60 22,72 23,82', 0.9, 10)}" fill="${mixHex(color, '#000000', 0.3)}"/>
-                <path d="${fuseau('M 83,48 C 84,58 85,68 83,74', 0.9, 10)} ${fuseau('M 76,48 C 77,60 78,72 77,82', 0.9, 10)}" fill="${mixHex(color, '#000000', 0.3)}"/>
+                <!-- ANCHOR Base mi-long : ellipse qui descend jusqu'au cou -->
+                ${hairBase('mi-long', color)}
+                <!-- Locks en fuseau le long de la courbe de l'ellipse, deux par côté -->
+                ${pirateLock(color, 'M 21,26 C 14,38 15,54 24,70', 6)}
+                ${pirateLock(color, 'M 27,34 C 22,46 23,58 30,72', 5)}
+                ${pirateLock(color, 'M 79,26 C 86,38 85,54 76,70', 6)}
+                ${pirateLock(color, 'M 73,34 C 78,46 77,58 70,72', 5)}
             </g>`,
         getHairFront: (color) => `
             <g id="hair-front-pirate-boy">
-                <!-- Frange de locks texturées sous le bandana découvrant les sourcils -->
-                <path d="M 21,25 C 24,19 36,16 50,15 C 64,16 76,19 79,25 C 76,29 73,27 71,22 C 68,28 63,29 60,23 C 56,29 50,30 46,22 C 42,29 36,28 33,22 C 29,28 25,29 23,23 Z" fill="${color}"/>
-                <!-- Dreadlock avant gauche tombant le long de la joue -->
-                <path d="M 23,24 C 20,35 18,48 19,60 C 20,64 22.5,64 23.5,59 C 24.5,49 25.5,36 26.5,25 Z" fill="${color}"/>
-                <path d="${fuseau('M 21.5,32 C 19.5,42 19.5,52 21.5,58', 1.0, 10)}" fill="${mixHex(color, '#000000', 0.25)}"/>
-                <!-- Dreadlock avant droite tombant le long de la tempe -->
-                <path d="M 77,24 C 80,35 82,48 81,60 C 80,64 77.5,64 76.5,59 C 75.5,49 74.5,36 73.5,25 Z" fill="${color}"/>
-                <path d="${fuseau('M 78.5,32 C 80.5,42 80.5,52 78.5,58', 1.0, 10)}" fill="${mixHex(color, '#000000', 0.25)}"/>
+                <!-- Mèches libres copiées telles quelles de la coupe de base 3 (garçon) -->
+                <path d="M 21,28 C 23,16 36,8 50,4 C 64,4 76,10 80,22 C 82,26 81,30 79,31 C 77,26 76,23 74,21 C 75,26 75,32 72,35 C 69,28 67,25 65,21 C 66,27 66,35 63,38 C 60,29 58,25 56,21 C 56,26 56,33 53,35 C 50,28 47,25 44,21 C 44,26 42,30 38,30 C 32,28 26,28 21,28 Z" fill="${color}"/>
+                <!-- Deux mèches plus longues sur les côtés qui encadrent le visage, en fuseau le long de sa courbe -->
+                ${pirateLock(color, 'M 30,8 C 20,22 19,58 24,80', 6.5)}
+                ${pirateLock(color, 'M 70,8 C 80,22 81,58 76,80', 6.5)}
             </g>`
     },
     pirate_girl: {
@@ -186,23 +182,21 @@ export const PIRATE_STYLES = {
         withTiara: false,
         getHairBack: (color) => `
             <g id="hair-back-pirate-girl">
-                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <!-- Longue cascade de dreadlocks sculptées jusqu'au buste (y=88) -->
-                <path d="M 18,44 C 13,52 8,66 11,78 C 12,84 15,86 17,80 C 20,70 22,54 26,44 Z" fill="${color}"/>
-                <path d="M 24,42 C 19,54 15,70 17,84 C 18,90 22,92 24,88 C 27,80 29,66 30,48 Z" fill="${color}"/>
-                <path d="M 29,46 C 26,56 24,70 27,82 C 28,87 32,87 33,81 C 34,70 35,56 35,46 Z" fill="${color}"/>
-                <!-- Côté droit locks longues pures -->
-                <path d="M 82,44 C 87,52 92,66 89,78 C 88,84 85,86 83,80 C 80,70 78,54 74,44 Z" fill="${color}"/>
-                <path d="M 76,42 C 81,54 85,70 83,84 C 82,90 78,92 76,88 C 73,80 71,66 70,48 Z" fill="${color}"/>
-                <path d="M 71,46 C 74,56 76,70 73,82 C 72,87 68,87 67,81 C 66,70 65,56 65,46 Z" fill="${color}"/>
+                <!-- ANCHOR Base longue : ellipse qui descend jusqu'aux jambes -->
+                ${hairBase('long', color)}
+                <!-- Locks en fuseau le long de la courbe de l'ellipse, deux par côté -->
+                ${pirateLock(color, 'M 22,26 C 13,44 13,68 20,92', 7)}
+                ${pirateLock(color, 'M 28,34 C 21,52 21,72 27,94', 6)}
+                ${pirateLock(color, 'M 78,26 C 87,44 87,68 80,92', 7)}
+                ${pirateLock(color, 'M 72,34 C 79,52 79,72 73,94', 6)}
             </g>`,
         getHairFront: (color) => `
             <g id="hair-front-pirate-girl">
-                <!-- Mèches de visage aventureuses sous le bandana -->
-                <path d="M 20,28 C 23,20 35,16 50,15 C 65,16 77,20 80,28 C 76,32 73,29 71,24 C 68,30 63,31 60,24 C 55,31 49,32 45,24 C 40,31 35,30 31,23 C 27,29 23,30 21,25 Z" fill="${color}"/>
-                <!-- Locks avant encadrant le visage -->
-                <path d="${fuseau('M 22,28 C 17,42 16,56 19,70', 2.6, 16)}" fill="${color}"/>
-                <path d="${fuseau('M 78,28 C 83,42 84,56 81,70', 2.6, 16)}" fill="${color}"/>
+                <!-- Mèches libres copiées telles quelles de la coupe de base 3 (garçon), même frange pour la fille -->
+                <path d="M 21,28 C 23,16 36,8 50,4 C 64,4 76,10 80,22 C 82,26 81,30 79,31 C 77,26 76,23 74,21 C 75,26 75,32 72,35 C 69,28 67,25 65,21 C 66,27 66,35 63,38 C 60,29 58,25 56,21 C 56,26 56,33 53,35 C 50,28 47,25 44,21 C 44,26 42,30 38,30 C 32,28 26,28 21,28 Z" fill="${color}"/>
+                <!-- Deux mèches plus longues sur les côtés qui encadrent le visage, en fuseau le long de sa courbe, jusqu'aux épaules -->
+                ${pirateLock(color, 'M 30,8 C 19,24 18,68 23,94', 7)}
+                ${pirateLock(color, 'M 70,8 C 81,24 82,68 77,94', 7)}
             </g>`
     }
 };

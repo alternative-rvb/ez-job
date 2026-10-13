@@ -3,7 +3,7 @@
  * Module du trophée : tenue, coupes de cheveux, cornes draconiques, lance et entrée du registre RPG_TROPHIES.
  */
 
-import { fuseau, plume, gripHand, fitBand, SKIN_DEFAULT } from '../../avatar-kit.js';
+import { fuseau, plume, gripHand, fitBand, hairBase, SKIN_DEFAULT } from '../../avatar-kit.js';
 import { mixHex } from '../base.js';
 
 // ANCHOR Cornes draconiques (espèce dragon / drakéide) : cornes en S ascendantes en fuseau & plume dans l'esprit de Shadow, obsidienne et flammes rubis/or
@@ -157,7 +157,12 @@ export const OUTFIT_DRAGON_KNIGHT = {
         </g>`
 };
 
-// SECTION Coupes de cheveux exclusives du Chevalier Dragon (garçon et fille) - Drakéide de Feu
+// SECTION Coupes de cheveux exclusives du Chevalier Dragon : garçon court (coupe de la Fée en flammes), fille longue (crinière façon Orc en flammes)
+// ANCHOR Une langue de feu : plume (base épaisse, pointe fine) et, une sur deux, un filet ambre
+const dragonTongue = (color, d, width, glow = true) => `
+    <path d="${plume(d, width * 1.3, 16)}" fill="${color}"/>
+    ${glow ? `<path d="${fuseau(d, width * 0.2, 12)}" fill="${mixHex(color, '#f59e0b', 0.4)}"/>` : `<path d="${fuseau(d, width * 0.16, 12)}" fill="${mixHex(color, '#000000', 0.3)}"/>`}`;
+
 export const DRAGON_STYLES = {
     dragon_boy: {
         id: 'dragon_boy',
@@ -165,119 +170,115 @@ export const DRAGON_STYLES = {
         withBand: false,
         getHairBack: (color) => `
             <g id="hair-back-dragon-boy">
-                <!-- ANCHOR Socle universel -->
-                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <!-- Grande crinière de feu flamboyante : langues de flammes ascendantes foudroyantes -->
-                <path d="M 12,46 
-                         C 8,36 6,24 8,14 
-                         C 6,4 11,-4 17,-12 
-                         C 20,-10 23,-4 24,2 
-                         C 26,-6 31,-14 37,-20 
-                         C 41,-15 42,-8 43,-3 
-                         C 45,-12 47,-21 50,-26 
-                         C 53,-21 55,-12 57,-3 
-                         C 58,-8 59,-15 63,-20 
-                         C 69,-14 74,-6 76,2 
-                         C 77,-4 80,-10 83,-12 
-                         C 89,-4 94,4 92,14 
-                         C 94,24 92,36 88,46 
-                         C 84,36 80,26 76,20 
-                         C 66,10 34,10 24,20 
-                         C 20,26 16,36 12,46 Z" fill="${color}"/>
-                <!-- Langues de flammes vives intérieures jaillissant entre les cornes -->
-                <path d="M 45,2 C 47,-10 48,-20 50,-24 C 52,-20 53,-10 55,2 C 53,-2 47,-2 45,2 Z" fill="${mixHex(color, '#f59e0b', 0.32)}"/>
-                <path d="M 33,4 C 34,-6 35,-14 38,-18 C 39,-13 40,-6 41,2 Z" fill="${mixHex(color, '#f59e0b', 0.22)}"/>
-                <path d="M 67,4 C 66,-6 65,-14 62,-18 C 61,-13 60,-6 59,2 Z" fill="${mixHex(color, '#f59e0b', 0.22)}"/>
-                <!-- Flammes latérales extérieures sculptées en fuseaux de feu -->
-                <path d="${plume('M 18,22 C 10,18 6,10 7,-1', 4.8, 14)}" fill="${color}"/>
-                <path d="${fuseau('M 17,20 C 11,16 8,9 9,1', 1.8, 10)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
-                <path d="${plume('M 84,22 C 92,18 96,10 93,-1', 4.8, 14)}" fill="${color}"/>
-                <path d="${fuseau('M 85,20 C 91,16 94,9 93,1', 1.8, 10)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
-                <!-- Pointes de flammes basses flammées aux tempes -->
-                <path d="${plume('M 21,36 C 13,38 9,44 11,50', 4.2, 12)}" fill="${color}"/>
-                <path d="${plume('M 81,36 C 89,38 93,44 91,50', 4.2, 12)}" fill="${color}"/>
-                <!-- Stries de profondeur d'ombre entre les langues de feu -->
-                <path d="${fuseau('M 43,0 C 47,-9 48,-17 50,-22', 1.2, 10)}" fill="${mixHex(color, '#000000', 0.3)}"/>
-                <path d="${fuseau('M 57,0 C 53,-9 52,-17 50,-22', 1.2, 10)}" fill="${mixHex(color, '#000000', 0.3)}"/>
-                <path d="${fuseau('M 31,8 C 29,1 31,-7 36,-17', 1.3, 12)}" fill="${mixHex(color, '#000000', 0.25)}"/>
-                <path d="${fuseau('M 71,8 C 73,1 71,-7 66,-17', 1.3, 12)}" fill="${mixHex(color, '#000000', 0.25)}"/>
+                <!-- ANCHOR Base courte : cercle 14 % plus grand que le crâne -->
+                ${hairBase('court', color)}
+                <!-- Pics en arrière-plan copiés tels quels de la coupe de base 4 (Coupe en pics, garçon), en plus de la coupe existante, descendus de 10 % de leur hauteur (25 % puis remontés de 15 %), largeur réduite de 20 % puis augmentée de 5 % autour de x=50 (échelle 0.84) -->
+                <g transform="translate(8 6.4) scale(0.84 1)"><path d="M 82,44 
+                         C 88,36 96,30 96,30 
+                         C 94,26 88,22 88,22 
+                         C 94,16 98,10 98,10 
+                         C 92,6 84,4 84,4 
+                         C 90,-4 92,-12 92,-12 
+                         C 84,-8 74,-6 74,-6 
+                         C 72,-14 64,-20 64,-20 
+                         C 58,-14 52,-12 52,-12 
+                         C 46,-16 38,-18 38,-18 
+                         C 34,-12 28,-6 28,-6 
+                         C 18,-4 8,-2 8,-2 
+                         C 14,6 18,10 18,10 
+                         C 10,12 2,16 2,16 
+                         C 8,22 16,24 16,24 
+                         C 10,26 4,32 4,32 
+                         C 10,36 18,44 18,44 
+                         C 24,34 26,22 30,16 
+                         C 38,8 62,8 70,16 
+                         C 74,22 76,34 82,44 Z" fill="${color}"/></g>
             </g>`,
         getHairFront: (color) => `
             <g id="hair-front-dragon-boy">
-                <!-- Frange flamboyante sculptée en langues de feu acérées -->
-                <path d="M 20,24 C 23,16 35,8 50,6 C 65,8 77,16 80,24 C 77,29 74,27 72,21 C 70,29 65,33 60,25 C 57,32 52,34 49,27 C 47,33 42,34 39,26 C 36,31 32,32 29,24 C 26,29 22,30 20,24 Z" fill="${color}"/>
-                <!-- Mèche de feu centrale plongeante et effilée -->
-                <path d="${plume('M 48,15 C 50,22 51,28 53,34', 3.8, 14)}" fill="${color}"/>
-                <path d="${fuseau('M 48.5,17 C 50,23 51,28 52.5,32', 1.4, 10)}" fill="${mixHex(color, '#f59e0b', 0.3)}"/>
-                <!-- Mèches latérales en langues de flammes inclinées vers l'intérieur -->
-                <path d="${plume('M 34,18 C 37,24 40,29 44,33', 3.4, 12)}" fill="${color}"/>
-                <path d="${plume('M 66,18 C 63,24 60,29 56,33', 3.4, 12)}" fill="${color}"/>
-                <!-- Mèches de tempes ardentes encadrant les joues comme des flammèches -->
-                <path d="${plume('M 21,24 C 17,32 16,40 18,48', 3.2, 14)}" fill="${color}"/>
-                <path d="${fuseau('M 20.5,26 C 17.5,33 16.8,39 18.2,45', 1.2, 10)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
-                <path d="${plume('M 79,24 C 83,32 84,40 82,48', 3.2, 14)}" fill="${color}"/>
-                <path d="${fuseau('M 79.5,26 C 82.5,33 83.2,39 81.8,45', 1.2, 10)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
-                <!-- Sillons d'ombre sculptant le relief des flammes -->
-                <path d="${fuseau('M 38,18 C 40,23 42,28 44,31', 0.9, 8)} ${fuseau('M 62,18 C 60,23 58,28 56,31', 0.9, 8)}" fill="${mixHex(color, '#000000', 0.3)}"/>
+                <!-- Mèches latérales et épi ébouriffé de la Fée (garçon), conservés -->
+                <g transform="matrix(0.136688,0.030396,-0.047579,0.213959,24.048365,-29.4201)">
+                <path d="M108.168,291.526C107.808,291.264 103.599,288.466 96.702,281.802C96.248,281.363 93.152,278.123 91.456,275.867C88.513,271.953 87.746,270.495 86.359,267.587C83.549,261.698 84.688,257.345 86.212,253.079C86.403,252.546 87.805,249.396 89.829,246.832C90.821,245.574 93.15,242.481 98.58,239.034C102.603,236.48 106.531,234.907 112.243,233.768C111.61,234.558 109.803,236.563 108.812,240.778C108.368,242.664 108.108,244.904 109.513,251.521C109.895,253.319 109.985,253.305 110.347,255.103C110.751,257.114 111.683,259.622 111.37,263.546C111.15,266.308 110.976,266.297 110.726,269.059C110.671,269.661 110.343,270.9 109.995,274.011C109.902,274.85 109.63,275.912 109.287,279.24C109.233,279.765 108.645,282.75 108.402,287.685C108.309,289.576 108.244,289.571 108.168,291.526Z" fill="${color}"/>
+                </g>
+                <g transform="matrix(-0.136688,0.030396,0.047579,0.213959,77.367765,-29.4201)">
+                <path d="M108.168,291.526C108.432,284.747 109.016,281.008 110.196,272.379C110.5,270.164 110.592,270.173 110.835,267.954C111.076,265.748 111.203,265.758 111.37,263.546C111.688,259.338 110.74,257.411 110.154,254.078C110.113,253.841 107.958,246.358 108.574,242.073C109.325,236.844 112.231,233.783 112.243,233.768C107.763,234.661 101.42,236.266 94.369,242.095C89.833,245.844 84.559,252.875 84.658,260.967C84.703,264.65 86.486,267.944 87.612,270.084C89.596,273.855 93.637,278.957 98.054,283.092C103.956,288.616 106.68,290.444 108.168,291.526Z" fill="${color}"/>
+                </g>
+                <g transform="matrix(0.25,0,0,0.25,3.785698,-35.212793)">
+                <path d="M108.169,291.52C108.166,291.517 104.759,288.694 99.95,282.548C99.637,282.149 98.355,280.51 96.366,277.318C96.349,277.29 94.102,273.57 92.894,270.442C91.651,267.226 89.53,261.667 90.925,254.616C91.459,251.917 92.101,249.566 93.854,246.265C94.695,244.682 96.405,242.162 98.398,240.318C100.358,238.504 102.567,237 104.979,235.846C107.922,234.437 111.646,233.86 112.243,233.768C112.169,233.848 109.726,236.246 107.6,240.235C107.346,240.712 106.073,242.903 105.368,247.128C105.223,248.001 104.94,250.572 105.047,252.687C105.108,253.897 104.993,254.148 105.247,256.513C105.26,256.635 105.514,260.536 105.528,261.767C105.546,263.331 105.538,263.326 105.515,264.888C105.507,265.42 105.515,265.419 105.611,269.792C105.651,271.61 106.07,279.669 107.165,286.133C107.751,289.595 108.076,291.092 108.169,291.52Z" fill="${color}"/>
+                </g>
+                <g transform="matrix(-0.25,0,0,0.25,97.630433,-35.212793)">
+                <path d="M108.169,291.52C107.921,290.338 106.709,284.9 105.992,276.322C105.94,275.693 105.69,271.973 105.646,270.895C105.579,269.246 105.623,269.248 105.553,267.596C105.451,265.182 105.541,265.184 105.523,262.768C105.48,256.903 105.053,256.225 105.063,253.4C105.066,252.608 104.953,251.422 105.093,249.821C105.117,249.548 105.246,245.592 106.81,241.89C106.949,241.56 107.552,240.133 108.944,237.948C110.316,235.795 111.813,234.229 112.243,233.768C109.381,234.233 104.662,235.086 99.538,239.32C95.698,242.494 93.561,246.263 92.025,250.341C91.922,250.615 90.924,253.803 90.642,256.419C90.426,258.425 90.469,259.489 90.496,260.732C90.5,260.936 90.733,263.04 90.773,263.246C91,264.44 91.285,266.382 93.136,271.061C93.333,271.559 94.892,274.995 96.691,277.835C97.653,279.355 99.877,282.982 105.211,288.686C106.297,289.848 107.925,291.302 108.169,291.52Z" fill="${color}"/>
+                </g>
+                <g transform="matrix(0.25,0,0,0.25,6.848695,-37.308708)">
+                <path d="M133.889,307.947C132.793,307.458 127.369,305.149 118.836,299.274C118.337,298.931 114.43,296.018 112.211,294.016C107.091,289.396 104.935,286.453 104.867,286.369C101.062,281.634 98.618,277.561 96.972,271.111C96.712,270.092 95.909,266.001 95.93,262.681C95.968,256.457 97.255,249.911 102.198,243.087C104.313,240.167 107.045,237.185 112.24,233.77C112.001,234.229 109.738,238.184 108.296,244C108.273,244.092 107.138,247.99 107.544,253.745C107.592,254.43 107.903,257.808 108.924,261.12C110.075,264.853 110.113,264.84 111.967,269.334C112.138,269.749 112.142,269.742 114.151,274.503C115.706,278.19 116.062,279.015 118.265,283.505C119.282,285.578 124.041,294.63 129.833,302.587C132.321,306.004 133.551,307.529 133.889,307.947Z" fill="${color}"/>
+                </g>
+                <g transform="matrix(-0.25,0,0,0.25,94.567435,-37.308708)">
+                <path d="M133.889,307.947C133.104,306.974 129.157,301.982 125.637,296.403C122.598,291.584 121.056,288.732 120.687,288.049C119.915,286.619 119.811,286.677 116.643,280.179C115.431,277.694 113.258,272.307 111.572,268.384C110.677,266.303 109.546,263.471 108.644,260.154C107.945,257.585 106.906,252.188 107.794,246.506C107.831,246.266 108.067,244.379 109.25,240.701C110.374,237.21 111.86,234.496 112.247,233.761C108.944,235.971 104.198,239.329 100.29,246.011C96.717,252.118 95.869,257.899 95.934,263.635C95.955,265.484 96.443,268.395 96.511,268.806C97.034,271.925 97.759,274.075 98.878,276.841C99.008,277.164 100.15,279.481 100.341,279.81C100.968,280.894 102.437,283.646 106.822,288.71C107.399,289.376 110.721,292.811 113.427,295.066C115.563,296.846 119.814,300.375 127.793,304.888C129.089,305.621 130.92,306.624 133.889,307.947Z" fill="${color}"/>
+                </g>
+                <g transform="matrix(0.25,0,0,0.25,0,-34)">
+                <path d="M88,195.262C88,195.262 86.385,143.492 109.62,100C132.854,56.508 172.125,33.058 172.125,33.058C145.299,59.441 132.395,93.899 148.359,117.112C162.726,62.142 219.185,31.237 261.454,16.54C214.55,84.428 248.145,117.112 248.145,117.112C248.145,117.112 259.966,103.067 270.485,76.433C274.772,65.578 283.392,43.753 283.392,43.753C308.242,101.223 304.63,152.065 312,195.262L88,195.262Z" fill="${color}"/>
+                </g>
+                <!-- Traits fins en fuseau, de la couleur des cheveux, dans les espaces vides entre les mèches principales, courbés dans le sens des épis (vers la droite en montant) -->
+                <path d="${fuseau('M 34.8,-1.6 C 35,-9.2 38,-15 44,-19.6', 2.3, 14)} ${fuseau('M 40.6,-2.4 C 40.8,-8 42.4,-11.5 46,-14', 0.9, 12)} ${fuseau('M 59.6,-2 C 59.8,-10 62,-17 67,-21.5', 2.3, 12)} ${fuseau('M 62,-2.6 C 62.2,-8.5 63.6,-12.5 67,-15', 0.9, 12)}" fill="${color}"/>
+                <!-- Filets ambre et ombre dans les épis, façon flammes -->
+                <path d="${fuseau('M 40,-3 C 41,-12 45,-20 51,-26', 1.6, 12)} ${fuseau('M 60,-3 C 61,-12 65,-19 70,-24', 1.6, 12)}" fill="${mixHex(color, '#f59e0b', 0.45)}"/>
+                <path d="${fuseau('M 28,10 C 26,4 27,-2 31,-8', 1.2, 10)} ${fuseau('M 72,10 C 74,4 73,-2 69,-8', 1.2, 10)}" fill="${mixHex(color, '#000000', 0.3)}"/>
+                <!-- Frange copiée telle quelle de la coupe de base 4 (Coupe en pics, garçon), à la place de la frange de la Fée -->
+                <path d="M 20,30 
+                         C 22,14 34,4 50,4 
+                         C 66,4 80,14 82,30 
+                         C 82,36 80,37 78,34 
+                         C 76,27 74,24 72,24 
+                         C 70,30 67,36 64,35 
+                         C 62,28 61,23 58,23 
+                         C 56,29 52,38 48,38 
+                         C 46,32 45,24 42,23 
+                         C 40,28 36,37 33,37 
+                         C 31,31 30,24 27,24 
+                         C 25,29 23,34 20,30 Z" fill="${color}"/>
             </g>`
     },
     dragon_girl: {
         id: 'dragon_girl',
         name: 'Cascade de Flammes (Fille)',
         withTiara: false,
-        getHairBack: (color) => `
-            <g id="hair-back-dragon-girl">
-                <!-- ANCHOR Socle universel -->
-                <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <!-- Crête supérieure flamboyante identique au garçon pour la majesté draconique -->
-                <path d="M 14,44 
-                         C 9,34 7,22 9,14 
-                         C 7,4 12,-4 18,-12 
-                         C 21,-10 24,-4 25,2 
-                         C 27,-6 32,-14 38,-20 
-                         C 42,-15 43,-8 44,-3 
-                         C 46,-12 48,-21 50,-26 
-                         C 52,-21 54,-12 56,-3 
-                         C 57,-8 58,-15 62,-20 
-                         C 68,-14 73,-6 75,2 
-                         C 76,-4 79,-10 82,-12 
-                         C 88,-4 93,4 91,14 
-                         C 94,22 92,34 88,44 
-                         C 86,56 83,72 85,86 
-                         C 80,84 78,76 75,68 
-                         C 73,62 70,74 68,84 
-                         C 64,80 62,70 60,60 
-                         C 56,40 44,40 40,60 
-                         C 38,70 36,80 32,84 
-                         C 30,74 27,62 25,68 
-                         C 22,76 20,84 15,86 
-                         C 17,72 14,56 14,44 Z" fill="${color}"/>
-                <!-- Flots de flammes latéraux ondulants tombant sur les épaules -->
-                <path d="${plume('M 17,40 C 11,52 9,68 14,84', 5.2, 18)}" fill="${color}"/>
-                <path d="${fuseau('M 16,42 C 11,54 10,68 14,80', 2.0, 14)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
-                <path d="${plume('M 83,40 C 89,52 91,68 86,84', 5.2, 18)}" fill="${color}"/>
-                <path d="${fuseau('M 84,42 C 89,54 90,68 86,80', 2.0, 14)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
-                <!-- Pointes de flammes terminales effilées en bas de crinière -->
-                <path d="${plume('M 20,78 C 17,84 15,87 18,90', 3.2, 8)} ${plume('M 80,78 C 83,84 85,87 82,90', 3.2, 8)}" fill="${color}"/>
-                <!-- Crête centrale incandescente -->
-                <path d="M 45,2 C 47,-10 48,-20 50,-24 C 52,-20 53,-10 55,2 C 53,-2 47,-2 45,2 Z" fill="${mixHex(color, '#f59e0b', 0.32)}"/>
-            </g>`,
-        getHairFront: (color) => `
-            <g id="hair-front-dragon-girl">
-                <!-- Frange féminine flamboyante en langues de flammes vives -->
-                <path d="M 21,26 C 23,16 35,8 50,6 C 65,8 77,16 79,26 C 76,31 73,28 71,22 C 68,30 64,32 60,24 C 56,32 52,33 49,26 C 46,33 42,33 39,25 C 35,31 31,31 29,23 C 26,29 23,30 21,26 Z" fill="${color}"/>
-                <!-- Mèche de flamme plongeante délicate au centre -->
-                <path d="${plume('M 48,15 C 50,22 51,27 52,32', 3.2, 12)}" fill="${color}"/>
-                <path d="${fuseau('M 48.5,17 C 50,22 51,26 51.8,30', 1.1, 8)}" fill="${mixHex(color, '#f59e0b', 0.3)}"/>
-                <!-- Longues mèches enflammées encadrant les joues (accroche-cœurs de feu) -->
-                <path d="${plume('M 22,26 C 17,38 16,52 20,66', 3.6, 16)}" fill="${color}"/>
-                <path d="${fuseau('M 21.5,28 C 17.5,39 16.8,50 19.8,62', 1.4, 12)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
-                <!-- Extrémité en flèche de feu léchant la clavicule -->
-                <path d="${fuseau('M 19,62 C 20,66 22,69 24,71', 1.8, 8)}" fill="${color}"/>
-                <path d="${plume('M 78,26 C 83,38 84,52 80,66', 3.6, 16)}" fill="${color}"/>
-                <path d="${fuseau('M 78.5,28 C 82.5,39 83.2,50 80.2,62', 1.4, 12)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
-                <path d="${fuseau('M 81,62 C 80,66 78,69 76,71', 1.8, 8)}" fill="${color}"/>
-            </g>`
+        // NOTE Exactement la coupe du garçon (pics du fond, épi, frange en pics), plus les cheveux longs de l'Orc fille copiés tels quels
+        getHairBack: (color) => {
+            const boy = DRAGON_STYLES.dragon_boy.getHairBack(color).replace('hair-back-dragon-boy', 'hair-back-dragon-girl');
+            const open = boy.indexOf('>') + 1;
+            return boy.slice(0, open) + `
+                <g transform="translate(7.5 18) scale(0.85 1)">
+                <!-- Chevelure longue barbare dense descendant jusqu'aux cuisses en blocs larges obtus pointus -->
+                <path d="M 16,36 
+                         C 10,22 14,8 24,0 
+                         C 34,-6 66,-6 76,0 
+                         C 86,8 90,22 84,36 
+                         C 94,50 97,60 99,68 
+                         C 88,67 80,62 76,54 
+                         C 72,72 66,88 50,90 
+                         C 34,88 28,72 24,54 
+                         C 20,62 12,67 1,68 
+                         C 3,60 6,50 16,36 Z" fill="${color}"/>
+                <!-- Mèches latérales sauvages supplémentaires en blocs obtus larges -->
+                <path d="M 14,48 C 6,56 4,68 5,78 C 14,72 21,62 22,52 Z" fill="${color}"/>
+                <path d="M 86,48 C 94,56 96,68 95,78 C 86,72 79,62 78,52 Z" fill="${color}"/>
+                <!-- Mèches sauvages avant retombant sur les épaules en blocs obtus souples -->
+                <path d="M 22,42 C 16,52 15,66 20,78 C 24,76 26,68 26,58 C 27,50 25,44 22,42 Z" fill="${color}" opacity="0.85"/>
+                <path d="M 78,42 C 84,52 85,66 80,78 C 76,76 74,68 74,58 C 73,50 75,44 78,42 Z" fill="${color}" opacity="0.85"/>
+                </g>
+                ` + boy.slice(open);
+        },
+        getHairFront: (color) => {
+            const boy = DRAGON_STYLES.dragon_boy.getHairFront(color).replace('hair-front-dragon-boy', 'hair-front-dragon-girl');
+            const end = boy.lastIndexOf('</g>');
+            return boy.slice(0, end) + `
+                <g transform="translate(0 -6)">
+                <!-- Mèches de tempes sauvages encadrant le visage en blocs larges -->
+                <path d="M 23,34 C 20,44 22,54 25,62 C 26,52 26,42 25,34 Z" fill="${color}"/>
+                <path d="M 77,34 C 80,44 78,54 75,62 C 74,52 74,42 75,34 Z" fill="${color}"/>
+                </g>
+            ` + boy.slice(end);
+        }
     }
 };
 

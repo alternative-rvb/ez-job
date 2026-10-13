@@ -82,6 +82,7 @@ En SVG, le Z-index dépend exclusivement de **l'ordre d'apparition dans le code*
   1. **Cheveux longs** (ex: Fille Macarons) : On conserve l'ellipse de base universelle et on ajoute le grand ovale plein descendant jusqu'aux jambes (`<ellipse cx="50" cy="50" rx="34" ry="46" fill="..."/>`).
   2. **Coupe au carré / Bob** (ex: Carré Court, Bob Moderne) : On ajoute un **ovale coupé en 2** descendant jusqu'aux épaules/haut du buste (`Y=62..66`) : `<path d="M 15,66 C 15,22 26,2 50,2 C 74,2 85,22 85,66 Z" fill="..."/>`.
   3. **Pointes / Chignons / Queues** : Se superposent sur cette ellipse de base.
+  4. **Règle actuelle (trophées 10 et suivants)** : base obligatoire selon la longueur (cercle pour le court, ellipses pour le mi-long et le long, 10 à 20 % plus larges que le crâne x 22 à 78), calotte avant qui part du point haut de cette base. Détail, valeurs de `HAIR_BASES` et analyse des trophées 1 à 9 : section « Règle des cheveux » du skill `avatars-svg` (`.claude/skills/avatars-svg/SKILL.md`). L'« ellipse universelle » ci-dessus reste celle des trophées 1 à 9.
 - Une couleur 100% unie pour la chevelure (`#5a2d0c` Brun Sombre garçon, `#8a3c08` Roux Cuivré fille).
 
 ### Calque 3 : Jambes & Chaussures (`<g id="...-legs">`)

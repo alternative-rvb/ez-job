@@ -228,3 +228,17 @@ export const beltDyAt = (x, xl, xr) => {
     const t = (x - xl) / (xr - xl);
     return r3(4.8 * t * (1 - t));
 };
+
+// ANCHOR Base de cheveux arrière obligatoire (règle des cheveux) : crâne = x 22 à 78, y 10 à 60, centre (50, 35).
+// 'court' : cercle de rayon 32 (+14 % de la demi-largeur du crâne), y -2 à 62.
+// 'mi-long' : ellipse rx 32, descend jusqu'au cou et au haut des épaules, y 1 à 67.
+// 'long' : ellipse rx 33, descend jusqu'aux jambes, y 2 à 100.
+export const HAIR_BASES = {
+    court: { cx: 50, cy: 30, rx: 32, ry: 32 },
+    'mi-long': { cx: 50, cy: 34, rx: 32, ry: 33 },
+    long: { cx: 50, cy: 51, rx: 33, ry: 49 }
+};
+export function hairBase(length, color) {
+    const { cx, cy, rx, ry } = HAIR_BASES[length];
+    return `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${color}"/>`;
+}

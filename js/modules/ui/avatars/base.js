@@ -305,8 +305,8 @@ export const BOY_BASE = {
 
             ${styleKey === 'pirate_boy' ? `
             <!-- Bouche souriante de corsaire et élégante moustache harmonieuse épousant la même courbure -->
-            <!-- 1. Sourire de base harmonieux -->
-            ${getSmileMouth(mouthColor, mood === 'sad')}
+            <!-- 1. Sourire de base, aplati de 40 % autour de son point bas (y=53.9) pour que les coins remontent moins haut -->
+            <g transform="translate(0 21.56) scale(1 0.6)">${getSmileMouth(mouthColor, mood === 'sad')}</g>
             <!-- 2. Mouche / barbichete de flibustier sous la lèvre inférieure -->
             <path d="${fuseau('M 50,55.4 Q 50,56.6 50,57.6', 1.0, 8)}" fill="${hairColor}"/>
             <!-- 3. Moustache de corsaire : sculptée, reposant harmonieusement sur la lèvre supérieure et suivant fidèlement l'arc du sourire -->

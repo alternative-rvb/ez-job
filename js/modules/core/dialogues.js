@@ -13,7 +13,9 @@ const OUTFIT_TO_CHARACTER = {
     vampire_noble: 'vampire',
     necromancer: 'necromancer',
     fairy_herbalist: 'fairy',
-    scholar_mage: 'scholar'
+    scholar_mage: 'scholar',
+    pirate_corsair: 'pirate',
+    dragon_knight: 'dragon'
 };
 
 // NOTE Repli quand la tenue n'est pas connue : l'espèce suffit pour la plupart des personnages
@@ -24,7 +26,8 @@ const SPECIES_TO_CHARACTER = {
     shadow: 'shadow',
     vampire: 'vampire',
     undead: 'necromancer',
-    fairy: 'fairy'
+    fairy: 'fairy',
+    dragon: 'dragon'
 };
 
 /**
@@ -46,7 +49,9 @@ const MAP_LINES = {
     vampire: ['La nuit est à moi.', 'Forêt charmante, ma foi.', 'Un lac au clair de lune.', 'Cette Porte, quel style !', 'Montons avec élégance.', 'La Crête, enfin !', 'Le Sommet, à la nuit tombée.', 'Quelle belle Citadelle !'],
     necromancer: ['Les morts m\'attendent...', 'Quelle forêt macabre !', 'Le lac cache des secrets.', 'La Porte grince, parfait.', 'Les os me guident.', 'La Crête, tombeau de vent.', 'Le Sommet approche...', 'Citadelle, je t\'invoque !'],
     fairy: ['Allons voir les fleurs !', 'La forêt est en fleurs !', 'Le lac scintille !', 'La Porte brille !', 'Je vole vers le haut !', 'La Crête, c\'est joli !', 'Le Sommet, bientôt !', 'La Citadelle, hourra !'],
-    scholar: ['Ouvrons le grimoire !', 'Chapitre un : la forêt.', 'Hypothèse : le lac.', 'La Porte est logique.', 'Théorie : on monte.', 'La Crête, en théorie.', 'Le Sommet, CQFD.', 'Thèse validée !']
+    scholar: ['Ouvrons le grimoire !', 'Chapitre un : la forêt.', 'Hypothèse : le lac.', 'La Porte est logique.', 'Théorie : on monte.', 'La Crête, en théorie.', 'Le Sommet, CQFD.', 'Thèse validée !'],
+    pirate: ['Hissez les voiles !', 'Terre en vue : la forêt !', 'Un lac, sans navire ?', 'La Porte, un coffre à ouvrir !', 'À l\'abordage de la montagne !', 'La Crête, notre mât de misaine !', 'Le Sommet, le trésor est là !', 'Citadelle conquise, moussaillons !'],
+    dragon: ['Les flammes s\'éveillent !', 'La forêt tremble.', 'Le lac fume à mon passage.', 'La Porte fondra !', 'Je grimpe, écailles au vent.', 'La Crête, mon terrain de chasse.', 'Le Sommet est à moi !', 'Citadelle, brûle de gloire !']
 };
 
 const MAP_THRESHOLDS = [100, 80, 60, 40, 25, 10, 1, 0];
@@ -72,7 +77,9 @@ const ANSWER_LINES = {
     vampire: { ok: ['Élémentaire, mon cher.', 'Quelle élégance !', 'Naturellement.'], ko: ['Quelle indignité !', 'Pas de quoi pâlir.', 'Je suis déjà pâle...'] },
     necromancer: { ok: ['Les os approuvent.', 'Ça, c\'est vivant !', 'Les morts applaudissent.'], ko: ['Même les morts rient...', 'Raté, je ressuscite.', 'Mon crâne en tremble.'] },
     fairy: { ok: ['Ça fleurit !', 'Magique !', 'Pluie d\'étoiles !'], ko: ['Mes ailes tombent...', 'Une fleur fanée.', 'Zut, un pétale !'] },
-    scholar: { ok: ['Conforme au grimoire !', 'Démonstration réussie.', 'Exact, évidemment.'], ko: ['Erreur de calcul...', 'Retour au grimoire.', 'Il faut réviser.'] }
+    scholar: { ok: ['Conforme au grimoire !', 'Démonstration réussie.', 'Exact, évidemment.'], ko: ['Erreur de calcul...', 'Retour au grimoire.', 'Il faut réviser.'] },
+    pirate: { ok: ['Mille sabords, bien visé !', 'Du butin !', 'Yo ho ho !'], ko: ['Par tous les requins...', 'Le navire tangue.', 'Mon rhum a tourné.'] },
+    dragon: { ok: ['Un feu de joie !', 'Rugissement de victoire !', 'Les écailles brillent !'], ko: ['Ma flamme vacille...', 'Même les dragons chutent.', 'Fumée sans feu...'] }
 };
 
 /**

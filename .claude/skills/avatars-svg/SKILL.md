@@ -1,6 +1,6 @@
 ---
 name: avatars-svg
-description: Création et retouche des avatars SVG Chibi Manga d'Erudizz et des trophées skins (elf, orc, paladin, cat, shadow, vampire, necromancer). À utiliser dès qu'il faut créer ou modifier une coupe de cheveux, une tenue, une espèce, une teinte de peau/yeux/cheveux, un preset de trophée dans js/modules/ui/avatars.js, ou travailler dans le lab test-avatars.html.
+description: Création et retouche des avatars SVG Chibi Manga d'Erudizz et des trophées skins (elf, orc, paladin, cat, shadow, vampire, necromancer, fairy, scholar, pirate, dragon). À utiliser dès qu'il faut créer ou modifier une coupe de cheveux, une tenue, une espèce, une teinte de peau/yeux/cheveux, un preset de trophée dans js/modules/ui/avatars.js, ou travailler dans le lab test-avatars.html.
 ---
 
 # Avatars SVG et trophées skins
@@ -11,7 +11,7 @@ Un avatar est un SVG généré à la volée par `buildCustomAvatarSvg()` dans `j
 
 - `js/modules/ui/avatars.js` : point d'entrée à l'API inchangée (réexports), registres `RPG_STYLES`, `RPG_OUTFITS`, `RPG_TROPHIES` assemblés, `AVATAR_SHORT_IDS`, `buildCustomAvatarSvg`, `AVATARS`, rendus par identifiant.
 - `js/modules/ui/avatars/base.js` : palettes `BASE_*` et `ALL_*`, `getSpeciesEars`, `BOY_BASE`, `GIRL_BASE`, coupes et tenues de base.
-- `js/modules/ui/avatars/trophies/<id>.js` (elf, orc, paladin, cat, shadow, vampire, necromancer) : tenue `OUTFIT_*`, coupes `<ID>_STYLES`, fiche `<ID>_TROPHY` et traits d'espèce propres (oreilles et queue du chat, cornes de shadow). **Ne lire que le fichier du trophée concerné.**
+- `js/modules/ui/avatars/trophies/<id>.js` (elf, orc, paladin, cat, shadow, vampire, necromancer, fairy, scholar, pirate, dragon) : tenue `OUTFIT_*`, coupes `<ID>_STYLES`, fiche `<ID>_TROPHY` et traits d'espèce propres (oreilles et queue du chat, cornes de shadow). **Ne lire que le fichier du trophée concerné.**
 - `js/modules/ui/avatar-kit.js` : traits à largeur variable et utilitaires de dessin.
 - `js/modules/ui/avatars/mannequin.js` : **mannequin neutre** (tête nue, corps nu, gris `#dcdcdc`, clés `mannequin_boy`, `mannequin_girl`, `mannequin`, presets `MANNEQUIN_BOY` et `MANNEQUIN_GIRL`), gabarit de départ de chaque futur trophée : mêmes ancrages que tous les personnages. Section « Mannequin neutre » du lab avec export SVG par calques ; `node scripts/avatar-preview.mjs mannequin`. Jamais tiré ni débloqué (hors `RPG_TROPHIES`).
 
@@ -78,7 +78,7 @@ Un trophée vit dans son fichier `avatars/trophies/<id>.js` ; l'ajouter aux impo
 1. **Fiche** : partir de l'entrée existante dans `RPG_TROPHIES` (plus aucun squelette : les six trophées sont faits ; un nouveau trophée part du modèle de `avatars/trophies/vampire.js`). Définir espèce, classe, palette (tenue principale, cape plus foncée de la même famille, peau, yeux, cheveux contrastés).
 2. **Teintes** : ajouter dans les catalogues `ALL_*` uniquement les teintes nouvelles, avec `isTrophyReward: true`. Ne jamais toucher aux `BASE_*`.
 3. **Espèce** : si l'espèce a des oreilles ou des dents propres, ajouter la branche dans `getSpeciesEars()` et dans `faceFeatures` (garçon ET fille). Si l'espèce est `human`, ne rien ajouter.
-4. **Coupes** : créer `<id>_boy` et `<id>_girl` dans `RPG_STYLES`, en blocs larges, avec `hairBack` partant de l'ellipse universelle `cx=50 cy=26 rx=35 ry=31`.
+4. **Coupes** : créer `<id>_boy` et `<id>_girl` dans `RPG_STYLES`, en blocs larges, avec `hairBack` partant de la base obligatoire `hairBase('court' | 'mi-long' | 'long', color)` (voir « Règle des cheveux »).
 5. **Tenue** : créer `OUTFIT_<NOM>` avec ses 8 emplacements (laisser `""` ceux qui sont inutiles), l'enregistrer dans `RPG_OUTFITS`. Armes construites sur l'axe `X=0`, origine au milieu de la poignée, placées par un seul `<g transform="translate(main) rotate(a)">` qui contient aussi la main qui serre, dessinée en dernier (premier plan). Voir AGENTS.md règle 9 « Prise en main » et « Groupes sans orphelins ». Modèles de référence : `PALADIN_SWORD_MODEL`, `boy-ninjato`, `girl-sword`.
 6. **Presets** : compléter `boyPreset` et `girlPreset` (`styleKey`, `outfitKey`, `species`, `skinColor`, `hairColor`, `eyeColor`, mêmes teintes pour les deux), la liste `rewards`, puis retirer `status: 'locked'` et passer `badge` à `'Nouveau'`.
 7. **Vérifier** : `node --check` sur les fichiers modifiés, `npm run avatars:check` (aucun élément perdu par rapport à HEAD, aucun `undefined` ou `NaN` rendu), puis `node scripts/avatar-preview.mjs <id>` pour le contrôle visuel, puis le lab.
@@ -128,9 +128,29 @@ Volume en croissants (une teinte par couche, ombre à l'opposé de la lumière, 
 - **Ordre des calques** : les cheveux arrière sont tout au fond, derrière la cape (`headLayers[0]` d'abord dans `fullLayers`).
 - **Compréhension des demandes** : « mèche de gauche » désigne le tracé le plus à gauche de la zone en cours. Quand la demande est ambiguë (plusieurs personnages ou plusieurs styles ont le même tracé), n'en modifier qu'un et le dire. Le tracé identique « C 39,33 46,38 50,41 » existait dans trois coupes de filles de base : toujours cibler par ligne ou par identifiant de style.
 
+#### Règle des cheveux : base arrière obligatoire et cheveux avant
+
+Le crâne occupe x 22 à 78 et y 10 à 60 (centre 50, 35). Toute coupe, garçon comme fille, part d'une **base de cheveux arrière** choisie selon la longueur, déclarée par `hairBase('court' | 'mi-long' | 'long', color)` dans `js/modules/ui/avatar-kit.js` (constante `HAIR_BASES`).
+
+| Longueur | Base arrière | Repère |
+|---|---|---|
+| Court | Cercle `cx 50 cy 30 r 32` (10 à 20 % plus grand que le crâne, ici +14 %) | y -2 à 62 |
+| Mi-long | Même règle de largeur, ellipse `rx 32 ry 33 cy 34` qui descend jusqu'au cou | y 1 à 67 |
+| Long | Même règle de largeur, ellipse `rx 33 ry 49 cy 51` qui descend jusqu'aux jambes | y 2 à 100 |
+
+- **Mèches arrière (facultatives)** : plus ou moins épaisses, arrondies ou en fuseau (`fuseau`, `plume` pour une pointe de flamme), elles **suivent les courbes de l'ellipse existante** (départ sur le contour, descente le long du bord), jamais un nouveau polygone qui change la silhouette. Largeur 4 à 7, longueurs inégales.
+- **Cheveux avant, court** : la calotte de `hairFront` **démarre au point haut de l'ellipse arrière** (y 1 à 2 pour un mi-long ou long, y -2 pour un court), recouvre au minimum le premier tiers du crâne (jusqu'à y 27) et descend **au-dessus des yeux** (bord bas entre y 24 et 32), avec des formes diverses (balayage, brèches, pointes, flammes).
+- **Cheveux avant, mi-long et long** : on ajoute à la calotte des **mèches de côté**, arrondies ou en fuseau, qui suivent la courbure naturelle du visage (contour x 22 à 24 entre y 36 et 52 : les mèches restent à x ≤ 21 sur cette plage, jamais devant les joues ou les yeux) et descendent jusqu'au cou (mi-long) ou aux épaules (long).
+- **Calques** : `hairBack` est tout au fond, derrière la cape et le corps ; ce qui doit apparaître devant l'épaule ou le buste va dans `hairFront`. Des mèches longues placées seulement dans `hairBack` disparaissent derrière la cape.
+- **Fonction de mèche partagée** : quand une coupe répète un motif, une petite fonction en tête du fichier du trophée (`pirateLock`, `dragonTongue`) qui prend couleur, tracé et largeur. Dans `dragonTongue`, la largeur est multipliée par 1,3 : une `plume` rend plus fin que sa largeur nominale.
+- **Parité** : garçon et fille d'un même trophée partagent les couleurs ; seule la longueur et les mèches de côté changent.
+- **Contrôle** : `node scripts/avatar-preview.mjs <id>` (planche garçon et fille), `--zoom visage` pour la frange, puis `npm run avatars:check`.
+
+Analyse des trophées 1 à 9 (relevé du code, 2026-10-13) : ils utilisent encore l'ancienne base `ellipse cx 50 cy 26 rx 35 ry 30/31` (+25 % de largeur, centrée 9 plus haut que le crâne, bas à y 56 à 57), au lieu de la base ci-dessus. Les filles longues descendent à y 85 à 96 (elfe 93, orc 90, paladin 85, shadow 96, scholar 93), donc conformes à « jusqu'aux jambes ». Les garçons sont courts (y 44 à 56) sauf l'elfe, mi-long (67). La frange démarre à y=4 pour paladin, chat, Shadow, vampire et scholar, soit 9 à 10 sous le point haut de l'ellipse arrière (-5 ou -6), alors que la règle demande le point haut ; l'orc et la Fée y sont presque (la Fée utilise déjà une ellipse de largeur +9 %). Le Nécromancien est un cas à part (capuche en double ovale). Ces coupes sont validées par Nicolas et n'ont **pas** été modifiées : les aligner est un chantier à demander explicitement. Le Corsaire (10) et le Chevalier Dragon (11) suivent la règle.
+
 ## État actuel et limites connues
 
-- Trophées terminés, avec leur rareté d'invocation : `elf` (1, rare), `orc` (2, légendaire), `paladin` (3, rare : humain, peau `sun-bronze`, cheveux Or Solaire `#facc15`, yeux `sky`), `cat` (4, légendaire : cheveux Violet Félin `#7c3aed` et Lilas Félin `#a78bfa`, yeux `gold`) et `shadow` (5, épique : peau Lilas Mystique, cheveux Noir Abyssal `#1e1435`, yeux `amethyst`). `vampire` (6, épique : Noble Duelliste, peau Pâleur Nocturne bleutée très claire `#e6edf8`, cheveux Noir Carmin `#2a0a12`, yeux `ruby`, redingote rouge sang, rapière argentée, canines apparentes, bouche droite). Les six premiers trophées sont terminés. `necromancer` (7, légendaire : teint `undead-grey`, cheveux Blanc Os, yeux noirs à pupille verte, capuche en deux parties, flamme verte, faux) est fait, avec bouche fille complète pour la fille.
+- Trophées terminés, avec leur rareté d'invocation : `elf` (1, rare), `orc` (2, légendaire), `paladin` (3, rare : humain, peau `sun-bronze`, cheveux Or Solaire `#facc15`, yeux `sky`), `cat` (4, légendaire : cheveux Violet Félin `#7c3aed` et Lilas Félin `#a78bfa`, yeux `gold`) et `shadow` (5, épique : peau Lilas Mystique, cheveux Noir Abyssal `#1e1435`, yeux `amethyst`). `vampire` (6, épique : Noble Duelliste, peau Pâleur Nocturne bleutée très claire `#e6edf8`, cheveux Noir Carmin `#2a0a12`, yeux `ruby`, redingote rouge sang, rapière argentée, canines apparentes, bouche droite). Les six premiers trophées sont terminés. `necromancer` (7, légendaire : teint `undead-grey`, cheveux Blanc Os, yeux noirs à pupille verte, capuche en deux parties, flamme verte, faux) est fait, avec bouche fille complète pour la fille. `pirate` (10, épique : Corsaire des Mers, tricorne, dreadlocks, sabre, moustache) et `dragon` (11, légendaire : Chevalier Dragon, espèce drakéide, cornes `getDragonHorns`, lance) sont faits.
 - Traits d'espèce qui suivent la couleur des cheveux : oreilles de chat `getCatEars` (juste avant `hairFront`) et queue `getCatTail` (juste après `backEquipment`, plus sombre que les cheveux). Les cornes de `shadow` (`getShadowHorns`, tracé plume) sont dessinées par-dessus la frange pour que leur base arrondie reste visible.
 - Un trophée humain passe `isNewCharacter` à vrai (via `styleKey`/`outfitKey`) : le bandeau, le diadème et le triangle de col orange de la tenue de base sont masqués automatiquement.
 - Accessoire de tête sur une chevelure de même famille de couleur : il disparaît. Contraste obligatoire : le diadème du paladin est en métal gris clair `#cbd5e1` (l'acier `#e2e8f0` se fondait dans l'Or Solaire). **Les diadèmes de métal n'ont pas de contour** (seules les gemmes gardent un fin liseré).
