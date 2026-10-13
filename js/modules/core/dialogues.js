@@ -41,17 +41,17 @@ export function getCharacterId(config = {}) {
 // Ordre : 0 pt, >0, >=10, >=25, >=40, >=60, >=80, >=100 (forêt, lac, porte, ascension, crête, sommet, citadelle)
 const MAP_LINES = {
     base: ['C\'est parti !', 'En route vers la Forêt !', 'Vers le Lac !', 'Cap sur la Porte !', 'L\'Ascension commence !', 'Plus que la Crête !', 'Le Sommet est proche !', 'Citadelle atteinte !'],
-    elf: ['Les bois m\'appellent !', 'La forêt me guide.', 'Le lac chante, écoutez.', 'La Porte nous attend.', 'Léger comme le vent !', 'La Crête est en vue.', 'Le Sommet m\'appelle.', 'Citadelle, me voici !'],
-    orc: ['Orc prêt ! Grrr !', 'Orc aime la forêt !', 'Orc veut boire au lac.', 'Porte ? Orc cogne !', 'Orc grimpe, orc fort !', 'Plus que la Crête !', 'Sommet bientôt écrasé !', 'Orc a gagné ! Roar !'],
-    paladin: ['Que la lumière guide !', 'Au nom du Soleil !', 'Le lac, havre de paix.', 'La Porte sera franchie.', 'L\'ascension est sacrée.', 'La Crête, avec foi !', 'Le Sommet est proche !', 'Gloire à la Citadelle !'],
-    cat: ['Miaou, on y va !', 'Les bois, mon terrain !', 'Un lac ? Je boude.', 'La Porte ? Je me faufile.', 'Je grimpe sans bruit.', 'La Crête, un jeu d\'enfant.', 'Le Sommet sent bon !', 'Citadelle, c\'est à moi !'],
-    shadow: ['L\'ombre se lève...', 'Les arbres murmurent.', 'Le lac reflète la nuit.', 'La Porte s\'ouvrira.', 'Les ombres montent.', 'La Crête tremble déjà.', 'Le Sommet est à nous.', 'La Citadelle m\'obéit !'],
-    vampire: ['La nuit est à moi.', 'Forêt charmante, ma foi.', 'Un lac au clair de lune.', 'Cette Porte, quel style !', 'Montons avec élégance.', 'La Crête, enfin !', 'Le Sommet, à la nuit tombée.', 'Quelle belle Citadelle !'],
-    necromancer: ['Les morts m\'attendent...', 'Quelle forêt macabre !', 'Le lac cache des secrets.', 'La Porte grince, parfait.', 'Les os me guident.', 'La Crête, tombeau de vent.', 'Le Sommet approche...', 'Citadelle, je t\'invoque !'],
+    elf: ['Les bois nous appellent !', 'La forêt nous guide.', 'Le lac chante, écoute !', 'La Porte nous attend.', 'Léger comme le vent !', 'La Crête est en vue.', 'Le Sommet nous appelle.', 'Citadelle, nous voici !'],
+    orc: ['Orc prêt ! Allons-y !', 'Orc aime la forêt !', 'Orc veut sauter dans le lac !', 'Une Porte ? Orc ouvre !', 'Orc grimpe, orc fort !', 'Plus que la Crête !', 'Le Sommet est tout près !', 'Orc a réussi ! Hourra !'],
+    paladin: ['Que la lumière nous guide !', 'Au nom du Soleil !', 'Le lac, quel bel endroit.', 'La Porte sera franchie.', 'Courage, on monte !', 'La Crête, avec confiance !', 'Le Sommet est proche !', 'Gloire à la Citadelle !'],
+    cat: ['Miaou, on y va !', 'Les bois, mon terrain de jeu !', 'Un lac ? Je regarde de loin.', 'La Porte ? Je me faufile.', 'Je grimpe sans bruit.', 'La Crête, un jeu d\'enfant.', 'Le Sommet sent bon !', 'Citadelle, nous voilà !'],
+    shadow: ['L\'ombre se lève...', 'Les arbres murmurent.', 'Le lac reflète les étoiles.', 'La Porte va s\'ouvrir.', 'On monte dans la nuit.', 'La Crête brille de mille étoiles.', 'Le Sommet est à nous.', 'La Citadelle nous attend !'],
+    vampire: ['La nuit est belle.', 'Forêt charmante, ma foi.', 'Un lac au clair de lune.', 'Cette Porte, quel style !', 'Montons avec élégance.', 'La Crête, enfin !', 'Le Sommet, sous la lune.', 'Quelle belle Citadelle !'],
+    necromancer: ['Un secret nous attend...', 'Quelle forêt mystérieuse !', 'Le lac cache un secret.', 'La Porte grince, parfait !', 'Ma lanterne verte nous guide.', 'La Crête, un vent magique.', 'Le Sommet approche...', 'Citadelle, on arrive !'],
     fairy: ['Allons voir les fleurs !', 'La forêt est en fleurs !', 'Le lac scintille !', 'La Porte brille !', 'Je vole vers le haut !', 'La Crête, c\'est joli !', 'Le Sommet, bientôt !', 'La Citadelle, hourra !'],
-    scholar: ['Ouvrons le grimoire !', 'Chapitre un : la forêt.', 'Hypothèse : le lac.', 'La Porte est logique.', 'Théorie : on monte.', 'La Crête, en théorie.', 'Le Sommet, CQFD.', 'Thèse validée !'],
-    pirate: ['Hissez les voiles !', 'Terre en vue : la forêt !', 'Un lac, sans navire ?', 'La Porte, un coffre à ouvrir !', 'À l\'abordage de la montagne !', 'La Crête, notre mât de misaine !', 'Le Sommet, le trésor est là !', 'Citadelle conquise, moussaillons !'],
-    dragon: ['Les flammes s\'éveillent !', 'La forêt tremble.', 'Le lac fume à mon passage.', 'La Porte fondra !', 'Je grimpe, écailles au vent.', 'La Crête, mon terrain de chasse.', 'Le Sommet est à moi !', 'Citadelle, brûle de gloire !']
+    scholar: ['Ouvrons le grimoire !', 'Chapitre un : la forêt.', 'Hypothèse : le lac.', 'La Porte est logique.', 'Théorie : on monte.', 'La Crête, en théorie.', 'Le Sommet, bien sûr !', 'Mission réussie !'],
+    pirate: ['Hissez les voiles !', 'Terre en vue : la forêt !', 'Un lac, mais sans bateau ?', 'La Porte, un coffre à ouvrir !', 'À l\'aventure sur la montagne !', 'La Crête, notre mât de misaine !', 'Le Sommet, le trésor est là !', 'Citadelle atteinte, moussaillons !'],
+    dragon: ['Les flammes s\'éveillent !', 'La forêt nous attend.', 'Le lac fait de la vapeur !', 'La Porte brille de mille feux !', 'Je grimpe, ailes au vent.', 'La Crête, quelle belle vue.', 'Le Sommet est tout près !', 'Citadelle, nous voilà !']
 };
 
 const MAP_THRESHOLDS = [100, 80, 60, 40, 25, 10, 1, 0];
@@ -68,18 +68,18 @@ export function getMapLine(characterId, totalPoints) {
 
 // SECTION Quiz : variantes courtes sous le Vrai / Faux de la bulle
 const ANSWER_LINES = {
-    base: { ok: ['Bien joué !', 'Bravo !', 'Super !'], ko: ['Oups...', 'Pas grave !', 'Dommage...'] },
-    elf: { ok: ['Bien visé !', 'La forêt approuve.', 'Juste comme le vent !'], ko: ['Ma flèche dévie...', 'La forêt soupire.', 'Raté, j\'apprends.'] },
-    orc: { ok: ['Orc content ! Roar !', 'Orc malin !', 'Grrr, bien !'], ko: ['Orc pas content !', 'Grrr... raté !', 'Orc cogne le quiz !'] },
-    paladin: { ok: ['La lumière triomphe !', 'Justice rendue !', 'Bien dit, noble !'], ko: ['Que le soleil m\'aide.', 'Je me relèverai.', 'Une épreuve de plus.'] },
-    cat: { ok: ['Miaou, évidemment !', 'Facile, ronron.', 'Sur mes pattes !'], ko: ['Pfff, miaou...', 'Je fais semblant.', 'Griffe de travers !'] },
-    shadow: { ok: ['Les ombres savent.', 'Sans surprise.', 'L\'ombre approuve.'], ko: ['L\'ombre s\'épaissit...', 'Un voile sur mes yeux.', 'Les ténèbres rient.'] },
-    vampire: { ok: ['Élémentaire, mon cher.', 'Quelle élégance !', 'Naturellement.'], ko: ['Quelle indignité !', 'Pas de quoi pâlir.', 'Je suis déjà pâle...'] },
-    necromancer: { ok: ['Les os approuvent.', 'Ça, c\'est vivant !', 'Les morts applaudissent.'], ko: ['Même les morts rient...', 'Raté, je ressuscite.', 'Mon crâne en tremble.'] },
-    fairy: { ok: ['Ça fleurit !', 'Magique !', 'Pluie d\'étoiles !'], ko: ['Mes ailes tombent...', 'Une fleur fanée.', 'Zut, un pétale !'] },
-    scholar: { ok: ['Conforme au grimoire !', 'Démonstration réussie.', 'Exact, évidemment.'], ko: ['Erreur de calcul...', 'Retour au grimoire.', 'Il faut réviser.'] },
-    pirate: { ok: ['Mille sabords, bien visé !', 'Du butin !', 'Yo ho ho !'], ko: ['Par tous les requins...', 'Le navire tangue.', 'Mon rhum a tourné.'] },
-    dragon: { ok: ['Un feu de joie !', 'Rugissement de victoire !', 'Les écailles brillent !'], ko: ['Ma flamme vacille...', 'Même les dragons chutent.', 'Fumée sans feu...'] }
+    base: { ok: ['Bien joué !', 'Bravo !', 'Super !'], ko: ['Oups...', 'Pas grave !', 'On réessaie !'] },
+    elf: { ok: ['Bien visé !', 'La forêt applaudit.', 'Juste comme le vent !'], ko: ['Ma flèche a dévié...', 'Pas grave, on apprend.', 'Je retente !'] },
+    orc: { ok: ['Orc content ! Hourra !', 'Orc malin !', 'Bravo, bravo !'], ko: ['Orc pas content...', 'Raté ! Orc réessaie.', 'Orc apprend, c\'est bien.'] },
+    paladin: { ok: ['La lumière brille !', 'Bien joué, noble ami !', 'Bien dit !'], ko: ['Que le soleil m\'aide.', 'Je me relève.', 'Une leçon de plus.'] },
+    cat: { ok: ['Miaou, évidemment !', 'Facile, ronron.', 'Sur mes pattes !'], ko: ['Pfff, miaou...', 'Je ne l\'ai pas fait exprès.', 'Je retombe sur mes pattes !'] },
+    shadow: { ok: ['Les étoiles approuvent.', 'Sans surprise.', 'La nuit applaudit.'], ko: ['La nuit est brumeuse...', 'Un nuage devant mes yeux.', 'Je retenterai !'] },
+    vampire: { ok: ['Élémentaire, mon cher.', 'Quelle élégance !', 'Naturellement.'], ko: ['Quel dommage !', 'Je retente, avec classe.', 'Même la lune se trompe.'] },
+    necromancer: { ok: ['Ma lanterne brille !', 'Ça, c\'est magique !', 'Bravo, bravo !'], ko: ['Ma lanterne vacille...', 'Raté, je recommence.', 'Je vais mieux réviser.'] },
+    fairy: { ok: ['Ça fleurit !', 'Magique !', 'Pluie d\'étoiles !'], ko: ['Mes ailes tremblent...', 'Une fleur fanée.', 'Zut, un pétale !'] },
+    scholar: { ok: ['Conforme au grimoire !', 'Démonstration réussie.', 'Exact, évidemment.'], ko: ['Erreur de calcul...', 'Retour au grimoire.', 'On révise ensemble ?'] },
+    pirate: { ok: ['Mille sabords, bien visé !', 'Un beau butin !', 'Yo ho ho !'], ko: ['Par tous les poissons...', 'Le navire tangue.', 'On repart à la voile !'] },
+    dragon: { ok: ['Un feu de joie !', 'Rugissement de victoire !', 'Les écailles brillent !'], ko: ['Ma flamme vacille...', 'Même les dragons se trompent.', 'Un peu de fumée, on recommence !'] }
 };
 
 /**

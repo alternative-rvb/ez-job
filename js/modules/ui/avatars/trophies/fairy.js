@@ -25,10 +25,11 @@ const FAIRY_STAFF_MODEL = `
 `;
 
 // NOTE Ailes d'insecte : demi-ailes gauches, la droite est le miroir exact (axe x = 100)
-const WING_UPPER = 'M 40,67 C 26,54 10,46 4,54 C 0,64 8,78 22,84 C 32,82 40,74 40,67 Z';
+// NOTE Ailes vertes hautes : deux ellipses complètes (rx 19, ry 11) inclinées de 25°, racine à l'épaule (40, 67) et (60, 67)
+const WING_UPPER_L = { cx: 22.8, cy: 59, rx: 19, ry: 11, rot: 25 };
 const WING_LOWER = 'M 40,72 C 26,78 14,88 18,98 C 21,104 32,98 37,88 C 40,82 42,76 40,72 Z';
 // NOTE Nervures posées dans l'axe de chaque demi-aile : une maîtresse et deux ramifications (aile du bas : en éventail depuis la racine)
-const WING_VEINS_U = ['M 39,68 C 28,66 16,66 7,64', 'M 31,67 C 25,60 17,56 9,54', 'M 29,67 C 25,74 19,79 14,80'];
+const WING_VEINS_U = ['M 38,66.2 C 28,61.5 14,55 7.5,52', 'M 31,63.4 C 27,58.5 22,54.5 17,52.5', 'M 29,62.6 C 26,65.5 22,67 17,66.5'];
 const WING_VEINS_L = ['M 39,74 C 33,82 27,89 22.5,96', 'M 36.5,77 C 30,79 23,83 17.5,89.5', 'M 37.5,80.5 C 35,86 31.5,91 28,95.5'];
 const veins = (list, w) => list.map(d => `${fuseau(d, w, 10)} ${fuseau(mirror(d), w, 10)}`).join(' ');
 
@@ -40,11 +41,18 @@ export const OUTFIT_FAIRY_HERBALIST = {
     backEquipment: `
         <g id="outfit-fairy-wings">
             <!-- Ailes d'insecte translucides vert d'eau, nervures en fuseau -->
+            <!-- Ailes vertes (hautes) : ellipses complètes, remontées de 4 (ailes et nervures dans un même groupe) -->
+            <g transform="translate(0 -4)">
+                <g opacity="0.8">
+                    <ellipse cx="${WING_UPPER_L.cx}" cy="${WING_UPPER_L.cy}" rx="${WING_UPPER_L.rx}" ry="${WING_UPPER_L.ry}" transform="rotate(${WING_UPPER_L.rot} ${WING_UPPER_L.cx} ${WING_UPPER_L.cy})" fill="#a7f3d0"/>
+                    <ellipse cx="${100 - WING_UPPER_L.cx}" cy="${WING_UPPER_L.cy}" rx="${WING_UPPER_L.rx}" ry="${WING_UPPER_L.ry}" transform="rotate(${-WING_UPPER_L.rot} ${100 - WING_UPPER_L.cx} ${WING_UPPER_L.cy})" fill="#a7f3d0"/>
+                </g>
+                <path d="${veins(WING_VEINS_U, 1)}" fill="#34d399"/>
+            </g>
             <g opacity="0.8">
-                <path d="${WING_UPPER}" fill="#a7f3d0"/><path d="${mirror(WING_UPPER)}" fill="#a7f3d0"/>
                 <path d="${WING_LOWER}" fill="#bae6fd"/><path d="${mirror(WING_LOWER)}" fill="#bae6fd"/>
             </g>
-            <path d="${veins(WING_VEINS_U, 1)} ${veins(WING_VEINS_L, 0.9)}" fill="#34d399"/>
+            <path d="${veins(WING_VEINS_L, 0.9)}" fill="#34d399"/>
         </g>`,
     legs: (skin = SKIN_DEFAULT) => `
         <g id="outfit-fairy-legs">
@@ -303,7 +311,7 @@ export const FAIRY_TROPHY = {
     speciesName: 'Fée',
     className: 'Herboriste',
     badge: 'Nouveau',
-    rarity: 'rare',
+    rarity: 'épique',
     unlocks: {
         species: 'fairy',
         skins: ['fairy-cream'],

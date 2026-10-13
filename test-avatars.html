@@ -753,6 +753,18 @@
       }
     }
 
+    // ANCHOR Étiquette de rareté (micro-chip) : rare turquoise, épique violet, légendaire doré
+    const RARITY_CHIP = {
+      'rare': 'bg-teal-400/15 text-teal-200 border-teal-300/40',
+      'épique': 'bg-purple-500/20 text-purple-200 border-purple-400/40',
+      'légendaire': 'bg-amber-400/20 text-amber-200 border-amber-300/50'
+    };
+    function rarityChip(trophy, extra = '') {
+      if (!trophy || !trophy.rarity) return '';
+      const cls = RARITY_CHIP[trophy.rarity] || RARITY_CHIP['rare'];
+      return `<span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider border backdrop-blur-sm leading-none ${cls} ${extra}">${trophy.rarity}</span>`;
+    }
+
     // Gestion de l'affichage de la section Trophées RPG
     function renderTrophiesSection() {
       const unlockedCount = RPG_TROPHIES.filter(t => !t.status || t.status !== 'locked').length;
@@ -767,7 +779,7 @@
         tabsContainer.innerHTML = RPG_TROPHIES.map(trophy => {
           const isActive = trophy.id === currentTrophyId;
           const isLocked = trophy.status === 'locked';
-          // NOTE Bouton simple : numéro et espèce seulement, les détails sont déjà dans la fiche du trophée
+          // NOTE Bouton : numéro et titre du trophée, identiques à ceux de la fiche
           return `
             <button onclick="window.selectTrophy('${trophy.id}')"
               class="px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all border flex items-center gap-1.5 ${
@@ -777,7 +789,7 @@
                     ? 'bg-white/5 border-white/10 text-white/50 hover:text-white/70'
                     : 'bg-white/10 border-white/15 text-white/85 hover:bg-white/15'
               }">
-              <span class="opacity-70">${trophy.number}.</span>${trophy.speciesName}${isLocked ? ' <i class="bi bi-lock-fill text-[10px]"></i>' : ''}
+              <span class="opacity-70">${trophy.number}.</span>${trophy.title}${isLocked ? ' <i class="bi bi-lock-fill text-[10px]"></i>' : ''}${rarityChip(trophy)}
             </button>
           `;
         }).join('');
@@ -832,6 +844,9 @@
               <span class="w-1 h-1 rounded-full bg-amber-400"></span> New
             </div>
             ` : ''}
+
+            <!-- Étiquette de rareté en coin supérieur droit -->
+            ${rarityChip(trophy, 'absolute top-2.5 right-2.5 z-20')}
 
             <div id="trophy-avatar-preview" onclick="window.openTrophyZoom()" class="w-full h-full flex items-center justify-center cursor-pointer transition-transform duration-300 group-hover:scale-105" title="Cliquer pour zoomer">
               ${svgCode}

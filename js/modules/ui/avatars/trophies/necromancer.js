@@ -183,7 +183,7 @@ export const NECROMANCER_TROPHY = {
     speciesName: 'Revenant',
     className: 'Nécromancien',
     badge: 'Nouveau',
-    rarity: 'légendaire',
+    rarity: 'épique',
     unlocks: {
         species: 'undead',
         skins: ['undead-grey'],

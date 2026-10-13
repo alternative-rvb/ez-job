@@ -280,7 +280,7 @@ export const SHADOW_TROPHY = {
     speciesName: 'Ombre',
     className: 'Mage Noir & Sorcière',
     badge: 'Nouveau',
-    rarity: 'épique',
+    rarity: 'légendaire',
     unlocks: {
         species: 'shadow',
         skins: ['shadow-lilac'],

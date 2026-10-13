@@ -248,7 +248,7 @@ export const ELF_TROPHY = {
     className: 'Rôdeur Sylvestre',
     badge: 'Nouveau',
     // ANCHOR Invocation : rareté de la carte (taux de tirage) et éléments ajoutés à l'atelier une fois gagnée
-    rarity: 'rare',
+    rarity: 'épique',
     unlocks: {
         species: 'elf',
         skins: [],

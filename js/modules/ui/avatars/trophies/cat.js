@@ -175,7 +175,7 @@ export const CAT_TROPHY = {
     className: 'Voleuse Féline',
     badge: 'Nouveau',
     // ANCHOR Invocation : rareté de la carte (taux de tirage) et éléments ajoutés à l'atelier une fois gagnée
-    rarity: 'légendaire',
+    rarity: 'épique',
     unlocks: {
         species: 'cat',
         skins: [],

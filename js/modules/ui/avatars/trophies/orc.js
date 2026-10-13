@@ -307,7 +307,7 @@ export const ORC_TROPHY = {
     className: 'Berserker',
     badge: 'Nouveau',
     // ANCHOR Invocation : rareté de la carte (taux de tirage) et éléments ajoutés à l'atelier une fois gagnée
-    rarity: 'légendaire',
+    rarity: 'épique',
     unlocks: {
         species: 'orc',
         skins: ['orc-green'],

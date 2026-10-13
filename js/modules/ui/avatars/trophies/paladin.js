@@ -238,7 +238,7 @@ export const PALADIN_TROPHY = {
     className: 'Paladin de Lumière',
     badge: 'Nouveau',
     // ANCHOR Invocation : rareté de la carte (taux de tirage) et éléments ajoutés à l'atelier une fois gagnée
-    rarity: 'rare',
+    rarity: 'épique',
     unlocks: {
         species: null,
         skins: ['sun-bronze'],
