@@ -112,15 +112,12 @@ export const OUTFIT_PIRATE_CORSAIR = {
         </g>`,
     headAccessory: `
         <g id="outfit-pirate-tricorne">
+            <!-- Chapeau descendu légèrement (4.5) ; le bandana reste en place -->
+            <g id="pirate-hat" transform="translate(0 4.5)">
             <!-- Fond plein du chapeau : comble les trous entre la calotte et les ailes (le fond de la page ne doit jamais apparaître) -->
             <path d="M 3,-2 C 12,-12 28,-18 50,-18 C 72,-18 88,-12 97,-2 C 94,8 74,14 50,14 C 26,14 6,8 3,-2 Z" fill="#081426"/>
-            <!-- Calotte haute du tricorne : dôme bombé qui dépasse les ailes (y = -27 à 12), deux teintes pour le volume -->
-            <path d="M 23,12 C 21,-12 33,-27 50,-27 C 67,-27 79,-12 77,12 Z" fill="#071221"/>
-            <path d="M 26,11 C 24,-9 35,-24 50,-24 C 65,-24 76,-9 74,11 Z" fill="#0f243f"/>
-            <!-- Volume de la calotte : reflet clair sur le bombé, coutures de pliage vers la pointe avant, ombre à la jonction avec le rebord -->
-            <path d="${fuseau('M 31,-6 C 33,-15 40,-22 50,-23', 2.6, 12)} ${fuseau('M 69,-6 C 67,-15 60,-22 50,-23', 2.6, 12)}" fill="#1e3a5f"/>
-            <path d="${fuseau('M 50,-23 C 43,-14 42,-3 47,5', 1.0, 12)} ${fuseau('M 50,-23 C 57,-14 58,-3 53,5', 1.0, 12)}" fill="#1e3a5f"/>
-            <path d="${fuseau('M 24,6 C 36,10 64,10 76,6', 3.2, 14)}" fill="#05101d"/>
+            <!-- Calotte du tricorne : un seul dôme bas et uni (y = -22 à 12), sans coutures ni reflets -->
+            <path d="M 23,12 C 21,-8 33,-22 50,-22 C 67,-22 79,-8 77,12 Z" fill="#0b1b30"/>
             <!-- Ailes latérales du tricorne déployées très larges (largeur 94, de x=3 à x=97) -->
             <!-- Aile arrière/gauche évasée et relevée -->
             <path d="M 3,-2 C 12,-12 28,-18 50,-18 C 72,-18 88,-12 97,-2 C 86,5 72,0 50,0 C 28,0 14,5 3,-2 Z" fill="#081426"/>
@@ -142,6 +139,7 @@ export const OUTFIT_PIRATE_CORSAIR = {
             <!-- Grande plume écarlate de corsaire déployée depuis l'aile gauche -->
             <path d="${plume('M 36,5 C 25,-3 16,-9 4,-16', 5.2, 18)}" fill="#dc2626"/>
             <path d="${fuseau('M 34,4.5 C 24,-3 16,-9 4,-16', 1.2, 16)}" fill="#fef08a"/>
+            </g>
             <!-- Foulard / bandana carmin noué sous le tricorne façon Jack Sparrow (courbure souple et plis) -->
             <path d="${fuseau('M 21,21.5 Q 50,17 79,21.5', 4.8, 16)}" fill="#991b1b"/>
             <path d="${fuseau('M 22,22 Q 50,17.8 78,22', 1.4, 14)}" fill="#dc2626"/>

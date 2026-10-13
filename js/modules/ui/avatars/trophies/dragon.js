@@ -10,31 +10,27 @@ import { mixHex } from '../base.js';
 export function getDragonHorns() {
     return `
         <g id="dragon-horns">
-            <!-- Corne gauche : base plantée dans le crâne, grande corne ascendante effilée en plume et traits en fuseau de feu -->
-            <circle cx="25.5" cy="16.5" r="5.2" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
+            <!-- Corne gauche : base plantée dans le crâne, grande corne ascendante effilée en plume, obsidienne sombre -->
+            <circle cx="25.5" cy="16.5" r="3.8" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
             <!-- Ergot secondaire inférieur gauche -->
-            <path d="${plume('M 26,17.5 C 22,20 18,21.5 13.5,21', 3.2, 12)}" fill="#18181b" stroke="#09090b" stroke-width="0.7"/>
-            <path d="${fuseau('M 25,17.8 C 21.5,19.8 18,21 14.5,20.8', 1.2, 10)}" fill="#f59e0b"/>
+            <path d="${plume('M 26,17.5 C 19,17.5 11,14.5 6,7.5', 5.0, 14)}" fill="#18181b" stroke="#09090b" stroke-width="0.7"/>
+            <path d="${fuseau('M 25,17.5 C 19,17.4 12.5,15 8.5,9.5', 0.7, 12)}" fill="#b91c1c"/>
             <!-- Corps principal de la grande corne gauche en plume -->
             <path d="${plume('M 25.5,16.5 C 19,10 13,2 10.5,-6 C 8.5,-14 13,-22 22,-28.5', 6.2, 22)}" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
-            <circle cx="25.5" cy="16.5" r="4.6" fill="#18181b"/>
-            <!-- Traits intérieurs de flamme draconique dans l'esprit de Shadow (plume & fuseau dégradés) -->
-            <path d="${plume('M 25.5,15.5 C 19.5,9.5 14,2 11.5,-6 C 9.5,-13 13.5,-21 21.5,-27.5', 3.8, 18)}" fill="#b91c1c" opacity="0.85"/>
-            <path d="${fuseau('M 24.5,14 C 19,8 14.5,2 12.5,-5 C 11,-12 14,-19 21,-26', 1.8, 16)}" fill="#f59e0b"/>
-            <path d="${fuseau('M 23.5,11 C 18.5,6 15,1 13.5,-4 C 12,-9 14.5,-16 20,-23', 0.9, 14)}" fill="#fef08a"/>
+            <circle cx="25.5" cy="16.5" r="3.3" fill="#18181b"/>
+            <!-- Corne sombre : quelques petites nervures en traits fins fuseau (rouge braise) qui suivent la courbure -->
+            <path d="${fuseau('M 24,13 C 20,9 17,5 15.5,1', 0.65, 10)} ${fuseau('M 14.6,-1 C 13,-5 12.2,-9 12.4,-13', 0.6, 10)} ${fuseau('M 12.6,-15 C 13,-19 15.5,-22.5 19,-25', 0.55, 10)} ${fuseau('M 21,15.5 C 19,13 17.2,10.5 15.8,8', 0.5, 8)}" fill="#b91c1c"/>
 
-            <!-- Corne droite : symétrie avec reflets draconiques or et rubis -->
-            <circle cx="74.5" cy="16.5" r="5.2" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
+            <!-- Corne droite : symétrie -->
+            <circle cx="74.5" cy="16.5" r="3.8" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
             <!-- Ergot secondaire inférieur droit -->
-            <path d="${plume('M 74,17.5 C 78,20 82,21.5 86.5,21', 3.2, 12)}" fill="#18181b" stroke="#09090b" stroke-width="0.7"/>
-            <path d="${fuseau('M 75,17.8 C 78.5,19.8 82,21 85.5,20.8', 1.2, 10)}" fill="#f59e0b"/>
+            <path d="${plume('M 74,17.5 C 81,17.5 89,14.5 94,7.5', 5.0, 14)}" fill="#18181b" stroke="#09090b" stroke-width="0.7"/>
+            <path d="${fuseau('M 75,17.5 C 81,17.4 87.5,15 91.5,9.5', 0.7, 12)}" fill="#b91c1c"/>
             <!-- Corps principal de la grande corne droite en plume -->
             <path d="${plume('M 74.5,16.5 C 81,10 87,2 89.5,-6 C 91.5,-14 87,-22 78,-28.5', 6.2, 22)}" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
-            <circle cx="74.5" cy="16.5" r="4.6" fill="#18181b"/>
-            <!-- Traits intérieurs de flamme draconique dans l'esprit de Shadow -->
-            <path d="${plume('M 74.5,15.5 C 80.5,9.5 86,2 88.5,-6 C 90.5,-13 86.5,-21 78.5,-27.5', 3.8, 18)}" fill="#b91c1c" opacity="0.85"/>
-            <path d="${fuseau('M 75.5,14 C 81,8 85.5,2 87.5,-5 C 89,-12 86,-19 79,-26', 1.8, 16)}" fill="#f59e0b"/>
-            <path d="${fuseau('M 76.5,11 C 81.5,6 85,1 86.5,-4 C 88,-9 85.5,-16 80,-23', 0.9, 14)}" fill="#fef08a"/>
+            <circle cx="74.5" cy="16.5" r="3.3" fill="#18181b"/>
+            <!-- Corne sombre : nervures en traits fins fuseau, symétriques -->
+            <path d="${fuseau('M 76,13 C 80,9 83,5 84.5,1', 0.65, 10)} ${fuseau('M 85.4,-1 C 87,-5 87.8,-9 87.6,-13', 0.6, 10)} ${fuseau('M 87.4,-15 C 87,-19 84.5,-22.5 81,-25', 0.55, 10)} ${fuseau('M 79,15.5 C 81,13 82.8,10.5 84.2,8', 0.5, 8)}" fill="#b91c1c"/>
         </g>
     `;
 }
