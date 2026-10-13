@@ -15,7 +15,8 @@ const OUTFIT_TO_CHARACTER = {
     fairy_herbalist: 'fairy',
     scholar_mage: 'scholar',
     pirate_corsair: 'pirate',
-    dragon_knight: 'dragon'
+    dragon_knight: 'dragon',
+    astronaut_explorer: 'astronaut'
 };
 
 // NOTE Repli quand la tenue n'est pas connue : l'espèce suffit pour la plupart des personnages
@@ -51,7 +52,8 @@ const MAP_LINES = {
     fairy: ['Allons voir les fleurs !', 'La forêt est en fleurs !', 'Le lac scintille !', 'La Porte brille !', 'Je vole vers le haut !', 'La Crête, c\'est joli !', 'Le Sommet, bientôt !', 'La Citadelle, hourra !'],
     scholar: ['Ouvrons le grimoire !', 'Chapitre un : la forêt.', 'Hypothèse : le lac.', 'La Porte est logique.', 'Théorie : on monte.', 'La Crête, en théorie.', 'Le Sommet, bien sûr !', 'Mission réussie !'],
     pirate: ['Hissez les voiles !', 'Terre en vue : la forêt !', 'Un lac, mais sans bateau ?', 'La Porte, un coffre à ouvrir !', 'À l\'aventure sur la montagne !', 'La Crête, notre mât de misaine !', 'Le Sommet, le trésor est là !', 'Citadelle atteinte, moussaillons !'],
-    dragon: ['Les flammes s\'éveillent !', 'La forêt nous attend.', 'Le lac fait de la vapeur !', 'La Porte brille de mille feux !', 'Je grimpe, ailes au vent.', 'La Crête, quelle belle vue.', 'Le Sommet est tout près !', 'Citadelle, nous voilà !']
+    dragon: ['Les flammes s\'éveillent !', 'La forêt nous attend.', 'Le lac fait de la vapeur !', 'La Porte brille de mille feux !', 'Je grimpe, ailes au vent.', 'La Crête, quelle belle vue.', 'Le Sommet est tout près !', 'Citadelle, nous voilà !'],
+    astronaut: ['Compte à rebours lancé !', 'Atterrissage en forêt !', 'Un lac sans gravité ?', 'La Porte, un sas à ouvrir !', 'Décollage vers la crête !', 'La Crête, orbite en vue.', 'Le Sommet, mission presque finie !', 'Citadelle, ici la base !']
 };
 
 const MAP_THRESHOLDS = [100, 80, 60, 40, 25, 10, 1, 0];
@@ -79,7 +81,8 @@ const ANSWER_LINES = {
     fairy: { ok: ['Ça fleurit !', 'Magique !', 'Pluie d\'étoiles !'], ko: ['Mes ailes tremblent...', 'Une fleur fanée.', 'Zut, un pétale !'] },
     scholar: { ok: ['Conforme au grimoire !', 'Démonstration réussie.', 'Exact, évidemment.'], ko: ['Erreur de calcul...', 'Retour au grimoire.', 'On révise ensemble ?'] },
     pirate: { ok: ['Mille sabords, bien visé !', 'Un beau butin !', 'Yo ho ho !'], ko: ['Par tous les poissons...', 'Le navire tangue.', 'On repart à la voile !'] },
-    dragon: { ok: ['Un feu de joie !', 'Rugissement de victoire !', 'Les écailles brillent !'], ko: ['Ma flamme vacille...', 'Même les dragons se trompent.', 'Un peu de fumée, on recommence !'] }
+    dragon: { ok: ['Un feu de joie !', 'Rugissement de victoire !', 'Les écailles brillent !'], ko: ['Ma flamme vacille...', 'Même les dragons se trompent.', 'Un peu de fumée, on recommence !'] },
+    astronaut: { ok: ['Mission accomplie !', 'Houston, c\'est bon !', 'Un petit pas pour moi !'], ko: ['Houston, un problème...', 'Perdu dans l\'espace.', 'On relance le compte à rebours !'] }
 };
 
 /**

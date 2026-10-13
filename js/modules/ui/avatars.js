@@ -16,6 +16,7 @@ import { FAIRY_STYLES, OUTFIT_FAIRY_HERBALIST, FAIRY_TROPHY } from './avatars/tr
 import { SCHOLAR_STYLES, OUTFIT_SCHOLAR_MAGE, SCHOLAR_TROPHY } from './avatars/trophies/scholar.js';
 import { PIRATE_STYLES, OUTFIT_PIRATE_CORSAIR, PIRATE_TROPHY } from './avatars/trophies/pirate.js';
 import { getDragonHorns, DRAGON_STYLES, OUTFIT_DRAGON_KNIGHT, DRAGON_TROPHY } from './avatars/trophies/dragon.js';
+import { ASTRONAUT_STYLES, OUTFIT_ASTRONAUT_EXPLORER, ASTRONAUT_TROPHY } from './avatars/trophies/astronaut.js';
 import { MANNEQUIN_STYLES, OUTFIT_MANNEQUIN } from './avatars/mannequin.js';
 
 // ANCHOR API publique inchangée : tout ce qui était exporté par ce module l'est toujours (réexports)
@@ -31,10 +32,11 @@ export { OUTFIT_FAIRY_HERBALIST } from './avatars/trophies/fairy.js';
 export { OUTFIT_SCHOLAR_MAGE } from './avatars/trophies/scholar.js';
 export { OUTFIT_PIRATE_CORSAIR } from './avatars/trophies/pirate.js';
 export { getDragonHorns, OUTFIT_DRAGON_KNIGHT } from './avatars/trophies/dragon.js';
+export { OUTFIT_ASTRONAUT_EXPLORER } from './avatars/trophies/astronaut.js';
 export { OUTFIT_MANNEQUIN, MANNEQUIN_BOY, MANNEQUIN_GIRL } from './avatars/mannequin.js';
 
 // SECTION Registres des trophées : coupes, tenues et fiches assemblées depuis avatars/trophies/*.js
-export const RPG_STYLES = { ...ELF_STYLES, ...ORC_STYLES, ...PALADIN_STYLES, ...CAT_STYLES, ...SHADOW_STYLES, ...VAMPIRE_STYLES, ...NECROMANCER_STYLES, ...FAIRY_STYLES, ...SCHOLAR_STYLES, ...PIRATE_STYLES, ...DRAGON_STYLES, ...MANNEQUIN_STYLES };
+export const RPG_STYLES = { ...ELF_STYLES, ...ORC_STYLES, ...PALADIN_STYLES, ...CAT_STYLES, ...SHADOW_STYLES, ...VAMPIRE_STYLES, ...NECROMANCER_STYLES, ...FAIRY_STYLES, ...SCHOLAR_STYLES, ...PIRATE_STYLES, ...DRAGON_STYLES, ...ASTRONAUT_STYLES, ...MANNEQUIN_STYLES };
 
 // Registre des tenues RPG
 export const RPG_OUTFITS = {
@@ -49,11 +51,12 @@ export const RPG_OUTFITS = {
     scholar_mage: OUTFIT_SCHOLAR_MAGE,
     pirate_corsair: OUTFIT_PIRATE_CORSAIR,
     dragon_knight: OUTFIT_DRAGON_KNIGHT,
+    astronaut_explorer: OUTFIT_ASTRONAUT_EXPLORER,
     mannequin: OUTFIT_MANNEQUIN
 };
 
 // Registre des Trophées RPG (IDs courts pour chaque personnage garçon et fille)
-export const RPG_TROPHIES = [ELF_TROPHY, ORC_TROPHY, PALADIN_TROPHY, CAT_TROPHY, SHADOW_TROPHY, VAMPIRE_TROPHY, NECROMANCER_TROPHY, FAIRY_TROPHY, SCHOLAR_TROPHY, PIRATE_TROPHY, DRAGON_TROPHY];
+export const RPG_TROPHIES = [ELF_TROPHY, ORC_TROPHY, PALADIN_TROPHY, CAT_TROPHY, SHADOW_TROPHY, VAMPIRE_TROPHY, NECROMANCER_TROPHY, FAIRY_TROPHY, SCHOLAR_TROPHY, PIRATE_TROPHY, DRAGON_TROPHY, ASTRONAUT_TROPHY];
 
 // Dictionnaire récapitulatif des IDs courts de chaque personnage avatar
 export const AVATAR_SHORT_IDS = {
@@ -71,7 +74,8 @@ export const AVATAR_SHORT_IDS = {
     fairy: { id: 'fairy', name: 'Fée Herboriste', type: 'trophy', number: 8, boyId: 'fai_b', girlId: 'fai_g' },
     scholar: { id: 'scholar', name: 'Humain Mage Érudit', type: 'trophy', number: 9, boyId: 'sch_b', girlId: 'sch_g' },
     pirate: { id: 'pirate', name: 'Corsaire des Mers', type: 'trophy', number: 10, boyId: 'pir_b', girlId: 'pir_g' },
-    dragon: { id: 'dragon', name: 'Chevalier Dragon', type: 'trophy', number: 11, boyId: 'drg_b', girlId: 'drg_g' }
+    dragon: { id: 'dragon', name: 'Chevalier Dragon', type: 'trophy', number: 11, boyId: 'drg_b', girlId: 'drg_g' },
+    astronaut: { id: 'astronaut', name: 'Cosmonaute Explorateur', type: 'trophy', number: 12, boyId: 'ast_b', girlId: 'ast_g' }
 };
 
 /**
@@ -326,6 +330,13 @@ export const AVATARS = {
         accent: '#f59e0b',
         get svg() { return renderAvatarSvg('dragon'); },
         get headSvg() { return renderAvatarHeadSvg('dragon'); }
+    },
+    astronaut: {
+        id: 'astronaut',
+        color: '#f97316',
+        accent: '#e2e8f0',
+        get svg() { return renderAvatarSvg('astronaut'); },
+        get headSvg() { return renderAvatarHeadSvg('astronaut'); }
     }
 };
 

@@ -44,7 +44,8 @@ export const ALL_HAIR_COLORS = [
     { id: 'fairy-orchid', name: 'Orchidée', hex: '#d946ef', isTrophyReward: true },
     { id: 'scholar-chestnut', name: 'Châtain Clair', hex: '#b07d4b', isTrophyReward: true },
     { id: 'pirate-chestnut', name: 'Brun Corsaire', hex: '#3b2219', isTrophyReward: true },
-    { id: 'dragon-crimson', name: 'Rouge Braise Draconique', hex: '#b91c1c', isTrophyReward: true }
+    { id: 'dragon-crimson', name: 'Rouge Braise Draconique', hex: '#b91c1c', isTrophyReward: true },
+    { id: 'astro-indigo', name: 'Indigo Orbital', hex: '#312e81', isTrophyReward: true }
 ];
 
 // Palette active pour la personnalisation des avatars de base

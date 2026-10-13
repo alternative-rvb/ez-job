@@ -35,7 +35,7 @@ const option = (name, def = null) => {
 const WITH_VALUE = ['--zoom', '--style', '--outfit', '--sortie', '--un', '--taille'];
 const target = args.find((a, i) => !a.startsWith('--') && !WITH_VALUE.includes(args[i - 1]));
 if (!target) {
-    console.error('Usage : node scripts/avatar-preview.mjs <elf|orc|paladin|cat|shadow|vampire|necromancer|fairy|scholar|mannequin|base> [--zoom zone] [--teintes] [--style n] [--outfit n] [--sortie f.png] [--svg]');
+    console.error('Usage : node scripts/avatar-preview.mjs <elf|orc|paladin|cat|shadow|vampire|necromancer|fairy|scholar|pirate|dragon|astronaut|mannequin|base> [--zoom zone] [--teintes] [--style n] [--outfit n] [--sortie f.png] [--svg]');
     process.exit(1);
 }
 
