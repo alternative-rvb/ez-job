@@ -4,6 +4,7 @@
  */
 
 import { fuseau, plume, gripHand, fitBand, SKIN_DEFAULT } from '../../avatar-kit.js';
+import { mixHex } from '../base.js';
 
 // ANCHOR Cornes draconiques (espèce dragon / drakéide) : cornes en S ascendantes en fuseau & plume dans l'esprit de Shadow, obsidienne et flammes rubis/or
 export function getDragonHorns() {
@@ -156,41 +157,126 @@ export const OUTFIT_DRAGON_KNIGHT = {
         </g>`
 };
 
-// SECTION Coupes de cheveux exclusives du Chevalier Dragon (garçon et fille)
+// SECTION Coupes de cheveux exclusives du Chevalier Dragon (garçon et fille) - Drakéide de Feu
 export const DRAGON_STYLES = {
     dragon_boy: {
         id: 'dragon_boy',
-        name: 'Crinière du Dragon (Garçon)',
+        name: 'Crinière de Feu (Garçon)',
         withBand: false,
         getHairBack: (color) => `
             <g id="hair-back-dragon-boy">
+                <!-- ANCHOR Socle universel -->
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <!-- Mèches hérissées en arrière par le souffle des flammes -->
-                <path d="M 17,46 C 11,36 7,24 10,16 C 13,8 9,4 16,-2 C 22,-8 32,-10 38,-8 C 42,-16 52,-18 58,-14 C 66,-18 76,-14 80,-6 C 88,-6 94,2 92,12 C 96,20 92,32 84,46 C 80,35 76,27 72,21 C 64,11 36,11 28,21 C 24,27 21,35 17,46 Z" fill="${color}"/>
+                <!-- Grande crinière de feu flamboyante : langues de flammes ascendantes foudroyantes -->
+                <path d="M 12,46 
+                         C 8,36 6,24 8,14 
+                         C 6,4 11,-4 17,-12 
+                         C 20,-10 23,-4 24,2 
+                         C 26,-6 31,-14 37,-20 
+                         C 41,-15 42,-8 43,-3 
+                         C 45,-12 47,-21 50,-26 
+                         C 53,-21 55,-12 57,-3 
+                         C 58,-8 59,-15 63,-20 
+                         C 69,-14 74,-6 76,2 
+                         C 77,-4 80,-10 83,-12 
+                         C 89,-4 94,4 92,14 
+                         C 94,24 92,36 88,46 
+                         C 84,36 80,26 76,20 
+                         C 66,10 34,10 24,20 
+                         C 20,26 16,36 12,46 Z" fill="${color}"/>
+                <!-- Langues de flammes vives intérieures jaillissant entre les cornes -->
+                <path d="M 45,2 C 47,-10 48,-20 50,-24 C 52,-20 53,-10 55,2 C 53,-2 47,-2 45,2 Z" fill="${mixHex(color, '#f59e0b', 0.32)}"/>
+                <path d="M 33,4 C 34,-6 35,-14 38,-18 C 39,-13 40,-6 41,2 Z" fill="${mixHex(color, '#f59e0b', 0.22)}"/>
+                <path d="M 67,4 C 66,-6 65,-14 62,-18 C 61,-13 60,-6 59,2 Z" fill="${mixHex(color, '#f59e0b', 0.22)}"/>
+                <!-- Flammes latérales extérieures sculptées en fuseaux de feu -->
+                <path d="${plume('M 18,22 C 10,18 6,10 7,-1', 4.8, 14)}" fill="${color}"/>
+                <path d="${fuseau('M 17,20 C 11,16 8,9 9,1', 1.8, 10)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
+                <path d="${plume('M 84,22 C 92,18 96,10 93,-1', 4.8, 14)}" fill="${color}"/>
+                <path d="${fuseau('M 85,20 C 91,16 94,9 93,1', 1.8, 10)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
+                <!-- Pointes de flammes basses flammées aux tempes -->
+                <path d="${plume('M 21,36 C 13,38 9,44 11,50', 4.2, 12)}" fill="${color}"/>
+                <path d="${plume('M 81,36 C 89,38 93,44 91,50', 4.2, 12)}" fill="${color}"/>
+                <!-- Stries de profondeur d'ombre entre les langues de feu -->
+                <path d="${fuseau('M 43,0 C 47,-9 48,-17 50,-22', 1.2, 10)}" fill="${mixHex(color, '#000000', 0.3)}"/>
+                <path d="${fuseau('M 57,0 C 53,-9 52,-17 50,-22', 1.2, 10)}" fill="${mixHex(color, '#000000', 0.3)}"/>
+                <path d="${fuseau('M 31,8 C 29,1 31,-7 36,-17', 1.3, 12)}" fill="${mixHex(color, '#000000', 0.25)}"/>
+                <path d="${fuseau('M 71,8 C 73,1 71,-7 66,-17', 1.3, 12)}" fill="${mixHex(color, '#000000', 0.25)}"/>
             </g>`,
         getHairFront: (color) => `
             <g id="hair-front-dragon-boy">
-                <!-- Pointes vives dégageant les cornes et les yeux ardents -->
-                <path d="M 22,28 C 25,18 36,10 50,6 C 64,10 75,18 78,28 C 75,32 72,29 69,23 C 66,31 61,32 58,25 C 54,32 48,33 44,24 C 40,32 34,31 31,24 C 28,31 24,32 22,28 Z" fill="${color}"/>
+                <!-- Frange flamboyante sculptée en langues de feu acérées -->
+                <path d="M 20,24 C 23,16 35,8 50,6 C 65,8 77,16 80,24 C 77,29 74,27 72,21 C 70,29 65,33 60,25 C 57,32 52,34 49,27 C 47,33 42,34 39,26 C 36,31 32,32 29,24 C 26,29 22,30 20,24 Z" fill="${color}"/>
+                <!-- Mèche de feu centrale plongeante et effilée -->
+                <path d="${plume('M 48,15 C 50,22 51,28 53,34', 3.8, 14)}" fill="${color}"/>
+                <path d="${fuseau('M 48.5,17 C 50,23 51,28 52.5,32', 1.4, 10)}" fill="${mixHex(color, '#f59e0b', 0.3)}"/>
+                <!-- Mèches latérales en langues de flammes inclinées vers l'intérieur -->
+                <path d="${plume('M 34,18 C 37,24 40,29 44,33', 3.4, 12)}" fill="${color}"/>
+                <path d="${plume('M 66,18 C 63,24 60,29 56,33', 3.4, 12)}" fill="${color}"/>
+                <!-- Mèches de tempes ardentes encadrant les joues comme des flammèches -->
+                <path d="${plume('M 21,24 C 17,32 16,40 18,48', 3.2, 14)}" fill="${color}"/>
+                <path d="${fuseau('M 20.5,26 C 17.5,33 16.8,39 18.2,45', 1.2, 10)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
+                <path d="${plume('M 79,24 C 83,32 84,40 82,48', 3.2, 14)}" fill="${color}"/>
+                <path d="${fuseau('M 79.5,26 C 82.5,33 83.2,39 81.8,45', 1.2, 10)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
+                <!-- Sillons d'ombre sculptant le relief des flammes -->
+                <path d="${fuseau('M 38,18 C 40,23 42,28 44,31', 0.9, 8)} ${fuseau('M 62,18 C 60,23 58,28 56,31', 0.9, 8)}" fill="${mixHex(color, '#000000', 0.3)}"/>
             </g>`
     },
     dragon_girl: {
         id: 'dragon_girl',
-        name: 'Écailles Célestes (Fille)',
+        name: 'Cascade de Flammes (Fille)',
         withTiara: false,
         getHairBack: (color) => `
             <g id="hair-back-dragon-girl">
+                <!-- ANCHOR Socle universel -->
                 <ellipse cx="50" cy="26" rx="35" ry="31" fill="${color}"/>
-                <!-- Longue crinière sauvage se déployant le long du dos -->
-                <path d="M 16,48 C 11,38 7,26 10,18 C 13,10 9,6 16,0 C 22,-6 32,-8 38,-6 C 42,-14 52,-16 58,-12 C 66,-16 76,-12 80,-4 C 88,-4 94,4 92,14 C 96,22 92,34 84,48 C 81,64 77,78 73,88 C 69,82 71,70 70,60 C 64,20 36,20 30,60 C 29,70 31,82 27,88 C 23,78 19,64 16,48 Z" fill="${color}"/>
+                <!-- Crête supérieure flamboyante identique au garçon pour la majesté draconique -->
+                <path d="M 14,44 
+                         C 9,34 7,22 9,14 
+                         C 7,4 12,-4 18,-12 
+                         C 21,-10 24,-4 25,2 
+                         C 27,-6 32,-14 38,-20 
+                         C 42,-15 43,-8 44,-3 
+                         C 46,-12 48,-21 50,-26 
+                         C 52,-21 54,-12 56,-3 
+                         C 57,-8 58,-15 62,-20 
+                         C 68,-14 73,-6 75,2 
+                         C 76,-4 79,-10 82,-12 
+                         C 88,-4 93,4 91,14 
+                         C 94,22 92,34 88,44 
+                         C 86,56 83,72 85,86 
+                         C 80,84 78,76 75,68 
+                         C 73,62 70,74 68,84 
+                         C 64,80 62,70 60,60 
+                         C 56,40 44,40 40,60 
+                         C 38,70 36,80 32,84 
+                         C 30,74 27,62 25,68 
+                         C 22,76 20,84 15,86 
+                         C 17,72 14,56 14,44 Z" fill="${color}"/>
+                <!-- Flots de flammes latéraux ondulants tombant sur les épaules -->
+                <path d="${plume('M 17,40 C 11,52 9,68 14,84', 5.2, 18)}" fill="${color}"/>
+                <path d="${fuseau('M 16,42 C 11,54 10,68 14,80', 2.0, 14)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
+                <path d="${plume('M 83,40 C 89,52 91,68 86,84', 5.2, 18)}" fill="${color}"/>
+                <path d="${fuseau('M 84,42 C 89,54 90,68 86,80', 2.0, 14)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
+                <!-- Pointes de flammes terminales effilées en bas de crinière -->
+                <path d="${plume('M 20,78 C 17,84 15,87 18,90', 3.2, 8)} ${plume('M 80,78 C 83,84 85,87 82,90', 3.2, 8)}" fill="${color}"/>
+                <!-- Crête centrale incandescente -->
+                <path d="M 45,2 C 47,-10 48,-20 50,-24 C 52,-20 53,-10 55,2 C 53,-2 47,-2 45,2 Z" fill="${mixHex(color, '#f59e0b', 0.32)}"/>
             </g>`,
         getHairFront: (color) => `
             <g id="hair-front-dragon-girl">
-                <!-- Frange nette dégageant le diadème avec tresses effilées -->
-                <path d="M 21,30 C 23,18 36,8 50,6 C 64,8 77,18 79,30 C 75,34 73,30 71,24 C 68,32 63,34 59,26 C 54,34 48,35 44,26 C 39,34 34,33 30,25 C 27,32 23,33 21,30 Z" fill="${color}"/>
-                <!-- Deux mèches effilées encadrant les joues -->
-                <path d="${fuseau('M 23,30 C 19,43 18,56 22,68', 2.4, 14)}" fill="${color}"/>
-                <path d="${fuseau('M 77,30 C 81,43 82,56 78,68', 2.4, 14)}" fill="${color}"/>
+                <!-- Frange féminine flamboyante en langues de flammes vives -->
+                <path d="M 21,26 C 23,16 35,8 50,6 C 65,8 77,16 79,26 C 76,31 73,28 71,22 C 68,30 64,32 60,24 C 56,32 52,33 49,26 C 46,33 42,33 39,25 C 35,31 31,31 29,23 C 26,29 23,30 21,26 Z" fill="${color}"/>
+                <!-- Mèche de flamme plongeante délicate au centre -->
+                <path d="${plume('M 48,15 C 50,22 51,27 52,32', 3.2, 12)}" fill="${color}"/>
+                <path d="${fuseau('M 48.5,17 C 50,22 51,26 51.8,30', 1.1, 8)}" fill="${mixHex(color, '#f59e0b', 0.3)}"/>
+                <!-- Longues mèches enflammées encadrant les joues (accroche-cœurs de feu) -->
+                <path d="${plume('M 22,26 C 17,38 16,52 20,66', 3.6, 16)}" fill="${color}"/>
+                <path d="${fuseau('M 21.5,28 C 17.5,39 16.8,50 19.8,62', 1.4, 12)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
+                <!-- Extrémité en flèche de feu léchant la clavicule -->
+                <path d="${fuseau('M 19,62 C 20,66 22,69 24,71', 1.8, 8)}" fill="${color}"/>
+                <path d="${plume('M 78,26 C 83,38 84,52 80,66', 3.6, 16)}" fill="${color}"/>
+                <path d="${fuseau('M 78.5,28 C 82.5,39 83.2,50 80.2,62', 1.4, 12)}" fill="${mixHex(color, '#f59e0b', 0.35)}"/>
+                <path d="${fuseau('M 81,62 C 80,66 78,69 76,71', 1.8, 8)}" fill="${color}"/>
             </g>`
     }
 };
