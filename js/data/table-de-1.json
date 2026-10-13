@@ -1,0 +1,179 @@
+{
+  "config": {
+    "title": "Table de 1",
+    "description": "Entraîne-toi sur la table de multiplication de 1",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 20,
+    "category": "Toutes classes",
+    "createdAt": "2026-10-13",
+    "tag": [
+      "Mathématiques",
+      "Calcul mental",
+      "Multiplication"
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien font 2 × 1 ?",
+      "acceptedAnswers": [
+        "2"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Combien font 1 × 6 ?",
+      "acceptedAnswers": [
+        "6"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Combien font 8 × 1 ?",
+      "acceptedAnswers": [
+        "8"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Combien font 10 × 1 ?",
+      "acceptedAnswers": [
+        "10"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Combien font 1 × 10 ?",
+      "acceptedAnswers": [
+        "10"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Combien font 1 × 1 ?",
+      "acceptedAnswers": [
+        "1"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Combien font 7 × 1 ?",
+      "acceptedAnswers": [
+        "7"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Combien font 1 × 2 ?",
+      "acceptedAnswers": [
+        "2"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Combien font 6 × 1 ?",
+      "acceptedAnswers": [
+        "6"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Combien font 1 × 7 ?",
+      "acceptedAnswers": [
+        "7"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Combien font 1 × 1 ?",
+      "acceptedAnswers": [
+        "1"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Combien font 4 × 1 ?",
+      "acceptedAnswers": [
+        "4"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Combien font 5 × 1 ?",
+      "acceptedAnswers": [
+        "5"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Combien font 3 × 1 ?",
+      "acceptedAnswers": [
+        "3"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Combien font 1 × 8 ?",
+      "acceptedAnswers": [
+        "8"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Combien font 1 × 4 ?",
+      "acceptedAnswers": [
+        "4"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Combien font 1 × 9 ?",
+      "acceptedAnswers": [
+        "9"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Combien font 1 × 3 ?",
+      "acceptedAnswers": [
+        "3"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Combien font 9 × 1 ?",
+      "acceptedAnswers": [
+        "9"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Combien font 1 × 5 ?",
+      "acceptedAnswers": [
+        "5"
+      ],
+      "imageUrl": null
+    }
+  ]
+}
