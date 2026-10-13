@@ -33,7 +33,6 @@
     "school-life-english",
     "spongebob",
     "systeme-solaire",
-    "table-de-10",
     "table-de-2",
     "table-de-3",
     "table-de-4",
@@ -64,7 +63,7 @@
     "Physique",
     "Sciences"
   ],
-  "count": 45,
-  "lastUpdated": "2026-10-13T13:22:41.358991",
+  "count": 44,
+  "lastUpdated": "2026-10-13T13:24:13.320095",
   "generated_by": "api.py"
 }
