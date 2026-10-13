@@ -68,7 +68,9 @@ function configs(extra = {}) {
         process.exit(1);
     }
     return [['boy', trophy.boyPreset], ['girl', trophy.girlPreset]].map(([type, p]) => ({
-        type, styleKey: p.styleKey, outfitKey: p.outfitKey, species: p.species,
+        type, styleKey: p.styleKey, outfitKey: p.outfitKey,
+        styleId: p.styleId || 1, outfitId: p.outfitId || 1,
+        species: p.species,
         skinColor: p.skinColor, hairColor: p.hairColor, eyeColor: p.eyeColor, ...extra
     }));
 }

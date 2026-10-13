@@ -45,7 +45,26 @@ export const ALL_HAIR_COLORS = [
     { id: 'scholar-chestnut', name: 'Châtain Clair', hex: '#b07d4b', isTrophyReward: true },
     { id: 'pirate-chestnut', name: 'Brun Corsaire', hex: '#3b2219', isTrophyReward: true },
     { id: 'dragon-crimson', name: 'Rouge Braise Draconique', hex: '#b91c1c', isTrophyReward: true },
-    { id: 'astro-indigo', name: 'Indigo Orbital', hex: '#312e81', isTrophyReward: true }
+    { id: 'astro-indigo', name: 'Indigo Orbital', hex: '#312e81', isTrophyReward: true },
+    // Teintes exclusives débloquées par les trophées rares (variantes de base)
+    { id: 'rare-mint', name: 'Menthe Givrée', hex: '#2dd4bf', isTrophyReward: true },
+    { id: 'rare-lavender', name: 'Lavande Pastel', hex: '#c4b5fd', isTrophyReward: true },
+    { id: 'rare-peach', name: 'Pêche Veloutée', hex: '#fb923c', isTrophyReward: true },
+    { id: 'rare-sakura-pink', name: 'Rose Bonbon', hex: '#f472b6', isTrophyReward: true },
+    { id: 'rare-sapphire-blue', name: 'Bleu Saphir', hex: '#1e3a8a', isTrophyReward: true },
+    { id: 'rare-polar-silver', name: 'Argent Polaire', hex: '#e2e8f0', isTrophyReward: true },
+    { id: 'rare-garnet-red', name: 'Rouge Grenat', hex: '#991b1b', isTrophyReward: true },
+    { id: 'rare-imperial-purple', name: 'Pourpre Impérial', hex: '#6b21a8', isTrophyReward: true },
+    { id: 'rare-copper-blaze', name: 'Cuivre Flamboyant', hex: '#ea580c', isTrophyReward: true },
+    { id: 'rare-coral-pink', name: 'Rose Corail', hex: '#fb7185', isTrophyReward: true },
+    { id: 'rare-citrine-blonde', name: 'Blond Platine', hex: '#fef08a', isTrophyReward: true },
+    { id: 'rare-forest-green', name: 'Vert Forêt', hex: '#14532d', isTrophyReward: true },
+    { id: 'rare-moka-brown', name: 'Brun Moka', hex: '#291810', isTrophyReward: true },
+    { id: 'rare-cyan-ice', name: 'Cyan Glacé', hex: '#06b6d4', isTrophyReward: true },
+    { id: 'rare-berry-red', name: 'Framboise Sauvage', hex: '#be185d', isTrophyReward: true },
+    { id: 'rare-ash-chestnut', name: 'Châtain Cendré', hex: '#57534e', isTrophyReward: true },
+    { id: 'rare-indigo-night', name: 'Indigo Nuit', hex: '#3730a3', isTrophyReward: true },
+    { id: 'rare-amber-glow', name: 'Ambre Chaud', hex: '#b45309', isTrophyReward: true }
 ];
 
 // Palette active pour la personnalisation des avatars de base
@@ -75,7 +94,26 @@ export const ALL_EYE_COLORS = [
     { id: 'fairy-lilac', name: 'Lilas Féerique', dark: '#5b21b6', light: '#c4b5fd', isTrophyReward: true },
     { id: 'revenant-green', name: 'Vert Spectral', dark: '#052e16', light: '#15803d', isTrophyReward: true },
     { id: 'lagoon-blue', name: 'Bleu Lagon', dark: '#0e7490', light: '#06b6d4', isTrophyReward: true },
-    { id: 'dragon-fire', name: 'Feu Draconique', dark: '#7f1d1d', light: '#ea580c', isTrophyReward: true }
+    { id: 'dragon-fire', name: 'Feu Draconique', dark: '#7f1d1d', light: '#ea580c', isTrophyReward: true },
+    // Teintes d'iris exclusives débloquées par les trophées rares (variantes de base)
+    { id: 'mint', name: 'Menthe Givrée', dark: '#0f766e', light: '#2dd4bf', isTrophyReward: true },
+    { id: 'lavender', name: 'Lavande Douce', dark: '#5b21b6', light: '#a78bfa', isTrophyReward: true },
+    { id: 'topaz', name: 'Topaze Dorée', dark: '#92400e', light: '#f59e0b', isTrophyReward: true },
+    { id: 'pink-blush', name: 'Rose Poudré', dark: '#9d174d', light: '#f472b6', isTrophyReward: true },
+    { id: 'sapphire', name: 'Bleu Saphir', dark: '#172554', light: '#60a5fa', isTrophyReward: true },
+    { id: 'platinum', name: 'Gris Platine', dark: '#334155', light: '#94a3b8', isTrophyReward: true },
+    { id: 'garnet', name: 'Grenat Flamboyant', dark: '#7f1d1d', light: '#ef4444', isTrophyReward: true },
+    { id: 'imperial-purple', name: 'Pourpre Impérial', dark: '#581c87', light: '#c084fc', isTrophyReward: true },
+    { id: 'copper', name: 'Ambre Cuivré', dark: '#7c2d12', light: '#fb923c', isTrophyReward: true },
+    { id: 'coral', name: 'Rose Corail', dark: '#9f1239', light: '#fda4af', isTrophyReward: true },
+    { id: 'citrine', name: 'Citrine Lumineuse', dark: '#713f12', light: '#facc15', isTrophyReward: true },
+    { id: 'deep-jade', name: 'Jade Sombre', dark: '#052e16', light: '#22c55e', isTrophyReward: true },
+    { id: 'warm-hazel', name: 'Noisette Moka', dark: '#451a03', light: '#b45309', isTrophyReward: true },
+    { id: 'ice-cyan', name: 'Cyan Glacé', dark: '#0369a1', light: '#38bdf8', isTrophyReward: true },
+    { id: 'wild-berry', name: 'Framboise Sauvage', dark: '#831843', light: '#f472b6', isTrophyReward: true },
+    { id: 'ash-grey', name: 'Gris Cendré', dark: '#292524', light: '#a8a29e', isTrophyReward: true },
+    { id: 'night-indigo', name: 'Indigo Nuit', dark: '#1e1b4b', light: '#818cf8', isTrophyReward: true },
+    { id: 'amber-glow', name: 'Ambre Chaud', dark: '#78350f', light: '#f59e0b', isTrophyReward: true }
 ];
 
 // Palette active pour la personnalisation des avatars de base

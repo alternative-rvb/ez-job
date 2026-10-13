@@ -314,12 +314,11 @@ export class RoadmapManager {
 
                     <!-- Badge Score & Lien de Modification Avatar -->
                     <div class="flex flex-col items-end gap-1 flex-shrink-0">
-                        <button id="roadmap-score-badge" class="group/score flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-accent-500/15 hover:bg-accent-500/25 border border-accent-500/30 hover:border-accent-500/50 text-amber-900 font-bold text-xs transition cursor-pointer active:scale-95" title="Cliquer pour tester : +15 pts">
-                            <i class="bi bi-star-fill text-accent-500 group-hover/score:scale-110 transition-transform text-xs"></i>
+                        <div id="roadmap-score-badge" class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-accent-500/15 border border-accent-500/30 text-amber-900 font-bold text-xs">
+                            <i class="bi bi-star-fill text-accent-500 text-xs"></i>
                             <span class="text-xs sm:text-sm font-extrabold">${totalPoints}</span>
                             <span class="text-[10px] sm:text-[11px] font-semibold text-amber-800">pts</span>
-                            <span class="text-[9px] sm:text-[10px] text-accent-600 ml-0.5 opacity-70 group-hover/score:opacity-100">+15</span>
-                        </button>
+                        </div>
                         <button id="open-avatar-customizer-btn" class="text-[11px] sm:text-xs font-semibold text-primary-700 hover:text-primary-900 hover:underline flex items-center gap-1 transition whitespace-nowrap cursor-pointer" title="Personnaliser ton avatar">
                             <i class="bi bi-palette-fill text-accent-600"></i>
                             <span>Modifier mon avatar</span>
@@ -923,16 +922,6 @@ export class RoadmapManager {
         if (customizerBtn) {
             customizerBtn.addEventListener('click', () => {
                 avatarCustomizerModal.open(() => this.render());
-            });
-        }
-
-        const scoreBadge = document.getElementById('roadmap-score-badge');
-        if (scoreBadge) {
-            scoreBadge.addEventListener('click', () => {
-                const current = rewardsManager.getTotalPoints();
-                const nextScore = current >= 100 ? 0 : current + 15;
-                rewardsManager.setTotalPoints(nextScore);
-                this.render();
             });
         }
 

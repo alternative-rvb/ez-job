@@ -18,6 +18,7 @@ import { PIRATE_STYLES, OUTFIT_PIRATE_CORSAIR, PIRATE_TROPHY } from './avatars/t
 import { getDragonHorns, DRAGON_STYLES, OUTFIT_DRAGON_KNIGHT, DRAGON_TROPHY } from './avatars/trophies/dragon.js';
 import { ASTRONAUT_STYLES, OUTFIT_ASTRONAUT_EXPLORER, ASTRONAUT_TROPHY } from './avatars/trophies/astronaut.js';
 import { MANNEQUIN_STYLES, OUTFIT_MANNEQUIN } from './avatars/mannequin.js';
+import { RARE_TROPHIES } from './avatars/rares.js';
 
 // ANCHOR API publique inchangée : tout ce qui était exporté par ce module l'est toujours (réexports)
 export * from './avatars/base.js';
@@ -34,6 +35,7 @@ export { OUTFIT_PIRATE_CORSAIR } from './avatars/trophies/pirate.js';
 export { getDragonHorns, OUTFIT_DRAGON_KNIGHT } from './avatars/trophies/dragon.js';
 export { OUTFIT_ASTRONAUT_EXPLORER } from './avatars/trophies/astronaut.js';
 export { OUTFIT_MANNEQUIN, MANNEQUIN_BOY, MANNEQUIN_GIRL } from './avatars/mannequin.js';
+export { RARE_TROPHIES } from './avatars/rares.js';
 
 // SECTION Registres des trophées : coupes, tenues et fiches assemblées depuis avatars/trophies/*.js
 export const RPG_STYLES = { ...ELF_STYLES, ...ORC_STYLES, ...PALADIN_STYLES, ...CAT_STYLES, ...SHADOW_STYLES, ...VAMPIRE_STYLES, ...NECROMANCER_STYLES, ...FAIRY_STYLES, ...SCHOLAR_STYLES, ...PIRATE_STYLES, ...DRAGON_STYLES, ...ASTRONAUT_STYLES, ...MANNEQUIN_STYLES };
@@ -56,7 +58,7 @@ export const RPG_OUTFITS = {
 };
 
 // Registre des Trophées RPG (IDs courts pour chaque personnage garçon et fille)
-export const RPG_TROPHIES = [ELF_TROPHY, ORC_TROPHY, PALADIN_TROPHY, CAT_TROPHY, SHADOW_TROPHY, VAMPIRE_TROPHY, NECROMANCER_TROPHY, FAIRY_TROPHY, SCHOLAR_TROPHY, PIRATE_TROPHY, DRAGON_TROPHY, ASTRONAUT_TROPHY];
+export const RPG_TROPHIES = [ELF_TROPHY, ORC_TROPHY, PALADIN_TROPHY, CAT_TROPHY, SHADOW_TROPHY, VAMPIRE_TROPHY, NECROMANCER_TROPHY, FAIRY_TROPHY, SCHOLAR_TROPHY, PIRATE_TROPHY, DRAGON_TROPHY, ASTRONAUT_TROPHY, ...RARE_TROPHIES];
 
 // Dictionnaire récapitulatif des IDs courts de chaque personnage avatar
 export const AVATAR_SHORT_IDS = {
@@ -75,7 +77,9 @@ export const AVATAR_SHORT_IDS = {
     scholar: { id: 'scholar', name: 'Humain Mage Érudit', type: 'trophy', number: 9, boyId: 'sch_b', girlId: 'sch_g' },
     pirate: { id: 'pirate', name: 'Corsaire des Mers', type: 'trophy', number: 10, boyId: 'pir_b', girlId: 'pir_g' },
     dragon: { id: 'dragon', name: 'Chevalier Dragon', type: 'trophy', number: 11, boyId: 'drg_b', girlId: 'drg_g' },
-    astronaut: { id: 'astronaut', name: 'Cosmonaute Explorateur', type: 'trophy', number: 12, boyId: 'ast_b', girlId: 'ast_g' }
+    astronaut: { id: 'astronaut', name: 'Cosmonaute Explorateur', type: 'trophy', number: 12, boyId: 'ast_b', girlId: 'ast_g' },
+    // Avatars rares débloqués (variantes de départ)
+    ...Object.fromEntries(RARE_TROPHIES.map(t => [t.id, { id: t.id, name: t.title, type: 'rare', number: t.number, boyId: t.boyPreset.id, girlId: t.girlPreset.id }]))
 };
 
 /**

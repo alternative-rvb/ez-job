@@ -228,6 +228,15 @@ export const PIRATE_TROPHY = {
     tagline: 'Cap sur l\'aventure et les trésors des Sept Mers !',
     description: 'Débloque la tenue de Corsaire des Sept Mers, le grand tricorne brodé d\'or, le sabre d\'abordage et la moustache exclusive de flibustier.',
     rarity: 'épique',
+    unlocks: {
+        species: 'human',
+        skins: [],
+        hairs: ['#3b2219'],
+        eyes: ['lagoon-blue'],
+        styles: { boy: 'pirate_boy', girl: 'pirate_girl' },
+        outfit: 'pirate_corsair',
+        label: 'Corsaire des Mers'
+    },
     rewards: [
         { icon: 'bi-person-badge', label: 'Espèce : Humain' },
         { icon: 'bi-compass', label: 'Classe : Corsaire des Mers' },

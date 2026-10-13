@@ -296,6 +296,15 @@ export const DRAGON_TROPHY = {
     tagline: 'Maîtrise le feu ancestral et chevauche les cieux !',
     description: 'Débloque l\'espèce Drakéide avec ses cornes draconiques et ses yeux ardents, l\'armure d\'écailles de dragon et la lance de dragonnier.',
     rarity: 'légendaire',
+    unlocks: {
+        species: 'dragon',
+        skins: ['dragon-amber'],
+        hairs: ['#b91c1c'],
+        eyes: ['dragon-fire'],
+        styles: { boy: 'dragon_boy', girl: 'dragon_girl' },
+        outfit: 'dragon_knight',
+        label: 'Chevalier Dragon'
+    },
     rewards: [
         { icon: 'bi-fire', label: 'Espèce : Drakéide' },
         { icon: 'bi-shield-shaded', label: 'Classe : Chevalier Dragon' },

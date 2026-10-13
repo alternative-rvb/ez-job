@@ -201,6 +201,15 @@ export const ASTRONAUT_TROPHY = {
     tagline: 'Les étoiles ne sont plus qu\'à un quiz de distance !',
     description: 'Débloque la combinaison de cosmonaute blanche et orange, le casque relevé derrière la tête et le drapeau d\'expédition.',
     rarity: 'rare',
+    unlocks: {
+        species: 'human',
+        skins: [],
+        hairs: ['#312e81'],
+        eyes: [],
+        styles: { boy: 'astronaut_boy', girl: 'astronaut_girl' },
+        outfit: 'astronaut_explorer',
+        label: 'Cosmonaute'
+    },
     rewards: [
         { icon: 'bi-person-badge', label: 'Espèce : Humain' },
         { icon: 'bi-rocket-takeoff', label: 'Classe : Cosmonaute Explorateur' },

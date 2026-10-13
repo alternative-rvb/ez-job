@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
@@ -156,8 +156,8 @@
       </div>
     </div>
 
-    <!-- Titre du Laboratoire -->
-    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex items-center justify-between shadow-md">
+    <!-- Titre du Laboratoire & Navigation directe entre sections -->
+    <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-md">
       <div>
         <h1 class="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2" style="font-family:'Baloo 2',sans-serif">
           <img src="/images/camiludik-favicon.svg" alt="CamiLudik" class="w-8 h-8">
@@ -167,10 +167,26 @@
           Testeur visuel des coupes de cheveux Chibi Manga, tenues BÊTA & inspection des calques
         </p>
       </div>
+
+      <!-- Navigation d'accès direct aux 4 sections du Lab -->
+      <nav class="flex flex-wrap items-center gap-2 text-xs font-bold" aria-label="Sections du laboratoire">
+        <a href="#section-base" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center gap-1.5 transition">
+          <i class="bi bi-person text-primary-300"></i> Base
+        </a>
+        <a href="#section-rpg" class="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-amber-200 flex items-center gap-1.5 transition">
+          <i class="bi bi-trophy-fill text-amber-300"></i> Trophées RPG (12)
+        </a>
+        <a href="#section-rares" class="px-3 py-1.5 rounded-xl bg-teal-500/20 hover:bg-teal-500/30 border border-teal-400/40 text-teal-200 flex items-center gap-1.5 transition ring-1 ring-teal-400/30">
+          <i class="bi bi-palette2 text-teal-300"></i> Avatars Rares (18)
+        </a>
+        <a href="#section-mannequin" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white/80 flex items-center gap-1.5 transition">
+          <i class="bi bi-person-standing text-slate-300"></i> Mannequin
+        </a>
+      </nav>
     </div>
 
     <!-- Zone principale : Comparateur Garçon / Fille -->
-    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <main id="section-base" class="grid grid-cols-1 lg:grid-cols-2 gap-8 scroll-mt-6">
       
       <!-- ================= SECTION GARÇON ================= -->
       <section class="glass-panel rounded-3xl p-6 space-y-6 shadow-2xl border-t-4 border-t-primary-400">
@@ -427,7 +443,7 @@
     </main>
 
     <!-- ================= SECTION TROPHÉES & NOUVEAUX SKINS RPG ================= -->
-    <section class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border-t-4 border-t-amber-400">
+    <section id="section-rpg" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border-t-4 border-t-amber-400 scroll-mt-6">
       
       <!-- En-tête de la section Trophées -->
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/15 pb-5">
@@ -468,9 +484,51 @@
       </div>
     </section>
 
+    <!-- ================= SECTION AVATARS RARES (Déclinaisons de couleurs de base) ================= -->
+    <section id="section-rares" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border-t-4 border-t-teal-400 scroll-mt-6">
+      
+      <!-- En-tête de la section Avatars Rares -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/15 pb-5">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 to-cyan-400 flex items-center justify-center text-slate-900 font-extrabold text-xl shadow-lg">
+              <i class="bi bi-palette2"></i>
+            </span>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Avatars Rares · Couleurs Alternatives</h2>
+                <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[8px] font-bold uppercase tracking-wider bg-teal-400/20 text-teal-300 border border-teal-400/30 leading-none">
+                  <span class="w-1 h-1 rounded-full bg-teal-400"></span> 18 Rares
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-white/80">
+                Variantes rares des personnages de départ : chaque avatar débloque une <b class="text-teal-300">Teinte de cheveux</b> et une <b class="text-teal-300">Couleur d'yeux</b> exclusives (taux d'invocation Rare : 60 %).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Indicateur de progression des Avatars Rares -->
+        <div class="flex items-center gap-2 bg-black/30 px-3.5 py-2 rounded-xl border border-white/10 self-start md:self-auto">
+          <i class="bi bi-gem text-teal-400 text-lg"></i>
+          <span id="rares-progress-badge" class="text-xs font-bold text-white/90">18 / 18 disponibles</span>
+        </div>
+      </div>
+
+      <!-- Onglets des Avatars Rares -->
+      <div class="flex flex-wrap gap-2" id="rares-tabs-container">
+        <!-- Rendu dynamique -->
+      </div>
+
+      <!-- Détail et Démonstrateur de l'Avatar Rare Sélectionné -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-black/25 border border-white/15 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" id="rare-details-card">
+        <!-- Rendu dynamique -->
+      </div>
+    </section>
+
 
     <!-- ================= SECTION MANNEQUIN NEUTRE (gabarit des futurs trophées) ================= -->
-    <section class="glass-panel rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xl border-t-4 border-t-slate-400">
+    <section id="section-mannequin" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xl border-t-4 border-t-slate-400 scroll-mt-6">
       <div>
         <h2 class="text-xl font-bold text-white flex items-center gap-2"><i class="bi bi-person-standing"></i> Mannequin neutre</h2>
         <p class="text-xs text-white/70 mt-1">Tête nue, corps nu, gris neutre : gabarit commun des futurs trophées. Exportez son SVG par calques, dessinez dessus la tenue, la coupe ou le trait d'espèce, puis renvoyez le fichier.</p>
@@ -520,9 +578,11 @@
   <script type="text/plain" id="lab-main">
     import {
       SKIN_COLORS,
+      ALL_SKIN_COLORS,
       HAIR_COLORS,
       ALL_HAIR_COLORS,
       EYE_COLORS,
+      ALL_EYE_COLORS,
       BOY_STYLES,
       GIRL_STYLES,
       BOY_OUTFITS,
@@ -530,6 +590,7 @@
       RPG_TROPHIES,
       RPG_OUTFITS,
       RPG_STYLES,
+      RARE_TROPHIES,
       MANNEQUIN_BOY,
       MANNEQUIN_GIRL,
       buildCustomAvatarSvg
@@ -555,6 +616,11 @@
     let currentTrophyId = 'elf';
     let currentTrophyGender = 'boy';
     let currentTrophyStyle = 3;
+
+    // État du démonstrateur d'Avatars Rares (déclinaisons de base)
+    let currentRareId = (RARE_TROPHIES && RARE_TROPHIES[0]) ? RARE_TROPHIES[0].id : 'rare_mint';
+    let currentRareGender = 'boy';
+    let rarePreviewLight = false;
 
     function buildAvatar(gender, styleId, outfitId, hairColor, eyeColor, skinColor, mode) {
       return buildCustomAvatarSvg({
@@ -687,6 +753,7 @@
 
       renderSwatches();
       renderTrophiesSection();
+      renderRareSection();
     }
 
     function renderSwatches() {
@@ -786,16 +853,17 @@
 
     // Gestion de l'affichage de la section Trophées RPG
     function renderTrophiesSection() {
-      const unlockedCount = RPG_TROPHIES.filter(t => !t.status || t.status !== 'locked').length;
+      const rpgTrophies = RPG_TROPHIES.filter(t => !t.isBaseVariant);
+      const unlockedCount = rpgTrophies.filter(t => !t.status || t.status !== 'locked').length;
       const progressBadge = document.getElementById('trophies-progress-badge');
       if (progressBadge) {
-        progressBadge.textContent = `${unlockedCount} / ${RPG_TROPHIES.length} disponibles`;
+        progressBadge.textContent = `${unlockedCount} / ${rpgTrophies.length} disponibles`;
       }
 
       // 1. Rendu des onglets Trophées
       const tabsContainer = document.getElementById('trophies-tabs-container');
       if (tabsContainer) {
-        tabsContainer.innerHTML = RPG_TROPHIES.map(trophy => {
+        tabsContainer.innerHTML = rpgTrophies.map(trophy => {
           const isActive = trophy.id === currentTrophyId;
           const isLocked = trophy.status === 'locked';
           // NOTE Bouton : numéro et titre du trophée, identiques à ceux de la fiche
@@ -815,7 +883,7 @@
       }
 
       // 2. Rendu des détails du trophée actif
-      const trophy = RPG_TROPHIES.find(t => t.id === currentTrophyId) || RPG_TROPHIES[0];
+      const trophy = rpgTrophies.find(t => t.id === currentTrophyId) || rpgTrophies[0];
       const detailsContainer = document.getElementById('trophy-details-card');
       if (!detailsContainer) return;
 
@@ -990,6 +1058,258 @@
       if (!target) return;
       currentTrophyId = id;
       renderTrophiesSection();
+    };
+
+    // ANCHOR Fond de l'aperçu de l'avatar rare : noir par défaut, blanc au clic sur le switch
+    window.toggleRarePreviewBg = function () {
+      rarePreviewLight = !rarePreviewLight;
+      const box = document.getElementById('rare-preview-box');
+      if (!box) return;
+      box.classList.toggle('bg-white', rarePreviewLight);
+      box.classList.toggle('bg-black', !rarePreviewLight);
+      const knob = document.getElementById('rare-bg-knob');
+      if (knob) knob.classList.toggle('translate-x-4', rarePreviewLight);
+      const sw = document.getElementById('rare-bg-switch');
+      if (sw) sw.setAttribute('aria-checked', String(rarePreviewLight));
+    };
+
+    // Gestion de l'affichage de la section Avatars Rares (déclinaisons de base)
+    function renderRareSection() {
+      const rares = RARE_TROPHIES || [];
+      const progressBadge = document.getElementById('rares-progress-badge');
+      if (progressBadge) {
+        progressBadge.textContent = `${rares.length} / ${rares.length} disponibles`;
+      }
+
+      // 1. Rendu des onglets Avatars Rares
+      const tabsContainer = document.getElementById('rares-tabs-container');
+      if (tabsContainer) {
+        tabsContainer.innerHTML = rares.map(rare => {
+          const isActive = rare.id === currentRareId;
+          return `
+            <button onclick="window.selectRare('${rare.id}')"
+              class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all border flex items-center gap-1.5 ${
+                isActive
+                  ? 'bg-teal-500/25 border-teal-400 text-teal-200 ring-2 ring-teal-400/40'
+                  : 'bg-white/10 border-white/15 text-white/85 hover:bg-white/15'
+              }">
+              <span class="opacity-70">${rare.number}.</span>${rare.title}${rarityChip(rare)}
+            </button>
+          `;
+        }).join('');
+      }
+
+      // 2. Rendu des détails de l'avatar rare actif
+      const rare = rares.find(r => r.id === currentRareId) || rares[0];
+      const detailsContainer = document.getElementById('rare-details-card');
+      if (!detailsContainer || !rare) return;
+
+      const isBoy = currentRareGender === 'boy';
+      const preset = isBoy ? rare.boyPreset : rare.girlPreset;
+      const styles = isBoy ? BOY_STYLES : GIRL_STYLES;
+      const outfits = isBoy ? BOY_OUTFITS : GIRL_OUTFITS;
+      const styleObj = styles[preset.styleId] || styles[1];
+      const outfitObj = outfits[preset.outfitId] || outfits[1];
+
+      const hairObj = ALL_HAIR_COLORS.find(h => h.hex.toLowerCase() === preset.hairColor.toLowerCase());
+      const eyeObj = ALL_EYE_COLORS.find(e => e.id === preset.eyeColor);
+      const skinObj = ALL_SKIN_COLORS.find(s => s.id === preset.skinColor);
+
+      const svgCode = buildCustomAvatarSvg({
+        type: currentRareGender,
+        styleId: preset.styleId,
+        outfitId: preset.outfitId,
+        species: 'human',
+        skinColor: preset.skinColor,
+        hairColor: preset.hairColor,
+        eyeColor: preset.eyeColor,
+        mode: currentViewMode
+      });
+
+      detailsContainer.innerHTML = `
+        <!-- Colonne Gauche : Grand Aperçu Visuel -->
+        <div class="lg:col-span-5 flex flex-col items-center gap-4">
+          
+          <div id="rare-preview-box" class="relative w-64 h-80 rounded-2xl ${rarePreviewLight ? 'bg-white' : 'bg-black'} border-2 border-teal-400/60 hover:border-teal-300 flex items-center justify-center p-4 shadow-2xl group transition-all">
+            
+            <div class="absolute top-2.5 left-2.5 px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider bg-black/60 text-teal-300 border border-teal-400/30 flex items-center gap-1 z-20 backdrop-blur-sm leading-none">
+              <span class="w-1 h-1 rounded-full bg-teal-400"></span> Rare
+            </div>
+
+            ${rarityChip(rare, 'absolute top-2.5 right-2.5 z-20')}
+
+            <div id="rare-avatar-preview" onclick="window.openRareZoom()" class="w-full h-full flex items-center justify-center cursor-pointer transition-transform duration-300 group-hover:scale-105" title="Cliquer pour zoomer">
+              ${svgCode}
+            </div>
+
+            <button id="rare-bg-switch" role="switch" aria-checked="${rarePreviewLight}" onclick="window.toggleRarePreviewBg()" class="absolute top-2.5 left-1/2 -translate-x-1/2 z-20 w-9 h-5 rounded-full bg-neutral-500/70 border border-white/30 flex items-center px-0.5 transition-all" title="Fond noir / blanc">
+              <span id="rare-bg-knob" class="w-4 h-4 rounded-full bg-black border border-white/60 transition-transform ${rarePreviewLight ? 'translate-x-4' : ''}"></span>
+            </button>
+
+            <button onclick="window.openRareZoom()" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/60 hover:bg-black/90 text-white/90 text-[11px] font-bold flex items-center gap-1 border border-white/20 backdrop-blur-sm shadow transition-all">
+              <i class="bi bi-zoom-in"></i> Inspecter
+            </button>
+            <button onclick="window.exportRareSvg()" class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/60 hover:bg-black/90 text-white/90 text-[11px] font-bold flex items-center gap-1 border border-white/20 backdrop-blur-sm shadow transition-all" title="Télécharger le SVG avec un calque par couche">
+              <i class="bi bi-download"></i> SVG
+            </button>
+          </div>
+
+          <!-- Contrôles Genre & Coupe/Tenue -->
+          <div class="w-full max-w-xs space-y-2.5">
+            <div class="flex items-center justify-center gap-2 bg-black/30 p-1 rounded-xl border border-white/10">
+              <button onclick="window.setRareGender('boy')" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${isBoy ? 'bg-teal-600 text-white shadow-md' : 'text-white/70 hover:text-white'}">
+                <i class="bi bi-gender-male"></i> Garçon
+              </button>
+              <button onclick="window.setRareGender('girl')" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${!isBoy ? 'bg-cyan-600 text-white shadow-md' : 'text-white/70 hover:text-white'}">
+                <i class="bi bi-gender-female"></i> Fille
+              </button>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-white/10 border border-white/15 space-y-1 text-xs">
+              <div class="flex items-center justify-between">
+                <span class="text-white/70 font-semibold"><i class="bi bi-scissors text-teal-400"></i> Coupe :</span>
+                <span class="font-bold text-teal-200">${styleObj.name}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-white/70 font-semibold"><i class="bi bi-person-badge text-teal-400"></i> Tenue :</span>
+                <span class="font-bold text-teal-200">${outfitObj.name}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Colonne Droite : Teintes Débloquées & Récompenses -->
+        <div class="lg:col-span-7 space-y-5">
+          
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-1.5">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-teal-400/15 text-teal-300 border border-teal-400/30 leading-none">
+                Trophée #${rare.number}
+              </span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-black/50 text-teal-300/90 border border-teal-400/25 flex items-center gap-1 leading-none">
+                <i class="bi bi-tag-fill text-[9px]"></i> ID : <b class="text-white">${isBoy ? rare.boyPreset.id : rare.girlPreset.id}</b> <span class="text-white/40">(${rare.id})</span>
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-white">${rare.title}</h3>
+            </div>
+            <p class="text-sm text-white/80">${rare.description}</p>
+          </div>
+
+          <!-- Palette Exclusive Débloquée -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            
+            <!-- Cheveux Débloqués -->
+            <div class="p-3.5 rounded-2xl bg-teal-950/40 border-2 border-teal-400/40 space-y-2 shadow-lg">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-black uppercase tracking-wider text-teal-400 flex items-center gap-1.5">
+                  <i class="bi bi-palette-fill"></i> Cheveux Débloqués
+                </span>
+                <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-teal-400/15 text-teal-300 border border-teal-400/25 leading-none">
+                  Exclusif
+                </span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full border-2 border-white/60 shadow-md flex-shrink-0" style="background-color: ${preset.hairColor};"></span>
+                <div>
+                  <div class="text-base font-extrabold text-white">${hairObj ? hairObj.name : 'Teinte Rare'}</div>
+                  <div class="text-xs font-mono text-teal-200/80">${preset.hairColor}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Yeux Débloqués -->
+            <div class="p-3.5 rounded-2xl bg-cyan-950/40 border-2 border-cyan-400/40 space-y-2 shadow-lg">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-black uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
+                  <i class="bi bi-eye-fill"></i> Iris Débloqué
+                </span>
+                <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-cyan-400/15 text-cyan-300 border border-cyan-400/25 leading-none">
+                  Exclusif
+                </span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-full border-2 border-white/60 shadow-md flex-shrink-0" style="background: radial-gradient(circle, ${eyeObj ? eyeObj.light : '#fff'}, ${eyeObj ? eyeObj.dark : '#000'});"></span>
+                <div>
+                  <div class="text-base font-extrabold text-white">${eyeObj ? eyeObj.name : 'Iris Rare'}</div>
+                  <div class="text-xs font-mono text-cyan-200/80">ID : ${preset.eyeColor}</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Détail de l'Aventurier -->
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+            <h4 class="text-xs font-black uppercase tracking-wider text-teal-300 flex items-center gap-1.5">
+              <i class="bi bi-gift-fill text-teal-400"></i> Composants et récompenses de ce trophée rare :
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-white/90">
+              ${rare.rewards.map(reward => `
+                <div class="flex items-start gap-2 bg-black/20 p-2 rounded-xl border border-white/5">
+                  <i class="bi ${reward.icon} text-teal-400 mt-0.5"></i>
+                  <span>${reward.label}</span>
+                </div>
+              `).join('')}
+              <div class="flex items-start gap-2 bg-black/20 p-2 rounded-xl border border-white/5">
+                <i class="bi bi-brush text-teal-400 mt-0.5"></i>
+                <span>Carnation associée : <b>${skinObj ? skinObj.name : preset.skinColor}</b></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    window.selectRare = (id) => {
+      const target = (RARE_TROPHIES || []).find(r => r.id === id);
+      if (!target) return;
+      currentRareId = id;
+      renderRareSection();
+    };
+
+    window.setRareGender = (gender) => {
+      currentRareGender = gender;
+      renderRareSection();
+    };
+
+    window.exportRareSvg = () => {
+      const rare = (RARE_TROPHIES || []).find(r => r.id === currentRareId) || RARE_TROPHIES[0];
+      const preset = currentRareGender === 'boy' ? rare.boyPreset : rare.girlPreset;
+      downloadSvg(buildCustomAvatarSvg({
+        type: currentRareGender,
+        styleId: preset.styleId,
+        outfitId: preset.outfitId,
+        species: 'human',
+        skinColor: preset.skinColor,
+        hairColor: preset.hairColor,
+        eyeColor: preset.eyeColor,
+        mode: currentViewMode,
+        layers: true
+      }), `avatar-rare-${rare.id}-${currentRareGender}-${currentViewMode}.svg`);
+    };
+
+    window.openRareZoom = () => {
+      const rare = (RARE_TROPHIES || []).find(r => r.id === currentRareId) || RARE_TROPHIES[0];
+      const isBoy = currentRareGender === 'boy';
+      const preset = isBoy ? rare.boyPreset : rare.girlPreset;
+      const styles = isBoy ? BOY_STYLES : GIRL_STYLES;
+      const styleObj = styles[preset.styleId] || styles[1];
+
+      document.getElementById('zoom-modal-title').textContent = `💎 ${rare.title} [${isBoy ? 'Garçon' : 'Fille'}] - ${styleObj.name}`;
+      document.getElementById('zoom-modal-content').innerHTML = buildCustomAvatarSvg({
+        type: currentRareGender,
+        styleId: preset.styleId,
+        outfitId: preset.outfitId,
+        species: 'human',
+        skinColor: preset.skinColor,
+        hairColor: preset.hairColor,
+        eyeColor: preset.eyeColor,
+        mode: currentViewMode
+      });
+
+      const modal = document.getElementById('zoom-modal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
     };
 
     // ANCHOR Export SVG calqué : un fichier par personnage, un calque nommé par couche (Inkscape, Figma, Illustrator)
