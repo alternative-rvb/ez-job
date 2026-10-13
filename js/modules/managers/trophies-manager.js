@@ -54,8 +54,10 @@ export class TrophiesManager {
 
     updateStats() {
         document.getElementById('total-points').textContent = rewardsManager.getTotalPoints();
-        const owned = rewardsManager.getUnlockedSkins().length;
-        const total = rewardsManager.getSummonPool().length;
+        // NOTE On compte les cartes réellement affichées (pool actuel), pas les identifiants bruts du stockage : un skin retiré ou en double fausserait le total
+        const pool = rewardsManager.getSummonPool();
+        const owned = pool.filter(skin => rewardsManager.isSkinUnlocked(skin.id)).length;
+        const total = pool.length;
         document.getElementById('unlocked-count').textContent = `${owned}/${total}`;
         const bar = document.getElementById('unlocked-bar');
         if (bar) bar.style.width = `${total ? Math.round(owned / total * 100) : 0}%`;
