@@ -1,0 +1,259 @@
+{
+  "config": {
+    "title": "Toutes les tables de multiplication",
+    "description": "Révise toutes les tables de multiplication de 2 à 10 en mélange",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 3,
+    "questionCount": 30,
+    "category": "Toutes classes",
+    "createdAt": "2026-10-13",
+    "tag": [
+      "Mathématiques",
+      "Calcul mental",
+      "Multiplication"
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien font 9 × 3 ?",
+      "acceptedAnswers": [
+        "27"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Combien font 5 × 9 ?",
+      "acceptedAnswers": [
+        "45"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Combien font 4 × 2 ?",
+      "acceptedAnswers": [
+        "8"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Combien font 5 × 2 ?",
+      "acceptedAnswers": [
+        "10"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Combien font 7 × 2 ?",
+      "acceptedAnswers": [
+        "14"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Combien font 9 × 2 ?",
+      "acceptedAnswers": [
+        "18"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Combien font 6 × 2 ?",
+      "acceptedAnswers": [
+        "12"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Combien font 10 × 7 ?",
+      "acceptedAnswers": [
+        "70"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Combien font 9 × 9 ?",
+      "acceptedAnswers": [
+        "81"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Combien font 8 × 5 ?",
+      "acceptedAnswers": [
+        "40"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Combien font 5 × 3 ?",
+      "acceptedAnswers": [
+        "15"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Combien font 5 × 7 ?",
+      "acceptedAnswers": [
+        "35"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Combien font 10 × 3 ?",
+      "acceptedAnswers": [
+        "30"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Combien font 2 × 5 ?",
+      "acceptedAnswers": [
+        "10"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Combien font 3 × 8 ?",
+      "acceptedAnswers": [
+        "24"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Combien font 5 × 10 ?",
+      "acceptedAnswers": [
+        "50"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Combien font 7 × 4 ?",
+      "acceptedAnswers": [
+        "28"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Combien font 6 × 8 ?",
+      "acceptedAnswers": [
+        "48"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Combien font 6 × 7 ?",
+      "acceptedAnswers": [
+        "42"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Combien font 3 × 4 ?",
+      "acceptedAnswers": [
+        "12"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 21,
+      "question": "Combien font 4 × 9 ?",
+      "acceptedAnswers": [
+        "36"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 22,
+      "question": "Combien font 10 × 4 ?",
+      "acceptedAnswers": [
+        "40"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 23,
+      "question": "Combien font 2 × 4 ?",
+      "acceptedAnswers": [
+        "8"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 24,
+      "question": "Combien font 9 × 10 ?",
+      "acceptedAnswers": [
+        "90"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 25,
+      "question": "Combien font 8 × 2 ?",
+      "acceptedAnswers": [
+        "16"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 26,
+      "question": "Combien font 6 × 3 ?",
+      "acceptedAnswers": [
+        "18"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 27,
+      "question": "Combien font 10 × 2 ?",
+      "acceptedAnswers": [
+        "20"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 28,
+      "question": "Combien font 9 × 5 ?",
+      "acceptedAnswers": [
+        "45"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 29,
+      "question": "Combien font 3 × 10 ?",
+      "acceptedAnswers": [
+        "30"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 30,
+      "question": "Combien font 7 × 9 ?",
+      "acceptedAnswers": [
+        "63"
+      ],
+      "imageUrl": null
+    }
+  ]
+}

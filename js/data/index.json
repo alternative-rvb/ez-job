@@ -33,14 +33,23 @@
     "school-life-english",
     "spongebob",
     "systeme-solaire",
-    "tables-multiplication-0-9",
-    "tables-multiplication-cm2",
+    "table-de-10",
+    "table-de-2",
+    "table-de-3",
+    "table-de-4",
+    "table-de-5",
+    "table-de-6",
+    "table-de-7",
+    "table-de-8",
+    "table-de-9",
     "tigre-blanc",
+    "toutes-les-tables-de-multiplication",
     "unites-mesure"
   ],
   "categories": [
     "CM2",
-    "Divertissement"
+    "Divertissement",
+    "Toutes classes"
   ],
   "levels": [
     "CM2",
@@ -55,7 +64,7 @@
     "Physique",
     "Sciences"
   ],
-  "count": 37,
-  "lastUpdated": "2026-10-13T13:11:19.684675",
+  "count": 45,
+  "lastUpdated": "2026-10-13T13:22:41.358991",
   "generated_by": "api.py"
 }
