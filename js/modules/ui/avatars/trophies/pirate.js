@@ -37,6 +37,13 @@ export const OUTFIT_PIRATE_CORSAIR = {
             <path d="M 36,78 C 34,92 31,107 35,111 C 45,110 55,110 65,111 C 69,107 66,92 64,78 Z" fill="#05101d"/>
             <!-- Liseré or sur le bord extérieur du manteau -->
             <path d="${fuseau('M 29,64 C 18,77 12,95 10,110', 1.1, 14)} ${fuseau('M 71,64 C 82,77 88,95 90,110', 1.1, 14)}" fill="#fbbf24"/>
+            <!-- Cols relevés derrière la tête, comme le Vampire, descendus de 3 pour toucher la cape : manteau #091e36, revers intérieur de la couleur de la veste #1e3a5f -->
+            <g transform="translate(0 3)">
+            <path d="M 29,63 L 21,45 L 38,59 Z" fill="#091e36"/>
+            <path d="M 71,63 L 79,45 L 62,59 Z" fill="#091e36"/>
+            <path d="M 29.5,61.5 L 24,50 L 35,59 Z" fill="#1e3a5f"/>
+            <path d="M 70.5,61.5 L 76,50 L 65,59 Z" fill="#1e3a5f"/>
+            </g>
         </g>`,
     legs: `
         <g id="outfit-pirate-legs">
@@ -103,9 +110,15 @@ export const OUTFIT_PIRATE_CORSAIR = {
         </g>`,
     headAccessory: `
         <g id="outfit-pirate-tricorne">
-            <!-- Calotte centrale supérieure du tricorne recouvrant le sommet du crâne (y = -18 à 14) -->
-            <path d="M 22,14 C 21,-6 32,-18 50,-18 C 68,-18 79,-6 78,14 Z" fill="#071221"/>
-            <path d="M 25,12 C 24,-4 33,-15 50,-15 C 67,-15 76,-4 75,12 Z" fill="#0b1b30"/>
+            <!-- Fond plein du chapeau : comble les trous entre la calotte et les ailes (le fond de la page ne doit jamais apparaître) -->
+            <path d="M 3,-2 C 12,-12 28,-18 50,-18 C 72,-18 88,-12 97,-2 C 94,8 74,14 50,14 C 26,14 6,8 3,-2 Z" fill="#081426"/>
+            <!-- Calotte haute du tricorne : dôme bombé qui dépasse les ailes (y = -27 à 12), deux teintes pour le volume -->
+            <path d="M 23,12 C 21,-12 33,-27 50,-27 C 67,-27 79,-12 77,12 Z" fill="#071221"/>
+            <path d="M 26,11 C 24,-9 35,-24 50,-24 C 65,-24 76,-9 74,11 Z" fill="#0f243f"/>
+            <!-- Volume de la calotte : reflet clair sur le bombé, coutures de pliage vers la pointe avant, ombre à la jonction avec le rebord -->
+            <path d="${fuseau('M 31,-6 C 33,-15 40,-22 50,-23', 2.6, 12)} ${fuseau('M 69,-6 C 67,-15 60,-22 50,-23', 2.6, 12)}" fill="#1e3a5f"/>
+            <path d="${fuseau('M 50,-23 C 43,-14 42,-3 47,5', 1.0, 12)} ${fuseau('M 50,-23 C 57,-14 58,-3 53,5', 1.0, 12)}" fill="#1e3a5f"/>
+            <path d="${fuseau('M 24,6 C 36,10 64,10 76,6', 3.2, 14)}" fill="#05101d"/>
             <!-- Ailes latérales du tricorne déployées très larges (largeur 94, de x=3 à x=97) -->
             <!-- Aile arrière/gauche évasée et relevée -->
             <path d="M 3,-2 C 12,-12 28,-18 50,-18 C 72,-18 88,-12 97,-2 C 86,5 72,0 50,0 C 28,0 14,5 3,-2 Z" fill="#081426"/>

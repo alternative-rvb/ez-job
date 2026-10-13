@@ -71,10 +71,12 @@ export const OUTFIT_DRAGON_KNIGHT = {
             <path d="M 36,78 C 34,92 31,105 37,110 C 45,107 55,107 63,110 C 69,105 66,92 64,78 Z" fill="#1c0404"/>
             <!-- Liseré d'or et d'écailles sur les bords de cape -->
             <path d="${fuseau('M 30,64 C 18,77 12,94 10,109', 1.1, 14)} ${fuseau('M 70,64 C 82,77 88,94 90,109', 1.1, 14)}" fill="#f59e0b"/>
-            <!-- Cols à pointes de dragon dressés derrière les épaules -->
+            <!-- Cols à pointes de dragon dressés derrière les épaules, descendus de 3 pour toucher la cape -->
+            <g transform="translate(0 3)">
             <path d="M 28,63 L 20,49 L 36,59 Z" fill="#380808" stroke="#1c0404" stroke-width="0.6"/>
             <path d="M 72,63 L 80,49 L 64,59 Z" fill="#380808" stroke="#1c0404" stroke-width="0.6"/>
             <path d="${fuseau('M 21,50 Q 28,54.5 35,59', 0.8, 8)} ${fuseau('M 79,50 Q 72,54.5 65,59', 0.8, 8)}" fill="#f59e0b"/>
+            </g>
         </g>`,
     legs: `
         <g id="outfit-dragon-legs">
@@ -104,10 +106,6 @@ export const OUTFIT_DRAGON_KNIGHT = {
             <!-- Écailles latérales imbriquées -->
             <path d="M 36,70 L 41,74 L 37,79 Z" fill="#70102e"/>
             <path d="M 64,70 L 59,74 L 63,79 Z" fill="#70102e"/>
-            <!-- Épaulières massives ailées avec pointes en liseré or -->
-            <path d="M 34,62 C 30,58 24,59 23,66 C 28,68 32,67 36,65 Z" fill="#1e293b"/>
-            <path d="M 66,62 C 70,58 76,59 77,66 C 72,68 68,67 64,65 Z" fill="#1e293b"/>
-            <path d="${fuseau('M 24,60 C 23,66 28,68 35,65', 1, 8)} ${fuseau('M 76,60 C 77,66 72,68 65,65', 1, 8)}" fill="#f59e0b"/>
         </g>`,
     belt: `
         <g id="outfit-dragon-belt">
@@ -147,6 +145,12 @@ export const OUTFIT_DRAGON_KNIGHT = {
         </g>`,
     handItem: (skin = SKIN_DEFAULT) => `
         <g id="outfit-dragon-lance">
+            <!-- Épaulettes au premier plan, par-dessus les cheveux (calque handItem, jamais rendu en portrait) -->
+            <g id="dragon-pauldrons">
+            <path d="M 34,62 C 30,58 24,59 23,66 C 28,68 32,67 36,65 Z" fill="#1e293b"/>
+            <path d="M 66,62 C 70,58 76,59 77,66 C 72,68 68,67 64,65 Z" fill="#1e293b"/>
+            <path d="${fuseau('M 24,60 C 23,66 28,68 35,65', 1, 8)} ${fuseau('M 76,60 C 77,66 72,68 65,65', 1, 8)}" fill="#f59e0b"/>
+            </g>
             <!-- Lance de dragonnier tenue par la main droite (75.5, 76) -->
             <g id="dragon-lance" transform="translate(75.5, 76) rotate(14)">
                 ${DRAGON_LANCE_MODEL}
