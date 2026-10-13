@@ -37,13 +37,15 @@ export const OUTFIT_PIRATE_CORSAIR = {
             <path d="M 36,78 C 34,92 31,107 35,111 C 45,110 55,110 65,111 C 69,107 66,92 64,78 Z" fill="#05101d"/>
             <!-- Liseré or sur le bord extérieur du manteau -->
             <path d="${fuseau('M 29,64 C 18,77 12,95 10,110', 1.1, 14)} ${fuseau('M 71,64 C 82,77 88,95 90,110', 1.1, 14)}" fill="#fbbf24"/>
-            <!-- Cols relevés derrière la tête, comme le Vampire, descendus de 3 pour toucher la cape : manteau #091e36, revers intérieur de la couleur de la veste #1e3a5f -->
-            <g transform="translate(0 3)">
+            <!-- Cols relevés derrière la tête, comme le Vampire : manteau #091e36, revers intérieur de la couleur de la veste #1e3a5f -->
+            <!-- Haut de cape derrière le cou, comme le Vampire : relie les deux pans et les cols -->
+            <path d="M 29,64 L 71,64 L 60,68 L 40,68 Z" fill="#091e36"/>
             <path d="M 29,63 L 21,45 L 38,59 Z" fill="#091e36"/>
             <path d="M 71,63 L 79,45 L 62,59 Z" fill="#091e36"/>
             <path d="M 29.5,61.5 L 24,50 L 35,59 Z" fill="#1e3a5f"/>
             <path d="M 70.5,61.5 L 76,50 L 65,59 Z" fill="#1e3a5f"/>
-            </g>
+            <!-- Liseré or en fuseau le long des deux bords des cols (bord supérieur et bord extérieur visible) -->
+            <path d="${fuseau('M 22,46 Q 29,50.5 37,58', 0.9, 10)} ${fuseau('M 78,46 Q 71,50.5 63,58', 0.9, 10)} ${fuseau('M 21.8,46.5 Q 24.2,56 29,62.6', 1.1, 12)} ${fuseau('M 78.2,46.5 Q 75.8,56 71,62.6', 1.1, 12)}" fill="#fbbf24"/>
         </g>`,
     legs: `
         <g id="outfit-pirate-legs">

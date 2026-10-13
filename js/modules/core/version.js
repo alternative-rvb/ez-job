@@ -3,7 +3,7 @@
  * Incrémente automatiquement la version à chaque build
  */
 
-export const APP_VERSION = '1.0.149';
+export const APP_VERSION = '1.0.150';
 
 /**
  * Génère un paramètre de version pour les URLs

@@ -71,12 +71,12 @@ export const OUTFIT_DRAGON_KNIGHT = {
             <path d="M 36,78 C 34,92 31,105 37,110 C 45,107 55,107 63,110 C 69,105 66,92 64,78 Z" fill="#1c0404"/>
             <!-- Liseré d'or et d'écailles sur les bords de cape -->
             <path d="${fuseau('M 30,64 C 18,77 12,94 10,109', 1.1, 14)} ${fuseau('M 70,64 C 82,77 88,94 90,109', 1.1, 14)}" fill="#f59e0b"/>
-            <!-- Cols à pointes de dragon dressés derrière les épaules, descendus de 3 pour toucher la cape -->
-            <g transform="translate(0 3)">
+            <!-- Cols à pointes de dragon dressés derrière les épaules -->
+            <!-- Haut de cape derrière le cou, comme le Vampire : relie les deux pans et les cols -->
+            <path d="M 29,64 L 71,64 L 60,68 L 40,68 Z" fill="#380808"/>
             <path d="M 28,63 L 20,49 L 36,59 Z" fill="#380808" stroke="#1c0404" stroke-width="0.6"/>
             <path d="M 72,63 L 80,49 L 64,59 Z" fill="#380808" stroke="#1c0404" stroke-width="0.6"/>
             <path d="${fuseau('M 21,50 Q 28,54.5 35,59', 0.8, 8)} ${fuseau('M 79,50 Q 72,54.5 65,59', 0.8, 8)}" fill="#f59e0b"/>
-            </g>
         </g>`,
     legs: `
         <g id="outfit-dragon-legs">
