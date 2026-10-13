@@ -178,9 +178,8 @@ export class QuizSelector {
                     <div class="relative flex-shrink-0">
                         ${imageSectionHTML}
                         ${isNew ? `
-                            <div class="quiz-new-badge absolute top-1 left-1 flex items-center gap-0.5 px-1.5 py-0.5 rounded-full shadow-md" style="background:linear-gradient(135deg,#ef4444,#ec4899);box-shadow:0 0 0 2px rgba(255,255,255,0.85),0 2px 6px rgba(236,72,153,0.5)">
-                                <i class="bi bi-stars text-white text-[0.6rem]"></i>
-                                <span class="text-white font-bold text-[0.65rem] tracking-wide">Nouveau</span>
+                            <div class="quiz-new-badge absolute top-1 left-1 flex items-center px-1.5 py-0.5 rounded-full" style="background:linear-gradient(135deg,#ef4444,#ec4899);box-shadow:0 0 0 1px rgba(255,255,255,0.85),0 1px 3px rgba(236,72,153,0.5)">
+                                <span class="text-white font-bold text-[8px] leading-none tracking-wide">Nouveau</span>
                             </div>
                         ` : ''}
                         ${bestResult ? `
