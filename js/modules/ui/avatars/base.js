@@ -197,17 +197,19 @@ export function getFullLipsMouth(mouthColor) {
 export function getSpeciesEars(species = 'human', skin = SKIN_DEFAULT, gender = 'boy') {
     if (species === 'elf' || species === 'shadow' || species === 'vampire' || species === 'fairy' || species === 'dragon') {
         return `
-            <!-- NOTE Oreilles descendues de 50 % de leur hauteur (12) et rapprochées de 25 % de leur largeur (2.6) -->
-            <g id="${gender}-ears-elf" transform="translate(0 6)">
-                <g transform="translate(2.6 0)">
-                    <!-- Oreille gauche elfe : même géométrie anatomique que l'orc, effilée et élégante -->
-                    <path d="M 24 35 Q 18 31 13.5 31.5 Q 16.5 41 22.5 43.5 Z" fill="${skin.base}"/>
-                    <path d="M 23 35.5 Q 18 33 15 33.5 Q 17 39.5 21.5 41.5 Z" fill="${skin.shadow}"/>
-                </g>
-                <g transform="translate(-2.6 0)">
-                    <!-- Oreille droite elfe : même géométrie anatomique que l'orc, effilée et élégante -->
-                    <path d="M 76 35 Q 82 31 86.5 31.5 Q 83.5 41 77.5 43.5 Z" fill="${skin.base}"/>
-                    <path d="M 77 35.5 Q 82 33 85 33.5 Q 83 39.5 78.5 41.5 Z" fill="${skin.shadow}"/>
+            <!-- Oreilles elfes effilées retouchées par Nicolas (export Affinity) -->
+            <g id="${gender}-ears-elf">
+                <g transform="matrix(0.25,0,0,0.25,0,-34)">
+                    <!-- Oreille gauche elfe -->
+                    <path d="M85.985 319.901 C89.366 321.783 93.273 320.938 95.726 317.945" fill="${skin.base}"/>
+                    <path d="M95.726 317.945 L111.179 299.098 C83.611 281.457 58.361 269.758 35.429 264 C43.772 287.151 60.624 305.784 85.985 319.901" fill="${skin.base}"/>
+                    <path d="M81.112 311.539 C84.142 313.267 87.623 312.779 90.185 310.412" fill="${skin.shadow}"/>
+                    <path d="M90.185 310.412 L103.159 298.425 C79.648 285.503 60.196 277.301 44.8 273.818 C50.49 288.404 62.594 300.977 81.112 311.539" fill="${skin.shadow}"/>
+                    <!-- Oreille droite elfe -->
+                    <path d="M314.015 319.901 C310.634 321.783 306.727 320.938 304.274 317.945" fill="${skin.base}"/>
+                    <path d="M304.274 317.945 L288.821 299.098 C316.389 281.457 341.639 269.758 364.571 264 C356.228 287.151 339.376 305.784 314.015 319.901" fill="${skin.base}"/>
+                    <path d="M318.888 311.539 C315.858 313.267 312.377 312.779 309.815 310.412" fill="${skin.shadow}"/>
+                    <path d="M309.815 310.412 L296.841 298.425 C320.352 285.503 339.804 277.301 355.2 273.818 C349.51 288.404 337.406 300.977 318.888 311.539" fill="${skin.shadow}"/>
                 </g>
             </g>
         `;
@@ -301,10 +303,11 @@ export const BOY_BASE = {
             <rect x="45" y="19" width="10" height="6" rx="1.5" fill="#ff9d00"/>
             <circle cx="50" cy="22" r="1.5" fill="#ffffff"/>` : ''}
         </g>`,
-    faceFeatures: (eye = { dark: '#542c0e', light: '#8c4e1e' }, skin = SKIN_DEFAULT, species = 'human', hairColor = '#5a2d0c', styleKey = null, mood = null) => {
+    faceFeatures: (eye = { dark: '#542c0e', light: '#8c4e1e' }, skin = SKIN_DEFAULT, species = 'human', hairColor = '#5a2d0c', styleKey = null, mood = null, outfitKey = null) => {
         // NOTE Cils et paupières : le Revenant a le blanc de l'œil noir, ils passent en noir pour rester visibles
         const lashColor = species === 'undead' ? '#0a0a0a' : hairColor;
         const mouthColor = getSkinMouthColor(skin);
+        const isAstronaut = styleKey === 'astronaut_boy' || styleKey === 'astronaut_girl' || outfitKey === 'astronaut_explorer';
         return `
         <g id="boy-face-features-full">
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="${species === 'undead' ? '#0a0a0a' : '#ffffff'}"/>
@@ -330,6 +333,10 @@ export const BOY_BASE = {
             </g>
 
             ${species === 'cat' ? '<path d="M 48.3,46.8 L 51.7,46.8 Q 50,49 50,49 Q 50,49 48.3,46.8 Z" fill="#f472b6"/>' : `<polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>`}
+
+            ${isAstronaut ? `
+            <!-- Grain de beauté sur la joue droite du cosmonaute -->
+            <circle cx="61.5" cy="52" r="0.75" fill="${mixHex(skin.shadow, '#1c1917', 0.65)}"/>` : ''}
 
             ${species === 'dragon' ? `
             <!-- Écailles draconiques délicates sur les tempes / pommettes, couleur d'ombre de carnation -->
@@ -533,19 +540,25 @@ export const GIRL_BASE = {
             <!-- NOTE Séparations des doigts en fuseau -->
             <path d="${fuseau('M 75,75.8 C 74.8,76.62 74.74,77.46 74.8,78.3', 0.64, 8)} ${fuseau('M 77,75.8 C 77.2,76.62 77.26,77.46 77.2,78.3', 0.64, 8)}" fill="${skin.shadow}"/>
         </g>`,
-    headBase: (withTiara = false, skin = SKIN_DEFAULT, species = 'human') => `
+    headBase: (withTiara = false, skin = SKIN_DEFAULT, species = 'human', styleKey = null) => `
         <g id="girl-head-base-full">
             <rect x="46" y="58" width="8" height="4" fill="${skin.shadow}"/>
             ${getSpeciesEars(species, skin, 'girl')}
             <path d="M22 36 C22 18, 34 10, 50 10 C66 10, 78 18, 78 36 C78 52, 66 60, 50 60 C34 60, 22 52, 22 36 Z" fill="${skin.base}"/>
+            ${(species === 'pirate' || styleKey === 'pirate_girl') ? `
+            <!-- Reflet lumineux sur la tempe gauche de la fille corsaire -->
+            <g transform="matrix(0.25,0,0,0.25,0,-34)">
+                <path d="M141.233 233.165 L142.202 229.858 L142.52 230.96 L142.22 230.238 L141.682 233.267 L141.175 236.456 L140.741 239.63 L140.38 242.788 L140.076 246.073 L140.037 246.621 L138.18 246.055 L138.223 245.818 L138.889 242.551 L139.598 239.422 L140.379 236.294 Z M136.88 253.958 L139.659 253.283 L139.582 255.941 L139.556 259.366 L139.599 262.816 L139.711 266.255 L139.894 269.691 L140.159 273.339 L140.494 276.979 L140.898 280.61 L141.388 284.366 L141.966 288.26 L142.614 292.147 L142.665 292.417 L142.936 296.143 L143.319 300.444 L143.774 304.754 L144.308 309.14 L144.964 313.935 L145.693 318.74 L146.539 323.82 L147.524 329.3 L148.577 334.774 L148.835 335.881 L149.7 339.239 L151.677 346.635 L154 355.2 L150.759 346.937 L147.986 339.791 L146.75 336.516 L146.35 335.377 L144.689 329.99 L143.104 324.611 L141.696 319.603 L140.433 314.845 L139.242 310.081 L138.215 305.697 L137.275 301.369 L136.406 297.035 L135.722 293.307 L135.696 292.971 L135.468 288.919 L135.312 284.874 L135.231 280.98 L135.224 277.222 L135.289 273.471 L135.425 269.726 L135.622 266.205 L135.89 262.696 L136.229 259.191 L136.635 255.725 Z" fill="#ffffff" style="mix-blend-mode:lighten"/>
+            </g>` : ''}
             ${withTiara ? `
             <path d="M 21.5,25 L 24.71,24.01 L 28.53,23.3 L 31.99,22.99 L 35.71,22.78 L 39.64,22.66 L 42.7,22.67 L 46.85,22.64 L 50,22.65 L 53.15,22.64 L 57.3,22.67 L 60.36,22.66 L 64.29,22.78 L 68.01,22.99 L 71.47,23.3 L 75.29,24.01 L 78.5,25 L 78.5,25 L 75.72,22.96 L 72.07,21.16 L 68.66,19.83 L 64.89,18.73 L 60.84,17.86 L 57.67,17.33 L 53.31,16.95 L 50,16.85 L 46.69,16.95 L 42.33,17.33 L 39.16,17.86 L 35.11,18.73 L 31.34,19.83 L 27.93,21.16 L 24.28,22.96 L 21.5,25 L 21.5,25 Z" fill="#489e96"/>
             <circle cx="28" cy="22" r="3.5" fill="#ff9d00"/>
             <circle cx="28" cy="22" r="1.8" fill="#ffffff"/>` : ''}
         </g>`,
-    faceFeatures: (eye = { dark: '#6d2e05', light: '#b45309' }, skin = SKIN_DEFAULT, species = 'human', hairColor = '#5a2d0c', styleKey = null, mood = null) => {
+    faceFeatures: (eye = { dark: '#6d2e05', light: '#b45309' }, skin = SKIN_DEFAULT, species = 'human', hairColor = '#5a2d0c', styleKey = null, mood = null, outfitKey = null) => {
         const lashColor = species === 'undead' ? '#0a0a0a' : hairColor;
         const mouthColor = getSkinMouthColor(skin);
+        const isAstronaut = styleKey === 'astronaut_boy' || styleKey === 'astronaut_girl' || outfitKey === 'astronaut_explorer';
         return `
         <g id="girl-face-features-full">
             <ellipse cx="37" cy="41" rx="6.5" ry="5.5" fill="${species === 'undead' ? '#0a0a0a' : '#ffffff'}"/>
@@ -590,6 +603,10 @@ export const GIRL_BASE = {
             </g>
 
             ${species === 'cat' ? '<path d="M 48.3,46.8 L 51.7,46.8 Q 50,49 50,49 Q 50,49 48.3,46.8 Z" fill="#f472b6"/>' : `<polygon points="48.6,47.2 51.4,47.2 50,47.9" fill="${skin.shadow}" stroke="${skin.shadow}" stroke-width="0.7" stroke-linejoin="round"/>`}
+
+            ${isAstronaut ? `
+            <!-- Grain de beauté sur la joue droite du cosmonaute -->
+            <circle cx="61.5" cy="52" r="0.75" fill="${mixHex(skin.shadow, '#1c1917', 0.65)}"/>` : ''}
 
             ${species === 'dragon' ? `
             <!-- Écailles draconiques délicates sur les tempes / pommettes, couleur d'ombre de carnation -->
@@ -636,9 +653,13 @@ export const GIRL_BASE = {
             ${getSmileMouth(mouthColor, mood === 'sad')}`}
         </g>`;
     },
-    eyebrows: (color = '#8a3c08', opacity = 0.85) => `
+    eyebrows: (color = '#8a3c08', opacity = 0.85, styleKey = null, species = 'human') => `
         <g id="girl-eyebrows-front" opacity="${opacity}" style="mix-blend-mode: multiply;">
-            <path d="M 42.7,30.0 L 34.5,27.5 L 28.0,31.0 L 35.0,29.3 L 42.7,32.0 Z" fill="${color}"/>
+            ${(styleKey === 'pirate_girl' || species === 'pirate') ? `
+            <!-- Sourcil gauche fendu avec coupure cicatrice pour la fille corsaire -->
+            <g transform="matrix(0.25,0,0,0.25,0,-34)">
+                <path d="M112 260 L138 246 L138.18 246.055 L137.622 249.118 L137.093 252.42 L136.88 253.958 Z M139.841 249.375 L140.037 246.621 L170.8 256 L170.8 264 L140 253.2 L139.659 253.283 L139.676 252.664 Z" fill="${color}"/>
+            </g>` : `<path d="M 42.7,30.0 L 34.5,27.5 L 28.0,31.0 L 35.0,29.3 L 42.7,32.0 Z" fill="${color}"/>`}
             <path d="M 57.3,30.0 L 65.5,27.5 L 72.0,31.0 L 65.0,29.3 L 57.3,32.0 Z" fill="${color}"/>
         </g>`
 };

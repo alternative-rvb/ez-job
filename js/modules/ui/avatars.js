@@ -163,9 +163,9 @@ export function buildCustomAvatarSvg({
     const isNewCharacter = species !== 'human' || Boolean(outfitKey) || Boolean(customOutfit) || Boolean(styleKey);
     const showBaseBand = !isNewCharacter && (isBoy ? Boolean(style.withBand) : Boolean(style.withTiara));
     // NOTE Le triangle de col orange appartient à la tenue de base : jamais sur un personnage de trophée
-    const headBase = isBoy ? base.headBase(showBaseBand, effectiveSkin, species, !isNewCharacter) : base.headBase(showBaseBand, effectiveSkin, species);
-    const faceFeatures = base.faceFeatures(effectiveEye, effectiveSkin, species, effectiveHairColor, styleKey, mood);
-    const eyebrows = base.eyebrows ? base.eyebrows(effectiveHairColor, 0.85) : '';
+    const headBase = isBoy ? base.headBase(showBaseBand, effectiveSkin, species, !isNewCharacter) : base.headBase(showBaseBand, effectiveSkin, species, styleKey);
+    const faceFeatures = base.faceFeatures(effectiveEye, effectiveSkin, species, effectiveHairColor, styleKey, mood, outfitKey);
+    const eyebrows = base.eyebrows ? base.eyebrows(effectiveHairColor, 0.85, styleKey, species) : '';
 
     // NOTE Traits d'espèce qui suivent la couleur des cheveux, quelle que soit la tenue
     const catEars = species === 'cat' ? getCatEars(effectiveHairColor) : '';

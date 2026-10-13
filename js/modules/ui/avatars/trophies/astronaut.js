@@ -65,6 +65,7 @@ export const OUTFIT_ASTRONAUT_EXPLORER = {
     name: 'Cosmonaute Explorateur (Humain)',
     badge: 'Trophée 12',
     backEquipment: `
+        ${astronautHelmet()}
         <g id="outfit-astronaut-backpack">
             <!-- Sac de survie dorsal gris acier, plus sombre que la combinaison, dépassant derrière les épaules -->
             <path d="M 31,63 C 27,62 25,64 25,68 L 26,90 C 26,93 29,95 33,94 L 40,92 L 40,66 Z" fill="#94a3b8"/>
@@ -150,7 +151,7 @@ export const OUTFIT_ASTRONAUT_EXPLORER = {
         </g>`
 };
 
-// SECTION Coupes de cheveux exclusives du Cosmonaute : le casque est en deux parties : fond de coque dans hairBack, cadre avant et vitre dans headAccessory
+// SECTION Coupes de cheveux exclusives du Cosmonaute : la coupe n'inclut pas le casque (qui appartient a la tenue)
 export const ASTRONAUT_STYLES = {
     astronaut_boy: {
         id: 'astronaut_boy',
@@ -158,7 +159,6 @@ export const ASTRONAUT_STYLES = {
         withBand: false,
         getHairBack: (color) => `
             <g id="hair-back-astronaut-boy">
-                ${astronautHelmet()}
                 <!-- ANCHOR Base courte : cercle un peu plus grand que le crâne -->
                 ${hairBase('court', color)}
             </g>`,
@@ -173,8 +173,7 @@ export const ASTRONAUT_STYLES = {
         withTiara: false,
         getHairBack: (color) => `
             <g id="hair-back-astronaut-girl">
-                ${astronautHelmet()}
-                <!-- ANCHOR Base courte : tient dans le casque -->
+                <!-- ANCHOR Base courte -->
                 ${hairBase('court', color)}
             </g>`,
         getHairFront: (color) => `
