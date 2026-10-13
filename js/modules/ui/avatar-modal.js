@@ -358,17 +358,33 @@ class AvatarCustomizerModal {
      */
     getAvailableSkins() {
         const unlocked = rewardsManager.getUnlockedCatalog().skins;
-        return ALL_SKIN_COLORS.filter(s => SKIN_COLORS.includes(s) || unlocked.includes(s.id));
+        const list = ALL_SKIN_COLORS.filter(s => SKIN_COLORS.includes(s) || unlocked.includes(s.id));
+        return this.dedupeSwatches(list, s => s.base.toLowerCase(), s => s.id === this.state.skinColor || s.base === this.state.skinColor);
     }
 
     getAvailableHairs() {
         const unlocked = rewardsManager.getUnlockedCatalog().hairs;
-        return ALL_HAIR_COLORS.filter(c => HAIR_COLORS.includes(c) || unlocked.includes(c.hex.toLowerCase()));
+        const list = ALL_HAIR_COLORS.filter(c => HAIR_COLORS.includes(c) || unlocked.includes(c.hex.toLowerCase()));
+        return this.dedupeSwatches(list, c => c.hex.toLowerCase(), c => c.hex.toLowerCase() === (this.state.hairColor || '').toLowerCase());
     }
 
     getAvailableEyes() {
         const unlocked = rewardsManager.getUnlockedCatalog().eyes;
-        return ALL_EYE_COLORS.filter(e => EYE_COLORS.includes(e) || unlocked.includes(e.id));
+        const list = ALL_EYE_COLORS.filter(e => EYE_COLORS.includes(e) || unlocked.includes(e.id));
+        return this.dedupeSwatches(list, e => `${e.dark}|${e.light}`.toLowerCase(), e => e.id === this.state.eyeColor);
+    }
+
+    /**
+     * Retire les pastilles de même couleur (trophées différents, teinte identique) :
+     * garde la première, ou celle actuellement sélectionnée pour qu'elle reste visible
+     */
+    dedupeSwatches(list, keyOf, isCurrent) {
+        const byKey = new Map();
+        list.forEach(item => {
+            const k = keyOf(item);
+            if (!byKey.has(k) || isCurrent(item)) byKey.set(k, item);
+        });
+        return list.filter(item => byKey.get(keyOf(item)) === item);
     }
 
     /**

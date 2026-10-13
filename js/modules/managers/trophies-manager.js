@@ -106,38 +106,31 @@ export class TrophiesManager {
         panel.innerHTML = `
             <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                 <div id="summon-tree" class="summon-tree w-44 h-48 sm:w-56 sm:h-60 md:w-64 md:h-[17rem] flex-shrink-0">${this.renderTreeSvg()}</div>
-                <div class="flex-1 w-full min-w-0">
-                    <div class="flex flex-wrap items-center justify-center md:justify-between gap-x-3 gap-y-1.5 mb-1.5">
-                        <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2" style="color:${T.hexTextPrimary};font-family:'Baloo 2',sans-serif">
-                            <i class="bi bi-stars" style="color:${T.hexPrimary}"></i>Arbre d'invocation
-                        </h2>
-                        <span class="inline-flex items-center gap-1 rounded-full text-[11px] font-bold px-2.5 py-1" style="background:${RARITY_GLOW['légendaire']}22;color:#a16207;border:1px solid ${RARITY_GLOW['légendaire']}77">
-                            <i class="bi bi-star-fill"></i>Légendaire garanti dans ${pity} invocation${pity > 1 ? 's' : ''} au plus
-                        </span>
-                    </div>
-                    <p class="text-sm mb-4 text-center md:text-left" style="color:#b46e28">Offre ${SUMMON_COST} gemmes à l'arbre : un fruit magique tombe et révèle un skin. Un doublon te rend ${SUMMON_REFUND} gemmes.</p>
+                <div class="flex-1 w-full min-w-0 flex flex-col items-center md:items-start text-center md:text-left">
+                    <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2 mb-1" style="color:${T.hexTextPrimary};font-family:'Baloo 2',sans-serif">
+                        <i class="bi bi-stars" style="color:${T.hexPrimary}"></i>Arbre d'invocation
+                    </h2>
+                    <p class="text-sm mb-5" style="color:#b46e28">Offre ${SUMMON_COST} gemmes à l'arbre : un fruit magique tombe et révèle un skin. Un doublon te rend ${SUMMON_REFUND} gemmes.</p>
 
-                    <!-- Taux de tirage : une barre segmentée par rareté -->
-                    <div class="mb-4">
-                        <div class="flex h-2.5 rounded-full overflow-hidden gap-0.5" role="img" aria-label="Taux de tirage par rareté">
-                            ${SUMMON_RATES.map(r => `<div style="width:${r.rate}%;background:${RARITY_GLOW[r.rarity]}"></div>`).join('')}
-                        </div>
-                        <div class="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1 mt-1.5">
-                            ${SUMMON_RATES.map(r => `<span class="inline-flex items-center gap-1.5 text-[11px] font-semibold" style="color:${T.hexTextPrimary}"><span class="inline-block w-2 h-2 rounded-full" style="background:${RARITY_GLOW[r.rarity]}"></span>${r.label} ${r.rate} %</span>`).join('')}
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
-                        <button id="btn-summon" class="btn-base btn-primary justify-center px-8 py-3 text-base flex-shrink-0 ${canSummon ? '' : 'opacity-50 cursor-not-allowed'}" ${canSummon ? '' : 'disabled'}>
+                    <!-- Action : bouton, puis solde juste en dessous -->
+                    <div class="w-full sm:w-auto flex flex-col items-center md:items-start gap-2 mb-5">
+                        <button id="btn-summon" class="btn-base btn-primary justify-center w-full sm:w-auto px-10 py-3 text-base ${canSummon ? '' : 'opacity-50 cursor-not-allowed'}" ${canSummon ? '' : 'disabled'}>
                             <i class="bi bi-gem"></i>Invoquer · ${SUMMON_COST} gemmes
                         </button>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex items-baseline justify-between text-[11px] font-semibold mb-1" style="color:#b46e28">
-                                <span><i class="bi bi-gem text-yellow-500"></i> ${canSummon ? `${gems} gemmes` : `${gems} / ${SUMMON_COST}`}</span>
-                                <span>${canSummon ? 'Prêt à invoquer' : `Encore ${missing} gemme${missing > 1 ? 's' : ''} à gagner dans les quiz`}</span>
-                            </div>
-                            <div class="h-1.5 rounded-full overflow-hidden" style="background:#eaddcc"><div class="h-full rounded-full" style="width:${progress}%;background:${canSummon ? '#22c55e' : '#facc15'}"></div></div>
+                        <p class="text-xs font-semibold" style="color:#b46e28">
+                            <i class="bi bi-gem text-yellow-500"></i> Tu as ${gems} gemme${gems > 1 ? 's' : ''}${canSummon ? '' : ` · encore ${missing} à gagner dans les quiz`}
+                        </p>
+                        ${canSummon ? '' : `<div class="w-full h-1.5 rounded-full overflow-hidden" style="background:#eaddcc"><div class="h-full rounded-full" style="width:${progress}%;background:#facc15"></div></div>`}
+                    </div>
+
+                    <!-- Infos de tirage : secondaires, regroupées en bas -->
+                    <div class="w-full pt-3 flex flex-col md:flex-row md:items-center md:justify-between gap-x-4 gap-y-2" style="border-top:1px solid #eaddcc">
+                        <div class="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1" role="list" aria-label="Taux de tirage par rareté">
+                            ${SUMMON_RATES.map(r => `<span role="listitem" class="inline-flex items-center gap-1.5 text-[11px] font-semibold" style="color:${T.hexTextPrimary}"><span class="inline-block w-2 h-2 rounded-full" style="background:${RARITY_GLOW[r.rarity]}"></span>${r.label} ${r.rate} %</span>`).join('')}
                         </div>
+                        <span class="inline-flex items-center justify-center gap-1 text-[11px] font-bold" style="color:#a16207">
+                            <i class="bi bi-star-fill"></i>Légendaire garanti dans ${pity} invocation${pity > 1 ? 's' : ''} au plus
+                        </span>
                     </div>
                 </div>
             </div>

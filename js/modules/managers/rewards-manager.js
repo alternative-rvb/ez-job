@@ -323,8 +323,9 @@ export class RewardsManager {
             catalog.skins.push(...u.skins);
             catalog.hairs.push(...u.hairs.map(h => h.toLowerCase()));
             catalog.eyes.push(...u.eyes);
-            catalog.styles.boy.push({ key: u.styles.boy, label: u.label });
-            catalog.styles.girl.push({ key: u.styles.girl, label: u.label });
+            // NOTE Les skins rares n'apportent que des couleurs : pas de coupe à ajouter
+            if (u.styles.boy) catalog.styles.boy.push({ key: u.styles.boy, label: u.label });
+            if (u.styles.girl) catalog.styles.girl.push({ key: u.styles.girl, label: u.label });
             if (u.outfit) catalog.outfits.push({ key: u.outfit, label: u.label });
         });
         return catalog;

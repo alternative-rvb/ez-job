@@ -343,6 +343,11 @@ export class QuizSelector {
                             ${timeButtonsHTML}
                         </div>
 
+                        <!-- Bouton Valider : lance le quiz avec le temps sélectionné -->
+                        <button class="confirm-time-modal w-full py-3 px-4 mb-2 rounded-xl text-base font-bold transition-all hover:shadow-md" style="background:linear-gradient(to right,#ff9d00,#e08800);color:white;border:2px solid #ff9d00">
+                            <i class="bi bi-play-fill"></i> Valider
+                        </button>
+
                         <!-- Bouton Annuler -->
                         <button class="close-time-modal w-full py-2.5 px-4 rounded-xl text-sm font-semibold transition-all" style="background:white;color:#7c4004;border:1.5px solid #dcc9b0">
                             Annuler
@@ -370,11 +375,11 @@ export class QuizSelector {
             }
         });
 
-        // Boutons de temps
+        // Boutons de temps : sélection seule, le lancement se fait via Valider
+        let selectedTime = defaultTime;
         modal.querySelectorAll('.time-option-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const selectedTime = parseInt(btn.dataset.time);
-                // Ajouter le style selected pour le feedback visuel
+            btn.addEventListener('click', () => {
+                selectedTime = parseInt(btn.dataset.time);
                 modal.querySelectorAll('.time-option-btn').forEach(b => {
                     b.style.background = 'white';
                     b.style.color = '#7c4004';
@@ -385,16 +390,16 @@ export class QuizSelector {
                 btn.style.color = 'white';
                 btn.style.border = '2px solid #ff9d00';
                 btn.querySelector('span:last-child').style.color = 'rgba(255,255,255,0.85)';
-
-                // Petit délai pour voir l'effet de sélection
-                setTimeout(() => {
-                    if (this.onQuizSelect) {
-                        // Passer à la fois le quiz et le temps sélectionné
-                        this.onQuizSelect(this.selectedQuiz, selectedTime);
-                    }
-                    modal.remove();
-                }, 200);
             });
+        });
+
+        // Bouton Valider
+        modal.querySelector('.confirm-time-modal').addEventListener('click', () => {
+            if (this.onQuizSelect) {
+                // Passer à la fois le quiz et le temps sélectionné
+                this.onQuizSelect(this.selectedQuiz, selectedTime);
+            }
+            modal.remove();
         });
     }
 
