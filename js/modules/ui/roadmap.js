@@ -196,7 +196,7 @@ export class RoadmapManager {
                 ? pick(['J\'ai trouvé une nouvelle aventure !', 'Un nouveau quiz vient d\'arriver !'])
                 : pick(['Voici les nouvelles aventures...', 'Du nouveau dans mon sac !', 'Regarde ce que j\'ai déniché !']));
             fresh.forEach((title, i) => {
-                const short = title.length > 34 ? `${title.slice(0, 33)}…` : title;
+                const short = title.length > 34 ? `${title.slice(0, 31)}...` : title;
                 lines.push(fresh.length > 1 && i === fresh.length - 1 ? `Et aussi : ${short}` : short);
             });
             try { localStorage.setItem('announcedQuizzes', JSON.stringify([...new Set([...announced, ...fresh])])); } catch (e) { /* idem */ }
