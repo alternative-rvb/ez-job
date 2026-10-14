@@ -46,6 +46,7 @@ export const ALL_HAIR_COLORS = [
     { id: 'pirate-chestnut', name: 'Brun Corsaire', hex: '#3b2219', isTrophyReward: true },
     { id: 'dragon-crimson', name: 'Rouge Braise Draconique', hex: '#b91c1c', isTrophyReward: true },
     { id: 'astro-indigo', name: 'Indigo Orbital', hex: '#312e81', isTrophyReward: true },
+    { id: 'frost-blue', name: 'Bleu Givre', hex: '#8fc3e8', isTrophyReward: true },
     // Teintes exclusives débloquées par les trophées rares (variantes de base)
     { id: 'rare-mint', name: 'Menthe Givrée', hex: '#2dd4bf', isTrophyReward: true },
     { id: 'rare-lavender', name: 'Lavande Pastel', hex: '#c4b5fd', isTrophyReward: true },
@@ -95,6 +96,7 @@ export const ALL_EYE_COLORS = [
     { id: 'revenant-green', name: 'Vert Spectral', dark: '#052e16', light: '#15803d', isTrophyReward: true },
     { id: 'lagoon-blue', name: 'Bleu Lagon', dark: '#0e7490', light: '#06b6d4', isTrophyReward: true },
     { id: 'dragon-fire', name: 'Feu Draconique', dark: '#7f1d1d', light: '#ea580c', isTrophyReward: true },
+    { id: 'glacier-eye', name: 'Iris Glacier', dark: '#0c4a6e', light: '#67e8f9', isTrophyReward: true },
     // Teintes d'iris exclusives débloquées par les trophées rares (variantes de base)
     { id: 'mint', name: 'Menthe Givrée', dark: '#0f766e', light: '#2dd4bf', isTrophyReward: true },
     { id: 'lavender', name: 'Lavande Douce', dark: '#5b21b6', light: '#a78bfa', isTrophyReward: true },

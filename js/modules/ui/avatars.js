@@ -17,6 +17,7 @@ import { SCHOLAR_STYLES, OUTFIT_SCHOLAR_MAGE, SCHOLAR_TROPHY } from './avatars/t
 import { PIRATE_STYLES, OUTFIT_PIRATE_CORSAIR, PIRATE_TROPHY } from './avatars/trophies/pirate.js';
 import { getDragonHorns, DRAGON_STYLES, OUTFIT_DRAGON_KNIGHT, DRAGON_TROPHY } from './avatars/trophies/dragon.js';
 import { ASTRONAUT_STYLES, OUTFIT_ASTRONAUT_EXPLORER, ASTRONAUT_TROPHY } from './avatars/trophies/astronaut.js';
+import { FROST_STYLES, OUTFIT_FROST_KNIGHT, FROST_TROPHY } from './avatars/trophies/frost.js';
 import { MANNEQUIN_STYLES, OUTFIT_MANNEQUIN } from './avatars/mannequin.js';
 import { RARE_TROPHIES } from './avatars/rares.js';
 
@@ -34,11 +35,12 @@ export { OUTFIT_SCHOLAR_MAGE } from './avatars/trophies/scholar.js';
 export { OUTFIT_PIRATE_CORSAIR } from './avatars/trophies/pirate.js';
 export { getDragonHorns, OUTFIT_DRAGON_KNIGHT } from './avatars/trophies/dragon.js';
 export { OUTFIT_ASTRONAUT_EXPLORER } from './avatars/trophies/astronaut.js';
+export { OUTFIT_FROST_KNIGHT } from './avatars/trophies/frost.js';
 export { OUTFIT_MANNEQUIN, MANNEQUIN_BOY, MANNEQUIN_GIRL } from './avatars/mannequin.js';
 export { RARE_TROPHIES } from './avatars/rares.js';
 
 // SECTION Registres des trophées : coupes, tenues et fiches assemblées depuis avatars/trophies/*.js
-export const RPG_STYLES = { ...ELF_STYLES, ...ORC_STYLES, ...PALADIN_STYLES, ...CAT_STYLES, ...SHADOW_STYLES, ...VAMPIRE_STYLES, ...NECROMANCER_STYLES, ...FAIRY_STYLES, ...SCHOLAR_STYLES, ...PIRATE_STYLES, ...DRAGON_STYLES, ...ASTRONAUT_STYLES, ...MANNEQUIN_STYLES };
+export const RPG_STYLES = { ...ELF_STYLES, ...ORC_STYLES, ...PALADIN_STYLES, ...CAT_STYLES, ...SHADOW_STYLES, ...VAMPIRE_STYLES, ...NECROMANCER_STYLES, ...FAIRY_STYLES, ...SCHOLAR_STYLES, ...PIRATE_STYLES, ...DRAGON_STYLES, ...ASTRONAUT_STYLES, ...FROST_STYLES, ...MANNEQUIN_STYLES };
 
 // Registre des tenues RPG
 export const RPG_OUTFITS = {
@@ -54,11 +56,12 @@ export const RPG_OUTFITS = {
     pirate_corsair: OUTFIT_PIRATE_CORSAIR,
     dragon_knight: OUTFIT_DRAGON_KNIGHT,
     astronaut_explorer: OUTFIT_ASTRONAUT_EXPLORER,
+    frost_knight: OUTFIT_FROST_KNIGHT,
     mannequin: OUTFIT_MANNEQUIN
 };
 
 // Registre des Trophées RPG (IDs courts pour chaque personnage garçon et fille)
-export const RPG_TROPHIES = [ELF_TROPHY, ORC_TROPHY, PALADIN_TROPHY, CAT_TROPHY, SHADOW_TROPHY, VAMPIRE_TROPHY, NECROMANCER_TROPHY, FAIRY_TROPHY, SCHOLAR_TROPHY, PIRATE_TROPHY, DRAGON_TROPHY, ASTRONAUT_TROPHY, ...RARE_TROPHIES];
+export const RPG_TROPHIES = [ELF_TROPHY, ORC_TROPHY, PALADIN_TROPHY, CAT_TROPHY, SHADOW_TROPHY, VAMPIRE_TROPHY, NECROMANCER_TROPHY, FAIRY_TROPHY, SCHOLAR_TROPHY, PIRATE_TROPHY, DRAGON_TROPHY, ASTRONAUT_TROPHY, ...RARE_TROPHIES, FROST_TROPHY];
 
 // Dictionnaire récapitulatif des IDs courts de chaque personnage avatar
 export const AVATAR_SHORT_IDS = {
@@ -78,6 +81,7 @@ export const AVATAR_SHORT_IDS = {
     pirate: { id: 'pirate', name: 'Corsaire des Mers', type: 'trophy', number: 10, boyId: 'pir_b', girlId: 'pir_g' },
     dragon: { id: 'dragon', name: 'Chevalier Dragon', type: 'trophy', number: 11, boyId: 'drg_b', girlId: 'drg_g' },
     astronaut: { id: 'astronaut', name: 'Cosmonaute Explorateur', type: 'trophy', number: 12, boyId: 'ast_b', girlId: 'ast_g' },
+    frost: { id: 'frost', name: 'Chevalier de Glace', type: 'trophy', number: 31, boyId: 'frs_b', girlId: 'frs_g' },
     // Avatars rares débloqués (variantes de départ)
     ...Object.fromEntries(RARE_TROPHIES.map(t => [t.id, { id: t.id, name: t.title, type: 'rare', number: t.number, boyId: t.boyPreset.id, girlId: t.girlPreset.id }]))
 };
@@ -341,6 +345,13 @@ export const AVATARS = {
         accent: '#e2e8f0',
         get svg() { return renderAvatarSvg('astronaut'); },
         get headSvg() { return renderAvatarHeadSvg('astronaut'); }
+    },
+    frost: {
+        id: 'frost',
+        color: '#4f8fc9',
+        accent: '#bae6fd',
+        get svg() { return renderAvatarSvg('frost'); },
+        get headSvg() { return renderAvatarHeadSvg('frost'); }
     }
 };
 

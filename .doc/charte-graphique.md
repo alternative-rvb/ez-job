@@ -203,6 +203,11 @@ import { T } from '../core/theme.js';
 | `.answer-btn:disabled` | Fond blanc, bordure beige, opacité 0.6 |
 | `.rarity-rare` / `.badge-rare` | Turquoise principal |
 | `.rarity-épique` / `.badge-épique` | Violet `rgb(147,51,234)` |
+| `.camiludik-alert` | Bannière d'alerte moderne : fond clair dégradé, coins arrondis 1rem (`rounded-2xl`), ombre portée douce, animation d'entrée `alert-slide-in` et sortie fluide `alert-hiding`. Contient `.camiludik-alert-icon` (badge circulaire avec icône), `.camiludik-alert-text` (texte gras 600 Almarai), `.camiludik-alert-action` (bouton pilule d'action) et `.camiludik-alert-close` (croix de fermeture). |
+| `.camiludik-alert-success` | Succès : fond dégradé menthe/émeraude clair (`#f0fdf4` -> `#ecfdf5`), bordure `#86efac`, texte vert forêt `#14532d`, badge `#dcfce7` avec icône `#16a34a`, bouton pilule vert `#16a34a` hover `#15803d`. |
+| `.camiludik-alert-error` | Erreur : fond dégradé rose clair (`#fff1f2` -> `#ffe4e6`), bordure `#fca5a5`, texte carmin `#881337`, badge `#fee2e2` avec icône `#dc2626`, bouton pilule rouge `#dc2626`. |
+| `.camiludik-alert-warning` | Avertissement : fond miel/ambre clair (`#fffbeb` -> `#fef3c7`), bordure `#fcd34d`, texte ambre foncé `#78350f`, badge `#fef3c7` avec icône `#d97706`. |
+| `.camiludik-alert-info` | Information : fond turquoise clair (`#f0fdfa` -> `#e6f6f4`), bordure `#99f6e4`, texte turquoise sombre `#134e4a`, badge `#ccfbf1` avec icône `#0d9488`. |
 
 ### `js/modules/managers/*.js` - via `T.*`
 
@@ -212,7 +217,7 @@ import { T } from '../core/theme.js';
 | `question-manager.js` | Lettre A/B/C/D fond `#66bcb4`, timer badge, barre progression turquoise, bouton valider brun |
 | `results-manager.js` | % score `#66bcb4`, barre progress turquoise dégradé, cartes `#f4eadd` |
 | `history-manager.js` | Stats cards `#f4eadd`, chiffres `#66bcb4`, résultats beige |
-| `trophies-manager.js` | Carte Arbre d'invocation (barre de taux segmentée aux couleurs de rareté, pastille légendaire garanti, jauge de gemmes vers le coût ; arbre SVG : feuillage turquoise `#2f7d74` à `#66bcb4`, tronc brun `#8a4b14`), fruits et lueur de révélation par rareté (rare turquoise `rgb(102,188,180)`, épique violet `rgb(147,51,234)`, légendaire or `rgb(250,204,21)`), cartes 9/16 sur fond neutre crème `T.bgSecondary` (`#f4eadd`), boutons icônes discrets zoom et appliquer (`T.secondaryA(0.75)`, 28 à 34 px) sur la miniature et la modale, description masquée sous 210 px de large, squelette `#eaddcc`. Animations `summon-*` dans `styles/main.css`, coupées par `prefers-reduced-motion` |
+| `trophies-manager.js` | Carte Arbre d'invocation (barre de taux segmentée aux couleurs de rareté, pastille légendaire garanti, jauge de gemmes vers le coût ; arbre SVG : feuillage turquoise `#2f7d74` à `#66bcb4`, tronc brun `#8a4b14`), fruits et lueur de révélation par rareté (rare turquoise `rgb(102,188,180)`, épique violet `rgb(147,51,234)`, légendaire or `rgb(250,204,21)`), cartes 9/16 sur fond neutre crème `T.bgSecondary` (`#f4eadd`), boutons icônes discrets zoom et appliquer (`T.secondaryA(0.75)`, 28 à 34 px) sur la miniature et la modale, description masquée sous 210 px de large, squelette `#eaddcc`. Animations `summon-*` dans `styles/main.css`, coupées par `prefers-reduced-motion`. Bannière d'alerte `#code-message` utilisant le composant `.camiludik-alert` (succès lors de l'application d'un skin avec bouton pilule « Ouvrir l'atelier », erreur si gemmes insuffisantes, bouton fermeture et disparition animée). |
 
 ### `js/modules/ui/avatar-modal.js` - atelier avatar
 

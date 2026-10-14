@@ -5,6 +5,20 @@
 
 import { fuseau, plume, SKIN_DEFAULT } from '../../avatar-kit.js';
 
+// ANCHOR Bottine lacée : axe cx, s = -1 (gauche, pointe vers l'extérieur gauche) ou 1 (droite) ; revers pourpre, lacets croisés et semelle en fuseau
+const shadowBoot = (cx, s) => {
+    const x = (o) => Math.round((cx + s * o) * 100) / 100;
+    return `
+            <path d="M ${x(3.5)},98 L ${x(-3.5)},98 L ${x(-3.5)},109 C ${x(-4.5)},110 ${x(-4.7)},112 ${x(-3.7)},113 L ${x(4)},113 C ${x(6)},113 ${x(6)},111 ${x(4.5)},110.5 C ${x(3.5)},110 ${x(3.5)},108 ${x(3.5)},106 Z" fill="#1a1030"/>
+            <!-- Revers pourpre en haut de la tige -->
+            <path d="${fuseau(`M ${x(-3.6)},99.2 Q ${x(0)},100.4 ${x(3.6)},99.2`, 3.2, 12)}" fill="#581c87"/>
+            <!-- Rails et lacets croisés en fuseau, sur le devant de la tige -->
+            <path d="${fuseau(`M ${x(-1.3)},101.6 Q ${x(-1.5)},105 ${x(-1.3)},109`, 0.8, 10)} ${fuseau(`M ${x(1.3)},101.6 Q ${x(1.5)},105 ${x(1.3)},109`, 0.8, 10)}" fill="#3b0764"/>
+            <path d="${fuseau(`M ${x(-1.3)},102.6 Q ${x(0)},103.1 ${x(1.3)},104.4`, 0.8, 8)} ${fuseau(`M ${x(1.3)},102.6 Q ${x(0)},103.1 ${x(-1.3)},104.4`, 0.8, 8)} ${fuseau(`M ${x(-1.3)},105.6 Q ${x(0)},106.1 ${x(1.3)},107.4`, 0.8, 8)} ${fuseau(`M ${x(1.3)},105.6 Q ${x(0)},106.1 ${x(-1.3)},107.4`, 0.8, 8)}" fill="#cbd5e1"/>
+            <!-- Semelle en fuseau -->
+            <path d="${fuseau(`M ${x(-3.8)},112.6 Q ${x(0.4)},113.8 ${x(5.4)},112.4`, 1.4, 12)}" fill="#334155"/>`;
+};
+
 // ANCHOR Cornes en S du Mage Noir / Sorcière (espèce shadow) : double courbure sinueuse, tracé plume à base épaisse
 export function getShadowHorns() {
     return `
@@ -58,19 +72,8 @@ export const OUTFIT_SHADOW_MAGE = {
         <g id="outfit-shadow-legs">
             <rect x="42.5" y="86" width="4.5" height="18" rx="2" fill="#24143d"/>
             <rect x="53" y="86" width="4.5" height="18" rx="2" fill="#24143d"/>
-            <!-- Bottine gauche à revers -->
-            <path d="M 41,98 C 41,96 48,96 48,98 L 48,111 C 47,113 42,113 40,111 L 39,112.5 C 38,113 48,114 49,112 L 49,98 Z" fill="#0f172a"/>
-            <path d="M 40.5,98 Q 44.5,96 48.5,98 L 47.5,101 Q 44.5,99 41.5,101 Z" fill="#581c87" stroke="#0f172a" stroke-width="0.5"/>
-            <circle cx="44.5" cy="104" r="0.9" fill="#cbd5e1"/>
-            <circle cx="44.5" cy="107" r="0.9" fill="#cbd5e1"/>
-            <path d="M 38,112.5 Q 44,113.5 49,112.5" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
-
-            <!-- Bottine droite à revers -->
-            <path d="M 59,98 C 59,96 52,96 52,98 L 52,111 C 53,113 58,113 60,111 L 61,112.5 C 62,113 52,114 51,112 L 51,98 Z" fill="#0f172a"/>
-            <path d="M 51.5,98 Q 55.5,96 59.5,98 L 58.5,101 Q 55.5,99 52.5,101 Z" fill="#581c87" stroke="#0f172a" stroke-width="0.5"/>
-            <circle cx="55.5" cy="104" r="0.9" fill="#cbd5e1"/>
-            <circle cx="55.5" cy="107" r="0.9" fill="#cbd5e1"/>
-            <path d="M 51,112.5 Q 56,113.5 62,112.5" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+            ${shadowBoot(44.5, -1)}
+            ${shadowBoot(55.5, 1)}
         </g>`,
     body: (skin = SKIN_DEFAULT) => `
         <g id="outfit-shadow-body">
@@ -82,11 +85,9 @@ export const OUTFIT_SHADOW_MAGE = {
             <path d="M 45,59 Q 50,62 55,59" stroke="#0f172a" stroke-width="1.1" fill="none"/>
             <circle cx="50" cy="62" r="1.3" fill="#c084fc" stroke="#3b0764" stroke-width="0.5"/>
             
-            <!-- Corset / Laçage croisé argenté -->
-            <path d="M 46,67 L 54,71 M 54,67 L 46,71" stroke="#c084fc" stroke-width="0.9" stroke-linecap="round"/>
-            <path d="M 46,72 L 54,76 M 54,72 L 46,76" stroke="#c084fc" stroke-width="0.9" stroke-linecap="round"/>
-            <line x1="46" y1="65" x2="46" y2="78" stroke="#3b0764" stroke-width="0.8"/>
-            <line x1="54" y1="65" x2="54" y2="78" stroke="#3b0764" stroke-width="0.8"/>
+            <!-- Corset / Laçage croisé : rails et croisillons en fuseau -->
+            <path d="${fuseau('M 46,65 Q 45.4,71.5 46,78', 1, 12)} ${fuseau('M 54,65 Q 54.6,71.5 54,78', 1, 12)}" fill="#3b0764"/>
+            <path d="${fuseau('M 46,67 Q 50,68.6 54,71', 1.1, 10)} ${fuseau('M 54,67 Q 50,68.6 46,71', 1.1, 10)} ${fuseau('M 46,72 Q 50,73.6 54,76', 1.1, 10)} ${fuseau('M 54,72 Q 50,73.6 46,76', 1.1, 10)}" fill="#c084fc"/>
 
             <!-- Jupe de sorcière évasée festonnée -->
             <path d="M 36.5,82 

@@ -23,6 +23,7 @@ export class TrophiesManager {
     constructor(onBack) {
         this.onBack = onBack;
         this.listenersReady = false;
+        this.messageTimeout = null;
     }
 
     renderSkeleton() {
@@ -85,7 +86,11 @@ export class TrophiesManager {
         // NOTE Les pastilles des teintes, coupe et tenue restent jusqu'à leur sélection dans l'atelier
         rewardsManager.markItemSeen(`card:${skin.id}`);
         window.dispatchEvent(new CustomEvent('avatar-updated', { detail: { ...preset, playerName: playerManager.playerName } }));
-        this.showMessage(`<i class="bi bi-check-circle-fill text-green-400"></i> Skin « ${skin.title} » appliqué à ton avatar ! <button id="btn-open-customizer-from-trophies" class="ml-1 underline font-bold">Ouvrir l\'atelier</button>`, 'success');
+        this.showMessage(`Skin « ${skin.title} » appliqué à ton avatar !`, 'success', {
+            id: 'btn-open-customizer-from-trophies',
+            icon: 'bi-palette2',
+            label: "Ouvrir l'atelier"
+        });
         this.renderTrophies();
     }
 
@@ -137,7 +142,7 @@ export class TrophiesManager {
                 </div>
             </div>
             <!-- Message d'erreur/succès -->
-            <div id="code-message" class="hidden mt-3 p-3 rounded-lg text-sm"></div>
+            <div id="code-message" class="hidden mt-4" role="status" aria-live="polite"></div>
         `;
     }
 
@@ -148,7 +153,7 @@ export class TrophiesManager {
         if (this.isSummoning) return;
         const result = rewardsManager.summon();
         if (!result) {
-            this.showMessage(`<i class="bi bi-x-circle-fill text-red-400"></i> Il te faut ${SUMMON_COST} gemmes pour invoquer.`, 'error');
+            this.showMessage(`Il te faut ${SUMMON_COST} gemmes pour invoquer.`, 'error');
             return;
         }
         this.isSummoning = true;
@@ -682,16 +687,104 @@ export class TrophiesManager {
         });
     }
 
-    showMessage(text, type) {
+    showMessage(content, type = 'success', action = null) {
         const messageDiv = document.getElementById('code-message');
-        messageDiv.innerHTML = text;
-        messageDiv.className = type === 'success' ? 
-            'hidden mt-3 p-3 rounded-lg text-sm bg-green-900/50 text-green-300 border border-green-600' :
-            'hidden mt-3 p-3 rounded-lg text-sm bg-red-900/50 text-red-300 border border-red-600';
-        messageDiv.classList.remove('hidden');
+        if (!messageDiv) return;
 
+        if (this.messageTimeout) {
+            clearTimeout(this.messageTimeout);
+            this.messageTimeout = null;
+        }
+
+        let text = '';
+        let actionHtml = '';
+        let alertType = type;
+
+        if (typeof content === 'object' && content !== null) {
+            text = content.text || '';
+            alertType = content.type || type;
+            if (content.action) {
+                if (typeof content.action === 'string') {
+                    actionHtml = content.action;
+                } else {
+                    const actId = content.action.id ? ` id="${content.action.id}"` : '';
+                    const actIcon = content.action.icon ? `<i class="bi ${content.action.icon}"></i>` : '';
+                    actionHtml = `<button type="button"${actId} class="camiludik-alert-action">${actIcon}<span>${content.action.label}</span></button>`;
+                }
+            }
+        } else {
+            text = content || '';
+            if (action) {
+                if (typeof action === 'string') {
+                    actionHtml = action;
+                } else {
+                    const actId = action.id ? ` id="${action.id}"` : '';
+                    const actIcon = action.icon ? `<i class="bi ${action.icon}"></i>` : '';
+                    actionHtml = `<button type="button"${actId} class="camiludik-alert-action">${actIcon}<span>${action.label}</span></button>`;
+                }
+            }
+        }
+
+        // Si le texte contient déjà un bouton d'atelier (syntaxe legacy), l'extraire et le styler proprement
+        if (typeof text === 'string' && text.includes('btn-open-customizer-from-trophies')) {
+            text = text.replace(/<button[^>]*id="btn-open-customizer-from-trophies"[^>]*>([\s\S]*?)<\/button>/i, '').trim();
+            if (!actionHtml) {
+                actionHtml = `<button type="button" id="btn-open-customizer-from-trophies" class="camiludik-alert-action"><i class="bi bi-palette2"></i><span>Ouvrir l'atelier</span></button>`;
+            }
+        }
+
+        // Nettoyer les balises icônes HTML legacy au début du texte
+        if (typeof text === 'string') {
+            text = text.replace(/^<i class="bi [^"]*"><\/i>\s*/i, '').trim();
+        }
+
+        const icons = {
+            success: 'bi-check2',
+            error: 'bi-exclamation-circle-fill',
+            warning: 'bi-exclamation-triangle-fill',
+            info: 'bi-info-circle-fill'
+        };
+        const iconClass = icons[alertType] || icons.success;
+
+        messageDiv.className = `camiludik-alert camiludik-alert-${alertType} mt-4`;
+        messageDiv.innerHTML = `
+            <div class="camiludik-alert-icon">
+                <i class="bi ${iconClass}"></i>
+            </div>
+            <div class="camiludik-alert-content">
+                <span class="camiludik-alert-text">${text}</span>
+                ${actionHtml}
+            </div>
+            <button type="button" class="camiludik-alert-close" aria-label="Fermer l'alerte">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        `;
+
+        const closeBtn = messageDiv.querySelector('.camiludik-alert-close');
+        if (closeBtn) {
+            closeBtn.onclick = () => this.hideMessage();
+        }
+
+        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        this.messageTimeout = setTimeout(() => {
+            this.hideMessage();
+        }, 6000);
+    }
+
+    hideMessage() {
+        const messageDiv = document.getElementById('code-message');
+        if (!messageDiv || messageDiv.classList.contains('hidden')) return;
+
+        if (this.messageTimeout) {
+            clearTimeout(this.messageTimeout);
+            this.messageTimeout = null;
+        }
+
+        messageDiv.classList.add('alert-hiding');
         setTimeout(() => {
             messageDiv.classList.add('hidden');
-        }, 5000);
+            messageDiv.classList.remove('alert-hiding');
+        }, 260);
     }
 }
