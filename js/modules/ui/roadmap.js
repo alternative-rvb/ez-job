@@ -296,10 +296,10 @@ export class RoadmapManager {
         return `
             <div class="fantasy-roadmap-card rounded-2xl overflow-hidden shadow-lg border border-amber-900/10 flex flex-col justify-between" style="background: linear-gradient(180deg, #fdf8f2 0%, #f4eadd 100%);">
                 <!-- Header Skeleton -->
-                <div class="p-3 sm:p-4 md:p-5 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
+                <div class="px-3 py-2 sm:px-4 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
                     <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
                         <!-- Avatar box skeleton -->
-                        <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl skeleton-shimmer flex-shrink-0"></div>
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl skeleton-shimmer flex-shrink-0"></div>
                         <div class="space-y-2 min-w-0">
                             <div class="flex items-center gap-2">
                                 <div class="h-4 w-24 sm:w-32 rounded skeleton-shimmer"></div>
@@ -317,7 +317,7 @@ export class RoadmapManager {
                 </div>
 
                 <!-- Carte Fantasy Squelette Fidèle (SVG Shimmer) -->
-                <div class="relative p-1.5 sm:p-2 md:p-3 flex-1 flex flex-col justify-center">
+                <div class="relative p-1 flex-1 flex flex-col justify-center">
                     <div class="relative mx-auto rounded-xl overflow-hidden shadow-inner border border-amber-800/15 skeleton-shimmer-subtle" style="aspect-ratio: 560 / 328; width: min(100%, 560px);">
                         <svg viewBox="-20 -46 560 328" class="w-full h-full skeleton-svg-pulse" preserveAspectRatio="none">
                             <!-- Ciel : soleil fantôme -->
@@ -379,7 +379,7 @@ export class RoadmapManager {
                 </div>
 
                 <!-- Footer Skeleton -->
-                <div class="p-2.5 sm:p-3 md:p-4 bg-amber-900/5 border-t border-amber-900/10 flex items-center justify-between gap-3 text-xs">
+                <div class="px-3 py-2 bg-amber-900/5 border-t border-amber-900/10 flex items-center justify-between gap-3 text-xs">
                     <div class="flex-1 space-y-2">
                         <div class="flex items-center justify-between">
                             <div class="h-3.5 w-36 rounded skeleton-shimmer"></div>
@@ -429,11 +429,11 @@ export class RoadmapManager {
         container.innerHTML = `
             <div class="fantasy-roadmap-card rounded-2xl overflow-hidden shadow-lg border border-amber-900/10 flex flex-col justify-between" style="background: linear-gradient(180deg, #fdf8f2 0%, #f4eadd 100%);">
                 <!-- Header Profil & Rang -->
-                <div class="p-3 sm:p-4 md:p-5 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
+                <div class="px-3 py-2 sm:px-4 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
                     <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
                         <!-- Avatar interactif (Portrait Tête) -->
                         <div class="relative group flex-shrink-0 cursor-pointer" id="roadmap-avatar-toggle" title="Cliquer pour personnaliser ton avatar">
-                            <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl ring-2 ring-primary-500 shadow-md bg-amber-100/90 overflow-hidden flex items-center justify-center transition-transform transform group-hover:scale-105 p-0.5">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl ring-2 ring-primary-500 shadow-md bg-amber-100/90 overflow-hidden flex items-center justify-center transition-transform transform group-hover:scale-105 p-0.5">
                                 ${avatarData.headSvg || avatarData.svg}
                             </div>
                             <span class="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent-500 text-white flex items-center justify-center text-[8px] sm:text-[9px] shadow" title="Personnaliser">
@@ -467,7 +467,7 @@ export class RoadmapManager {
                 </div>
 
                 <!-- Carte Fantasy Interactive (SVG Path) -->
-                <div class="relative p-1.5 sm:p-2 md:p-3 flex-1 flex flex-col justify-center">
+                <div class="relative p-1 flex-1 flex flex-col justify-center">
                     <div class="relative mx-auto rounded-xl overflow-hidden shadow-inner border border-amber-800/15" style="aspect-ratio: 560 / 328; width: min(100%, 560px); background: linear-gradient(180deg, #dcf0f9 0%, #b8e2f2 35%, #9dd5aa 65%, #76be88 100%);">
                         
                         <!-- SVG Carte Fantasy -->
@@ -1588,7 +1588,7 @@ export class RoadmapManager {
                 </div>
 
                 <!-- Footer : Progression vers le prochain objectif -->
-                <div class="p-2.5 sm:p-3 md:p-4 bg-amber-900/5 border-t border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 text-xs">
+                <div class="px-3 py-2 bg-amber-900/5 border-t border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 text-xs">
                     <div class="flex-1">
                         <div class="flex items-center justify-between font-semibold text-amber-900 mb-1 text-[11px] sm:text-xs">
                             <span class="flex items-center gap-1 min-w-0 truncate">
