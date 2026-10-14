@@ -217,6 +217,15 @@ class QuizApp {
         // Récupérer la liste chargée depuis le sélecteur (évite un double fetch)
         this.availableQuizzes = this.quizSelector.allQuizzes || [];
 
+        // Quiz récents annoncés par l'avatar (les plus récents d'abord, 3 au maximum)
+        roadmapManager.setNewQuizTitles(
+            this.availableQuizzes
+                .filter(q => this.quizSelector.isNewQuiz(q.createdAt))
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                .slice(0, 3)
+                .map(q => q.title)
+        );
+
         // Rendre la Roadmap Fantasy dans la section Hero
         roadmapManager.render();
 
