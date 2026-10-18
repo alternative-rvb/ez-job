@@ -638,8 +638,8 @@ export const GIRL_BASE = {
             <!-- Bouche de chat en ω : petit croc ivoire arrondi façon orc (sans contour, pointe vers le bas) sur le côté droit, glissé derrière la lèvre, puis deux arcs fuseau de la couleur de bouche -->
             <path d="${fuseau('M 45,51.2 C 46.05,53.15 48.85,53.38 50,51.4', 1.29, 10)} ${fuseau('M 50,51.4 C 51.15,53.38 53.95,53.15 55,51.2', 1.29, 10)}" fill="${mouthColor}"/>` : species === 'dragon' ? `
             <!-- Drakéide : bouche fille complète, lèvres affirmées -->
-            ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.4))}` : styleKey === 'scholar_girl' ? `
-            <!-- Mage Érudite : bouche fille complète, lèvres rosées dérivées de la peau (plus claires que la couleur de bouche) -->
+            ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.4))}` : (styleKey === 'scholar_girl' || styleKey === 'frost_girl') ? `
+            <!-- Mage Érudite et Chevalière de Glace : bouche fille complète, lèvres rosées dérivées de la peau (plus claires que la couleur de bouche) -->
             ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.45))}` : species === 'elf' ? `
             <!-- Elfe : bouche fille complète, lèvres rosées dérivées de la peau -->
             ${mood ? getSmileMouth(mouthColor, mood === 'sad') : getFullLipsMouth(mixHex(skin.shadow, '#f43f5e', 0.38))}` : (species === 'undead' || species === 'shadow') ? `

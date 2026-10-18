@@ -3,7 +3,8 @@
  * Module du trophée : tenue d'armure givrée, coupes de cheveux, couronne de cristaux, épée de cristal et entrée du registre RPG_TROPHIES.
  */
 
-import { fuseau, plume, gripHand, fitBand, hairBase, SKIN_DEFAULT } from '../../avatar-kit.js';
+import { fuseau, gripHand, fitBand, SKIN_DEFAULT } from '../../avatar-kit.js';
+import { mixHex } from '../base.js';
 
 // NOTE Gantelet d'acier givré : passé à gripHand() à la place de la carnation
 const FROST_GAUNTLET = { base: '#cbd5e1', shadow: '#64748b' };
@@ -30,13 +31,8 @@ const FROST_SWORD_MODEL = `
     <path d="${fuseau('M -2.1,-22 Q -2.1,-31 -2.1,-40', 0.5, 8)} ${fuseau('M 2.1,-26 Q 2.1,-34 2.1,-42', 0.5, 8)}" fill="#ffffff" opacity="0.8"/>
 `;
 
-// ANCHOR Une mèche en fuseau de la couleur des cheveux
-const frostLock = (color, d, width) => `<path d="${fuseau(d, width, 16)}" fill="${color}"/>`;
-
-// ANCHOR Frange de glaçons : calotte qui démarre au point haut de la base courte (y -2), mèches larges à pointes obtuses, au-dessus des yeux
-const FROST_FRINGE = (color) => `
-    <path d="M 21,31 C 19,14 32,0 50,-2 C 68,0 81,14 79,31 C 77,28 75,26 72,25 C 72,30 70,34 66,36 C 64,30 61,26 57,24 C 56,30 53,35 50,37 C 46,32 42,27 39,25 C 38,30 36,34 33,36 C 31,31 29,27 26,25 C 24,27 22,29 21,31 Z" fill="${color}"/>
-`;
+// NOTE Reflets de glace : teinte des cheveux éclaircie de moitié (#8fc3e8 donne #c7e1f4, proche du #c3e3f9 du SVG de Nicolas)
+const frostShine = (color) => mixHex(color, '#ffffff', 0.5);
 
 // Tenue du trophée 31 : armure d'acier givré bleu glacier, cape bleu nuit à bord de glaçons, couronne de cristaux, épée de cristal
 export const OUTFIT_FROST_KNIGHT = {
@@ -113,6 +109,14 @@ export const OUTFIT_FROST_KNIGHT = {
             <path d="M 67 63 C 74 66.5, 76 70.5, 75 75.5 C 72.5 77.5, 69.5 75.5, 66 71.5 Z" fill="#4f8fc9"/>
             <path d="${fitBand([[67, 63], [74, 66.5], [76, 70.5], [75, 75.5]], [[75, 75.5], [72.5, 77.5], [69.5, 75.5], [66, 71.5]], 0.62, 0.92, 0.12, 0.5, 0.4)}" fill="#cbd5e1"/>
             <polygon points="77,73 74,71 75,76" fill="#bae6fd"/>
+            <!-- Épaulettes en fin de calque bras : au-dessus des cheveux arrière, sous les mèches de côté de la fille (SVG de Nicolas) -->
+            <g id="frost-pauldrons">
+                <path d="M 34,62 C 30,58 24,59 23,66 C 28,68 32,67 36,65 Z" fill="#cbd5e1"/>
+                <path d="M 66,62 C 70,58 76,59 77,66 C 72,68 68,67 64,65 Z" fill="#cbd5e1"/>
+                <path d="${fuseau('M 24,60 C 23,66 28,68 35,65', 1, 8)} ${fuseau('M 76,60 C 77,66 72,68 65,65', 1, 8)}" fill="#1d3d63"/>
+                <polygon points="27,60.6 29,54 31.4,60" fill="#bae6fd"/>
+                <polygon points="73,60.6 71,54 68.6,60" fill="#bae6fd"/>
+            </g>
         </g>`,
     headAccessory: `
         <g id="outfit-frost-crown">
@@ -128,14 +132,6 @@ export const OUTFIT_FROST_KNIGHT = {
         </g>`,
     handItem: (skin = SKIN_DEFAULT) => `
         <g id="outfit-frost-sword">
-            <!-- Épaulettes au premier plan, par-dessus les cheveux (calque handItem, jamais rendu en portrait) -->
-            <g id="frost-pauldrons">
-                <path d="M 34,62 C 30,58 24,59 23,66 C 28,68 32,67 36,65 Z" fill="#cbd5e1"/>
-                <path d="M 66,62 C 70,58 76,59 77,66 C 72,68 68,67 64,65 Z" fill="#cbd5e1"/>
-                <path d="${fuseau('M 24,60 C 23,66 28,68 35,65', 1, 8)} ${fuseau('M 76,60 C 77,66 72,68 65,65', 1, 8)}" fill="#1d3d63"/>
-                <polygon points="27,60.6 29,54 31.4,60" fill="#bae6fd"/>
-                <polygon points="73,60.6 71,54 68.6,60" fill="#bae6fd"/>
-            </g>
             <!-- Épée de cristal tenue par la main droite (75.5, 76) -->
             <g id="frost-sword" transform="translate(75.5, 76) rotate(12)">
                 ${FROST_SWORD_MODEL}
@@ -151,35 +147,55 @@ export const FROST_STYLES = {
         id: 'frost_boy',
         name: 'Frange de Glaçons (Garçon)',
         withBand: false,
+        // NOTE Tracés repris du SVG retouché par Nicolas (export Affinity x4), replacés par leur matrice
         getHairBack: (color) => `
-            <g id="hair-back-frost-boy">
-                <!-- ANCHOR Base courte : cercle plus grand que le crâne -->
-                ${hairBase('court', color)}
+            <g id="hair-back-frost-boy" transform="matrix(0.25,0,0,0.25,0,-34)">
+                <path d="M328 256 C328 256 318.513 311.309 302.498 332.681 C279.151 363.838 241.93 384 200 384 C157.933 384 120.606 363.707 97.273 332.375 C81.397 311.056 72 256 72 256 L82.439 195.217 C82.439 195.217 154.865 128.692 200 128 C244.58 127.316 317.661 191.608 317.661 191.608 Z" fill="${color}"/>
+                <!-- Pics de glace hérissés derrière le crâne -->
+                <path d="M201.892 149.773 L317.445 227.434 L343.468 149.773 L288.544 60.943 L299.015 107.021 L257.255 139.539 L261.052 69.467 L247.572 4.84 L219.652 52.177 L126.652 107.021 L114.012 172.263 L97.412 134.578 L133.812 69.467 L64.532 134.578 L81.052 230 Z" fill="${color}"/>
             </g>`,
         getHairFront: (color) => `
-            <g id="hair-front-frost-boy">
-                ${FROST_FRINGE(color)}
+            <g id="hair-front-frost-boy" transform="matrix(0.25,0,0,0.25,0,-34)">
+                <path d="M84 260 C76 192 200 128 200 128 C200 128 324 192 316 260 C308 248 288 236 288 236 L280 263.813 L254.548 230.504 L200 284 L156 236 L117.42 263.813 L98 240 C98 240 88 252 84 260 Z" fill="${color}"/>
+                <!-- Reflets de glace en éclats sur la frange -->
+                <path d="M289.538 179.5 L309.382 130.12 L264.639 165.954 L239.31 184 L252 142.829 L243.347 96.904 L226.639 166.405 L196 212.627 L208 109.726 L244 43.072 L201.244 84.317 L174.146 176.679 L154 138.563 L197.902 82.123 L137.902 129.126 L127.6 207 L88 164.723 L140.646 233.443 L120.62 258.853 L146.816 233.443 L135.778 200.547 L154 138.563 L176.342 196.672 L192.873 220.363 L221.555 196.672 L246 150.23 L224 216 L264.639 165.954 L261.236 224 L273.024 249.456 L266.179 196.339 Z M78.68 172.879 L104.8 228.2 L86.24 217.8 Z M310.415 214.165 L292.413 221.761 L324.308 170.918 Z M221.038 256.906 L203.54 271.635 L240.481 224.331 Z M185.474 263.967 L197.6 281.75 L175.098 228.318 Z" fill="${frostShine(color)}"/>
             </g>`
     },
     frost_girl: {
         id: 'frost_girl',
         name: 'Mèches de Givre (Fille)',
         withTiara: false,
+        // NOTE Tracés repris du SVG retouché par Nicolas (export Affinity x4), replacés par leur matrice
         getHairBack: (color) => `
-            <g id="hair-back-frost-girl">
-                <!-- ANCHOR Base mi-longue : ellipse qui descend jusqu'au cou -->
-                ${hairBase('mi-long', color)}
-                <!-- Pointes arrière en fuseau qui suivent la courbe de l'ellipse -->
-                ${frostLock(color, 'M 24,50 C 22,60 26,68 32,72', 5)}
-                ${frostLock(color, 'M 76,50 C 78,60 74,68 68,72', 5)}
+            <g id="hair-back-frost-girl" transform="matrix(0.25,0,0,0.25,0,-34)">
+                <path d="M331.721 244.525 C331.721 244.525 270.692 404 200 404 C129.308 404 70.185 245.738 70.185 245.738 L116.6 154.805 L200 127 L289.18 154.805 Z" fill="${color}"/>
+                <!-- Longues pointes de glace qui retombent dans le dos -->
+                <path d="M195.944 340.749 L80.392 263.088 L59.557 448.497 L109.292 479.578 L107.614 446.137 L123.053 375.47 L121.3 475 L149.2 570 L177.12 522.663 L236.936 497.322 L263.336 362.614 L267.24 435.446 L264.024 471.054 L338.492 448.497 L316.784 260.521 Z" fill="${color}"/>
+                <path d="M84 336 L74.4 448 L74.4 392.803 Z" fill="${frostShine(color)}"/>
             </g>`,
         getHairFront: (color) => `
-            <g id="hair-front-frost-girl">
-                ${FROST_FRINGE(color)}
-                <!-- Mèches de côté en fuseau qui suivent la courbure du visage -->
-                ${frostLock(color, 'M 25,28 C 20,40 20,54 25,64', 5.5)}
-                ${frostLock(color, 'M 75,28 C 80,40 80,54 75,64', 5.5)}
-                <path d="${plume('M 23,40 C 22,50 23,58 26,64', 3.2, 12)}" fill="${color}"/>
+            <g id="hair-front-frost-girl" transform="matrix(0.25,0,0,0.25,0,-34)">
+                <path d="M84 260 C84 260 92.679 140 200 140 C314.534 140 316 260 316 260 L289.8 251.2 L281.8 279.013 L256.348 245.704 L201.8 299.2 L157.8 251.2 L119.22 279.013 L99.8 255.2 Z" fill="${color}"/>
+                <!-- Mèches de côté en pointe, par-dessus les épaulettes -->
+                <path d="M104.8 228.2 L78.68 255 L121.28 421.48 L104.305 310.502 L106 279.2 Z" fill="${color}"/>
+                <path d="M295.2 228.2 L321.32 255 L278.72 421.48 L295.695 310.502 L294 279.2 Z" fill="${color}"/>
+                <!-- Reflets de glace en éclats -->
+                <g id="reflet-glace" fill="${frostShine(color)}">
+                    <path d="M148 209.8 L121.28 162.625 L129.296 186.213 Z"/>
+                    <path d="M136.8 224.4 L94.962 201.925 L109.646 215.199 Z"/>
+                    <path d="M272 223.28 L304.536 200.805 L293.116 214.078 Z"/>
+                    <path d="M113.6 250.432 L75.396 244.465 L90.253 250.695 Z"/>
+                    <path d="M294.908 249.69 L326.716 246 L313.529 251.182 Z"/>
+                    <path d="M181.781 140.507 L187.939 210.221 L177.18 174.604 Z"/>
+                    <path d="M221.762 141.51 L214.476 206.725 L226 175.364 Z"/>
+                    <path d="M263.266 209.8 L283.4 162.625 L278.72 186.213 Z"/>
+                    <path d="M176 241.452 L196.766 284.8 L184.075 268.316 Z"/>
+                    <path d="M91.336 260.521 L104 333.558 L92.802 303.919 Z"/>
+                    <path d="M309.148 256.759 L296.721 329.796 L307.709 300.157 Z"/>
+                    <path d="M126.9 239.343 L116.868 271.908 L117.236 256.307 Z"/>
+                    <path d="M274.396 241.286 L283.4 265.442 L282.438 253.675 Z"/>
+                    <path d="M233.293 243.006 L209.907 284.994 L223.577 269.321 Z"/>
+                </g>
             </g>`
     }
 };
