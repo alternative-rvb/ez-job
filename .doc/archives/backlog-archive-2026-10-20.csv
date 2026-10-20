@@ -1,0 +1,2 @@
+id,priorite,tache_principale,type,description,date_debut,date_fin
+59,3 normal 🔵,Quiz : Les énergies renouvelables (6e),feature,"Quiz de 20 QCM niveau 6e sur les énergies renouvelables (éolien, solaire, hydraulique, géothermie, biomasse, marées), comparaison avec les énergies fossiles et économies d'énergie : js/data/energies-renouvelables-6eme.json",2026-10-20,2026-10-20

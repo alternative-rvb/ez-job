@@ -9,6 +9,7 @@
     "calcul-mental",
     "connecteurs-logiques",
     "diviser-par-2-par-4",
+    "energies-renouvelables-6eme",
     "english-vocabulary-test",
     "fantome-canterville-chapitre-1",
     "fantome-canterville-chapitre-2",
@@ -64,7 +65,7 @@
     "Physique",
     "Sciences"
   ],
-  "count": 45,
-  "lastUpdated": "2026-10-14T18:03:46.260639",
+  "count": 46,
+  "lastUpdated": "2026-10-20T13:37:03.995984",
   "generated_by": "api.py"
 }

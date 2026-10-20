@@ -1,0 +1,261 @@
+{
+  "config": {
+    "title": "Les énergies renouvelables",
+    "description": "Teste tes connaissances sur le soleil, le vent, l'eau et les autres énergies qui ne s'épuisent pas",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 20,
+    "category": "CM2",
+    "createdAt": "2026-10-20",
+    "tag": [
+      "Sciences",
+      "Énergie",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Sciences"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce qu'une énergie renouvelable ?",
+      "choices": [
+        "Une énergie dont la source se reconstitue rapidement",
+        "Une énergie qui s'épuise après utilisation",
+        "Une énergie fabriquée uniquement en usine",
+        "Une énergie qui vient du sous-sol"
+      ],
+      "correctAnswer": "Une énergie dont la source se reconstitue rapidement",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Laquelle de ces sources d'énergie est renouvelable ?",
+      "choices": [
+        "Le charbon",
+        "Le vent",
+        "Le gaz naturel",
+        "Le pétrole"
+      ],
+      "correctAnswer": "Le vent",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Laquelle de ces sources d'énergie n'est PAS renouvelable ?",
+      "choices": [
+        "Le soleil",
+        "Le vent",
+        "Le charbon",
+        "L'eau des rivières"
+      ],
+      "correctAnswer": "Le charbon",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Comment appelle-t-on l'énergie produite grâce au vent ?",
+      "choices": [
+        "L'énergie géothermique",
+        "L'énergie hydraulique",
+        "L'énergie solaire",
+        "L'énergie éolienne"
+      ],
+      "correctAnswer": "L'énergie éolienne",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Quel appareil transforme l'énergie du vent en électricité ?",
+      "choices": [
+        "Un barrage",
+        "Un panneau solaire",
+        "Une chaudière",
+        "Une éolienne"
+      ],
+      "correctAnswer": "Une éolienne",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Comment appelle-t-on l'énergie qui vient du Soleil ?",
+      "choices": [
+        "L'énergie éolienne",
+        "L'énergie nucléaire",
+        "L'énergie fossile",
+        "L'énergie solaire"
+      ],
+      "correctAnswer": "L'énergie solaire",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Que produit un panneau solaire photovoltaïque ?",
+      "choices": [
+        "Du vent",
+        "Du pétrole",
+        "De l'électricité",
+        "Du gaz"
+      ],
+      "correctAnswer": "De l'électricité",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Comment appelle-t-on l'énergie produite grâce à l'eau en mouvement ?",
+      "choices": [
+        "L'énergie éolienne",
+        "L'énergie solaire",
+        "La biomasse",
+        "L'énergie hydraulique"
+      ],
+      "correctAnswer": "L'énergie hydraulique",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Quelle construction retient l'eau d'une rivière pour produire de l'électricité ?",
+      "choices": [
+        "Un barrage",
+        "Un puits de pétrole",
+        "Une éolienne",
+        "Une serre"
+      ],
+      "correctAnswer": "Un barrage",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Qu'est-ce que la géothermie ?",
+      "choices": [
+        "L'utilisation de la lumière de la Lune",
+        "L'utilisation de la force des vagues",
+        "L'utilisation de la chaleur de la Terre",
+        "L'utilisation du vent en altitude"
+      ],
+      "correctAnswer": "L'utilisation de la chaleur de la Terre",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Qu'appelle-t-on la biomasse ?",
+      "choices": [
+        "Un nuage chargé d'électricité",
+        "Un appareil qui mesure le vent",
+        "Une grosse roche qui contient du charbon",
+        "La matière d'origine végétale ou animale utilisée comme source d'énergie"
+      ],
+      "correctAnswer": "La matière d'origine végétale ou animale utilisée comme source d'énergie",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Lequel de ces exemples utilise la biomasse ?",
+      "choices": [
+        "Faire tourner une éolienne",
+        "Faire couler l'eau d'un barrage",
+        "Recharger une calculatrice solaire",
+        "Se chauffer avec du bois"
+      ],
+      "correctAnswer": "Se chauffer avec du bois",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Quelle énergie utilise la force des marées ?",
+      "choices": [
+        "L'énergie éolienne",
+        "L'énergie marémotrice",
+        "L'énergie fossile",
+        "L'énergie géothermique"
+      ],
+      "correctAnswer": "L'énergie marémotrice",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Pourquoi le pétrole, le gaz et le charbon sont-ils appelés énergies fossiles ?",
+      "choices": [
+        "Ils ne servent qu'à fabriquer des fossiles",
+        "Ils se sont formés à partir d'êtres vivants enfouis il y a des millions d'années",
+        "Ils ont été découverts par des archéologues",
+        "Ils viennent de l'espace"
+      ],
+      "correctAnswer": "Ils se sont formés à partir d'êtres vivants enfouis il y a des millions d'années",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Quel est le principal avantage des énergies renouvelables pour la planète ?",
+      "choices": [
+        "Elles sont toujours gratuites à installer",
+        "Elles rejettent très peu de gaz à effet de serre",
+        "Elles produisent plus de fumée",
+        "Elles fonctionnent sans aucune machine"
+      ],
+      "correctAnswer": "Elles rejettent très peu de gaz à effet de serre",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Quel gaz, rejeté en brûlant du pétrole ou du charbon, participe au réchauffement climatique ?",
+      "choices": [
+        "L'azote",
+        "L'oxygène",
+        "L'hélium",
+        "Le dioxyde de carbone"
+      ],
+      "correctAnswer": "Le dioxyde de carbone",
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Quel est un inconvénient de l'énergie solaire ?",
+      "choices": [
+        "Elle pollue beaucoup l'air",
+        "Elle s'épuisera dans dix ans",
+        "Elle nécessite du pétrole pour fonctionner",
+        "Elle produit peu ou pas d'électricité la nuit"
+      ],
+      "correctAnswer": "Elle produit peu ou pas d'électricité la nuit",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Quel est un inconvénient de l'énergie éolienne ?",
+      "choices": [
+        "Elle rejette beaucoup de fumée noire",
+        "Elle dépend de la présence du vent",
+        "Elle utilise du charbon",
+        "Elle ne fonctionne qu'en hiver"
+      ],
+      "correctAnswer": "Elle dépend de la présence du vent",
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Lequel de ces gestes permet d'économiser l'énergie ?",
+      "choices": [
+        "Laisser le chargeur branché sans téléphone",
+        "Laisser la télévision en veille toute la nuit",
+        "Ouvrir la fenêtre avec le chauffage allumé",
+        "Éteindre la lumière en quittant une pièce"
+      ],
+      "correctAnswer": "Éteindre la lumière en quittant une pièce",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Dans une éolienne, quelle partie est mise en mouvement par le vent ?",
+      "choices": [
+        "Le mât",
+        "Les pales",
+        "Les fondations",
+        "Le câble électrique"
+      ],
+      "correctAnswer": "Les pales",
+      "imageUrl": null
+    }
+  ]
+}
