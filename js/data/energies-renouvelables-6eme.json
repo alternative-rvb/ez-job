@@ -2,7 +2,7 @@
   "config": {
     "title": "Les énergies renouvelables",
     "description": "Teste tes connaissances sur le soleil, le vent, l'eau et les autres énergies qui ne s'épuisent pas",
-    "imageUrl": "",
+    "imageUrl": "/images/quiz/energies-renouvelables/eoliennes-lever-soleil.webp",
     "spoilerMode": false,
     "difficulty": 1,
     "questionCount": 20,
