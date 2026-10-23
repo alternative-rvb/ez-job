@@ -1,0 +1,261 @@
+{
+  "config": {
+    "title": "Les relations familiales",
+    "description": "Teste ton vocabulaire anglais de la famille : parents, grands-parents, frères, sœurs et enfants",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 20,
+    "category": "CM2",
+    "createdAt": "2026-10-23",
+    "tag": [
+      "Anglais",
+      "Vocabulaire",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Anglais"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Comment dit-on 'la famille' en anglais ?",
+      "choices": [
+        "family",
+        "familly",
+        "famous",
+        "parents"
+      ],
+      "correctAnswer": "family",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Comment dit-on 'la mère' en anglais ?",
+      "choices": [
+        "mother",
+        "father",
+        "brother",
+        "sister"
+      ],
+      "correctAnswer": "mother",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Comment dit-on 'le père' en anglais ?",
+      "choices": [
+        "father",
+        "mother",
+        "grandfather",
+        "son"
+      ],
+      "correctAnswer": "father",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Que veut dire 'mom' ?",
+      "choices": [
+        "maman",
+        "mamie",
+        "tante",
+        "sœur"
+      ],
+      "correctAnswer": "maman",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Que veut dire 'dad' ?",
+      "choices": [
+        "papa",
+        "papi",
+        "oncle",
+        "frère"
+      ],
+      "correctAnswer": "papa",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Comment dit-on 'le frère' en anglais ?",
+      "choices": [
+        "brother",
+        "sister",
+        "father",
+        "mother"
+      ],
+      "correctAnswer": "brother",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Comment dit-on 'la sœur' en anglais ?",
+      "choices": [
+        "sister",
+        "brother",
+        "daughter",
+        "son"
+      ],
+      "correctAnswer": "sister",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Comment dit-on 'le fils' en anglais ?",
+      "choices": [
+        "son",
+        "sun",
+        "daughter",
+        "brother"
+      ],
+      "correctAnswer": "son",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Comment dit-on 'la fille' (l'enfant de ses parents) en anglais ?",
+      "choices": [
+        "daughter",
+        "girl",
+        "sister",
+        "son"
+      ],
+      "correctAnswer": "daughter",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Comment dit-on 'la grand-mère' en anglais ?",
+      "choices": [
+        "grandmother",
+        "grandfather",
+        "great mother",
+        "big mother"
+      ],
+      "correctAnswer": "grandmother",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Comment dit-on 'le grand-père' en anglais ?",
+      "choices": [
+        "grandfather",
+        "grandmother",
+        "big father",
+        "old father"
+      ],
+      "correctAnswer": "grandfather",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Que veut dire 'parents' en anglais ?",
+      "choices": [
+        "le père et la mère",
+        "toute la famille",
+        "les cousins",
+        "les grands-parents"
+      ],
+      "correctAnswer": "le père et la mère",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "My mother's mother is my...",
+      "choices": [
+        "grandmother",
+        "sister",
+        "daughter",
+        "mom"
+      ],
+      "correctAnswer": "grandmother",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "My father's father is my...",
+      "choices": [
+        "grandfather",
+        "brother",
+        "son",
+        "dad"
+      ],
+      "correctAnswer": "grandfather",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Tom is a boy. He is Mr and Mrs Smith's...",
+      "choices": [
+        "son",
+        "daughter",
+        "father",
+        "sister"
+      ],
+      "correctAnswer": "son",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Emma is a girl. She is Mr and Mrs Smith's...",
+      "choices": [
+        "daughter",
+        "son",
+        "mother",
+        "brother"
+      ],
+      "correctAnswer": "daughter",
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Tom and Emma are brother and sister. Emma is Tom's...",
+      "choices": [
+        "sister",
+        "brother",
+        "mother",
+        "grandmother"
+      ],
+      "correctAnswer": "sister",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Tom is Emma's...",
+      "choices": [
+        "brother",
+        "sister",
+        "father",
+        "daughter"
+      ],
+      "correctAnswer": "brother",
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Mr Smith is Tom's...",
+      "choices": [
+        "father",
+        "mother",
+        "brother",
+        "son"
+      ],
+      "correctAnswer": "father",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Quel mot désigne un homme dans la famille ?",
+      "choices": [
+        "grandfather",
+        "grandmother",
+        "daughter",
+        "sister"
+      ],
+      "correctAnswer": "grandfather",
+      "imageUrl": null
+    }
+  ]
+}

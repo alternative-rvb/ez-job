@@ -1,5 +1,7 @@
 {
   "quizzes": [
+    "anglais-pays-nationalites-6eme",
+    "anglais-relations-familiales-6eme",
     "anglais-symboles-monde-anglophone-1",
     "anglais-symboles-monde-anglophone-2",
     "animaux",
@@ -65,7 +67,7 @@
     "Physique",
     "Sciences"
   ],
-  "count": 46,
-  "lastUpdated": "2026-10-20T13:38:57.027213",
+  "count": 48,
+  "lastUpdated": "2026-10-23T12:22:43.502487",
   "generated_by": "api.py"
 }

@@ -1,0 +1,221 @@
+{
+  "config": {
+    "title": "Pays et nationalités",
+    "description": "Entraîne-toi à retrouver les pays et les nationalités en anglais, en choisissant ou en écrivant la bonne réponse",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 20,
+    "category": "CM2",
+    "createdAt": "2026-10-23",
+    "tag": [
+      "Anglais",
+      "Vocabulaire",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Anglais"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "He is French. Where is he from?",
+      "choices": [
+        "France",
+        "Frenchland",
+        "Francia",
+        "Franch"
+      ],
+      "correctAnswer": "France",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Écris la nationalité en anglais : a person from Italy is...",
+      "acceptedAnswers": [
+        "Italian"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "She is from Japan. She is...",
+      "choices": [
+        "Japanese",
+        "Japanian",
+        "Japish",
+        "Japonese"
+      ],
+      "correctAnswer": "Japanese",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Écris le pays en anglais : he is German, he is from...",
+      "acceptedAnswers": [
+        "Germany"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Which country do Scottish people come from?",
+      "choices": [
+        "Scotland",
+        "Scottland",
+        "Scotia",
+        "Ireland"
+      ],
+      "correctAnswer": "Scotland",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Écris la nationalité en anglais : a person from Spain is...",
+      "acceptedAnswers": [
+        "Spanish"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "He lives with kangaroos in Australia. He is...",
+      "choices": [
+        "Australian",
+        "Austrian",
+        "Australish",
+        "Australese"
+      ],
+      "correctAnswer": "Australian",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Écris le pays en anglais : she is Mexican, she is from...",
+      "acceptedAnswers": [
+        "Mexico"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "A person from China is...",
+      "choices": [
+        "Chinese",
+        "Chinish",
+        "Chinian",
+        "Chinan"
+      ],
+      "correctAnswer": "Chinese",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Écris la nationalité en anglais : a person from Ireland is...",
+      "acceptedAnswers": [
+        "Irish"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "He plays ice hockey in Canada. He is...",
+      "choices": [
+        "Canadian",
+        "Canadish",
+        "Canadese",
+        "Canadan"
+      ],
+      "correctAnswer": "Canadian",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Écris le pays en anglais : he is Russian, he is from...",
+      "acceptedAnswers": [
+        "Russia"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "A British guard works in London. He is from...",
+      "choices": [
+        "Great Britain",
+        "Brittany",
+        "Britishland",
+        "Scotland"
+      ],
+      "correctAnswer": "Great Britain",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Écris la nationalité en anglais : a person from Korea is...",
+      "acceptedAnswers": [
+        "Korean"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "A cowboy from America is...",
+      "choices": [
+        "American",
+        "Americish",
+        "Amerian",
+        "Americese"
+      ],
+      "correctAnswer": "American",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Écris la nationalité en anglais : a person from Canada is...",
+      "acceptedAnswers": [
+        "Canadian"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Quelle phrase est correctement écrite en anglais ?",
+      "choices": [
+        "I am French.",
+        "I am french.",
+        "I am France.",
+        "I am a french."
+      ],
+      "correctAnswer": "I am French.",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Écris le pays en anglais : she is Chinese, she is from...",
+      "acceptedAnswers": [
+        "China"
+      ],
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Which nationality is NOT correct?",
+      "choices": [
+        "Italy → Italish",
+        "Spain → Spanish",
+        "Germany → German",
+        "Ireland → Irish"
+      ],
+      "correctAnswer": "Italy → Italish",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Écris la nationalité en anglais : a person from Great Britain is...",
+      "acceptedAnswers": [
+        "British"
+      ],
+      "imageUrl": null
+    }
+  ]
+}

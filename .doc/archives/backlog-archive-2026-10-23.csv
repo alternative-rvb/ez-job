@@ -1,0 +1,2 @@
+id,priorite,tache_principale,type,description,date_debut,date_fin
+60,3 normal 🔵,Quiz : Anglais 6e Pays et nationalités et Les relations familiales,feature,"Deux quiz de 20 questions niveau 6e tirés des fiches de vocabulaire de la classe (.tmp/20261023) : js/data/anglais-pays-nationalites-6eme.json (15 pays et nationalités, mix QCM et saisie libre) et js/data/anglais-relations-familiales-6eme.json (QCM sur mother, father, mom, dad, brother, sister, son, daughter, grandparents, parents, family, et liens avec le possessif s)",2026-10-23,2026-10-23
