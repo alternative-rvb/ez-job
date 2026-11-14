@@ -45,7 +45,7 @@ export class QuestionManager {
             ` : '';
             
             imageSection = `
-                <div class="mb-4 lg:mb-6 text-center relative overflow-hidden">
+                <div class="quiz-image-wrap mb-4 lg:mb-6 text-center relative overflow-hidden">
                     <img src="${question.imageUrl}"
                          alt="Question ${quizState.currentQuestionIndex + 1}"
                          class="max-w-full h-32 sm:h-44 md:h-60 lg:h-72 xl:h-80 aspect-video object-cover rounded-lg mx-auto ${blurClass}"
@@ -142,7 +142,7 @@ export class QuestionManager {
                 </div>
                 
                 <!-- Progress bar -->
-                <div class="mt-4 px-2 mb-4">
+                <div class="quiz-progress-block mt-4 px-2 mb-4">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-sm font-semibold text-white">Progression</span>
                         <span class="text-sm font-semibold text-white" id="question-progress">${quizState.currentQuestionIndex + 1}/${quizState.questions.length}</span>

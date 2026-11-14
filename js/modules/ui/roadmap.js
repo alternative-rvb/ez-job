@@ -1803,7 +1803,7 @@ export class RoadmapManager {
         const mapBox = svg?.parentElement;
         if (mapBox) {
             // NOTE Largeur maximale qui tient dans la hauteur de l'écran (en-tête et objectif déduits), sans jamais déformer le dessin
-            mapBox.style.width = 'min(100%, calc((100vh - 200px) * 560 / 328))';
+            mapBox.style.width = 'min(100%, calc((100vh - 240px) * 560 / 328))';
         }
 
         const modal = document.createElement('div');
@@ -1812,13 +1812,16 @@ export class RoadmapManager {
         modal.setAttribute('aria-modal', 'true');
         modal.setAttribute('aria-label', 'Carte agrandie');
         modal.innerHTML = `
-            <div class="map-modal-panel relative w-full max-w-5xl max-h-full overflow-y-auto rounded-2xl shadow-2xl">
-                <button type="button" class="map-modal-close absolute top-2 right-2 z-30 w-9 h-9 rounded-full bg-white/90 text-amber-900 hover:bg-white shadow flex items-center justify-center cursor-pointer" title="Fermer" aria-label="Fermer">
+            <div class="map-modal-panel relative w-full max-w-5xl max-h-full overflow-y-auto rounded-2xl">
+                <!-- NOTE Bouton dans une ligne à part au-dessus de la carte : il ne recouvre plus le badge de gemmes -->
+                <div class="flex justify-end pb-2">
+                <button type="button" class="map-modal-close flex-shrink-0 w-9 h-9 rounded-full bg-white/90 text-amber-900 hover:bg-white shadow flex items-center justify-center cursor-pointer" title="Fermer" aria-label="Fermer">
                     <i class="bi bi-x-lg"></i>
                 </button>
+                </div>
             </div>
         `;
-        modal.firstElementChild.prepend(clone);
+        modal.firstElementChild.append(clone);
         document.body.appendChild(modal);
 
         const close = () => {

@@ -1630,20 +1630,131 @@ body.quiz-immersive #quiz-header h2 {
 }
 
 body.quiz-immersive #quiz-content {
-  flex: 1 1 auto;
+  flex: 1 1 0;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.5rem, 1.6dvh, 1.5rem) clamp(0.75rem, 2vw, 2rem);
   overflow-y: auto;
   overscroll-behavior: contain;
 }
 
-body.quiz-immersive #question-image {
-  height: clamp(7rem, 32dvh, 30rem);
-  object-fit: contain;
+body.quiz-immersive .question-container {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.25rem, 1.2dvh, 1rem);
 }
 
-/* Paysage bas (téléphone couché) : image plus petite pour laisser la place aux réponses */
-@media (max-height: 520px) {
-  body.quiz-immersive #question-image {
-    height: 22dvh;
+/* La progression est déjà dans l'en-tête : on la masque pour gagner de la hauteur */
+body.quiz-immersive .quiz-progress-block {
+  display: none;
+}
+
+body.quiz-immersive .question-container > * {
+  margin-top: 0;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+/* L'image prend toute la hauteur restante, centrée, sans rognage */
+body.quiz-immersive .quiz-image-wrap {
+  flex: 1 1 0;
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.quiz-immersive #question-image {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100%;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  margin: 0 auto;
+}
+
+/* Compactage vertical : réponses, minuteur et question proportionnels à la hauteur de l'écran */
+body.quiz-immersive .answer-btn {
+  padding-top: clamp(0.35rem, 1.5dvh, 1.1rem) !important;
+  padding-bottom: clamp(0.35rem, 1.5dvh, 1.1rem) !important;
+}
+
+body.quiz-immersive .question-container h3 {
+  font-size: clamp(1rem, 3.2dvh, 1.875rem);
+  line-height: 1.2;
+}
+
+body.quiz-immersive #timer-badge {
+  padding: 0.25rem 1rem;
+}
+
+body.quiz-immersive .question-container > div:first-child {
+  margin: 0;
+}
+
+body.quiz-immersive .question-container .grid {
+  gap: clamp(0.35rem, 1.2dvh, 1rem);
+}
+
+/* Écrans bas : le minuteur est déjà dans la barre du haut, on libère sa place */
+@media (max-height: 700px) {
+  body.quiz-immersive .question-container > div:first-child {
+    display: none;
   }
+
+  body.quiz-immersive #quiz-header {
+    display: none;
+  }
+}
+
+/* Paysage bas (téléphone couché) : réponses sur 2 colonnes, barre du haut et image compactées pour éviter tout défilement */
+@media (max-height: 500px) {
+  body.quiz-immersive .question-container .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.quiz-immersive .answer-btn span.flex-shrink-0 {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  body.quiz-immersive .quiz-image-wrap {
+    min-height: 3rem;
+  }
+
+  body.quiz-immersive #quiz-container > div:first-child {
+    margin-bottom: 0.25rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* ===== Barres de défilement stylées (fines, aux couleurs du thème) ===== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-primary), 0.55) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(var(--color-primary), 0.55);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--color-primary), 0.8);
+  background-clip: content-box;
 }
