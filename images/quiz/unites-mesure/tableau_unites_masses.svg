@@ -1,21 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 450">
+  <rect width="850" height="450" rx="18" fill="#F1E6D6"/>
   
   <!-- Titre -->
-  <text x="425" y="50" font-family="Roboto, Arial, sans-serif" font-size="28" font-weight="500" text-anchor="middle" fill="#212121">
+  <text x="425" y="50" font-family="Roboto, Arial, sans-serif" font-size="28" font-weight="500" text-anchor="middle" fill="#3E2723">
     Tableau des unités de masse
   </text>
   
   <!-- En-têtes du tableau avec espacement -->
   <!-- kg -->
-  <rect x="30" y="90" width="100" height="55" fill="#0288D1" rx="8" ry="8"/>
+  <rect x="30" y="90" width="100" height="55" fill="#0277BD" rx="8" ry="8"/>
   <text x="80" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">kg</text>
   
   <!-- hg -->
-  <rect x="145" y="90" width="100" height="55" fill="#0288D1" rx="8" ry="8"/>
+  <rect x="145" y="90" width="100" height="55" fill="#0277BD" rx="8" ry="8"/>
   <text x="195" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">hg</text>
   
   <!-- dag -->
-  <rect x="260" y="90" width="100" height="55" fill="#0288D1" rx="8" ry="8"/>
+  <rect x="260" y="90" width="100" height="55" fill="#0277BD" rx="8" ry="8"/>
   <text x="310" y="125" font-family="Roboto, Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle" fill="white">dag</text>
   
   <!-- g (unité de référence) -->
@@ -69,7 +70,7 @@
   </g>
   
   <!-- Légende -->
-  <text x="425" y="415" font-family="Roboto, Arial, sans-serif" font-size="14" text-anchor="middle" fill="#757575">
+  <text x="425" y="415" font-family="Roboto, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5D4037">
     Multiples (×10) en bleu | Unité de référence (g) en rouge | Sous-multiples (÷10) en rose
   </text>
 </svg>
