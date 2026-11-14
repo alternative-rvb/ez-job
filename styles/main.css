@@ -1784,3 +1784,19 @@ body.quiz-immersive .question-container:not(:has(.quiz-image-wrap)) .answer-btn 
   height: clamp(1.75rem, min(5dvh, 9vw), 3rem);
   font-size: clamp(0.875rem, 2.5dvh, 1.5rem);
 }
+
+/* ===== Pas de sélection de texte au clic sur les cartes et éléments cliquables ===== */
+.quiz-card,
+.cursor-pointer,
+button {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
