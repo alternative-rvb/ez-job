@@ -45,10 +45,10 @@ export class QuestionManager {
             ` : '';
             
             imageSection = `
-                <div class="mb-4 text-center relative overflow-hidden">
+                <div class="mb-4 lg:mb-6 text-center relative overflow-hidden">
                     <img src="${question.imageUrl}"
                          alt="Question ${quizState.currentQuestionIndex + 1}"
-                         class="max-w-full h-32 aspect-video object-cover rounded-lg mx-auto ${blurClass}"
+                         class="max-w-full h-32 sm:h-44 md:h-60 lg:h-72 xl:h-80 aspect-video object-cover rounded-lg mx-auto ${blurClass}"
                          id="question-image"
                          loading="lazy">
                     ${spoilerOverlay}
@@ -127,7 +127,7 @@ export class QuestionManager {
                 
                 ${imageSection}
                 
-                <h3 class="text-xl md:text-2xl font-bold mb-4 text-center px-2">${question.question}</h3>
+                <h3 class="text-xl md:text-3xl font-bold mb-4 md:mb-6 text-center px-2">${question.question}</h3>
                 
                 <!-- Options améliorées pour mobile -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-4 px-2">

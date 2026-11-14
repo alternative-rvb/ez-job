@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 450">
+  <text x="425" y="50" font-family="Roboto, Arial, sans-serif" font-size="28" font-weight="500" text-anchor="middle" fill="#212121">
+    Tableau des unités de durée
+  </text>
+  <rect x="30" y="100" width="130" height="80" fill="#0288D1" rx="10" ry="10"/>
+  <text x="95" y="150" font-family="Roboto, Arial, sans-serif" font-size="22" font-weight="500" text-anchor="middle" fill="white">1 jour</text>
+  <rect x="245" y="100" width="130" height="80" fill="#00897B" rx="10" ry="10"/>
+  <text x="310" y="150" font-family="Roboto, Arial, sans-serif" font-size="22" font-weight="500" text-anchor="middle" fill="white">heures</text>
+  <rect x="460" y="100" width="130" height="80" fill="#F57C00" rx="10" ry="10"/>
+  <text x="525" y="150" font-family="Roboto, Arial, sans-serif" font-size="22" font-weight="500" text-anchor="middle" fill="white">minutes</text>
+  <rect x="675" y="100" width="130" height="80" fill="#C2185B" rx="10" ry="10"/>
+  <text x="740" y="150" font-family="Roboto, Arial, sans-serif" font-size="22" font-weight="500" text-anchor="middle" fill="white">secondes</text>
+  <text x="202" y="130" font-family="Roboto, Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle" fill="#212121">× 24</text>
+  <text x="202" y="160" font-family="Roboto, Arial, sans-serif" font-size="22" text-anchor="middle" fill="#757575">→</text>
+  <text x="417" y="130" font-family="Roboto, Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle" fill="#212121">× 60</text>
+  <text x="417" y="160" font-family="Roboto, Arial, sans-serif" font-size="22" text-anchor="middle" fill="#757575">→</text>
+  <text x="632" y="130" font-family="Roboto, Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle" fill="#212121">× 60</text>
+  <text x="632" y="160" font-family="Roboto, Arial, sans-serif" font-size="22" text-anchor="middle" fill="#757575">→</text>
+  <text x="202" y="215" font-family="Roboto, Arial, sans-serif" font-size="22" text-anchor="middle" fill="#757575">←</text>
+  <text x="202" y="240" font-family="Roboto, Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle" fill="#212121">÷ 24</text>
+  <text x="417" y="215" font-family="Roboto, Arial, sans-serif" font-size="22" text-anchor="middle" fill="#757575">←</text>
+  <text x="417" y="240" font-family="Roboto, Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle" fill="#212121">÷ 60</text>
+  <text x="632" y="215" font-family="Roboto, Arial, sans-serif" font-size="22" text-anchor="middle" fill="#757575">←</text>
+  <text x="632" y="240" font-family="Roboto, Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle" fill="#212121">÷ 60</text>
+  <rect x="30" y="270" width="390" height="45" fill="#FFFFFF" rx="8" ry="8"/>
+  <text x="225" y="300" font-family="Roboto, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#212121">1 h = 60 min</text>
+  <rect x="430" y="270" width="390" height="45" fill="#FFFFFF" rx="8" ry="8"/>
+  <text x="625" y="300" font-family="Roboto, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#212121">1 min = 60 s</text>
+  <rect x="30" y="325" width="390" height="45" fill="#FFFFFF" rx="8" ry="8"/>
+  <text x="225" y="355" font-family="Roboto, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#212121">1 semaine = 7 jours</text>
+  <rect x="430" y="325" width="390" height="45" fill="#FFFFFF" rx="8" ry="8"/>
+  <text x="625" y="355" font-family="Roboto, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#212121">1 an = 12 mois = 365 jours</text>
+  <rect x="30" y="380" width="390" height="45" fill="#FFFFFF" rx="8" ry="8"/>
+  <text x="225" y="410" font-family="Roboto, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#212121">1 siècle = 100 ans</text>
+  <rect x="430" y="380" width="390" height="45" fill="#FFFFFF" rx="8" ry="8"/>
+  <text x="625" y="410" font-family="Roboto, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#212121">1 millénaire = 1 000 ans</text>
+</svg>

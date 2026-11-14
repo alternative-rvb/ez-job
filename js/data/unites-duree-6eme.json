@@ -1,0 +1,202 @@
+{
+  "config": {
+    "title": "Les unités de durée",
+    "description": "Heures, minutes, secondes : calcule et convertis des durées",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 2,
+    "questionCount": 15,
+    "category": "CM2",
+    "createdAt": "2026-11-14",
+    "tag": [
+      "Mathématiques",
+      "Mesure",
+      "Durées",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Mathématiques"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien de minutes dans 1 heure ?",
+      "choices": [
+        "60 min",
+        "100 min",
+        "10 min",
+        "24 min"
+      ],
+      "correctAnswer": "60 min",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 2,
+      "question": "Combien de secondes dans 1 minute ?",
+      "choices": [
+        "100 s",
+        "10 s",
+        "60 s",
+        "30 s"
+      ],
+      "correctAnswer": "60 s",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 3,
+      "question": "Combien d'heures dans 1 jour ?",
+      "choices": [
+        "24 h",
+        "100 h",
+        "60 h",
+        "12 h"
+      ],
+      "correctAnswer": "24 h",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 4,
+      "question": "Combien de jours dans une semaine ?",
+      "choices": [
+        "7 jours",
+        "6 jours",
+        "10 jours",
+        "5 jours"
+      ],
+      "correctAnswer": "7 jours",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 5,
+      "question": "Convertis : 2 h = ? min",
+      "choices": [
+        "60 min",
+        "200 min",
+        "20 min",
+        "120 min"
+      ],
+      "correctAnswer": "120 min",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 6,
+      "question": "Convertis : 180 s = ? min",
+      "choices": [
+        "30 min",
+        "3 min",
+        "18 min",
+        "1,8 min"
+      ],
+      "correctAnswer": "3 min",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 7,
+      "question": "Convertis : 1 h 30 min = ? min",
+      "choices": [
+        "90 min",
+        "130 min",
+        "100 min",
+        "150 min"
+      ],
+      "correctAnswer": "90 min",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 8,
+      "question": "Convertis : 150 min = ? h et min",
+      "choices": [
+        "2 h 30 min",
+        "1 h 50 min",
+        "2 h 50 min",
+        "1 h 30 min"
+      ],
+      "correctAnswer": "2 h 30 min",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 9,
+      "question": "Un film commence à 14 h 20 et dure 1 h 45. À quelle heure finit-il ?",
+      "choices": [
+        "16 h 25",
+        "15 h 05",
+        "15 h 65",
+        "16 h 05"
+      ],
+      "correctAnswer": "16 h 05",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 10,
+      "question": "Un train part à 8 h 40 et arrive à 11 h 10. Quelle est la durée du trajet ?",
+      "choices": [
+        "3 h 10 min",
+        "2 h 50 min",
+        "3 h 30 min",
+        "2 h 30 min"
+      ],
+      "correctAnswer": "2 h 30 min",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 11,
+      "question": "Combien de mois dans une année ?",
+      "choices": [
+        "10 mois",
+        "13 mois",
+        "12 mois",
+        "11 mois"
+      ],
+      "correctAnswer": "12 mois",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 12,
+      "question": "Combien de jours dans une année non bissextile ?",
+      "choices": [
+        "365 jours",
+        "366 jours",
+        "360 jours",
+        "364 jours"
+      ],
+      "correctAnswer": "365 jours",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 13,
+      "question": "Combien de jours a le mois de février en année bissextile ?",
+      "choices": [
+        "30 jours",
+        "28 jours",
+        "29 jours",
+        "31 jours"
+      ],
+      "correctAnswer": "29 jours",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 14,
+      "question": "Combien d'années dans un siècle ?",
+      "choices": [
+        "50 ans",
+        "1 000 ans",
+        "100 ans",
+        "10 ans"
+      ],
+      "correctAnswer": "100 ans",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    },
+    {
+      "id": 15,
+      "question": "Convertis : 3 h 15 min = ? min",
+      "choices": [
+        "375 min",
+        "180 min",
+        "195 min",
+        "315 min"
+      ],
+      "correctAnswer": "195 min",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_duree.svg"
+    }
+  ]
+}

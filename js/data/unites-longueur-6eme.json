@@ -1,0 +1,202 @@
+{
+  "config": {
+    "title": "Les unités de longueur",
+    "description": "Entraîne-toi à convertir des mètres, des centimètres, des kilomètres et des millimètres",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 2,
+    "questionCount": 15,
+    "category": "CM2",
+    "createdAt": "2026-11-14",
+    "tag": [
+      "Mathématiques",
+      "Mesure",
+      "Longueurs",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Mathématiques"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien de mètres dans 1 kilomètre ?",
+      "choices": [
+        "100 m",
+        "10 000 m",
+        "1 000 m",
+        "10 m"
+      ],
+      "correctAnswer": "1 000 m",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 2,
+      "question": "Combien de centimètres dans 1 mètre ?",
+      "choices": [
+        "100 cm",
+        "1 000 cm",
+        "10 cm",
+        "10 000 cm"
+      ],
+      "correctAnswer": "100 cm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 3,
+      "question": "Combien de millimètres dans 1 mètre ?",
+      "choices": [
+        "1 000 mm",
+        "10 mm",
+        "10 000 mm",
+        "100 mm"
+      ],
+      "correctAnswer": "1 000 mm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 4,
+      "question": "Convertis : 3 km = ? m",
+      "choices": [
+        "3 000 m",
+        "30 m",
+        "300 m",
+        "30 000 m"
+      ],
+      "correctAnswer": "3 000 m",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 5,
+      "question": "Convertis : 7 m = ? cm",
+      "choices": [
+        "70 cm",
+        "7,7 cm",
+        "7 000 cm",
+        "700 cm"
+      ],
+      "correctAnswer": "700 cm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 6,
+      "question": "Convertis : 45 mm = ? cm",
+      "choices": [
+        "0,45 cm",
+        "45 cm",
+        "450 cm",
+        "4,5 cm"
+      ],
+      "correctAnswer": "4,5 cm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 7,
+      "question": "Convertis : 2 500 m = ? km",
+      "choices": [
+        "0,25 km",
+        "250 km",
+        "2,5 km",
+        "25 km"
+      ],
+      "correctAnswer": "2,5 km",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 8,
+      "question": "Convertis : 1,2 m = ? cm",
+      "choices": [
+        "12 cm",
+        "1,2 cm",
+        "1 200 cm",
+        "120 cm"
+      ],
+      "correctAnswer": "120 cm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 9,
+      "question": "Quelle unité choisir pour mesurer la distance entre deux villes ?",
+      "choices": [
+        "Le millimètre",
+        "Le décimètre",
+        "Le centimètre",
+        "Le kilomètre"
+      ],
+      "correctAnswer": "Le kilomètre",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 10,
+      "question": "Quelle unité choisir pour mesurer l'épaisseur d'une pièce de monnaie ?",
+      "choices": [
+        "Le mètre",
+        "Le décamètre",
+        "Le millimètre",
+        "Le kilomètre"
+      ],
+      "correctAnswer": "Le millimètre",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 11,
+      "question": "Quelle longueur est la plus grande ?",
+      "choices": [
+        "120 cm",
+        "1,5 m",
+        "0,001 km",
+        "1 100 mm"
+      ],
+      "correctAnswer": "1,5 m",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 12,
+      "question": "Range du plus petit au plus grand : 2 m ; 150 cm ; 1 800 mm",
+      "choices": [
+        "150 cm ; 2 m ; 1 800 mm",
+        "2 m ; 150 cm ; 1 800 mm",
+        "1 800 mm ; 150 cm ; 2 m",
+        "150 cm ; 1 800 mm ; 2 m"
+      ],
+      "correctAnswer": "150 cm ; 1 800 mm ; 2 m",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 13,
+      "question": "Quel est le préfixe qui signifie « mille » ?",
+      "choices": [
+        "kilo",
+        "centi",
+        "milli",
+        "déca"
+      ],
+      "correctAnswer": "kilo",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 14,
+      "question": "Convertis : 0,8 km = ? m",
+      "choices": [
+        "800 m",
+        "8 000 m",
+        "80 m",
+        "8 m"
+      ],
+      "correctAnswer": "800 m",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    },
+    {
+      "id": 15,
+      "question": "Une règle de 30 cm, combien de millimètres ?",
+      "choices": [
+        "3 mm",
+        "3 000 mm",
+        "30 mm",
+        "300 mm"
+      ],
+      "correctAnswer": "300 mm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_longueur.svg"
+    }
+  ]
+}

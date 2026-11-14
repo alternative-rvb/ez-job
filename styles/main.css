@@ -1586,3 +1586,64 @@ h1, h2, h3, .font-display {
 @media (prefers-reduced-motion: reduce) {
   .eagle-float { animation: none; }
 }
+
+/* ===== Quiz immersif (plein écran) ===== */
+/* ANCHOR Le quiz remplit toute la fenêtre (dvh : suit la barre d'adresse mobile) ; l'image s'adapte à la hauteur disponible */
+body.quiz-immersive header,
+body.quiz-immersive footer {
+  display: none;
+}
+
+body.quiz-immersive main {
+  padding: 0;
+  min-height: 0;
+}
+
+body.quiz-immersive #quiz-container {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  padding: max(0.5rem, env(safe-area-inset-top)) clamp(0.5rem, 2vw, 2rem) max(0.5rem, env(safe-area-inset-bottom));
+  background: rgb(251, 243, 234);
+  overflow: hidden;
+}
+
+body.quiz-immersive #quiz-container > * {
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  flex-shrink: 0;
+}
+
+body.quiz-immersive #quiz-header {
+  margin-bottom: 0.5rem;
+}
+
+body.quiz-immersive #quiz-header h2 {
+  display: none;
+}
+
+body.quiz-immersive #quiz-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+body.quiz-immersive #question-image {
+  height: clamp(7rem, 32dvh, 30rem);
+  object-fit: contain;
+}
+
+/* Paysage bas (téléphone couché) : image plus petite pour laisser la place aux réponses */
+@media (max-height: 520px) {
+  body.quiz-immersive #question-image {
+    height: 22dvh;
+  }
+}

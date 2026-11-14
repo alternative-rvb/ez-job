@@ -1,0 +1,202 @@
+{
+  "config": {
+    "title": "Les unités de masse",
+    "description": "Convertis des grammes, des kilogrammes et des tonnes sans te tromper",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 2,
+    "questionCount": 15,
+    "category": "CM2",
+    "createdAt": "2026-11-14",
+    "tag": [
+      "Mathématiques",
+      "Mesure",
+      "Masses",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Mathématiques"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Combien de grammes dans 1 kilogramme ?",
+      "choices": [
+        "10 000 g",
+        "1 000 g",
+        "100 g",
+        "10 g"
+      ],
+      "correctAnswer": "1 000 g",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 2,
+      "question": "Combien de kilogrammes dans 1 tonne ?",
+      "choices": [
+        "100 kg",
+        "1 000 kg",
+        "10 000 kg",
+        "10 kg"
+      ],
+      "correctAnswer": "1 000 kg",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 3,
+      "question": "Convertis : 4 kg = ? g",
+      "choices": [
+        "40 g",
+        "4 000 g",
+        "400 g",
+        "40 000 g"
+      ],
+      "correctAnswer": "4 000 g",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 4,
+      "question": "Convertis : 3 500 g = ? kg",
+      "choices": [
+        "35 kg",
+        "0,35 kg",
+        "350 kg",
+        "3,5 kg"
+      ],
+      "correctAnswer": "3,5 kg",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 5,
+      "question": "Convertis : 2 t = ? kg",
+      "choices": [
+        "200 kg",
+        "20 000 kg",
+        "20 kg",
+        "2 000 kg"
+      ],
+      "correctAnswer": "2 000 kg",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 6,
+      "question": "Convertis : 250 g = ? kg",
+      "choices": [
+        "2,5 kg",
+        "0,25 kg",
+        "25 kg",
+        "0,025 kg"
+      ],
+      "correctAnswer": "0,25 kg",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 7,
+      "question": "Convertis : 5 000 mg = ? g",
+      "choices": [
+        "500 g",
+        "0,5 g",
+        "50 g",
+        "5 g"
+      ],
+      "correctAnswer": "5 g",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 8,
+      "question": "Quelle unité choisir pour peser un camion ?",
+      "choices": [
+        "Le gramme",
+        "Le centigramme",
+        "La tonne",
+        "Le milligramme"
+      ],
+      "correctAnswer": "La tonne",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 9,
+      "question": "Quelle unité choisir pour peser une pincée de sel ?",
+      "choices": [
+        "Le kilogramme",
+        "Le gramme",
+        "La tonne",
+        "Le quintal"
+      ],
+      "correctAnswer": "Le gramme",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 10,
+      "question": "Un paquet de farine pèse 500 g. Combien de paquets font 2 kg ?",
+      "choices": [
+        "2 paquets",
+        "5 paquets",
+        "4 paquets",
+        "10 paquets"
+      ],
+      "correctAnswer": "4 paquets",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 11,
+      "question": "Quelle masse est la plus grande ?",
+      "choices": [
+        "0,001 t",
+        "1 100 g",
+        "1,2 kg",
+        "900 g"
+      ],
+      "correctAnswer": "1,2 kg",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 12,
+      "question": "Convertis : 0,75 kg = ? g",
+      "choices": [
+        "75 g",
+        "7 500 g",
+        "750 g",
+        "7,5 g"
+      ],
+      "correctAnswer": "750 g",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 13,
+      "question": "Combien de milligrammes dans 1 gramme ?",
+      "choices": [
+        "1 000 mg",
+        "10 000 mg",
+        "10 mg",
+        "100 mg"
+      ],
+      "correctAnswer": "1 000 mg",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 14,
+      "question": "Un sac de 25 kg et un sac de 15 kg : masse totale ?",
+      "choices": [
+        "400 kg",
+        "10 kg",
+        "40 kg",
+        "30 kg"
+      ],
+      "correctAnswer": "40 kg",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    },
+    {
+      "id": 15,
+      "question": "Combien de quintaux dans 1 tonne ?",
+      "choices": [
+        "100 quintaux",
+        "10 quintaux",
+        "2 quintaux",
+        "1 000 quintaux"
+      ],
+      "correctAnswer": "10 quintaux",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_masses.svg"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "config": {
+    "title": "Périmètres et aires",
+    "description": "Calcule des périmètres et des aires de rectangles, de carrés et convertis les unités",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 2,
+    "questionCount": 15,
+    "category": "CM2",
+    "createdAt": "2026-11-14",
+    "tag": [
+      "Mathématiques",
+      "Mesure",
+      "Aires",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Mathématiques"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quel est le périmètre d'un carré de côté 5 cm ?",
+      "choices": [
+        "10 cm",
+        "15 cm",
+        "20 cm",
+        "25 cm"
+      ],
+      "correctAnswer": "20 cm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 2,
+      "question": "Quel est le périmètre d'un rectangle de 8 cm sur 3 cm ?",
+      "choices": [
+        "14 cm",
+        "11 cm",
+        "22 cm",
+        "24 cm"
+      ],
+      "correctAnswer": "22 cm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 3,
+      "question": "Quelle est l'aire d'un rectangle de 8 cm sur 3 cm ?",
+      "choices": [
+        "24 cm²",
+        "22 cm²",
+        "11 cm²",
+        "24 cm"
+      ],
+      "correctAnswer": "24 cm²",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 4,
+      "question": "Quelle est l'aire d'un carré de côté 6 m ?",
+      "choices": [
+        "24 m²",
+        "36 m²",
+        "12 m²",
+        "36 m"
+      ],
+      "correctAnswer": "36 m²",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 5,
+      "question": "Quelle formule donne l'aire d'un rectangle ?",
+      "choices": [
+        "longueur × largeur",
+        "2 × (longueur + largeur)",
+        "longueur + largeur",
+        "côté × 4"
+      ],
+      "correctAnswer": "longueur × largeur",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 6,
+      "question": "Quelle formule donne le périmètre d'un carré ?",
+      "choices": [
+        "côté × côté",
+        "2 × côté",
+        "4 × côté",
+        "côté + 4"
+      ],
+      "correctAnswer": "4 × côté",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 7,
+      "question": "Convertis : 1 m² = ? cm²",
+      "choices": [
+        "1 000 000 cm²",
+        "1 000 cm²",
+        "10 000 cm²",
+        "100 cm²"
+      ],
+      "correctAnswer": "10 000 cm²",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 8,
+      "question": "Convertis : 1 km² = ? m²",
+      "choices": [
+        "1 000 000 m²",
+        "100 000 m²",
+        "10 000 m²",
+        "1 000 m²"
+      ],
+      "correctAnswer": "1 000 000 m²",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 9,
+      "question": "Convertis : 3 m² = ? dm²",
+      "choices": [
+        "30 dm²",
+        "300 dm²",
+        "3 dm²",
+        "3 000 dm²"
+      ],
+      "correctAnswer": "300 dm²",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 10,
+      "question": "Combien de m² dans 1 hectare (ha) ?",
+      "choices": [
+        "10 000 m²",
+        "100 000 m²",
+        "1 000 m²",
+        "100 m²"
+      ],
+      "correctAnswer": "10 000 m²",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 11,
+      "question": "Un rectangle a un périmètre de 30 cm et une longueur de 10 cm. Quelle est sa largeur ?",
+      "choices": [
+        "15 cm",
+        "20 cm",
+        "10 cm",
+        "5 cm"
+      ],
+      "correctAnswer": "5 cm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 12,
+      "question": "Un terrain rectangulaire mesure 20 m sur 15 m. Quelle est son aire ?",
+      "choices": [
+        "35 m²",
+        "3 000 m²",
+        "70 m²",
+        "300 m²"
+      ],
+      "correctAnswer": "300 m²",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 13,
+      "question": "Quelle unité choisir pour mesurer l'aire d'une feuille de papier ?",
+      "choices": [
+        "Le cm",
+        "Le cm²",
+        "Le km²",
+        "Le litre"
+      ],
+      "correctAnswer": "Le cm²",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 14,
+      "question": "Un carré a un périmètre de 36 cm. Quelle est la longueur d'un côté ?",
+      "choices": [
+        "9 cm",
+        "12 cm",
+        "18 cm",
+        "6 cm"
+      ],
+      "correctAnswer": "9 cm",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    },
+    {
+      "id": 15,
+      "question": "Si on double les côtés d'un carré, son aire est multipliée par :",
+      "choices": [
+        "4",
+        "3",
+        "8",
+        "2"
+      ],
+      "correctAnswer": "4",
+      "imageUrl": "/images/quiz/unites-mesure/tableau_unites_aire.svg"
+    }
+  ]
+}

@@ -334,6 +334,19 @@ class QuizApp {
             backButton.addEventListener('click', () => this.backToHome());
         }
 
+        // NOTE Plein écran du navigateur (API Fullscreen), masqué si non supporté (ex. iPhone)
+        const fsButton = document.getElementById('quiz-fullscreen-btn');
+        if (fsButton && document.fullscreenEnabled) {
+            fsButton.classList.remove('hidden');
+            fsButton.addEventListener('click', () => {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    document.documentElement.requestFullscreen().catch(() => {});
+                }
+            });
+        }
+
         // Navigation fluide au clic sur le fil d'Ariane (Accueil)
         document.querySelectorAll('nav[aria-label="Fil d\'Ariane"] a[href="/"]').forEach(link => {
             link.addEventListener('click', (e) => {

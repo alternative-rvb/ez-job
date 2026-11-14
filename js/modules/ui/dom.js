@@ -40,6 +40,7 @@ class DOMManager {
     }
 
     showQuizSelection() {
+        document.body.classList.remove('quiz-immersive');
         this.elements.quizSelection?.classList.remove('hidden');
         this.elements.quizContainer?.classList.add('hidden');
         this.elements.resultsContainer?.classList.add('hidden');
@@ -50,6 +51,8 @@ class DOMManager {
     }
 
     showQuizInterface() {
+        // NOTE Mode immersif : le quiz occupe tout l'écran (styles/main.css, section Quiz immersif)
+        document.body.classList.add('quiz-immersive');
         this.elements.quizSelection?.classList.add('hidden');
         this.elements.quizContainer?.classList.remove('hidden');
         this.elements.resultsContainer?.classList.add('hidden');
@@ -58,6 +61,7 @@ class DOMManager {
     }
 
     showResults() {
+        document.body.classList.remove('quiz-immersive');
         this.elements.quizSelection?.classList.add('hidden');
         this.elements.quizContainer?.classList.add('hidden');
         this.elements.resultsContainer?.classList.remove('hidden');
@@ -66,6 +70,7 @@ class DOMManager {
     }
 
     showHistory() {
+        document.body.classList.remove('quiz-immersive');
         const historyScreen = document.getElementById('history-screen');
         const trophiesScreen = document.getElementById('trophies-screen');
         if (historyScreen) {
@@ -78,6 +83,7 @@ class DOMManager {
     }
 
     showTrophies() {
+        document.body.classList.remove('quiz-immersive');
         const historyScreen = document.getElementById('history-screen');
         const trophiesScreen = document.getElementById('trophies-screen');
         if (trophiesScreen) {

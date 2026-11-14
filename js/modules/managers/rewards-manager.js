@@ -64,18 +64,18 @@ export class RewardsManager {
             return 0;
         }
 
-        // Temps infini : pas de défi chronométré, 1 seule gemme dès 60 %
+        // Temps infini : pas de défi chronométré, 2 gemmes dès 60 %
         if (timeLimit === 0) {
-            return 1;
+            return 2;
         }
 
-        // NOTE Gain croissant par tranche : 60-69, 70-79, 80-89, 90-99, 100 %
+        // NOTE Gains doublés le 2026-11-14. Gain croissant par tranche : 60-69, 70-79, 80-89, 90-99, 100 %
         // Chaque temps limite a sa ligne ; plus le temps est court, plus la tranche haute rapporte
         const POINTS_PAR_TRANCHE = {
-            5:  [2, 4, 8, 12, 16], // 5s - le plus difficile
-            10: [2, 4, 6, 10, 12], // 10s - difficile (par défaut)
-            15: [2, 2, 4, 6, 8],   // 15s - moyen
-            20: [1, 2, 2, 4, 6]    // 20s - facile
+            5:  [4, 8, 16, 24, 32], // 5s - le plus difficile
+            10: [4, 8, 12, 20, 24], // 10s - difficile (par défaut)
+            15: [4, 4, 8, 12, 16],  // 15s - moyen
+            20: [2, 4, 4, 8, 12]    // 20s - facile
         };
         const tranches = POINTS_PAR_TRANCHE[timeLimit] || POINTS_PAR_TRANCHE[10];
         const index = Math.min(Math.floor((scorePercentage - 60) / 10), 4);

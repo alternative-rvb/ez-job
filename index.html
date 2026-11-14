@@ -743,7 +743,7 @@
     </div>
 
     <!-- Interface de quiz (cachée au démarrage) -->
-    <div id="quiz-container" class="hidden py-2 sm:py-4 md:py-6 max-w-4xl mx-auto">
+    <div id="quiz-container" class="hidden py-2 sm:py-4 md:py-6 max-w-4xl md:max-w-5xl lg:max-w-6xl mx-auto">
       <!-- Barre de navigation supérieure : Fil d'Ariane + Bouton Retour + Chrono/Score -->
       <div class="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-6 p-2.5 sm:p-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-amber-900/10 shadow-sm">
         <div class="flex items-center gap-2.5 min-w-0">
@@ -766,6 +766,9 @@
 
         <!-- Indicateurs Timer & Score -->
         <div class="flex items-center gap-2.5 text-xs sm:text-sm font-bold ml-auto flex-shrink-0">
+          <button id="quiz-fullscreen-btn" type="button" class="hidden px-2.5 py-1 rounded-xl bg-white text-primary-800 border border-primary-200 hover:bg-primary-50" title="Plein écran" aria-label="Plein écran">
+            <i class="bi bi-arrows-fullscreen"></i>
+          </button>
           <div class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-primary-100 text-primary-800 border border-primary-200">
             <i class="bi bi-star-fill text-accent-500"></i>
             <span id="score-display">Score: 0</span>
@@ -790,7 +793,7 @@
         </div>
       </div>
 
-      <div id="quiz-content" class="bg-primary-500 rounded-2xl p-4 sm:p-6 shadow-xl border-4 border-white/30">
+      <div id="quiz-content" class="bg-primary-500 rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl border-4 border-white/30">
         <!-- Le contenu du quiz sera généré dynamiquement -->
       </div>
     </div>
@@ -915,7 +918,7 @@
         <span class="font-medium tracking-wide">CamiLudik</span>
         <a href="changelog.html" id="footer-version-link" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-mono text-[11px] font-medium border border-white/30 hover:border-white/50 transition-all shadow-sm" title="Consulter les notes de version">
           <i class="bi bi-tag-fill text-[10px] text-accent-300"></i>
-          <span id="footer-version-text">v1.0.174</span>
+          <span id="footer-version-text">v1.0.175</span>
           <span class="text-white/75 font-sans font-normal text-[10px]">(notes de version)</span>
         </a>
       </div>
