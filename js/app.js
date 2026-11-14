@@ -18,6 +18,7 @@ import { roadmapManager } from './modules/ui/roadmap.js';
 import { shuffleArray, loadQuizData, getDifficultyIcons } from './modules/core/utils.js';
 import { initializeCategoryColors, getCategoryColors } from './modules/core/category-colors.js';
 import { SKIN_COLORS, buildCustomAvatarSvg } from './modules/ui/avatars.js';
+import { avatarCustomizerModal } from './modules/ui/avatar-modal.js';
 import { APP_VERSION } from './modules/core/version.js';
 
 class QuizApp {
@@ -252,13 +253,139 @@ class QuizApp {
             });
         }
 
-        // Bouton changer de joueur (hero)
-        const btnChangePlayer = document.getElementById('btn-change-player');
-        if (btnChangePlayer) {
-            btnChangePlayer.addEventListener('click', () => {
+        // Modale élégante de confirmation pour changer de joueur
+        const showChangePlayerModal = () => {
+            const existing = document.getElementById('change-player-modal');
+            if (existing) existing.remove();
+
+            const currentName = playerManager.playerName || 'Joueur';
+
+            const modal = document.createElement('div');
+            modal.id = 'change-player-modal';
+            modal.className = 'fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-200 opacity-0';
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'change-player-modal-title');
+
+            modal.innerHTML = `
+                <div class="relative w-full max-w-md p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl border-2 transform transition-all duration-200 scale-95 opacity-0 text-left" style="background:#fbf3ea; border-color:#66bcb4;">
+                    <!-- En-tête -->
+                    <div class="flex items-center justify-between gap-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-10 h-10 rounded-2xl flex items-center justify-center text-white text-lg shadow-md" style="background:linear-gradient(135deg, #66bcb4, #489e96);">
+                                <i class="bi bi-person-gear"></i>
+                            </span>
+                            <div>
+                                <h3 id="change-player-modal-title" class="text-xl sm:text-2xl font-bold leading-tight" style="color:#7c4004; font-family:'Baloo 2',sans-serif;">
+                                    Changer de joueur ?
+                                </h3>
+                                <p class="text-xs" style="color:#b46e28;">Gestion du profil</p>
+                            </div>
+                        </div>
+                        <button type="button" id="btn-close-change-player-modal" class="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-black/5 transition cursor-pointer" aria-label="Fermer">
+                            <i class="bi bi-x-lg text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Carte profil actuel -->
+                    <div class="flex items-center gap-3 p-3 rounded-xl mb-3.5" style="background:#f4eadd; border:1px solid #dcc9b0;">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-base shadow-inner text-white font-bold" style="background:#489e96;">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="text-[10px] font-bold uppercase tracking-wider" style="color:#b46e28;">Profil en cours</div>
+                            <div class="text-base font-extrabold truncate" style="color:#7c4004;">${currentName}</div>
+                        </div>
+                    </div>
+
+                    <!-- Message d'explication -->
+                    <p class="text-xs sm:text-sm mb-4 leading-relaxed" style="color:#6b3603;">
+                        Cette action fermera la session en cours et réinitialisera l'historique pour permettre à un nouveau joueur de commencer.
+                    </p>
+
+                    <!-- Passerelle vers l'Atelier Avatar -->
+                    <div class="flex items-center justify-between gap-3 p-2.5 sm:p-3 mb-5 rounded-xl text-xs" style="background:#eaddcc; border:1px solid #dcc9b0; color:#7c4004;">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <i class="bi bi-palette-fill text-base flex-shrink-0" style="color:#489e96;"></i>
+                            <span class="truncate">Tu veux juste modifier ton look ou ton prénom ?</span>
+                        </div>
+                        <button type="button" id="btn-modal-open-customizer" class="px-2.5 py-1 rounded-lg font-bold text-xs whitespace-nowrap transition cursor-pointer shadow-sm hover:scale-105 active:scale-95" style="background:#66bcb4; color:white;">
+                            Atelier
+                        </button>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex items-center justify-end gap-2.5 pt-2 border-t border-[#dcc9b0]/60">
+                        <button type="button" id="btn-modal-cancel-change" class="btn-base btn-secondary py-2 px-4 text-xs sm:text-sm cursor-pointer">
+                            Annuler
+                        </button>
+                        <button type="button" id="btn-modal-confirm-change" class="btn-base py-2 px-4 text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 active:scale-95" style="background:#dc2626; color:white;">
+                            <i class="bi bi-arrow-repeat"></i>
+                            Oui, changer
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            document.body.classList.add('overflow-hidden');
+
+            const contentEl = modal.querySelector('div');
+
+            // Animation d'ouverture
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100');
+                if (contentEl) {
+                    contentEl.classList.remove('opacity-0', 'scale-95');
+                    contentEl.classList.add('opacity-100', 'scale-100');
+                }
+            });
+
+            // Fermeture de la modale
+            const closeModal = () => {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0');
+                if (contentEl) {
+                    contentEl.classList.remove('scale-100', 'opacity-100');
+                    contentEl.classList.add('scale-95', 'opacity-0');
+                }
+                document.body.classList.remove('overflow-hidden');
+                document.removeEventListener('keydown', onKeyDown);
+                setTimeout(() => modal.remove(), 200);
+            };
+
+            const onKeyDown = (e) => {
+                if (e.key === 'Escape') closeModal();
+            };
+            document.addEventListener('keydown', onKeyDown);
+
+            // Clic arrière-plan
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            // Boutons de fermeture
+            modal.querySelector('#btn-close-change-player-modal')?.addEventListener('click', closeModal);
+            modal.querySelector('#btn-modal-cancel-change')?.addEventListener('click', closeModal);
+
+            // Passerelle vers Atelier
+            modal.querySelector('#btn-modal-open-customizer')?.addEventListener('click', () => {
+                closeModal();
+                avatarCustomizerModal.open();
+            });
+
+            // Confirmation effective du changement de joueur
+            modal.querySelector('#btn-modal-confirm-change')?.addEventListener('click', () => {
                 playerManager.reset();
                 location.reload();
             });
+        };
+
+        // Bouton changer de joueur (hero)
+        const btnChangePlayer = document.getElementById('btn-change-player');
+        if (btnChangePlayer) {
+            btnChangePlayer.addEventListener('click', showChangePlayerModal);
         }
 
         // ===== Boutons du Header Navigation Desktop =====
@@ -268,11 +395,9 @@ class QuizApp {
         if (navPlayerBtn) {
             navPlayerBtn.textContent = `${playerManager.playerName}`;
             navPlayerBtn.innerHTML = `<i class="bi bi-person"></i><span>${playerManager.playerName}</span>`;
+            navPlayerBtn.title = 'Changer de joueur';
             navPlayerBtn.classList.remove('hidden');
-            navPlayerBtn.addEventListener('click', () => {
-                playerManager.reset();
-                location.reload();
-            });
+            navPlayerBtn.addEventListener('click', showChangePlayerModal);
         }
 
         // Bouton historique (nav)
@@ -299,10 +424,11 @@ class QuizApp {
         const mobilePlayerBtn = document.getElementById('mobile-player-btn');
         if (mobilePlayerBtn) {
             mobilePlayerBtn.innerHTML = `<i class="bi bi-person"></i><span>${playerManager.playerName}</span>`;
+            mobilePlayerBtn.title = 'Changer de joueur';
             mobilePlayerBtn.classList.remove('hidden');
             mobilePlayerBtn.addEventListener('click', () => {
-                playerManager.reset();
-                location.reload();
+                document.getElementById('mobile-menu')?.classList.add('hidden');
+                showChangePlayerModal();
             });
         }
 
