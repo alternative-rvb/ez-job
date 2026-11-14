@@ -27,7 +27,7 @@ const SUBJECT_STYLES = {
     'Informatique':  { dot: '#64748b', bg: '#f8fafc', color: '#1e293b', border: '#cbd5e1' },
 };
 
-function getSubjectStyle(subject) {
+export function getSubjectStyle(subject) {
     return SUBJECT_STYLES[subject] || { dot: '#b46e28', bg: '#fef3e2', color: '#7c4004', border: '#fde8c0' };
 }
 

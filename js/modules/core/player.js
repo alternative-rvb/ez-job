@@ -146,6 +146,7 @@ class PlayerManager {
             date: new Date().toISOString(),
             difficulty: quizData.difficulty,
             category: quizData.category,
+            subject: quizData.subject,
             pointsEarned: quizData.pointsEarned || 0,
             totalPoints: quizData.totalPoints || 0
         };
@@ -153,6 +154,11 @@ class PlayerManager {
         this.results.push(result);
         localStorage.setItem('playerResults', JSON.stringify(this.results));
         return result;
+    }
+
+    // Enregistre à nouveau les résultats (après complément de la matière des anciens résultats)
+    persistResults() {
+        localStorage.setItem('playerResults', JSON.stringify(this.results));
     }
 
     // Obtenir tous les résultats

@@ -45,6 +45,7 @@ export class ResultsManager {
             timeSpent: quizState.totalTime,
             difficulty: quizState.currentQuiz?.difficulty,
             category: quizState.currentQuiz?.category,
+            subject: quizState.currentQuiz?.subject,
             pointsEarned: rewardsResult.pointsEarned,
             totalPoints: rewardsResult.totalPoints
         });

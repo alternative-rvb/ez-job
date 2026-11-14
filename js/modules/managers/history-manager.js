@@ -7,6 +7,10 @@ import { domManager } from '../ui/dom.js';
 import { getDifficultyIcons } from '../core/utils.js';
 import { T } from '../core/theme.js';
 import { shareQuizResult } from '../core/share.js';
+import { loadQuizData } from '../core/utils.js';
+import { CONFIG } from '../core/config.js';
+import { getSubjectStyle } from './quiz-selector.js';
+import { getSubjectIcon } from '../core/subject-icons.js';
 
 export class HistoryManager {
     constructor(onBack) {
@@ -25,6 +29,12 @@ export class HistoryManager {
 
         // Afficher la liste des résultats
         this.renderResults(results);
+
+        // Moyenne par matière (les anciens résultats sans matière sont complétés en arrière-plan)
+        this.renderSubjectAverages(results);
+        this.fillMissingSubjects(results).then((changed) => {
+            if (changed) this.renderSubjectAverages(playerManager.getAllResults());
+        });
 
         // Ajouter l'écouteur du bouton retour
         const btnBack = document.getElementById('btn-back-from-history');
@@ -61,6 +71,79 @@ export class HistoryManager {
         `;
 
         statsContainer.innerHTML = statsHTML;
+    }
+
+    /**
+     * Complète la matière des anciens résultats (enregistrés avant l'ajout du champ) à partir du fichier du quiz
+     * @returns {Promise<boolean>} true si au moins un résultat a été complété
+     */
+    async fillMissingSubjects(results) {
+        const missingIds = [...new Set(results.filter(r => !r.subject && r.quizId).map(r => r.quizId))];
+        if (missingIds.length === 0) return false;
+
+        const subjects = {};
+        await Promise.all(missingIds.map(async (id) => {
+            try {
+                const data = await loadQuizData(`${CONFIG.questionsPath}${id}.json`);
+                if (data?.config?.subject) subjects[id] = data.config.subject;
+            } catch (e) {
+                // NOTE Quiz supprimé ou illisible : ces résultats restent hors des moyennes par matière
+            }
+        }));
+
+        let changed = false;
+        results.forEach((r) => {
+            if (!r.subject && subjects[r.quizId]) {
+                r.subject = subjects[r.quizId];
+                changed = true;
+            }
+        });
+        if (changed) playerManager.persistResults();
+        return changed;
+    }
+
+    renderSubjectAverages(results) {
+        const container = document.getElementById('history-subjects');
+        if (!container) return;
+
+        const bySubject = {};
+        results.filter(r => r.subject).forEach((r) => {
+            (bySubject[r.subject] ||= []).push(r.percentage);
+        });
+        const subjects = Object.entries(bySubject)
+            .map(([name, scores]) => ({ name, count: scores.length, avg: Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) }))
+            .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, 'fr'));
+
+        if (subjects.length === 0) {
+            container.classList.add('hidden');
+            container.innerHTML = '';
+            return;
+        }
+
+        container.innerHTML = `
+            <h2 class="text-sm font-bold mb-2" style="color:#7c4004"><i class="bi bi-bar-chart-fill mr-1 text-accent-500"></i>Moyenne par matière</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+                ${subjects.map((s) => {
+                    const st = getSubjectStyle(s.name);
+                    const icon = getSubjectIcon(s.name);
+                    return `
+                    <div class="rounded-xl px-3 py-2.5" style="background:${st.bg};border:1.5px solid ${st.border}">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="flex items-center gap-1.5 font-bold text-sm min-w-0" style="color:${st.color}">
+                                ${icon ? `<span style="color:${st.dot};display:inline-flex;width:16px;height:16px;flex-shrink:0" aria-hidden="true">${icon}</span>` : `<span style="color:${st.dot};font-size:0.6rem" aria-hidden="true">&#11044;</span>`}
+                                <span class="truncate">${s.name}</span>
+                            </span>
+                            <span class="text-xl font-black" style="color:${st.color}">${s.avg}%</span>
+                        </div>
+                        <div class="mt-1.5 h-1.5 rounded-full overflow-hidden" style="background:rgba(0,0,0,0.08)">
+                            <div class="h-full rounded-full" style="width:${s.avg}%;background:${st.dot}"></div>
+                        </div>
+                        <p class="text-[11px] mt-1 font-medium" style="color:${st.color};opacity:0.8">${s.count} quiz</p>
+                    </div>`;
+                }).join('')}
+            </div>
+        `;
+        container.classList.remove('hidden');
     }
 
     renderResults(results) {
