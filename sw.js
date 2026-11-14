@@ -10,7 +10,7 @@
  * @version 1.0.2
  */
 
-const CACHE_VERSION = 'v1.0.180';
+const CACHE_VERSION = 'v1.0.181';
 const CACHE_NAME = `erudizz-${CACHE_VERSION}`;
 
 // Assets critiques à mettre en cache lors de l'installation

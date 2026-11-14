@@ -22,6 +22,8 @@ import {
     buildCustomAvatarSvg 
 } from './avatars.js';
 
+import { modalHeaderHTML, MODAL_PANEL_CLASSES, MODAL_BACKDROP_HTML } from './modal-frame.js';
+
 // ANCHOR Pastille « Nouveau » d'un élément débloqué par un skin, retirée à sa première sélection
 const NEW_DOT = '<span class="new-dot absolute -top-1.5 -right-1.5 w-3.5 h-3.5 rounded-full bg-rose-500 ring-2 ring-white shadow-md animate-pulse pointer-events-none flex items-center justify-center" title="Nouveau"><i class="bi bi-star-fill text-white" style="font-size:6px"></i></span>';
 const NEW_CHIP = '<span class="new-chip absolute -top-1.5 -right-1 z-10 text-[8px] font-black px-1.5 py-0.5 rounded-full bg-rose-500/85 text-white border border-white/70 backdrop-blur-sm pointer-events-none">Nouveau</span>';
@@ -45,6 +47,7 @@ class AvatarCustomizerModal {
             mode: 'full' // 'full' ou 'head'
         };
         this.onSaveCallback = null;
+        this.onCloseCallback = null;
         this.isInitialized = false;
     }
 
@@ -64,29 +67,13 @@ class AvatarCustomizerModal {
 
         modalEl.innerHTML = `
             <!-- Arrière-plan flouté sombre -->
-            <div class="modal-backdrop fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity duration-300 opacity-0"></div>
+            ${MODAL_BACKDROP_HTML}
 
             <!-- Panneau Principal -->
-            <div class="modal-panel relative bg-gradient-to-b from-primary-900 via-primary-800 to-amber-950 text-white w-full max-w-4xl rounded-2xl sm:rounded-3xl shadow-2xl border border-white/20 overflow-hidden flex flex-col max-h-[94vh] transition-all duration-300 transform opacity-0 scale-95 translate-y-4">
-                
-                <!-- En-tête -->
-                <div class="px-4 py-2.5 sm:px-5 sm:py-3 border-b border-white/15 flex items-center justify-between bg-white/5">
-                    <div class="flex items-center gap-3">
-                        <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-accent-500 to-amber-400 flex items-center justify-center text-white text-base shadow-md">
-                            <i class="bi bi-palette-fill"></i>
-                        </span>
-                        <div>
-                            <h2 class="text-base sm:text-lg font-black text-white flex items-center gap-2 leading-tight">
-                                Atelier Avatar
-                                <span class="text-xs px-2 py-0.5 rounded-full bg-accent-500/30 text-accent-300 border border-accent-400/40">Chibi Manga</span>
-                            </h2>
-                            <p class="hidden sm:block text-[11px] text-white/70">Personnalise ton apparence, ta tenue et tes couleurs</p>
-                        </div>
-                    </div>
-                    <button id="modal-close-btn" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition cursor-pointer" title="Fermer">
-                        <i class="bi bi-x-lg text-lg"></i>
-                    </button>
-                </div>
+            <div class="${MODAL_PANEL_CLASSES}">
+
+                <!-- En-tête commun avec la carte agrandie -->
+                ${modalHeaderHTML({ active: 'atelier', icon: 'bi-palette-fill', title: 'Atelier Avatar', badge: 'Chibi Manga', subtitle: 'Personnalise ton apparence, ta tenue et tes couleurs', closeAttrs: 'id="modal-close-btn"' })}
 
                 <!-- Corps avec Défilement -->
                 <div class="p-3 sm:p-4 overflow-y-auto flex-1 grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4">
@@ -242,8 +229,12 @@ class AvatarCustomizerModal {
      * Ouvre l'atelier de personnalisation
      * @param {Function} onSave - Callback appelé après sauvegarde pour rafraîchir l'interface
      */
-    open(onSave = null) {
+    open(onSave = null, onClose = null) {
+        // NOTE Une fermeture animée encore en cours ne doit pas masquer l'atelier qu'on rouvre aussitôt (retour carte puis nouvel appui sur Atelier)
+        clearTimeout(this.hideTimer);
         this.onSaveCallback = onSave;
+        // NOTE onClose : appelé une fois l'atelier refermé (enregistrement, annulation ou Échap), par ex. pour revenir à la carte agrandie
+        this.onCloseCallback = onClose;
         const current = playerManager.getAvatarConfig();
         this.state = {
             type: current.type || 'boy',
@@ -269,6 +260,8 @@ class AvatarCustomizerModal {
         this.syncUI();
 
         this.isOpen = true;
+        modalEl.querySelector('.modal-panel')?.classList.add('transition-all');
+        modalEl.querySelector('.modal-backdrop')?.classList.add('transition-opacity');
         modalEl.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');
 
@@ -287,23 +280,46 @@ class AvatarCustomizerModal {
     /**
      * Ferme le modal sans réinitialiser le DOM
      */
-    close() {
+    /**
+     * Ferme l'atelier
+     * @param {object} [opts]
+     * @param {boolean} [opts.silent] - n'appelle pas onClose (bascule vers une autre fenêtre)
+     * @param {boolean} [opts.instant] - sans animation
+     */
+    close({ silent = false, instant = false } = {}) {
         const modalEl = document.getElementById(this.modalId);
         if (!modalEl) return;
 
+        const onClose = this.onCloseCallback;
+        this.onCloseCallback = null;
+
         const backdrop = modalEl.querySelector('.modal-backdrop');
         const panel = modalEl.querySelector('.modal-panel');
-        if (backdrop) backdrop.classList.add('opacity-0');
-        if (panel) {
-            panel.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
-            panel.classList.add('opacity-0', 'scale-95', 'translate-y-4');
-        }
-
-        setTimeout(() => {
+        const hide = () => {
             modalEl.classList.add('hidden');
             document.body.classList.remove('overflow-hidden');
             this.isOpen = false;
-        }, 250);
+        };
+
+        if (instant) {
+            clearTimeout(this.hideTimer);
+            panel?.classList.remove('transition-all', 'opacity-100', 'scale-100', 'translate-y-0');
+            panel?.classList.add('opacity-0', 'scale-95', 'translate-y-4');
+            backdrop?.classList.remove('transition-opacity');
+            backdrop?.classList.add('opacity-0');
+            hide();
+            // NOTE État masqué remis à zéro : le prochain open() rejoue l'animation d'ouverture (il réactive les transitions)
+        } else {
+            if (backdrop) backdrop.classList.add('opacity-0');
+            if (panel) {
+                panel.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+                panel.classList.add('opacity-0', 'scale-95', 'translate-y-4');
+            }
+            this.hideTimer = setTimeout(hide, 250);
+        }
+
+        // NOTE Fondu enchaîné : la fenêtre de retour (carte) s'ouvre pendant que l'atelier s'efface
+        if (!silent && typeof onClose === 'function') onClose();
     }
 
     /**
@@ -766,6 +782,12 @@ class AvatarCustomizerModal {
             e.stopPropagation();
             this.close();
         });
+        // Onglet Carte : abandonne les changements non enregistrés et ouvre la carte agrandie sans repasser par l'écran de fond
+        modalEl.querySelector('[data-modal-tab="map"]')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.close({ silent: true, instant: true });
+            window.dispatchEvent(new CustomEvent('camiludik:open-map'));
+        });
         modalEl.querySelector('.modal-backdrop')?.addEventListener('click', (e) => {
             e.stopPropagation();
             this.close();
@@ -895,12 +917,12 @@ class AvatarCustomizerModal {
             } catch (e) {}
         }
 
-        this.close();
-
-        // Callback de rafraîchissement
+        // NOTE Le rafraîchissement passe avant la fermeture : au retour sur la carte agrandie, la copie reflète déjà le nouvel avatar
         if (typeof this.onSaveCallback === 'function') {
             this.onSaveCallback({ ...configToSave, playerName: newName });
         }
+
+        this.close();
 
         // Événement personnalisé global pour toute vue
         window.dispatchEvent(new CustomEvent('avatar-updated', { detail: { ...configToSave, playerName: newName } }));

@@ -3,7 +3,10 @@
 /**
  * Script automatique de mise à jour de version pour CamiLudik
  * Met à jour package.json, sw.js, version.js, index.html et changelog.html
- * Usage: npm run update-version [optionalVersion] [optionalNote]
+ * Usage: npm run update-version [version] -- --note "Nouveau : texte" [--note "Correction : texte"]
+ * Les notes de version sont obligatoires (une par changement visible pour le joueur).
+ * Libellés reconnus : Nouveau, Amélioration, Correction (sinon icône par défaut).
+ * Pour un bump sans changement visible : --allow-empty
  */
 
 const fs = require('fs');
@@ -25,18 +28,42 @@ const currentVersion = packageJson.version;
 console.log('[PKG] Version actuelle:', currentVersion);
 
 // Déterminer la nouvelle version (argument ou patch automatique)
-const args = process.argv.slice(2);
+const rawArgs = process.argv.slice(2);
+const notes = [];
+let allowEmpty = false;
+const args = [];
+for (let i = 0; i < rawArgs.length; i++) {
+  if (rawArgs[i] === '--note' && rawArgs[i + 1]) {
+    notes.push(rawArgs[++i].trim());
+  } else if (rawArgs[i] === '--allow-empty') {
+    allowEmpty = true;
+  } else {
+    args.push(rawArgs[i]);
+  }
+}
+
 let newVersion = '';
-let releaseNote = '';
 
 if (args.length > 0 && /^\d+\.\d+\.\d+$/.test(args[0])) {
   newVersion = args[0];
-  releaseNote = args.slice(1).join(' ').trim();
+  args.shift();
 } else {
   const versionParts = currentVersion.split('.');
   versionParts[2] = parseInt(versionParts[2], 10) + 1;
   newVersion = versionParts.join('.');
-  releaseNote = args.join(' ').trim();
+}
+
+// Texte libre restant = une note « Mise à jour » (compatibilité avec l'ancien usage)
+if (args.join(' ').trim()) {
+  notes.push(args.join(' ').trim());
+}
+
+// NOTE Plus de note générique : sans release note, le bump est refusé avant toute modification
+if (notes.length === 0 && !allowEmpty) {
+  console.error('[ERREUR] Release note manquante. Exemple :');
+  console.error('   npm run update-version -- --note "Nouveau : Quiz Unités de mesure niveau 6e" --note "Correction : icône Android"');
+  console.error('   (sans changement visible pour le joueur : --allow-empty)');
+  process.exit(1);
 }
 
 console.log('[VERSION] Nouvelle version:', newVersion);
@@ -114,7 +141,21 @@ if (fs.existsSync(CHANGELOG_HTML)) {
       ''
     );
 
-    const noteText = releaseNote || 'Mise à jour et améliorations de l\'application.';
+    // Une ligne par note, avec une icône selon le libellé (« Libellé : texte »)
+    const NOTE_ICONS = { 'nouveau': 'bi-stars', 'amélioration': 'bi-arrow-up-circle-fill', 'correction': 'bi-bug-fill' };
+    const escapeHtml = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const noteItems = (notes.length ? notes : ['Mise à jour : Maintenance de l\'application.']).map((note) => {
+      const m = note.match(/^([^:]{2,20}?)\s*:\s*(.+)$/);
+      const label = m ? m[1].trim() : 'Mise à jour';
+      const text = escapeHtml(m ? m[2].trim() : note);
+      const icon = NOTE_ICONS[label.toLowerCase()] || 'bi-stars';
+      return `          <li class="flex items-start gap-2.5">
+            <i class="bi ${icon} text-accent-500 mt-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-[#7c4004] font-semibold">${escapeHtml(label)}</strong> : ${text}
+            </div>
+          </li>`;
+    }).join('\n');
 
     // Nouveau bloc article de version au style CamiLudik
     const newArticle = `
@@ -135,12 +176,7 @@ if (fs.existsSync(CHANGELOG_HTML)) {
         </div>
 
         <ul class="space-y-3 text-sm text-[#7c4004]/90">
-          <li class="flex items-start gap-2.5">
-            <i class="bi bi-stars text-accent-500 mt-1 flex-shrink-0"></i>
-            <div>
-              <strong class="text-[#7c4004] font-semibold">Mise à jour</strong> : ${noteText}
-            </div>
-          </li>
+${noteItems}
         </ul>
       </article>
 `;

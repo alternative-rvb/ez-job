@@ -165,6 +165,7 @@ Les scripts sont dans `package.json` (`npm run dev`, `build`, `generate-index`, 
 - L'index des quiz se génère avec `python3 api.py generate-index` (appelé par `npm run generate-index`).
 - Valider un quiz précis : `node scripts/validate-quiz.js path/to/quiz.json`.
 - Versionner : toujours `npm run update-version` (met à jour `package.json`, `sw.js`, `js/modules/core/version.js` et `.version`), jamais `bump-version` seul.
+- **Release notes obligatoires au bump** : `npm run update-version -- --note "Nouveau : ..." --note "Amélioration : ..." --note "Correction : ..."` (une note par changement visible pour le joueur, libellés Nouveau, Amélioration ou Correction, phrases courtes sans jargon technique). Sans note le script refuse (`--allow-empty` seulement pour un bump sans changement visible). Rédiger les notes à partir de ce qui est réellement dans le lot commité, jamais de texte générique.
 - `test-avatars.html` est le laboratoire de test des avatars (dev, exclu du déploiement). `npm run avatars:check` contrôle qu'aucun élément d'avatar n'a été perdu (voir `scripts/README.md`).
 
 ## Quiz : format et règles de rédaction

@@ -1800,3 +1800,177 @@ textarea {
   -webkit-user-select: text;
   user-select: text;
 }
+
+/* ===== Fenêtres plein écran : carte agrandie et Atelier Avatar ===== */
+/* ANCHOR Les deux fenêtres partagent le même cadre (.modal-panel, js/modules/ui/modal-frame.js) : mêmes tailles, mêmes marges, bascule sans saut visuel */
+.map-modal,
+#avatar-customizer-modal {
+  padding: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .map-modal,
+  #avatar-customizer-modal {
+    padding: 0.75rem;
+  }
+
+  .map-modal .modal-panel,
+  #avatar-customizer-modal .modal-panel {
+    max-width: min(100%, 96rem);
+    height: calc(100dvh - 1.5rem);
+    max-height: none;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .map-modal,
+  #avatar-customizer-modal {
+    padding: 0.25rem;
+  }
+
+  .map-modal .modal-panel,
+  #avatar-customizer-modal .modal-panel {
+    max-width: 100%;
+    height: calc(100dvh - 0.5rem);
+    max-height: none;
+  }
+
+  .modal-header {
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+  }
+}
+
+/* Carte : la carte d'origine remplit le corps du panneau, le dessin prend la plus grande taille possible sans se déformer (unités de conteneur) */
+.map-modal-body {
+  overflow-y: auto;
+}
+
+.map-modal-body > .fantasy-roadmap-card {
+  flex: 1 1 auto;
+  min-height: 0;
+  justify-content: flex-start;
+  max-width: none;
+}
+
+@media (orientation: landscape) {
+  .map-modal-body {
+    overflow: hidden;
+  }
+
+  .map-modal-body > .fantasy-roadmap-card {
+    flex: 1 1 0;
+  }
+
+  .map-modal-area {
+    flex: 1 1 0;
+    min-height: 0;
+    container-type: size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .map-modal-box {
+    width: min(100cqw, calc(100cqh * 560 / 328)) !important;
+  }
+}
+
+/* Paysage très large (16/10 et plus) : infos à gauche, carte à droite sur toute la hauteur ; les écrans plus carrés (4/3) gardent l'empilement */
+@media (min-aspect-ratio: 16/10) and (min-width: 640px) {
+  .map-modal-body > .fantasy-roadmap-card {
+    display: grid;
+    grid-template-columns: clamp(10rem, 22vw, 17rem) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+  }
+
+  .map-modal-body > .fantasy-roadmap-card > :first-child {
+    grid-column: 1;
+    grid-row: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 0;
+  }
+
+  .map-modal-body > .fantasy-roadmap-card > .map-modal-area {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .map-modal-body > .fantasy-roadmap-card > :last-child {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+    border-top: 0;
+  }
+
+  /* NOTE L'objectif se replie dans sa colonne au lieu de passer sous la carte */
+  .map-modal-body > .fantasy-roadmap-card > :last-child,
+  .map-modal-body > .fantasy-roadmap-card > :last-child > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .map-modal-body > .fantasy-roadmap-card > :last-child .justify-between {
+    flex-wrap: wrap;
+    column-gap: 0.5rem;
+  }
+
+  .map-modal-body > .fantasy-roadmap-card > :first-child,
+  .map-modal-body > .fantasy-roadmap-card > :last-child {
+    background: transparent;
+    backdrop-filter: none;
+  }
+}
+
+/* ===== Atelier Avatar en plein écran ===== */
+/* ANCHOR Grands écrans : l'aperçu grandit avec la hauteur et les options se répartissent sur deux colonnes */
+@media (min-width: 900px) {
+  #avatar-customizer-modal .modal-panel [class*="md:grid-cols-12"] {
+    grid-template-columns: clamp(15rem, 26vw, 26rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  #avatar-customizer-modal .modal-panel [class*="md:grid-cols-12"] > * {
+    grid-column: auto !important;
+  }
+
+  #customizer-avatar-box {
+    width: auto !important;
+    height: min(58dvh, 36rem) !important;
+    aspect-ratio: 44 / 56;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  #avatar-customizer-modal .modal-panel [class*="md:col-span-8"] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1.25rem;
+    align-items: start;
+  }
+
+  /* Prénom et personnage restent sur toute la largeur */
+  #avatar-customizer-modal .modal-panel [class*="md:col-span-8"] > :nth-child(-n + 2) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Paysage bas : en-tête et aperçu compacts pour laisser la place aux options */
+@media (max-height: 520px) and (orientation: landscape) {
+  #avatar-customizer-modal .modal-panel [class*="md:grid-cols-12"] {
+    grid-template-columns: clamp(9rem, 24vw, 14rem) minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+
+  #avatar-customizer-modal .modal-panel [class*="md:grid-cols-12"] > * {
+    grid-column: auto !important;
+  }
+
+  #avatar-customizer-modal #customizer-avatar-box {
+    width: auto !important;
+    height: min(44dvh, 12rem) !important;
+    aspect-ratio: 44 / 56;
+  }
+}

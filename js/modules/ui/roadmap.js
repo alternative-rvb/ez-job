@@ -8,6 +8,7 @@ import { rewardsManager, SUMMON_COST } from '../managers/rewards-manager.js';
 import { playerManager } from '../core/player.js';
 import { AVATARS, renderAvatarSvg, renderAvatarHeadSvg } from './avatars.js';
 import { avatarCustomizerModal } from './avatar-modal.js';
+import { modalHeaderHTML, MODAL_PANEL_CLASSES, MODAL_BACKDROP_HTML } from './modal-frame.js';
 import { getCharacterId, getMapLine } from '../core/dialogues.js';
 
 export class RoadmapManager {
@@ -1803,35 +1804,61 @@ export class RoadmapManager {
         const mapBox = svg?.parentElement;
         if (mapBox) {
             // NOTE Largeur maximale qui tient dans la hauteur de l'écran (en-tête et objectif déduits), sans jamais déformer le dessin
-            mapBox.style.width = 'min(100%, calc((100vh - 240px) * 560 / 328))';
+            mapBox.style.width = 'min(100%, calc((100dvh - 240px) * 560 / 328))';
+            // NOTE En paysage, styles/main.css (section Carte plein écran) remplit tout l'écran : la zone de carte devient un conteneur dont le dessin prend la plus grande taille possible
+            mapBox.classList.add('map-modal-box');
+            mapBox.parentElement?.classList.add('map-modal-area');
         }
 
+        // NOTE Même cadre que l'Atelier Avatar (js/modules/ui/modal-frame.js) : la bascule de l'un à l'autre ressemble à un changement d'onglet
         const modal = document.createElement('div');
-        modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/75 backdrop-blur-md animate-fade-in';
+        modal.className = 'map-modal fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4';
         modal.setAttribute('role', 'dialog');
         modal.setAttribute('aria-modal', 'true');
         modal.setAttribute('aria-label', 'Carte agrandie');
         modal.innerHTML = `
-            <div class="map-modal-panel relative w-full max-w-5xl max-h-full overflow-y-auto rounded-2xl">
-                <!-- NOTE Bouton dans une ligne à part au-dessus de la carte : il ne recouvre plus le badge de gemmes -->
-                <div class="flex justify-end pb-2">
-                <button type="button" class="map-modal-close flex-shrink-0 w-9 h-9 rounded-full bg-white/90 text-amber-900 hover:bg-white shadow flex items-center justify-center cursor-pointer" title="Fermer" aria-label="Fermer">
-                    <i class="bi bi-x-lg"></i>
-                </button>
-                </div>
+            ${MODAL_BACKDROP_HTML}
+            <div class="${MODAL_PANEL_CLASSES}">
+                ${modalHeaderHTML({ active: 'map', icon: 'bi-map-fill', title: 'Carte du voyage', badge: 'Aventure', subtitle: 'Ta progression et ton prochain objectif', closeAttrs: 'class-hook="map-close"' })}
+                <div class="map-modal-body p-3 sm:p-4 flex-1 min-h-0 flex flex-col"></div>
             </div>
         `;
-        modal.firstElementChild.append(clone);
+        modal.querySelector('.map-modal-body').append(clone);
         document.body.appendChild(modal);
 
-        const close = () => {
-            modal.remove();
-            document.removeEventListener('keydown', onKey);
-        };
+        const backdrop = modal.querySelector('.modal-backdrop');
+        const panel = modal.querySelector('.modal-panel');
+        // NOTE Ouverture animée comme l'atelier (le premier rendu part de l'état masqué)
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            backdrop.classList.remove('opacity-0');
+            panel.classList.remove('opacity-0', 'scale-95', 'translate-y-4');
+            panel.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+        }));
+
         const onKey = (e) => { if (e.key === 'Escape') close(); };
+        const close = ({ instant = false } = {}) => {
+            document.removeEventListener('keydown', onKey);
+            if (instant) { modal.remove(); return; }
+            backdrop.classList.add('opacity-0');
+            panel.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+            panel.classList.add('opacity-0', 'scale-95', 'translate-y-4');
+            setTimeout(() => modal.remove(), 250);
+        };
         document.addEventListener('keydown', onKey);
+        backdrop.addEventListener('click', () => close());
         modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
-        modal.querySelector('.map-modal-close').addEventListener('click', close);
+        modal.querySelector('[class-hook="map-close"]').addEventListener('click', () => close());
+
+        // NOTE Bascule carte <-> atelier : l'atelier s'ouvre pendant que la carte disparaît d'un coup, puis ramène à la carte (mise à jour) en se fermant
+        const goAtelier = () => {
+            close({ instant: true });
+            avatarCustomizerModal.open(() => this.render(), () => this.openMapModal());
+        };
+        modal.querySelector('[data-modal-tab="atelier"]').addEventListener('click', goAtelier);
+        modal.querySelectorAll('[id$="open-avatar-customizer-btn"], [id$="roadmap-avatar-toggle"]').forEach((btn) => {
+            btn.classList.add('cursor-pointer');
+            btn.addEventListener('click', goAtelier);
+        });
     }
 
     /**
@@ -1868,6 +1895,9 @@ export class RoadmapManager {
 }
 
 export const roadmapManager = new RoadmapManager();
+
+// NOTE L'onglet Carte de l'atelier passe par un événement : roadmap.js importe déjà l'atelier, un import inverse serait circulaire
+window.addEventListener('camiludik:open-map', () => roadmapManager.openMapModal());
 
 // =============================================================================
 // OUTILS DE DÉVELOPPEMENT & TESTS PROVISOIRES (À EXCLURE DE PRODUCTION)
