@@ -1758,3 +1758,29 @@ body.quiz-immersive .question-container .grid {
   background: rgba(var(--color-primary), 0.8);
   background-clip: content-box;
 }
+
+/* ===== Quiz immersif sans image : la place libérée agrandit la question et les réponses ===== */
+body.quiz-immersive .question-container:not(:has(.quiz-image-wrap)) {
+  justify-content: center;
+  gap: clamp(0.5rem, min(4dvh, 3vw), 2.5rem);
+}
+
+body.quiz-immersive .question-container:not(:has(.quiz-image-wrap)) h3 {
+  font-size: clamp(1.1rem, min(5.5dvh, 6vw), 3rem);
+}
+
+body.quiz-immersive .question-container:not(:has(.quiz-image-wrap)) .answer-btn {
+  padding-top: clamp(0.4rem, min(4.5dvh, 2.2vw), 2.25rem) !important;
+  padding-bottom: clamp(0.4rem, min(4.5dvh, 2.2vw), 2.25rem) !important;
+  font-size: clamp(0.9rem, min(3dvh, 4.2vw), 1.75rem);
+}
+
+body.quiz-immersive .question-container:not(:has(.quiz-image-wrap)) .answer-btn span {
+  font-size: inherit;
+}
+
+body.quiz-immersive .question-container:not(:has(.quiz-image-wrap)) .answer-btn span.flex-shrink-0 {
+  width: clamp(1.75rem, min(5dvh, 9vw), 3rem);
+  height: clamp(1.75rem, min(5dvh, 9vw), 3rem);
+  font-size: clamp(0.875rem, 2.5dvh, 1.5rem);
+}
