@@ -134,8 +134,12 @@ export class ResultsManager {
                             </p>
                             <div class="flex flex-wrap gap-4">
                                 <div class="text-center">
-                                    <p class="text-2xl font-bold text-yellow-500">${rewardsResult.totalPoints}</p>
-                                    <p class="text-xs" style="color:#b46e28">Gemmes</p>
+                                    <p class="text-2xl font-bold text-yellow-500"><i class="bi bi-star-fill text-xl"></i> ${rewardsResult.lifetimePoints}</p>
+                                    <p class="text-xs" style="color:#b46e28">Points (+${rewardsResult.pointsEarned})</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-yellow-500"><i class="bi bi-gem text-xl"></i> ${rewardsResult.totalPoints}</p>
+                                    <p class="text-xs" style="color:#b46e28">Gemmes (+${rewardsResult.pointsEarned})</p>
                                 </div>
                                 ${rewardsResult.canSummon ? `
                                     <div class="text-center flex flex-col items-center">

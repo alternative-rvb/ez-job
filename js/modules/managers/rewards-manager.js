@@ -27,6 +27,7 @@ export class RewardsManager {
         if (!localStorage.getItem(this.storageKey)) {
             const initialRewards = {
                 totalPoints: 0,
+                lifetimePoints: 0,
                 unlockedTrophies: [],
                 unlockedSkins: [],
                 newItems: [],
@@ -41,8 +42,16 @@ export class RewardsManager {
      * Récupère les récompenses actuelles
      */
     getRewards() {
-        const rewards = localStorage.getItem(this.storageKey);
-        return rewards ? JSON.parse(rewards) : null;
+        const raw = localStorage.getItem(this.storageKey);
+        if (!raw) return null;
+        const rewards = JSON.parse(raw);
+        // NOTE Migration : lifetimePoints (progression, ne baisse jamais) absent des anciennes sauvegardes
+        if (typeof rewards.lifetimePoints !== 'number') {
+            const earned = (rewards.pointsHistory || []).reduce((sum, h) => sum + (h.points || 0), 0);
+            rewards.lifetimePoints = Math.max(rewards.totalPoints || 0, earned);
+            this.saveRewards(rewards);
+        }
+        return rewards;
     }
 
     /**
@@ -96,6 +105,7 @@ export class RewardsManager {
 
         if (points > 0) {
             rewards.totalPoints += points;
+            rewards.lifetimePoints += points;
             rewards.pointsHistory.push({
                 points: points,
                 quizName: quizName,
@@ -109,6 +119,7 @@ export class RewardsManager {
         return {
             pointsEarned: points,
             totalPoints: rewards.totalPoints,
+            lifetimePoints: rewards.lifetimePoints,
             canBuySecretCode: rewards.totalPoints >= 5,
             canSummon: this.canSummon()
         };
@@ -373,6 +384,15 @@ export class RewardsManager {
     }
 
     /**
+     * Points cumulés depuis le début (progression sur la carte, ne baisse jamais)
+     * @returns {number}
+     */
+    getLifetimePoints() {
+        const rewards = this.getRewards();
+        return rewards.lifetimePoints || 0;
+    }
+
+    /**
      * Vérifie si un code secret est valide et non utilisé
      * @param {string} secretCode - Code à vérifier
      * @returns {boolean}
@@ -399,6 +419,7 @@ export class RewardsManager {
     setTotalPoints(points) {
         const rewards = this.getRewards() || {
             totalPoints: 0,
+            lifetimePoints: 0,
             unlockedTrophies: [],
             unlockedSkins: [],
             newItems: [],
@@ -406,8 +427,20 @@ export class RewardsManager {
             pointsHistory: []
         };
         rewards.totalPoints = Math.max(0, parseInt(points) || 0);
+        rewards.lifetimePoints = Math.max(rewards.lifetimePoints || 0, rewards.totalPoints);
         this.saveRewards(rewards);
         return rewards.totalPoints;
+    }
+
+    /**
+     * Définit directement les points de progression (tests et réglages)
+     * @param {number} points
+     */
+    setLifetimePoints(points) {
+        const rewards = this.getRewards();
+        rewards.lifetimePoints = Math.max(0, parseInt(points) || 0);
+        this.saveRewards(rewards);
+        return rewards.lifetimePoints;
     }
 
     /**

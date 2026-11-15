@@ -412,7 +412,8 @@ export class RoadmapManager {
         const container = document.getElementById(this.containerId);
         if (!container) return;
 
-        const totalPoints = rewardsManager.getTotalPoints() || 0;
+        const totalPoints = rewardsManager.getLifetimePoints() || 0;
+        const gems = rewardsManager.getTotalPoints() || 0;
         const rankInfo = this.getPlayerRank(totalPoints);
         const currentAvatarId = playerManager.playerAvatar || 'boy';
         const avatarData = AVATARS[currentAvatarId] || AVATARS.boy;
@@ -459,6 +460,11 @@ export class RoadmapManager {
                             <i class="bi bi-star-fill text-accent-500 text-xs"></i>
                             <span class="text-xs sm:text-sm font-extrabold">${totalPoints}</span>
                             <span class="text-[10px] sm:text-[11px] font-semibold text-amber-800">pts</span>
+                        </div>
+                        <div id="roadmap-gem-badge" class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-500/10 border border-primary-500/25 text-primary-800 font-bold text-[11px]" title="Gemmes à dépenser en invocations, sans effet sur ta position">
+                            <i class="bi bi-gem text-primary-600 text-[11px]"></i>
+                            <span>${gems}</span>
+                            <span class="text-[10px] font-semibold">gemmes</span>
                         </div>
                         <button id="open-avatar-customizer-btn" class="text-[11px] sm:text-xs font-semibold text-primary-700 hover:text-primary-900 hover:underline flex items-center gap-1 transition whitespace-nowrap cursor-pointer" title="Personnaliser ton avatar">
                             <i class="bi bi-palette-fill text-accent-600"></i>
@@ -1905,6 +1911,7 @@ window.addEventListener('camiludik:open-map', () => roadmapManager.openMapModal(
 if (typeof window !== 'undefined') {
     window.setScore = (pts) => {
         rewardsManager.setTotalPoints(pts);
+        rewardsManager.setLifetimePoints(pts);
         roadmapManager.render();
         console.log(`⭐ [DEV] Score mis à jour : ${pts} pts`);
         return pts;
@@ -1912,6 +1919,7 @@ if (typeof window !== 'undefined') {
     window.addScore = (pts = 10) => {
         const cur = rewardsManager.getTotalPoints();
         const next = rewardsManager.setTotalPoints(cur + pts);
+        rewardsManager.setLifetimePoints(rewardsManager.getLifetimePoints() + pts);
         roadmapManager.render();
         console.log(`⭐ [DEV] Score : +${pts} pts (Total : ${next} pts)`);
         return next;

@@ -715,6 +715,7 @@ class QuizApp {
 // Fonctions d'aide globales pour tester et ajuster le score en direct depuis la console
 window.setScore = (points) => {
     rewardsManager.setTotalPoints(points);
+    rewardsManager.setLifetimePoints(points);
     roadmapManager.render();
     console.log(`[Points] Score mis à jour : ${points} pts`);
     return points;
@@ -723,6 +724,7 @@ window.setScore = (points) => {
 window.addScore = (points = 10) => {
     const current = rewardsManager.getTotalPoints();
     const updated = rewardsManager.setTotalPoints(current + points);
+    rewardsManager.setLifetimePoints(rewardsManager.getLifetimePoints() + points);
     roadmapManager.render();
     console.log(`[Points] Score augmenté de +${points} pts (Nouveau total : ${updated} pts)`);
     return updated;
