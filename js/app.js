@@ -219,12 +219,13 @@ class QuizApp {
         this.availableQuizzes = this.quizSelector.allQuizzes || [];
 
         // Quiz récents annoncés par l'avatar (les plus récents d'abord, 3 au maximum)
-        roadmapManager.setNewQuizTitles(
+        // NOTE « Jouer » dans la popup suit le même chemin que le clic sur une carte du sélecteur
+        roadmapManager.setNewQuizzes(
             this.availableQuizzes
                 .filter(q => this.quizSelector.isNewQuiz(q.createdAt))
                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                .slice(0, 3)
-                .map(q => q.title)
+                .slice(0, 3),
+            quiz => this.quizSelector.showTimeSelector(quiz)
         );
 
         // Rendre la Roadmap Fantasy dans la section Hero

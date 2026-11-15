@@ -1892,6 +1892,19 @@ textarea {
     border-bottom: 0;
   }
 
+  /* NOTE Colonne étroite : le profil et la colonne des quiz récents s'empilent sur toute la largeur, les puces affichent leur titre en entier */
+  .map-modal-body > .fantasy-roadmap-card > :first-child > * {
+    flex: none;
+    width: 100%;
+  }
+
+  .map-modal-body > .fantasy-roadmap-card > :first-child > #modal-roadmap-new-quiz-row {
+    border-left: 0;
+    border-top: 1px solid rgba(120, 53, 15, 0.1);
+    padding-left: 0;
+    padding-top: 0.5rem;
+  }
+
   .map-modal-body > .fantasy-roadmap-card > .map-modal-area {
     grid-column: 2;
     grid-row: 1 / span 2;

@@ -17,12 +17,23 @@ export class RoadmapManager {
     constructor() {
         this.containerId = 'hero-roadmap-container';
         this.customDialogue = null;
-        // ANCHOR Titres des quiz récents annoncés par l'avatar, intro jouée une seule fois par chargement de page
-        this.newQuizTitles = [];
+        // ANCHOR Quiz récents : annoncés par l'avatar à chaque chargement de la page, puis affichés en puces cliquables dans le bandeau profil
+        this.newQuizzes = [];
+        this.onPlayNewQuiz = null;
+        // NOTE Titres encore à révéler dans le bandeau : la puce apparaît quand l'avatar cite le quiz
+        this.pendingChips = new Set();
         this.introPlayed = false;
         this.introTimer = null;
         window.addEventListener('avatar-updated', () => this.render());
         window.addEventListener('resize', () => this.fitSpeechBubble());
+        // NOTE Délégation : les puces sont recréées à chaque render() et ajoutées à la volée pendant l'intro
+        document.addEventListener('click', (e) => {
+            const chip = e.target.closest?.('[data-new-quiz-chip]');
+            // NOTE Les puces de la carte agrandie ont leur propre écouteur (fermeture de la modale avant de lancer le quiz)
+            if (!chip || chip.closest('.map-modal')) return;
+            const quiz = this.newQuizzes.find(q => q.id === chip.dataset.newQuizChip);
+            if (quiz && typeof this.onPlayNewQuiz === 'function') this.onPlayNewQuiz(quiz);
+        });
         this.milestones = [
             {
                 id: 'village',
@@ -149,18 +160,57 @@ export class RoadmapManager {
     }
 
     /**
-     * Mémorise les titres des quiz récents que l'avatar annonce à l'accueil
+     * Mémorise les quiz récents (annonce de l'avatar, puces du bandeau) et le rappel qui lance un quiz
      */
-    setNewQuizTitles(titles) {
-        this.newQuizTitles = titles;
+    setNewQuizzes(quizzes, onPlay) {
+        this.newQuizzes = quizzes;
+        this.onPlayNewQuiz = onPlay;
+        // NOTE Annonce rejouée à chaque chargement de la page : toutes les puces attendent que l'avatar cite leur quiz
+        this.pendingChips = new Set(quizzes.map(q => q.title));
+    }
+
+    /**
+     * HTML d'une puce de quiz récent (micro-chip cliquable du bandeau profil)
+     */
+    newQuizChipHTML(quiz) {
+        const esc = v => String(v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        return `<button type="button" data-new-quiz-chip="${esc(quiz.id)}" class="max-w-full flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] leading-tight font-semibold text-amber-950 border border-accent-500/40 bg-accent-500/15 hover:bg-accent-500/25 transition cursor-pointer" title="Lancer ce quiz">
+            <i class="bi bi-stars text-accent-600"></i><span class="truncate">${esc(quiz.title)}</span>
+        </button>`;
+    }
+
+    /**
+     * Ajoute dans le bandeau la puce d'un quiz que l'avatar vient d'annoncer, avec un effet d'apparition
+     */
+    revealChip(quiz) {
+        this.pendingChips.delete(quiz.title);
+        const row = document.getElementById('roadmap-new-quiz-row');
+        const list = document.getElementById('roadmap-new-quiz-chips');
+        if (!row || !list || list.querySelector(`[data-new-quiz-chip="${CSS.escape(quiz.id)}"]`)) return;
+        list.insertAdjacentHTML('beforeend', this.newQuizChipHTML(quiz));
+        row.classList.remove('hidden');
+        const chip = list.lastElementChild;
+        if (chip.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            chip.animate(
+                [{ opacity: 0, transform: 'translateY(-8px) scale(0.85)' }, { opacity: 1, transform: 'translateY(0) scale(1)' }],
+                { duration: 450, easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }
+            );
+        }
+    }
+
+    /**
+     * Révèle d'un coup les puces encore en attente (intro interrompue ou terminée)
+     */
+    flushChips() {
+        this.newQuizzes.filter(q => this.pendingChips.has(q.title)).forEach(q => this.revealChip(q));
     }
 
     /**
      * Salutation selon l'heure et l'absence du joueur (retour après plusieurs jours)
      */
     getGreetingLine() {
-        const name = playerManager.playerName;
-        const suffix = name ? ` ${name} !` : ' !';
+        // NOTE Sans pseudo : l'avatar porte déjà le nom du joueur
+        const suffix = ' !';
         let lastVisit = 0;
         try { lastVisit = Number(localStorage.getItem('lastVisitAt')) || 0; } catch (e) { /* localStorage indisponible */ }
         try { localStorage.setItem('lastVisitAt', String(Date.now())); } catch (e) { /* idem */ }
@@ -174,35 +224,31 @@ export class RoadmapManager {
     }
 
     /**
-     * Titres déjà annoncés par l'avatar (mémorisés pour ne pas répéter l'annonce à chaque visite)
-     */
-    getAnnouncedTitles() {
-        try { return JSON.parse(localStorage.getItem('announcedQuizzes')) || []; } catch (e) { return []; }
-    }
-
-    /**
-     * Fait enchaîner à l'avatar salutation, quiz récents jamais annoncés, puis la réplique habituelle de la carte
+     * Fait enchaîner à l'avatar salutation, annonce des quiz récents (chaque titre fait apparaître sa puce dans le bandeau), puis la réplique habituelle de la carte
      */
     playIntroDialogue(totalPoints) {
         clearTimeout(this.introTimer);
         const finalLine = this.getSpeechBubbleText(totalPoints);
-        if (this.introPlayed || this.customDialogue) return;
+        if (this.introPlayed || this.customDialogue) {
+            // NOTE Sans intro (réplique IA), les puces en attente s'affichent directement
+            if (!this.introPlayed) this.flushChips();
+            return;
+        }
         this.introPlayed = true;
 
-        const announced = this.getAnnouncedTitles();
-        const fresh = this.newQuizTitles.filter(t => !announced.includes(t));
+        const fresh = this.newQuizzes;
         const pick = list => list[Math.floor(Math.random() * list.length)];
+        // NOTE Réplique d'index i : action jouée quand elle s'affiche (apparition de la puce du quiz cité)
+        const lineActions = {};
 
         const lines = [this.getGreetingLine(), pick(['Comment tu vas ?', 'Prêt pour l\'aventure ?', 'Tout va bien ?'])];
         if (fresh.length) {
-            lines.push(fresh.length === 1
-                ? pick(['J\'ai trouvé une nouvelle aventure !', 'Un nouveau quiz vient d\'arriver !'])
-                : pick(['Voici les nouvelles aventures...', 'Du nouveau dans mon sac !', 'Regarde ce que j\'ai déniché !']));
-            fresh.forEach((title, i) => {
-                const short = title.length > 34 ? `${title.slice(0, 31)}...` : title;
+            lines.push(fresh.length === 1 ? 'Le nouveau quiz est...' : 'Les nouveaux quiz sont...');
+            fresh.forEach((quiz, i) => {
+                const short = quiz.title.length > 34 ? `${quiz.title.slice(0, 31)}...` : quiz.title;
+                lineActions[lines.length] = () => this.revealChip(quiz);
                 lines.push(fresh.length > 1 && i === fresh.length - 1 ? `Et aussi : ${short}` : short);
             });
-            try { localStorage.setItem('announcedQuizzes', JSON.stringify([...new Set([...announced, ...fresh])])); } catch (e) { /* idem */ }
         }
 
         // NOTE Trophées à invoquer : annoncés à chaque chargement tant que le joueur a assez de fruits de connaissance
@@ -221,16 +267,18 @@ export class RoadmapManager {
         const show = () => {
             const el = document.getElementById('avatar-speech-text');
             // NOTE La carte a pu être re-rendue entre deux répliques : on abandonne l'intro
-            if (!el || el !== textEl) return;
+            if (!el || el !== textEl) { this.flushChips(); return; }
             el.style.transition = 'opacity 0.15s';
             el.style.opacity = '0';
             this.introTimer = setTimeout(() => {
                 el.textContent = lines[index];
                 this.fitSpeechBubble();
                 el.style.opacity = '1';
+                lineActions[index]?.();
                 index += 1;
                 // NOTE Durée proportionnelle à la longueur du texte
                 if (index < lines.length) this.introTimer = setTimeout(show, 1300 + lines[index - 1].length * 55);
+                else this.flushChips();
             }, index === 0 ? 0 : 150);
         };
 
@@ -299,7 +347,7 @@ export class RoadmapManager {
         return `
             <div class="fantasy-roadmap-card rounded-2xl overflow-hidden shadow-lg border border-amber-900/10 flex flex-col justify-between" style="background: linear-gradient(180deg, #fdf8f2 0%, #f4eadd 100%);">
                 <!-- Header Skeleton -->
-                <div class="px-3 py-2 sm:px-4 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
+                <div class="px-3 py-2 sm:px-4 border-b border-amber-900/10 grid grid-cols-[minmax(0,1fr)_auto] sm:grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-2 gap-y-1.5 sm:gap-x-3 bg-white/40 backdrop-blur-sm">
                     <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
                         <!-- Avatar box skeleton -->
                         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl skeleton-shimmer flex-shrink-0"></div>
@@ -430,46 +478,52 @@ export class RoadmapManager {
 
         container.innerHTML = `
             <div class="fantasy-roadmap-card rounded-2xl overflow-hidden shadow-lg border border-amber-900/10 flex flex-col justify-between" style="background: linear-gradient(180deg, #fdf8f2 0%, #f4eadd 100%);">
-                <!-- Header Profil & Rang -->
-                <div class="px-3 py-2 sm:px-4 border-b border-amber-900/10 flex items-center justify-between gap-2 sm:gap-3 bg-white/40 backdrop-blur-sm">
-                    <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                        <!-- Avatar interactif (Portrait Tête) -->
-                        <div class="relative group flex-shrink-0 cursor-pointer" id="roadmap-avatar-toggle" title="Cliquer pour personnaliser ton avatar">
-                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl ring-2 ring-primary-500 shadow-md bg-amber-100/90 overflow-hidden flex items-center justify-center transition-transform transform group-hover:scale-105 p-0.5">
-                                ${avatarData.headSvg || avatarData.svg}
-                            </div>
-                            <span class="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent-500 text-white flex items-center justify-center text-[8px] sm:text-[9px] shadow" title="Personnaliser">
-                                <i class="bi bi-pencil-fill"></i>
-                            </span>
-                        </div>
-
-                        <div class="min-w-0">
-                            <div class="flex items-center gap-1.5 sm:gap-2">
-                                <h3 class="font-bold text-sm sm:text-base leading-tight text-amber-950 truncate">${playerManager.playerName || 'Joueur'}</h3>
-                                <span class="text-[10px] sm:text-xs font-semibold px-1.5 sm:px-2 py-0.5 rounded-full ${rankInfo.badgeClass} whitespace-nowrap">
-                                    Niv. ${rankInfo.rank}
+                <!-- Header en 2 colonnes : profil + points à gauche, quiz récents à droite -->
+                <div class="px-3 py-2 sm:px-4 border-b border-amber-900/10 flex items-center gap-2.5 sm:gap-4 bg-white/40 backdrop-blur-sm">
+                    <!-- Colonne gauche : avatar, nom, rang puis points et fruits dessous -->
+                    <div class="flex-1 min-w-0 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                            <!-- Avatar interactif (Portrait Tête) -->
+                            <div class="relative group flex-shrink-0 cursor-pointer" id="roadmap-avatar-toggle" title="Cliquer pour personnaliser ton avatar">
+                                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl ring-2 ring-primary-500 shadow-md bg-amber-100/90 overflow-hidden flex items-center justify-center transition-transform transform group-hover:scale-105 p-0.5">
+                                    ${avatarData.headSvg || avatarData.svg}
+                                </div>
+                                <span class="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent-500 text-white flex items-center justify-center text-[8px] sm:text-[9px] shadow" title="Personnaliser">
+                                    <i class="bi bi-pencil-fill"></i>
                                 </span>
                             </div>
-                            <p class="text-[11px] sm:text-xs font-medium text-amber-800/80 truncate">${rankInfo.title}</p>
+
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-1.5 sm:gap-2">
+                                    <h3 class="font-bold text-sm sm:text-base leading-tight text-amber-950 truncate">${playerManager.playerName || 'Joueur'}</h3>
+                                    <span class="text-[10px] sm:text-xs font-semibold px-1.5 sm:px-2 py-0.5 rounded-full ${rankInfo.badgeClass} whitespace-nowrap">
+                                        Niv. ${rankInfo.rank}
+                                    </span>
+                                </div>
+                                <p class="text-[11px] sm:text-xs font-medium text-amber-800/80 truncate">${rankInfo.title}</p>
+                            </div>
+                        </div>
+
+                        <!-- Points et fruits sous l'avatar -->
+                        <div class="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+                            <div id="roadmap-score-badge" class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-500/15 border border-accent-500/30 text-amber-900 font-bold text-xs">
+                                ${pointsIcon('text-xs')}
+                                <span class="text-xs font-extrabold">${totalPoints}</span>
+                                <span class="text-[10px] font-semibold text-amber-800">pts</span>
+                            </div>
+                            <div id="roadmap-gem-badge" class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-500/15 border border-accent-500/30 text-amber-900 font-bold text-xs" title="Fruits de connaissance à dépenser en invocations, sans effet sur ta position">
+                                ${gemIcon('text-xs')}
+                                <span class="text-xs font-extrabold">${gems}</span>
+                                <span class="text-[10px] font-semibold text-amber-800">fruit${gems > 1 ? 's' : ''}</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Badge Score & Lien de Modification Avatar -->
-                    <div class="flex flex-col items-end gap-1 flex-shrink-0">
-                        <div id="roadmap-score-badge" class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-accent-500/15 border border-accent-500/30 text-amber-900 font-bold text-xs">
-                            ${pointsIcon('text-xs')}
-                            <span class="text-xs sm:text-sm font-extrabold">${totalPoints}</span>
-                            <span class="text-[10px] sm:text-[11px] font-semibold text-amber-800">pts</span>
+                    <!-- Colonne droite : quiz récents annoncés par l'avatar (une puce cliquable apparaît à chaque annonce) -->
+                    <div id="roadmap-new-quiz-row" class="${this.newQuizzes.some(q => !this.pendingChips.has(q.title)) ? '' : 'hidden'} w-[46%] sm:w-[42%] flex-shrink-0 min-w-0 border-l border-amber-900/10 pl-2.5 sm:pl-4" aria-label="Nouveaux quiz">
+                        <div id="roadmap-new-quiz-chips" class="flex flex-col items-start gap-1">
+                            ${this.newQuizzes.filter(q => !this.pendingChips.has(q.title)).map(q => this.newQuizChipHTML(q)).join('')}
                         </div>
-                        <div id="roadmap-gem-badge" class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-accent-500/15 border border-accent-500/30 text-amber-900 font-bold text-xs" title="Fruits de connaissance à dépenser en invocations, sans effet sur ta position">
-                            ${gemIcon('text-xs')}
-                            <span class="text-xs sm:text-sm font-extrabold">${gems}</span>
-                            <span class="text-[10px] sm:text-[11px] font-semibold text-amber-800">fruit${gems > 1 ? 's' : ''}</span>
-                        </div>
-                        <button id="open-avatar-customizer-btn" class="text-[11px] sm:text-xs font-semibold text-primary-700 hover:text-primary-900 hover:underline flex items-center gap-1 transition whitespace-nowrap cursor-pointer" title="Personnaliser ton avatar">
-                            <i class="bi bi-palette-fill text-accent-600"></i>
-                            <span>Modifier mon avatar</span>
-                        </button>
                     </div>
                 </div>
 
@@ -1876,6 +1930,14 @@ export class RoadmapManager {
             if (!m) return;
             node.classList.add('cursor-pointer');
             node.addEventListener('click', () => this.showMilestoneInfo(m, totalPoints >= m.points, totalPoints, 'modal-'));
+        });
+        modal.querySelectorAll('[data-new-quiz-chip]').forEach((chip) => {
+            chip.classList.add('cursor-pointer');
+            chip.addEventListener('click', () => {
+                const quiz = this.newQuizzes.find((q) => q.id === chip.dataset.newQuizChip);
+                close({ instant: true });
+                if (quiz && typeof this.onPlayNewQuiz === 'function') this.onPlayNewQuiz(quiz);
+            });
         });
         modal.querySelector('#modal-close-popover-btn')?.addEventListener('click', () => {
             modal.querySelector('#modal-roadmap-milestone-popover')?.classList.add('hidden');
