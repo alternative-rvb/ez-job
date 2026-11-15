@@ -30,6 +30,7 @@
     "le-petrole-et-energie",
     "les-genres-litteraires",
     "multiples-3-et-9",
+    "nombres-decimaux-6eme",
     "orthographe-accords",
     "orthographe-doublement-consonnes",
     "orthographe-erreurs-courantes",
@@ -74,7 +75,7 @@
     "Physique",
     "Sciences"
   ],
-  "count": 55,
-  "lastUpdated": "2026-11-15T16:01:03.195952",
+  "count": 56,
+  "lastUpdated": "2026-11-15T16:11:53.316353",
   "generated_by": "api.py"
 }

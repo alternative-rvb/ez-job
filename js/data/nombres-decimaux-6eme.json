@@ -1,0 +1,233 @@
+{
+  "config": {
+    "title": "Les nombres décimaux",
+    "description": "Lis, compare et range des nombres décimaux sans te tromper",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 2,
+    "questionCount": 20,
+    "category": "CM2",
+    "createdAt": "2026-11-15",
+    "tag": [
+      "Mathématiques",
+      "Nombres",
+      "Décimaux",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Mathématiques"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quel est le plus grand de ces nombres ?",
+      "choices": [
+        "4,05",
+        "4,005",
+        "4,5",
+        "0,45"
+      ],
+      "correctAnswer": "4,5"
+    },
+    {
+      "id": 2,
+      "question": "Dans 3,47, quel est le chiffre des centièmes ?",
+      "choices": [
+        "47",
+        "3",
+        "7",
+        "4"
+      ],
+      "correctAnswer": "7"
+    },
+    {
+      "id": 3,
+      "question": "Quelle est l'écriture décimale de la fraction 7/10 ?",
+      "choices": [
+        "0,07",
+        "70",
+        "7,10",
+        "0,7"
+      ],
+      "correctAnswer": "0,7"
+    },
+    {
+      "id": 4,
+      "question": "Quel nombre est compris entre 2,4 et 2,5 ?",
+      "choices": [
+        "2,6",
+        "2,45",
+        "2,35",
+        "2,55"
+      ],
+      "correctAnswer": "2,45"
+    },
+    {
+      "id": 5,
+      "question": "Quel nombre vient juste avant 5,3 quand on compte de 0,1 en 0,1 ?",
+      "acceptedAnswers": [
+        "5,2",
+        "5.2"
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Quel signe faut-il mettre : 7,8 … 7,08 ?",
+      "choices": [
+        "On ne peut pas savoir",
+        "<",
+        ">",
+        "="
+      ],
+      "correctAnswer": ">"
+    },
+    {
+      "id": 7,
+      "question": "Quel est le plus petit de ces nombres ?",
+      "choices": [
+        "2,30",
+        "2,3",
+        "2,13",
+        "2,03"
+      ],
+      "correctAnswer": "2,03"
+    },
+    {
+      "id": 8,
+      "question": "Quel est l'arrondi à l'unité de 6,7 ?",
+      "choices": [
+        "8",
+        "6,5",
+        "7",
+        "6"
+      ],
+      "correctAnswer": "7"
+    },
+    {
+      "id": 9,
+      "question": "Comment écrit-on 3 unités et 5 centièmes ?",
+      "choices": [
+        "3,05",
+        "3,5",
+        "35,0",
+        "3,50"
+      ],
+      "correctAnswer": "3,05"
+    },
+    {
+      "id": 10,
+      "question": "Entre quels deux entiers qui se suivent se trouve 4,3 ?",
+      "choices": [
+        "4 < 4,3 < 5",
+        "5 < 4,3 < 6",
+        "3 < 4,3 < 4",
+        "4 < 4,3 < 6"
+      ],
+      "correctAnswer": "4 < 4,3 < 5"
+    },
+    {
+      "id": 11,
+      "question": "Quelle est la partie entière de 8,36 ?",
+      "choices": [
+        "36",
+        "3",
+        "8",
+        "0"
+      ],
+      "correctAnswer": "8"
+    },
+    {
+      "id": 12,
+      "question": "Quel est le résultat de 2,5 + 1,25 ?",
+      "choices": [
+        "3,30",
+        "3,85",
+        "3,75",
+        "3,65"
+      ],
+      "correctAnswer": "3,75"
+    },
+    {
+      "id": 13,
+      "question": "Quelle est l'écriture décimale de 4 + 3/10 ?",
+      "choices": [
+        "4,03",
+        "43",
+        "7,10",
+        "4,3"
+      ],
+      "correctAnswer": "4,3"
+    },
+    {
+      "id": 14,
+      "question": "Range ces nombres du plus petit au plus grand : 0,6 ; 0,06 ; 6 ; 0,66",
+      "choices": [
+        "0,06 ; 0,66 ; 0,6 ; 6",
+        "0,6 ; 0,06 ; 0,66 ; 6",
+        "0,06 ; 0,6 ; 0,66 ; 6",
+        "6 ; 0,66 ; 0,6 ; 0,06"
+      ],
+      "correctAnswer": "0,06 ; 0,6 ; 0,66 ; 6"
+    },
+    {
+      "id": 15,
+      "question": "Écris en chiffres : douze unités et huit dixièmes.",
+      "acceptedAnswers": [
+        "12,8",
+        "12.8"
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Dans 12,5, quel est le chiffre des dixièmes ?",
+      "choices": [
+        "5",
+        "1",
+        "12",
+        "2"
+      ],
+      "correctAnswer": "5"
+    },
+    {
+      "id": 17,
+      "question": "Combien font 10 - 0,5 ?",
+      "acceptedAnswers": [
+        "9,5",
+        "9.5"
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Quelle est l'écriture décimale de la fraction 25/100 ?",
+      "choices": [
+        "0,025",
+        "0,25",
+        "2,5",
+        "25,100"
+      ],
+      "correctAnswer": "0,25"
+    },
+    {
+      "id": 19,
+      "question": "Quelle écriture est égale à 3,40 ?",
+      "choices": [
+        "3,4",
+        "34",
+        "0,34",
+        "3,04"
+      ],
+      "correctAnswer": "3,4"
+    },
+    {
+      "id": 20,
+      "question": "Combien de dixièmes y a-t-il dans 1 unité ?",
+      "choices": [
+        "1",
+        "100",
+        "1 000",
+        "10"
+      ],
+      "correctAnswer": "10"
+    }
+  ]
+}
