@@ -37,7 +37,7 @@
 | **3** | `40 pts` | `42%` | Porte des Brumes |
 | **4** | `60 pts` | `62%` | Col du Dragon |
 | **5** | `80 pts` | `88%` | Crête des Étoiles |
-| **6** | `100 pts` | `98%` | Citadelle Céleste (*Château*) |
+| **6** | `100 pts` | `98%` | Arbre d'Invocation |
 
 ---
 

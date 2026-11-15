@@ -11,6 +11,7 @@ import { loadQuizData } from '../core/utils.js';
 import { CONFIG } from '../core/config.js';
 import { getSubjectStyle } from './quiz-selector.js';
 import { getSubjectIcon } from '../core/subject-icons.js';
+import { pointsIcon, gemIcon } from '../ui/currency-icons.js';
 
 export class HistoryManager {
     constructor(onBack) {
@@ -195,7 +196,7 @@ export class HistoryManager {
                         <div class="flex gap-2 items-center">
                             ${result.pointsEarned !== undefined ? `
                                 <span class="px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap" style="background:#fff8e0;color:#853e04;border:1px solid #fde68a">
-                                    <i class="bi bi-star-fill mr-1 text-accent-500"></i>+${result.pointsEarned} pt${result.pointsEarned > 1 ? 's' : ''}
+                                    ${pointsIcon('mr-1')}+${result.pointsEarned} pt${result.pointsEarned > 1 ? 's' : ''}
                                 </span>
                             ` : ''}
                             <button class="btn-share-history btn-base btn-secondary text-xs py-1 px-2.5 rounded-lg flex items-center gap-1.5 hover:border-amber-500" data-idx="${idx}" title="Partager ce résultat">

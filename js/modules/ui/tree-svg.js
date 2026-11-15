@@ -10,17 +10,20 @@ const RARITY_GLOW = {
     'légendaire': 'rgb(250,204,21)'
 };
 
-export function renderTreeSvg() {
+// NOTE svgAttrs remplace les attributs de l'<svg> (la carte l'imbrique avec x/y/width/height) ; withFallingFruit=false évite l'id dupliqué hors de la page d'invocation
+export function renderTreeSvg({ svgAttrs = 'class="w-full h-full"', withFallingFruit = true, groundShadow = true, halo = true } = {}) {
     const fruits = [
         [36, 50, 'rare'], [64, 44, 'épique'], [50, 26, 'légendaire'], [26, 38, 'rare'], [74, 58, 'rare'], [46, 62, 'épique']
     ];
     return `
-        <svg viewBox="0 0 100 110" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg viewBox="0 0 100 110" ${svgAttrs} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <!-- Halo magique -->
+            ${halo ? `
             <circle cx="50" cy="44" r="44" fill="#66bcb4" opacity="0.10"/>
             <circle cx="50" cy="44" r="36" fill="#66bcb4" opacity="0.10"/>
+            ` : ''}
             <!-- Ombre au sol et racines en plume (épaisses au pied du tronc, effilées au bout), couleur du tronc -->
-            <ellipse cx="50" cy="104" rx="34" ry="4.5" fill="#7c4004" opacity="0.16"/>
+            ${groundShadow ? '<ellipse cx="50" cy="104" rx="34" ry="4.5" fill="#7c4004" opacity="0.16"/>' : ''}
             <path d="M 43.48,95.28 L 41.33,96.09 L 39.12,96.9 L 37.2,97.62 L 34.9,98.44 L 32.9,99.16 L 30.52,99.99 L 28.44,100.72 L 26.32,101.47 L 24.18,102.22 L 22,103 L 22,103 L 24.29,102.66 L 26.54,102.28 L 28.75,101.9 L 30.92,101.51 L 33.41,101.02 L 35.51,100.63 L 37.91,100.13 L 39.94,99.73 L 42.25,99.23 L 44.52,98.72 Q 46.41,96.28 43.48,95.28 Z M 44.1,97.92 L 42.89,99.06 L 41.81,100.02 L 40.5,101.08 L 39.33,101.98 L 37.91,102.97 L 36.66,103.81 L 35.37,104.62 L 33.8,105.5 L 32.42,106.26 L 31,107 L 31,107 L 32.55,106.58 L 34.06,106.11 L 35.78,105.47 L 37.23,104.89 L 38.65,104.28 L 40.26,103.49 L 41.61,102.78 L 43.15,101.88 L 44.44,101.08 L 45.9,100.08 Q 46.51,97.75 44.1,97.92 Z M 48.82,98.76 L 48.74,99.69 L 48.64,100.6 L 48.52,101.51 L 48.34,102.53 L 48.19,103.41 L 48.01,104.27 L 47.77,105.25 L 47.51,106.22 L 47.29,107.05 L 47,108 L 47,108 L 47.56,107.18 L 48.03,106.44 L 48.53,105.55 L 49,104.62 L 49.41,103.81 L 49.79,102.97 L 50.2,101.96 L 50.54,101.08 L 50.87,100.17 L 51.18,99.24 Q 50.33,97.35 48.82,98.76 Z M 55.48,98.72 L 57.75,99.23 L 60.06,99.73 L 62.09,100.13 L 64.49,100.63 L 66.59,101.02 L 69.08,101.51 L 71.25,101.9 L 73.46,102.28 L 75.71,102.66 L 78,103 L 78,103 L 75.82,102.22 L 73.68,101.47 L 71.56,100.72 L 69.48,99.99 L 67.1,99.16 L 65.1,98.44 L 62.8,97.62 L 60.88,96.9 L 58.67,96.09 L 56.52,95.28 Q 53.59,96.28 55.48,98.72 Z M 54.1,100.08 L 55.58,101.09 L 57.12,102.04 L 58.72,102.93 L 60.16,103.63 L 61.88,104.41 L 63.41,105.02 L 64.99,105.59 L 66.61,106.11 L 68.28,106.59 L 70,107 L 70,107 L 68.4,106.25 L 66.85,105.5 L 65.36,104.72 L 63.94,103.91 L 62.57,103.08 L 61.04,102.1 L 59.8,101.2 L 58.42,100.15 L 57.12,99.05 L 55.9,97.92 Q 53.49,97.75 54.1,100.08 Z" fill="#8a4b14"/>
             <!-- Tronc évasé au pied, légèrement torsadé, côté droit dans l'ombre -->
             <path d="M 41,100 C 45,96 46,90 45,82 C 44,76 46,72 48,68 L 52,68 C 54,72 56,76 55,82 C 54,90 55,96 59,100 Z" fill="#8a4b14"/>
@@ -83,11 +86,13 @@ export function renderTreeSvg() {
         <!-- Étincelles -->
         <path class="summon-tree-sparkle" d="M 14,19.4 Q 14,22 16.6,22 Q 14,22 14,24.6 Q 14,22 11.4,22 Q 14,22 14,19.4 Z M 82,72.2 Q 82,74 83.8,74 Q 82,74 82,75.8 Q 82,74 80.2,74 Q 82,74 82,72.2 Z" fill="#facc15"/>
         <path class="summon-tree-sparkle" style="animation-delay:1.1s" d="M 86,25.8 Q 86,28 88.2,28 Q 86,28 86,30.2 Q 86,28 83.8,28 Q 86,28 86,25.8 Z M 18,74 Q 18,76 20,76 Q 18,76 18,78 Q 18,76 16,76 Q 18,76 18,74 Z" fill="#facc15"/>
+        ${withFallingFruit ? `
         <!-- Fruit qui tombe pendant l'invocation (couleur posée au tirage) -->
         <g id="summon-falling-fruit" class="summon-falling-fruit" opacity="0">
             <circle cx="50" cy="40" r="7" fill="currentColor" opacity="0.35"/>
             <circle cx="50" cy="40" r="4.5" fill="currentColor" stroke="#ffffff" stroke-width="0.8"/>
         </g>
+        ` : ''}
     </svg>
     `;
 }

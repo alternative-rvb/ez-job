@@ -1,10 +1,12 @@
 /**
- * Module de gestion de la Roadmap Fantasy ("La Quête du Château")
+ * Module de gestion de la Roadmap Fantasy ("La Quête de l'Arbre")
  * Affiche la progression du joueur sur une carte médiévale / féerique
  * Intègre le déplacement animé de l'avatar et la bulle de dialogue dynamique (compatible IA Groq).
  */
 
 import { rewardsManager, SUMMON_COST } from '../managers/rewards-manager.js';
+import { pointsIcon, gemIcon } from './currency-icons.js';
+import { renderTreeSvg } from './tree-svg.js';
 import { playerManager } from '../core/player.js';
 import { AVATARS, renderAvatarSvg, renderAvatarHeadSvg } from './avatars.js';
 import { avatarCustomizerModal } from './avatar-modal.js';
@@ -72,7 +74,7 @@ export class RoadmapManager {
                 title: 'Le Cercle des Pierres',
                 points: 50,
                 desc: 'Des monolithes couverts de runes marquent la mi-parcours.',
-                icon: 'bi-gem',
+                icon: 'bi-pin-map-fill',
                 reward: 'Amulette Runique',
                 pathPercent: 0.5
             },
@@ -98,7 +100,7 @@ export class RoadmapManager {
                 id: 'ridge',
                 title: 'La Crête des Aigles',
                 points: 80,
-                desc: 'L\'air se fait rare, la Citadelle est à portée de vue !',
+                desc: 'L\'air se fait rare, l\'Arbre d\'Invocation est à portée de vue !',
                 icon: 'bi-compass-fill',
                 reward: 'Bague de Cristal Étoilée',
                 pathPercent: 0.886
@@ -114,9 +116,9 @@ export class RoadmapManager {
             },
             {
                 id: 'castle',
-                title: 'La Citadelle Céleste',
+                title: 'L\'Arbre d\'Invocation',
                 points: 100,
-                desc: 'Le sanctuaire des Grands Maîtres du Savoir !',
+                desc: 'L\'arbre aux fruits de connaissance : invoque tes trophées !',
                 icon: 'bi-trophy-fill',
                 reward: 'Couronne Royale du Savoir',
                 pathPercent: 0.981
@@ -203,12 +205,12 @@ export class RoadmapManager {
             try { localStorage.setItem('announcedQuizzes', JSON.stringify([...new Set([...announced, ...fresh])])); } catch (e) { /* idem */ }
         }
 
-        // NOTE Trophées à invoquer : annoncés à chaque chargement tant que le joueur a assez de gemmes
+        // NOTE Trophées à invoquer : annoncés à chaque chargement tant que le joueur a assez de fruits de connaissance
         if (rewardsManager.canSummon()) {
             const pulls = Math.floor(rewardsManager.getTotalPoints() / SUMMON_COST);
             lines.push(pulls > 1
                 ? pick([`Tu peux invoquer ${pulls} trophées !`, `${pulls} invocations de trophées t'attendent !`])
-                : pick(['Un trophée est à invoquer !', 'Tu as assez de gemmes pour un trophée !']));
+                : pick(['Un trophée est à invoquer !', 'Tu as assez de fruits de connaissance pour un trophée !']));
         }
         lines.push(finalLine);
 
@@ -326,11 +328,11 @@ export class RoadmapManager {
                             <circle cx="62" cy="10" r="15" fill="#cdb79b" opacity="0.7"/>
                             <ellipse cx="140" cy="24" rx="24" ry="9" fill="#ffffff" opacity="0.6"/>
                             <ellipse cx="318" cy="-6" rx="28" ry="9" fill="#ffffff" opacity="0.5"/>
-                            <!-- Montagnes lointaines et montagne de la Citadelle -->
+                            <!-- Montagnes lointaines et montagne du sommet -->
                             <path d="M 120 180 L 196 94 Q 200 89 204 94 L 280 180 Z" fill="#d5c2ae" opacity="0.5"/>
                             <path d="M 220 180 L 316 69.6 Q 320 64 324 69.6 L 420 180 Z" fill="#cdb9a3" opacity="0.6"/>
-                            <path d="M 250 260 L 409 71 Q 413 65 420 64 L 460 64 Q 466 65 469 72 L 550 260 Z" fill="#bfa78d" opacity="0.7"/>
-                            <path d="M 448 64 L 460 64 Q 466 65 469 72 L 550 260 L 478 260 L 470 220 L 474 180 L 463 140 L 466 104 L 455 80 Z" fill="#ab9179" opacity="0.5"/>
+                            <path d="M 250 260 L 409 71 Q 440 54 469 72 L 550 260 Z" fill="#bfa78d" opacity="0.7"/>
+                            <path d="M 448 62.9 Q 460 62 469 72 L 550 260 L 478 260 L 470 220 L 474 180 L 463 140 L 466 104 L 455 80 Z" fill="#ab9179" opacity="0.5"/>
                             <!-- Collines étagées -->
                             <path d="M -40 175 Q 120 135 250 170 T 580 155 L 580 320 L -40 320 Z" fill="#dfcfbd" opacity="0.5"/>
                             <path d="M -40 205 Q 150 155 310 195 T 580 185 L 580 320 L -40 320 Z" fill="#d5c2ae" opacity="0.55"/>
@@ -354,13 +356,11 @@ export class RoadmapManager {
                             <rect x="283" y="163" width="5.5" height="22" rx="1" fill="#a98c6e" opacity="0.75"/>
                             <rect x="301.5" y="163" width="5.5" height="22" rx="1" fill="#a98c6e" opacity="0.75"/>
                             <rect x="281" y="159" width="28" height="6.5" rx="2" fill="#bc9f82" opacity="0.8"/>
-                            <!-- Citadelle au sommet -->
-                            <rect x="418" y="14" width="14" height="38" rx="1" fill="#bc9f82" opacity="0.75"/>
-                            <rect x="448" y="14" width="14" height="38" rx="1" fill="#bc9f82" opacity="0.75"/>
-                            <rect x="426" y="26" width="28" height="26" rx="1" fill="#bc9f82" opacity="0.8"/>
-                            <polygon points="415,16 425,-6 435,16" fill="#a98c6e" opacity="0.85"/>
-                            <polygon points="445,16 455,-6 465,16" fill="#a98c6e" opacity="0.85"/>
-                            <polygon points="428,28 440,6 452,28" fill="#a98c6e" opacity="0.85"/>
+                            <!-- Arbre d'invocation au sommet -->
+                            <rect x="436" y="40" width="8" height="24" rx="2" fill="#a98c6e" opacity="0.8"/>
+                            <circle cx="440" cy="30" r="20" fill="#bc9f82" opacity="0.75"/>
+                            <circle cx="425" cy="38" r="11" fill="#bc9f82" opacity="0.75"/>
+                            <circle cx="455" cy="38" r="11" fill="#bc9f82" opacity="0.75"/>
                             <!-- Sentier en lacets fantôme -->
                             <path d="M 45 222 C 80 222, 100 205, 130 205 C 160 205, 180 206, 210 205 C 240 202, 265 188, 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64"
                                   fill="none" stroke="#bc9f82" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 8" opacity="0.7"/>
@@ -457,14 +457,14 @@ export class RoadmapManager {
                     <!-- Badge Score & Lien de Modification Avatar -->
                     <div class="flex flex-col items-end gap-1 flex-shrink-0">
                         <div id="roadmap-score-badge" class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-accent-500/15 border border-accent-500/30 text-amber-900 font-bold text-xs">
-                            <i class="bi bi-star-fill text-accent-500 text-xs"></i>
+                            ${pointsIcon('text-xs')}
                             <span class="text-xs sm:text-sm font-extrabold">${totalPoints}</span>
                             <span class="text-[10px] sm:text-[11px] font-semibold text-amber-800">pts</span>
                         </div>
-                        <div id="roadmap-gem-badge" class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-500/10 border border-primary-500/25 text-primary-800 font-bold text-[11px]" title="Gemmes à dépenser en invocations, sans effet sur ta position">
-                            <i class="bi bi-gem text-primary-600 text-[11px]"></i>
-                            <span>${gems}</span>
-                            <span class="text-[10px] font-semibold">gemmes</span>
+                        <div id="roadmap-gem-badge" class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-accent-500/15 border border-accent-500/30 text-amber-900 font-bold text-xs" title="Fruits de connaissance à dépenser en invocations, sans effet sur ta position">
+                            ${gemIcon('text-xs')}
+                            <span class="text-xs sm:text-sm font-extrabold">${gems}</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold text-amber-800">fruit${gems > 1 ? 's' : ''}</span>
                         </div>
                         <button id="open-avatar-customizer-btn" class="text-[11px] sm:text-xs font-semibold text-primary-700 hover:text-primary-900 hover:underline flex items-center gap-1 transition whitespace-nowrap cursor-pointer" title="Personnaliser ton avatar">
                             <i class="bi bi-palette-fill text-accent-600"></i>
@@ -486,7 +486,7 @@ export class RoadmapManager {
                                 <!-- NOTE: silhouettes des montagnes, pour couper les bandes vertes du pied -->
                                 <clipPath id="mountain-clip-1"><path d="M 120 180 L 196 94 Q 200 89 204 94 L 280 180 Z"/></clipPath>
                                 <clipPath id="mountain-clip-2"><path d="M 220 180 L 316 69.6 Q 320 64 324 69.6 L 420 180 Z"/></clipPath>
-                                <clipPath id="mountain-clip-3"><path d="M 250 260 L 409 71 Q 413 65 420 64 L 460 64 Q 466 65 469 72 L 550 260 Z"/></clipPath>
+                                <clipPath id="mountain-clip-3"><path d="M 250 260 L 409 71 Q 440 54 469 72 L 550 260 Z"/></clipPath>
                                 <clipPath id="mountain-clip-4"><path d="M 430 210 L 592 24 Q 600 16 608 24 L 770 210 Z"/></clipPath>
                                  <!-- Ruban du sentier -->
                                  <path id="roadmap-trail-ribbon" d="M 38.13,267.5 L 40.77,267.49 L 43.68,267.56 L 46.09,267.62 L 49.27,267.69 L 52.09,267.72 L 55.02,267.72 L 58.01,267.66 L 60.41,267.56 L 63.39,267.35 L 66.3,267.04 L 69.66,266.51 L 72.29,265.89 L 75.37,264.97 L 77.89,264.07 L 80.86,262.86 L 83.3,261.77 L 86.19,260.4 L 88.56,259.22 L 91.36,257.79 L 93.67,256.61 L 95.94,255.47 L 98.63,254.16 L 101.28,252.95 L 103.51,251.96 L 106.08,250.82 L 108.98,249.53 L 111.42,248.44 L 113.85,247.35 L 116.71,246.09 L 119.24,244.99 L 121.88,243.86 L 124.17,242.89 L 126.59,241.89 L 129.14,240.85 L 131.81,239.79 L 134.61,238.7 L 136.93,237.82 L 139.9,236.69 L 142.35,235.78 L 144.84,234.85 L 148.01,233.68 L 150.59,232.72 L 153.19,231.75 L 155.82,230.77 L 158.46,229.78 L 161.11,228.77 L 163.76,227.76 L 166.41,226.72 L 169.05,225.68 L 171.72,224.6 L 174.39,223.49 L 176.41,222.63 L 179.11,221.46 L 181.83,220.28 L 184.55,219.08 L 187.29,217.87 L 189.35,216.96 L 192.1,215.76 L 194.86,214.56 L 197.62,213.39 L 199.7,212.52 L 202.47,211.39 L 205.24,210.3 L 207.31,209.5 L 210.08,208.49 L 212.84,207.53 L 215.63,206.6 L 218.45,205.71 L 220.58,205.05 L 223.45,204.2 L 226.32,203.37 L 228.49,202.76 L 231.38,201.98 L 234.29,201.21 L 237.19,200.47 L 239.36,199.92 L 242.25,199.21 L 245.13,198.51 L 248,197.83 L 250.85,197.16 L 252.96,196.67 L 255.77,196.02 L 258.54,195.38 L 261.25,194.76 L 263.92,194.16 L 267.18,193.43 L 269.75,192.87 L 272.3,192.32 L 275.45,191.66 L 277.97,191.14 L 280.48,190.64 L 283.64,190.03 L 286.2,189.56 L 288.78,189.09 L 291.41,188.64 L 294.76,188.09 L 297.5,187.65 L 300.32,187.22 L 302.46,186.92 L 305.35,186.54 L 308.29,186.19 L 311.27,185.87 L 313.53,185.64 L 316.58,185.35 L 319.66,185.07 L 322,184.87 L 325.14,184.59 L 327.51,184.39 L 330.7,184.11 L 333.11,183.89 L 336.34,183.58 L 338.77,183.34 L 342.04,183 L 344.5,182.72 L 347.79,182.32 L 350.26,181.99 L 352.76,181.65 L 356.19,181.19 L 358.82,180.82 L 361.51,180.45 L 364.23,180.07 L 366.98,179.68 L 369.74,179.28 L 372.52,178.87 L 375.3,178.45 L 378.06,178.02 L 380.82,177.58 L 383.54,177.13 L 386.23,176.68 L 388.88,176.21 L 392.32,175.58 L 394.83,175.09 L 397.27,174.59 L 400.39,173.92 L 403.34,173.22 L 406.11,172.51 L 408.83,171.79 L 411.58,171.04 L 414.33,170.28 L 417.04,169.5 L 419.71,168.7 L 422.28,167.88 L 424.74,167.05 L 427.63,165.98 L 430.24,164.89 L 432.95,163.54 L 435.46,161.85 L 437.57,158.33 L 435.96,154.8 L 433.51,152.85 L 430.76,151.23 L 428.08,149.9 L 425.74,148.85 L 423.25,147.82 L 420.66,146.82 L 417.99,145.85 L 415.3,144.92 L 412.61,144.05 L 409.96,143.23 L 406.77,142.3 L 404.36,141.65 L 401.11,140.95 L 398.24,140.53 L 395.95,140.28 L 392.77,140.01 L 390.32,139.85 L 387,139.67 L 384.49,139.56 L 381.19,139.43 L 378.77,139.34 L 375.66,139.21 L 373.44,139.09 L 370.7,138.91 L 367.69,138.6 L 364.87,138.09 L 362.97,137.3 L 362.87,136.08 L 364.22,134.04 L 366.26,132.09 L 368.17,130.61 L 370.41,129.11 L 372.93,127.62 L 375.12,126.45 L 378.04,125.06 L 380.49,124.02 L 383.03,123.06 L 385.63,122.19 L 388.39,121.43 L 390.8,120.92 L 393.48,120.46 L 396.39,120.04 L 399.48,119.66 L 401.64,119.41 L 404.99,119.08 L 407.28,118.86 L 410.77,118.56 L 413.13,118.37 L 415.5,118.17 L 419.05,117.9 L 421.4,117.7 L 424.88,117.42 L 427.15,117.22 L 430.46,116.92 L 432.59,116.7 L 435.64,116.36 L 438.5,115.98 L 441.12,115.57 L 444.21,114.96 L 446.77,114.25 L 449.53,112.94 L 451.75,110.69 L 452.47,107.66 L 451.76,104.86 L 450.12,102.13 L 448.41,100.17 L 446.05,98.05 L 443.8,96.44 L 441.44,95.06 L 438.35,93.82 L 436.06,93.31 L 432.72,92.84 L 430.5,92.64 L 427.36,92.42 L 424.9,92.3 L 421.53,92.18 L 418.98,92.1 L 416.45,92.03 L 413.14,91.93 L 410.75,91.84 L 407.74,91.69 L 404.99,91.48 L 402.06,91.1 L 399.45,90.46 L 397.81,88.96 L 398.83,86.38 L 400.4,84.6 L 402.51,82.7 L 405.02,80.74 L 407.29,79.11 L 409.64,77.5 L 411.98,75.97 L 414.22,74.54 L 416.67,73.02 L 419.09,71.54 L 421.23,70.42 L 423.92,69.23 L 426.69,68.16 L 429.08,67.33 L 431.79,66.47 L 434.68,65.61 L 437.2,64.88 L 440,64 L 440,64 L 437.19,64.83 L 434.66,65.52 L 431.76,66.34 L 429.03,67.17 L 426.63,67.97 L 423.82,69.01 L 421.12,70.17 L 418.93,71.27 L 416.49,72.72 L 414.02,74.22 L 411.76,75.62 L 409.39,77.13 L 407.01,78.71 L 404.71,80.32 L 402.16,82.28 L 399.99,84.18 L 398.33,86 L 397.17,89.05 L 399.2,91.1 L 401.93,91.81 L 404.92,92.22 L 407.68,92.47 L 410.71,92.66 L 413.1,92.77 L 416.42,92.91 L 418.95,93.01 L 421.5,93.12 L 424.85,93.27 L 427.3,93.42 L 430.41,93.66 L 432.6,93.9 L 435.86,94.39 L 438.05,94.9 L 440.9,96.08 L 443.15,97.43 L 445.29,99 L 447.52,101.04 L 449.1,102.89 L 450.57,105.38 L 451.14,107.71 L 450.57,110 L 448.77,111.77 L 446.32,112.9 L 443.89,113.54 L 440.88,114.11 L 438.29,114.48 L 435.47,114.82 L 432.43,115.13 L 430.31,115.32 L 427.01,115.59 L 424.75,115.76 L 421.27,116.02 L 418.92,116.18 L 415.37,116.43 L 413,116.59 L 410.63,116.76 L 407.12,117.03 L 404.82,117.22 L 401.45,117.53 L 399.27,117.74 L 396.14,118.1 L 393.18,118.5 L 390.44,118.95 L 387.94,119.45 L 385.03,120.21 L 382.34,121.08 L 379.71,122.05 L 377.17,123.09 L 374.14,124.5 L 371.86,125.68 L 369.22,127.21 L 366.86,128.76 L 364.79,130.32 L 362.49,132.49 L 360.67,135.25 L 361.34,139.03 L 364.26,140.42 L 367.36,141.01 L 370.49,141.36 L 373.29,141.58 L 375.52,141.72 L 378.65,141.89 L 381.08,142.01 L 384.37,142.17 L 386.86,142.3 L 390.15,142.5 L 392.57,142.69 L 395.67,142.98 L 397.89,143.25 L 400.63,143.68 L 403.64,144.35 L 406,145.02 L 409.13,145.96 L 411.72,146.79 L 414.36,147.68 L 417,148.61 L 419.6,149.59 L 422.13,150.59 L 424.53,151.62 L 426.78,152.65 L 429.3,153.93 L 431.78,155.43 L 433.72,156.99 L 434.42,158.11 L 433.42,159.41 L 431.39,160.74 L 428.92,161.93 L 426.45,162.94 L 423.67,163.93 L 421.27,164.72 L 418.74,165.49 L 416.11,166.26 L 413.42,167 L 410.69,167.73 L 407.95,168.45 L 405.24,169.14 L 402.52,169.81 L 399.63,170.46 L 396.56,171.1 L 394.15,171.57 L 391.67,172.02 L 388.25,172.62 L 385.62,173.06 L 382.95,173.48 L 380.24,173.9 L 377.5,174.31 L 374.74,174.71 L 371.98,175.1 L 369.21,175.48 L 366.45,175.86 L 363.7,176.22 L 360.99,176.57 L 358.31,176.92 L 355.67,177.25 L 352.24,177.69 L 349.74,178.01 L 347.3,178.3 L 344.04,178.67 L 341.61,178.92 L 338.38,179.24 L 335.96,179.45 L 332.75,179.73 L 330.35,179.92 L 327.16,180.17 L 324.79,180.35 L 321.64,180.6 L 319.3,180.78 L 316.2,181.03 L 313.12,181.3 L 310.83,181.5 L 307.81,181.8 L 304.82,182.13 L 301.87,182.49 L 299.68,182.78 L 296.83,183.18 L 294.05,183.59 L 290.66,184.13 L 288.01,184.56 L 285.39,185 L 282.8,185.46 L 279.6,186.05 L 277.06,186.53 L 274.51,187.02 L 271.33,187.66 L 268.76,188.19 L 266.17,188.73 L 262.88,189.44 L 260.2,190.02 L 257.46,190.62 L 254.69,191.23 L 251.87,191.85 L 249.74,192.32 L 246.88,192.97 L 243.99,193.63 L 241.08,194.3 L 238.16,195 L 235.96,195.53 L 233.02,196.25 L 230.08,197 L 227.14,197.77 L 224.93,198.36 L 222,199.18 L 219.09,200.02 L 216.91,200.66 L 214.02,201.55 L 211.16,202.47 L 208.3,203.44 L 205.44,204.46 L 203.31,205.25 L 200.47,206.35 L 197.64,207.47 L 195.52,208.33 L 192.71,209.5 L 189.92,210.67 L 187.14,211.86 L 185.06,212.75 L 182.31,213.93 L 179.59,215.11 L 176.88,216.26 L 174.19,217.39 L 172.2,218.22 L 169.56,219.29 L 166.95,220.32 L 164.32,221.33 L 161.69,222.32 L 159.05,223.31 L 156.41,224.28 L 153.77,225.25 L 151.15,226.2 L 148.55,227.14 L 145.96,228.07 L 142.78,229.22 L 140.27,230.13 L 137.81,231.03 L 134.8,232.13 L 132.45,233.01 L 129.6,234.08 L 126.86,235.15 L 124.27,236.17 L 121.81,237.17 L 119.47,238.13 L 116.79,239.24 L 114.22,240.34 L 111.32,241.59 L 108.87,242.65 L 106.42,243.72 L 103.51,244.99 L 100.95,246.1 L 98.72,247.05 L 95.9,248.32 L 93.08,249.66 L 90.75,250.81 L 88.42,251.97 L 85.64,253.36 L 83.32,254.48 L 80.56,255.77 L 78.27,256.76 L 75.55,257.84 L 73.29,258.63 L 70.6,259.41 L 68.38,259.9 L 65.47,260.35 L 62.84,260.6 L 60.08,260.77 L 57.82,260.84 L 54.98,260.87 L 52.16,260.85 L 49.42,260.79 L 46.3,260.7 L 43.9,260.61 L 40.92,260.51 L 37.87,260.5 Q 33.1,264.18 38.13,267.5 Z"/>
@@ -565,38 +565,38 @@ export class RoadmapManager {
                                 <!-- NOTE: les deux sommets de gauche, encore plus lointains, sont davantage estompés -->
                                 <g opacity="0.55">
                                     <path d="M -95 190 L -14 122 Q -10 117 -6 122 L 75 190 Z" fill="#d3e7f1"/>
-                                    <path d="M -10 118 Q -8 118 -6 122 L 75 190 L 5.3 190 L -1.5 168.4 L 3.6 146.8 L -4 132.4 Z" fill="#c6deeb"/>
+                                    <path d="M -10 119.5 Q -8 119.5 -6 122 L 75 190 L 5.3 190 L -1.5 168.4 L 3.6 146.8 L -4 132.4 Z" fill="#c6deeb"/>
                                     <path d="M -27 132.4 L -14 122 Q -10 117 -6 122 L 7 132.4 L 1.3 128.4 L -4.3 135.4 L -10 128.4 L -15.7 135.4 L -21.3 128.4 Z" fill="#edf6fa"/>
                                     <path d="M 15 190 L 91 108 Q 95 103 99 108 L 175 190 Z" fill="#d3e7f1"/>
-                                    <path d="M 95 104 Q 97 104 99 108 L 175 190 L 109.4 190 L 103 164.2 L 107.8 138.4 L 100.6 121.2 Z" fill="#c6deeb"/>
+                                    <path d="M 95 105.5 Q 97 105.5 99 108 L 175 190 L 109.4 190 L 103 164.2 L 107.8 138.4 L 100.6 121.2 Z" fill="#c6deeb"/>
                                     <path d="M 79 121.2 L 91 108 Q 95 103 99 108 L 111 121.2 L 105.7 117.2 L 100.3 124.2 L 95 117.2 L 89.7 124.2 L 84.3 117.2 Z" fill="#edf6fa"/>
                                 </g>
-                                <!-- Montagne estompée à droite de la Citadelle, derrière la montagne du château -->
+                                <!-- Montagne estompée à droite du sommet, derrière la montagne du château -->
                                 <g opacity="0.7">
                                     <path d="M 430 190 L 504 38 Q 508 32 512 38 L 586 190 Z" fill="#d3e7f1"/>
-                                    <path d="M 508 33 Q 510 33 512 38 L 586 190 L 528 190 L 520 140 L 524 100 L 516 66 Z" fill="#c6deeb"/>
+                                    <path d="M 508 35 Q 510 35 512 38 L 586 190 L 528 190 L 520 140 L 524 100 L 516 66 Z" fill="#c6deeb"/>
                                     <path d="M 489 69 L 504 38 Q 508 32 512 38 L 527 69 L 520 64 L 514 72 L 508 64 L 501 72 L 495 64 Z" fill="#edf6fa"/>
                                 </g>
-                                <!-- Montagne estompée derrière le château, entre la montagne centrale et celle de la Citadelle -->
+                                <!-- Montagne estompée derrière la montagne du sommet, entre la montagne centrale et celle du sommet -->
                                 <g opacity="0.7">
                                     <path d="M 305 190 L 372 62 Q 376 56 380 62 L 447 190 Z" fill="#d3e7f1"/>
-                                    <path d="M 376 57 Q 378 57 380 62 L 447 190 L 391 190 L 385.5 152 L 389.5 118 L 383 84 Z" fill="#c6deeb"/>
+                                    <path d="M 376 59 Q 378 59 380 62 L 447 190 L 391 190 L 385.5 152 L 389.5 118 L 383 84 Z" fill="#c6deeb"/>
                                     <path d="M 361 80 L 372 62 Q 376 56 380 62 L 391 80 L 386 76 L 381 83 L 376 76 L 371 83 L 366 76 Z" fill="#edf6fa"/>
                                 </g>
                                 <path d="M 190 190 L 261 100 Q 265 95 269 100 L 340 190 Z" fill="#d3e7f1"/>
-                                <path d="M 265 96 Q 267 96 269 100 L 340 190 L 278.5 190 L 272.5 161.8 L 277 133.6 L 270.2 114.8 Z" fill="#c6deeb"/>
+                                <path d="M 265 97.5 Q 267 97.5 269 100 L 340 190 L 278.5 190 L 272.5 161.8 L 277 133.6 L 270.2 114.8 Z" fill="#c6deeb"/>
                                 <path d="M 250 114.8 L 261 100 Q 265 95 269 100 L 280 114.8 L 275 110.8 L 270 117.8 L 265 110.8 L 260 117.8 L 255 110.8 Z" fill="#edf6fa"/>
                                 <path d="M 300 190 L 381 86 Q 385 81 389 86 L 470 190 Z" fill="#d3e7f1"/>
-                                <path d="M 385 82 Q 387 82 389 86 L 470 190 L 400.3 190 L 393.5 157.6 L 398.6 125.2 L 390.9 103.6 Z" fill="#c6deeb"/>
+                                <path d="M 385 83.5 Q 387 83.5 389 86 L 470 190 L 400.3 190 L 393.5 157.6 L 398.6 125.2 L 390.9 103.6 Z" fill="#c6deeb"/>
                                 <path d="M 368 103.6 L 381 86 Q 385 81 389 86 L 402 103.6 L 396.3 99.6 L 390.7 106.6 L 385 99.6 L 379.3 106.6 L 373.7 99.6 Z" fill="#edf6fa"/>
                             </g>
 
                             <!-- Chaîne de montagnes lointaines (Gris-bleu pastel avec névés nets) -->
-                            <!-- NOTE: même construction que la montagne de la Citadelle (sommet arrondi, arête ombrée, neige dentelée), en teintes plus claires pour la profondeur -->
+                            <!-- NOTE: même construction que la montagne du sommet (sommet arrondi, arête ombrée, neige dentelée), en teintes plus claires pour la profondeur -->
                             <path d="M 120 180 L 196 94 Q 200 89 204 94 L 280 180 Z" fill="#b3d0e4"/>
-                            <path d="M 200 90 Q 202 90 204 94 L 280 180 L 214 180 L 208 156 L 211 130 L 204 108 Z" fill="#9dbdd6"/>
+                            <path d="M 200 91.5 Q 202 91.5 204 94 L 280 180 L 214 180 L 208 156 L 211 130 L 204 108 Z" fill="#9dbdd6"/>
                             <path d="M 180.4 112 L 196 94 Q 200 89 204 94 L 219.6 112 L 214 108 L 209 116 L 204 108 L 198 115 L 192 107 L 186 113 Z" fill="#f7fbfd"/>
-                            <path d="M 200 90 Q 202 90 204 94 L 219.6 112 L 214 108 L 209 116 L 204 108 Z" fill="#dde9f2"/>
+                            <path d="M 200 91.5 Q 202 91.5 204 94 L 219.6 112 L 214 108 L 209 116 L 204 108 Z" fill="#dde9f2"/>
                             <!-- Pied verdoyant de la montagne : deux bandes vertes superposées -->
                             <g clip-path="url(#mountain-clip-1)">
                                 <path d="M 100 143 Q 125 138 150 143 T 175 143 T 200 143 T 225 143 T 250 143 T 275 143 T 300 143 L 300 200 L 100 200 Z" fill="#4a8757" opacity="0.75"/>
@@ -631,9 +631,9 @@ export class RoadmapManager {
                             </g>
 
                             <path d="M 220 180 L 316 69.6 Q 320 64 324 69.6 L 420 180 Z" fill="#9dbdd8"/>
-                            <path d="M 320 65 Q 322 65 324 69.6 L 420 180 L 340 180 L 332 150 L 336 118 L 327 92 Z" fill="#83a6c4"/>
+                            <path d="M 320 66.8 Q 322 66.8 324 69.6 L 420 180 L 340 180 L 332 150 L 336 118 L 327 92 Z" fill="#83a6c4"/>
                             <path d="M 293.9 95 L 316 69.6 Q 320 64 324 69.6 L 346.1 95 L 340 91 L 334 100 L 327 92 L 320 99 L 313 90 L 306 98 L 300 91 Z" fill="#ffffff" opacity="0.95"/>
-                            <path d="M 320 65 Q 322 65 324 69.6 L 346.1 95 L 340 91 L 334 100 L 327 92 Z" fill="#dbe7f0" opacity="0.95"/>
+                            <path d="M 320 66.8 Q 322 66.8 324 69.6 L 346.1 95 L 340 91 L 334 100 L 327 92 Z" fill="#dbe7f0" opacity="0.95"/>
                             <!-- Pied verdoyant de la montagne : deux bandes vertes superposées -->
                             <g clip-path="url(#mountain-clip-2)">
                                 <path d="M 200 144 Q 230 139 260 144 T 290 144 T 320 144 T 350 144 T 380 144 T 410 144 T 440 144 L 440 200 L 200 200 Z" fill="#4a8757" opacity="0.75"/>
@@ -676,25 +676,23 @@ export class RoadmapManager {
                                 <polygon points="261.0,160.4 262.3,163.2 261.0,163.2" fill="#448657"/>
                             </g>
                             
-                            <!-- Montagne majestueuse de la Citadelle (Pente naturelle continue sans rebord & névé sommital) -->
-                            <path d="M 250 260 L 409 71 Q 413 65 420 64 L 460 64 Q 466 65 469 72 L 550 260 Z" fill="#7599b5"/>
+                            <!-- Montagne majestueuse du sommet (Pente naturelle continue sans rebord & névé sommital) -->
+                            <path d="M 250 260 L 409 71 Q 440 54 469 72 L 550 260 Z" fill="#7599b5"/>
                             <!-- Face ombrée à droite de l'arête (ligne de crête en diagonale) -->
-                            <path d="M 448 64 L 460 64 Q 466 65 469 72 L 550 260 L 478 260 L 470 220 L 474 180 L 463 140 L 466 104 L 455 80 Z" fill="#5c829e"/>
+                            <path d="M 448 62.9 Q 460 62 469 72 L 550 260 L 478 260 L 470 220 L 474 180 L 463 140 L 466 104 L 455 80 Z" fill="#5c829e"/>
                             <!-- Reflet de lumière sur la face gauche -->
                             <path d="M 290 260 L 405 80 L 413 70 L 395 130 L 360 200 L 335 260 Z" fill="#88abc6" opacity="0.4"/>
 
                             <!-- Manteau de neige sommital (bords calés sur les pentes, lisière inférieure dentelée) -->
-                            <path d="M 374.6 112 L 409 71 Q 413 65 420 64 L 460 64 Q 466 65 469 72 L 486 110 L 478 104 L 470 117 L 462 103 L 453 113 L 443 101 L 433 115 L 423 102 L 413 112 L 402 100 L 393 109 L 384 101 Z" fill="#ffffff" opacity="0.95"/>
-                            <path d="M 448 64 L 460 64 Q 466 65 469 72 L 486 110 L 478 104 L 470 117 L 466 110 L 466 104 L 455 80 Z" fill="#dbe7f0" opacity="0.95"/>
+                            <path d="M 374.6 112 L 409 71 Q 440 54 469 72 L 486 110 L 478 104 L 470 117 L 462 103 L 453 113 L 443 101 L 433 115 L 423 102 L 413 112 L 402 100 L 393 109 L 384 101 Z" fill="#ffffff" opacity="0.95"/>
+                            <path d="M 448 62.9 Q 460 62 469 72 L 486 110 L 478 104 L 470 117 L 466 110 L 466 104 L 455 80 Z" fill="#dbe7f0" opacity="0.95"/>
 
-                            <!-- Terrasse enneigée sous le château -->
-                            <ellipse cx="440" cy="65" rx="27" ry="3.5" fill="#f4f8fb"/>
                             <!-- Pied verdoyant de la montagne : deux bandes vertes superposées -->
                             <g clip-path="url(#mountain-clip-3)">
                                 <path d="M 300 145 Q 332 140 365 145 T 398 145 T 430 145 T 462 145 T 495 145 T 528 145 T 560 145 L 560 200 L 300 200 Z" fill="#4a8757" opacity="0.75"/>
                                 <path d="M 310 158 Q 341 154 372 158 T 404 158 T 435 158 T 466 158 T 498 158 T 529 158 T 560 158 L 560 200 L 310 200 Z" fill="#2f6b45" opacity="0.85"/>
                             </g>
-                            <!-- Sapins sur la pente de la montagne de la Citadelle : uniquement dans le tiers inférieur -->
+                            <!-- Sapins sur la pente de la montagne du sommet : uniquement dans le tiers inférieur -->
                             <g id="decor-slope-firs-3">
                                 <rect x="400.6" y="136.0" width="0.6" height="1.2" fill="#6d4c41"/>
                                 <polygon points="399.0,136.2 400.9,131.9 400.9,136.2" fill="#4f9463"/>
@@ -741,10 +739,10 @@ export class RoadmapManager {
                             </g>
 
                             <!-- Dernière montagne : au premier plan, opaque et agrandie, seul son pied déborde à droite du cadre -->
-                            <!-- NOTE: sommet hors cadre (x=600), même construction que la Citadelle, teintes plus soutenues que les chaînes lointaines -->
+                            <!-- NOTE: sommet hors cadre (x=600), même construction que le sommet, teintes plus soutenues que les chaînes lointaines -->
                             <g id="decor-foreground-mountain">
                                 <path d="M 430 210 L 592 24 Q 600 16 608 24 L 770 210 Z" fill="#6f93ae"/>
-                                <path d="M 600 16 Q 604 18 608 24 L 770 210 L 640 210 L 624 150 L 632 96 L 618 52 Z" fill="#587d99"/>
+                                <path d="M 600 20 Q 604 20 608 24 L 770 210 L 640 210 L 624 150 L 632 96 L 618 52 Z" fill="#587d99"/>
                             </g>
 
                             <!-- Pied verdoyant de la montagne : deux bandes vertes superposées -->
@@ -1221,41 +1219,10 @@ export class RoadmapManager {
                                 </g>
                             </g>
 
-                            <!-- Décor : Citadelle Céleste / Château royal (Parfaitement posé sur le plateau sommital) -->
-                            <g transform="translate(415, 16)">
-                                <!-- NOTE: flat design, aucun contour ; volumes rendus par une moitié droite ombrée -->
-                                <!-- Tour Gauche -->
-                                <rect x="4" y="24" width="10" height="24" fill="#eef3f8"/>
-                                <rect x="9" y="24" width="5" height="24" fill="#d9e3ec"/>
-                                <polygon points="3,24 9,12 9,24" fill="#489e96"/>
-                                <polygon points="9,12 15,24 9,24" fill="#3a857e"/>
-                                <rect x="7" y="30" width="4" height="6" rx="2" fill="#32516d"/>
+                            <!-- Décor : Arbre d'invocation (même dessin que la page des trophées), posé sur le plateau sommital à la place de l'ancien château -->
+                            ${renderTreeSvg({ svgAttrs: 'x="395" y="-26" width="90" height="99" style="overflow:visible"', withFallingFruit: false, groundShadow: false, halo: false })}
 
-                                <!-- Tour Droite -->
-                                <rect x="36" y="24" width="10" height="24" fill="#eef3f8"/>
-                                <rect x="41" y="24" width="5" height="24" fill="#d9e3ec"/>
-                                <polygon points="35,24 41,12 41,24" fill="#489e96"/>
-                                <polygon points="41,12 47,24 41,24" fill="#3a857e"/>
-                                <rect x="39" y="30" width="4" height="6" rx="2" fill="#32516d"/>
-
-                                <!-- Corps Principal / Donjon Central -->
-                                <rect x="12" y="16" width="26" height="32" fill="#ffffff"/>
-                                <rect x="25" y="16" width="13" height="32" fill="#e6edf3"/>
-                                <!-- Toit du donjon -->
-                                <polygon points="12,16 25,2 25,16" fill="#f08c1a"/>
-                                <polygon points="25,2 38,16 25,16" fill="#d47400"/>
-                                
-                                <!-- Grande Porte Royale / Arche -->
-                                <path d="M 20 48 L 20 36 A 5 5 0 0 1 30 36 L 30 48 Z" fill="#583416"/>
-                                <!-- Fenêtres hautes lumineuses -->
-                                <circle cx="25" cy="22" r="3" fill="#ffe066"/>
-
-                                <!-- Mât & Bannière d'or royale -->
-                                <line x1="25" y1="2" x2="25" y2="-8" stroke="#7c4004" stroke-width="1.5"/>
-                                <polygon points="25,-8 37,-4 25,0" fill="#ff9d00"/>
-                            </g>
-
-                            <!-- Sentier en lacets : ruban d'un seul tenant qui s'affine progressivement (6.5 au village -> 4.2 au lac -> 1.1 au château), couleur de la terre du village -->
+                            <!-- Sentier en lacets : ruban d'un seul tenant qui s'affine progressivement (6.5 au village -> 4.2 au lac -> 1.1 à l'arbre), couleur de la terre du village -->
                             <!-- Décor : cascade qui part du haut de la montagne et passe derrière la route (dessinée avant le ruban), au pied de laquelle le checkpoint 70 la surplombe à gauche -->
                             <!-- NOTE: animation CSS (.waterfall-drop et .waterfall-bubble dans main.css) ; origine = point de départ de la chute -->
                             <g id="decor-waterfall" transform="translate(387, 106)">
@@ -1527,23 +1494,65 @@ export class RoadmapManager {
 
                             <!-- Décor : petit aigle qui plane près du checkpoint 80 (La Crête des Aigles) -->
                             <!-- NOTE: flat design sans contour ; le groupe externe porte la position, le groupe .eagle-float porte l'animation de vol plané (main.css) -->
-                            <g id="decor-eagle" transform="translate(454, 94) scale(0.56)">
+                            <g id="decor-eagle" transform="translate(464, 94)">
                                 <g class="eagle-float">
-                                    <!-- Queue en éventail : 5 plumes en fuseau autour du croupion -->
-                                    <g transform="translate(0, 3.4)" fill="#a0683a">
-                                        <path d="M 0 0 Q 1.7 3.0 0 6 Q -1.7 3.0 0 0 Z" transform="rotate(-32)"/>
-                                        <path d="M 0 0 Q 1.8 3.2 0 6.4 Q -1.8 3.2 0 0 Z" transform="rotate(-16)"/>
-                                        <path d="M 0 0 Q 1.9 3.4 0 6.8 Q -1.9 3.4 0 0 Z" fill="#b57a46"/>
-                                        <path d="M 0 0 Q 1.8 3.2 0 6.4 Q -1.8 3.2 0 0 Z" transform="rotate(16)"/>
-                                        <path d="M 0 0 Q 1.7 3.0 0 6 Q -1.7 3.0 0 0 Z" transform="rotate(32)"/>
+                                    <!-- NOTE Aigle fourni par Nicolas (.tmp/aigle.svg, viewBox 2517 x 2947), couleurs ramenées aux bruns de la carte : corps #96623a, ailes #5c3a1e, pattes et bec #f5b52e -->
+                                    <g transform="translate(-10.2, -11.9) scale(0.0081)">
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M2086.1,454.3C2085.6,431.1 2083,407.7 2081.7,384.5C2078.2,322.5 2079.6,260.8 2094.8,200.2C2109.9,139.9 2134.9,87.3 2173.7,38.6C2185,24.5 2197.1,9.6 2212.7,0.2C2232.5,152.3 2248.7,305.7 2242.1,459.3C2246.6,445.5 2250.1,431.3 2254.5,417.5C2285.9,318.6 2349.8,182 2445.8,132.2C2438.9,194.9 2435.3,258.3 2429.1,321.2C2426.4,348.5 2422.2,375.6 2418.8,402.9C2404.8,514.4 2389,605.9 2355.3,713.3C2369.5,700.1 2382.8,686 2396.9,672.6C2437.4,634.2 2478.8,595.3 2516.4,554.1C2508,740.5 2430.5,945.2 2316.6,1092.7C2288.1,1129.6 2256.2,1162.8 2221.8,1194.3C2183.1,1229.7 2141.4,1261.2 2101.7,1295.5C1998.5,1384.7 1887.9,1501.3 1880.2,1645.1C1880.1,1646.5 1880.1,1647.8 1880,1649.2C1980.9,1640.2 2119.2,1642.9 2200.7,1710.5C2233.4,1737.6 2252.4,1771.1 2259.5,1813L2260.4,1814C2285.8,1829 2303.3,1852.3 2310.7,1880.9C2316.8,1904.7 2315.8,1933.9 2303.3,1955.5C2300.6,1960.1 2297.5,1964.3 2293.9,1968.3C2284.2,1939.6 2271.1,1931.4 2244.7,1918.3C2227.2,1909.6 2212.4,1903.9 2192.7,1904.5C2175,1905.7 2157,1904.8 2139.4,1906.5C2075.2,1912.9 2033.2,1941.5 1989.1,1986.3C1971.8,2009.5 1958.1,2035.1 1941,2058.5C1871.3,2154 1804.7,2199.8 1701.4,2256.2C1675.1,2270.6 1647.9,2283.4 1620.9,2296.6C1608.8,2302.5 1595.1,2307.8 1583.8,2315.1C1594.8,2352.1 1597.3,2387.8 1578.3,2422.7C1570.5,2437 1559.8,2449.3 1549.2,2461.6C1518.8,2485.2 1487,2492.6 1449.9,2499.4C1445.2,2503 1441.7,2506 1438.3,2510.9C1422.9,2529.4 1413.2,2543.2 1407.7,2567C1375.6,2592.8 1344,2594.2 1304.3,2590C1299.7,2589.5 1295,2588.9 1290.4,2588.3C1254.9,2554.2 1274.3,2511 1263.9,2474.3C1259,2456.8 1248.9,2443.3 1238.2,2429C1236.2,2433.6 1234.1,2438.1 1232,2442.7C1189.3,2533.7 1097.4,2700.5 1021.2,2763.4C1009,2773.4 997,2780.2 982.2,2785.6C977.8,2752.4 984.5,2724.7 993.1,2692.9C968.9,2716.5 939.7,2737.7 911.5,2756.4C885.2,2773.9 799.1,2828.6 771.1,2823C767.8,2820.3 766.3,2819 765.8,2814.5C762.9,2789.4 806.5,2733.4 821.4,2712.7C804.5,2720.6 787.7,2728.7 770.5,2735.9C702.9,2764.3 588.1,2807.4 515.8,2811C509,2811.3 499.2,2812.4 493,2809.3C490.3,2808 490.8,2807.3 490,2804.7C495.6,2773.1 568.7,2716.5 593.8,2695.5C515.3,2727.7 406.8,2747.1 321.7,2755C267.8,2760 209.3,2762.1 156.5,2748.6C150.3,2747 141,2745.7 136.1,2741.7C140.1,2730.4 168,2716.6 178.3,2711.3C226.4,2686.2 277.5,2666.4 326.6,2642.9C478.5,2570.4 630.9,2498.6 778.3,2417.4C817.7,2395.7 855.7,2371.8 893.8,2347.9C948.7,2313.3 1002.9,2277.8 1053.6,2237.1C1112.2,2184.2 1165.6,2123.4 1219.3,2065.6C1187.7,2065.1 1092.6,2061.2 1068.2,2051.1C1064.6,2049.6 1062.5,2049.4 1061,2045.7C1065.7,2030.4 1088.3,2013.6 1100,2002.2C1089.8,2003.4 1079.4,2004.2 1069.2,2004.9C1050.7,2006.1 994,2007.2 980.7,1992.2C978.101,1989.3 976.601,1986.7 977.101,1982.7C979.2,1967.3 1024.4,1934.2 1037.699,1923.8C1020.5,1930.8 1002.8,1934.9 984.4,1937.1C967.9,1939.1 909.4,1943.1 897.2,1930.5C894.5,1927.7 893.101,1925 893.4,1921C894.6,1904.8 945.1,1862.2 958.4,1848C951.1,1849.1 943.8,1850.1 936.4,1851C922.2,1852.7 908,1854.2 893.6,1854.4C873.3,1854.7 801.2,1852.1 789.2,1839.8C785.8,1836.3 786,1835.2 785.8,1830.6C795.6,1811.6 864.5,1755.1 884.8,1739.3C883.6,1739.6 882.3,1739.8 881.1,1740.1C876.9,1741.1 872.7,1742.1 868.4,1742.6C817.6,1749.4 750,1742.8 701,1729.3C694.3,1727.4 682.9,1725 677.9,1720.1C674.7,1717 674.7,1716 674.5,1711.8C684.8,1686.3 752.7,1643.2 779.1,1628.8C720.5,1640.6 647.3,1639.8 591.3,1619.4C621.3,1588.2 658.7,1566.5 695.4,1544.4C634.6,1557.2 563.4,1555 506.4,1528.9C532.1,1502 569.1,1484.5 601.3,1466.5C547,1469.5 447,1461.2 401,1432.8C395.8,1429.6 392.2,1426.5 390.7,1420.4C391.1,1417.3 391.6,1415 393.5,1412.5C398.8,1405.6 407.6,1401.1 415.2,1396.9C446.9,1379.4 478.9,1372.1 514.7,1368.6C421.3,1361 323,1333.6 253.9,1267.5C298.8,1253.7 344.2,1241.4 389.3,1228C360.7,1222.8 332.5,1215.8 304.8,1207.1C233.5,1184 150.8,1142.7 115.4,1073.6C215.6,1073.5 315.7,1069.8 415.6,1062.5C357.9,1044.9 299.3,1027.6 243.5,1004.5C153.3,967.2 46.9,908.7 7.8,814.301C124.4,828.801 239,856 355.3,872C324.7,857.7 294.7,842.2 265.4,825.5C154.1,762.5 35.5,666.4 0,537.9C99.299,590.6 199.1,645.1 301.3,691.9C343.2,711.1 385.8,729.6 428.6,746.6C453.9,756.6 479.7,765.301 504.9,775.7C467.8,749.1 432.6,720 399.5,688.6C286.5,579.4 140.6,415.301 137.6,250.2C180.8,307.2 231.4,360.7 282.4,410.7C459,583.9 663.4,723.4 875.2,849.9C983.3,914.4 1097.2,972.6 1199.1,1046.9C1263.3,1089.6 1308.8,1142.7 1333.5,1216.5C1344,1247.9 1352.2,1280.5 1365.3,1311C1401.6,1287.9 1438.4,1270.8 1478.3,1254.9C1440.2,1232.2 1421.3,1195.8 1409.7,1154.4C1460.5,1150.9 1511.6,1152 1562.2,1157.8C1511.9,1126.7 1482.3,1077.7 1460.8,1024.2C1514.4,1023.7 1567.1,1031.1 1619.9,1039.8C1617,1037.1 1614.2,1034.4 1611.3,1031.7C1571.8,993.6 1536.2,943.1 1535.3,886.4C1583.9,889.5 1632.4,903.1 1677.4,921.4C1673.1,917.801 1668.9,914.301 1664.9,910.4C1614.1,860.801 1579.2,786.7 1578.5,715.301C1625.8,722.9 1705.2,754.801 1745.4,781.1C1715.4,742.901 1687.7,705.7 1667.1,661.301C1642.3,608.1 1628.6,551.4 1649.2,494.7C1698.4,525.301 1742.5,566.7 1785.9,605.001C1802.3,619.401 1818.7,636.1 1836.6,648.401C1807,615.7 1784.8,579.801 1769,538.501C1737.7,456.401 1715.7,343.1 1752.6,260.501C1766.7,271.1 1778.9,284.6 1790.8,297.6C1847,358.401 1889.1,428.1 1926.9,501.501C1937.2,521.6 1943.9,544.801 1955.4,563.901C1955.9,564.801 1956.5,565.7 1957,566.501C1952.5,538.801 1942.7,511.501 1934.6,484.801C1919.7,435.501 1906.2,387.7 1900.1,336.401C1890.2,253.2 1909.3,169.501 1961.6,103.1C1970.3,124.001 1980,144.401 1988.5,165.401C2027,259 2061.399,356.1 2086.1,454.3Z" fill="#96623a"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M138.001,250.3C181.201,307.3 231.801,360.8 282.801,410.8C459.401,584 663.801,723.5 875.601,850C983.701,914.5 1097.6,972.7 1199.5,1047C1191.3,1046.3 1106.5,1009.8 1092.1,1004.2C988.101,963.6 883.401,924.9 778.001,888C737.901,874.1 696.701,856.2 655.501,846.7C661.401,863.7 666.901,880.8 675.701,896.6C703.901,947.6 759.901,988.6 811.301,1013.6C811.701,1013.8 812.101,1014 812.501,1014.2C783.001,1009.3 727.801,996.3 700.901,1004.9C698.601,1007.4 698.001,1007.7 698.301,1011.3C700.201,1034.8 737.601,1069.7 755.201,1083.2C789.401,1109.6 828.701,1131.4 870.701,1142.1L869.301,1146.3C839.501,1146.2 769.301,1148.5 744.601,1162.7C743.201,1165.1 742.601,1164.7 743.501,1167.7C749.301,1188.7 788.801,1210 807.001,1219.1C849.401,1240.4 895.801,1251.6 942.801,1256.8C917.901,1263.8 814.601,1281.9 801.601,1300.9C799.401,1304.2 799.801,1307 801.101,1310.5C809.401,1333.4 879.801,1358.4 900.501,1364.9C936.301,1376.1 972.901,1378.8 1008.8,1388.2C982.601,1396.9 881.401,1433.5 868.401,1453.8C868.201,1458.1 868.101,1460 871.001,1463.3C875.801,1468.9 885.001,1472.8 891.501,1475.9C942.801,1500.4 1001.3,1507.5 1057.1,1514.7C1025.9,1528 951.201,1556.6 936.601,1587.1C944.901,1601.3 979.801,1611.4 994.801,1615.2C1043.199,1627.6 1110.5,1630.5 1160,1625C1130,1640.4 1046.3,1684.8 1030.699,1714.6C1030.8,1718.3 1030.1,1716.8 1032.8,1719.4C1057.7,1743.1 1158.3,1742.3 1194.6,1740.2C1215.3,1739 1236,1737.1 1256.2,1732.4C1249.3,1735.5 1242.5,1738.6 1236.2,1742.8C1216.6,1755.7 1141.9,1814.1 1136.3,1834.9C1135.8,1836.9 1135.2,1838.8 1136.4,1840.7C1140.2,1846.6 1149.9,1848.7 1156.3,1849.7C1218.2,1859.3 1272.9,1839.1 1329.8,1819.1C1329.4,1819.6 1329,1820.2 1328.6,1820.7C1308.5,1846.6 1226,1914.3 1226.5,1942.8C1229,1948.7 1232.1,1951.5 1238,1954C1268.5,1967.2 1335,1956.7 1364.7,1945.4L1365.7,1945C1334.3,1968.2 1302.6,1992.1 1273,2017.6C1255.1,2033 1238.6,2052 1219.4,2065.6C1187.8,2065.1 1092.7,2061.2 1068.3,2051.1C1064.7,2049.6 1062.6,2049.4 1061.1,2045.7C1065.8,2030.4 1088.4,2013.6 1100.1,2002.2C1089.9,2003.4 1079.5,2004.2 1069.3,2004.9C1050.8,2006.1 994.101,2007.2 980.801,1992.2C978.201,1989.3 976.701,1986.7 977.201,1982.7C979.301,1967.3 1024.5,1934.2 1037.8,1923.8C1020.6,1930.8 1002.9,1934.9 984.501,1937.1C968.001,1939.1 909.501,1943.1 897.301,1930.5C894.601,1927.7 893.201,1925 893.501,1921C894.701,1904.8 945.201,1862.2 958.501,1848C951.201,1849.1 943.901,1850.1 936.501,1851C922.301,1852.7 908.101,1854.2 893.701,1854.4C873.401,1854.7 801.301,1852.1 789.301,1839.8C785.901,1836.3 786.101,1835.2 785.901,1830.6C795.701,1811.6 864.601,1755.1 884.901,1739.3C883.701,1739.6 882.401,1739.8 881.201,1740.1C877.001,1741.1 872.801,1742.1 868.501,1742.6C817.701,1749.4 750.101,1742.8 701.101,1729.3C694.401,1727.4 683.001,1725 678.001,1720.1C674.801,1717 674.801,1716 674.601,1711.8C684.901,1686.3 752.801,1643.2 779.201,1628.8C720.601,1640.6 647.401,1639.8 591.401,1619.4C621.401,1588.2 658.801,1566.5 695.501,1544.4C634.701,1557.2 563.501,1555 506.501,1528.9C532.201,1502 569.201,1484.5 601.401,1466.5C547.101,1469.5 447.101,1461.2 401.101,1432.8C395.901,1429.6 392.301,1426.5 390.801,1420.4C391.201,1417.3 391.701,1415 393.601,1412.5C398.901,1405.6 407.701,1401.1 415.301,1396.9C447.001,1379.4 479.001,1372.1 514.801,1368.6C421.401,1361 323.101,1333.6 254.001,1267.5C298.901,1253.7 344.301,1241.4 389.401,1228C360.801,1222.8 332.601,1215.8 304.901,1207.1C233.601,1184 150.901,1142.7 115.501,1073.6C215.701,1073.5 315.801,1069.8 415.701,1062.5C358.001,1044.9 299.4,1027.6 243.601,1004.5C153.401,967.2 47.001,908.7 7.9,814.301C124.5,828.801 239.101,856 355.4,872C324.801,857.7 294.801,842.2 265.5,825.5C154.201,762.5 35.6,666.4 0.1,537.9C99.4,590.6 199.201,645.1 301.4,691.9C343.301,711.1 385.9,729.6 428.701,746.6C454.001,756.6 479.801,765.301 505.001,775.7C467.901,749.1 432.701,720 399.601,688.6C286.901,579.5 141.001,415.4 138.001,250.3Z" fill="#5c3a1e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M2086.1,454.3C2085.6,431.1 2083,407.7 2081.7,384.5C2078.2,322.5 2079.6,260.8 2094.8,200.2C2109.9,139.9 2134.9,87.3 2173.7,38.6C2185,24.5 2197.1,9.6 2212.7,0.2C2232.5,152.3 2248.7,305.7 2242.1,459.3C2246.6,445.5 2250.1,431.3 2254.5,417.5C2285.9,318.6 2349.8,182 2445.8,132.2C2438.9,194.9 2435.3,258.3 2429.1,321.2C2426.4,348.5 2422.2,375.6 2418.8,402.9C2404.8,514.4 2389,605.9 2355.3,713.3C2340.5,744.4 2326.7,776.7 2310,806.8C2298.5,827.5 2284.7,846.5 2272.6,866.7C2277.3,840.2 2287.7,778.7 2272.2,755.8C2269.9,752.3 2266.7,749.9 2262.5,749.2C2255.3,748 2249.4,752 2244.4,756.6C2208.1,789.9 2187.3,871 2179.5,918.1C2172.5,895.9 2154.5,838.6 2133.7,828.1C2130.3,826.4 2127,825.8 2123.4,827.4C2113.8,831.7 2109.5,846.9 2107.3,856.2C2097.3,897.6 2099.5,943.6 2099.2,985.9C2086,962 2058.399,903.4 2030,895.1C2026.3,894 2024.3,894.4 2021,896.3C2011.1,901.8 2005.3,927.4 2003.6,938.3C1997.3,978.6 2005,1028.6 2022.4,1065.4C1997.2,1038.1 1961.1,981.7 1926.1,970.6C1921.2,971.5 1918.9,973 1916,977.1C1901.8,997.4 1906.8,1037.5 1911.7,1060.4C1917.2,1086.5 1927,1111.4 1940.9,1134.1C1917.2,1112.4 1867.7,1069.3 1833.3,1070.9C1828,1071.1 1823.1,1072.8 1819.5,1076.9C1813.5,1083.8 1813.6,1094.2 1814.6,1102.8C1819.5,1146.5 1842.9,1177.6 1872.9,1208C1846.8,1192.7 1767.3,1153.5 1739.8,1160.4C1736.6,1161.2 1735.2,1162.2 1732.9,1164.4C1727.6,1174.5 1731,1189.7 1734.3,1200.1C1745.8,1236.2 1775.5,1269.4 1805.9,1291C1776.2,1279.1 1697.1,1244.5 1668.3,1253.8C1664.2,1255.1 1661.2,1259 1659.9,1262.9C1656.1,1274.6 1662.5,1289.5 1668.2,1299.7C1688.9,1336.4 1724.1,1362.1 1759.1,1384.1C1721.6,1373.7 1624.1,1331.5 1591.4,1346.4C1588.8,1349.5 1587.9,1351.3 1588.1,1355.5C1589.6,1383.3 1613.6,1409.5 1634,1426C1661,1447.8 1691.6,1461.8 1722.3,1477.1C1687.8,1470.5 1613.4,1452 1582.2,1462.5C1578.4,1466 1577.3,1469.4 1577.2,1474.4C1576.8,1492.7 1585.9,1508.5 1598.5,1521.1C1626.8,1549.5 1668.5,1565.4 1707,1573.7C1686.8,1573.5 1630.2,1569.1 1614.5,1582C1611.9,1587.8 1612.3,1593.2 1614.7,1598.9C1628.7,1633 1665.4,1655.2 1698.2,1668.1C1708.7,1672.2 1719.5,1675.7 1730.2,1679.2C1648,1679.9 1575.8,1644.6 1517.8,1587.8C1452.9,1524.3 1413.8,1441.6 1382.3,1357.8C1377.1,1343.9 1367.4,1325.3 1365.7,1311C1402,1287.9 1438.8,1270.8 1478.7,1254.9C1440.6,1232.2 1421.7,1195.8 1410.1,1154.4C1460.9,1150.9 1512,1152 1562.6,1157.8C1512.3,1126.7 1482.7,1077.7 1461.2,1024.2C1514.8,1023.7 1567.5,1031.1 1620.3,1039.8C1617.4,1037.1 1614.6,1034.4 1611.7,1031.7C1572.2,993.6 1536.6,943.1 1535.7,886.4C1584.3,889.5 1632.8,903.1 1677.8,921.4C1673.5,917.8 1669.3,914.3 1665.3,910.4C1614.5,860.8 1579.6,786.7 1578.9,715.3C1626.2,722.9 1705.6,754.8 1745.8,781.1C1715.8,742.9 1688.1,705.7 1667.5,661.3C1642.7,608.1 1629,551.4 1649.6,494.7C1698.8,525.3 1742.9,566.7 1786.3,605C1802.7,619.4 1819.1,636.1 1837,648.4C1807.4,615.7 1785.2,579.8 1769.4,538.5C1738.1,456.4 1716.1,343.1 1753,260.5C1767.1,271.1 1779.3,284.6 1791.2,297.6C1847.4,358.4 1889.5,428.1 1927.3,501.5C1937.6,521.6 1944.3,544.8 1955.8,563.9C1956.3,564.8 1956.9,565.7 1957.4,566.5C1952.9,538.8 1943.1,511.5 1935,484.8C1920.1,435.5 1906.6,387.7 1900.5,336.4C1890.6,253.2 1909.7,169.5 1962,103.1C1970.7,124 1980.4,144.4 1988.9,165.4C2027,259 2061.399,356.1 2086.1,454.3Z" fill="#5c3a1e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1053.7,2237.1L1076.3,2234.8C1055.6,2295.8 930.701,2394.2 877.701,2433C842.101,2459.1 785.801,2494.6 757.201,2527.4C811.501,2527.4 881.901,2490.1 928.301,2461.9C942.401,2453.3 957.101,2440.8 972.101,2434.2C939.601,2465.8 908.601,2502.5 881.901,2539.1C961.001,2524.7 1032.8,2468 1092.5,2417C1069.8,2450.7 1045.3,2484.2 1026.9,2520.5C1097,2501.1 1150.2,2452.9 1200.6,2402.7C1214.8,2388.6 1228,2373.1 1243.4,2360.4C1237.7,2377.4 1228.2,2408 1236,2425.3C1236.9,2427.3 1237.1,2427.4 1238.3,2428.9C1236.3,2433.5 1234.2,2438 1232.1,2442.6C1189.4,2533.6 1097.5,2700.4 1021.3,2763.3C1009.1,2773.3 997.101,2780.1 982.301,2785.5C977.901,2752.3 984.601,2724.6 993.201,2692.8C969.001,2716.4 939.801,2737.6 911.601,2756.3C885.301,2773.8 799.201,2828.5 771.201,2822.9C767.901,2820.2 766.401,2818.9 765.901,2814.4C763.001,2789.3 806.601,2733.3 821.501,2712.6C804.601,2720.5 787.801,2728.6 770.601,2735.8C703.001,2764.2 588.201,2807.3 515.901,2810.9C509.101,2811.2 499.301,2812.3 493.101,2809.2C490.401,2807.9 490.901,2807.2 490.101,2804.6C495.701,2773 568.801,2716.4 593.901,2695.4C515.401,2727.6 406.901,2747 321.801,2754.9C267.901,2759.9 209.401,2762 156.601,2748.5C150.401,2746.9 141.101,2745.6 136.201,2741.6C140.201,2730.3 168.101,2716.5 178.401,2711.2C226.501,2686.1 277.601,2666.3 326.701,2642.8C478.601,2570.3 631.001,2498.5 778.401,2417.3C817.801,2395.6 855.801,2371.7 893.901,2347.8C948.901,2313.3 1003,2277.8 1053.7,2237.1Z" fill="#5c3a1e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M2035.3,1769.2C2046.7,1753.8 2061.1,1742.5 2080.399,1739.4C2109.3,1734.7 2143.9,1748.4 2166.8,1765.5C2178.4,1774.2 2192.9,1788 2197.2,1802.1C2211,1796.5 2224.4,1797.5 2238.1,1803.3C2246,1806.7 2255.7,1812.9 2260.2,1820.5L2260.5,1814.1C2285.9,1829.1 2303.4,1852.4 2310.8,1881C2316.9,1904.8 2315.9,1934 2303.4,1955.6C2300.7,1960.2 2297.6,1964.4 2294,1968.4C2284.3,1939.7 2271.2,1931.5 2244.8,1918.4C2227.3,1909.7 2212.5,1904 2192.8,1904.6C2175.1,1905.8 2157.1,1904.9 2139.5,1906.6C2075.3,1913 2033.3,1941.6 1989.2,1986.4C1992.3,1969.6 1998.6,1954.5 1995.1,1937C1990.2,1912.2 1971.6,1891.5 1951,1877.8C1900.5,1844.4 1838,1844.7 1780.9,1856.2C1824.2,1835.5 1869.3,1819.4 1914.2,1802.7C1942.9,1792 1972.2,1779.5 2002,1772.6C2013.1,1770.1 2024,1769.6 2035.3,1769.2Z" fill="#f5b52e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M2035.3,1769.2C2046.7,1753.8 2061.1,1742.5 2080.399,1739.4C2109.3,1734.7 2143.9,1748.4 2166.8,1765.5C2178.4,1774.2 2192.9,1788 2197.2,1802.1C2179,1816.5 2133.5,1836.2 2110.5,1836.5C2079.5,1836.9 2063.6,1813.6 2049.7,1789.6C2046.2,1783.6 2042.9,1775.9 2037.7,1771.3C2036.9,1770.5 2036.1,1769.9 2035.3,1769.2Z" fill="#5c3a1e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M2098.4,1754.9C2109.4,1755.3 2117.4,1758.5 2127,1763.3C2126.3,1763.7 2125.6,1764.2 2124.9,1764.6C2121.8,1766.5 2119.1,1767.9 2116.9,1770.9C2113.9,1774.8 2111.7,1785.7 2112.8,1790.5C2113.8,1795 2114.9,1795.5 2118.4,1798C2122.8,1798.8 2125.2,1798.5 2129.5,1797.1L2140.5,1793.6C2139.5,1796.8 2136.4,1798.3 2133.9,1800.4C2130.8,1802.5 2127.7,1804.7 2124.4,1806.5C2116.4,1810.8 2106.2,1811.5 2097.7,1808.4C2089.899,1805.5 2083.6,1799.5 2080.3,1791.9C2077.399,1785.3 2076.899,1777.7 2079.7,1771C2083.5,1762.1 2089.899,1758.5 2098.4,1754.9Z" fill="#f5b52e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M2260.5,1814.1C2285.9,1829.1 2303.4,1852.4 2310.8,1881C2316.9,1904.8 2315.9,1934 2303.4,1955.6C2300.7,1960.2 2297.6,1964.4 2294,1968.4C2284.3,1939.7 2271.2,1931.5 2244.8,1918.4C2227.3,1909.7 2212.5,1904 2192.8,1904.6C2192.6,1902.1 2192.5,1899.6 2192.4,1897.1C2191.3,1857.1 2236.8,1867.3 2255.4,1846.5C2262.2,1839 2260.8,1829.7 2260.3,1820.4L2260.5,1814.1Z" fill="#5c3a1e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1521.4,2311.5C1541.4,2314.5 1563.8,2319.4 1583.9,2315.3C1594.9,2352.3 1597.4,2388 1578.4,2422.9C1570.6,2437.2 1559.9,2449.5 1549.3,2461.8C1518.9,2485.4 1487.1,2492.8 1450,2499.6C1491.2,2441.3 1517,2383.3 1521.4,2311.5Z" fill="#5c3a1e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M870.701,1142.1C874.601,1142.8 878.901,1142.6 882.001,1145.2C877.601,1146.2 873.801,1146.4 869.301,1146.3L870.701,1142.1Z" fill="#5c3a1e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1407.8,2567C1409.5,2572.6 1411.5,2576.2 1415.2,2580.7C1432.9,2602.4 1454.3,2621.6 1473.6,2642C1502.2,2672.1 1529.9,2704.4 1560.5,2732.4C1568,2739.2 1575.8,2744.8 1584.7,2749.7C1614.8,2766 1663.1,2777 1674.2,2813.7C1676.1,2819.9 1676.9,2826.7 1677.5,2833.1C1669.6,2825 1662.1,2818.9 1650.2,2818.6C1643,2818.4 1635.3,2821.3 1630,2826.3C1627.1,2829 1624.9,2832.2 1622.8,2835.5C1621.8,2834.2 1621.4,2833.6 1620,2832.5C1614.5,2828 1607,2829.9 1600.6,2830.7C1590.7,2826 1574.5,2823.5 1564.1,2827.1C1560,2828.5 1557.5,2830.2 1554.9,2833.7C1554.3,2837.2 1553.8,2840.6 1553.4,2844.1C1548,2839.4 1540.7,2839.3 1533.8,2839.9C1520.5,2841 1508.3,2846.5 1496.7,2852.8C1478.6,2849.1 1480.1,2836.1 1458.4,2837.8C1470,2818.1 1494.1,2805.5 1495.3,2780.1C1495.6,2773.6 1490.8,2767.8 1486.7,2763.2C1475.2,2750 1459.5,2739 1446.3,2727.5C1415.7,2700.6 1385.7,2673 1354.9,2646.4C1333.9,2628.3 1309.5,2610.6 1291.4,2589.8C1291,2589.4 1290.7,2588.9 1290.3,2588.5C1294.9,2589.2 1299.6,2589.7 1304.2,2590.2C1344,2594.2 1375.7,2592.8 1407.8,2567Z" fill="#f5b52e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1449.9,2499.5C1487,2492.7 1518.8,2485.3 1549.2,2461.7C1588.1,2484.7 1624.5,2511.7 1662.1,2536.8C1677,2546.7 1692.2,2558.5 1708.4,2566.2C1725.5,2574.4 1744.5,2570.5 1762.6,2573.9C1781.6,2577.4 1805.8,2591.7 1822.3,2602C1830.6,2607.2 1836.5,2618.6 1839.3,2627.8C1839.4,2628.2 1839.5,2628.6 1839.6,2629C1843.5,2645.6 1847,2659.6 1846.8,2676.8C1830.2,2657.5 1813.5,2636.5 1785.9,2634.8C1780.6,2634.5 1775.3,2634.7 1770.1,2634.8C1772.1,2650 1786.5,2663.7 1785.5,2675.1C1778.8,2667.2 1774.7,2662.5 1763.9,2661.3C1756.6,2660.5 1750.6,2662.1 1745,2666.9C1740,2671.2 1739,2676.2 1737.6,2682.4C1721.9,2673.2 1689.7,2678.1 1672.7,2682.8C1670.1,2683.5 1667.5,2684.4 1664.9,2685.3C1651,2679.1 1639.1,2679.2 1624.3,2680.1C1630.4,2661.6 1654,2627.5 1647.4,2608.8C1643.1,2596.4 1464.1,2521.4 1438.3,2510.9C1441.7,2506.1 1445.2,2503.1 1449.9,2499.5Z" fill="#f5b52e"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1770.1,2634.9C1766.1,2629.8 1760.6,2626.5 1756.7,2620.8C1756.1,2616.3 1756.1,2615.3 1757.7,2611C1763.4,2606.2 1769.6,2606.1 1776.8,2606.2C1799.9,2606.5 1823.1,2612.1 1839.6,2629C1843.5,2645.6 1847,2659.6 1846.8,2676.8C1830.2,2657.5 1813.5,2636.5 1785.9,2634.8C1780.7,2634.6 1775.4,2634.8 1770.1,2634.9Z" fill="#2b1a0d"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1553.5,2844C1553.8,2840.5 1554.4,2837.1 1555,2833.6C1557.6,2830.1 1560.1,2828.4 1564.2,2827C1574.6,2823.4 1590.8,2825.9 1600.7,2830.6C1614.3,2852.5 1624.7,2871.8 1618.7,2898.7C1613.9,2920.6 1598.3,2934 1581.5,2947C1588.5,2924.6 1591.1,2901.1 1579.9,2879.4C1573,2866.3 1559.5,2856.6 1553.5,2844Z" fill="#2b1a0d"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1737.5,2682.6C1738.9,2676.4 1740,2671.4 1744.9,2667.1C1750.5,2662.3 1756.5,2660.6 1763.8,2661.5C1774.6,2662.7 1778.7,2667.3 1785.4,2675.3C1796.4,2701.7 1808.1,2725.5 1796.1,2754.2C1794.4,2758.3 1792.3,2762.1 1790.2,2766C1784.2,2738.3 1778.7,2718.3 1756.6,2699C1750.3,2693.4 1743.1,2688.9 1737.5,2682.6Z" fill="#2b1a0d"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1622.9,2835.5C1625,2832.2 1627.3,2829 1630.1,2826.3C1635.3,2821.3 1643.1,2818.4 1650.3,2818.6C1662.2,2818.9 1669.6,2825 1677.6,2833.1C1690.3,2860.3 1698.6,2879.3 1687.8,2909.3C1686.4,2913.1 1685.1,2917.1 1681.4,2919C1677.2,2912.1 1679.7,2900.3 1677.2,2892.3C1674.4,2883.3 1668.1,2873.9 1662.4,2866.5C1653.5,2854.7 1627.2,2844.2 1623.2,2836.2L1622.9,2835.5Z" fill="#2b1a0d"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1458.5,2837.8C1480.2,2836.1 1478.7,2849.1 1496.8,2852.8C1473,2875.5 1458.1,2886.2 1452.7,2920.9C1450.2,2913.4 1448,2905.8 1446.2,2898.1C1441.3,2875.3 1446.3,2856.8 1458.5,2837.8Z" fill="#2b1a0d"/>
+                                        </g>
+                                        <g transform="matrix(-1,0,0,1,2516.399902,0)">
+                                        <path d="M1624.3,2680.2C1639,2679.4 1651,2679.2 1664.9,2685.4C1659.1,2692.2 1653.9,2699.7 1652.3,2708.7C1649.6,2723.9 1658.4,2735.3 1667,2746.7C1650.9,2741.1 1629.4,2730.2 1622,2713.9C1616.3,2701.6 1619.7,2692 1624.3,2680.2Z" fill="#2b1a0d"/>
+                                        </g>
                                     </g>
-                                    <!-- Ailes arquées vers le haut (silhouette ^ i ^), bouts de plumes effilés -->
-                                    <path d="M -0.8 0.8 Q -5 -6.4 -12.2 1.4 L -9 1.1 L -8.9 2.8 L -6.8 1.6 L -6.6 3 L -4.6 0.6 Q -2.8 -1.8 -0.8 2.8 Z" fill="#8a5a30" transform="scale(1.8, 1)"/>
-                                    <path d="M 0.8 0.8 Q 5 -6.4 12.2 1.4 L 9 1.1 L 8.9 2.8 L 6.8 1.6 L 6.6 3 L 4.6 0.6 Q 2.8 -1.8 0.8 2.8 Z" fill="#744a26" transform="scale(1.8, 1)"/>
-                                    <!-- Corps, tête blanche (le point du i) et bec -->
-                                    <ellipse cx="0" cy="1.6" rx="1.6" ry="3.2" fill="#96623a"/>
-                                    <circle cx="0" cy="-3.1" r="1.8" fill="#ffffff"/>
-                                    <path d="M -0.8 -2.6 L 0 -0.9 L 0.8 -2.6 Z" fill="#f5b52e"/>
                                 </g>
                             </g>
 
@@ -1602,7 +1611,7 @@ export class RoadmapManager {
                                 <i class="bi bi-flag-fill text-primary-600 flex-shrink-0"></i>
                                 <span class="truncate">Objectif : <strong>${nextMilestone.title}</strong></span>
                             </span>
-                            <span class="text-[10px] sm:text-[11px] font-bold text-amber-800 whitespace-nowrap ml-2 flex-shrink-0">${pointsToNext === 0 ? 'Sommet atteint !' : `Encore ${pointsToNext} pt${pointsToNext > 1 ? 's' : ''}`}</span>
+                            <span class="text-[10px] sm:text-[11px] font-bold text-amber-800 whitespace-nowrap ml-2 flex-shrink-0">${pointsToNext === 0 ? 'Sommet atteint !' : `${pointsIcon()} Encore ${pointsToNext} pt${pointsToNext > 1 ? 's' : ''}`}</span>
                         </div>
                         <div class="w-full bg-amber-900/10 h-1.5 sm:h-2 rounded-full overflow-hidden">
                             <div class="h-full rounded-full transition-all duration-700" 
@@ -1622,7 +1631,7 @@ export class RoadmapManager {
 
     /**
      * Convertit un nombre de points en position (0 à 1) sur le sentier, de façon proportionnelle :
-     * 0 pt au départ (2 %), 100 pts au château (98 %), donc des graduations régulièrement espacées
+     * 0 pt au départ (2 %), 100 pts à l'arbre (98 %), donc des graduations régulièrement espacées
      */
     percentForPoints(points) {
         const clamped = Math.min(Math.max(points, 0), 100);
@@ -1669,13 +1678,13 @@ export class RoadmapManager {
             g.setAttribute('class', 'cursor-pointer milestone-node group');
             g.setAttribute('data-milestone-id', m.id);
 
-            const fontSize = m.points >= 100 && !isUnlocked ? 7.2 : 8.8;
+            const fontSize = m.points >= 100 && !isUnlocked ? 5.4 : 6.6;
 
             g.innerHTML = `
-                <circle cx="0" cy="0" r="15" fill="transparent" pointer-events="all"/>
+                <circle cx="0" cy="0" r="12" fill="transparent" pointer-events="all"/>
                 <ellipse cx="0" cy="14" rx="3.4" ry="1.2" fill="#7c4004" opacity="0.35" pointer-events="none"/>
                 <line x1="0" y1="0" x2="0" y2="14" stroke="#7c4004" stroke-width="1.6" stroke-linecap="round" pointer-events="none"/>
-                <circle cx="0" cy="0" r="10" fill="${isUnlocked ? '#ff9d00' : '#f4e9dc'}" stroke="#ffffff" stroke-width="2" filter="url(#pin-shadow)" pointer-events="none"/>
+                <circle cx="0" cy="0" r="7.5" fill="${isUnlocked ? '#ff9d00' : '#f4e9dc'}" stroke="#ffffff" stroke-width="1.6" filter="url(#pin-shadow)" pointer-events="none"/>
                 <text x="0" y="0.5" font-size="${fontSize}" font-weight="900" fill="${isUnlocked ? '#5c2800' : '#7c4004'}" text-anchor="middle" dominant-baseline="central" font-family="'Nunito', 'Baloo 2', sans-serif" pointer-events="none">
                     ${isUnlocked ? '✓' : m.points}
                 </text>
@@ -1758,11 +1767,12 @@ export class RoadmapManager {
     /**
      * Affiche l'info-bulle détaillée du jalon cliqué
      */
-    showMilestoneInfo(milestone, isUnlocked, currentPoints) {
-        const popover = document.getElementById('roadmap-milestone-popover');
-        const titleEl = document.getElementById('popover-title');
-        const descEl = document.getElementById('popover-desc');
-        const iconEl = document.getElementById('popover-icon');
+    showMilestoneInfo(milestone, isUnlocked, currentPoints, idPrefix = '') {
+        // NOTE idPrefix = 'modal-' pour la copie de la carte en plein écran (ses id sont préfixés)
+        const popover = document.getElementById(`${idPrefix}roadmap-milestone-popover`);
+        const titleEl = document.getElementById(`${idPrefix}popover-title`);
+        const descEl = document.getElementById(`${idPrefix}popover-desc`);
+        const iconEl = document.getElementById(`${idPrefix}popover-icon`);
 
         if (!popover || !titleEl || !descEl || !iconEl) return;
 
@@ -1800,7 +1810,6 @@ export class RoadmapManager {
         clone.innerHTML = html;
         clone.querySelectorAll('[class*="cursor-pointer"]').forEach((el) => el.classList.remove('cursor-pointer'));
         clone.querySelector('[title="Agrandir la carte"]')?.remove();
-        clone.querySelector('.animate-fade-in')?.remove();
 
         // La carte n'est plus plafonnée en hauteur : elle garde les proportions du dessin
         const svg = clone.querySelector('svg[viewBox^="-20 -46"]');
@@ -1860,6 +1869,17 @@ export class RoadmapManager {
             close({ instant: true });
             avatarCustomizerModal.open(() => this.render(), () => this.openMapModal());
         };
+        // NOTE La copie est figée : on rebranche les jalons et la fermeture de l'info-bulle (ids préfixés par modal-)
+        const totalPoints = rewardsManager.getTotalPoints();
+        modal.querySelectorAll('.milestone-node').forEach((node) => {
+            const m = this.milestones.find((x) => x.id === node.getAttribute('data-milestone-id'));
+            if (!m) return;
+            node.classList.add('cursor-pointer');
+            node.addEventListener('click', () => this.showMilestoneInfo(m, totalPoints >= m.points, totalPoints, 'modal-'));
+        });
+        modal.querySelector('#modal-close-popover-btn')?.addEventListener('click', () => {
+            modal.querySelector('#modal-roadmap-milestone-popover')?.classList.add('hidden');
+        });
         modal.querySelector('[data-modal-tab="atelier"]').addEventListener('click', goAtelier);
         modal.querySelectorAll('[id$="open-avatar-customizer-btn"], [id$="roadmap-avatar-toggle"]').forEach((btn) => {
             btn.classList.add('cursor-pointer');

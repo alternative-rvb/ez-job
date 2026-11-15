@@ -4,7 +4,7 @@
 
 import { RPG_TROPHIES } from '../ui/avatars.js';
 
-// ANCHOR Règles de l'invocation : coût, gemmes rendues sur un doublon, garantie et taux par rareté
+// ANCHOR Règles de l'invocation : coût, fruits de connaissance rendues sur un doublon, garantie et taux par rareté
 export const SUMMON_COST = 10;
 export const SUMMON_REFUND = 5;
 export const SUMMON_PITY = 10;
@@ -73,7 +73,7 @@ export class RewardsManager {
             return 0;
         }
 
-        // Temps infini : pas de défi chronométré, 2 gemmes dès 60 %
+        // Temps infini : pas de défi chronométré, 2 fruits de connaissance dès 60 %
         if (timeLimit === 0) {
             return 2;
         }
@@ -248,7 +248,7 @@ export class RewardsManager {
     }
 
     /**
-     * Vérifie si le joueur a assez de gemmes pour invoquer
+     * Vérifie si le joueur a assez de fruits de connaissance pour invoquer
      * @returns {boolean}
      */
     canSummon() {
@@ -270,9 +270,9 @@ export class RewardsManager {
     }
 
     /**
-     * Invoque un skin : coûte SUMMON_COST gemmes, un doublon en rend SUMMON_REFUND,
+     * Invoque un skin : coûte SUMMON_COST fruits de connaissance, un doublon en rend SUMMON_REFUND,
      * et le légendaire est garanti à la SUMMON_PITY-ième invocation sans légendaire
-     * @returns {object|null} { skin, isNew, refund, remainingPoints } ou null si pas assez de gemmes
+     * @returns {object|null} { skin, isNew, refund, remainingPoints } ou null si pas assez de fruits de connaissance
      */
     summon() {
         if (!this.canSummon()) return null;

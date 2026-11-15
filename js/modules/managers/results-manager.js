@@ -11,6 +11,7 @@ import { rewardsManager, SUMMON_COST } from './rewards-manager.js';
 import { T } from '../core/theme.js';
 import { shareQuizResult, buildDetailsText } from '../core/share.js';
 import { renderTreeSvg } from '../ui/tree-svg.js';
+import { pointsIcon, gemIcon } from '../ui/currency-icons.js';
 
 export class ResultsManager {
     constructor(onRestart, onBackToHome, onShowTrophies) {
@@ -126,7 +127,7 @@ export class ResultsManager {
                 <!-- Rewards Section -->
                 <div class="rounded-2xl p-5 mb-6" style="background:#f4eadd;border:1.5px solid #dcc9b0">
                     <div class="flex items-start gap-4">
-                        <i class="bi bi-star-fill text-3xl text-yellow-400 flex-shrink-0 mt-0.5"></i>
+                        ${pointsIcon('text-3xl flex-shrink-0 mt-0.5')}
                         <div class="flex-1">
                             <h3 class="text-base font-bold mb-1" style="color:#7c4004;font-family:'Baloo 2',sans-serif">Récompense Gagnée !</h3>
                             <p class="text-sm mb-3" style="color:#b46e28">
@@ -134,12 +135,12 @@ export class ResultsManager {
                             </p>
                             <div class="flex flex-wrap gap-4">
                                 <div class="text-center">
-                                    <p class="text-2xl font-bold text-yellow-500"><i class="bi bi-star-fill text-xl"></i> ${rewardsResult.lifetimePoints}</p>
+                                    <p class="text-2xl font-bold text-accent-500">${pointsIcon('text-xl')} ${rewardsResult.lifetimePoints}</p>
                                     <p class="text-xs" style="color:#b46e28">Points (+${rewardsResult.pointsEarned})</p>
                                 </div>
                                 <div class="text-center">
-                                    <p class="text-2xl font-bold text-yellow-500"><i class="bi bi-gem text-xl"></i> ${rewardsResult.totalPoints}</p>
-                                    <p class="text-xs" style="color:#b46e28">Gemmes (+${rewardsResult.pointsEarned})</p>
+                                    <p class="text-2xl font-bold" style="color:rgb(var(--color-primary-dark))">${gemIcon('text-xl')} ${rewardsResult.totalPoints}</p>
+                                    <p class="text-xs" style="color:#b46e28">Fruits de connaissance (+${rewardsResult.pointsEarned})</p>
                                 </div>
                                 ${rewardsResult.canSummon ? `
                                     <div class="text-center flex flex-col items-center">
@@ -149,7 +150,7 @@ export class ResultsManager {
                                 ` : `
                                     <div class="text-center">
                                         <p class="text-2xl font-bold" style="color:#b46e28">${Math.max(0, SUMMON_COST - rewardsResult.totalPoints)}</p>
-                                        <p class="text-xs" style="color:#b46e28">Gemmes avant une invocation</p>
+                                        <p class="text-xs" style="color:#b46e28">Fruits de connaissance avant une invocation</p>
                                     </div>
                                 `}
                             </div>
@@ -289,10 +290,9 @@ export class ResultsManager {
             0: 'Mode sans limite'
         }[timeLimit] || 'Mode Normal';
 
-        const emojis = ['<i class="bi bi-trophy-fill text-yellow-400"></i>', '<i class="bi bi-star-fill text-yellow-400"></i>', `<i class="bi bi-star-fill" style="color:${T.hexSecondary}"></i>`, `<i class="bi bi-star-fill" style="color:${T.hexPrimaryLight}"></i>`, '<i class="bi bi-trophy-fill text-green-400"></i>'];
-        const emoji = emojis[Math.min(points - 1, emojis.length - 1)] || '<i class="bi bi-star-fill text-yellow-400"></i>';
+        const emoji = gemIcon();
 
-        return `${emoji} ${difficultyLabel} : +${points} gemme${points > 1 ? 's' : ''} !`;
+        return `${emoji} ${difficultyLabel} : +${points} fruit${points > 1 ? 's' : ''} de connaissance !`;
     }
 
     renderDetails(questions) {

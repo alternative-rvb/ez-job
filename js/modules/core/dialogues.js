@@ -40,22 +40,22 @@ export function getCharacterId(config = {}) {
 }
 
 // SECTION Carte : une réplique par palier de points
-// Ordre : 0 pt, >0, >=10, >=25, >=40, >=60, >=80, >=100 (forêt, lac, porte, ascension, crête, sommet, citadelle)
+// Ordre : 0 pt, >0, >=10, >=25, >=40, >=60, >=80, >=100 (forêt, lac, porte, ascension, crête, sommet, arbre d'invocation)
 const MAP_LINES = {
-    base: ['C\'est parti !', 'En route vers la Forêt !', 'Vers le Lac !', 'Cap sur la Porte !', 'L\'Ascension commence !', 'Plus que la Crête !', 'Le Sommet est proche !', 'Citadelle atteinte !'],
-    elf: ['Les bois nous appellent !', 'La forêt nous guide.', 'Le lac chante, écoute !', 'La Porte nous attend.', 'Léger comme le vent !', 'La Crête est en vue.', 'Le Sommet nous appelle.', 'Citadelle, nous voici !'],
-    orc: ['Orc prêt ! Allons-y !', 'Orc aime la forêt !', 'Orc veut sauter dans le lac !', 'Une Porte ? Orc ouvre !', 'Orc grimpe, orc fort !', 'Plus que la Crête !', 'Le Sommet est tout près !', 'Orc a réussi ! Hourra !'],
-    paladin: ['Que la lumière nous guide !', 'Au nom du Soleil !', 'Le lac, quel bel endroit.', 'La Porte sera franchie.', 'Courage, on monte !', 'La Crête, avec confiance !', 'Le Sommet est proche !', 'Gloire à la Citadelle !'],
-    cat: ['Miaou, on y va !', 'Les bois, mon terrain de jeu !', 'Un lac ? Je regarde de loin.', 'La Porte ? Je me faufile.', 'Je grimpe sans bruit.', 'La Crête, un jeu d\'enfant.', 'Le Sommet sent bon !', 'Citadelle, nous voilà !'],
-    shadow: ['L\'ombre se lève...', 'Les arbres murmurent.', 'Le lac reflète les étoiles.', 'La Porte va s\'ouvrir.', 'On monte dans la nuit.', 'La Crête brille de mille étoiles.', 'Le Sommet est à nous.', 'La Citadelle nous attend !'],
-    vampire: ['La nuit est belle.', 'Forêt charmante, ma foi.', 'Un lac au clair de lune.', 'Cette Porte, quel style !', 'Montons avec élégance.', 'La Crête, enfin !', 'Le Sommet, sous la lune.', 'Quelle belle Citadelle !'],
-    necromancer: ['Un secret nous attend...', 'Quelle forêt mystérieuse !', 'Le lac cache un secret.', 'La Porte grince, parfait !', 'Ma lanterne verte nous guide.', 'La Crête, un vent magique.', 'Le Sommet approche...', 'Citadelle, on arrive !'],
-    fairy: ['Allons voir les fleurs !', 'La forêt est en fleurs !', 'Le lac scintille !', 'La Porte brille !', 'Je vole vers le haut !', 'La Crête, c\'est joli !', 'Le Sommet, bientôt !', 'La Citadelle, hourra !'],
-    scholar: ['Ouvrons le grimoire !', 'Chapitre un : la forêt.', 'Hypothèse : le lac.', 'La Porte est logique.', 'Théorie : on monte.', 'La Crête, en théorie.', 'Le Sommet, bien sûr !', 'Mission réussie !'],
-    pirate: ['Hissez les voiles !', 'Terre en vue : la forêt !', 'Un lac, mais sans bateau ?', 'La Porte, un coffre à ouvrir !', 'À l\'aventure sur la montagne !', 'La Crête, notre mât de misaine !', 'Le Sommet, le trésor est là !', 'Citadelle atteinte, moussaillons !'],
-    dragon: ['Les flammes s\'éveillent !', 'La forêt nous attend.', 'Le lac fait de la vapeur !', 'La Porte brille de mille feux !', 'Je grimpe, ailes au vent.', 'La Crête, quelle belle vue.', 'Le Sommet est tout près !', 'Citadelle, nous voilà !'],
-    astronaut: ['Compte à rebours lancé !', 'Atterrissage en forêt !', 'Un lac sans gravité ?', 'La Porte, un sas à ouvrir !', 'Décollage vers la crête !', 'La Crête, orbite en vue.', 'Le Sommet, mission presque finie !', 'Citadelle, ici la base !'],
-    frost: ['Gardons la tête froide !', 'La forêt est givrée.', 'Un lac gelé, parfait !', 'La Porte est de glace !', 'On grimpe dans la neige.', 'La Crête, un vent glacial.', 'Le Sommet scintille !', 'Citadelle, nous voici !']
+    base: ['C\'est parti !', 'En route vers la Forêt !', 'Vers le Lac !', 'Cap sur la Porte !', 'L\'Ascension commence !', 'Plus que la Crête !', 'Le Sommet est proche !', 'L\'Arbre est là !'],
+    elf: ['Les bois nous appellent !', 'La forêt nous guide.', 'Le lac chante, écoute !', 'La Porte nous attend.', 'Léger comme le vent !', 'La Crête est en vue.', 'Le Sommet nous appelle.', 'L\'Arbre, nous voici !'],
+    orc: ['Orc prêt ! Allons-y !', 'Orc aime la forêt !', 'Orc veut sauter dans le lac !', 'Une Porte ? Orc ouvre !', 'Orc grimpe, orc fort !', 'Plus que la Crête !', 'Le Sommet est tout près !', 'Orc voit gros arbre !'],
+    paladin: ['Que la lumière nous guide !', 'Au nom du Soleil !', 'Le lac, quel bel endroit.', 'La Porte sera franchie.', 'Courage, on monte !', 'La Crête, avec confiance !', 'Le Sommet est proche !', 'Gloire à l\'Arbre !'],
+    cat: ['Miaou, on y va !', 'Les bois, mon terrain de jeu !', 'Un lac ? Je regarde de loin.', 'La Porte ? Je me faufile.', 'Je grimpe sans bruit.', 'La Crête, un jeu d\'enfant.', 'Le Sommet sent bon !', 'L\'Arbre, nous voilà !'],
+    shadow: ['L\'ombre se lève...', 'Les arbres murmurent.', 'Le lac reflète les étoiles.', 'La Porte va s\'ouvrir.', 'On monte dans la nuit.', 'La Crête brille de mille étoiles.', 'Le Sommet est à nous.', 'L\'Arbre nous attend !'],
+    vampire: ['La nuit est belle.', 'Forêt charmante, ma foi.', 'Un lac au clair de lune.', 'Cette Porte, quel style !', 'Montons avec élégance.', 'La Crête, enfin !', 'Le Sommet, sous la lune.', 'Quel bel arbre !'],
+    necromancer: ['Un secret nous attend...', 'Quelle forêt mystérieuse !', 'Le lac cache un secret.', 'La Porte grince, parfait !', 'Ma lanterne verte nous guide.', 'La Crête, un vent magique.', 'Le Sommet approche...', 'L\'Arbre, on arrive !'],
+    fairy: ['Allons voir les fleurs !', 'La forêt est en fleurs !', 'Le lac scintille !', 'La Porte brille !', 'Je vole vers le haut !', 'La Crête, c\'est joli !', 'Le Sommet, bientôt !', 'L\'Arbre, hourra !'],
+    scholar: ['Ouvrons le grimoire !', 'Chapitre un : la forêt.', 'Hypothèse : le lac.', 'La Porte est logique.', 'Théorie : on monte.', 'La Crête, en théorie.', 'Le Sommet, bien sûr !', 'L\'Arbre, mission réussie !'],
+    pirate: ['Hissez les voiles !', 'Terre en vue : la forêt !', 'Un lac, mais sans bateau ?', 'La Porte, un coffre à ouvrir !', 'À l\'aventure sur la montagne !', 'La Crête, notre mât de misaine !', 'Le Sommet, le trésor est là !', 'L\'Arbre aux trésors !'],
+    dragon: ['Les flammes s\'éveillent !', 'La forêt nous attend.', 'Le lac fait de la vapeur !', 'La Porte brille de mille feux !', 'Je grimpe, ailes au vent.', 'La Crête, quelle belle vue.', 'Le Sommet est tout près !', 'L\'Arbre, nous voilà !'],
+    astronaut: ['Compte à rebours lancé !', 'Atterrissage en forêt !', 'Un lac sans gravité ?', 'La Porte, un sas à ouvrir !', 'Décollage vers la crête !', 'La Crête, orbite en vue.', 'Le Sommet, mission presque finie !', 'L\'Arbre, ici la base !'],
+    frost: ['Gardons la tête froide !', 'La forêt est givrée.', 'Un lac gelé, parfait !', 'La Porte est de glace !', 'On grimpe dans la neige.', 'La Crête, un vent glacial.', 'Le Sommet scintille !', 'L\'Arbre, nous voici !']
 };
 
 const MAP_THRESHOLDS = [100, 80, 60, 40, 25, 10, 1, 0];

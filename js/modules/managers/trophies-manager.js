@@ -9,6 +9,7 @@ import { playerManager } from '../core/player.js';
 import { RPG_TROPHIES, MANNEQUIN_BOY, MANNEQUIN_GIRL, buildCustomAvatarSvg } from '../ui/avatars.js';
 import { avatarCustomizerModal } from '../ui/avatar-modal.js';
 import { renderTreeSvg } from '../ui/tree-svg.js';
+import { pointsIcon, gemIcon } from '../ui/currency-icons.js';
 
 export { renderTreeSvg };
 
@@ -55,6 +56,7 @@ export class TrophiesManager {
 
     updateStats() {
         document.getElementById('total-points').textContent = rewardsManager.getTotalPoints();
+        document.getElementById('total-gems-icon').innerHTML = gemIcon('text-2xl');
         // NOTE On compte les cartes réellement affichées (pool actuel), pas les identifiants bruts du stockage : un skin retiré ou en double fausserait le total
         const pool = rewardsManager.getSummonPool();
         const owned = pool.filter(skin => rewardsManager.isSkinUnlocked(skin.id)).length;
@@ -117,15 +119,15 @@ export class TrophiesManager {
                     <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2 mb-1" style="color:${T.hexTextPrimary};font-family:'Baloo 2',sans-serif">
                         <i class="bi bi-stars" style="color:${T.hexPrimary}"></i>Arbre d'invocation
                     </h2>
-                    <p class="text-sm mb-5" style="color:#b46e28">Offre ${SUMMON_COST} gemmes à l'arbre : un fruit magique tombe et révèle un skin. Un doublon te rend ${SUMMON_REFUND} gemmes.</p>
+                    <p class="text-sm mb-5" style="color:#b46e28">Offre ${SUMMON_COST} fruits de connaissance à l'arbre : un fruit magique tombe et révèle un skin. Un doublon te rend ${SUMMON_REFUND} fruits de connaissance.</p>
 
                     <!-- Action : bouton, puis solde juste en dessous -->
                     <div class="w-full sm:w-auto flex flex-col items-center md:items-start gap-2 mb-5">
                         <button id="btn-summon" class="btn-base btn-primary justify-center w-full sm:w-auto px-10 py-3 text-base ${canSummon ? '' : 'opacity-50 cursor-not-allowed'}" ${canSummon ? '' : 'disabled'}>
-                            <i class="bi bi-gem"></i>Invoquer · ${SUMMON_COST} gemmes
+                            ${gemIcon()} Invoquer · ${SUMMON_COST} fruits
                         </button>
                         <p class="text-xs font-semibold" style="color:#b46e28">
-                            <i class="bi bi-gem text-yellow-500"></i> Tu as ${gems} gemme${gems > 1 ? 's' : ''}${canSummon ? '' : ` · encore ${missing} à gagner dans les quiz`}
+                            ${gemIcon()} Tu as ${gems} fruit${gems > 1 ? 's' : ''} de connaissance${canSummon ? '' : ` · encore ${missing} à gagner dans les quiz`}
                         </p>
                         ${canSummon ? '' : `<div class="w-full h-1.5 rounded-full overflow-hidden" style="background:#eaddcc"><div class="h-full rounded-full" style="width:${progress}%;background:#facc15"></div></div>`}
                     </div>
@@ -153,7 +155,7 @@ export class TrophiesManager {
         if (this.isSummoning) return;
         const result = rewardsManager.summon();
         if (!result) {
-            this.showMessage(`Il te faut ${SUMMON_COST} gemmes pour invoquer.`, 'error');
+            this.showMessage(`Il te faut ${SUMMON_COST} fruits de connaissance pour invoquer.`, 'error');
             return;
         }
         this.isSummoning = true;
@@ -187,7 +189,7 @@ export class TrophiesManager {
         modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center z-50 p-4 gap-3';
         modal.innerHTML = `
             <p class="summon-reveal-title text-xl sm:text-2xl font-black text-white text-center" style="font-family:'Baloo 2',sans-serif;text-shadow:0 0 18px ${RARITY_GLOW[rarity]}">
-                ${isNew ? `Nouveau skin ${label} !` : `Déjà obtenu : +${refund} gemmes rendues`}
+                ${isNew ? `Nouveau skin ${label} !` : `Déjà obtenu : +${refund} fruits de connaissance rendus`}
             </p>
             <div class="summon-reveal-card trophy-card-pokemon trophy-unlocked rounded-xl overflow-hidden border-2 rarity-${rarity} relative shadow-2xl" style="aspect-ratio: 9/16; height: min(62vh, 520px); max-width: 86vw; background-color:${T.bgSecondary};box-shadow:0 0 40px ${RARITY_GLOW[rarity]}">
                 <div class="absolute inset-x-0 top-0 bottom-[30%] px-4 pt-6 flex items-center justify-center pointer-events-none">${avatarSvg}</div>
@@ -195,7 +197,7 @@ export class TrophiesManager {
             </div>
             <div class="flex flex-wrap justify-center gap-2">
                 ${isNew ? `<button class="trophy-apply-btn btn-base btn-primary" data-skin-id="${skin.id}"><i class="bi bi-person-check-fill"></i>Appliquer</button>` : ''}
-                ${rewardsManager.canSummon() ? `<button id="btn-summon-again" class="btn-base btn-secondary"><i class="bi bi-gem"></i>Invoquer encore</button>` : ''}
+                ${rewardsManager.canSummon() ? `<button id="btn-summon-again" class="btn-base btn-secondary">${gemIcon()} Invoquer encore</button>` : ''}
                 <button id="close-trophy-modal" class="btn-base btn-secondary"><i class="bi bi-x-lg"></i>Fermer</button>
             </div>
         `;

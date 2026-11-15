@@ -217,7 +217,7 @@ import { T } from '../core/theme.js';
 | `question-manager.js` | Lettre A/B/C/D fond `#66bcb4`, timer badge, barre progression turquoise, bouton valider brun |
 | `results-manager.js` | % score `#66bcb4`, barre progress turquoise dégradé, cartes `#f4eadd` |
 | `history-manager.js` | Stats cards `#f4eadd`, chiffres `#66bcb4`, résultats beige |
-| `trophies-manager.js` | Carte Arbre d'invocation (barre de taux segmentée aux couleurs de rareté, pastille légendaire garanti, jauge de gemmes vers le coût ; arbre SVG : feuillage turquoise `#2f7d74` à `#66bcb4`, tronc brun `#8a4b14`), fruits et lueur de révélation par rareté (rare turquoise `rgb(102,188,180)`, épique violet `rgb(147,51,234)`, légendaire or `rgb(250,204,21)`), cartes 9/16 sur fond neutre crème `T.bgSecondary` (`#f4eadd`), boutons icônes discrets zoom et appliquer (`T.secondaryA(0.75)`, 28 à 34 px) sur la miniature et la modale, description masquée sous 210 px de large, squelette `#eaddcc`. Animations `summon-*` dans `styles/main.css`, coupées par `prefers-reduced-motion`. Bannière d'alerte `#code-message` utilisant le composant `.camiludik-alert` (succès lors de l'application d'un skin avec bouton pilule « Ouvrir l'atelier », erreur si gemmes insuffisantes, bouton fermeture et disparition animée). |
+| `trophies-manager.js` | Carte Arbre d'invocation (barre de taux segmentée aux couleurs de rareté, pastille légendaire garanti, jauge de fruits de connaissance vers le coût ; arbre SVG : feuillage turquoise `#2f7d74` à `#66bcb4`, tronc brun `#8a4b14`), fruits et lueur de révélation par rareté (rare turquoise `rgb(102,188,180)`, épique violet `rgb(147,51,234)`, légendaire or `rgb(250,204,21)`), cartes 9/16 sur fond neutre crème `T.bgSecondary` (`#f4eadd`), boutons icônes discrets zoom et appliquer (`T.secondaryA(0.75)`, 28 à 34 px) sur la miniature et la modale, description masquée sous 210 px de large, squelette `#eaddcc`. Animations `summon-*` dans `styles/main.css`, coupées par `prefers-reduced-motion`. Bannière d'alerte `#code-message` utilisant le composant `.camiludik-alert` (succès lors de l'application d'un skin avec bouton pilule « Ouvrir l'atelier », erreur si gemmes insuffisantes, bouton fermeture et disparition animée). |
 
 ### `js/modules/ui/avatar-modal.js` - atelier avatar
 
@@ -254,3 +254,7 @@ import { T } from '../core/theme.js';
 | --- | --- |
 | `manifest.json` | `"theme_color": "#66bcb4"`, `"background_color": "#fbf3ea"` |
 | `index.html` `<meta theme-color>` | `#66bcb4` |
+
+### Monnaies du jeu
+
+Icônes définies une seule fois dans `js/modules/ui/currency-icons.js` : points = étoile `bi-star-fill` orange accent (`--color-accent`), fruits de connaissance (ex-gemmes) = fruit de l'arbre d'invocation (halo, liseré blanc, reflet, queue brune) rempli du turquoise principal (`--color-primary`, `#66bcb4`).

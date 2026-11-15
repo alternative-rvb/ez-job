@@ -388,7 +388,7 @@
             </div>
             <h4 class="text-lg font-bold text-[#7c4004] mb-1.5">Héros Personnalisé</h4>
             <p class="text-xs sm:text-sm text-[#7c4004]/80 leading-relaxed flex-1">
-              Personnalise ton personnage, choisis son apparence et hisse-toi jusqu'au sommet de la Citadelle du Savoir.
+              Personnalise ton personnage, choisis son apparence et hisse-toi jusqu'au sommet, à l'Arbre d'Invocation.
             </p>
             <div class="mt-4 pt-3 border-t border-amber-900/10 flex items-center gap-2 text-xs font-semibold text-primary-700">
               <i class="bi bi-award-fill"></i>
@@ -414,7 +414,7 @@
             
             <div class="mb-5 sm:mb-7">
               <p class="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3" style="color: #7c4004;">Apprends en t'amusant !</p>
-              <p class="text-sm sm:text-base md:text-lg mb-4 sm:mb-5" style="color: #7c4004;">Des quiz interactifs sur plein de sujets fun et éducatifs.<br class="hidden sm:inline">Teste tes connaissances, grimpe jusqu'à la Citadelle du Savoir et collectionne des trophées !</p>
+              <p class="text-sm sm:text-base md:text-lg mb-4 sm:mb-5" style="color: #7c4004;">Des quiz interactifs sur plein de sujets fun et éducatifs.<br class="hidden sm:inline">Teste tes connaissances, grimpe jusqu'à l'Arbre d'Invocation et collectionne des trophées !</p>
             </div>
 
             <!-- Boutons CTA Principaux - Sur une seule ligne même sur mobile -->
@@ -470,11 +470,11 @@
                             <circle cx="62" cy="10" r="15" fill="#cdb79b" opacity="0.7"/>
                             <ellipse cx="140" cy="24" rx="24" ry="9" fill="#ffffff" opacity="0.6"/>
                             <ellipse cx="318" cy="-6" rx="28" ry="9" fill="#ffffff" opacity="0.5"/>
-                            <!-- Montagnes lointaines et montagne de la Citadelle -->
+                            <!-- Montagnes lointaines et montagne du sommet -->
                             <path d="M 120 180 L 196 94 Q 200 89 204 94 L 280 180 Z" fill="#d5c2ae" opacity="0.5"/>
                             <path d="M 220 180 L 316 69.6 Q 320 64 324 69.6 L 420 180 Z" fill="#cdb9a3" opacity="0.6"/>
-                            <path d="M 250 260 L 409 71 Q 413 65 420 64 L 460 64 Q 466 65 469 72 L 550 260 Z" fill="#bfa78d" opacity="0.7"/>
-                            <path d="M 448 64 L 460 64 Q 466 65 469 72 L 550 260 L 478 260 L 470 220 L 474 180 L 463 140 L 466 104 L 455 80 Z" fill="#ab9179" opacity="0.5"/>
+                            <path d="M 250 260 L 409 71 Q 440 54 469 72 L 550 260 Z" fill="#bfa78d" opacity="0.7"/>
+                            <path d="M 448 62.9 Q 460 62 469 72 L 550 260 L 478 260 L 470 220 L 474 180 L 463 140 L 466 104 L 455 80 Z" fill="#ab9179" opacity="0.5"/>
                             <!-- Collines étagées -->
                             <path d="M -40 175 Q 120 135 250 170 T 580 155 L 580 320 L -40 320 Z" fill="#dfcfbd" opacity="0.5"/>
                             <path d="M -40 205 Q 150 155 310 195 T 580 185 L 580 320 L -40 320 Z" fill="#d5c2ae" opacity="0.55"/>
@@ -498,13 +498,11 @@
                             <rect x="283" y="163" width="5.5" height="22" rx="1" fill="#a98c6e" opacity="0.75"/>
                             <rect x="301.5" y="163" width="5.5" height="22" rx="1" fill="#a98c6e" opacity="0.75"/>
                             <rect x="281" y="159" width="28" height="6.5" rx="2" fill="#bc9f82" opacity="0.8"/>
-                            <!-- Citadelle au sommet -->
-                            <rect x="418" y="14" width="14" height="38" rx="1" fill="#bc9f82" opacity="0.75"/>
-                            <rect x="448" y="14" width="14" height="38" rx="1" fill="#bc9f82" opacity="0.75"/>
-                            <rect x="426" y="26" width="28" height="26" rx="1" fill="#bc9f82" opacity="0.8"/>
-                            <polygon points="415,16 425,-6 435,16" fill="#a98c6e" opacity="0.85"/>
-                            <polygon points="445,16 455,-6 465,16" fill="#a98c6e" opacity="0.85"/>
-                            <polygon points="428,28 440,6 452,28" fill="#a98c6e" opacity="0.85"/>
+                            <!-- Arbre d'invocation au sommet -->
+                            <rect x="436" y="40" width="8" height="24" rx="2" fill="#a98c6e" opacity="0.8"/>
+                            <circle cx="440" cy="30" r="20" fill="#bc9f82" opacity="0.75"/>
+                            <circle cx="425" cy="38" r="11" fill="#bc9f82" opacity="0.75"/>
+                            <circle cx="455" cy="38" r="11" fill="#bc9f82" opacity="0.75"/>
                             <!-- Sentier en lacets fantôme -->
                             <path d="M 45 222 C 80 222, 100 205, 130 205 C 160 205, 180 206, 210 205 C 240 202, 265 188, 295 185 C 335 182, 385 174, 420 165 C 442 155, 400 144, 365 138 C 335 130, 410 118, 445 110 C 465 102, 435 90, 415 82 C 402 76, 425 66, 440 64"
                                   fill="none" stroke="#bc9f82" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 8" opacity="0.7"/>
@@ -867,13 +865,13 @@
         <p class="text-xs sm:text-sm text-[#7c4004]/70 mt-1">Collectionne tous les skins et débloque les personnages légendaires !</p>
       </div>
 
-      <!-- Barre d'état : gemmes et progression de la collection -->
+      <!-- Barre d'état : fruits de connaissance et progression de la collection -->
       <div class="rounded-xl px-4 py-3 mb-4 flex items-center gap-4" style="background:#f4eadd;border:1.5px solid #dcc9b0">
         <div class="flex items-center gap-2 flex-shrink-0">
-          <i class="bi bi-gem text-yellow-400 text-2xl"></i>
+          <span id="total-gems-icon" class="inline-flex"></span>
           <div class="leading-tight">
-            <p class="text-2xl font-bold text-yellow-500" id="total-points">0</p>
-            <p class="text-[11px]" style="color:#b46e28">gemmes</p>
+            <p class="text-2xl font-bold" style="color:rgb(var(--color-primary-dark))" id="total-points">0</p>
+            <p class="text-[11px]" style="color:#b46e28">fruits de connaissance</p>
           </div>
         </div>
         <div class="flex-1 min-w-0">
@@ -920,7 +918,7 @@
         <span class="font-medium tracking-wide">CamiLudik</span>
         <a href="changelog.html" id="footer-version-link" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-mono text-[11px] font-medium border border-white/30 hover:border-white/50 transition-all shadow-sm" title="Consulter les notes de version">
           <i class="bi bi-tag-fill text-[10px] text-accent-300"></i>
-          <span id="footer-version-text">v1.0.185</span>
+          <span id="footer-version-text">v1.0.186</span>
           <span class="text-white/75 font-sans font-normal text-[10px]">(notes de version)</span>
         </a>
       </div>
