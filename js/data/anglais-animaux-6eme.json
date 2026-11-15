@@ -1,0 +1,285 @@
+{
+  "config": {
+    "title": "Les animaux en anglais",
+    "description": "Teste ton vocabulaire anglais des animaux : animaux de la ferme, de la savane, de la mer et petites bêtes",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 22,
+    "category": "CM2",
+    "createdAt": "2026-11-15",
+    "tag": [
+      "Anglais",
+      "Vocabulaire",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Anglais"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Comment dit-on 'le cheval' en anglais ?",
+      "choices": [
+        "Horse",
+        "Donkey",
+        "Rabbit",
+        "Mouse"
+      ],
+      "correctAnswer": "Horse",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Comment dit-on 'le lion' en anglais ?",
+      "choices": [
+        "Shark",
+        "Lion",
+        "Frog",
+        "Panda"
+      ],
+      "correctAnswer": "Lion",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Comment dit-on 'le pingouin' en anglais ?",
+      "choices": [
+        "Penguin",
+        "Shark",
+        "Elephant",
+        "Horse"
+      ],
+      "correctAnswer": "Penguin",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Comment dit-on 'la souris' en anglais ?",
+      "choices": [
+        "Donkey",
+        "Mouse",
+        "Goat",
+        "Cow"
+      ],
+      "correctAnswer": "Mouse",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Comment dit-on 'la baleine' en anglais ?",
+      "choices": [
+        "Cat",
+        "Whale",
+        "Giraffe",
+        "Horse"
+      ],
+      "correctAnswer": "Whale",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Comment dit-on 'le lapin' en anglais ?",
+      "choices": [
+        "Elephant",
+        "Monkey",
+        "Rabbit",
+        "Horse"
+      ],
+      "correctAnswer": "Rabbit",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Comment dit-on 'le koala' en anglais ?",
+      "choices": [
+        "Koala",
+        "Cat",
+        "Tiger",
+        "Goat"
+      ],
+      "correctAnswer": "Koala",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Comment dit-on 'la coccinelle' en anglais ?",
+      "choices": [
+        "Dog",
+        "Frog",
+        "Horse",
+        "Ladybird"
+      ],
+      "correctAnswer": "Ladybird",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Comment dit-on 'la chèvre' en anglais ?",
+      "choices": [
+        "Rabbit",
+        "Dog",
+        "Goat",
+        "Mouse"
+      ],
+      "correctAnswer": "Goat",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Comment dit-on 'la vache' en anglais ?",
+      "choices": [
+        "Monkey",
+        "Koala",
+        "Cow",
+        "Dog"
+      ],
+      "correctAnswer": "Cow",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Comment dit-on 'le chien' en anglais ?",
+      "choices": [
+        "Donkey",
+        "Dog",
+        "Shark",
+        "Monkey"
+      ],
+      "correctAnswer": "Dog",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Comment dit-on 'le kangourou' en anglais ?",
+      "choices": [
+        "Shark",
+        "Elephant",
+        "Kangaroo",
+        "Rabbit"
+      ],
+      "correctAnswer": "Kangaroo",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Comment dit-on 'le tigre' en anglais ?",
+      "choices": [
+        "Monkey",
+        "Frog",
+        "Tiger",
+        "Penguin"
+      ],
+      "correctAnswer": "Tiger",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Comment dit-on 'le requin' en anglais ?",
+      "choices": [
+        "Horse",
+        "Panda",
+        "Kangaroo",
+        "Shark"
+      ],
+      "correctAnswer": "Shark",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Comment dit-on 'l'éléphant' en anglais ?",
+      "choices": [
+        "Donkey",
+        "Zebra",
+        "Giraffe",
+        "Elephant"
+      ],
+      "correctAnswer": "Elephant",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Comment dit-on 'la grenouille' en anglais ?",
+      "choices": [
+        "Monkey",
+        "Ladybird",
+        "Frog",
+        "Rabbit"
+      ],
+      "correctAnswer": "Frog",
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Comment dit-on 'le panda' en anglais ?",
+      "choices": [
+        "Tiger",
+        "Panda",
+        "Monkey",
+        "Kangaroo"
+      ],
+      "correctAnswer": "Panda",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Comment dit-on 'le singe' en anglais ?",
+      "choices": [
+        "Zebra",
+        "Cat",
+        "Horse",
+        "Monkey"
+      ],
+      "correctAnswer": "Monkey",
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Comment dit-on 'le chat' en anglais ?",
+      "choices": [
+        "Koala",
+        "Monkey",
+        "Panda",
+        "Cat"
+      ],
+      "correctAnswer": "Cat",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Comment dit-on 'l'âne' en anglais ?",
+      "choices": [
+        "Kangaroo",
+        "Donkey",
+        "Monkey",
+        "Cat"
+      ],
+      "correctAnswer": "Donkey",
+      "imageUrl": null
+    },
+    {
+      "id": 21,
+      "question": "Comment dit-on 'le zèbre' en anglais ?",
+      "choices": [
+        "Zebra",
+        "Kangaroo",
+        "Frog",
+        "Shark"
+      ],
+      "correctAnswer": "Zebra",
+      "imageUrl": null
+    },
+    {
+      "id": 22,
+      "question": "Comment dit-on 'la girafe' en anglais ?",
+      "choices": [
+        "Giraffe",
+        "Elephant",
+        "Horse",
+        "Donkey"
+      ],
+      "correctAnswer": "Giraffe",
+      "imageUrl": null
+    }
+  ]
+}

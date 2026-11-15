@@ -1,5 +1,7 @@
 {
   "quizzes": [
+    "anglais-aliments-6eme",
+    "anglais-animaux-6eme",
     "anglais-pays-nationalites-6eme",
     "anglais-relations-familiales-6eme",
     "anglais-symboles-monde-anglophone-1",
@@ -72,7 +74,7 @@
     "Physique",
     "Sciences"
   ],
-  "count": 53,
-  "lastUpdated": "2026-11-14T13:46:03.943571",
+  "count": 55,
+  "lastUpdated": "2026-11-15T09:40:56.342858",
   "generated_by": "api.py"
 }

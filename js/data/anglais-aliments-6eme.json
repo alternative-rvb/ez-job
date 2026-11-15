@@ -1,0 +1,297 @@
+{
+  "config": {
+    "title": "Les aliments en anglais",
+    "description": "Teste ton vocabulaire anglais des aliments : fruits, légumes, produits de base, viandes et poissons",
+    "imageUrl": "",
+    "spoilerMode": false,
+    "difficulty": 1,
+    "questionCount": 23,
+    "category": "CM2",
+    "createdAt": "2026-11-15",
+    "tag": [
+      "Anglais",
+      "Vocabulaire",
+      "6e"
+    ],
+    "level": "6eme",
+    "subject": "Anglais"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Comment dit-on 'le concombre' en anglais ?",
+      "choices": [
+        "Cauliflower",
+        "Cucumber",
+        "Flour",
+        "Seaweed"
+      ],
+      "correctAnswer": "Cucumber",
+      "imageUrl": null
+    },
+    {
+      "id": 2,
+      "question": "Comment dit-on 'la betterave' en anglais ?",
+      "choices": [
+        "Peach",
+        "Beet",
+        "Orange",
+        "Grapes"
+      ],
+      "correctAnswer": "Beet",
+      "imageUrl": null
+    },
+    {
+      "id": 3,
+      "question": "Comment dit-on 'le chou-fleur' en anglais ?",
+      "choices": [
+        "Salt",
+        "Bread",
+        "Cauliflower",
+        "Butter"
+      ],
+      "correctAnswer": "Cauliflower",
+      "imageUrl": null
+    },
+    {
+      "id": 4,
+      "question": "Comment dit-on 'l'algue' en anglais ?",
+      "choices": [
+        "Seaweed",
+        "Beet",
+        "Grapes",
+        "Fish"
+      ],
+      "correctAnswer": "Seaweed",
+      "imageUrl": null
+    },
+    {
+      "id": 5,
+      "question": "Comment dit-on 'le champignon' en anglais ?",
+      "choices": [
+        "Mushroom",
+        "Pineapple",
+        "Salt",
+        "Butter"
+      ],
+      "correctAnswer": "Mushroom",
+      "imageUrl": null
+    },
+    {
+      "id": 6,
+      "question": "Comment dit-on 'le chou' en anglais ?",
+      "choices": [
+        "Cucumber",
+        "Cabbage",
+        "Peas",
+        "Garlic"
+      ],
+      "correctAnswer": "Cabbage",
+      "imageUrl": null
+    },
+    {
+      "id": 7,
+      "question": "Comment dit-on 'l'ail' en anglais ?",
+      "choices": [
+        "Fish",
+        "Pumpkin",
+        "Garlic",
+        "Flour"
+      ],
+      "correctAnswer": "Garlic",
+      "imageUrl": null
+    },
+    {
+      "id": 8,
+      "question": "Comment dit-on 'l'orange' en anglais ?",
+      "choices": [
+        "Fish",
+        "Orange",
+        "Flour",
+        "Chicken"
+      ],
+      "correctAnswer": "Orange",
+      "imageUrl": null
+    },
+    {
+      "id": 9,
+      "question": "Comment dit-on 'les petits pois' en anglais ?",
+      "choices": [
+        "Cabbage",
+        "Egg",
+        "Peas",
+        "Butter"
+      ],
+      "correctAnswer": "Peas",
+      "imageUrl": null
+    },
+    {
+      "id": 10,
+      "question": "Comment dit-on 'le raisin' en anglais ?",
+      "choices": [
+        "Meat",
+        "Flour",
+        "Fish",
+        "Grapes"
+      ],
+      "correctAnswer": "Grapes",
+      "imageUrl": null
+    },
+    {
+      "id": 11,
+      "question": "Comment dit-on 'les haricots' en anglais ?",
+      "choices": [
+        "Coconut",
+        "Chicken",
+        "Egg",
+        "Beans"
+      ],
+      "correctAnswer": "Beans",
+      "imageUrl": null
+    },
+    {
+      "id": 12,
+      "question": "Comment dit-on 'l'ananas' en anglais ?",
+      "choices": [
+        "Beans",
+        "Pineapple",
+        "Cabbage",
+        "Peach"
+      ],
+      "correctAnswer": "Pineapple",
+      "imageUrl": null
+    },
+    {
+      "id": 13,
+      "question": "Comment dit-on 'la farine' en anglais ?",
+      "choices": [
+        "Coconut",
+        "Grapes",
+        "Fish",
+        "Flour"
+      ],
+      "correctAnswer": "Flour",
+      "imageUrl": null
+    },
+    {
+      "id": 14,
+      "question": "Comment dit-on 'le beurre' en anglais ?",
+      "choices": [
+        "Pineapple",
+        "Butter",
+        "Fish",
+        "Meat"
+      ],
+      "correctAnswer": "Butter",
+      "imageUrl": null
+    },
+    {
+      "id": 15,
+      "question": "Comment dit-on 'le sel' en anglais ?",
+      "choices": [
+        "Beet",
+        "Salt",
+        "Seaweed",
+        "Garlic"
+      ],
+      "correctAnswer": "Salt",
+      "imageUrl": null
+    },
+    {
+      "id": 16,
+      "question": "Comment dit-on 'l'œuf' en anglais ?",
+      "choices": [
+        "Fish",
+        "Pumpkin",
+        "Egg",
+        "Seaweed"
+      ],
+      "correctAnswer": "Egg",
+      "imageUrl": null
+    },
+    {
+      "id": 17,
+      "question": "Comment dit-on 'la viande' en anglais ?",
+      "choices": [
+        "Butter",
+        "Beet",
+        "Meat",
+        "Garlic"
+      ],
+      "correctAnswer": "Meat",
+      "imageUrl": null
+    },
+    {
+      "id": 18,
+      "question": "Comment dit-on 'le poisson' en anglais ?",
+      "choices": [
+        "Cabbage",
+        "Orange",
+        "Fish",
+        "Pineapple"
+      ],
+      "correctAnswer": "Fish",
+      "imageUrl": null
+    },
+    {
+      "id": 19,
+      "question": "Comment dit-on 'la noix de coco' en anglais ?",
+      "choices": [
+        "Coconut",
+        "Beet",
+        "Cucumber",
+        "Cauliflower"
+      ],
+      "correctAnswer": "Coconut",
+      "imageUrl": null
+    },
+    {
+      "id": 20,
+      "question": "Comment dit-on 'le poulet' en anglais ?",
+      "choices": [
+        "Meat",
+        "Chicken",
+        "Cabbage",
+        "Mushroom"
+      ],
+      "correctAnswer": "Chicken",
+      "imageUrl": null
+    },
+    {
+      "id": 21,
+      "question": "Comment dit-on 'la pêche' en anglais ?",
+      "choices": [
+        "Beet",
+        "Peach",
+        "Mushroom",
+        "Orange"
+      ],
+      "correctAnswer": "Peach",
+      "imageUrl": null
+    },
+    {
+      "id": 22,
+      "question": "Comment dit-on 'le pain' en anglais ?",
+      "choices": [
+        "Bread",
+        "Egg",
+        "Beans",
+        "Grapes"
+      ],
+      "correctAnswer": "Bread",
+      "imageUrl": null
+    },
+    {
+      "id": 23,
+      "question": "Comment dit-on 'la citrouille' en anglais ?",
+      "choices": [
+        "Pumpkin",
+        "Fish",
+        "Chicken",
+        "Beet"
+      ],
+      "correctAnswer": "Pumpkin",
+      "imageUrl": null
+    }
+  ]
+}
